@@ -44,11 +44,10 @@ namespace WalleeExample
 
             try
             {
-				// Send create request.
-				var token = tokenService.Create(spaceId, tokenCreate);
+                // Send create request.
+                var token = tokenService.Create(spaceId, tokenCreate);
 
-				Console.WriteLine(token.ToJson());
-
+                Console.WriteLine(token.ToJson());
             }
             catch(ApiException e)
             {
