@@ -43,7 +43,7 @@ namespace Customweb.Wallee.Model
         /// <param name="SocialSecurityNumber">SocialSecurityNumber</param>
         /// <param name="SortingCode">The sorting code identifies the post office at which the post box is located in.</param>
         /// <param name="Street">Street</param>
-        public Address(string City = default(string), string CommercialRegisterNumber = default(string), string Country = default(string), DateTime? DateOfBirth = default(DateTime?), string DependentLocality = default(string), string EmailAddress = default(string), string FamilyName = default(string), Gender Gender = default(Gender), string GivenName = default(string), LegalOrganizationForm LegalOrganizationForm = default(LegalOrganizationForm), string MobilePhoneNumber = default(string), string OrganizationName = default(string), string PhoneNumber = default(string), string PostCode = default(string), string PostalState = default(string), string SalesTaxNumber = default(string), string Salutation = default(string), string SocialSecurityNumber = default(string), string SortingCode = default(string), string Street = default(string))
+        public Address(string City = default(string), string CommercialRegisterNumber = default(string), string Country = default(string), DateTime? DateOfBirth = default(DateTime?), string DependentLocality = default(string), string EmailAddress = default(string), string FamilyName = default(string), Gender? Gender = null, string GivenName = default(string), LegalOrganizationForm LegalOrganizationForm = default(LegalOrganizationForm), string MobilePhoneNumber = default(string), string OrganizationName = default(string), string PhoneNumber = default(string), string PostCode = default(string), string PostalState = default(string), string SalesTaxNumber = default(string), string Salutation = default(string), string SocialSecurityNumber = default(string), string SortingCode = default(string), string Street = default(string))
         {
             this.City = City;
             this.CommercialRegisterNumber = CommercialRegisterNumber;
@@ -121,7 +121,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Gender</value>
         [DataMember(Name="gender", EmitDefaultValue=false)]
-        public Gender Gender { get; set; }
+        public Gender? Gender { get; set; }
 
         /// <summary>
         /// GivenName
