@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -20,40 +38,69 @@ namespace Customweb.Wallee.Model
     [DataContract]
     public partial class SubscriberUpdate :  IEquatable<SubscriberUpdate>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriberUpdate" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected SubscriberUpdate() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SubscriberUpdate" /> class.
+        /// </summary>
+        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
+        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
         /// <param name="AdditionalAllowedPaymentMethodConfigurations">Those payment methods which are allowed additionally will be available even when the product does not allow those methods.</param>
         /// <param name="BillingAddress">BillingAddress</param>
         /// <param name="Description">The subscriber description can be used to add a description to the subscriber. This is used in the back office to identify the subscriber.</param>
         /// <param name="DisallowedPaymentMethodConfigurations">Those payment methods which are disallowed will not be available to the subscriber even if the product allows those methods.</param>
         /// <param name="EmailAddress">The email address is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.</param>
-        /// <param name="ExternalId">The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
         /// <param name="Language">The subscriber language determines the language which is used to communicate with the subscriber in emails and documents (e.g. invoices).</param>
-        /// <param name="LinkedSpaceId">The linked space id holds the ID of the space to which the entity belongs to.</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
         /// <param name="Reference">The subscriber reference identifies the subscriber in administrative interfaces (e.g. customer id).</param>
         /// <param name="ShippingAddress">ShippingAddress</param>
-        /// <param name="State">State</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public SubscriberUpdate(List<long?> AdditionalAllowedPaymentMethodConfigurations = default(List<long?>), AddressCreate BillingAddress = default(AddressCreate), string Description = default(string), List<long?> DisallowedPaymentMethodConfigurations = default(List<long?>), string EmailAddress = default(string), string ExternalId = default(string), long? Id = default(long?), string Language = default(string), long? LinkedSpaceId = default(long?), DateTime? PlannedPurgeDate = default(DateTime?), string Reference = default(string), AddressCreate ShippingAddress = default(AddressCreate), CreationEntityState State = default(CreationEntityState), long? Version = default(long?))
+        public SubscriberUpdate(AddressCreate BillingAddress = default(AddressCreate), string EmailAddress = default(string), long? Version = default(long?), AddressCreate ShippingAddress = default(AddressCreate), long? Id = default(long?), string Language = default(string), string Description = default(string), List<long?> DisallowedPaymentMethodConfigurations = default(List<long?>), string Reference = default(string), List<long?> AdditionalAllowedPaymentMethodConfigurations = default(List<long?>))
         {
+            // to ensure "Id" is required (not null)
+            if (Id == null)
+            {
+                throw new ArgumentNullException("Id is a required property for SubscriberUpdate and cannot be null");
+            }
+            else
+            {
+                this.Id = Id;
+            }
+            // to ensure "Version" is required (not null)
+            if (Version == null)
+            {
+                throw new ArgumentNullException("Version is a required property for SubscriberUpdate and cannot be null");
+            }
+            else
+            {
+                this.Version = Version;
+            }
             this.AdditionalAllowedPaymentMethodConfigurations = AdditionalAllowedPaymentMethodConfigurations;
             this.BillingAddress = BillingAddress;
             this.Description = Description;
             this.DisallowedPaymentMethodConfigurations = DisallowedPaymentMethodConfigurations;
             this.EmailAddress = EmailAddress;
-            this.ExternalId = ExternalId;
-            this.Id = Id;
             this.Language = Language;
-            this.LinkedSpaceId = LinkedSpaceId;
-            this.PlannedPurgeDate = PlannedPurgeDate;
             this.Reference = Reference;
             this.ShippingAddress = ShippingAddress;
-            this.State = State;
-            this.Version = Version;
         }
+
+        /// <summary>
+        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
+        /// </summary>
+        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; set; }
+
+        /// <summary>
+        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// </summary>
+        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public long? Version { get; set; }
 
         /// <summary>
         /// Those payment methods which are allowed additionally will be available even when the product does not allow those methods.
@@ -91,39 +138,11 @@ namespace Customweb.Wallee.Model
         public string EmailAddress { get; set; }
 
         /// <summary>
-        /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
-        /// </summary>
-        /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
-        public string ExternalId { get; set; }
-
-        /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
-        /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
-
-        /// <summary>
         /// The subscriber language determines the language which is used to communicate with the subscriber in emails and documents (e.g. invoices).
         /// </summary>
         /// <value>The subscriber language determines the language which is used to communicate with the subscriber in emails and documents (e.g. invoices).</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; set; }
-
-        /// <summary>
-        /// The linked space id holds the ID of the space to which the entity belongs to.
-        /// </summary>
-        /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; set; }
-
-        /// <summary>
-        /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
-        /// </summary>
-        /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
 
         /// <summary>
         /// The subscriber reference identifies the subscriber in administrative interfaces (e.g. customer id).
@@ -140,43 +159,12 @@ namespace Customweb.Wallee.Model
         public AddressCreate ShippingAddress { get; set; }
 
         /// <summary>
-        /// State
-        /// </summary>
-        /// <value>State</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState State { get; set; }
-
-        /// <summary>
-        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-        /// </summary>
-        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public long? Version { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class SubscriberUpdate {\n");
-            sb.Append("  AdditionalAllowedPaymentMethodConfigurations: ").Append(AdditionalAllowedPaymentMethodConfigurations).Append("\n");
-            sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  DisallowedPaymentMethodConfigurations: ").Append(DisallowedPaymentMethodConfigurations).Append("\n");
-            sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
-            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Language: ").Append(Language).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  Reference: ").Append(Reference).Append("\n");
-            sb.Append("  ShippingAddress: ").Append(ShippingAddress).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -212,6 +200,16 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
+                ) && 
+                (
+                    this.Version == other.Version ||
+                    this.Version != null &&
+                    this.Version.Equals(other.Version)
+                ) && 
+                (
                     this.AdditionalAllowedPaymentMethodConfigurations == other.AdditionalAllowedPaymentMethodConfigurations ||
                     this.AdditionalAllowedPaymentMethodConfigurations != null &&
                     this.AdditionalAllowedPaymentMethodConfigurations.SequenceEqual(other.AdditionalAllowedPaymentMethodConfigurations)
@@ -237,29 +235,9 @@ namespace Customweb.Wallee.Model
                     this.EmailAddress.Equals(other.EmailAddress)
                 ) && 
                 (
-                    this.ExternalId == other.ExternalId ||
-                    this.ExternalId != null &&
-                    this.ExternalId.Equals(other.ExternalId)
-                ) && 
-                (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
-                ) && 
-                (
                     this.Language == other.Language ||
                     this.Language != null &&
                     this.Language.Equals(other.Language)
-                ) && 
-                (
-                    this.LinkedSpaceId == other.LinkedSpaceId ||
-                    this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(other.LinkedSpaceId)
-                ) && 
-                (
-                    this.PlannedPurgeDate == other.PlannedPurgeDate ||
-                    this.PlannedPurgeDate != null &&
-                    this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
                 ) && 
                 (
                     this.Reference == other.Reference ||
@@ -270,16 +248,6 @@ namespace Customweb.Wallee.Model
                     this.ShippingAddress == other.ShippingAddress ||
                     this.ShippingAddress != null &&
                     this.ShippingAddress.Equals(other.ShippingAddress)
-                ) && 
-                (
-                    this.State == other.State ||
-                    this.State != null &&
-                    this.State.Equals(other.State)
-                ) && 
-                (
-                    this.Version == other.Version ||
-                    this.Version != null &&
-                    this.Version.Equals(other.Version)
                 );
         }
 
@@ -292,35 +260,46 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
-                if (this.AdditionalAllowedPaymentMethodConfigurations != null)
-                    hash = hash * 59 + this.AdditionalAllowedPaymentMethodConfigurations.GetHashCode();
-                if (this.BillingAddress != null)
-                    hash = hash * 59 + this.BillingAddress.GetHashCode();
-                if (this.Description != null)
-                    hash = hash * 59 + this.Description.GetHashCode();
-                if (this.DisallowedPaymentMethodConfigurations != null)
-                    hash = hash * 59 + this.DisallowedPaymentMethodConfigurations.GetHashCode();
-                if (this.EmailAddress != null)
-                    hash = hash * 59 + this.EmailAddress.GetHashCode();
-                if (this.ExternalId != null)
-                    hash = hash * 59 + this.ExternalId.GetHashCode();
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
-                if (this.Language != null)
-                    hash = hash * 59 + this.Language.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.PlannedPurgeDate != null)
-                    hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.Reference != null)
-                    hash = hash * 59 + this.Reference.GetHashCode();
-                if (this.ShippingAddress != null)
-                    hash = hash * 59 + this.ShippingAddress.GetHashCode();
-                if (this.State != null)
-                    hash = hash * 59 + this.State.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
+                if (this.AdditionalAllowedPaymentMethodConfigurations != null)
+                {
+                    hash = hash * 59 + this.AdditionalAllowedPaymentMethodConfigurations.GetHashCode();
+                }
+                if (this.BillingAddress != null)
+                {
+                    hash = hash * 59 + this.BillingAddress.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hash = hash * 59 + this.Description.GetHashCode();
+                }
+                if (this.DisallowedPaymentMethodConfigurations != null)
+                {
+                    hash = hash * 59 + this.DisallowedPaymentMethodConfigurations.GetHashCode();
+                }
+                if (this.EmailAddress != null)
+                {
+                    hash = hash * 59 + this.EmailAddress.GetHashCode();
+                }
+                if (this.Language != null)
+                {
+                    hash = hash * 59 + this.Language.GetHashCode();
+                }
+                if (this.Reference != null)
+                {
+                    hash = hash * 59 + this.Reference.GetHashCode();
+                }
+                if (this.ShippingAddress != null)
+                {
+                    hash = hash * 59 + this.ShippingAddress.GetHashCode();
+                }
                 return hash;
             }
         }

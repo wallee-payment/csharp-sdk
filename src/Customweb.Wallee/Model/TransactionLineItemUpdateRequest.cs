@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,20 +33,35 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// TransactionLineItemUpdateRequest model.
+    /// Transaction Line Item Update Request
     /// </summary>
     [DataContract]
     public partial class TransactionLineItemUpdateRequest :  IEquatable<TransactionLineItemUpdateRequest>
     {
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransactionLineItemUpdateRequest" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        protected TransactionLineItemUpdateRequest() { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionLineItemUpdateRequest" /> class.
         /// </summary>
         /// <param name="NewLineItems">NewLineItems</param>
-        /// <param name="TransactionId">TransactionId</param>
-        public TransactionLineItemUpdateRequest(List<LineItem> NewLineItems = default(List<LineItem>), long? TransactionId = default(long?))
+        /// <param name="TransactionId">TransactionId (required)</param>
+        public TransactionLineItemUpdateRequest(List<LineItemCreate> NewLineItems = default(List<LineItemCreate>), long? TransactionId = default(long?))
         {
+            // to ensure "TransactionId" is required (not null)
+            if (TransactionId == null)
+            {
+                throw new ArgumentNullException("TransactionId is a required property for TransactionLineItemUpdateRequest and cannot be null");
+            }
+            else
+            {
+                this.TransactionId = TransactionId;
+            }
             this.NewLineItems = NewLineItems;
-            this.TransactionId = TransactionId;
         }
 
         /// <summary>
@@ -36,7 +69,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>NewLineItems</value>
         [DataMember(Name="newLineItems", EmitDefaultValue=false)]
-        public List<LineItem> NewLineItems { get; set; }
+        public List<LineItemCreate> NewLineItems { get; set; }
 
         /// <summary>
         /// TransactionId
@@ -51,12 +84,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class TransactionLineItemUpdateRequest {\n");
-            sb.Append("  NewLineItems: ").Append(NewLineItems).Append("\n");
-            sb.Append("  TransactionId: ").Append(TransactionId).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -112,11 +140,14 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.NewLineItems != null)
+                {
                     hash = hash * 59 + this.NewLineItems.GetHashCode();
+                }
                 if (this.TransactionId != null)
+                {
                     hash = hash * 59 + this.TransactionId.GetHashCode();
+                }
                 return hash;
             }
         }

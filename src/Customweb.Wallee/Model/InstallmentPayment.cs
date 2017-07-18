@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -20,29 +38,13 @@ namespace Customweb.Wallee.Model
     [DataContract]
     public partial class InstallmentPayment :  IEquatable<InstallmentPayment>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="InstallmentPayment" /> class.
         /// </summary>
-        /// <param name="CreatedOn">The created on date indicates the date on which the entity was stored into the database.</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="InitialTransaction">InitialTransaction</param>
-        /// <param name="LineItems">LineItems</param>
-        /// <param name="LinkedSpaceId">The linked space id holds the ID of the space to which the entity belongs to.</param>
-        /// <param name="PlanConfiguration">PlanConfiguration</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
-        /// <param name="State">State</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public InstallmentPayment(DateTime? CreatedOn = default(DateTime?), long? Id = default(long?), Transaction InitialTransaction = default(Transaction), List<LineItem> LineItems = default(List<LineItem>), long? LinkedSpaceId = default(long?), long? PlanConfiguration = default(long?), DateTime? PlannedPurgeDate = default(DateTime?), InstallmentPaymentState State = default(InstallmentPaymentState), int? Version = default(int?))
+        [JsonConstructorAttribute]
+        public InstallmentPayment()
         {
-            this.CreatedOn = CreatedOn;
-            this.Id = Id;
-            this.InitialTransaction = InitialTransaction;
-            this.LineItems = LineItems;
-            this.LinkedSpaceId = LinkedSpaceId;
-            this.PlanConfiguration = PlanConfiguration;
-            this.PlannedPurgeDate = PlannedPurgeDate;
-            this.State = State;
-            this.Version = Version;
         }
 
         /// <summary>
@@ -50,63 +52,63 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
-        public DateTime? CreatedOn { get; set; }
+        public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// InitialTransaction
         /// </summary>
         /// <value>InitialTransaction</value>
         [DataMember(Name="initialTransaction", EmitDefaultValue=false)]
-        public Transaction InitialTransaction { get; set; }
+        public Transaction InitialTransaction { get; private set; }
 
         /// <summary>
         /// LineItems
         /// </summary>
         /// <value>LineItems</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
-        public List<LineItem> LineItems { get; set; }
+        public List<LineItem> LineItems { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
         [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; set; }
+        public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// PlanConfiguration
         /// </summary>
         /// <value>PlanConfiguration</value>
         [DataMember(Name="planConfiguration", EmitDefaultValue=false)]
-        public long? PlanConfiguration { get; set; }
+        public long? PlanConfiguration { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
+        public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// State
         /// </summary>
         /// <value>State</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public InstallmentPaymentState State { get; set; }
+        public InstallmentPaymentState? State { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; set; }
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,19 +116,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class InstallmentPayment {\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  InitialTransaction: ").Append(InitialTransaction).Append("\n");
-            sb.Append("  LineItems: ").Append(LineItems).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  PlanConfiguration: ").Append(PlanConfiguration).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -217,25 +207,42 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.CreatedOn != null)
+                {
                     hash = hash * 59 + this.CreatedOn.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.InitialTransaction != null)
+                {
                     hash = hash * 59 + this.InitialTransaction.GetHashCode();
+                }
                 if (this.LineItems != null)
+                {
                     hash = hash * 59 + this.LineItems.GetHashCode();
+                }
                 if (this.LinkedSpaceId != null)
+                {
                     hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
+                }
                 if (this.PlanConfiguration != null)
+                {
                     hash = hash * 59 + this.PlanConfiguration.GetHashCode();
+                }
                 if (this.PlannedPurgeDate != null)
+                {
                     hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
+                }
                 if (this.State != null)
+                {
                     hash = hash * 59 + this.State.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
                 return hash;
             }
         }

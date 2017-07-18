@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -20,15 +38,13 @@ namespace Customweb.Wallee.Model
     [DataContract]
     public partial class EntityQueryOrderBy :  IEquatable<EntityQueryOrderBy>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityQueryOrderBy" /> class.
         /// </summary>
-        /// <param name="FieldName">FieldName</param>
-        /// <param name="Sorting">Sorting</param>
-        public EntityQueryOrderBy(string FieldName = default(string), EntityQueryOrderByType Sorting = default(EntityQueryOrderByType))
+        [JsonConstructorAttribute]
+        public EntityQueryOrderBy()
         {
-            this.FieldName = FieldName;
-            this.Sorting = Sorting;
         }
 
         /// <summary>
@@ -36,14 +52,14 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>FieldName</value>
         [DataMember(Name="fieldName", EmitDefaultValue=false)]
-        public string FieldName { get; set; }
+        public string FieldName { get; private set; }
 
         /// <summary>
         /// Sorting
         /// </summary>
         /// <value>Sorting</value>
         [DataMember(Name="sorting", EmitDefaultValue=false)]
-        public EntityQueryOrderByType Sorting { get; set; }
+        public EntityQueryOrderByType? Sorting { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -51,12 +67,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class EntityQueryOrderBy {\n");
-            sb.Append("  FieldName: ").Append(FieldName).Append("\n");
-            sb.Append("  Sorting: ").Append(Sorting).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -112,11 +123,14 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.FieldName != null)
+                {
                     hash = hash * 59 + this.FieldName.GetHashCode();
+                }
                 if (this.Sorting != null)
+                {
                     hash = hash * 59 + this.Sorting.GetHashCode();
+                }
                 return hash;
             }
         }

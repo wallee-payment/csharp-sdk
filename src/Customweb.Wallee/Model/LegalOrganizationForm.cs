@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,26 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// LegalOrganizationForm model.
+    /// Legal Organization Form
     /// </summary>
     [DataContract]
     public partial class LegalOrganizationForm :  IEquatable<LegalOrganizationForm>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LegalOrganizationForm" /> class.
         /// </summary>
-        /// <param name="Country">Country</param>
-        /// <param name="Description">Description</param>
-        /// <param name="EnglishDescription">EnglishDescription</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="Shortcut">Shortcut</param>
-        public LegalOrganizationForm(string Country = default(string), List<LocalizedString> Description = default(List<LocalizedString>), string EnglishDescription = default(string), long? Id = default(long?), List<LocalizedString> Shortcut = default(List<LocalizedString>))
+        [JsonConstructorAttribute]
+        public LegalOrganizationForm()
         {
-            this.Country = Country;
-            this.Description = Description;
-            this.EnglishDescription = EnglishDescription;
-            this.Id = Id;
-            this.Shortcut = Shortcut;
         }
 
         /// <summary>
@@ -42,35 +52,35 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Country</value>
         [DataMember(Name="country", EmitDefaultValue=false)]
-        public string Country { get; set; }
+        public string Country { get; private set; }
 
         /// <summary>
         /// Description
         /// </summary>
         /// <value>Description</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public List<LocalizedString> Description { get; set; }
+        public List<LocalizedString> Description { get; private set; }
 
         /// <summary>
         /// EnglishDescription
         /// </summary>
         /// <value>EnglishDescription</value>
         [DataMember(Name="englishDescription", EmitDefaultValue=false)]
-        public string EnglishDescription { get; set; }
+        public string EnglishDescription { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// Shortcut
         /// </summary>
         /// <value>Shortcut</value>
         [DataMember(Name="shortcut", EmitDefaultValue=false)]
-        public List<LocalizedString> Shortcut { get; set; }
+        public List<LocalizedString> Shortcut { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,15 +88,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class LegalOrganizationForm {\n");
-            sb.Append("  Country: ").Append(Country).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  EnglishDescription: ").Append(EnglishDescription).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Shortcut: ").Append(Shortcut).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -157,17 +159,26 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Country != null)
+                {
                     hash = hash * 59 + this.Country.GetHashCode();
+                }
                 if (this.Description != null)
+                {
                     hash = hash * 59 + this.Description.GetHashCode();
+                }
                 if (this.EnglishDescription != null)
+                {
                     hash = hash * 59 + this.EnglishDescription.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.Shortcut != null)
+                {
                     hash = hash * 59 + this.Shortcut.GetHashCode();
+                }
                 return hash;
             }
         }

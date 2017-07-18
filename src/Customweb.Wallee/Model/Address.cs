@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,56 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Address model.
+    /// Address
     /// </summary>
     [DataContract]
     public partial class Address :  IEquatable<Address>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Address" /> class.
         /// </summary>
-        /// <param name="City">City</param>
-        /// <param name="CommercialRegisterNumber">CommercialRegisterNumber</param>
-        /// <param name="Country">Country</param>
-        /// <param name="DateOfBirth">DateOfBirth</param>
-        /// <param name="DependentLocality">DependentLocality</param>
-        /// <param name="EmailAddress">EmailAddress</param>
-        /// <param name="FamilyName">FamilyName</param>
-        /// <param name="Gender">Gender</param>
-        /// <param name="GivenName">GivenName</param>
-        /// <param name="LegalOrganizationForm">LegalOrganizationForm</param>
-        /// <param name="MobilePhoneNumber">MobilePhoneNumber</param>
-        /// <param name="OrganizationName">OrganizationName</param>
-        /// <param name="PhoneNumber">PhoneNumber</param>
-        /// <param name="PostCode">PostCode</param>
-        /// <param name="PostalState">PostalState</param>
-        /// <param name="SalesTaxNumber">SalesTaxNumber</param>
-        /// <param name="Salutation">Salutation</param>
-        /// <param name="SocialSecurityNumber">SocialSecurityNumber</param>
-        /// <param name="SortingCode">The sorting code identifies the post office at which the post box is located in.</param>
-        /// <param name="Street">Street</param>
-        public Address(string City = default(string), string CommercialRegisterNumber = default(string), string Country = default(string), DateTime? DateOfBirth = default(DateTime?), string DependentLocality = default(string), string EmailAddress = default(string), string FamilyName = default(string), Gender? Gender = null, string GivenName = default(string), LegalOrganizationForm LegalOrganizationForm = default(LegalOrganizationForm), string MobilePhoneNumber = default(string), string OrganizationName = default(string), string PhoneNumber = default(string), string PostCode = default(string), string PostalState = default(string), string SalesTaxNumber = default(string), string Salutation = default(string), string SocialSecurityNumber = default(string), string SortingCode = default(string), string Street = default(string))
+        [JsonConstructorAttribute]
+        public Address()
         {
-            this.City = City;
-            this.CommercialRegisterNumber = CommercialRegisterNumber;
-            this.Country = Country;
-            this.DateOfBirth = DateOfBirth;
-            this.DependentLocality = DependentLocality;
-            this.EmailAddress = EmailAddress;
-            this.FamilyName = FamilyName;
-            this.Gender = Gender;
-            this.GivenName = GivenName;
-            this.LegalOrganizationForm = LegalOrganizationForm;
-            this.MobilePhoneNumber = MobilePhoneNumber;
-            this.OrganizationName = OrganizationName;
-            this.PhoneNumber = PhoneNumber;
-            this.PostCode = PostCode;
-            this.PostalState = PostalState;
-            this.SalesTaxNumber = SalesTaxNumber;
-            this.Salutation = Salutation;
-            this.SocialSecurityNumber = SocialSecurityNumber;
-            this.SortingCode = SortingCode;
-            this.Street = Street;
         }
 
         /// <summary>
@@ -72,140 +52,140 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>City</value>
         [DataMember(Name="city", EmitDefaultValue=false)]
-        public string City { get; set; }
+        public string City { get; private set; }
 
         /// <summary>
         /// CommercialRegisterNumber
         /// </summary>
         /// <value>CommercialRegisterNumber</value>
         [DataMember(Name="commercialRegisterNumber", EmitDefaultValue=false)]
-        public string CommercialRegisterNumber { get; set; }
+        public string CommercialRegisterNumber { get; private set; }
 
         /// <summary>
         /// Country
         /// </summary>
         /// <value>Country</value>
         [DataMember(Name="country", EmitDefaultValue=false)]
-        public string Country { get; set; }
+        public string Country { get; private set; }
 
         /// <summary>
         /// DateOfBirth
         /// </summary>
         /// <value>DateOfBirth</value>
         [DataMember(Name="dateOfBirth", EmitDefaultValue=false)]
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; private set; }
 
         /// <summary>
         /// DependentLocality
         /// </summary>
         /// <value>DependentLocality</value>
         [DataMember(Name="dependentLocality", EmitDefaultValue=false)]
-        public string DependentLocality { get; set; }
+        public string DependentLocality { get; private set; }
 
         /// <summary>
         /// EmailAddress
         /// </summary>
         /// <value>EmailAddress</value>
         [DataMember(Name="emailAddress", EmitDefaultValue=false)]
-        public string EmailAddress { get; set; }
+        public string EmailAddress { get; private set; }
 
         /// <summary>
         /// FamilyName
         /// </summary>
         /// <value>FamilyName</value>
         [DataMember(Name="familyName", EmitDefaultValue=false)]
-        public string FamilyName { get; set; }
+        public string FamilyName { get; private set; }
 
         /// <summary>
         /// Gender
         /// </summary>
         /// <value>Gender</value>
         [DataMember(Name="gender", EmitDefaultValue=false)]
-        public Gender? Gender { get; set; }
+        public Gender? Gender { get; private set; }
 
         /// <summary>
         /// GivenName
         /// </summary>
         /// <value>GivenName</value>
         [DataMember(Name="givenName", EmitDefaultValue=false)]
-        public string GivenName { get; set; }
+        public string GivenName { get; private set; }
 
         /// <summary>
         /// LegalOrganizationForm
         /// </summary>
         /// <value>LegalOrganizationForm</value>
         [DataMember(Name="legalOrganizationForm", EmitDefaultValue=false)]
-        public LegalOrganizationForm LegalOrganizationForm { get; set; }
+        public LegalOrganizationForm LegalOrganizationForm { get; private set; }
 
         /// <summary>
         /// MobilePhoneNumber
         /// </summary>
         /// <value>MobilePhoneNumber</value>
         [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=false)]
-        public string MobilePhoneNumber { get; set; }
+        public string MobilePhoneNumber { get; private set; }
 
         /// <summary>
         /// OrganizationName
         /// </summary>
         /// <value>OrganizationName</value>
         [DataMember(Name="organizationName", EmitDefaultValue=false)]
-        public string OrganizationName { get; set; }
+        public string OrganizationName { get; private set; }
 
         /// <summary>
         /// PhoneNumber
         /// </summary>
         /// <value>PhoneNumber</value>
         [DataMember(Name="phoneNumber", EmitDefaultValue=false)]
-        public string PhoneNumber { get; set; }
+        public string PhoneNumber { get; private set; }
 
         /// <summary>
         /// PostCode
         /// </summary>
         /// <value>PostCode</value>
         [DataMember(Name="postCode", EmitDefaultValue=false)]
-        public string PostCode { get; set; }
+        public string PostCode { get; private set; }
 
         /// <summary>
         /// PostalState
         /// </summary>
         /// <value>PostalState</value>
         [DataMember(Name="postalState", EmitDefaultValue=false)]
-        public string PostalState { get; set; }
+        public string PostalState { get; private set; }
 
         /// <summary>
         /// SalesTaxNumber
         /// </summary>
         /// <value>SalesTaxNumber</value>
         [DataMember(Name="salesTaxNumber", EmitDefaultValue=false)]
-        public string SalesTaxNumber { get; set; }
+        public string SalesTaxNumber { get; private set; }
 
         /// <summary>
         /// Salutation
         /// </summary>
         /// <value>Salutation</value>
         [DataMember(Name="salutation", EmitDefaultValue=false)]
-        public string Salutation { get; set; }
+        public string Salutation { get; private set; }
 
         /// <summary>
         /// SocialSecurityNumber
         /// </summary>
         /// <value>SocialSecurityNumber</value>
         [DataMember(Name="socialSecurityNumber", EmitDefaultValue=false)]
-        public string SocialSecurityNumber { get; set; }
+        public string SocialSecurityNumber { get; private set; }
 
         /// <summary>
         /// The sorting code identifies the post office at which the post box is located in.
         /// </summary>
         /// <value>The sorting code identifies the post office at which the post box is located in.</value>
         [DataMember(Name="sortingCode", EmitDefaultValue=false)]
-        public string SortingCode { get; set; }
+        public string SortingCode { get; private set; }
 
         /// <summary>
         /// Street
         /// </summary>
         /// <value>Street</value>
         [DataMember(Name="street", EmitDefaultValue=false)]
-        public string Street { get; set; }
+        public string Street { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -213,30 +193,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class Address {\n");
-            sb.Append("  City: ").Append(City).Append("\n");
-            sb.Append("  CommercialRegisterNumber: ").Append(CommercialRegisterNumber).Append("\n");
-            sb.Append("  Country: ").Append(Country).Append("\n");
-            sb.Append("  DateOfBirth: ").Append(DateOfBirth).Append("\n");
-            sb.Append("  DependentLocality: ").Append(DependentLocality).Append("\n");
-            sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
-            sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");
-            sb.Append("  Gender: ").Append(Gender).Append("\n");
-            sb.Append("  GivenName: ").Append(GivenName).Append("\n");
-            sb.Append("  LegalOrganizationForm: ").Append(LegalOrganizationForm).Append("\n");
-            sb.Append("  MobilePhoneNumber: ").Append(MobilePhoneNumber).Append("\n");
-            sb.Append("  OrganizationName: ").Append(OrganizationName).Append("\n");
-            sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
-            sb.Append("  PostCode: ").Append(PostCode).Append("\n");
-            sb.Append("  PostalState: ").Append(PostalState).Append("\n");
-            sb.Append("  SalesTaxNumber: ").Append(SalesTaxNumber).Append("\n");
-            sb.Append("  Salutation: ").Append(Salutation).Append("\n");
-            sb.Append("  SocialSecurityNumber: ").Append(SocialSecurityNumber).Append("\n");
-            sb.Append("  SortingCode: ").Append(SortingCode).Append("\n");
-            sb.Append("  Street: ").Append(Street).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -382,47 +339,86 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.City != null)
+                {
                     hash = hash * 59 + this.City.GetHashCode();
+                }
                 if (this.CommercialRegisterNumber != null)
+                {
                     hash = hash * 59 + this.CommercialRegisterNumber.GetHashCode();
+                }
                 if (this.Country != null)
+                {
                     hash = hash * 59 + this.Country.GetHashCode();
+                }
                 if (this.DateOfBirth != null)
+                {
                     hash = hash * 59 + this.DateOfBirth.GetHashCode();
+                }
                 if (this.DependentLocality != null)
+                {
                     hash = hash * 59 + this.DependentLocality.GetHashCode();
+                }
                 if (this.EmailAddress != null)
+                {
                     hash = hash * 59 + this.EmailAddress.GetHashCode();
+                }
                 if (this.FamilyName != null)
+                {
                     hash = hash * 59 + this.FamilyName.GetHashCode();
+                }
                 if (this.Gender != null)
+                {
                     hash = hash * 59 + this.Gender.GetHashCode();
+                }
                 if (this.GivenName != null)
+                {
                     hash = hash * 59 + this.GivenName.GetHashCode();
+                }
                 if (this.LegalOrganizationForm != null)
+                {
                     hash = hash * 59 + this.LegalOrganizationForm.GetHashCode();
+                }
                 if (this.MobilePhoneNumber != null)
+                {
                     hash = hash * 59 + this.MobilePhoneNumber.GetHashCode();
+                }
                 if (this.OrganizationName != null)
+                {
                     hash = hash * 59 + this.OrganizationName.GetHashCode();
+                }
                 if (this.PhoneNumber != null)
+                {
                     hash = hash * 59 + this.PhoneNumber.GetHashCode();
+                }
                 if (this.PostCode != null)
+                {
                     hash = hash * 59 + this.PostCode.GetHashCode();
+                }
                 if (this.PostalState != null)
+                {
                     hash = hash * 59 + this.PostalState.GetHashCode();
+                }
                 if (this.SalesTaxNumber != null)
+                {
                     hash = hash * 59 + this.SalesTaxNumber.GetHashCode();
+                }
                 if (this.Salutation != null)
+                {
                     hash = hash * 59 + this.Salutation.GetHashCode();
+                }
                 if (this.SocialSecurityNumber != null)
+                {
                     hash = hash * 59 + this.SocialSecurityNumber.GetHashCode();
+                }
                 if (this.SortingCode != null)
+                {
                     hash = hash * 59 + this.SortingCode.GetHashCode();
+                }
                 if (this.Street != null)
+                {
                     hash = hash * 59 + this.Street.GetHashCode();
+                }
                 return hash;
             }
         }

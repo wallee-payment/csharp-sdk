@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,22 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// InstallmentCalculatedSlice model.
+    /// Installment Calculated Slice
     /// </summary>
     [DataContract]
     public partial class InstallmentCalculatedSlice :  IEquatable<InstallmentCalculatedSlice>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="InstallmentCalculatedSlice" /> class.
         /// </summary>
-        /// <param name="AmountIncludingTax">AmountIncludingTax</param>
-        /// <param name="DueOn">DueOn</param>
-        /// <param name="LineItems">LineItems</param>
-        public InstallmentCalculatedSlice(decimal? AmountIncludingTax = default(decimal?), DateTime? DueOn = default(DateTime?), List<LineItem> LineItems = default(List<LineItem>))
+        [JsonConstructorAttribute]
+        public InstallmentCalculatedSlice()
         {
-            this.AmountIncludingTax = AmountIncludingTax;
-            this.DueOn = DueOn;
-            this.LineItems = LineItems;
         }
 
         /// <summary>
@@ -38,21 +52,21 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>AmountIncludingTax</value>
         [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
-        public decimal? AmountIncludingTax { get; set; }
+        public decimal? AmountIncludingTax { get; private set; }
 
         /// <summary>
         /// DueOn
         /// </summary>
         /// <value>DueOn</value>
         [DataMember(Name="dueOn", EmitDefaultValue=false)]
-        public DateTime? DueOn { get; set; }
+        public DateTime? DueOn { get; private set; }
 
         /// <summary>
         /// LineItems
         /// </summary>
         /// <value>LineItems</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
-        public List<LineItem> LineItems { get; set; }
+        public List<LineItem> LineItems { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,13 +74,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class InstallmentCalculatedSlice {\n");
-            sb.Append("  AmountIncludingTax: ").Append(AmountIncludingTax).Append("\n");
-            sb.Append("  DueOn: ").Append(DueOn).Append("\n");
-            sb.Append("  LineItems: ").Append(LineItems).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -127,13 +135,18 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.AmountIncludingTax != null)
+                {
                     hash = hash * 59 + this.AmountIncludingTax.GetHashCode();
+                }
                 if (this.DueOn != null)
+                {
                     hash = hash * 59 + this.DueOn.GetHashCode();
+                }
                 if (this.LineItems != null)
+                {
                     hash = hash * 59 + this.LineItems.GetHashCode();
+                }
                 return hash;
             }
         }

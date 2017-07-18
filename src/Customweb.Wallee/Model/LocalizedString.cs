@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,22 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// LocalizedString model.
+    /// Localized String
     /// </summary>
     [DataContract]
     public partial class LocalizedString :  IEquatable<LocalizedString>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LocalizedString" /> class.
         /// </summary>
-        /// <param name="DisplayName">DisplayName</param>
-        /// <param name="Language">Language</param>
-        /// <param name="_String">_String</param>
-        public LocalizedString(string DisplayName = default(string), string Language = default(string), string _String = default(string))
+        [JsonConstructorAttribute]
+        public LocalizedString()
         {
-            this.DisplayName = DisplayName;
-            this.Language = Language;
-            this._String = _String;
         }
 
         /// <summary>
@@ -38,21 +52,21 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>DisplayName</value>
         [DataMember(Name="displayName", EmitDefaultValue=false)]
-        public string DisplayName { get; set; }
+        public string DisplayName { get; private set; }
 
         /// <summary>
         /// Language
         /// </summary>
         /// <value>Language</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
-        public string Language { get; set; }
+        public string Language { get; private set; }
 
         /// <summary>
-        /// _String
+        /// String
         /// </summary>
-        /// <value>_String</value>
+        /// <value>String</value>
         [DataMember(Name="string", EmitDefaultValue=false)]
-        public string _String { get; set; }
+        public string String { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,13 +74,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class LocalizedString {\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  Language: ").Append(Language).Append("\n");
-            sb.Append("  _String: ").Append(_String).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -112,9 +120,9 @@ namespace Customweb.Wallee.Model
                     this.Language.Equals(other.Language)
                 ) && 
                 (
-                    this._String == other._String ||
-                    this._String != null &&
-                    this._String.Equals(other._String)
+                    this.String == other.String ||
+                    this.String != null &&
+                    this.String.Equals(other.String)
                 );
         }
 
@@ -127,13 +135,18 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.DisplayName != null)
+                {
                     hash = hash * 59 + this.DisplayName.GetHashCode();
+                }
                 if (this.Language != null)
+                {
                     hash = hash * 59 + this.Language.GetHashCode();
-                if (this._String != null)
-                    hash = hash * 59 + this._String.GetHashCode();
+                }
+                if (this.String != null)
+                {
+                    hash = hash * 59 + this.String.GetHashCode();
+                }
                 return hash;
             }
         }

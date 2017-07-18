@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -20,19 +38,13 @@ namespace Customweb.Wallee.Model
     [DataContract]
     public partial class SubscriptionCreateRequest :  IEquatable<SubscriptionCreateRequest>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionCreateRequest" /> class.
         /// </summary>
-        /// <param name="Currency">Currency</param>
-        /// <param name="Product">The subscription has to be linked with a product.</param>
-        /// <param name="SelectedComponents">SelectedComponents</param>
-        /// <param name="Subscription">Subscription</param>
-        public SubscriptionCreateRequest(string Currency = default(string), SubscriptionProduct Product = default(SubscriptionProduct), List<SubscriptionProductComponentReference> SelectedComponents = default(List<SubscriptionProductComponentReference>), SubscriptionPending Subscription = default(SubscriptionPending))
+        [JsonConstructorAttribute]
+        public SubscriptionCreateRequest()
         {
-            this.Currency = Currency;
-            this.Product = Product;
-            this.SelectedComponents = SelectedComponents;
-            this.Subscription = Subscription;
         }
 
         /// <summary>
@@ -40,28 +52,28 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Currency</value>
         [DataMember(Name="currency", EmitDefaultValue=false)]
-        public string Currency { get; set; }
+        public string Currency { get; private set; }
 
         /// <summary>
         /// The subscription has to be linked with a product.
         /// </summary>
         /// <value>The subscription has to be linked with a product.</value>
         [DataMember(Name="product", EmitDefaultValue=false)]
-        public SubscriptionProduct Product { get; set; }
+        public SubscriptionProduct Product { get; private set; }
 
         /// <summary>
         /// SelectedComponents
         /// </summary>
         /// <value>SelectedComponents</value>
         [DataMember(Name="selectedComponents", EmitDefaultValue=false)]
-        public List<SubscriptionProductComponentReference> SelectedComponents { get; set; }
+        public List<SubscriptionProductComponentReference> SelectedComponents { get; private set; }
 
         /// <summary>
         /// Subscription
         /// </summary>
         /// <value>Subscription</value>
         [DataMember(Name="subscription", EmitDefaultValue=false)]
-        public SubscriptionPending Subscription { get; set; }
+        public SubscriptionPending Subscription { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,14 +81,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class SubscriptionCreateRequest {\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
-            sb.Append("  Product: ").Append(Product).Append("\n");
-            sb.Append("  SelectedComponents: ").Append(SelectedComponents).Append("\n");
-            sb.Append("  Subscription: ").Append(Subscription).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -142,15 +147,22 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Currency != null)
+                {
                     hash = hash * 59 + this.Currency.GetHashCode();
+                }
                 if (this.Product != null)
+                {
                     hash = hash * 59 + this.Product.GetHashCode();
+                }
                 if (this.SelectedComponents != null)
+                {
                     hash = hash * 59 + this.SelectedComponents.GetHashCode();
+                }
                 if (this.Subscription != null)
+                {
                     hash = hash * 59 + this.Subscription.GetHashCode();
+                }
                 return hash;
             }
         }

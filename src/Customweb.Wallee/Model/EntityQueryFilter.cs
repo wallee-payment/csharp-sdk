@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -20,21 +38,13 @@ namespace Customweb.Wallee.Model
     [DataContract]
     public partial class EntityQueryFilter :  IEquatable<EntityQueryFilter>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityQueryFilter" /> class.
         /// </summary>
-        /// <param name="Children">The &#39;children&#39; can contain other filter nodes which are applied to the query. This property is only applicable on filter types &#39;OR&#39; and &#39;AND&#39;.</param>
-        /// <param name="FieldName">The &#39;fieldName&#39; indicates the property on the entity which should be filtered. This property is only applicable on filter type &#39;LEAF&#39;.</param>
-        /// <param name="_Operator">The &#39;operator&#39; indicates what kind of filtering on the &#39;fieldName&#39; is executed on. This property is only applicable on filter type &#39;LEAF&#39;.</param>
-        /// <param name="Type">The filter type controls how the query node is interpreted. I.e. if the node acts as leaf node or as a filter group.</param>
-        /// <param name="Value">The &#39;value&#39; is used to compare with the &#39;fieldName&#39; as defined by the &#39;operator&#39;. This property is only applicable on filter type &#39;LEAF&#39;.</param>
-        public EntityQueryFilter(List<EntityQueryFilter> Children = default(List<EntityQueryFilter>), string FieldName = default(string), CriteriaOperator _Operator = default(CriteriaOperator), EntityQueryFilterType Type = default(EntityQueryFilterType), Object Value = default(Object))
+        [JsonConstructorAttribute]
+        public EntityQueryFilter()
         {
-            this.Children = Children;
-            this.FieldName = FieldName;
-            this._Operator = _Operator;
-            this.Type = Type;
-            this.Value = Value;
         }
 
         /// <summary>
@@ -42,35 +52,35 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The &#39;children&#39; can contain other filter nodes which are applied to the query. This property is only applicable on filter types &#39;OR&#39; and &#39;AND&#39;.</value>
         [DataMember(Name="children", EmitDefaultValue=false)]
-        public List<EntityQueryFilter> Children { get; set; }
+        public List<EntityQueryFilter> Children { get; private set; }
 
         /// <summary>
         /// The &#39;fieldName&#39; indicates the property on the entity which should be filtered. This property is only applicable on filter type &#39;LEAF&#39;.
         /// </summary>
         /// <value>The &#39;fieldName&#39; indicates the property on the entity which should be filtered. This property is only applicable on filter type &#39;LEAF&#39;.</value>
         [DataMember(Name="fieldName", EmitDefaultValue=false)]
-        public string FieldName { get; set; }
+        public string FieldName { get; private set; }
 
         /// <summary>
-        /// The &#39;operator&#39; indicates what kind of filtering on the &#39;fieldName&#39; is executed on. This property is only applicable on filter type &#39;LEAF&#39;.
+        /// The 'operator' indicates what kind of filtering on the 'fieldName' is executed on. This property is only applicable on filter type 'LEAF'.
         /// </summary>
-        /// <value>The &#39;operator&#39; indicates what kind of filtering on the &#39;fieldName&#39; is executed on. This property is only applicable on filter type &#39;LEAF&#39;.</value>
+        /// <value>The 'operator' indicates what kind of filtering on the 'fieldName' is executed on. This property is only applicable on filter type 'LEAF'.</value>
         [DataMember(Name="operator", EmitDefaultValue=false)]
-        public CriteriaOperator _Operator { get; set; }
+        public CriteriaOperator? Operator { get; private set; }
 
         /// <summary>
         /// The filter type controls how the query node is interpreted. I.e. if the node acts as leaf node or as a filter group.
         /// </summary>
         /// <value>The filter type controls how the query node is interpreted. I.e. if the node acts as leaf node or as a filter group.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public EntityQueryFilterType Type { get; set; }
+        public EntityQueryFilterType? Type { get; private set; }
 
         /// <summary>
         /// The &#39;value&#39; is used to compare with the &#39;fieldName&#39; as defined by the &#39;operator&#39;. This property is only applicable on filter type &#39;LEAF&#39;.
         /// </summary>
         /// <value>The &#39;value&#39; is used to compare with the &#39;fieldName&#39; as defined by the &#39;operator&#39;. This property is only applicable on filter type &#39;LEAF&#39;.</value>
         [DataMember(Name="value", EmitDefaultValue=false)]
-        public Object Value { get; set; }
+        public Object Value { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,15 +88,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class EntityQueryFilter {\n");
-            sb.Append("  Children: ").Append(Children).Append("\n");
-            sb.Append("  FieldName: ").Append(FieldName).Append("\n");
-            sb.Append("  _Operator: ").Append(_Operator).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Value: ").Append(Value).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -132,9 +134,9 @@ namespace Customweb.Wallee.Model
                     this.FieldName.Equals(other.FieldName)
                 ) && 
                 (
-                    this._Operator == other._Operator ||
-                    this._Operator != null &&
-                    this._Operator.Equals(other._Operator)
+                    this.Operator == other.Operator ||
+                    this.Operator != null &&
+                    this.Operator.Equals(other.Operator)
                 ) && 
                 (
                     this.Type == other.Type ||
@@ -157,17 +159,26 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Children != null)
+                {
                     hash = hash * 59 + this.Children.GetHashCode();
+                }
                 if (this.FieldName != null)
+                {
                     hash = hash * 59 + this.FieldName.GetHashCode();
-                if (this._Operator != null)
-                    hash = hash * 59 + this._Operator.GetHashCode();
+                }
+                if (this.Operator != null)
+                {
+                    hash = hash * 59 + this.Operator.GetHashCode();
+                }
                 if (this.Type != null)
+                {
                     hash = hash * 59 + this.Type.GetHashCode();
+                }
                 if (this.Value != null)
+                {
                     hash = hash * 59 + this.Value.GetHashCode();
+                }
                 return hash;
             }
         }

@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,30 +33,46 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// WebhookUrlUpdate model.
+    /// Webhook URL
     /// </summary>
     [DataContract]
-    public partial class WebhookUrlUpdate :  IEquatable<WebhookUrlUpdate>
+    public partial class WebhookUrlUpdate : AbstractWebhookUrlUpdate,  IEquatable<WebhookUrlUpdate>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="WebhookUrlUpdate" /> class.
         /// </summary>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="LinkedSpaceId">The linked space id holds the ID of the space to which the entity belongs to.</param>
-        /// <param name="Name">The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
-        /// <param name="State">State</param>
-        /// <param name="Url">The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter&#x3D;value.</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public WebhookUrlUpdate(long? Id = default(long?), long? LinkedSpaceId = default(long?), string Name = default(string), DateTime? PlannedPurgeDate = default(DateTime?), CreationEntityState State = default(CreationEntityState), string Url = default(string), long? Version = default(long?))
+        [JsonConstructorAttribute]
+        protected WebhookUrlUpdate() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WebhookUrlUpdate" /> class.
+        /// </summary>
+        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
+        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
+        public WebhookUrlUpdate(CreationEntityState? State = default(CreationEntityState?), string Name = default(string), long? Version = default(long?), string Url = default(string), long? Id = default(long?))
         {
-            this.Id = Id;
-            this.LinkedSpaceId = LinkedSpaceId;
+            // to ensure "Id" is required (not null)
+            if (Id == null)
+            {
+                throw new ArgumentNullException("Id is a required property for WebhookUrlUpdate and cannot be null");
+            }
+            else
+            {
+                this.Id = Id;
+            }
+            // to ensure "Version" is required (not null)
+            if (Version == null)
+            {
+                throw new ArgumentNullException("Version is a required property for WebhookUrlUpdate and cannot be null");
+            }
+            else
+            {
+                this.Version = Version;
+            }
             this.Name = Name;
-            this.PlannedPurgeDate = PlannedPurgeDate;
             this.State = State;
             this.Url = Url;
-            this.Version = Version;
         }
 
         /// <summary>
@@ -47,41 +81,6 @@ namespace Customweb.Wallee.Model
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; set; }
-
-        /// <summary>
-        /// The linked space id holds the ID of the space to which the entity belongs to.
-        /// </summary>
-        /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; set; }
-
-        /// <summary>
-        /// The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
-        /// </summary>
-        /// <value>The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
-        /// </summary>
-        /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
-
-        /// <summary>
-        /// State
-        /// </summary>
-        /// <value>State</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState State { get; set; }
-
-        /// <summary>
-        /// The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter&#x3D;value.
-        /// </summary>
-        /// <value>The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter&#x3D;value.</value>
-        [DataMember(Name="url", EmitDefaultValue=false)]
-        public string Url { get; set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
@@ -96,24 +95,14 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class WebhookUrlUpdate {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  Url: ").Append(Url).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public new string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -147,19 +136,14 @@ namespace Customweb.Wallee.Model
                     this.Id.Equals(other.Id)
                 ) && 
                 (
-                    this.LinkedSpaceId == other.LinkedSpaceId ||
-                    this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(other.LinkedSpaceId)
+                    this.Version == other.Version ||
+                    this.Version != null &&
+                    this.Version.Equals(other.Version)
                 ) && 
                 (
                     this.Name == other.Name ||
                     this.Name != null &&
                     this.Name.Equals(other.Name)
-                ) && 
-                (
-                    this.PlannedPurgeDate == other.PlannedPurgeDate ||
-                    this.PlannedPurgeDate != null &&
-                    this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
                 ) && 
                 (
                     this.State == other.State ||
@@ -170,11 +154,6 @@ namespace Customweb.Wallee.Model
                     this.Url == other.Url ||
                     this.Url != null &&
                     this.Url.Equals(other.Url)
-                ) && 
-                (
-                    this.Version == other.Version ||
-                    this.Version != null &&
-                    this.Version.Equals(other.Version)
                 );
         }
 
@@ -187,21 +166,26 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
-                if (this.PlannedPurgeDate != null)
-                    hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.State != null)
-                    hash = hash * 59 + this.State.GetHashCode();
-                if (this.Url != null)
-                    hash = hash * 59 + this.Url.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hash = hash * 59 + this.Name.GetHashCode();
+                }
+                if (this.State != null)
+                {
+                    hash = hash * 59 + this.State.GetHashCode();
+                }
+                if (this.Url != null)
+                {
+                    hash = hash * 59 + this.Url.GetHashCode();
+                }
                 return hash;
             }
         }

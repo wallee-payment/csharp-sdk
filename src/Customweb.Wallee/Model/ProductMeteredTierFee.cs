@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,26 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// ProductMeteredTierFee model.
+    /// Product Metered Tier Fee
     /// </summary>
     [DataContract]
     public partial class ProductMeteredTierFee :  IEquatable<ProductMeteredTierFee>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductMeteredTierFee" /> class.
         /// </summary>
-        /// <param name="Fee">The fee determines the amount which is charged. The consumed metric is multiplied by the defined fee. The resulting amount is charged at the end of the period.</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="MeteredFee">MeteredFee</param>
-        /// <param name="StartRange">The start range defines the metered consumption of the metric from which on the defined fee gets applied. This means when a subscription consumes a value of 10 or more and the start range is set to 10 the fee defined on the tier will be applied.</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public ProductMeteredTierFee(List<PersistableCurrencyAmount> Fee = default(List<PersistableCurrencyAmount>), long? Id = default(long?), ProductMeteredFee MeteredFee = default(ProductMeteredFee), decimal? StartRange = default(decimal?), int? Version = default(int?))
+        [JsonConstructorAttribute]
+        public ProductMeteredTierFee()
         {
-            this.Fee = Fee;
-            this.Id = Id;
-            this.MeteredFee = MeteredFee;
-            this.StartRange = StartRange;
-            this.Version = Version;
         }
 
         /// <summary>
@@ -42,35 +52,35 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The fee determines the amount which is charged. The consumed metric is multiplied by the defined fee. The resulting amount is charged at the end of the period.</value>
         [DataMember(Name="fee", EmitDefaultValue=false)]
-        public List<PersistableCurrencyAmount> Fee { get; set; }
+        public List<PersistableCurrencyAmount> Fee { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// MeteredFee
         /// </summary>
         /// <value>MeteredFee</value>
         [DataMember(Name="meteredFee", EmitDefaultValue=false)]
-        public ProductMeteredFee MeteredFee { get; set; }
+        public ProductMeteredFee MeteredFee { get; private set; }
 
         /// <summary>
         /// The start range defines the metered consumption of the metric from which on the defined fee gets applied. This means when a subscription consumes a value of 10 or more and the start range is set to 10 the fee defined on the tier will be applied.
         /// </summary>
         /// <value>The start range defines the metered consumption of the metric from which on the defined fee gets applied. This means when a subscription consumes a value of 10 or more and the start range is set to 10 the fee defined on the tier will be applied.</value>
         [DataMember(Name="startRange", EmitDefaultValue=false)]
-        public decimal? StartRange { get; set; }
+        public decimal? StartRange { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; set; }
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,15 +88,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class ProductMeteredTierFee {\n");
-            sb.Append("  Fee: ").Append(Fee).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  MeteredFee: ").Append(MeteredFee).Append("\n");
-            sb.Append("  StartRange: ").Append(StartRange).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -157,17 +159,26 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Fee != null)
+                {
                     hash = hash * 59 + this.Fee.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.MeteredFee != null)
+                {
                     hash = hash * 59 + this.MeteredFee.GetHashCode();
+                }
                 if (this.StartRange != null)
+                {
                     hash = hash * 59 + this.StartRange.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
                 return hash;
             }
         }

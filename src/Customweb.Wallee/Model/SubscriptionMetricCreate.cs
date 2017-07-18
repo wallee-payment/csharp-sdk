@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -18,72 +36,33 @@ namespace Customweb.Wallee.Model
     /// A metric represents the usage of a resource that can be measured.
     /// </summary>
     [DataContract]
-    public partial class SubscriptionMetricCreate :  IEquatable<SubscriptionMetricCreate>
+    public partial class SubscriptionMetricCreate : AbstractSubscriptionMetricUpdate,  IEquatable<SubscriptionMetricCreate>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionMetricCreate" /> class.
         /// </summary>
-        /// <param name="Description">Description</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="LinkedSpaceId">The linked space id holds the ID of the space to which the entity belongs to.</param>
-        /// <param name="Name">Name</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
-        /// <param name="State">State</param>
-        /// <param name="Type">Type</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public SubscriptionMetricCreate(long? Description = default(long?), long? Id = default(long?), long? LinkedSpaceId = default(long?), long? Name = default(long?), DateTime? PlannedPurgeDate = default(DateTime?), CreationEntityState State = default(CreationEntityState), long? Type = default(long?), long? Version = default(long?))
+        [JsonConstructorAttribute]
+        protected SubscriptionMetricCreate() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SubscriptionMetricCreate" /> class.
+        /// </summary>
+        /// <param name="Type">Type (required)</param>
+        public SubscriptionMetricCreate(long? Type = default(long?), DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate))
         {
+            // to ensure "Type" is required (not null)
+            if (Type == null)
+            {
+                throw new ArgumentNullException("Type is a required property for SubscriptionMetricCreate and cannot be null");
+            }
+            else
+            {
+                this.Type = Type;
+            }
             this.Description = Description;
-            this.Id = Id;
-            this.LinkedSpaceId = LinkedSpaceId;
             this.Name = Name;
-            this.PlannedPurgeDate = PlannedPurgeDate;
-            this.State = State;
-            this.Type = Type;
-            this.Version = Version;
         }
-
-        /// <summary>
-        /// Description
-        /// </summary>
-        /// <value>Description</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public long? Description { get; set; }
-
-        /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
-        /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
-
-        /// <summary>
-        /// The linked space id holds the ID of the space to which the entity belongs to.
-        /// </summary>
-        /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; set; }
-
-        /// <summary>
-        /// Name
-        /// </summary>
-        /// <value>Name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public long? Name { get; set; }
-
-        /// <summary>
-        /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
-        /// </summary>
-        /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
-
-        /// <summary>
-        /// State
-        /// </summary>
-        /// <value>State</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState State { get; set; }
 
         /// <summary>
         /// Type
@@ -93,37 +72,19 @@ namespace Customweb.Wallee.Model
         public long? Type { get; set; }
 
         /// <summary>
-        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-        /// </summary>
-        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public long? Version { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class SubscriptionMetricCreate {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public new string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -152,44 +113,19 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
-                    this.Description == other.Description ||
-                    this.Description != null &&
-                    this.Description.Equals(other.Description)
-                ) && 
-                (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
-                ) && 
-                (
-                    this.LinkedSpaceId == other.LinkedSpaceId ||
-                    this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(other.LinkedSpaceId)
-                ) && 
-                (
-                    this.Name == other.Name ||
-                    this.Name != null &&
-                    this.Name.Equals(other.Name)
-                ) && 
-                (
-                    this.PlannedPurgeDate == other.PlannedPurgeDate ||
-                    this.PlannedPurgeDate != null &&
-                    this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
-                ) && 
-                (
-                    this.State == other.State ||
-                    this.State != null &&
-                    this.State.Equals(other.State)
-                ) && 
-                (
                     this.Type == other.Type ||
                     this.Type != null &&
                     this.Type.Equals(other.Type)
                 ) && 
                 (
-                    this.Version == other.Version ||
-                    this.Version != null &&
-                    this.Version.Equals(other.Version)
+                    this.Description == other.Description ||
+                    this.Description != null &&
+                    this.Description.Equals(other.Description)
+                ) && 
+                (
+                    this.Name == other.Name ||
+                    this.Name != null &&
+                    this.Name.Equals(other.Name)
                 );
         }
 
@@ -202,23 +138,18 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
-                if (this.Description != null)
-                    hash = hash * 59 + this.Description.GetHashCode();
-                if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
-                if (this.PlannedPurgeDate != null)
-                    hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.State != null)
-                    hash = hash * 59 + this.State.GetHashCode();
                 if (this.Type != null)
+                {
                     hash = hash * 59 + this.Type.GetHashCode();
-                if (this.Version != null)
-                    hash = hash * 59 + this.Version.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hash = hash * 59 + this.Description.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hash = hash * 59 + this.Name.GetHashCode();
+                }
                 return hash;
             }
         }

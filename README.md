@@ -21,12 +21,13 @@ namespace WalleeExample
     {
         public static void Main(string[] args)
         {
-            const long spaceId = 288;
+            // Space ID.
+            const long spaceId = 1;
 
             // Create API service configuration.
             Configuration configuration = Configuration.Builder()
-	               .ApplicationUserID("362")
-	               .AuthenticationKey("hvAjQf/fCjRgHEDMzH7L+lvWWv+v/RzgK1Vyt5i3+I0=")
+	               .ApplicationUserID("application-user-id")
+	               .AuthenticationKey("application-user-authentication-key")
 	               .Build();
 
             // Create token service instance.
@@ -46,8 +47,6 @@ namespace WalleeExample
             {
                 // Send create request.
                 var token = tokenService.Create(spaceId, tokenCreate);
-
-                Console.WriteLine(token.ToJson());
             }
             catch(ApiException e)
             {
@@ -55,23 +54,6 @@ namespace WalleeExample
             }
         }
     }
-}
-```
-
-### Example Output
-
-```json
-{
-  "createdOn": "2017-06-22T08:50:48.415Z",
-  "customerEmailAddress": "test@customweb.com",
-  "customerId": "281398706",
-  "enabledForOneClickPayment": true,
-  "externalId": "ae55b231-a05b-426f-a449-a2d812116f80",
-  "id": 493,
-  "linkedSpaceId": 288,
-  "state": "ACTIVE",
-  "tokenReference": "test@customweb.com",
-  "version": 1
 }
 ```
 

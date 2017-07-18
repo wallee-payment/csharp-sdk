@@ -1,9 +1,30 @@
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using RestSharp;
+
+using Customweb.Wallee.Util;
 
 namespace Customweb.Wallee.Client
 {
@@ -21,12 +42,14 @@ namespace Customweb.Wallee.Client
         /// <param name="tempFolderPath">Temp folder path</param>
         /// <param name="timeout">HTTP connection timeout (in milliseconds)</param>
         /// <param name="userAgent">HTTP user agent</param>
+        /// <param name="exceptionFactory">The factory of exceptions which are caused by service methods.</param>
         public Configuration(string basePath,
                              string applicationUserID,
                              string authenticationKey,
                              string tempFolderPath,
                              int timeout,
-                             string userAgent
+                             string userAgent,
+                             ExceptionFactory exceptionFactory
                             )
         {
             _basePath = CheckArgument.NotEmpty("basePath", basePath);
@@ -57,6 +80,15 @@ namespace Customweb.Wallee.Client
             {
                 Directory.CreateDirectory(_tempFolderPath);
             }
+
+            if (exceptionFactory != null)
+            {
+                _exceptionFactory = exceptionFactory;
+            }
+            else
+            {
+                _exceptionFactory = DefaultExceptionFactory;
+            }
         }
 
 
@@ -70,6 +102,17 @@ namespace Customweb.Wallee.Client
             if (status == 0) return new ApiException(status, String.Format("Error calling {0}: {1}", methodName, response.ErrorMessage), response.ErrorMessage);
             return null;
         };
+
+        private readonly ExceptionFactory _exceptionFactory;
+
+        /// <summary>
+        /// Factory of exceptions for the given method name and response object.
+        /// </summary>
+        /// <value>Exception factory.</value>
+        public ExceptionFactory ExceptionFactory
+        {
+            get { return _exceptionFactory; }
+        }
 
         /// <summary>
         /// Version of the API.

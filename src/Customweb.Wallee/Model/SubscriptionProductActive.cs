@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -18,50 +36,46 @@ namespace Customweb.Wallee.Model
     /// A subscription product represents a product to which a subscriber can subscribe to. A product defines how much the subscription costs and in what cycles the subscribe is charged.
     /// </summary>
     [DataContract]
-    public partial class SubscriptionProductActive :  IEquatable<SubscriptionProductActive>
+    public partial class SubscriptionProductActive : AbstractSubscriptionProductActive,  IEquatable<SubscriptionProductActive>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionProductActive" /> class.
         /// </summary>
-        /// <param name="AllowedPaymentMethodConfigurations">The allowed payment method configurations control which payment methods can be used with this product. When none is selected all methods will be allowed.</param>
-        /// <param name="FailedPaymentSuspensionPeriod">When a payment fails, the subscription to which the payment belongs to will be suspended. When the suspension is not removed within the specified period the subscription will be terminated. A payment is considered as failed when the subscriber issues a refund or when a subscription charge fails.</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="LinkedSpaceId">The linked space id holds the ID of the space to which the entity belongs to.</param>
-        /// <param name="Name">The product name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
-        /// <param name="Reference">The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.</param>
-        /// <param name="SortOrder">The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.</param>
-        /// <param name="SpaceId">SpaceId</param>
-        /// <param name="State">State</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public SubscriptionProductActive(List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string FailedPaymentSuspensionPeriod = default(string), long? Id = default(long?), long? LinkedSpaceId = default(long?), string Name = default(string), DateTime? PlannedPurgeDate = default(DateTime?), string Reference = default(string), int? SortOrder = default(int?), long? SpaceId = default(long?), SubscriptionProductState State = default(SubscriptionProductState), long? Version = default(long?))
+        [JsonConstructorAttribute]
+        protected SubscriptionProductActive() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SubscriptionProductActive" /> class.
+        /// </summary>
+        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
+        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
+        public SubscriptionProductActive(string Name = default(string), string FailedPaymentSuspensionPeriod = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), long? Version = default(long?), long? Id = default(long?), int? SortOrder = default(int?), SubscriptionProductState? State = default(SubscriptionProductState?))
         {
+            // to ensure "Id" is required (not null)
+            if (Id == null)
+            {
+                throw new ArgumentNullException("Id is a required property for SubscriptionProductActive and cannot be null");
+            }
+            else
+            {
+                this.Id = Id;
+            }
+            // to ensure "Version" is required (not null)
+            if (Version == null)
+            {
+                throw new ArgumentNullException("Version is a required property for SubscriptionProductActive and cannot be null");
+            }
+            else
+            {
+                this.Version = Version;
+            }
             this.AllowedPaymentMethodConfigurations = AllowedPaymentMethodConfigurations;
             this.FailedPaymentSuspensionPeriod = FailedPaymentSuspensionPeriod;
-            this.Id = Id;
-            this.LinkedSpaceId = LinkedSpaceId;
             this.Name = Name;
-            this.PlannedPurgeDate = PlannedPurgeDate;
-            this.Reference = Reference;
             this.SortOrder = SortOrder;
-            this.SpaceId = SpaceId;
             this.State = State;
-            this.Version = Version;
         }
-
-        /// <summary>
-        /// The allowed payment method configurations control which payment methods can be used with this product. When none is selected all methods will be allowed.
-        /// </summary>
-        /// <value>The allowed payment method configurations control which payment methods can be used with this product. When none is selected all methods will be allowed.</value>
-        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=false)]
-        public List<long?> AllowedPaymentMethodConfigurations { get; set; }
-
-        /// <summary>
-        /// When a payment fails, the subscription to which the payment belongs to will be suspended. When the suspension is not removed within the specified period the subscription will be terminated. A payment is considered as failed when the subscriber issues a refund or when a subscription charge fails.
-        /// </summary>
-        /// <value>When a payment fails, the subscription to which the payment belongs to will be suspended. When the suspension is not removed within the specified period the subscription will be terminated. A payment is considered as failed when the subscriber issues a refund or when a subscription charge fails.</value>
-        [DataMember(Name="failedPaymentSuspensionPeriod", EmitDefaultValue=false)]
-        public string FailedPaymentSuspensionPeriod { get; set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
@@ -69,55 +83,6 @@ namespace Customweb.Wallee.Model
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; set; }
-
-        /// <summary>
-        /// The linked space id holds the ID of the space to which the entity belongs to.
-        /// </summary>
-        /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; set; }
-
-        /// <summary>
-        /// The product name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
-        /// </summary>
-        /// <value>The product name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
-        /// </summary>
-        /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
-
-        /// <summary>
-        /// The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.
-        /// </summary>
-        /// <value>The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.</value>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
-        public string Reference { get; set; }
-
-        /// <summary>
-        /// The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.
-        /// </summary>
-        /// <value>The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.</value>
-        [DataMember(Name="sortOrder", EmitDefaultValue=false)]
-        public int? SortOrder { get; set; }
-
-        /// <summary>
-        /// SpaceId
-        /// </summary>
-        /// <value>SpaceId</value>
-        [DataMember(Name="spaceId", EmitDefaultValue=false)]
-        public long? SpaceId { get; set; }
-
-        /// <summary>
-        /// State
-        /// </summary>
-        /// <value>State</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public SubscriptionProductState State { get; set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
@@ -132,28 +97,14 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class SubscriptionProductActive {\n");
-            sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
-            sb.Append("  FailedPaymentSuspensionPeriod: ").Append(FailedPaymentSuspensionPeriod).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  Reference: ").Append(Reference).Append("\n");
-            sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
-            sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public new string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -182,6 +133,16 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
+                ) && 
+                (
+                    this.Version == other.Version ||
+                    this.Version != null &&
+                    this.Version.Equals(other.Version)
+                ) && 
+                (
                     this.AllowedPaymentMethodConfigurations == other.AllowedPaymentMethodConfigurations ||
                     this.AllowedPaymentMethodConfigurations != null &&
                     this.AllowedPaymentMethodConfigurations.SequenceEqual(other.AllowedPaymentMethodConfigurations)
@@ -192,29 +153,9 @@ namespace Customweb.Wallee.Model
                     this.FailedPaymentSuspensionPeriod.Equals(other.FailedPaymentSuspensionPeriod)
                 ) && 
                 (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
-                ) && 
-                (
-                    this.LinkedSpaceId == other.LinkedSpaceId ||
-                    this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(other.LinkedSpaceId)
-                ) && 
-                (
                     this.Name == other.Name ||
                     this.Name != null &&
                     this.Name.Equals(other.Name)
-                ) && 
-                (
-                    this.PlannedPurgeDate == other.PlannedPurgeDate ||
-                    this.PlannedPurgeDate != null &&
-                    this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
-                ) && 
-                (
-                    this.Reference == other.Reference ||
-                    this.Reference != null &&
-                    this.Reference.Equals(other.Reference)
                 ) && 
                 (
                     this.SortOrder == other.SortOrder ||
@@ -222,19 +163,9 @@ namespace Customweb.Wallee.Model
                     this.SortOrder.Equals(other.SortOrder)
                 ) && 
                 (
-                    this.SpaceId == other.SpaceId ||
-                    this.SpaceId != null &&
-                    this.SpaceId.Equals(other.SpaceId)
-                ) && 
-                (
                     this.State == other.State ||
                     this.State != null &&
                     this.State.Equals(other.State)
-                ) && 
-                (
-                    this.Version == other.Version ||
-                    this.Version != null &&
-                    this.Version.Equals(other.Version)
                 );
         }
 
@@ -247,29 +178,34 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
-                if (this.AllowedPaymentMethodConfigurations != null)
-                    hash = hash * 59 + this.AllowedPaymentMethodConfigurations.GetHashCode();
-                if (this.FailedPaymentSuspensionPeriod != null)
-                    hash = hash * 59 + this.FailedPaymentSuspensionPeriod.GetHashCode();
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
-                if (this.PlannedPurgeDate != null)
-                    hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.Reference != null)
-                    hash = hash * 59 + this.Reference.GetHashCode();
-                if (this.SortOrder != null)
-                    hash = hash * 59 + this.SortOrder.GetHashCode();
-                if (this.SpaceId != null)
-                    hash = hash * 59 + this.SpaceId.GetHashCode();
-                if (this.State != null)
-                    hash = hash * 59 + this.State.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
+                if (this.AllowedPaymentMethodConfigurations != null)
+                {
+                    hash = hash * 59 + this.AllowedPaymentMethodConfigurations.GetHashCode();
+                }
+                if (this.FailedPaymentSuspensionPeriod != null)
+                {
+                    hash = hash * 59 + this.FailedPaymentSuspensionPeriod.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hash = hash * 59 + this.Name.GetHashCode();
+                }
+                if (this.SortOrder != null)
+                {
+                    hash = hash * 59 + this.SortOrder.GetHashCode();
+                }
+                if (this.State != null)
+                {
+                    hash = hash * 59 + this.State.GetHashCode();
+                }
                 return hash;
             }
         }

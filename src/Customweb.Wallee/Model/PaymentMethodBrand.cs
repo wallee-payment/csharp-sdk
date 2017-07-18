@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,28 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// PaymentMethodBrand model.
+    /// Payment Method Brand
     /// </summary>
     [DataContract]
     public partial class PaymentMethodBrand :  IEquatable<PaymentMethodBrand>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentMethodBrand" /> class.
         /// </summary>
-        /// <param name="Description">Description</param>
-        /// <param name="GrayImagePath">GrayImagePath</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="ImagePath">ImagePath</param>
-        /// <param name="Name">Name</param>
-        /// <param name="PaymentMethod">PaymentMethod</param>
-        public PaymentMethodBrand(Dictionary<string, string> Description = default(Dictionary<string, string>), string GrayImagePath = default(string), long? Id = default(long?), string ImagePath = default(string), Dictionary<string, string> Name = default(Dictionary<string, string>), long? PaymentMethod = default(long?))
+        [JsonConstructorAttribute]
+        public PaymentMethodBrand()
         {
-            this.Description = Description;
-            this.GrayImagePath = GrayImagePath;
-            this.Id = Id;
-            this.ImagePath = ImagePath;
-            this.Name = Name;
-            this.PaymentMethod = PaymentMethod;
         }
 
         /// <summary>
@@ -44,42 +52,42 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Description</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; set; }
+        public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// GrayImagePath
         /// </summary>
         /// <value>GrayImagePath</value>
         [DataMember(Name="grayImagePath", EmitDefaultValue=false)]
-        public string GrayImagePath { get; set; }
+        public string GrayImagePath { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// ImagePath
         /// </summary>
         /// <value>ImagePath</value>
         [DataMember(Name="imagePath", EmitDefaultValue=false)]
-        public string ImagePath { get; set; }
+        public string ImagePath { get; private set; }
 
         /// <summary>
         /// Name
         /// </summary>
         /// <value>Name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; set; }
+        public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// PaymentMethod
         /// </summary>
         /// <value>PaymentMethod</value>
         [DataMember(Name="paymentMethod", EmitDefaultValue=false)]
-        public long? PaymentMethod { get; set; }
+        public long? PaymentMethod { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,16 +95,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class PaymentMethodBrand {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  GrayImagePath: ").Append(GrayImagePath).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  ImagePath: ").Append(ImagePath).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -172,19 +171,30 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Description != null)
+                {
                     hash = hash * 59 + this.Description.GetHashCode();
+                }
                 if (this.GrayImagePath != null)
+                {
                     hash = hash * 59 + this.GrayImagePath.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.ImagePath != null)
+                {
                     hash = hash * 59 + this.ImagePath.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
                 if (this.PaymentMethod != null)
+                {
                     hash = hash * 59 + this.PaymentMethod.GetHashCode();
+                }
                 return hash;
             }
         }

@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,14 +33,23 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// SubscriptionProductVersionPending model.
+    /// Product Version
     /// </summary>
     [DataContract]
     public partial class SubscriptionProductVersionPending :  IEquatable<SubscriptionProductVersionPending>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionProductVersionPending" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected SubscriptionProductVersionPending() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SubscriptionProductVersionPending" /> class.
+        /// </summary>
+        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
+        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
         /// <param name="BillingCycle">The billing cycle determines the rhythm with which the subscriber is billed. The charging may have different rhythm.</param>
         /// <param name="Comment">The comment allows to provide a internal comment for the version. It helps to document why a product was changed. The comment is not disclosed to the subscriber.</param>
         /// <param name="DefaultCurrency">The default currency has to be used in all fees.</param>
@@ -32,10 +59,26 @@ namespace Customweb.Wallee.Model
         /// <param name="NumberOfNoticePeriods">The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.</param>
         /// <param name="Product">Each product version is linked to a product.</param>
         /// <param name="State">State</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public SubscriptionProductVersionPending(string BillingCycle = default(string), string Comment = default(string), string DefaultCurrency = default(string), List<string> EnabledCurrencies = default(List<string>), int? MinimalNumberOfPeriods = default(int?), long? Name = default(long?), int? NumberOfNoticePeriods = default(int?), long? Product = default(long?), SubscriptionProductVersionState State = default(SubscriptionProductVersionState), long? Id = default(long?), long? Version = default(long?))
+        public SubscriptionProductVersionPending(int? NumberOfNoticePeriods = default(int?), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), string BillingCycle = default(string), SubscriptionProductVersionState? State = default(SubscriptionProductVersionState?), long? Version = default(long?), int? MinimalNumberOfPeriods = default(int?), long? Id = default(long?), string Comment = default(string), long? Product = default(long?), List<string> EnabledCurrencies = default(List<string>), string DefaultCurrency = default(string))
         {
+            // to ensure "Id" is required (not null)
+            if (Id == null)
+            {
+                throw new ArgumentNullException("Id is a required property for SubscriptionProductVersionPending and cannot be null");
+            }
+            else
+            {
+                this.Id = Id;
+            }
+            // to ensure "Version" is required (not null)
+            if (Version == null)
+            {
+                throw new ArgumentNullException("Version is a required property for SubscriptionProductVersionPending and cannot be null");
+            }
+            else
+            {
+                this.Version = Version;
+            }
             this.BillingCycle = BillingCycle;
             this.Comment = Comment;
             this.DefaultCurrency = DefaultCurrency;
@@ -45,9 +88,21 @@ namespace Customweb.Wallee.Model
             this.NumberOfNoticePeriods = NumberOfNoticePeriods;
             this.Product = Product;
             this.State = State;
-            this.Id = Id;
-            this.Version = Version;
         }
+
+        /// <summary>
+        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
+        /// </summary>
+        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; set; }
+
+        /// <summary>
+        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// </summary>
+        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public long? Version { get; set; }
 
         /// <summary>
         /// The billing cycle determines the rhythm with which the subscriber is billed. The charging may have different rhythm.
@@ -89,7 +144,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public long? Name { get; set; }
+        public DatabaseTranslatedStringCreate Name { get; set; }
 
         /// <summary>
         /// The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.
@@ -110,21 +165,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>State</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public SubscriptionProductVersionState State { get; set; }
-
-        /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
-        /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
-
-        /// <summary>
-        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-        /// </summary>
-        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public long? Version { get; set; }
+        public SubscriptionProductVersionState? State { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -132,21 +173,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class SubscriptionProductVersionPending {\n");
-            sb.Append("  BillingCycle: ").Append(BillingCycle).Append("\n");
-            sb.Append("  Comment: ").Append(Comment).Append("\n");
-            sb.Append("  DefaultCurrency: ").Append(DefaultCurrency).Append("\n");
-            sb.Append("  EnabledCurrencies: ").Append(EnabledCurrencies).Append("\n");
-            sb.Append("  MinimalNumberOfPeriods: ").Append(MinimalNumberOfPeriods).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  NumberOfNoticePeriods: ").Append(NumberOfNoticePeriods).Append("\n");
-            sb.Append("  Product: ").Append(Product).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -181,6 +208,16 @@ namespace Customweb.Wallee.Model
             }
 
             return 
+                (
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
+                ) && 
+                (
+                    this.Version == other.Version ||
+                    this.Version != null &&
+                    this.Version.Equals(other.Version)
+                ) && 
                 (
                     this.BillingCycle == other.BillingCycle ||
                     this.BillingCycle != null &&
@@ -225,16 +262,6 @@ namespace Customweb.Wallee.Model
                     this.State == other.State ||
                     this.State != null &&
                     this.State.Equals(other.State)
-                ) && 
-                (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
-                ) && 
-                (
-                    this.Version == other.Version ||
-                    this.Version != null &&
-                    this.Version.Equals(other.Version)
                 );
         }
 
@@ -247,29 +274,50 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
-                if (this.BillingCycle != null)
-                    hash = hash * 59 + this.BillingCycle.GetHashCode();
-                if (this.Comment != null)
-                    hash = hash * 59 + this.Comment.GetHashCode();
-                if (this.DefaultCurrency != null)
-                    hash = hash * 59 + this.DefaultCurrency.GetHashCode();
-                if (this.EnabledCurrencies != null)
-                    hash = hash * 59 + this.EnabledCurrencies.GetHashCode();
-                if (this.MinimalNumberOfPeriods != null)
-                    hash = hash * 59 + this.MinimalNumberOfPeriods.GetHashCode();
-                if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
-                if (this.NumberOfNoticePeriods != null)
-                    hash = hash * 59 + this.NumberOfNoticePeriods.GetHashCode();
-                if (this.Product != null)
-                    hash = hash * 59 + this.Product.GetHashCode();
-                if (this.State != null)
-                    hash = hash * 59 + this.State.GetHashCode();
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
+                if (this.BillingCycle != null)
+                {
+                    hash = hash * 59 + this.BillingCycle.GetHashCode();
+                }
+                if (this.Comment != null)
+                {
+                    hash = hash * 59 + this.Comment.GetHashCode();
+                }
+                if (this.DefaultCurrency != null)
+                {
+                    hash = hash * 59 + this.DefaultCurrency.GetHashCode();
+                }
+                if (this.EnabledCurrencies != null)
+                {
+                    hash = hash * 59 + this.EnabledCurrencies.GetHashCode();
+                }
+                if (this.MinimalNumberOfPeriods != null)
+                {
+                    hash = hash * 59 + this.MinimalNumberOfPeriods.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hash = hash * 59 + this.Name.GetHashCode();
+                }
+                if (this.NumberOfNoticePeriods != null)
+                {
+                    hash = hash * 59 + this.NumberOfNoticePeriods.GetHashCode();
+                }
+                if (this.Product != null)
+                {
+                    hash = hash * 59 + this.Product.GetHashCode();
+                }
+                if (this.State != null)
+                {
+                    hash = hash * 59 + this.State.GetHashCode();
+                }
                 return hash;
             }
         }

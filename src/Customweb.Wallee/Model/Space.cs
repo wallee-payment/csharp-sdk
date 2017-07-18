@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,44 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Space model.
+    /// Space
     /// </summary>
     [DataContract]
     public partial class Space :  IEquatable<Space>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Space" /> class.
         /// </summary>
-        /// <param name="Account">The account to which the space belongs to.</param>
-        /// <param name="Active">Active means that this account and all accounts in the hierarchy are active.</param>
-        /// <param name="ActiveOrRestrictedActive">This property is true when all accounts in the hierarchy are active or restricted active.</param>
-        /// <param name="Database">The database in which the space&#39;s data are stored in.</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="Name">The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
-        /// <param name="PostalAddress">The address to use in communication with clients for example in email, documents etc.</param>
-        /// <param name="RequestLimit">The request limit defines the maximum number of API request accepted within 2 minutes per cluster node. This limit can only be changed with special privileges.</param>
-        /// <param name="RestrictedActive">Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.</param>
-        /// <param name="State">State</param>
-        /// <param name="TechnicalContactAddresses">The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.</param>
-        /// <param name="TimeZone">The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public Space(Account Account = default(Account), bool? Active = default(bool?), bool? ActiveOrRestrictedActive = default(bool?), TenantDatabase Database = default(TenantDatabase), long? Id = default(long?), string Name = default(string), DateTime? PlannedPurgeDate = default(DateTime?), SpaceAddress PostalAddress = default(SpaceAddress), long? RequestLimit = default(long?), bool? RestrictedActive = default(bool?), CreationEntityState State = default(CreationEntityState), List<string> TechnicalContactAddresses = default(List<string>), string TimeZone = default(string), int? Version = default(int?))
+        [JsonConstructorAttribute]
+        public Space()
         {
-            this.Account = Account;
-            this.Active = Active;
-            this.ActiveOrRestrictedActive = ActiveOrRestrictedActive;
-            this.Database = Database;
-            this.Id = Id;
-            this.Name = Name;
-            this.PlannedPurgeDate = PlannedPurgeDate;
-            this.PostalAddress = PostalAddress;
-            this.RequestLimit = RequestLimit;
-            this.RestrictedActive = RestrictedActive;
-            this.State = State;
-            this.TechnicalContactAddresses = TechnicalContactAddresses;
-            this.TimeZone = TimeZone;
-            this.Version = Version;
         }
 
         /// <summary>
@@ -60,98 +52,98 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The account to which the space belongs to.</value>
         [DataMember(Name="account", EmitDefaultValue=false)]
-        public Account Account { get; set; }
+        public Account Account { get; private set; }
 
         /// <summary>
         /// Active means that this account and all accounts in the hierarchy are active.
         /// </summary>
         /// <value>Active means that this account and all accounts in the hierarchy are active.</value>
         [DataMember(Name="active", EmitDefaultValue=false)]
-        public bool? Active { get; set; }
+        public bool? Active { get; private set; }
 
         /// <summary>
         /// This property is true when all accounts in the hierarchy are active or restricted active.
         /// </summary>
         /// <value>This property is true when all accounts in the hierarchy are active or restricted active.</value>
         [DataMember(Name="activeOrRestrictedActive", EmitDefaultValue=false)]
-        public bool? ActiveOrRestrictedActive { get; set; }
+        public bool? ActiveOrRestrictedActive { get; private set; }
 
         /// <summary>
         /// The database in which the space&#39;s data are stored in.
         /// </summary>
         /// <value>The database in which the space&#39;s data are stored in.</value>
         [DataMember(Name="database", EmitDefaultValue=false)]
-        public TenantDatabase Database { get; set; }
+        public TenantDatabase Database { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
+        public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// The address to use in communication with clients for example in email, documents etc.
         /// </summary>
         /// <value>The address to use in communication with clients for example in email, documents etc.</value>
         [DataMember(Name="postalAddress", EmitDefaultValue=false)]
-        public SpaceAddress PostalAddress { get; set; }
+        public SpaceAddress PostalAddress { get; private set; }
 
         /// <summary>
         /// The request limit defines the maximum number of API request accepted within 2 minutes per cluster node. This limit can only be changed with special privileges.
         /// </summary>
         /// <value>The request limit defines the maximum number of API request accepted within 2 minutes per cluster node. This limit can only be changed with special privileges.</value>
         [DataMember(Name="requestLimit", EmitDefaultValue=false)]
-        public long? RequestLimit { get; set; }
+        public long? RequestLimit { get; private set; }
 
         /// <summary>
         /// Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.
         /// </summary>
         /// <value>Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.</value>
         [DataMember(Name="restrictedActive", EmitDefaultValue=false)]
-        public bool? RestrictedActive { get; set; }
+        public bool? RestrictedActive { get; private set; }
 
         /// <summary>
         /// State
         /// </summary>
         /// <value>State</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState State { get; set; }
+        public CreationEntityState? State { get; private set; }
 
         /// <summary>
         /// The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.
         /// </summary>
         /// <value>The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.</value>
         [DataMember(Name="technicalContactAddresses", EmitDefaultValue=false)]
-        public List<string> TechnicalContactAddresses { get; set; }
+        public List<string> TechnicalContactAddresses { get; private set; }
 
         /// <summary>
         /// The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.
         /// </summary>
         /// <value>The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
-        public string TimeZone { get; set; }
+        public string TimeZone { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; set; }
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -159,24 +151,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class Space {\n");
-            sb.Append("  Account: ").Append(Account).Append("\n");
-            sb.Append("  Active: ").Append(Active).Append("\n");
-            sb.Append("  ActiveOrRestrictedActive: ").Append(ActiveOrRestrictedActive).Append("\n");
-            sb.Append("  Database: ").Append(Database).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  PostalAddress: ").Append(PostalAddress).Append("\n");
-            sb.Append("  RequestLimit: ").Append(RequestLimit).Append("\n");
-            sb.Append("  RestrictedActive: ").Append(RestrictedActive).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  TechnicalContactAddresses: ").Append(TechnicalContactAddresses).Append("\n");
-            sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -292,35 +267,62 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Account != null)
+                {
                     hash = hash * 59 + this.Account.GetHashCode();
+                }
                 if (this.Active != null)
+                {
                     hash = hash * 59 + this.Active.GetHashCode();
+                }
                 if (this.ActiveOrRestrictedActive != null)
+                {
                     hash = hash * 59 + this.ActiveOrRestrictedActive.GetHashCode();
+                }
                 if (this.Database != null)
+                {
                     hash = hash * 59 + this.Database.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
                 if (this.PlannedPurgeDate != null)
+                {
                     hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
+                }
                 if (this.PostalAddress != null)
+                {
                     hash = hash * 59 + this.PostalAddress.GetHashCode();
+                }
                 if (this.RequestLimit != null)
+                {
                     hash = hash * 59 + this.RequestLimit.GetHashCode();
+                }
                 if (this.RestrictedActive != null)
+                {
                     hash = hash * 59 + this.RestrictedActive.GetHashCode();
+                }
                 if (this.State != null)
+                {
                     hash = hash * 59 + this.State.GetHashCode();
+                }
                 if (this.TechnicalContactAddresses != null)
+                {
                     hash = hash * 59 + this.TechnicalContactAddresses.GetHashCode();
+                }
                 if (this.TimeZone != null)
+                {
                     hash = hash * 59 + this.TimeZone.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
                 return hash;
             }
         }

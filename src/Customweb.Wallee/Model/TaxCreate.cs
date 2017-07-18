@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,20 +33,43 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// TaxCreate model.
+    /// Tax (in creation)
     /// </summary>
     [DataContract]
     public partial class TaxCreate :  IEquatable<TaxCreate>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TaxCreate" /> class.
         /// </summary>
-        /// <param name="Rate">Rate</param>
-        /// <param name="Title">Title</param>
-        public TaxCreate(decimal? Rate = default(decimal?), string Title = default(string))
+        [JsonConstructorAttribute]
+        protected TaxCreate() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TaxCreate" /> class.
+        /// </summary>
+        /// <param name="Rate">Rate (required)</param>
+        /// <param name="Title">Title (required)</param>
+        public TaxCreate(string Title = default(string), decimal? Rate = default(decimal?))
         {
-            this.Rate = Rate;
-            this.Title = Title;
+            // to ensure "Rate" is required (not null)
+            if (Rate == null)
+            {
+                throw new ArgumentNullException("Rate is a required property for TaxCreate and cannot be null");
+            }
+            else
+            {
+                this.Rate = Rate;
+            }
+            // to ensure "Title" is required (not null)
+            if (Title == null)
+            {
+                throw new ArgumentNullException("Title is a required property for TaxCreate and cannot be null");
+            }
+            else
+            {
+                this.Title = Title;
+            }
         }
 
         /// <summary>
@@ -51,12 +92,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class TaxCreate {\n");
-            sb.Append("  Rate: ").Append(Rate).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -112,11 +148,14 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Rate != null)
+                {
                     hash = hash * 59 + this.Rate.GetHashCode();
+                }
                 if (this.Title != null)
+                {
                     hash = hash * 59 + this.Title.GetHashCode();
+                }
                 return hash;
             }
         }

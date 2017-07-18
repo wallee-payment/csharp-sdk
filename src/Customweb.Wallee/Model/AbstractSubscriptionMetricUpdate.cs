@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,23 +33,20 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// EmailSenderType model.
+    /// Abstract Metric
     /// </summary>
     [DataContract]
-    public partial class EmailSenderType :  IEquatable<EmailSenderType>
+    public partial class AbstractSubscriptionMetricUpdate :  IEquatable<AbstractSubscriptionMetricUpdate>
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="EmailSenderType" /> class.
+        /// Initializes a new instance of the <see cref="AbstractSubscriptionMetricUpdate" /> class.
         /// </summary>
         /// <param name="Description">Description</param>
-        /// <param name="Feature">Feature</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
         /// <param name="Name">Name</param>
-        public EmailSenderType(Dictionary<string, string> Description = default(Dictionary<string, string>), long? Feature = default(long?), long? Id = default(long?), Dictionary<string, string> Name = default(Dictionary<string, string>))
+        public AbstractSubscriptionMetricUpdate(DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate))
         {
             this.Description = Description;
-            this.Feature = Feature;
-            this.Id = Id;
             this.Name = Name;
         }
 
@@ -40,28 +55,14 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Description</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; set; }
-
-        /// <summary>
-        /// Feature
-        /// </summary>
-        /// <value>Feature</value>
-        [DataMember(Name="feature", EmitDefaultValue=false)]
-        public long? Feature { get; set; }
-
-        /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
-        /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public DatabaseTranslatedStringCreate Description { get; set; }
 
         /// <summary>
         /// Name
         /// </summary>
         /// <value>Name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; set; }
+        public DatabaseTranslatedStringCreate Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,14 +70,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class EmailSenderType {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Feature: ").Append(Feature).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -95,15 +89,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as EmailSenderType);
+            return this.Equals(obj as AbstractSubscriptionMetricUpdate);
         }
 
         /// <summary>
-        /// Returns true if EmailSenderType instances are equal
+        /// Returns true if AbstractSubscriptionMetricUpdate instances are equal
         /// </summary>
-        /// <param name="other">Instance of EmailSenderType to be compared</param>
+        /// <param name="other">Instance of AbstractSubscriptionMetricUpdate to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(EmailSenderType other)
+        public bool Equals(AbstractSubscriptionMetricUpdate other)
         {
             if (other == null)
             {
@@ -114,22 +108,12 @@ namespace Customweb.Wallee.Model
                 (
                     this.Description == other.Description ||
                     this.Description != null &&
-                    this.Description.SequenceEqual(other.Description)
-                ) && 
-                (
-                    this.Feature == other.Feature ||
-                    this.Feature != null &&
-                    this.Feature.Equals(other.Feature)
-                ) && 
-                (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
+                    this.Description.Equals(other.Description)
                 ) && 
                 (
                     this.Name == other.Name ||
                     this.Name != null &&
-                    this.Name.SequenceEqual(other.Name)
+                    this.Name.Equals(other.Name)
                 );
         }
 
@@ -142,15 +126,14 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Description != null)
+                {
                     hash = hash * 59 + this.Description.GetHashCode();
-                if (this.Feature != null)
-                    hash = hash * 59 + this.Feature.GetHashCode();
-                if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
                 return hash;
             }
         }

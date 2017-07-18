@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,44 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// LineItem model.
+    /// Line Item
     /// </summary>
     [DataContract]
     public partial class LineItem :  IEquatable<LineItem>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LineItem" /> class.
         /// </summary>
-        /// <param name="AggregatedTaxRate">The aggregated tax rate is the sum of all tax rates of the line item.</param>
-        /// <param name="AmountExcludingTax">AmountExcludingTax</param>
-        /// <param name="AmountIncludingTax">AmountIncludingTax</param>
-        /// <param name="Name">Name</param>
-        /// <param name="Quantity">Quantity</param>
-        /// <param name="ShippingRequired">ShippingRequired</param>
-        /// <param name="Sku">Sku</param>
-        /// <param name="TaxAmount">TaxAmount</param>
-        /// <param name="TaxAmountPerUnit">TaxAmountPerUnit</param>
-        /// <param name="Taxes">Taxes</param>
-        /// <param name="Type">Type</param>
-        /// <param name="UniqueId">The unique id identifies the line item within the set of line items associated with the transaction.</param>
-        /// <param name="UnitPriceExcludingTax">UnitPriceExcludingTax</param>
-        /// <param name="UnitPriceIncludingTax">UnitPriceIncludingTax</param>
-        public LineItem(decimal? AggregatedTaxRate = default(decimal?), decimal? AmountExcludingTax = default(decimal?), decimal? AmountIncludingTax = default(decimal?), string Name = default(string), decimal? Quantity = default(decimal?), bool? ShippingRequired = default(bool?), string Sku = default(string), decimal? TaxAmount = default(decimal?), decimal? TaxAmountPerUnit = default(decimal?), List<Tax> Taxes = default(List<Tax>), LineItemType Type = default(LineItemType), string UniqueId = default(string), decimal? UnitPriceExcludingTax = default(decimal?), decimal? UnitPriceIncludingTax = default(decimal?))
+        [JsonConstructorAttribute]
+        public LineItem()
         {
-            this.AggregatedTaxRate = AggregatedTaxRate;
-            this.AmountExcludingTax = AmountExcludingTax;
-            this.AmountIncludingTax = AmountIncludingTax;
-            this.Name = Name;
-            this.Quantity = Quantity;
-            this.ShippingRequired = ShippingRequired;
-            this.Sku = Sku;
-            this.TaxAmount = TaxAmount;
-            this.TaxAmountPerUnit = TaxAmountPerUnit;
-            this.Taxes = Taxes;
-            this.Type = Type;
-            this.UniqueId = UniqueId;
-            this.UnitPriceExcludingTax = UnitPriceExcludingTax;
-            this.UnitPriceIncludingTax = UnitPriceIncludingTax;
         }
 
         /// <summary>
@@ -60,98 +52,105 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The aggregated tax rate is the sum of all tax rates of the line item.</value>
         [DataMember(Name="aggregatedTaxRate", EmitDefaultValue=false)]
-        public decimal? AggregatedTaxRate { get; set; }
+        public decimal? AggregatedTaxRate { get; private set; }
 
         /// <summary>
         /// AmountExcludingTax
         /// </summary>
         /// <value>AmountExcludingTax</value>
         [DataMember(Name="amountExcludingTax", EmitDefaultValue=false)]
-        public decimal? AmountExcludingTax { get; set; }
+        public decimal? AmountExcludingTax { get; private set; }
 
         /// <summary>
         /// AmountIncludingTax
         /// </summary>
         /// <value>AmountIncludingTax</value>
         [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
-        public decimal? AmountIncludingTax { get; set; }
+        public decimal? AmountIncludingTax { get; private set; }
+
+        /// <summary>
+        /// Attributes
+        /// </summary>
+        /// <value>Attributes</value>
+        [DataMember(Name="attributes", EmitDefaultValue=false)]
+        public Dictionary<string, LineItemAttribute> Attributes { get; private set; }
 
         /// <summary>
         /// Name
         /// </summary>
         /// <value>Name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// Quantity
         /// </summary>
         /// <value>Quantity</value>
         [DataMember(Name="quantity", EmitDefaultValue=false)]
-        public decimal? Quantity { get; set; }
+        public decimal? Quantity { get; private set; }
 
         /// <summary>
         /// ShippingRequired
         /// </summary>
         /// <value>ShippingRequired</value>
         [DataMember(Name="shippingRequired", EmitDefaultValue=false)]
-        public bool? ShippingRequired { get; set; }
+        public bool? ShippingRequired { get; private set; }
 
         /// <summary>
         /// Sku
         /// </summary>
         /// <value>Sku</value>
         [DataMember(Name="sku", EmitDefaultValue=false)]
-        public string Sku { get; set; }
+        public string Sku { get; private set; }
 
         /// <summary>
         /// TaxAmount
         /// </summary>
         /// <value>TaxAmount</value>
         [DataMember(Name="taxAmount", EmitDefaultValue=false)]
-        public decimal? TaxAmount { get; set; }
+        public decimal? TaxAmount { get; private set; }
 
         /// <summary>
         /// TaxAmountPerUnit
         /// </summary>
         /// <value>TaxAmountPerUnit</value>
         [DataMember(Name="taxAmountPerUnit", EmitDefaultValue=false)]
-        public decimal? TaxAmountPerUnit { get; set; }
+        public decimal? TaxAmountPerUnit { get; private set; }
 
         /// <summary>
         /// Taxes
         /// </summary>
         /// <value>Taxes</value>
         [DataMember(Name="taxes", EmitDefaultValue=false)]
-        public List<Tax> Taxes { get; set; }
+        public List<Tax> Taxes { get; private set; }
 
         /// <summary>
         /// Type
         /// </summary>
         /// <value>Type</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public LineItemType Type { get; set; }
+        public LineItemType? Type { get; private set; }
 
         /// <summary>
         /// The unique id identifies the line item within the set of line items associated with the transaction.
         /// </summary>
         /// <value>The unique id identifies the line item within the set of line items associated with the transaction.</value>
         [DataMember(Name="uniqueId", EmitDefaultValue=false)]
-        public string UniqueId { get; set; }
+        public string UniqueId { get; private set; }
 
         /// <summary>
         /// UnitPriceExcludingTax
         /// </summary>
         /// <value>UnitPriceExcludingTax</value>
         [DataMember(Name="unitPriceExcludingTax", EmitDefaultValue=false)]
-        public decimal? UnitPriceExcludingTax { get; set; }
+        public decimal? UnitPriceExcludingTax { get; private set; }
 
         /// <summary>
         /// UnitPriceIncludingTax
         /// </summary>
         /// <value>UnitPriceIncludingTax</value>
         [DataMember(Name="unitPriceIncludingTax", EmitDefaultValue=false)]
-        public decimal? UnitPriceIncludingTax { get; set; }
+        public decimal? UnitPriceIncludingTax { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -159,24 +158,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class LineItem {\n");
-            sb.Append("  AggregatedTaxRate: ").Append(AggregatedTaxRate).Append("\n");
-            sb.Append("  AmountExcludingTax: ").Append(AmountExcludingTax).Append("\n");
-            sb.Append("  AmountIncludingTax: ").Append(AmountIncludingTax).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
-            sb.Append("  ShippingRequired: ").Append(ShippingRequired).Append("\n");
-            sb.Append("  Sku: ").Append(Sku).Append("\n");
-            sb.Append("  TaxAmount: ").Append(TaxAmount).Append("\n");
-            sb.Append("  TaxAmountPerUnit: ").Append(TaxAmountPerUnit).Append("\n");
-            sb.Append("  Taxes: ").Append(Taxes).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  UniqueId: ").Append(UniqueId).Append("\n");
-            sb.Append("  UnitPriceExcludingTax: ").Append(UnitPriceExcludingTax).Append("\n");
-            sb.Append("  UnitPriceIncludingTax: ").Append(UnitPriceIncludingTax).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -225,6 +207,11 @@ namespace Customweb.Wallee.Model
                     this.AmountIncludingTax == other.AmountIncludingTax ||
                     this.AmountIncludingTax != null &&
                     this.AmountIncludingTax.Equals(other.AmountIncludingTax)
+                ) && 
+                (
+                    this.Attributes == other.Attributes ||
+                    this.Attributes != null &&
+                    this.Attributes.SequenceEqual(other.Attributes)
                 ) && 
                 (
                     this.Name == other.Name ||
@@ -292,35 +279,66 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.AggregatedTaxRate != null)
+                {
                     hash = hash * 59 + this.AggregatedTaxRate.GetHashCode();
+                }
                 if (this.AmountExcludingTax != null)
+                {
                     hash = hash * 59 + this.AmountExcludingTax.GetHashCode();
+                }
                 if (this.AmountIncludingTax != null)
+                {
                     hash = hash * 59 + this.AmountIncludingTax.GetHashCode();
+                }
+                if (this.Attributes != null)
+                {
+                    hash = hash * 59 + this.Attributes.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
                 if (this.Quantity != null)
+                {
                     hash = hash * 59 + this.Quantity.GetHashCode();
+                }
                 if (this.ShippingRequired != null)
+                {
                     hash = hash * 59 + this.ShippingRequired.GetHashCode();
+                }
                 if (this.Sku != null)
+                {
                     hash = hash * 59 + this.Sku.GetHashCode();
+                }
                 if (this.TaxAmount != null)
+                {
                     hash = hash * 59 + this.TaxAmount.GetHashCode();
+                }
                 if (this.TaxAmountPerUnit != null)
+                {
                     hash = hash * 59 + this.TaxAmountPerUnit.GetHashCode();
+                }
                 if (this.Taxes != null)
+                {
                     hash = hash * 59 + this.Taxes.GetHashCode();
+                }
                 if (this.Type != null)
+                {
                     hash = hash * 59 + this.Type.GetHashCode();
+                }
                 if (this.UniqueId != null)
+                {
                     hash = hash * 59 + this.UniqueId.GetHashCode();
+                }
                 if (this.UnitPriceExcludingTax != null)
+                {
                     hash = hash * 59 + this.UnitPriceExcludingTax.GetHashCode();
+                }
                 if (this.UnitPriceIncludingTax != null)
+                {
                     hash = hash * 59 + this.UnitPriceIncludingTax.GetHashCode();
+                }
                 return hash;
             }
         }

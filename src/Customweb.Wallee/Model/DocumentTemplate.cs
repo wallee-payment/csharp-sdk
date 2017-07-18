@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -20,29 +38,13 @@ namespace Customweb.Wallee.Model
     [DataContract]
     public partial class DocumentTemplate :  IEquatable<DocumentTemplate>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentTemplate" /> class.
         /// </summary>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="LinkedSpaceId">The linked space id holds the ID of the space to which the entity belongs to.</param>
-        /// <param name="Name">Name</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
-        /// <param name="SpaceId">SpaceId</param>
-        /// <param name="State">State</param>
-        /// <param name="TemplateResource">TemplateResource</param>
-        /// <param name="Type">Type</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public DocumentTemplate(long? Id = default(long?), long? LinkedSpaceId = default(long?), string Name = default(string), DateTime? PlannedPurgeDate = default(DateTime?), long? SpaceId = default(long?), CreationEntityState State = default(CreationEntityState), ResourcePath TemplateResource = default(ResourcePath), long? Type = default(long?), int? Version = default(int?))
+        [JsonConstructorAttribute]
+        public DocumentTemplate()
         {
-            this.Id = Id;
-            this.LinkedSpaceId = LinkedSpaceId;
-            this.Name = Name;
-            this.PlannedPurgeDate = PlannedPurgeDate;
-            this.SpaceId = SpaceId;
-            this.State = State;
-            this.TemplateResource = TemplateResource;
-            this.Type = Type;
-            this.Version = Version;
         }
 
         /// <summary>
@@ -50,63 +52,63 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
         [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; set; }
+        public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Name
         /// </summary>
         /// <value>Name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
+        public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// SpaceId
         /// </summary>
         /// <value>SpaceId</value>
         [DataMember(Name="spaceId", EmitDefaultValue=false)]
-        public long? SpaceId { get; set; }
+        public long? SpaceId { get; private set; }
 
         /// <summary>
         /// State
         /// </summary>
         /// <value>State</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState State { get; set; }
+        public CreationEntityState? State { get; private set; }
 
         /// <summary>
         /// TemplateResource
         /// </summary>
         /// <value>TemplateResource</value>
         [DataMember(Name="templateResource", EmitDefaultValue=false)]
-        public ResourcePath TemplateResource { get; set; }
+        public ResourcePath TemplateResource { get; private set; }
 
         /// <summary>
         /// Type
         /// </summary>
         /// <value>Type</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public long? Type { get; set; }
+        public long? Type { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; set; }
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,19 +116,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class DocumentTemplate {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  TemplateResource: ").Append(TemplateResource).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -217,25 +207,42 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.LinkedSpaceId != null)
+                {
                     hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
                 if (this.PlannedPurgeDate != null)
+                {
                     hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
+                }
                 if (this.SpaceId != null)
+                {
                     hash = hash * 59 + this.SpaceId.GetHashCode();
+                }
                 if (this.State != null)
+                {
                     hash = hash * 59 + this.State.GetHashCode();
+                }
                 if (this.TemplateResource != null)
+                {
                     hash = hash * 59 + this.TemplateResource.GetHashCode();
+                }
                 if (this.Type != null)
+                {
                     hash = hash * 59 + this.Type.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
                 return hash;
             }
         }

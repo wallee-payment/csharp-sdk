@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,197 +33,138 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// TransactionCompletion model.
+    /// Transaction Completion
     /// </summary>
     [DataContract]
-    public partial class TransactionCompletion :  IEquatable<TransactionCompletion>
+    public partial class TransactionCompletion : TransactionAwareEntity,  IEquatable<TransactionCompletion>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionCompletion" /> class.
         /// </summary>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="LinkedSpaceId">The linked space id holds the ID of the space to which the entity belongs to.</param>
-        /// <param name="LinkedTransaction">LinkedTransaction</param>
-        /// <param name="CreatedBy">CreatedBy</param>
-        /// <param name="CreatedOn">The created on date indicates the date on which the entity was stored into the database.</param>
-        /// <param name="FailedOn">FailedOn</param>
-        /// <param name="FailureReason">FailureReason</param>
-        /// <param name="Labels">Labels</param>
-        /// <param name="Language">Language</param>
-        /// <param name="LineItemVersion">LineItemVersion</param>
-        /// <param name="Mode">Mode</param>
-        /// <param name="NextUpdateOn">NextUpdateOn</param>
-        /// <param name="PaymentInformation">PaymentInformation</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
-        /// <param name="ProcessorReference">ProcessorReference</param>
-        /// <param name="SpaceViewId">SpaceViewId</param>
-        /// <param name="State">State</param>
-        /// <param name="SucceededOn">SucceededOn</param>
-        /// <param name="TimeoutOn">TimeoutOn</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public TransactionCompletion(long? Id = default(long?), long? LinkedSpaceId = default(long?), long? LinkedTransaction = default(long?), long? CreatedBy = default(long?), DateTime? CreatedOn = default(DateTime?), DateTime? FailedOn = default(DateTime?), FailureReason FailureReason = default(FailureReason), List<Label> Labels = default(List<Label>), string Language = default(string), TransactionLineItemVersion LineItemVersion = default(TransactionLineItemVersion), TransactionCompletionMode Mode = default(TransactionCompletionMode), DateTime? NextUpdateOn = default(DateTime?), string PaymentInformation = default(string), DateTime? PlannedPurgeDate = default(DateTime?), string ProcessorReference = default(string), long? SpaceViewId = default(long?), TransactionCompletionState State = default(TransactionCompletionState), DateTime? SucceededOn = default(DateTime?), DateTime? TimeoutOn = default(DateTime?), int? Version = default(int?))
+        [JsonConstructorAttribute]
+        public TransactionCompletion()
         {
-            this.Id = Id;
-            this.LinkedSpaceId = LinkedSpaceId;
-            this.LinkedTransaction = LinkedTransaction;
-            this.CreatedBy = CreatedBy;
-            this.CreatedOn = CreatedOn;
-            this.FailedOn = FailedOn;
-            this.FailureReason = FailureReason;
-            this.Labels = Labels;
-            this.Language = Language;
-            this.LineItemVersion = LineItemVersion;
-            this.Mode = Mode;
-            this.NextUpdateOn = NextUpdateOn;
-            this.PaymentInformation = PaymentInformation;
-            this.PlannedPurgeDate = PlannedPurgeDate;
-            this.ProcessorReference = ProcessorReference;
-            this.SpaceViewId = SpaceViewId;
-            this.State = State;
-            this.SucceededOn = SucceededOn;
-            this.TimeoutOn = TimeoutOn;
-            this.Version = Version;
         }
-
-        /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
-        /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
-
-        /// <summary>
-        /// The linked space id holds the ID of the space to which the entity belongs to.
-        /// </summary>
-        /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; set; }
-
-        /// <summary>
-        /// LinkedTransaction
-        /// </summary>
-        /// <value>LinkedTransaction</value>
-        [DataMember(Name="linkedTransaction", EmitDefaultValue=false)]
-        public long? LinkedTransaction { get; set; }
 
         /// <summary>
         /// CreatedBy
         /// </summary>
         /// <value>CreatedBy</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
-        public long? CreatedBy { get; set; }
+        public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
-        public DateTime? CreatedOn { get; set; }
+        public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// FailedOn
         /// </summary>
         /// <value>FailedOn</value>
         [DataMember(Name="failedOn", EmitDefaultValue=false)]
-        public DateTime? FailedOn { get; set; }
+        public DateTime? FailedOn { get; private set; }
 
         /// <summary>
         /// FailureReason
         /// </summary>
         /// <value>FailureReason</value>
         [DataMember(Name="failureReason", EmitDefaultValue=false)]
-        public FailureReason FailureReason { get; set; }
+        public FailureReason FailureReason { get; private set; }
 
         /// <summary>
         /// Labels
         /// </summary>
         /// <value>Labels</value>
         [DataMember(Name="labels", EmitDefaultValue=false)]
-        public List<Label> Labels { get; set; }
+        public List<Label> Labels { get; private set; }
 
         /// <summary>
         /// Language
         /// </summary>
         /// <value>Language</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
-        public string Language { get; set; }
+        public string Language { get; private set; }
 
         /// <summary>
         /// LineItemVersion
         /// </summary>
         /// <value>LineItemVersion</value>
         [DataMember(Name="lineItemVersion", EmitDefaultValue=false)]
-        public TransactionLineItemVersion LineItemVersion { get; set; }
+        public TransactionLineItemVersion LineItemVersion { get; private set; }
 
         /// <summary>
         /// Mode
         /// </summary>
         /// <value>Mode</value>
         [DataMember(Name="mode", EmitDefaultValue=false)]
-        public TransactionCompletionMode Mode { get; set; }
+        public TransactionCompletionMode? Mode { get; private set; }
 
         /// <summary>
         /// NextUpdateOn
         /// </summary>
         /// <value>NextUpdateOn</value>
         [DataMember(Name="nextUpdateOn", EmitDefaultValue=false)]
-        public DateTime? NextUpdateOn { get; set; }
+        public DateTime? NextUpdateOn { get; private set; }
 
         /// <summary>
         /// PaymentInformation
         /// </summary>
         /// <value>PaymentInformation</value>
         [DataMember(Name="paymentInformation", EmitDefaultValue=false)]
-        public string PaymentInformation { get; set; }
+        public string PaymentInformation { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
+        public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// ProcessorReference
         /// </summary>
         /// <value>ProcessorReference</value>
         [DataMember(Name="processorReference", EmitDefaultValue=false)]
-        public string ProcessorReference { get; set; }
+        public string ProcessorReference { get; private set; }
 
         /// <summary>
         /// SpaceViewId
         /// </summary>
         /// <value>SpaceViewId</value>
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
-        public long? SpaceViewId { get; set; }
+        public long? SpaceViewId { get; private set; }
 
         /// <summary>
         /// State
         /// </summary>
         /// <value>State</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public TransactionCompletionState State { get; set; }
+        public TransactionCompletionState? State { get; private set; }
 
         /// <summary>
         /// SucceededOn
         /// </summary>
         /// <value>SucceededOn</value>
         [DataMember(Name="succeededOn", EmitDefaultValue=false)]
-        public DateTime? SucceededOn { get; set; }
+        public DateTime? SucceededOn { get; private set; }
 
         /// <summary>
         /// TimeoutOn
         /// </summary>
         /// <value>TimeoutOn</value>
         [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
-        public DateTime? TimeoutOn { get; set; }
+        public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; set; }
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -213,37 +172,14 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class TransactionCompletion {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
-            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
-            sb.Append("  FailedOn: ").Append(FailedOn).Append("\n");
-            sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
-            sb.Append("  Labels: ").Append(Labels).Append("\n");
-            sb.Append("  Language: ").Append(Language).Append("\n");
-            sb.Append("  LineItemVersion: ").Append(LineItemVersion).Append("\n");
-            sb.Append("  Mode: ").Append(Mode).Append("\n");
-            sb.Append("  NextUpdateOn: ").Append(NextUpdateOn).Append("\n");
-            sb.Append("  PaymentInformation: ").Append(PaymentInformation).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  ProcessorReference: ").Append(ProcessorReference).Append("\n");
-            sb.Append("  SpaceViewId: ").Append(SpaceViewId).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  SucceededOn: ").Append(SucceededOn).Append("\n");
-            sb.Append("  TimeoutOn: ").Append(TimeoutOn).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public new string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -271,21 +207,6 @@ namespace Customweb.Wallee.Model
             }
 
             return 
-                (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
-                ) && 
-                (
-                    this.LinkedSpaceId == other.LinkedSpaceId ||
-                    this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(other.LinkedSpaceId)
-                ) && 
-                (
-                    this.LinkedTransaction == other.LinkedTransaction ||
-                    this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(other.LinkedTransaction)
-                ) && 
                 (
                     this.CreatedBy == other.CreatedBy ||
                     this.CreatedBy != null &&
@@ -370,6 +291,21 @@ namespace Customweb.Wallee.Model
                     this.Version == other.Version ||
                     this.Version != null &&
                     this.Version.Equals(other.Version)
+                ) && 
+                (
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
+                ) && 
+                (
+                    this.LinkedSpaceId == other.LinkedSpaceId ||
+                    this.LinkedSpaceId != null &&
+                    this.LinkedSpaceId.Equals(other.LinkedSpaceId)
+                ) && 
+                (
+                    this.LinkedTransaction == other.LinkedTransaction ||
+                    this.LinkedTransaction != null &&
+                    this.LinkedTransaction.Equals(other.LinkedTransaction)
                 );
         }
 
@@ -382,47 +318,86 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
-                if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hash = hash * 59 + this.LinkedTransaction.GetHashCode();
                 if (this.CreatedBy != null)
+                {
                     hash = hash * 59 + this.CreatedBy.GetHashCode();
+                }
                 if (this.CreatedOn != null)
+                {
                     hash = hash * 59 + this.CreatedOn.GetHashCode();
+                }
                 if (this.FailedOn != null)
+                {
                     hash = hash * 59 + this.FailedOn.GetHashCode();
+                }
                 if (this.FailureReason != null)
+                {
                     hash = hash * 59 + this.FailureReason.GetHashCode();
+                }
                 if (this.Labels != null)
+                {
                     hash = hash * 59 + this.Labels.GetHashCode();
+                }
                 if (this.Language != null)
+                {
                     hash = hash * 59 + this.Language.GetHashCode();
+                }
                 if (this.LineItemVersion != null)
+                {
                     hash = hash * 59 + this.LineItemVersion.GetHashCode();
+                }
                 if (this.Mode != null)
+                {
                     hash = hash * 59 + this.Mode.GetHashCode();
+                }
                 if (this.NextUpdateOn != null)
+                {
                     hash = hash * 59 + this.NextUpdateOn.GetHashCode();
+                }
                 if (this.PaymentInformation != null)
+                {
                     hash = hash * 59 + this.PaymentInformation.GetHashCode();
+                }
                 if (this.PlannedPurgeDate != null)
+                {
                     hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
+                }
                 if (this.ProcessorReference != null)
+                {
                     hash = hash * 59 + this.ProcessorReference.GetHashCode();
+                }
                 if (this.SpaceViewId != null)
+                {
                     hash = hash * 59 + this.SpaceViewId.GetHashCode();
+                }
                 if (this.State != null)
+                {
                     hash = hash * 59 + this.State.GetHashCode();
+                }
                 if (this.SucceededOn != null)
+                {
                     hash = hash * 59 + this.SucceededOn.GetHashCode();
+                }
                 if (this.TimeoutOn != null)
+                {
                     hash = hash * 59 + this.TimeoutOn.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
+                if (this.Id != null)
+                {
+                    hash = hash * 59 + this.Id.GetHashCode();
+                }
+                if (this.LinkedSpaceId != null)
+                {
+                    hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
+                }
+                if (this.LinkedTransaction != null)
+                {
+                    hash = hash * 59 + this.LinkedTransaction.GetHashCode();
+                }
                 return hash;
             }
         }

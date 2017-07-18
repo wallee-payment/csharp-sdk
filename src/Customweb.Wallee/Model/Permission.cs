@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,34 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Permission model.
+    /// Permission
     /// </summary>
     [DataContract]
     public partial class Permission :  IEquatable<Permission>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Permission" /> class.
         /// </summary>
-        /// <param name="Description">Description</param>
-        /// <param name="Feature">Feature</param>
-        /// <param name="Group">Group</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="Leaf">Leaf</param>
-        /// <param name="Name">Name</param>
-        /// <param name="Parent">Parent</param>
-        /// <param name="PathToRoot">PathToRoot</param>
-        /// <param name="Title">Title</param>
-        public Permission(Dictionary<string, string> Description = default(Dictionary<string, string>), long? Feature = default(long?), bool? Group = default(bool?), long? Id = default(long?), bool? Leaf = default(bool?), Dictionary<string, string> Name = default(Dictionary<string, string>), long? Parent = default(long?), List<long?> PathToRoot = default(List<long?>), Dictionary<string, string> Title = default(Dictionary<string, string>))
+        [JsonConstructorAttribute]
+        public Permission()
         {
-            this.Description = Description;
-            this.Feature = Feature;
-            this.Group = Group;
-            this.Id = Id;
-            this.Leaf = Leaf;
-            this.Name = Name;
-            this.Parent = Parent;
-            this.PathToRoot = PathToRoot;
-            this.Title = Title;
         }
 
         /// <summary>
@@ -50,63 +52,63 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Description</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; set; }
+        public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// Feature
         /// </summary>
         /// <value>Feature</value>
         [DataMember(Name="feature", EmitDefaultValue=false)]
-        public long? Feature { get; set; }
+        public long? Feature { get; private set; }
 
         /// <summary>
         /// Group
         /// </summary>
         /// <value>Group</value>
         [DataMember(Name="group", EmitDefaultValue=false)]
-        public bool? Group { get; set; }
+        public bool? Group { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// Leaf
         /// </summary>
         /// <value>Leaf</value>
         [DataMember(Name="leaf", EmitDefaultValue=false)]
-        public bool? Leaf { get; set; }
+        public bool? Leaf { get; private set; }
 
         /// <summary>
         /// Name
         /// </summary>
         /// <value>Name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; set; }
+        public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// Parent
         /// </summary>
         /// <value>Parent</value>
         [DataMember(Name="parent", EmitDefaultValue=false)]
-        public long? Parent { get; set; }
+        public long? Parent { get; private set; }
 
         /// <summary>
         /// PathToRoot
         /// </summary>
         /// <value>PathToRoot</value>
         [DataMember(Name="pathToRoot", EmitDefaultValue=false)]
-        public List<long?> PathToRoot { get; set; }
+        public List<long?> PathToRoot { get; private set; }
 
         /// <summary>
         /// Title
         /// </summary>
         /// <value>Title</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
-        public Dictionary<string, string> Title { get; set; }
+        public Dictionary<string, string> Title { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,19 +116,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class Permission {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Feature: ").Append(Feature).Append("\n");
-            sb.Append("  Group: ").Append(Group).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Leaf: ").Append(Leaf).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Parent: ").Append(Parent).Append("\n");
-            sb.Append("  PathToRoot: ").Append(PathToRoot).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -217,25 +207,42 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Description != null)
+                {
                     hash = hash * 59 + this.Description.GetHashCode();
+                }
                 if (this.Feature != null)
+                {
                     hash = hash * 59 + this.Feature.GetHashCode();
+                }
                 if (this.Group != null)
+                {
                     hash = hash * 59 + this.Group.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.Leaf != null)
+                {
                     hash = hash * 59 + this.Leaf.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
                 if (this.Parent != null)
+                {
                     hash = hash * 59 + this.Parent.GetHashCode();
+                }
                 if (this.PathToRoot != null)
+                {
                     hash = hash * 59 + this.PathToRoot.GetHashCode();
+                }
                 if (this.Title != null)
+                {
                     hash = hash * 59 + this.Title.GetHashCode();
+                }
                 return hash;
             }
         }

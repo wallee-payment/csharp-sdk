@@ -1,0 +1,9 @@
+language: csharp
+mono:
+  - latest
+  - 5.0.1
+  - 4.8.1
+  - 3.12.1
+solution: Customweb.Wallee.sln
+script:
+  - /bin/sh ./mono_nunit_test.sh

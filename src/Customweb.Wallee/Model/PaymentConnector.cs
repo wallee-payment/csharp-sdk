@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,38 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// PaymentConnector model.
+    /// Payment Connector
     /// </summary>
     [DataContract]
     public partial class PaymentConnector :  IEquatable<PaymentConnector>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentConnector" /> class.
         /// </summary>
-        /// <param name="DataCollectionType">DataCollectionType</param>
-        /// <param name="Description">Description</param>
-        /// <param name="Feature">Feature</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="Name">Name</param>
-        /// <param name="PaymentMethod">PaymentMethod</param>
-        /// <param name="PaymentMethodBrand">PaymentMethodBrand</param>
-        /// <param name="PrimaryRiskTaker">PrimaryRiskTaker</param>
-        /// <param name="Processor">Processor</param>
-        /// <param name="SupportedCustomersPresences">SupportedCustomersPresences</param>
-        /// <param name="SupportedFeatures">SupportedFeatures</param>
-        public PaymentConnector(DataCollectionType DataCollectionType = default(DataCollectionType), Dictionary<string, string> Description = default(Dictionary<string, string>), Feature Feature = default(Feature), long? Id = default(long?), Dictionary<string, string> Name = default(Dictionary<string, string>), long? PaymentMethod = default(long?), PaymentMethodBrand PaymentMethodBrand = default(PaymentMethodBrand), PaymentPrimaryRiskTaker PrimaryRiskTaker = default(PaymentPrimaryRiskTaker), long? Processor = default(long?), List<CustomersPresence> SupportedCustomersPresences = default(List<CustomersPresence>), List<long?> SupportedFeatures = default(List<long?>))
+        [JsonConstructorAttribute]
+        public PaymentConnector()
         {
-            this.DataCollectionType = DataCollectionType;
-            this.Description = Description;
-            this.Feature = Feature;
-            this.Id = Id;
-            this.Name = Name;
-            this.PaymentMethod = PaymentMethod;
-            this.PaymentMethodBrand = PaymentMethodBrand;
-            this.PrimaryRiskTaker = PrimaryRiskTaker;
-            this.Processor = Processor;
-            this.SupportedCustomersPresences = SupportedCustomersPresences;
-            this.SupportedFeatures = SupportedFeatures;
         }
 
         /// <summary>
@@ -54,77 +52,77 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>DataCollectionType</value>
         [DataMember(Name="dataCollectionType", EmitDefaultValue=false)]
-        public DataCollectionType DataCollectionType { get; set; }
+        public DataCollectionType? DataCollectionType { get; private set; }
 
         /// <summary>
         /// Description
         /// </summary>
         /// <value>Description</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; set; }
+        public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// Feature
         /// </summary>
         /// <value>Feature</value>
         [DataMember(Name="feature", EmitDefaultValue=false)]
-        public Feature Feature { get; set; }
+        public Feature Feature { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// Name
         /// </summary>
         /// <value>Name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; set; }
+        public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// PaymentMethod
         /// </summary>
         /// <value>PaymentMethod</value>
         [DataMember(Name="paymentMethod", EmitDefaultValue=false)]
-        public long? PaymentMethod { get; set; }
+        public long? PaymentMethod { get; private set; }
 
         /// <summary>
         /// PaymentMethodBrand
         /// </summary>
         /// <value>PaymentMethodBrand</value>
         [DataMember(Name="paymentMethodBrand", EmitDefaultValue=false)]
-        public PaymentMethodBrand PaymentMethodBrand { get; set; }
+        public PaymentMethodBrand PaymentMethodBrand { get; private set; }
 
         /// <summary>
         /// PrimaryRiskTaker
         /// </summary>
         /// <value>PrimaryRiskTaker</value>
         [DataMember(Name="primaryRiskTaker", EmitDefaultValue=false)]
-        public PaymentPrimaryRiskTaker PrimaryRiskTaker { get; set; }
+        public PaymentPrimaryRiskTaker? PrimaryRiskTaker { get; private set; }
 
         /// <summary>
         /// Processor
         /// </summary>
         /// <value>Processor</value>
         [DataMember(Name="processor", EmitDefaultValue=false)]
-        public long? Processor { get; set; }
+        public long? Processor { get; private set; }
 
         /// <summary>
         /// SupportedCustomersPresences
         /// </summary>
         /// <value>SupportedCustomersPresences</value>
         [DataMember(Name="supportedCustomersPresences", EmitDefaultValue=false)]
-        public List<CustomersPresence> SupportedCustomersPresences { get; set; }
+        public List<CustomersPresence> SupportedCustomersPresences { get; private set; }
 
         /// <summary>
         /// SupportedFeatures
         /// </summary>
         /// <value>SupportedFeatures</value>
         [DataMember(Name="supportedFeatures", EmitDefaultValue=false)]
-        public List<long?> SupportedFeatures { get; set; }
+        public List<long?> SupportedFeatures { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -132,21 +130,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class PaymentConnector {\n");
-            sb.Append("  DataCollectionType: ").Append(DataCollectionType).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Feature: ").Append(Feature).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
-            sb.Append("  PaymentMethodBrand: ").Append(PaymentMethodBrand).Append("\n");
-            sb.Append("  PrimaryRiskTaker: ").Append(PrimaryRiskTaker).Append("\n");
-            sb.Append("  Processor: ").Append(Processor).Append("\n");
-            sb.Append("  SupportedCustomersPresences: ").Append(SupportedCustomersPresences).Append("\n");
-            sb.Append("  SupportedFeatures: ").Append(SupportedFeatures).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -247,29 +231,50 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.DataCollectionType != null)
+                {
                     hash = hash * 59 + this.DataCollectionType.GetHashCode();
+                }
                 if (this.Description != null)
+                {
                     hash = hash * 59 + this.Description.GetHashCode();
+                }
                 if (this.Feature != null)
+                {
                     hash = hash * 59 + this.Feature.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
                 if (this.PaymentMethod != null)
+                {
                     hash = hash * 59 + this.PaymentMethod.GetHashCode();
+                }
                 if (this.PaymentMethodBrand != null)
+                {
                     hash = hash * 59 + this.PaymentMethodBrand.GetHashCode();
+                }
                 if (this.PrimaryRiskTaker != null)
+                {
                     hash = hash * 59 + this.PrimaryRiskTaker.GetHashCode();
+                }
                 if (this.Processor != null)
+                {
                     hash = hash * 59 + this.Processor.GetHashCode();
+                }
                 if (this.SupportedCustomersPresences != null)
+                {
                     hash = hash * 59 + this.SupportedCustomersPresences.GetHashCode();
+                }
                 if (this.SupportedFeatures != null)
+                {
                     hash = hash * 59 + this.SupportedFeatures.GetHashCode();
+                }
                 return hash;
             }
         }

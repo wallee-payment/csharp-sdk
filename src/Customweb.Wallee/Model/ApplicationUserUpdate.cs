@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,32 +33,45 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// ApplicationUserUpdate model.
+    /// Application User
     /// </summary>
     [DataContract]
-    public partial class ApplicationUserUpdate :  IEquatable<ApplicationUserUpdate>
+    public partial class ApplicationUserUpdate : AbstractApplicationUserUpdate,  IEquatable<ApplicationUserUpdate>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationUserUpdate" /> class.
         /// </summary>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
-        /// <param name="Scope">The scope to which the user belongs to.</param>
-        /// <param name="State">State</param>
-        /// <param name="UserType">UserType</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        /// <param name="Name">The user name is used to identify the application user in administrative interfaces.</param>
-        /// <param name="PrimaryAccount">The account that this user is associated with. The account owner will be able to manage this user.</param>
-        public ApplicationUserUpdate(long? Id = default(long?), DateTime? PlannedPurgeDate = default(DateTime?), Scope Scope = default(Scope), CreationEntityState State = default(CreationEntityState), UserType UserType = default(UserType), long? Version = default(long?), string Name = default(string), Account PrimaryAccount = default(Account))
+        [JsonConstructorAttribute]
+        protected ApplicationUserUpdate() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApplicationUserUpdate" /> class.
+        /// </summary>
+        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
+        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
+        public ApplicationUserUpdate(CreationEntityState? State = default(CreationEntityState?), string Name = default(string), long? Version = default(long?), long? Id = default(long?))
         {
-            this.Id = Id;
-            this.PlannedPurgeDate = PlannedPurgeDate;
-            this.Scope = Scope;
-            this.State = State;
-            this.UserType = UserType;
-            this.Version = Version;
+            // to ensure "Id" is required (not null)
+            if (Id == null)
+            {
+                throw new ArgumentNullException("Id is a required property for ApplicationUserUpdate and cannot be null");
+            }
+            else
+            {
+                this.Id = Id;
+            }
+            // to ensure "Version" is required (not null)
+            if (Version == null)
+            {
+                throw new ArgumentNullException("Version is a required property for ApplicationUserUpdate and cannot be null");
+            }
+            else
+            {
+                this.Version = Version;
+            }
             this.Name = Name;
-            this.PrimaryAccount = PrimaryAccount;
+            this.State = State;
         }
 
         /// <summary>
@@ -51,34 +82,6 @@ namespace Customweb.Wallee.Model
         public long? Id { get; set; }
 
         /// <summary>
-        /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
-        /// </summary>
-        /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
-
-        /// <summary>
-        /// The scope to which the user belongs to.
-        /// </summary>
-        /// <value>The scope to which the user belongs to.</value>
-        [DataMember(Name="scope", EmitDefaultValue=false)]
-        public Scope Scope { get; set; }
-
-        /// <summary>
-        /// State
-        /// </summary>
-        /// <value>State</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState State { get; set; }
-
-        /// <summary>
-        /// UserType
-        /// </summary>
-        /// <value>UserType</value>
-        [DataMember(Name="userType", EmitDefaultValue=false)]
-        public UserType UserType { get; set; }
-
-        /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
@@ -86,44 +89,19 @@ namespace Customweb.Wallee.Model
         public long? Version { get; set; }
 
         /// <summary>
-        /// The user name is used to identify the application user in administrative interfaces.
-        /// </summary>
-        /// <value>The user name is used to identify the application user in administrative interfaces.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
-
-        /// <summary>
-        /// The account that this user is associated with. The account owner will be able to manage this user.
-        /// </summary>
-        /// <value>The account that this user is associated with. The account owner will be able to manage this user.</value>
-        [DataMember(Name="primaryAccount", EmitDefaultValue=false)]
-        public Account PrimaryAccount { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class ApplicationUserUpdate {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  Scope: ").Append(Scope).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  UserType: ").Append(UserType).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  PrimaryAccount: ").Append(PrimaryAccount).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public new string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -157,26 +135,6 @@ namespace Customweb.Wallee.Model
                     this.Id.Equals(other.Id)
                 ) && 
                 (
-                    this.PlannedPurgeDate == other.PlannedPurgeDate ||
-                    this.PlannedPurgeDate != null &&
-                    this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
-                ) && 
-                (
-                    this.Scope == other.Scope ||
-                    this.Scope != null &&
-                    this.Scope.Equals(other.Scope)
-                ) && 
-                (
-                    this.State == other.State ||
-                    this.State != null &&
-                    this.State.Equals(other.State)
-                ) && 
-                (
-                    this.UserType == other.UserType ||
-                    this.UserType != null &&
-                    this.UserType.Equals(other.UserType)
-                ) && 
-                (
                     this.Version == other.Version ||
                     this.Version != null &&
                     this.Version.Equals(other.Version)
@@ -187,9 +145,9 @@ namespace Customweb.Wallee.Model
                     this.Name.Equals(other.Name)
                 ) && 
                 (
-                    this.PrimaryAccount == other.PrimaryAccount ||
-                    this.PrimaryAccount != null &&
-                    this.PrimaryAccount.Equals(other.PrimaryAccount)
+                    this.State == other.State ||
+                    this.State != null &&
+                    this.State.Equals(other.State)
                 );
         }
 
@@ -202,23 +160,22 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
-                if (this.PlannedPurgeDate != null)
-                    hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.Scope != null)
-                    hash = hash * 59 + this.Scope.GetHashCode();
-                if (this.State != null)
-                    hash = hash * 59 + this.State.GetHashCode();
-                if (this.UserType != null)
-                    hash = hash * 59 + this.UserType.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
-                if (this.PrimaryAccount != null)
-                    hash = hash * 59 + this.PrimaryAccount.GetHashCode();
+                }
+                if (this.State != null)
+                {
+                    hash = hash * 59 + this.State.GetHashCode();
+                }
                 return hash;
             }
         }

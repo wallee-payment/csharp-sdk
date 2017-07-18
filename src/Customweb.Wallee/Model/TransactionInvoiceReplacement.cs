@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,24 +33,47 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// TransactionInvoiceReplacement model.
+    /// Transaction Invoice Replacement
     /// </summary>
     [DataContract]
     public partial class TransactionInvoiceReplacement :  IEquatable<TransactionInvoiceReplacement>
     {
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransactionInvoiceReplacement" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        protected TransactionInvoiceReplacement() { }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionInvoiceReplacement" /> class.
         /// </summary>
         /// <param name="DueOn">The date on which the invoice should be paid on.</param>
-        /// <param name="ExternalId">ExternalId</param>
-        /// <param name="LineItems">LineItems</param>
+        /// <param name="ExternalId">ExternalId (required)</param>
+        /// <param name="LineItems">LineItems (required)</param>
         /// <param name="MerchantReference">MerchantReference</param>
         /// <param name="SentToCustomer">When the connector is configured to send the invoice to the customer and this property is true the customer will receive an email with the updated invoice. When this property is false no invoice is sent.</param>
-        public TransactionInvoiceReplacement(DateTime? DueOn = default(DateTime?), string ExternalId = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), string MerchantReference = default(string), bool? SentToCustomer = default(bool?))
+        public TransactionInvoiceReplacement(List<LineItemCreate> LineItems = default(List<LineItemCreate>), bool? SentToCustomer = default(bool?), string ExternalId = default(string), string MerchantReference = default(string), DateTime? DueOn = default(DateTime?))
         {
+            // to ensure "ExternalId" is required (not null)
+            if (ExternalId == null)
+            {
+                throw new ArgumentNullException("ExternalId is a required property for TransactionInvoiceReplacement and cannot be null");
+            }
+            else
+            {
+                this.ExternalId = ExternalId;
+            }
+            // to ensure "LineItems" is required (not null)
+            if (LineItems == null)
+            {
+                throw new ArgumentNullException("LineItems is a required property for TransactionInvoiceReplacement and cannot be null");
+            }
+            else
+            {
+                this.LineItems = LineItems;
+            }
             this.DueOn = DueOn;
-            this.ExternalId = ExternalId;
-            this.LineItems = LineItems;
             this.MerchantReference = MerchantReference;
             this.SentToCustomer = SentToCustomer;
         }
@@ -78,15 +119,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class TransactionInvoiceReplacement {\n");
-            sb.Append("  DueOn: ").Append(DueOn).Append("\n");
-            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
-            sb.Append("  LineItems: ").Append(LineItems).Append("\n");
-            sb.Append("  MerchantReference: ").Append(MerchantReference).Append("\n");
-            sb.Append("  SentToCustomer: ").Append(SentToCustomer).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -157,17 +190,26 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.DueOn != null)
+                {
                     hash = hash * 59 + this.DueOn.GetHashCode();
+                }
                 if (this.ExternalId != null)
+                {
                     hash = hash * 59 + this.ExternalId.GetHashCode();
+                }
                 if (this.LineItems != null)
+                {
                     hash = hash * 59 + this.LineItems.GetHashCode();
+                }
                 if (this.MerchantReference != null)
+                {
                     hash = hash * 59 + this.MerchantReference.GetHashCode();
+                }
                 if (this.SentToCustomer != null)
+                {
                     hash = hash * 59 + this.SentToCustomer.GetHashCode();
+                }
                 return hash;
             }
         }

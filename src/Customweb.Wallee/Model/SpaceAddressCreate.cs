@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,13 +33,14 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// SpaceAddressSetter model.
+    /// Space Address
     /// </summary>
     [DataContract]
-    public partial class SpaceAddressSetter :  IEquatable<SpaceAddressSetter>
+    public partial class SpaceAddressCreate :  IEquatable<SpaceAddressCreate>
     {
+
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpaceAddressSetter" /> class.
+        /// Initializes a new instance of the <see cref="SpaceAddressCreate" /> class.
         /// </summary>
         /// <param name="City">City</param>
         /// <param name="Country">Country</param>
@@ -36,7 +55,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Salutation">Salutation</param>
         /// <param name="SortingCode">The sorting code identifies the post office at which the post box is located in.</param>
         /// <param name="Street">Street</param>
-        public SpaceAddressSetter(string City = default(string), string Country = default(string), string DependentLocality = default(string), string EmailAddress = default(string), string FamilyName = default(string), string GivenName = default(string), string OrganizationName = default(string), string PostCode = default(string), string PostalState = default(string), string SalesTaxNumber = default(string), string Salutation = default(string), string SortingCode = default(string), string Street = default(string))
+        public SpaceAddressCreate(string FamilyName = default(string), string PostalState = default(string), string GivenName = default(string), string Salutation = default(string), string City = default(string), string SalesTaxNumber = default(string), string DependentLocality = default(string), string PostCode = default(string), string SortingCode = default(string), string Country = default(string), string EmailAddress = default(string), string Street = default(string), string OrganizationName = default(string))
         {
             this.City = City;
             this.Country = Country;
@@ -150,23 +169,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class SpaceAddressSetter {\n");
-            sb.Append("  City: ").Append(City).Append("\n");
-            sb.Append("  Country: ").Append(Country).Append("\n");
-            sb.Append("  DependentLocality: ").Append(DependentLocality).Append("\n");
-            sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
-            sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");
-            sb.Append("  GivenName: ").Append(GivenName).Append("\n");
-            sb.Append("  OrganizationName: ").Append(OrganizationName).Append("\n");
-            sb.Append("  PostCode: ").Append(PostCode).Append("\n");
-            sb.Append("  PostalState: ").Append(PostalState).Append("\n");
-            sb.Append("  SalesTaxNumber: ").Append(SalesTaxNumber).Append("\n");
-            sb.Append("  Salutation: ").Append(Salutation).Append("\n");
-            sb.Append("  SortingCode: ").Append(SortingCode).Append("\n");
-            sb.Append("  Street: ").Append(Street).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -185,15 +188,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as SpaceAddressSetter);
+            return this.Equals(obj as SpaceAddressCreate);
         }
 
         /// <summary>
-        /// Returns true if SpaceAddressSetter instances are equal
+        /// Returns true if SpaceAddressCreate instances are equal
         /// </summary>
-        /// <param name="other">Instance of SpaceAddressSetter to be compared</param>
+        /// <param name="other">Instance of SpaceAddressCreate to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SpaceAddressSetter other)
+        public bool Equals(SpaceAddressCreate other)
         {
             if (other == null)
             {
@@ -277,33 +280,58 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.City != null)
+                {
                     hash = hash * 59 + this.City.GetHashCode();
+                }
                 if (this.Country != null)
+                {
                     hash = hash * 59 + this.Country.GetHashCode();
+                }
                 if (this.DependentLocality != null)
+                {
                     hash = hash * 59 + this.DependentLocality.GetHashCode();
+                }
                 if (this.EmailAddress != null)
+                {
                     hash = hash * 59 + this.EmailAddress.GetHashCode();
+                }
                 if (this.FamilyName != null)
+                {
                     hash = hash * 59 + this.FamilyName.GetHashCode();
+                }
                 if (this.GivenName != null)
+                {
                     hash = hash * 59 + this.GivenName.GetHashCode();
+                }
                 if (this.OrganizationName != null)
+                {
                     hash = hash * 59 + this.OrganizationName.GetHashCode();
+                }
                 if (this.PostCode != null)
+                {
                     hash = hash * 59 + this.PostCode.GetHashCode();
+                }
                 if (this.PostalState != null)
+                {
                     hash = hash * 59 + this.PostalState.GetHashCode();
+                }
                 if (this.SalesTaxNumber != null)
+                {
                     hash = hash * 59 + this.SalesTaxNumber.GetHashCode();
+                }
                 if (this.Salutation != null)
+                {
                     hash = hash * 59 + this.Salutation.GetHashCode();
+                }
                 if (this.SortingCode != null)
+                {
                     hash = hash * 59 + this.SortingCode.GetHashCode();
+                }
                 if (this.Street != null)
+                {
                     hash = hash * 59 + this.Street.GetHashCode();
+                }
                 return hash;
             }
         }

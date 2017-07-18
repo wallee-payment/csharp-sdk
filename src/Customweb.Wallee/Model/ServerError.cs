@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -20,17 +38,13 @@ namespace Customweb.Wallee.Model
     [DataContract]
     public partial class ServerError :  IEquatable<ServerError>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ServerError" /> class.
         /// </summary>
-        /// <param name="Date">Date when an error has occurred.</param>
-        /// <param name="Id">Unique identifier of an error.</param>
-        /// <param name="Message">This message describes an error.</param>
-        public ServerError(string Date = default(string), string Id = default(string), string Message = default(string))
+        [JsonConstructorAttribute]
+        public ServerError()
         {
-            this.Date = Date;
-            this.Id = Id;
-            this.Message = Message;
         }
 
         /// <summary>
@@ -38,21 +52,21 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Date when an error has occurred.</value>
         [DataMember(Name="date", EmitDefaultValue=false)]
-        public string Date { get; set; }
+        public string Date { get; private set; }
 
         /// <summary>
         /// Unique identifier of an error.
         /// </summary>
         /// <value>Unique identifier of an error.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public string Id { get; set; }
+        public string Id { get; private set; }
 
         /// <summary>
         /// This message describes an error.
         /// </summary>
         /// <value>This message describes an error.</value>
         [DataMember(Name="message", EmitDefaultValue=false)]
-        public string Message { get; set; }
+        public string Message { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,13 +74,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class ServerError {\n");
-            sb.Append("  Date: ").Append(Date).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -127,13 +135,18 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Date != null)
+                {
                     hash = hash * 59 + this.Date.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.Message != null)
+                {
                     hash = hash * 59 + this.Message.GetHashCode();
+                }
                 return hash;
             }
         }

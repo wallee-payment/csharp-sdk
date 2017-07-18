@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,20 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Tax model.
+    /// Tax
     /// </summary>
     [DataContract]
     public partial class Tax :  IEquatable<Tax>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Tax" /> class.
         /// </summary>
-        /// <param name="Rate">Rate</param>
-        /// <param name="Title">Title</param>
-        public Tax(decimal? Rate = default(decimal?), string Title = default(string))
+        [JsonConstructorAttribute]
+        public Tax()
         {
-            this.Rate = Rate;
-            this.Title = Title;
         }
 
         /// <summary>
@@ -36,14 +52,14 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Rate</value>
         [DataMember(Name="rate", EmitDefaultValue=false)]
-        public decimal? Rate { get; set; }
+        public decimal? Rate { get; private set; }
 
         /// <summary>
         /// Title
         /// </summary>
         /// <value>Title</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
-        public string Title { get; set; }
+        public string Title { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -51,12 +67,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class Tax {\n");
-            sb.Append("  Rate: ").Append(Rate).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -112,11 +123,14 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Rate != null)
+                {
                     hash = hash * 59 + this.Rate.GetHashCode();
+                }
                 if (this.Title != null)
+                {
                     hash = hash * 59 + this.Title.GetHashCode();
+                }
                 return hash;
             }
         }

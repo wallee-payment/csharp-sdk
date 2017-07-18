@@ -4,8 +4,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Wallee SDK for C#")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("wallee SDK")]
+[assembly: AssemblyDescription("wallee SDK for C#")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("customweb GmbH")]
 [assembly: AssemblyProduct("wallee")]

@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -20,43 +38,13 @@ namespace Customweb.Wallee.Model
     [DataContract]
     public partial class SubscriptionLedgerEntry :  IEquatable<SubscriptionLedgerEntry>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionLedgerEntry" /> class.
         /// </summary>
-        /// <param name="AggregatedTaxRate">AggregatedTaxRate</param>
-        /// <param name="AmountExcludingTax">AmountExcludingTax</param>
-        /// <param name="AmountIncludingTax">AmountIncludingTax</param>
-        /// <param name="CreatedBy">CreatedBy</param>
-        /// <param name="CreatedOn">The created on date indicates the date on which the entity was stored into the database.</param>
-        /// <param name="ExternalId">The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="LinkedSpaceId">The linked space id holds the ID of the space to which the entity belongs to.</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
-        /// <param name="Quantity">Quantity</param>
-        /// <param name="State">State</param>
-        /// <param name="SubscriptionVersion">SubscriptionVersion</param>
-        /// <param name="TaxAmount">TaxAmount</param>
-        /// <param name="Taxes">Taxes</param>
-        /// <param name="Title">Title</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public SubscriptionLedgerEntry(decimal? AggregatedTaxRate = default(decimal?), decimal? AmountExcludingTax = default(decimal?), decimal? AmountIncludingTax = default(decimal?), long? CreatedBy = default(long?), DateTime? CreatedOn = default(DateTime?), string ExternalId = default(string), long? Id = default(long?), long? LinkedSpaceId = default(long?), DateTime? PlannedPurgeDate = default(DateTime?), decimal? Quantity = default(decimal?), SubscriptionLedgerEntryState State = default(SubscriptionLedgerEntryState), long? SubscriptionVersion = default(long?), decimal? TaxAmount = default(decimal?), List<Tax> Taxes = default(List<Tax>), string Title = default(string), int? Version = default(int?))
+        [JsonConstructorAttribute]
+        public SubscriptionLedgerEntry()
         {
-            this.AggregatedTaxRate = AggregatedTaxRate;
-            this.AmountExcludingTax = AmountExcludingTax;
-            this.AmountIncludingTax = AmountIncludingTax;
-            this.CreatedBy = CreatedBy;
-            this.CreatedOn = CreatedOn;
-            this.ExternalId = ExternalId;
-            this.Id = Id;
-            this.LinkedSpaceId = LinkedSpaceId;
-            this.PlannedPurgeDate = PlannedPurgeDate;
-            this.Quantity = Quantity;
-            this.State = State;
-            this.SubscriptionVersion = SubscriptionVersion;
-            this.TaxAmount = TaxAmount;
-            this.Taxes = Taxes;
-            this.Title = Title;
-            this.Version = Version;
         }
 
         /// <summary>
@@ -64,112 +52,112 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>AggregatedTaxRate</value>
         [DataMember(Name="aggregatedTaxRate", EmitDefaultValue=false)]
-        public decimal? AggregatedTaxRate { get; set; }
+        public decimal? AggregatedTaxRate { get; private set; }
 
         /// <summary>
         /// AmountExcludingTax
         /// </summary>
         /// <value>AmountExcludingTax</value>
         [DataMember(Name="amountExcludingTax", EmitDefaultValue=false)]
-        public decimal? AmountExcludingTax { get; set; }
+        public decimal? AmountExcludingTax { get; private set; }
 
         /// <summary>
         /// AmountIncludingTax
         /// </summary>
         /// <value>AmountIncludingTax</value>
         [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
-        public decimal? AmountIncludingTax { get; set; }
+        public decimal? AmountIncludingTax { get; private set; }
 
         /// <summary>
         /// CreatedBy
         /// </summary>
         /// <value>CreatedBy</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
-        public long? CreatedBy { get; set; }
+        public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
-        public DateTime? CreatedOn { get; set; }
+        public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
         /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
-        public string ExternalId { get; set; }
+        public string ExternalId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
         [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; set; }
+        public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
+        public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Quantity
         /// </summary>
         /// <value>Quantity</value>
         [DataMember(Name="quantity", EmitDefaultValue=false)]
-        public decimal? Quantity { get; set; }
+        public decimal? Quantity { get; private set; }
 
         /// <summary>
         /// State
         /// </summary>
         /// <value>State</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public SubscriptionLedgerEntryState State { get; set; }
+        public SubscriptionLedgerEntryState? State { get; private set; }
 
         /// <summary>
         /// SubscriptionVersion
         /// </summary>
         /// <value>SubscriptionVersion</value>
         [DataMember(Name="subscriptionVersion", EmitDefaultValue=false)]
-        public long? SubscriptionVersion { get; set; }
+        public long? SubscriptionVersion { get; private set; }
 
         /// <summary>
         /// TaxAmount
         /// </summary>
         /// <value>TaxAmount</value>
         [DataMember(Name="taxAmount", EmitDefaultValue=false)]
-        public decimal? TaxAmount { get; set; }
+        public decimal? TaxAmount { get; private set; }
 
         /// <summary>
         /// Taxes
         /// </summary>
         /// <value>Taxes</value>
         [DataMember(Name="taxes", EmitDefaultValue=false)]
-        public List<Tax> Taxes { get; set; }
+        public List<Tax> Taxes { get; private set; }
 
         /// <summary>
         /// Title
         /// </summary>
         /// <value>Title</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
-        public string Title { get; set; }
+        public string Title { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; set; }
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -177,26 +165,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class SubscriptionLedgerEntry {\n");
-            sb.Append("  AggregatedTaxRate: ").Append(AggregatedTaxRate).Append("\n");
-            sb.Append("  AmountExcludingTax: ").Append(AmountExcludingTax).Append("\n");
-            sb.Append("  AmountIncludingTax: ").Append(AmountIncludingTax).Append("\n");
-            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
-            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  Quantity: ").Append(Quantity).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  SubscriptionVersion: ").Append(SubscriptionVersion).Append("\n");
-            sb.Append("  TaxAmount: ").Append(TaxAmount).Append("\n");
-            sb.Append("  Taxes: ").Append(Taxes).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -322,39 +291,70 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.AggregatedTaxRate != null)
+                {
                     hash = hash * 59 + this.AggregatedTaxRate.GetHashCode();
+                }
                 if (this.AmountExcludingTax != null)
+                {
                     hash = hash * 59 + this.AmountExcludingTax.GetHashCode();
+                }
                 if (this.AmountIncludingTax != null)
+                {
                     hash = hash * 59 + this.AmountIncludingTax.GetHashCode();
+                }
                 if (this.CreatedBy != null)
+                {
                     hash = hash * 59 + this.CreatedBy.GetHashCode();
+                }
                 if (this.CreatedOn != null)
+                {
                     hash = hash * 59 + this.CreatedOn.GetHashCode();
+                }
                 if (this.ExternalId != null)
+                {
                     hash = hash * 59 + this.ExternalId.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.LinkedSpaceId != null)
+                {
                     hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
+                }
                 if (this.PlannedPurgeDate != null)
+                {
                     hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
+                }
                 if (this.Quantity != null)
+                {
                     hash = hash * 59 + this.Quantity.GetHashCode();
+                }
                 if (this.State != null)
+                {
                     hash = hash * 59 + this.State.GetHashCode();
+                }
                 if (this.SubscriptionVersion != null)
+                {
                     hash = hash * 59 + this.SubscriptionVersion.GetHashCode();
+                }
                 if (this.TaxAmount != null)
+                {
                     hash = hash * 59 + this.TaxAmount.GetHashCode();
+                }
                 if (this.Taxes != null)
+                {
                     hash = hash * 59 + this.Taxes.GetHashCode();
+                }
                 if (this.Title != null)
+                {
                     hash = hash * 59 + this.Title.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
                 return hash;
             }
         }

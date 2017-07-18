@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,38 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Account model.
+    /// Account
     /// </summary>
     [DataContract]
     public partial class Account :  IEquatable<Account>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Account" /> class.
         /// </summary>
-        /// <param name="Active">Active means that this account and all accounts in the hierarchy are active.</param>
-        /// <param name="ActiveOrRestrictedActive">This property is true when all accounts in the hierarchy are active or restricted active.</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="Name">The name of the account identifies the account within the administrative interface.</param>
-        /// <param name="ParentAccount">The account which is responsible for administering the account.</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
-        /// <param name="RestrictedActive">Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.</param>
-        /// <param name="State">State</param>
-        /// <param name="SubaccountLimit">This property restricts the number of subaccounts which can be created within this account.</param>
-        /// <param name="Type">The account type defines which role and capabilities it has.</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public Account(bool? Active = default(bool?), bool? ActiveOrRestrictedActive = default(bool?), long? Id = default(long?), string Name = default(string), Account ParentAccount = default(Account), DateTime? PlannedPurgeDate = default(DateTime?), bool? RestrictedActive = default(bool?), AccountState State = default(AccountState), long? SubaccountLimit = default(long?), AccountType Type = default(AccountType), int? Version = default(int?))
+        [JsonConstructorAttribute]
+        public Account()
         {
-            this.Active = Active;
-            this.ActiveOrRestrictedActive = ActiveOrRestrictedActive;
-            this.Id = Id;
-            this.Name = Name;
-            this.ParentAccount = ParentAccount;
-            this.PlannedPurgeDate = PlannedPurgeDate;
-            this.RestrictedActive = RestrictedActive;
-            this.State = State;
-            this.SubaccountLimit = SubaccountLimit;
-            this.Type = Type;
-            this.Version = Version;
         }
 
         /// <summary>
@@ -54,77 +52,77 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Active means that this account and all accounts in the hierarchy are active.</value>
         [DataMember(Name="active", EmitDefaultValue=false)]
-        public bool? Active { get; set; }
+        public bool? Active { get; private set; }
 
         /// <summary>
         /// This property is true when all accounts in the hierarchy are active or restricted active.
         /// </summary>
         /// <value>This property is true when all accounts in the hierarchy are active or restricted active.</value>
         [DataMember(Name="activeOrRestrictedActive", EmitDefaultValue=false)]
-        public bool? ActiveOrRestrictedActive { get; set; }
+        public bool? ActiveOrRestrictedActive { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// The name of the account identifies the account within the administrative interface.
         /// </summary>
         /// <value>The name of the account identifies the account within the administrative interface.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// The account which is responsible for administering the account.
         /// </summary>
         /// <value>The account which is responsible for administering the account.</value>
         [DataMember(Name="parentAccount", EmitDefaultValue=false)]
-        public Account ParentAccount { get; set; }
+        public Account ParentAccount { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
+        public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.
         /// </summary>
         /// <value>Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.</value>
         [DataMember(Name="restrictedActive", EmitDefaultValue=false)]
-        public bool? RestrictedActive { get; set; }
+        public bool? RestrictedActive { get; private set; }
 
         /// <summary>
         /// State
         /// </summary>
         /// <value>State</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public AccountState State { get; set; }
+        public AccountState? State { get; private set; }
 
         /// <summary>
         /// This property restricts the number of subaccounts which can be created within this account.
         /// </summary>
         /// <value>This property restricts the number of subaccounts which can be created within this account.</value>
         [DataMember(Name="subaccountLimit", EmitDefaultValue=false)]
-        public long? SubaccountLimit { get; set; }
+        public long? SubaccountLimit { get; private set; }
 
         /// <summary>
         /// The account type defines which role and capabilities it has.
         /// </summary>
         /// <value>The account type defines which role and capabilities it has.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public AccountType Type { get; set; }
+        public AccountType? Type { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; set; }
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -132,21 +130,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class Account {\n");
-            sb.Append("  Active: ").Append(Active).Append("\n");
-            sb.Append("  ActiveOrRestrictedActive: ").Append(ActiveOrRestrictedActive).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  ParentAccount: ").Append(ParentAccount).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  RestrictedActive: ").Append(RestrictedActive).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  SubaccountLimit: ").Append(SubaccountLimit).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -247,29 +231,50 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Active != null)
+                {
                     hash = hash * 59 + this.Active.GetHashCode();
+                }
                 if (this.ActiveOrRestrictedActive != null)
+                {
                     hash = hash * 59 + this.ActiveOrRestrictedActive.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
                 if (this.ParentAccount != null)
+                {
                     hash = hash * 59 + this.ParentAccount.GetHashCode();
+                }
                 if (this.PlannedPurgeDate != null)
+                {
                     hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
+                }
                 if (this.RestrictedActive != null)
+                {
                     hash = hash * 59 + this.RestrictedActive.GetHashCode();
+                }
                 if (this.State != null)
+                {
                     hash = hash * 59 + this.State.GetHashCode();
+                }
                 if (this.SubaccountLimit != null)
+                {
                     hash = hash * 59 + this.SubaccountLimit.GetHashCode();
+                }
                 if (this.Type != null)
+                {
                     hash = hash * 59 + this.Type.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
                 return hash;
             }
         }

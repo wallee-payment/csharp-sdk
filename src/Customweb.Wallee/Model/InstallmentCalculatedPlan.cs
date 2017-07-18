@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,26 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// InstallmentCalculatedPlan model.
+    /// Installment Calculated Plan
     /// </summary>
     [DataContract]
     public partial class InstallmentCalculatedPlan :  IEquatable<InstallmentCalculatedPlan>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="InstallmentCalculatedPlan" /> class.
         /// </summary>
-        /// <param name="Configuration">Configuration</param>
-        /// <param name="PaymentMethodConfigurations">PaymentMethodConfigurations</param>
-        /// <param name="Slices">Slices</param>
-        /// <param name="TotalAmount">TotalAmount</param>
-        /// <param name="Transaction">Transaction</param>
-        public InstallmentCalculatedPlan(InstallmentPlanConfiguration Configuration = default(InstallmentPlanConfiguration), List<PaymentMethodConfiguration> PaymentMethodConfigurations = default(List<PaymentMethodConfiguration>), List<InstallmentCalculatedSlice> Slices = default(List<InstallmentCalculatedSlice>), decimal? TotalAmount = default(decimal?), Transaction Transaction = default(Transaction))
+        [JsonConstructorAttribute]
+        public InstallmentCalculatedPlan()
         {
-            this.Configuration = Configuration;
-            this.PaymentMethodConfigurations = PaymentMethodConfigurations;
-            this.Slices = Slices;
-            this.TotalAmount = TotalAmount;
-            this.Transaction = Transaction;
         }
 
         /// <summary>
@@ -42,35 +52,35 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Configuration</value>
         [DataMember(Name="configuration", EmitDefaultValue=false)]
-        public InstallmentPlanConfiguration Configuration { get; set; }
+        public InstallmentPlanConfiguration Configuration { get; private set; }
 
         /// <summary>
         /// PaymentMethodConfigurations
         /// </summary>
         /// <value>PaymentMethodConfigurations</value>
         [DataMember(Name="paymentMethodConfigurations", EmitDefaultValue=false)]
-        public List<PaymentMethodConfiguration> PaymentMethodConfigurations { get; set; }
+        public List<PaymentMethodConfiguration> PaymentMethodConfigurations { get; private set; }
 
         /// <summary>
         /// Slices
         /// </summary>
         /// <value>Slices</value>
         [DataMember(Name="slices", EmitDefaultValue=false)]
-        public List<InstallmentCalculatedSlice> Slices { get; set; }
+        public List<InstallmentCalculatedSlice> Slices { get; private set; }
 
         /// <summary>
         /// TotalAmount
         /// </summary>
         /// <value>TotalAmount</value>
         [DataMember(Name="totalAmount", EmitDefaultValue=false)]
-        public decimal? TotalAmount { get; set; }
+        public decimal? TotalAmount { get; private set; }
 
         /// <summary>
         /// Transaction
         /// </summary>
         /// <value>Transaction</value>
         [DataMember(Name="transaction", EmitDefaultValue=false)]
-        public Transaction Transaction { get; set; }
+        public Transaction Transaction { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,15 +88,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class InstallmentCalculatedPlan {\n");
-            sb.Append("  Configuration: ").Append(Configuration).Append("\n");
-            sb.Append("  PaymentMethodConfigurations: ").Append(PaymentMethodConfigurations).Append("\n");
-            sb.Append("  Slices: ").Append(Slices).Append("\n");
-            sb.Append("  TotalAmount: ").Append(TotalAmount).Append("\n");
-            sb.Append("  Transaction: ").Append(Transaction).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -157,17 +159,26 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Configuration != null)
+                {
                     hash = hash * 59 + this.Configuration.GetHashCode();
+                }
                 if (this.PaymentMethodConfigurations != null)
+                {
                     hash = hash * 59 + this.PaymentMethodConfigurations.GetHashCode();
+                }
                 if (this.Slices != null)
+                {
                     hash = hash * 59 + this.Slices.GetHashCode();
+                }
                 if (this.TotalAmount != null)
+                {
                     hash = hash * 59 + this.TotalAmount.GetHashCode();
+                }
                 if (this.Transaction != null)
+                {
                     hash = hash * 59 + this.Transaction.GetHashCode();
+                }
                 return hash;
             }
         }

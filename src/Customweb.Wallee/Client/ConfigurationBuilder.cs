@@ -1,3 +1,22 @@
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 
 namespace Customweb.Wallee.Client
@@ -8,7 +27,7 @@ namespace Customweb.Wallee.Client
         {
         }
 
-        private string _basePath = "https://app-wallee.com:443/api";
+        private string _basePath = "https://staging-wallee.com:443/api";
 
         /// <summary>
         /// Sets the base API path.
@@ -86,6 +105,19 @@ namespace Customweb.Wallee.Client
             return this;
         }
 
+        private ExceptionFactory _exceptionFactory;
+
+        /// <summary>
+        /// Sets the factory of exceptions.
+        /// </summary>
+        /// <returns>The configuration builder object.</returns>
+        /// <param name="exceptionFactory">Exception factory.</param>
+        public ConfigurationBuilder ExceptionFactory(ExceptionFactory exceptionFactory)
+        {
+            _exceptionFactory = exceptionFactory;
+            return this;
+        }
+
         public Configuration Build()
         {
             return new Configuration(_basePath,
@@ -93,7 +125,8 @@ namespace Customweb.Wallee.Client
                                     _authenticationKey,
                                     _tempFolderPath,
                                     _timeout,
-                                    _userAgent);
+                                    _userAgent,
+                                    _exceptionFactory);
         }
     }
 }

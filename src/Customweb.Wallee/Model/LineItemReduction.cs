@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,22 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// LineItemReduction model.
+    /// Line Item Reduction
     /// </summary>
     [DataContract]
     public partial class LineItemReduction :  IEquatable<LineItemReduction>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LineItemReduction" /> class.
         /// </summary>
-        /// <param name="LineItemUniqueId">The unique id identifies the line item on which the reduction is applied on.</param>
-        /// <param name="QuantityReduction">QuantityReduction</param>
-        /// <param name="UnitPriceReduction">UnitPriceReduction</param>
-        public LineItemReduction(string LineItemUniqueId = default(string), decimal? QuantityReduction = default(decimal?), decimal? UnitPriceReduction = default(decimal?))
+        [JsonConstructorAttribute]
+        public LineItemReduction()
         {
-            this.LineItemUniqueId = LineItemUniqueId;
-            this.QuantityReduction = QuantityReduction;
-            this.UnitPriceReduction = UnitPriceReduction;
         }
 
         /// <summary>
@@ -38,21 +52,21 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The unique id identifies the line item on which the reduction is applied on.</value>
         [DataMember(Name="lineItemUniqueId", EmitDefaultValue=false)]
-        public string LineItemUniqueId { get; set; }
+        public string LineItemUniqueId { get; private set; }
 
         /// <summary>
         /// QuantityReduction
         /// </summary>
         /// <value>QuantityReduction</value>
         [DataMember(Name="quantityReduction", EmitDefaultValue=false)]
-        public decimal? QuantityReduction { get; set; }
+        public decimal? QuantityReduction { get; private set; }
 
         /// <summary>
         /// UnitPriceReduction
         /// </summary>
         /// <value>UnitPriceReduction</value>
         [DataMember(Name="unitPriceReduction", EmitDefaultValue=false)]
-        public decimal? UnitPriceReduction { get; set; }
+        public decimal? UnitPriceReduction { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,13 +74,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class LineItemReduction {\n");
-            sb.Append("  LineItemUniqueId: ").Append(LineItemUniqueId).Append("\n");
-            sb.Append("  QuantityReduction: ").Append(QuantityReduction).Append("\n");
-            sb.Append("  UnitPriceReduction: ").Append(UnitPriceReduction).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -127,13 +135,18 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.LineItemUniqueId != null)
+                {
                     hash = hash * 59 + this.LineItemUniqueId.GetHashCode();
+                }
                 if (this.QuantityReduction != null)
+                {
                     hash = hash * 59 + this.QuantityReduction.GetHashCode();
+                }
                 if (this.UnitPriceReduction != null)
+                {
                     hash = hash * 59 + this.UnitPriceReduction.GetHashCode();
+                }
                 return hash;
             }
         }

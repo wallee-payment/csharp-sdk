@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,32 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Feature model.
+    /// Feature
     /// </summary>
     [DataContract]
     public partial class Feature :  IEquatable<Feature>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Feature" /> class.
         /// </summary>
-        /// <param name="Beta">Beta</param>
-        /// <param name="Description">Description</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="LogoPath">LogoPath</param>
-        /// <param name="Name">Name</param>
-        /// <param name="RequiredFeatures">RequiredFeatures</param>
-        /// <param name="SortOrder">SortOrder</param>
-        /// <param name="Visible">Visible</param>
-        public Feature(bool? Beta = default(bool?), Dictionary<string, string> Description = default(Dictionary<string, string>), long? Id = default(long?), string LogoPath = default(string), Dictionary<string, string> Name = default(Dictionary<string, string>), List<long?> RequiredFeatures = default(List<long?>), int? SortOrder = default(int?), bool? Visible = default(bool?))
+        [JsonConstructorAttribute]
+        public Feature()
         {
-            this.Beta = Beta;
-            this.Description = Description;
-            this.Id = Id;
-            this.LogoPath = LogoPath;
-            this.Name = Name;
-            this.RequiredFeatures = RequiredFeatures;
-            this.SortOrder = SortOrder;
-            this.Visible = Visible;
         }
 
         /// <summary>
@@ -48,56 +52,56 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Beta</value>
         [DataMember(Name="beta", EmitDefaultValue=false)]
-        public bool? Beta { get; set; }
+        public bool? Beta { get; private set; }
 
         /// <summary>
         /// Description
         /// </summary>
         /// <value>Description</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; set; }
+        public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// LogoPath
         /// </summary>
         /// <value>LogoPath</value>
         [DataMember(Name="logoPath", EmitDefaultValue=false)]
-        public string LogoPath { get; set; }
+        public string LogoPath { get; private set; }
 
         /// <summary>
         /// Name
         /// </summary>
         /// <value>Name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; set; }
+        public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// RequiredFeatures
         /// </summary>
         /// <value>RequiredFeatures</value>
         [DataMember(Name="requiredFeatures", EmitDefaultValue=false)]
-        public List<long?> RequiredFeatures { get; set; }
+        public List<long?> RequiredFeatures { get; private set; }
 
         /// <summary>
         /// SortOrder
         /// </summary>
         /// <value>SortOrder</value>
         [DataMember(Name="sortOrder", EmitDefaultValue=false)]
-        public int? SortOrder { get; set; }
+        public int? SortOrder { get; private set; }
 
         /// <summary>
         /// Visible
         /// </summary>
         /// <value>Visible</value>
         [DataMember(Name="visible", EmitDefaultValue=false)]
-        public bool? Visible { get; set; }
+        public bool? Visible { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -105,18 +109,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class Feature {\n");
-            sb.Append("  Beta: ").Append(Beta).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LogoPath: ").Append(LogoPath).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  RequiredFeatures: ").Append(RequiredFeatures).Append("\n");
-            sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
-            sb.Append("  Visible: ").Append(Visible).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -202,23 +195,38 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Beta != null)
+                {
                     hash = hash * 59 + this.Beta.GetHashCode();
+                }
                 if (this.Description != null)
+                {
                     hash = hash * 59 + this.Description.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.LogoPath != null)
+                {
                     hash = hash * 59 + this.LogoPath.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
                 if (this.RequiredFeatures != null)
+                {
                     hash = hash * 59 + this.RequiredFeatures.GetHashCode();
+                }
                 if (this.SortOrder != null)
+                {
                     hash = hash * 59 + this.SortOrder.GetHashCode();
+                }
                 if (this.Visible != null)
+                {
                     hash = hash * 59 + this.Visible.GetHashCode();
+                }
                 return hash;
             }
         }

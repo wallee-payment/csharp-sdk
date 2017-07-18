@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,35 +33,68 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// ProductMeteredFeeUpdate model.
+    /// Product Metered Fee
     /// </summary>
     [DataContract]
     public partial class ProductMeteredFeeUpdate :  IEquatable<ProductMeteredFeeUpdate>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductMeteredFeeUpdate" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected ProductMeteredFeeUpdate() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProductMeteredFeeUpdate" /> class.
+        /// </summary>
+        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
+        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
         /// <param name="Component">Component</param>
         /// <param name="Description">The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="LinkedSpaceId">The linked space id holds the ID of the space to which the entity belongs to.</param>
         /// <param name="Metric">Metric</param>
         /// <param name="Name">The name of the fee should describe for the subscriber in few words for what the fee is for.</param>
         /// <param name="TierPricing">The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.</param>
-        /// <param name="Type">Type</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public ProductMeteredFeeUpdate(long? Component = default(long?), long? Description = default(long?), long? Id = default(long?), long? LinkedSpaceId = default(long?), long? Metric = default(long?), long? Name = default(long?), ProductMeteredTierPricing TierPricing = default(ProductMeteredTierPricing), ProductFeeType Type = default(ProductFeeType), long? Version = default(long?))
+        public ProductMeteredFeeUpdate(ProductMeteredTierPricing? TierPricing = default(ProductMeteredTierPricing?), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), long? Version = default(long?), long? Metric = default(long?), long? Id = default(long?), DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), long? Component = default(long?))
         {
+            // to ensure "Id" is required (not null)
+            if (Id == null)
+            {
+                throw new ArgumentNullException("Id is a required property for ProductMeteredFeeUpdate and cannot be null");
+            }
+            else
+            {
+                this.Id = Id;
+            }
+            // to ensure "Version" is required (not null)
+            if (Version == null)
+            {
+                throw new ArgumentNullException("Version is a required property for ProductMeteredFeeUpdate and cannot be null");
+            }
+            else
+            {
+                this.Version = Version;
+            }
             this.Component = Component;
             this.Description = Description;
-            this.Id = Id;
-            this.LinkedSpaceId = LinkedSpaceId;
             this.Metric = Metric;
             this.Name = Name;
             this.TierPricing = TierPricing;
-            this.Type = Type;
-            this.Version = Version;
         }
+
+        /// <summary>
+        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
+        /// </summary>
+        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; set; }
+
+        /// <summary>
+        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// </summary>
+        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public long? Version { get; set; }
 
         /// <summary>
         /// Component
@@ -57,21 +108,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public long? Description { get; set; }
-
-        /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
-        /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
-
-        /// <summary>
-        /// The linked space id holds the ID of the space to which the entity belongs to.
-        /// </summary>
-        /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; set; }
+        public DatabaseTranslatedStringCreate Description { get; set; }
 
         /// <summary>
         /// Metric
@@ -85,28 +122,14 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The name of the fee should describe for the subscriber in few words for what the fee is for.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public long? Name { get; set; }
+        public DatabaseTranslatedStringCreate Name { get; set; }
 
         /// <summary>
         /// The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.
         /// </summary>
         /// <value>The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.</value>
         [DataMember(Name="tierPricing", EmitDefaultValue=false)]
-        public ProductMeteredTierPricing TierPricing { get; set; }
-
-        /// <summary>
-        /// Type
-        /// </summary>
-        /// <value>Type</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public ProductFeeType Type { get; set; }
-
-        /// <summary>
-        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-        /// </summary>
-        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public long? Version { get; set; }
+        public ProductMeteredTierPricing? TierPricing { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -114,19 +137,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class ProductMeteredFeeUpdate {\n");
-            sb.Append("  Component: ").Append(Component).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  Metric: ").Append(Metric).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  TierPricing: ").Append(TierPricing).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -162,6 +173,16 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
+                ) && 
+                (
+                    this.Version == other.Version ||
+                    this.Version != null &&
+                    this.Version.Equals(other.Version)
+                ) && 
+                (
                     this.Component == other.Component ||
                     this.Component != null &&
                     this.Component.Equals(other.Component)
@@ -170,16 +191,6 @@ namespace Customweb.Wallee.Model
                     this.Description == other.Description ||
                     this.Description != null &&
                     this.Description.Equals(other.Description)
-                ) && 
-                (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
-                ) && 
-                (
-                    this.LinkedSpaceId == other.LinkedSpaceId ||
-                    this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(other.LinkedSpaceId)
                 ) && 
                 (
                     this.Metric == other.Metric ||
@@ -195,16 +206,6 @@ namespace Customweb.Wallee.Model
                     this.TierPricing == other.TierPricing ||
                     this.TierPricing != null &&
                     this.TierPricing.Equals(other.TierPricing)
-                ) && 
-                (
-                    this.Type == other.Type ||
-                    this.Type != null &&
-                    this.Type.Equals(other.Type)
-                ) && 
-                (
-                    this.Version == other.Version ||
-                    this.Version != null &&
-                    this.Version.Equals(other.Version)
                 );
         }
 
@@ -217,25 +218,34 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
-                if (this.Component != null)
-                    hash = hash * 59 + this.Component.GetHashCode();
-                if (this.Description != null)
-                    hash = hash * 59 + this.Description.GetHashCode();
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.Metric != null)
-                    hash = hash * 59 + this.Metric.GetHashCode();
-                if (this.Name != null)
-                    hash = hash * 59 + this.Name.GetHashCode();
-                if (this.TierPricing != null)
-                    hash = hash * 59 + this.TierPricing.GetHashCode();
-                if (this.Type != null)
-                    hash = hash * 59 + this.Type.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
+                if (this.Component != null)
+                {
+                    hash = hash * 59 + this.Component.GetHashCode();
+                }
+                if (this.Description != null)
+                {
+                    hash = hash * 59 + this.Description.GetHashCode();
+                }
+                if (this.Metric != null)
+                {
+                    hash = hash * 59 + this.Metric.GetHashCode();
+                }
+                if (this.Name != null)
+                {
+                    hash = hash * 59 + this.Name.GetHashCode();
+                }
+                if (this.TierPricing != null)
+                {
+                    hash = hash * 59 + this.TierPricing.GetHashCode();
+                }
                 return hash;
             }
         }

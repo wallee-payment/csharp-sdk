@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,26 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Label model.
+    /// Label
     /// </summary>
     [DataContract]
     public partial class Label :  IEquatable<Label>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Label" /> class.
         /// </summary>
-        /// <param name="Content">Content</param>
-        /// <param name="ContentAsString">ContentAsString</param>
-        /// <param name="Descriptor">Descriptor</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public Label(Object Content = default(Object), string ContentAsString = default(string), LabelDescriptor Descriptor = default(LabelDescriptor), long? Id = default(long?), int? Version = default(int?))
+        [JsonConstructorAttribute]
+        public Label()
         {
-            this.Content = Content;
-            this.ContentAsString = ContentAsString;
-            this.Descriptor = Descriptor;
-            this.Id = Id;
-            this.Version = Version;
         }
 
         /// <summary>
@@ -42,35 +52,35 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Content</value>
         [DataMember(Name="content", EmitDefaultValue=false)]
-        public Object Content { get; set; }
+        public Object Content { get; private set; }
 
         /// <summary>
         /// ContentAsString
         /// </summary>
         /// <value>ContentAsString</value>
         [DataMember(Name="contentAsString", EmitDefaultValue=false)]
-        public string ContentAsString { get; set; }
+        public string ContentAsString { get; private set; }
 
         /// <summary>
         /// Descriptor
         /// </summary>
         /// <value>Descriptor</value>
         [DataMember(Name="descriptor", EmitDefaultValue=false)]
-        public LabelDescriptor Descriptor { get; set; }
+        public LabelDescriptor Descriptor { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; set; }
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,15 +88,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class Label {\n");
-            sb.Append("  Content: ").Append(Content).Append("\n");
-            sb.Append("  ContentAsString: ").Append(ContentAsString).Append("\n");
-            sb.Append("  Descriptor: ").Append(Descriptor).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -157,17 +159,26 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Content != null)
+                {
                     hash = hash * 59 + this.Content.GetHashCode();
+                }
                 if (this.ContentAsString != null)
+                {
                     hash = hash * 59 + this.ContentAsString.GetHashCode();
+                }
                 if (this.Descriptor != null)
+                {
                     hash = hash * 59 + this.Descriptor.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
                 return hash;
             }
         }

@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,22 +33,53 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// LineItemReductionCreate model.
+    /// Line Item Reduction . Create
     /// </summary>
     [DataContract]
     public partial class LineItemReductionCreate :  IEquatable<LineItemReductionCreate>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LineItemReductionCreate" /> class.
         /// </summary>
-        /// <param name="LineItemUniqueId">The unique id identifies the line item on which the reduction is applied on.</param>
-        /// <param name="QuantityReduction">QuantityReduction</param>
-        /// <param name="UnitPriceReduction">UnitPriceReduction</param>
-        public LineItemReductionCreate(string LineItemUniqueId = default(string), decimal? QuantityReduction = default(decimal?), decimal? UnitPriceReduction = default(decimal?))
+        [JsonConstructorAttribute]
+        protected LineItemReductionCreate() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LineItemReductionCreate" /> class.
+        /// </summary>
+        /// <param name="LineItemUniqueId">The unique id identifies the line item on which the reduction is applied on. (required)</param>
+        /// <param name="QuantityReduction">QuantityReduction (required)</param>
+        /// <param name="UnitPriceReduction">UnitPriceReduction (required)</param>
+        public LineItemReductionCreate(decimal? UnitPriceReduction = default(decimal?), decimal? QuantityReduction = default(decimal?), string LineItemUniqueId = default(string))
         {
-            this.LineItemUniqueId = LineItemUniqueId;
-            this.QuantityReduction = QuantityReduction;
-            this.UnitPriceReduction = UnitPriceReduction;
+            // to ensure "LineItemUniqueId" is required (not null)
+            if (LineItemUniqueId == null)
+            {
+                throw new ArgumentNullException("LineItemUniqueId is a required property for LineItemReductionCreate and cannot be null");
+            }
+            else
+            {
+                this.LineItemUniqueId = LineItemUniqueId;
+            }
+            // to ensure "QuantityReduction" is required (not null)
+            if (QuantityReduction == null)
+            {
+                throw new ArgumentNullException("QuantityReduction is a required property for LineItemReductionCreate and cannot be null");
+            }
+            else
+            {
+                this.QuantityReduction = QuantityReduction;
+            }
+            // to ensure "UnitPriceReduction" is required (not null)
+            if (UnitPriceReduction == null)
+            {
+                throw new ArgumentNullException("UnitPriceReduction is a required property for LineItemReductionCreate and cannot be null");
+            }
+            else
+            {
+                this.UnitPriceReduction = UnitPriceReduction;
+            }
         }
 
         /// <summary>
@@ -60,13 +109,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class LineItemReductionCreate {\n");
-            sb.Append("  LineItemUniqueId: ").Append(LineItemUniqueId).Append("\n");
-            sb.Append("  QuantityReduction: ").Append(QuantityReduction).Append("\n");
-            sb.Append("  UnitPriceReduction: ").Append(UnitPriceReduction).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -127,13 +170,18 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.LineItemUniqueId != null)
+                {
                     hash = hash * 59 + this.LineItemUniqueId.GetHashCode();
+                }
                 if (this.QuantityReduction != null)
+                {
                     hash = hash * 59 + this.QuantityReduction.GetHashCode();
+                }
                 if (this.UnitPriceReduction != null)
+                {
                     hash = hash * 59 + this.UnitPriceReduction.GetHashCode();
+                }
                 return hash;
             }
         }

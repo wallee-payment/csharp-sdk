@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,32 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// PaymentProcessor model.
+    /// Payment Processor
     /// </summary>
     [DataContract]
     public partial class PaymentProcessor :  IEquatable<PaymentProcessor>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentProcessor" /> class.
         /// </summary>
-        /// <param name="CompanyName">CompanyName</param>
-        /// <param name="Description">Description</param>
-        /// <param name="Feature">Feature</param>
-        /// <param name="HeadquartersLocation">HeadquartersLocation</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="LogoPath">LogoPath</param>
-        /// <param name="Name">Name</param>
-        /// <param name="ProductName">ProductName</param>
-        public PaymentProcessor(Dictionary<string, string> CompanyName = default(Dictionary<string, string>), Dictionary<string, string> Description = default(Dictionary<string, string>), long? Feature = default(long?), Dictionary<string, string> HeadquartersLocation = default(Dictionary<string, string>), long? Id = default(long?), string LogoPath = default(string), Dictionary<string, string> Name = default(Dictionary<string, string>), Dictionary<string, string> ProductName = default(Dictionary<string, string>))
+        [JsonConstructorAttribute]
+        public PaymentProcessor()
         {
-            this.CompanyName = CompanyName;
-            this.Description = Description;
-            this.Feature = Feature;
-            this.HeadquartersLocation = HeadquartersLocation;
-            this.Id = Id;
-            this.LogoPath = LogoPath;
-            this.Name = Name;
-            this.ProductName = ProductName;
         }
 
         /// <summary>
@@ -48,56 +52,56 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>CompanyName</value>
         [DataMember(Name="companyName", EmitDefaultValue=false)]
-        public Dictionary<string, string> CompanyName { get; set; }
+        public Dictionary<string, string> CompanyName { get; private set; }
 
         /// <summary>
         /// Description
         /// </summary>
         /// <value>Description</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; set; }
+        public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// Feature
         /// </summary>
         /// <value>Feature</value>
         [DataMember(Name="feature", EmitDefaultValue=false)]
-        public long? Feature { get; set; }
+        public long? Feature { get; private set; }
 
         /// <summary>
         /// HeadquartersLocation
         /// </summary>
         /// <value>HeadquartersLocation</value>
         [DataMember(Name="headquartersLocation", EmitDefaultValue=false)]
-        public Dictionary<string, string> HeadquartersLocation { get; set; }
+        public Dictionary<string, string> HeadquartersLocation { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// LogoPath
         /// </summary>
         /// <value>LogoPath</value>
         [DataMember(Name="logoPath", EmitDefaultValue=false)]
-        public string LogoPath { get; set; }
+        public string LogoPath { get; private set; }
 
         /// <summary>
         /// Name
         /// </summary>
         /// <value>Name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; set; }
+        public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// ProductName
         /// </summary>
         /// <value>ProductName</value>
         [DataMember(Name="productName", EmitDefaultValue=false)]
-        public Dictionary<string, string> ProductName { get; set; }
+        public Dictionary<string, string> ProductName { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -105,18 +109,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class PaymentProcessor {\n");
-            sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Feature: ").Append(Feature).Append("\n");
-            sb.Append("  HeadquartersLocation: ").Append(HeadquartersLocation).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LogoPath: ").Append(LogoPath).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  ProductName: ").Append(ProductName).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -202,23 +195,38 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.CompanyName != null)
+                {
                     hash = hash * 59 + this.CompanyName.GetHashCode();
+                }
                 if (this.Description != null)
+                {
                     hash = hash * 59 + this.Description.GetHashCode();
+                }
                 if (this.Feature != null)
+                {
                     hash = hash * 59 + this.Feature.GetHashCode();
+                }
                 if (this.HeadquartersLocation != null)
+                {
                     hash = hash * 59 + this.HeadquartersLocation.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.LogoPath != null)
+                {
                     hash = hash * 59 + this.LogoPath.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
                 if (this.ProductName != null)
+                {
                     hash = hash * 59 + this.ProductName.GetHashCode();
+                }
                 return hash;
             }
         }

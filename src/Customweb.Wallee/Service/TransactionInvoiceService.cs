@@ -1,10 +1,29 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Customweb.Wallee.Client;
+using Customweb.Wallee.Util;
 using Customweb.Wallee.Model;
 
 namespace Customweb.Wallee.Service
@@ -86,6 +105,30 @@ namespace Customweb.Wallee.Service
         /// <param name="id">The invoice which should be checked if a replacement is possible.</param>
         /// <returns>ApiResponse of bool?</returns>
         ApiResponse<bool?> IsReplacementPossibleWithHttpInfo (long? spaceId, long? id);
+
+        /// <summary>
+        /// Mark as Paid
+        /// </summary>
+        /// <remarks>
+        /// Marks the transaction invoice with the given id as paid.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as paid.</param>
+        /// <returns>TransactionInvoice</returns>
+        TransactionInvoice MarkAsPaid (long? spaceId, long? id);
+
+        /// <summary>
+        /// Mark as Paid
+        /// </summary>
+        /// <remarks>
+        /// Marks the transaction invoice with the given id as paid.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as paid.</param>
+        /// <returns>ApiResponse of TransactionInvoice</returns>
+        ApiResponse<TransactionInvoice> MarkAsPaidWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
         /// Read
@@ -237,6 +280,30 @@ namespace Customweb.Wallee.Service
         System.Threading.Tasks.Task<ApiResponse<bool?>> IsReplacementPossibleAsyncWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
+        /// Mark as Paid
+        /// </summary>
+        /// <remarks>
+        /// Marks the transaction invoice with the given id as paid.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as paid.</param>
+        /// <returns>Task of TransactionInvoice</returns>
+        System.Threading.Tasks.Task<TransactionInvoice> MarkAsPaidAsync (long? spaceId, long? id);
+
+        /// <summary>
+        /// Mark as Paid
+        /// </summary>
+        /// <remarks>
+        /// Marks the transaction invoice with the given id as paid.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as paid.</param>
+        /// <returns>Task of ApiResponse (TransactionInvoice)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TransactionInvoice>> MarkAsPaidAsyncWithHttpInfo (long? spaceId, long? id);
+
+        /// <summary>
         /// Read
         /// </summary>
         /// <remarks>
@@ -329,7 +396,7 @@ namespace Customweb.Wallee.Service
         {
             this._configuration = CheckArgument.NotNull("configuration", configuration);
             this._apiClient = new ApiClient(configuration);
-            this._exceptionFactory = Configuration.DefaultExceptionFactory;
+            this._exceptionFactory = Configuration.ExceptionFactory;
         }
 
         private readonly ApiClient _apiClient;
@@ -825,6 +892,160 @@ namespace Customweb.Wallee.Service
             return new ApiResponse<bool?>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (bool?) ApiClient.Deserialize(localVarResponse, typeof(bool?)));
+        }
+
+        /// <summary>
+        /// Mark as Paid Marks the transaction invoice with the given id as paid.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as paid.</param>
+        /// <returns>TransactionInvoice</returns>
+        public TransactionInvoice MarkAsPaid (long? spaceId, long? id)
+        {
+             ApiResponse<TransactionInvoice> localVarResponse = MarkAsPaidWithHttpInfo(spaceId, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Mark as Paid Marks the transaction invoice with the given id as paid.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as paid.</param>
+        /// <returns>ApiResponse of TransactionInvoice</returns>
+        public ApiResponse< TransactionInvoice > MarkAsPaidWithHttpInfo (long? spaceId, long? id)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionInvoiceService->MarkAsPaid");
+            }
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionInvoiceService->MarkAsPaid");
+            }
+
+            var localVarPath = "/transaction-invoice/markAsPaid";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MarkAsPaid", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TransactionInvoice>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (TransactionInvoice) ApiClient.Deserialize(localVarResponse, typeof(TransactionInvoice)));
+        }
+
+        /// <summary>
+        /// Mark as Paid Marks the transaction invoice with the given id as paid.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as paid.</param>
+        /// <returns>Task of TransactionInvoice</returns>
+        public async System.Threading.Tasks.Task<TransactionInvoice> MarkAsPaidAsync (long? spaceId, long? id)
+        {
+             ApiResponse<TransactionInvoice> localVarResponse = await MarkAsPaidAsyncWithHttpInfo(spaceId, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Mark as Paid Marks the transaction invoice with the given id as paid.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as paid.</param>
+        /// <returns>Task of ApiResponse (TransactionInvoice)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TransactionInvoice>> MarkAsPaidAsyncWithHttpInfo (long? spaceId, long? id)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionInvoiceService->MarkAsPaid");
+            }
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionInvoiceService->MarkAsPaid");
+            }
+
+            var localVarPath = "/transaction-invoice/markAsPaid";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MarkAsPaid", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TransactionInvoice>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (TransactionInvoice) ApiClient.Deserialize(localVarResponse, typeof(TransactionInvoice)));
         }
 
         /// <summary>

@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -20,31 +38,13 @@ namespace Customweb.Wallee.Model
     [DataContract]
     public partial class ManualTask :  IEquatable<ManualTask>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ManualTask" /> class.
         /// </summary>
-        /// <param name="Actions">Actions</param>
-        /// <param name="ContextEntityId">The context entity ID links the manual task to the entity which caused its creation.</param>
-        /// <param name="CreatedOn">The created on date indicates the date on which the entity was stored into the database.</param>
-        /// <param name="ExpiresOn">The expiry date indicates until when the manual task has to be executed.</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="LinkedSpaceId">The linked space id holds the ID of the space to which the entity belongs to.</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
-        /// <param name="SpaceId">SpaceId</param>
-        /// <param name="State">State</param>
-        /// <param name="Type">The type categorizes the manual task.</param>
-        public ManualTask(List<long?> Actions = default(List<long?>), long? ContextEntityId = default(long?), DateTime? CreatedOn = default(DateTime?), DateTime? ExpiresOn = default(DateTime?), long? Id = default(long?), long? LinkedSpaceId = default(long?), DateTime? PlannedPurgeDate = default(DateTime?), long? SpaceId = default(long?), ManualTaskState State = default(ManualTaskState), long? Type = default(long?))
+        [JsonConstructorAttribute]
+        public ManualTask()
         {
-            this.Actions = Actions;
-            this.ContextEntityId = ContextEntityId;
-            this.CreatedOn = CreatedOn;
-            this.ExpiresOn = ExpiresOn;
-            this.Id = Id;
-            this.LinkedSpaceId = LinkedSpaceId;
-            this.PlannedPurgeDate = PlannedPurgeDate;
-            this.SpaceId = SpaceId;
-            this.State = State;
-            this.Type = Type;
         }
 
         /// <summary>
@@ -52,70 +52,70 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Actions</value>
         [DataMember(Name="actions", EmitDefaultValue=false)]
-        public List<long?> Actions { get; set; }
+        public List<long?> Actions { get; private set; }
 
         /// <summary>
         /// The context entity ID links the manual task to the entity which caused its creation.
         /// </summary>
         /// <value>The context entity ID links the manual task to the entity which caused its creation.</value>
         [DataMember(Name="contextEntityId", EmitDefaultValue=false)]
-        public long? ContextEntityId { get; set; }
+        public long? ContextEntityId { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
-        public DateTime? CreatedOn { get; set; }
+        public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The expiry date indicates until when the manual task has to be executed.
         /// </summary>
         /// <value>The expiry date indicates until when the manual task has to be executed.</value>
         [DataMember(Name="expiresOn", EmitDefaultValue=false)]
-        public DateTime? ExpiresOn { get; set; }
+        public DateTime? ExpiresOn { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
         [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; set; }
+        public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
+        public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// SpaceId
         /// </summary>
         /// <value>SpaceId</value>
         [DataMember(Name="spaceId", EmitDefaultValue=false)]
-        public long? SpaceId { get; set; }
+        public long? SpaceId { get; private set; }
 
         /// <summary>
         /// State
         /// </summary>
         /// <value>State</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public ManualTaskState State { get; set; }
+        public ManualTaskState? State { get; private set; }
 
         /// <summary>
         /// The type categorizes the manual task.
         /// </summary>
         /// <value>The type categorizes the manual task.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public long? Type { get; set; }
+        public long? Type { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -123,20 +123,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class ManualTask {\n");
-            sb.Append("  Actions: ").Append(Actions).Append("\n");
-            sb.Append("  ContextEntityId: ").Append(ContextEntityId).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
-            sb.Append("  ExpiresOn: ").Append(ExpiresOn).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -232,27 +219,46 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Actions != null)
+                {
                     hash = hash * 59 + this.Actions.GetHashCode();
+                }
                 if (this.ContextEntityId != null)
+                {
                     hash = hash * 59 + this.ContextEntityId.GetHashCode();
+                }
                 if (this.CreatedOn != null)
+                {
                     hash = hash * 59 + this.CreatedOn.GetHashCode();
+                }
                 if (this.ExpiresOn != null)
+                {
                     hash = hash * 59 + this.ExpiresOn.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.LinkedSpaceId != null)
+                {
                     hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
+                }
                 if (this.PlannedPurgeDate != null)
+                {
                     hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
+                }
                 if (this.SpaceId != null)
+                {
                     hash = hash * 59 + this.SpaceId.GetHashCode();
+                }
                 if (this.State != null)
+                {
                     hash = hash * 59 + this.State.GetHashCode();
+                }
                 if (this.Type != null)
+                {
                     hash = hash * 59 + this.Type.GetHashCode();
+                }
                 return hash;
             }
         }

@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,28 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// RestLanguage model.
+    /// Language
     /// </summary>
     [DataContract]
     public partial class RestLanguage :  IEquatable<RestLanguage>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="RestLanguage" /> class.
         /// </summary>
-        /// <param name="CountryCode">The country code represents the region of the language as a 2 letter ISO code.</param>
-        /// <param name="IetfCode">The IETF code represents the language as the two letter ISO code including the region (e.g. en-US).</param>
-        /// <param name="Iso2Code">The ISO 2 letter code represents the language with two letters.</param>
-        /// <param name="Iso3Code">The ISO 3 letter code represents the language with three letters.</param>
-        /// <param name="PluralExpression">The plural expression defines how to map a plural into the language index. This expression is used to determine the plural form for the translations.</param>
-        /// <param name="PrimaryOfGroup">The primary language of a group indicates whether a language is the primary language of a group of languages. The group is determine by the ISO 2 letter code.</param>
-        public RestLanguage(string CountryCode = default(string), string IetfCode = default(string), string Iso2Code = default(string), string Iso3Code = default(string), string PluralExpression = default(string), bool? PrimaryOfGroup = default(bool?))
+        [JsonConstructorAttribute]
+        public RestLanguage()
         {
-            this.CountryCode = CountryCode;
-            this.IetfCode = IetfCode;
-            this.Iso2Code = Iso2Code;
-            this.Iso3Code = Iso3Code;
-            this.PluralExpression = PluralExpression;
-            this.PrimaryOfGroup = PrimaryOfGroup;
         }
 
         /// <summary>
@@ -44,42 +52,42 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The country code represents the region of the language as a 2 letter ISO code.</value>
         [DataMember(Name="countryCode", EmitDefaultValue=false)]
-        public string CountryCode { get; set; }
+        public string CountryCode { get; private set; }
 
         /// <summary>
         /// The IETF code represents the language as the two letter ISO code including the region (e.g. en-US).
         /// </summary>
         /// <value>The IETF code represents the language as the two letter ISO code including the region (e.g. en-US).</value>
         [DataMember(Name="ietfCode", EmitDefaultValue=false)]
-        public string IetfCode { get; set; }
+        public string IetfCode { get; private set; }
 
         /// <summary>
         /// The ISO 2 letter code represents the language with two letters.
         /// </summary>
         /// <value>The ISO 2 letter code represents the language with two letters.</value>
         [DataMember(Name="iso2Code", EmitDefaultValue=false)]
-        public string Iso2Code { get; set; }
+        public string Iso2Code { get; private set; }
 
         /// <summary>
         /// The ISO 3 letter code represents the language with three letters.
         /// </summary>
         /// <value>The ISO 3 letter code represents the language with three letters.</value>
         [DataMember(Name="iso3Code", EmitDefaultValue=false)]
-        public string Iso3Code { get; set; }
+        public string Iso3Code { get; private set; }
 
         /// <summary>
         /// The plural expression defines how to map a plural into the language index. This expression is used to determine the plural form for the translations.
         /// </summary>
         /// <value>The plural expression defines how to map a plural into the language index. This expression is used to determine the plural form for the translations.</value>
         [DataMember(Name="pluralExpression", EmitDefaultValue=false)]
-        public string PluralExpression { get; set; }
+        public string PluralExpression { get; private set; }
 
         /// <summary>
         /// The primary language of a group indicates whether a language is the primary language of a group of languages. The group is determine by the ISO 2 letter code.
         /// </summary>
         /// <value>The primary language of a group indicates whether a language is the primary language of a group of languages. The group is determine by the ISO 2 letter code.</value>
         [DataMember(Name="primaryOfGroup", EmitDefaultValue=false)]
-        public bool? PrimaryOfGroup { get; set; }
+        public bool? PrimaryOfGroup { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,16 +95,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class RestLanguage {\n");
-            sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
-            sb.Append("  IetfCode: ").Append(IetfCode).Append("\n");
-            sb.Append("  Iso2Code: ").Append(Iso2Code).Append("\n");
-            sb.Append("  Iso3Code: ").Append(Iso3Code).Append("\n");
-            sb.Append("  PluralExpression: ").Append(PluralExpression).Append("\n");
-            sb.Append("  PrimaryOfGroup: ").Append(PrimaryOfGroup).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -172,19 +171,30 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.CountryCode != null)
+                {
                     hash = hash * 59 + this.CountryCode.GetHashCode();
+                }
                 if (this.IetfCode != null)
+                {
                     hash = hash * 59 + this.IetfCode.GetHashCode();
+                }
                 if (this.Iso2Code != null)
+                {
                     hash = hash * 59 + this.Iso2Code.GetHashCode();
+                }
                 if (this.Iso3Code != null)
+                {
                     hash = hash * 59 + this.Iso3Code.GetHashCode();
+                }
                 if (this.PluralExpression != null)
+                {
                     hash = hash * 59 + this.PluralExpression.GetHashCode();
+                }
                 if (this.PrimaryOfGroup != null)
+                {
                     hash = hash * 59 + this.PrimaryOfGroup.GetHashCode();
+                }
                 return hash;
             }
         }

@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -20,19 +38,13 @@ namespace Customweb.Wallee.Model
     [DataContract]
     public partial class SubscriptionMetricType :  IEquatable<SubscriptionMetricType>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionMetricType" /> class.
         /// </summary>
-        /// <param name="Description">Description</param>
-        /// <param name="Feature">Feature</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="Name">Name</param>
-        public SubscriptionMetricType(Dictionary<string, string> Description = default(Dictionary<string, string>), Feature Feature = default(Feature), long? Id = default(long?), Dictionary<string, string> Name = default(Dictionary<string, string>))
+        [JsonConstructorAttribute]
+        public SubscriptionMetricType()
         {
-            this.Description = Description;
-            this.Feature = Feature;
-            this.Id = Id;
-            this.Name = Name;
         }
 
         /// <summary>
@@ -40,28 +52,28 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Description</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; set; }
+        public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// Feature
         /// </summary>
         /// <value>Feature</value>
         [DataMember(Name="feature", EmitDefaultValue=false)]
-        public Feature Feature { get; set; }
+        public Feature Feature { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// Name
         /// </summary>
         /// <value>Name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; set; }
+        public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,14 +81,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class SubscriptionMetricType {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Feature: ").Append(Feature).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -142,15 +147,22 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Description != null)
+                {
                     hash = hash * 59 + this.Description.GetHashCode();
+                }
                 if (this.Feature != null)
+                {
                     hash = hash * 59 + this.Feature.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
                 return hash;
             }
         }

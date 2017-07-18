@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,22 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// PaymentConnectorFeature model.
+    /// Payment Connector Feature
     /// </summary>
     [DataContract]
     public partial class PaymentConnectorFeature :  IEquatable<PaymentConnectorFeature>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentConnectorFeature" /> class.
         /// </summary>
-        /// <param name="DisplayName">DisplayName</param>
-        /// <param name="Feature">Feature</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        public PaymentConnectorFeature(string DisplayName = default(string), Feature Feature = default(Feature), long? Id = default(long?))
+        [JsonConstructorAttribute]
+        public PaymentConnectorFeature()
         {
-            this.DisplayName = DisplayName;
-            this.Feature = Feature;
-            this.Id = Id;
         }
 
         /// <summary>
@@ -38,21 +52,21 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>DisplayName</value>
         [DataMember(Name="displayName", EmitDefaultValue=false)]
-        public string DisplayName { get; set; }
+        public string DisplayName { get; private set; }
 
         /// <summary>
         /// Feature
         /// </summary>
         /// <value>Feature</value>
         [DataMember(Name="feature", EmitDefaultValue=false)]
-        public Feature Feature { get; set; }
+        public Feature Feature { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,13 +74,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class PaymentConnectorFeature {\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  Feature: ").Append(Feature).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -127,13 +135,18 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.DisplayName != null)
+                {
                     hash = hash * 59 + this.DisplayName.GetHashCode();
+                }
                 if (this.Feature != null)
+                {
                     hash = hash * 59 + this.Feature.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 return hash;
             }
         }

@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,38 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// SubscriptionPeriodBill model.
+    /// Subscription Period Bill
     /// </summary>
     [DataContract]
     public partial class SubscriptionPeriodBill :  IEquatable<SubscriptionPeriodBill>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionPeriodBill" /> class.
         /// </summary>
-        /// <param name="CreatedOn">CreatedOn</param>
-        /// <param name="EffectivePeriodEndDate">EffectivePeriodEndDate</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="Language">Language</param>
-        /// <param name="LinkedSpaceId">The linked space id holds the ID of the space to which the entity belongs to.</param>
-        /// <param name="PeriodStartDate">PeriodStartDate</param>
-        /// <param name="PlannedPeriodEndDate">PlannedPeriodEndDate</param>
-        /// <param name="PlannedPurgeDate">The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</param>
-        /// <param name="State">State</param>
-        /// <param name="SubscriptionVersion">SubscriptionVersion</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public SubscriptionPeriodBill(DateTime? CreatedOn = default(DateTime?), DateTime? EffectivePeriodEndDate = default(DateTime?), long? Id = default(long?), string Language = default(string), long? LinkedSpaceId = default(long?), DateTime? PeriodStartDate = default(DateTime?), DateTime? PlannedPeriodEndDate = default(DateTime?), DateTime? PlannedPurgeDate = default(DateTime?), SubscriptionPeriodBillState State = default(SubscriptionPeriodBillState), SubscriptionVersion SubscriptionVersion = default(SubscriptionVersion), int? Version = default(int?))
+        [JsonConstructorAttribute]
+        public SubscriptionPeriodBill()
         {
-            this.CreatedOn = CreatedOn;
-            this.EffectivePeriodEndDate = EffectivePeriodEndDate;
-            this.Id = Id;
-            this.Language = Language;
-            this.LinkedSpaceId = LinkedSpaceId;
-            this.PeriodStartDate = PeriodStartDate;
-            this.PlannedPeriodEndDate = PlannedPeriodEndDate;
-            this.PlannedPurgeDate = PlannedPurgeDate;
-            this.State = State;
-            this.SubscriptionVersion = SubscriptionVersion;
-            this.Version = Version;
         }
 
         /// <summary>
@@ -54,77 +52,77 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>CreatedOn</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
-        public DateTime? CreatedOn { get; set; }
+        public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// EffectivePeriodEndDate
         /// </summary>
         /// <value>EffectivePeriodEndDate</value>
         [DataMember(Name="effectivePeriodEndDate", EmitDefaultValue=false)]
-        public DateTime? EffectivePeriodEndDate { get; set; }
+        public DateTime? EffectivePeriodEndDate { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// Language
         /// </summary>
         /// <value>Language</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
-        public string Language { get; set; }
+        public string Language { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
         [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; set; }
+        public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// PeriodStartDate
         /// </summary>
         /// <value>PeriodStartDate</value>
         [DataMember(Name="periodStartDate", EmitDefaultValue=false)]
-        public DateTime? PeriodStartDate { get; set; }
+        public DateTime? PeriodStartDate { get; private set; }
 
         /// <summary>
         /// PlannedPeriodEndDate
         /// </summary>
         /// <value>PlannedPeriodEndDate</value>
         [DataMember(Name="plannedPeriodEndDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPeriodEndDate { get; set; }
+        public DateTime? PlannedPeriodEndDate { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; set; }
+        public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// State
         /// </summary>
         /// <value>State</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public SubscriptionPeriodBillState State { get; set; }
+        public SubscriptionPeriodBillState? State { get; private set; }
 
         /// <summary>
         /// SubscriptionVersion
         /// </summary>
         /// <value>SubscriptionVersion</value>
         [DataMember(Name="subscriptionVersion", EmitDefaultValue=false)]
-        public SubscriptionVersion SubscriptionVersion { get; set; }
+        public SubscriptionVersion SubscriptionVersion { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; set; }
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -132,21 +130,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class SubscriptionPeriodBill {\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
-            sb.Append("  EffectivePeriodEndDate: ").Append(EffectivePeriodEndDate).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Language: ").Append(Language).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  PeriodStartDate: ").Append(PeriodStartDate).Append("\n");
-            sb.Append("  PlannedPeriodEndDate: ").Append(PlannedPeriodEndDate).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  SubscriptionVersion: ").Append(SubscriptionVersion).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -247,29 +231,50 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.CreatedOn != null)
+                {
                     hash = hash * 59 + this.CreatedOn.GetHashCode();
+                }
                 if (this.EffectivePeriodEndDate != null)
+                {
                     hash = hash * 59 + this.EffectivePeriodEndDate.GetHashCode();
+                }
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.Language != null)
+                {
                     hash = hash * 59 + this.Language.GetHashCode();
+                }
                 if (this.LinkedSpaceId != null)
+                {
                     hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
+                }
                 if (this.PeriodStartDate != null)
+                {
                     hash = hash * 59 + this.PeriodStartDate.GetHashCode();
+                }
                 if (this.PlannedPeriodEndDate != null)
+                {
                     hash = hash * 59 + this.PlannedPeriodEndDate.GetHashCode();
+                }
                 if (this.PlannedPurgeDate != null)
+                {
                     hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
+                }
                 if (this.State != null)
+                {
                     hash = hash * 59 + this.State.GetHashCode();
+                }
                 if (this.SubscriptionVersion != null)
+                {
                     hash = hash * 59 + this.SubscriptionVersion.GetHashCode();
+                }
                 if (this.Version != null)
+                {
                     hash = hash * 59 + this.Version.GetHashCode();
+                }
                 return hash;
             }
         }

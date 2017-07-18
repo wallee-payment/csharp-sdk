@@ -1,10 +1,29 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Customweb.Wallee.Client;
+using Customweb.Wallee.Util;
 using Customweb.Wallee.Model;
 
 namespace Customweb.Wallee.Service
@@ -233,7 +252,7 @@ namespace Customweb.Wallee.Service
         {
             this._configuration = CheckArgument.NotNull("configuration", configuration);
             this._apiClient = new ApiClient(configuration);
-            this._exceptionFactory = Configuration.DefaultExceptionFactory;
+            this._exceptionFactory = Configuration.ExceptionFactory;
         }
 
         private readonly ApiClient _apiClient;

@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -20,21 +38,13 @@ namespace Customweb.Wallee.Model
     [DataContract]
     public partial class EntityQuery :  IEquatable<EntityQuery>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityQuery" /> class.
         /// </summary>
-        /// <param name="Filter">The filter node defines the root filter node of the query. The root node may contain multiple sub nodes with different filters in it.</param>
-        /// <param name="Language">The language is applied to the ordering of the entities returned. Some entity fields are language dependent and hence the language is required to order them.</param>
-        /// <param name="NumberOfEntities">The number of entities defines how many entities should be returned. There is a maximum of 500 entities.</param>
-        /// <param name="OrderBys">The order bys allows to define the ordering of the entities returned by the search.</param>
-        /// <param name="StartingEntity">The &#39;starting entity&#39; defines the entity number at which the returned result should start. The entity number is the consecutive number of the entity as returned and it is not the entity id.</param>
-        public EntityQuery(EntityQueryFilter Filter = default(EntityQueryFilter), string Language = default(string), int? NumberOfEntities = default(int?), List<EntityQueryOrderBy> OrderBys = default(List<EntityQueryOrderBy>), int? StartingEntity = default(int?))
+        [JsonConstructorAttribute]
+        public EntityQuery()
         {
-            this.Filter = Filter;
-            this.Language = Language;
-            this.NumberOfEntities = NumberOfEntities;
-            this.OrderBys = OrderBys;
-            this.StartingEntity = StartingEntity;
         }
 
         /// <summary>
@@ -42,35 +52,35 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The filter node defines the root filter node of the query. The root node may contain multiple sub nodes with different filters in it.</value>
         [DataMember(Name="filter", EmitDefaultValue=false)]
-        public EntityQueryFilter Filter { get; set; }
+        public EntityQueryFilter Filter { get; private set; }
 
         /// <summary>
         /// The language is applied to the ordering of the entities returned. Some entity fields are language dependent and hence the language is required to order them.
         /// </summary>
         /// <value>The language is applied to the ordering of the entities returned. Some entity fields are language dependent and hence the language is required to order them.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
-        public string Language { get; set; }
+        public string Language { get; private set; }
 
         /// <summary>
         /// The number of entities defines how many entities should be returned. There is a maximum of 500 entities.
         /// </summary>
         /// <value>The number of entities defines how many entities should be returned. There is a maximum of 500 entities.</value>
         [DataMember(Name="numberOfEntities", EmitDefaultValue=false)]
-        public int? NumberOfEntities { get; set; }
+        public int? NumberOfEntities { get; private set; }
 
         /// <summary>
         /// The order bys allows to define the ordering of the entities returned by the search.
         /// </summary>
         /// <value>The order bys allows to define the ordering of the entities returned by the search.</value>
         [DataMember(Name="orderBys", EmitDefaultValue=false)]
-        public List<EntityQueryOrderBy> OrderBys { get; set; }
+        public List<EntityQueryOrderBy> OrderBys { get; private set; }
 
         /// <summary>
         /// The &#39;starting entity&#39; defines the entity number at which the returned result should start. The entity number is the consecutive number of the entity as returned and it is not the entity id.
         /// </summary>
         /// <value>The &#39;starting entity&#39; defines the entity number at which the returned result should start. The entity number is the consecutive number of the entity as returned and it is not the entity id.</value>
         [DataMember(Name="startingEntity", EmitDefaultValue=false)]
-        public int? StartingEntity { get; set; }
+        public int? StartingEntity { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,15 +88,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class EntityQuery {\n");
-            sb.Append("  Filter: ").Append(Filter).Append("\n");
-            sb.Append("  Language: ").Append(Language).Append("\n");
-            sb.Append("  NumberOfEntities: ").Append(NumberOfEntities).Append("\n");
-            sb.Append("  OrderBys: ").Append(OrderBys).Append("\n");
-            sb.Append("  StartingEntity: ").Append(StartingEntity).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -157,17 +159,26 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Filter != null)
+                {
                     hash = hash * 59 + this.Filter.GetHashCode();
+                }
                 if (this.Language != null)
+                {
                     hash = hash * 59 + this.Language.GetHashCode();
+                }
                 if (this.NumberOfEntities != null)
+                {
                     hash = hash * 59 + this.NumberOfEntities.GetHashCode();
+                }
                 if (this.OrderBys != null)
+                {
                     hash = hash * 59 + this.OrderBys.GetHashCode();
+                }
                 if (this.StartingEntity != null)
+                {
                     hash = hash * 59 + this.StartingEntity.GetHashCode();
+                }
                 return hash;
             }
         }

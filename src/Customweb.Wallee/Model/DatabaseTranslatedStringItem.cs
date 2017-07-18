@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,62 +33,40 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// DatabaseTranslatedStringItem model.
+    /// Database Translated String Item
     /// </summary>
     [DataContract]
     public partial class DatabaseTranslatedStringItem :  IEquatable<DatabaseTranslatedStringItem>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="DatabaseTranslatedStringItem" /> class.
         /// </summary>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="Language">Language</param>
-        /// <param name="LanguageCode">LanguageCode</param>
-        /// <param name="Translation">Translation</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public DatabaseTranslatedStringItem(long? Id = default(long?), string Language = default(string), string LanguageCode = default(string), string Translation = default(string), int? Version = default(int?))
+        [JsonConstructorAttribute]
+        public DatabaseTranslatedStringItem()
         {
-            this.Id = Id;
-            this.Language = Language;
-            this.LanguageCode = LanguageCode;
-            this.Translation = Translation;
-            this.Version = Version;
         }
-
-        /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
-        /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
 
         /// <summary>
         /// Language
         /// </summary>
         /// <value>Language</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
-        public string Language { get; set; }
+        public string Language { get; private set; }
 
         /// <summary>
         /// LanguageCode
         /// </summary>
         /// <value>LanguageCode</value>
         [DataMember(Name="languageCode", EmitDefaultValue=false)]
-        public string LanguageCode { get; set; }
+        public string LanguageCode { get; private set; }
 
         /// <summary>
         /// Translation
         /// </summary>
         /// <value>Translation</value>
         [DataMember(Name="translation", EmitDefaultValue=false)]
-        public string Translation { get; set; }
-
-        /// <summary>
-        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-        /// </summary>
-        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; set; }
+        public string Translation { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,15 +74,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class DatabaseTranslatedStringItem {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Language: ").Append(Language).Append("\n");
-            sb.Append("  LanguageCode: ").Append(LanguageCode).Append("\n");
-            sb.Append("  Translation: ").Append(Translation).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -122,11 +110,6 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
-                ) && 
-                (
                     this.Language == other.Language ||
                     this.Language != null &&
                     this.Language.Equals(other.Language)
@@ -140,11 +123,6 @@ namespace Customweb.Wallee.Model
                     this.Translation == other.Translation ||
                     this.Translation != null &&
                     this.Translation.Equals(other.Translation)
-                ) && 
-                (
-                    this.Version == other.Version ||
-                    this.Version != null &&
-                    this.Version.Equals(other.Version)
                 );
         }
 
@@ -157,17 +135,18 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
-                if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
                 if (this.Language != null)
+                {
                     hash = hash * 59 + this.Language.GetHashCode();
+                }
                 if (this.LanguageCode != null)
+                {
                     hash = hash * 59 + this.LanguageCode.GetHashCode();
+                }
                 if (this.Translation != null)
+                {
                     hash = hash * 59 + this.Translation.GetHashCode();
-                if (this.Version != null)
-                    hash = hash * 59 + this.Version.GetHashCode();
+                }
                 return hash;
             }
         }

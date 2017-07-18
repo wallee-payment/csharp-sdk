@@ -1,10 +1,29 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using RestSharp;
 using Customweb.Wallee.Client;
+using Customweb.Wallee.Util;
 using Customweb.Wallee.Model;
 
 namespace Customweb.Wallee.Service
@@ -16,10 +35,10 @@ namespace Customweb.Wallee.Service
     {
         #region Synchronous Operations
         /// <summary>
-        /// buildJavaScriptUrl
+        /// Build JavaScript URL
         /// </summary>
         /// <remarks>
-        /// 
+        /// This operation creates the URL which can be used to embed the JavaScript for handling the iFrame checkout flow.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -28,10 +47,10 @@ namespace Customweb.Wallee.Service
         string BuildJavaScriptUrl (long? spaceId, long? id);
 
         /// <summary>
-        /// buildJavaScriptUrl
+        /// Build JavaScript URL
         /// </summary>
         /// <remarks>
-        /// 
+        /// This operation creates the URL which can be used to embed the JavaScript for handling the iFrame checkout flow.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -40,10 +59,32 @@ namespace Customweb.Wallee.Service
         ApiResponse<string> BuildJavaScriptUrlWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
-        /// buildPaymentPageUrl
+        /// Build Mobile SDK URL with Credentials
         /// </summary>
         /// <remarks>
-        /// 
+        /// This operation builds the URL which is used to load the payment form within a WebView on a mobile device. This operation is typically called through the mobile SDK.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>string</returns>
+        string BuildMobileSdkUrlWithCredentials (string credentials);
+
+        /// <summary>
+        /// Build Mobile SDK URL with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation builds the URL which is used to load the payment form within a WebView on a mobile device. This operation is typically called through the mobile SDK.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> BuildMobileSdkUrlWithCredentialsWithHttpInfo (string credentials);
+
+        /// <summary>
+        /// Build Payment Page URL
+        /// </summary>
+        /// <remarks>
+        /// This operation creates the URL to which the user should be redirected to when the payment page should be used.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -52,10 +93,10 @@ namespace Customweb.Wallee.Service
         string BuildPaymentPageUrl (long? spaceId, long? id);
 
         /// <summary>
-        /// buildPaymentPageUrl
+        /// Build Payment Page URL
         /// </summary>
         /// <remarks>
-        /// 
+        /// This operation creates the URL to which the user should be redirected to when the payment page should be used.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -64,10 +105,10 @@ namespace Customweb.Wallee.Service
         ApiResponse<string> BuildPaymentPageUrlWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
-        /// confirm
+        /// Confirm
         /// </summary>
         /// <remarks>
-        /// 
+        /// The confirm operation marks the transaction as confirmed. Once the transaction is confirmed no more changes can be applied.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -76,10 +117,10 @@ namespace Customweb.Wallee.Service
         Transaction Confirm (long? spaceId, TransactionPending transactionModel);
 
         /// <summary>
-        /// confirm
+        /// Confirm
         /// </summary>
         /// <remarks>
-        /// 
+        /// The confirm operation marks the transaction as confirmed. Once the transaction is confirmed no more changes can be applied.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -136,10 +177,80 @@ namespace Customweb.Wallee.Service
         ApiResponse<Transaction> CreateWithHttpInfo (long? spaceId, TransactionCreate transaction);
 
         /// <summary>
-        /// fetchPossiblePaymentMethods
+        /// Create Transaction Credentials
         /// </summary>
         /// <remarks>
-        /// 
+        /// This operation allows to create transaction credentials to delegate temporarily the access to the web service API for this particular transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be returned.</param>
+        /// <returns>string</returns>
+        string CreateTransactionCredentials (long? spaceId, long? id);
+
+        /// <summary>
+        /// Create Transaction Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to create transaction credentials to delegate temporarily the access to the web service API for this particular transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be returned.</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> CreateTransactionCredentialsWithHttpInfo (long? spaceId, long? id);
+
+        /// <summary>
+        /// Delete One-Click Token with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation removes the given token.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID will be used to find the token which should be removed.</param>
+        /// <returns></returns>
+        void DeleteOneClickTokenWithCredentials (string credentials, long? tokenId);
+
+        /// <summary>
+        /// Delete One-Click Token with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation removes the given token.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID will be used to find the token which should be removed.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteOneClickTokenWithCredentialsWithHttpInfo (string credentials, long? tokenId);
+
+        /// <summary>
+        /// Fetch One Click Tokens with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation returns the token version objects which references the tokens usable as one-click payment tokens for the provided transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>List&lt;TokenVersion&gt;</returns>
+        List<TokenVersion> FetchOneClickTokensWithCredentials (string credentials);
+
+        /// <summary>
+        /// Fetch One Click Tokens with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation returns the token version objects which references the tokens usable as one-click payment tokens for the provided transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>ApiResponse of List&lt;TokenVersion&gt;</returns>
+        ApiResponse<List<TokenVersion>> FetchOneClickTokensWithCredentialsWithHttpInfo (string credentials);
+
+        /// <summary>
+        /// Fetch Possible Payment Methods
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to get the payment method configurations which can be used with the provided transaction.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -148,16 +259,38 @@ namespace Customweb.Wallee.Service
         List<PaymentMethodConfiguration> FetchPossiblePaymentMethods (long? spaceId, long? id);
 
         /// <summary>
-        /// fetchPossiblePaymentMethods
+        /// Fetch Possible Payment Methods
         /// </summary>
         /// <remarks>
-        /// 
+        /// This operation allows to get the payment method configurations which can be used with the provided transaction.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="id">The id of the transaction which should be returned.</param>
         /// <returns>ApiResponse of List&lt;PaymentMethodConfiguration&gt;</returns>
         ApiResponse<List<PaymentMethodConfiguration>> FetchPossiblePaymentMethodsWithHttpInfo (long? spaceId, long? id);
+
+        /// <summary>
+        /// Fetch Possible Payment Methods with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to get the payment method configurations which can be used with the provided transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>List&lt;PaymentMethodConfiguration&gt;</returns>
+        List<PaymentMethodConfiguration> FetchPossiblePaymentMethodsWithCredentials (string credentials);
+
+        /// <summary>
+        /// Fetch Possible Payment Methods with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to get the payment method configurations which can be used with the provided transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>ApiResponse of List&lt;PaymentMethodConfiguration&gt;</returns>
+        ApiResponse<List<PaymentMethodConfiguration>> FetchPossiblePaymentMethodsWithCredentialsWithHttpInfo (string credentials);
 
         /// <summary>
         /// getInvoiceDocument
@@ -232,6 +365,30 @@ namespace Customweb.Wallee.Service
         ApiResponse<RenderedDocument> GetPackingSlipWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
+        /// Process One-Click Token with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation assigns the given token to the transaction and process it.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID is used to load the corresponding token and to process the transaction with it.</param>
+        /// <returns>Transaction</returns>
+        Transaction ProcessOneClickTokenWithCredentials (string credentials, long? tokenId);
+
+        /// <summary>
+        /// Process One-Click Token with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation assigns the given token to the transaction and process it.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID is used to load the corresponding token and to process the transaction with it.</param>
+        /// <returns>ApiResponse of Transaction</returns>
+        ApiResponse<Transaction> ProcessOneClickTokenWithCredentialsWithHttpInfo (string credentials, long? tokenId);
+
+        /// <summary>
         /// Read
         /// </summary>
         /// <remarks>
@@ -254,6 +411,28 @@ namespace Customweb.Wallee.Service
         /// <param name="id">The id of the transaction which should be returned.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> ReadWithHttpInfo (long? spaceId, long? id);
+
+        /// <summary>
+        /// Read With Credentials
+        /// </summary>
+        /// <remarks>
+        /// Reads the transaction with the given &#39;id&#39; and returns it. This method uses the credentials to authenticate and identify the transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Transaction</returns>
+        Transaction ReadWithCredentials (string credentials);
+
+        /// <summary>
+        /// Read With Credentials
+        /// </summary>
+        /// <remarks>
+        /// Reads the transaction with the given &#39;id&#39; and returns it. This method uses the credentials to authenticate and identify the transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>ApiResponse of Transaction</returns>
+        ApiResponse<Transaction> ReadWithCredentialsWithHttpInfo (string credentials);
 
         /// <summary>
         /// Search
@@ -331,10 +510,10 @@ namespace Customweb.Wallee.Service
         #region Asynchronous Operations
 
         /// <summary>
-        /// buildJavaScriptUrl
+        /// Build JavaScript URL
         /// </summary>
         /// <remarks>
-        /// 
+        /// This operation creates the URL which can be used to embed the JavaScript for handling the iFrame checkout flow.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -343,10 +522,10 @@ namespace Customweb.Wallee.Service
         System.Threading.Tasks.Task<string> BuildJavaScriptUrlAsync (long? spaceId, long? id);
 
         /// <summary>
-        /// buildJavaScriptUrl
+        /// Build JavaScript URL
         /// </summary>
         /// <remarks>
-        /// 
+        /// This operation creates the URL which can be used to embed the JavaScript for handling the iFrame checkout flow.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -355,10 +534,32 @@ namespace Customweb.Wallee.Service
         System.Threading.Tasks.Task<ApiResponse<string>> BuildJavaScriptUrlAsyncWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
-        /// buildPaymentPageUrl
+        /// Build Mobile SDK URL with Credentials
         /// </summary>
         /// <remarks>
-        /// 
+        /// This operation builds the URL which is used to load the payment form within a WebView on a mobile device. This operation is typically called through the mobile SDK.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> BuildMobileSdkUrlWithCredentialsAsync (string credentials);
+
+        /// <summary>
+        /// Build Mobile SDK URL with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation builds the URL which is used to load the payment form within a WebView on a mobile device. This operation is typically called through the mobile SDK.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> BuildMobileSdkUrlWithCredentialsAsyncWithHttpInfo (string credentials);
+
+        /// <summary>
+        /// Build Payment Page URL
+        /// </summary>
+        /// <remarks>
+        /// This operation creates the URL to which the user should be redirected to when the payment page should be used.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -367,10 +568,10 @@ namespace Customweb.Wallee.Service
         System.Threading.Tasks.Task<string> BuildPaymentPageUrlAsync (long? spaceId, long? id);
 
         /// <summary>
-        /// buildPaymentPageUrl
+        /// Build Payment Page URL
         /// </summary>
         /// <remarks>
-        /// 
+        /// This operation creates the URL to which the user should be redirected to when the payment page should be used.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -379,10 +580,10 @@ namespace Customweb.Wallee.Service
         System.Threading.Tasks.Task<ApiResponse<string>> BuildPaymentPageUrlAsyncWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
-        /// confirm
+        /// Confirm
         /// </summary>
         /// <remarks>
-        /// 
+        /// The confirm operation marks the transaction as confirmed. Once the transaction is confirmed no more changes can be applied.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -391,10 +592,10 @@ namespace Customweb.Wallee.Service
         System.Threading.Tasks.Task<Transaction> ConfirmAsync (long? spaceId, TransactionPending transactionModel);
 
         /// <summary>
-        /// confirm
+        /// Confirm
         /// </summary>
         /// <remarks>
-        /// 
+        /// The confirm operation marks the transaction as confirmed. Once the transaction is confirmed no more changes can be applied.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -451,10 +652,80 @@ namespace Customweb.Wallee.Service
         System.Threading.Tasks.Task<ApiResponse<Transaction>> CreateAsyncWithHttpInfo (long? spaceId, TransactionCreate transaction);
 
         /// <summary>
-        /// fetchPossiblePaymentMethods
+        /// Create Transaction Credentials
         /// </summary>
         /// <remarks>
-        /// 
+        /// This operation allows to create transaction credentials to delegate temporarily the access to the web service API for this particular transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be returned.</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> CreateTransactionCredentialsAsync (long? spaceId, long? id);
+
+        /// <summary>
+        /// Create Transaction Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to create transaction credentials to delegate temporarily the access to the web service API for this particular transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be returned.</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> CreateTransactionCredentialsAsyncWithHttpInfo (long? spaceId, long? id);
+
+        /// <summary>
+        /// Delete One-Click Token with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation removes the given token.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID will be used to find the token which should be removed.</param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteOneClickTokenWithCredentialsAsync (string credentials, long? tokenId);
+
+        /// <summary>
+        /// Delete One-Click Token with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation removes the given token.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID will be used to find the token which should be removed.</param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteOneClickTokenWithCredentialsAsyncWithHttpInfo (string credentials, long? tokenId);
+
+        /// <summary>
+        /// Fetch One Click Tokens with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation returns the token version objects which references the tokens usable as one-click payment tokens for the provided transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of List&lt;TokenVersion&gt;</returns>
+        System.Threading.Tasks.Task<List<TokenVersion>> FetchOneClickTokensWithCredentialsAsync (string credentials);
+
+        /// <summary>
+        /// Fetch One Click Tokens with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation returns the token version objects which references the tokens usable as one-click payment tokens for the provided transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of ApiResponse (List&lt;TokenVersion&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<TokenVersion>>> FetchOneClickTokensWithCredentialsAsyncWithHttpInfo (string credentials);
+
+        /// <summary>
+        /// Fetch Possible Payment Methods
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to get the payment method configurations which can be used with the provided transaction.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -463,16 +734,38 @@ namespace Customweb.Wallee.Service
         System.Threading.Tasks.Task<List<PaymentMethodConfiguration>> FetchPossiblePaymentMethodsAsync (long? spaceId, long? id);
 
         /// <summary>
-        /// fetchPossiblePaymentMethods
+        /// Fetch Possible Payment Methods
         /// </summary>
         /// <remarks>
-        /// 
+        /// This operation allows to get the payment method configurations which can be used with the provided transaction.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="id">The id of the transaction which should be returned.</param>
         /// <returns>Task of ApiResponse (List&lt;PaymentMethodConfiguration&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<PaymentMethodConfiguration>>> FetchPossiblePaymentMethodsAsyncWithHttpInfo (long? spaceId, long? id);
+
+        /// <summary>
+        /// Fetch Possible Payment Methods with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to get the payment method configurations which can be used with the provided transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of List&lt;PaymentMethodConfiguration&gt;</returns>
+        System.Threading.Tasks.Task<List<PaymentMethodConfiguration>> FetchPossiblePaymentMethodsWithCredentialsAsync (string credentials);
+
+        /// <summary>
+        /// Fetch Possible Payment Methods with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to get the payment method configurations which can be used with the provided transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of ApiResponse (List&lt;PaymentMethodConfiguration&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<PaymentMethodConfiguration>>> FetchPossiblePaymentMethodsWithCredentialsAsyncWithHttpInfo (string credentials);
 
         /// <summary>
         /// getInvoiceDocument
@@ -547,6 +840,30 @@ namespace Customweb.Wallee.Service
         System.Threading.Tasks.Task<ApiResponse<RenderedDocument>> GetPackingSlipAsyncWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
+        /// Process One-Click Token with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation assigns the given token to the transaction and process it.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID is used to load the corresponding token and to process the transaction with it.</param>
+        /// <returns>Task of Transaction</returns>
+        System.Threading.Tasks.Task<Transaction> ProcessOneClickTokenWithCredentialsAsync (string credentials, long? tokenId);
+
+        /// <summary>
+        /// Process One-Click Token with Credentials
+        /// </summary>
+        /// <remarks>
+        /// This operation assigns the given token to the transaction and process it.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID is used to load the corresponding token and to process the transaction with it.</param>
+        /// <returns>Task of ApiResponse (Transaction)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Transaction>> ProcessOneClickTokenWithCredentialsAsyncWithHttpInfo (string credentials, long? tokenId);
+
+        /// <summary>
         /// Read
         /// </summary>
         /// <remarks>
@@ -569,6 +886,28 @@ namespace Customweb.Wallee.Service
         /// <param name="id">The id of the transaction which should be returned.</param>
         /// <returns>Task of ApiResponse (Transaction)</returns>
         System.Threading.Tasks.Task<ApiResponse<Transaction>> ReadAsyncWithHttpInfo (long? spaceId, long? id);
+
+        /// <summary>
+        /// Read With Credentials
+        /// </summary>
+        /// <remarks>
+        /// Reads the transaction with the given &#39;id&#39; and returns it. This method uses the credentials to authenticate and identify the transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of Transaction</returns>
+        System.Threading.Tasks.Task<Transaction> ReadWithCredentialsAsync (string credentials);
+
+        /// <summary>
+        /// Read With Credentials
+        /// </summary>
+        /// <remarks>
+        /// Reads the transaction with the given &#39;id&#39; and returns it. This method uses the credentials to authenticate and identify the transaction.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of ApiResponse (Transaction)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Transaction>> ReadWithCredentialsAsyncWithHttpInfo (string credentials);
 
         /// <summary>
         /// Search
@@ -661,7 +1000,7 @@ namespace Customweb.Wallee.Service
         {
             this._configuration = CheckArgument.NotNull("configuration", configuration);
             this._apiClient = new ApiClient(configuration);
-            this._exceptionFactory = Configuration.DefaultExceptionFactory;
+            this._exceptionFactory = Configuration.ExceptionFactory;
         }
 
         private readonly ApiClient _apiClient;
@@ -694,7 +1033,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// buildJavaScriptUrl 
+        /// Build JavaScript URL This operation creates the URL which can be used to embed the JavaScript for handling the iFrame checkout flow.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -707,7 +1046,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// buildJavaScriptUrl 
+        /// Build JavaScript URL This operation creates the URL which can be used to embed the JavaScript for handling the iFrame checkout flow.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -768,7 +1107,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// buildJavaScriptUrl 
+        /// Build JavaScript URL This operation creates the URL which can be used to embed the JavaScript for handling the iFrame checkout flow.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -781,7 +1120,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// buildJavaScriptUrl 
+        /// Build JavaScript URL This operation creates the URL which can be used to embed the JavaScript for handling the iFrame checkout flow.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -844,7 +1183,141 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// buildPaymentPageUrl 
+        /// Build Mobile SDK URL with Credentials This operation builds the URL which is used to load the payment form within a WebView on a mobile device. This operation is typically called through the mobile SDK.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>string</returns>
+        public string BuildMobileSdkUrlWithCredentials (string credentials)
+        {
+             ApiResponse<string> localVarResponse = BuildMobileSdkUrlWithCredentialsWithHttpInfo(credentials);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Build Mobile SDK URL with Credentials This operation builds the URL which is used to load the payment form within a WebView on a mobile device. This operation is typically called through the mobile SDK.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > BuildMobileSdkUrlWithCredentialsWithHttpInfo (string credentials)
+        {
+            // verify the required parameter 'credentials' is set
+            if (credentials == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->BuildMobileSdkUrlWithCredentials");
+            }
+
+            var localVarPath = "/transaction/buildMobileSdkUrlWithCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (credentials != null) localVarQueryParams.Add("credentials", ApiClient.ParameterToString(credentials)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("BuildMobileSdkUrlWithCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (string) ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Build Mobile SDK URL with Credentials This operation builds the URL which is used to load the payment form within a WebView on a mobile device. This operation is typically called through the mobile SDK.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> BuildMobileSdkUrlWithCredentialsAsync (string credentials)
+        {
+             ApiResponse<string> localVarResponse = await BuildMobileSdkUrlWithCredentialsAsyncWithHttpInfo(credentials);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Build Mobile SDK URL with Credentials This operation builds the URL which is used to load the payment form within a WebView on a mobile device. This operation is typically called through the mobile SDK.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> BuildMobileSdkUrlWithCredentialsAsyncWithHttpInfo (string credentials)
+        {
+            // verify the required parameter 'credentials' is set
+            if (credentials == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->BuildMobileSdkUrlWithCredentials");
+            }
+
+            var localVarPath = "/transaction/buildMobileSdkUrlWithCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (credentials != null) localVarQueryParams.Add("credentials", ApiClient.ParameterToString(credentials)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("BuildMobileSdkUrlWithCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (string) ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Build Payment Page URL This operation creates the URL to which the user should be redirected to when the payment page should be used.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -857,7 +1330,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// buildPaymentPageUrl 
+        /// Build Payment Page URL This operation creates the URL to which the user should be redirected to when the payment page should be used.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -918,7 +1391,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// buildPaymentPageUrl 
+        /// Build Payment Page URL This operation creates the URL to which the user should be redirected to when the payment page should be used.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -931,7 +1404,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// buildPaymentPageUrl 
+        /// Build Payment Page URL This operation creates the URL to which the user should be redirected to when the payment page should be used.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -994,7 +1467,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// confirm 
+        /// Confirm The confirm operation marks the transaction as confirmed. Once the transaction is confirmed no more changes can be applied.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1007,7 +1480,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// confirm 
+        /// Confirm The confirm operation marks the transaction as confirmed. Once the transaction is confirmed no more changes can be applied.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1076,7 +1549,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// confirm 
+        /// Confirm The confirm operation marks the transaction as confirmed. Once the transaction is confirmed no more changes can be applied.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1089,7 +1562,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// confirm 
+        /// Confirm The confirm operation marks the transaction as confirmed. Once the transaction is confirmed no more changes can be applied.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1486,7 +1959,439 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// fetchPossiblePaymentMethods 
+        /// Create Transaction Credentials This operation allows to create transaction credentials to delegate temporarily the access to the web service API for this particular transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be returned.</param>
+        /// <returns>string</returns>
+        public string CreateTransactionCredentials (long? spaceId, long? id)
+        {
+             ApiResponse<string> localVarResponse = CreateTransactionCredentialsWithHttpInfo(spaceId, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create Transaction Credentials This operation allows to create transaction credentials to delegate temporarily the access to the web service API for this particular transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be returned.</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > CreateTransactionCredentialsWithHttpInfo (long? spaceId, long? id)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionService->CreateTransactionCredentials");
+            }
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionService->CreateTransactionCredentials");
+            }
+
+            var localVarPath = "/transaction/createTransactionCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateTransactionCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (string) ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Create Transaction Credentials This operation allows to create transaction credentials to delegate temporarily the access to the web service API for this particular transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be returned.</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> CreateTransactionCredentialsAsync (long? spaceId, long? id)
+        {
+             ApiResponse<string> localVarResponse = await CreateTransactionCredentialsAsyncWithHttpInfo(spaceId, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create Transaction Credentials This operation allows to create transaction credentials to delegate temporarily the access to the web service API for this particular transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be returned.</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> CreateTransactionCredentialsAsyncWithHttpInfo (long? spaceId, long? id)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionService->CreateTransactionCredentials");
+            }
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionService->CreateTransactionCredentials");
+            }
+
+            var localVarPath = "/transaction/createTransactionCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateTransactionCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (string) ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Delete One-Click Token with Credentials This operation removes the given token.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID will be used to find the token which should be removed.</param>
+        /// <returns></returns>
+        public void DeleteOneClickTokenWithCredentials (string credentials, long? tokenId)
+        {
+             DeleteOneClickTokenWithCredentialsWithHttpInfo(credentials, tokenId);
+        }
+
+        /// <summary>
+        /// Delete One-Click Token with Credentials This operation removes the given token.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID will be used to find the token which should be removed.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> DeleteOneClickTokenWithCredentialsWithHttpInfo (string credentials, long? tokenId)
+        {
+            // verify the required parameter 'credentials' is set
+            if (credentials == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->DeleteOneClickTokenWithCredentials");
+            }
+            // verify the required parameter 'tokenId' is set
+            if (tokenId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'tokenId' when calling TransactionService->DeleteOneClickTokenWithCredentials");
+            }
+
+            var localVarPath = "/transaction/deleteOneClickTokenWithCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (credentials != null) localVarQueryParams.Add("credentials", ApiClient.ParameterToString(credentials)); // query parameter
+            if (tokenId != null) localVarQueryParams.Add("tokenId", ApiClient.ParameterToString(tokenId)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteOneClickTokenWithCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Delete One-Click Token with Credentials This operation removes the given token.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID will be used to find the token which should be removed.</param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteOneClickTokenWithCredentialsAsync (string credentials, long? tokenId)
+        {
+             await DeleteOneClickTokenWithCredentialsAsyncWithHttpInfo(credentials, tokenId);
+        }
+
+        /// <summary>
+        /// Delete One-Click Token with Credentials This operation removes the given token.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID will be used to find the token which should be removed.</param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteOneClickTokenWithCredentialsAsyncWithHttpInfo (string credentials, long? tokenId)
+        {
+            // verify the required parameter 'credentials' is set
+            if (credentials == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->DeleteOneClickTokenWithCredentials");
+            }
+            // verify the required parameter 'tokenId' is set
+            if (tokenId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'tokenId' when calling TransactionService->DeleteOneClickTokenWithCredentials");
+            }
+
+            var localVarPath = "/transaction/deleteOneClickTokenWithCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (credentials != null) localVarQueryParams.Add("credentials", ApiClient.ParameterToString(credentials)); // query parameter
+            if (tokenId != null) localVarQueryParams.Add("tokenId", ApiClient.ParameterToString(tokenId)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("DeleteOneClickTokenWithCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
+        }
+
+        /// <summary>
+        /// Fetch One Click Tokens with Credentials This operation returns the token version objects which references the tokens usable as one-click payment tokens for the provided transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>List&lt;TokenVersion&gt;</returns>
+        public List<TokenVersion> FetchOneClickTokensWithCredentials (string credentials)
+        {
+             ApiResponse<List<TokenVersion>> localVarResponse = FetchOneClickTokensWithCredentialsWithHttpInfo(credentials);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Fetch One Click Tokens with Credentials This operation returns the token version objects which references the tokens usable as one-click payment tokens for the provided transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>ApiResponse of List&lt;TokenVersion&gt;</returns>
+        public ApiResponse< List<TokenVersion> > FetchOneClickTokensWithCredentialsWithHttpInfo (string credentials)
+        {
+            // verify the required parameter 'credentials' is set
+            if (credentials == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->FetchOneClickTokensWithCredentials");
+            }
+
+            var localVarPath = "/transaction/fetchOneClickTokensWithCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (credentials != null) localVarQueryParams.Add("credentials", ApiClient.ParameterToString(credentials)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("FetchOneClickTokensWithCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<TokenVersion>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<TokenVersion>) ApiClient.Deserialize(localVarResponse, typeof(List<TokenVersion>)));
+        }
+
+        /// <summary>
+        /// Fetch One Click Tokens with Credentials This operation returns the token version objects which references the tokens usable as one-click payment tokens for the provided transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of List&lt;TokenVersion&gt;</returns>
+        public async System.Threading.Tasks.Task<List<TokenVersion>> FetchOneClickTokensWithCredentialsAsync (string credentials)
+        {
+             ApiResponse<List<TokenVersion>> localVarResponse = await FetchOneClickTokensWithCredentialsAsyncWithHttpInfo(credentials);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Fetch One Click Tokens with Credentials This operation returns the token version objects which references the tokens usable as one-click payment tokens for the provided transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of ApiResponse (List&lt;TokenVersion&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<TokenVersion>>> FetchOneClickTokensWithCredentialsAsyncWithHttpInfo (string credentials)
+        {
+            // verify the required parameter 'credentials' is set
+            if (credentials == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->FetchOneClickTokensWithCredentials");
+            }
+
+            var localVarPath = "/transaction/fetchOneClickTokensWithCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (credentials != null) localVarQueryParams.Add("credentials", ApiClient.ParameterToString(credentials)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("FetchOneClickTokensWithCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<TokenVersion>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<TokenVersion>) ApiClient.Deserialize(localVarResponse, typeof(List<TokenVersion>)));
+        }
+
+        /// <summary>
+        /// Fetch Possible Payment Methods This operation allows to get the payment method configurations which can be used with the provided transaction.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1499,7 +2404,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// fetchPossiblePaymentMethods 
+        /// Fetch Possible Payment Methods This operation allows to get the payment method configurations which can be used with the provided transaction.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1561,7 +2466,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// fetchPossiblePaymentMethods 
+        /// Fetch Possible Payment Methods This operation allows to get the payment method configurations which can be used with the provided transaction.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1574,7 +2479,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// fetchPossiblePaymentMethods 
+        /// Fetch Possible Payment Methods This operation allows to get the payment method configurations which can be used with the provided transaction.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1629,6 +2534,142 @@ namespace Customweb.Wallee.Service
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("FetchPossiblePaymentMethods", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<PaymentMethodConfiguration>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<PaymentMethodConfiguration>) ApiClient.Deserialize(localVarResponse, typeof(List<PaymentMethodConfiguration>)));
+        }
+
+        /// <summary>
+        /// Fetch Possible Payment Methods with Credentials This operation allows to get the payment method configurations which can be used with the provided transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>List&lt;PaymentMethodConfiguration&gt;</returns>
+        public List<PaymentMethodConfiguration> FetchPossiblePaymentMethodsWithCredentials (string credentials)
+        {
+             ApiResponse<List<PaymentMethodConfiguration>> localVarResponse = FetchPossiblePaymentMethodsWithCredentialsWithHttpInfo(credentials);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Fetch Possible Payment Methods with Credentials This operation allows to get the payment method configurations which can be used with the provided transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>ApiResponse of List&lt;PaymentMethodConfiguration&gt;</returns>
+        public ApiResponse< List<PaymentMethodConfiguration> > FetchPossiblePaymentMethodsWithCredentialsWithHttpInfo (string credentials)
+        {
+            // verify the required parameter 'credentials' is set
+            if (credentials == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->FetchPossiblePaymentMethodsWithCredentials");
+            }
+
+            var localVarPath = "/transaction/fetchPossiblePaymentMethodsWithCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (credentials != null) localVarQueryParams.Add("credentials", ApiClient.ParameterToString(credentials)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("FetchPossiblePaymentMethodsWithCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<PaymentMethodConfiguration>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<PaymentMethodConfiguration>) ApiClient.Deserialize(localVarResponse, typeof(List<PaymentMethodConfiguration>)));
+        }
+
+        /// <summary>
+        /// Fetch Possible Payment Methods with Credentials This operation allows to get the payment method configurations which can be used with the provided transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of List&lt;PaymentMethodConfiguration&gt;</returns>
+        public async System.Threading.Tasks.Task<List<PaymentMethodConfiguration>> FetchPossiblePaymentMethodsWithCredentialsAsync (string credentials)
+        {
+             ApiResponse<List<PaymentMethodConfiguration>> localVarResponse = await FetchPossiblePaymentMethodsWithCredentialsAsyncWithHttpInfo(credentials);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Fetch Possible Payment Methods with Credentials This operation allows to get the payment method configurations which can be used with the provided transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of ApiResponse (List&lt;PaymentMethodConfiguration&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<PaymentMethodConfiguration>>> FetchPossiblePaymentMethodsWithCredentialsAsyncWithHttpInfo (string credentials)
+        {
+            // verify the required parameter 'credentials' is set
+            if (credentials == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->FetchPossiblePaymentMethodsWithCredentials");
+            }
+
+            var localVarPath = "/transaction/fetchPossiblePaymentMethodsWithCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (credentials != null) localVarQueryParams.Add("credentials", ApiClient.ParameterToString(credentials)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("FetchPossiblePaymentMethodsWithCredentials", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -2098,6 +3139,156 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
+        /// Process One-Click Token with Credentials This operation assigns the given token to the transaction and process it.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID is used to load the corresponding token and to process the transaction with it.</param>
+        /// <returns>Transaction</returns>
+        public Transaction ProcessOneClickTokenWithCredentials (string credentials, long? tokenId)
+        {
+             ApiResponse<Transaction> localVarResponse = ProcessOneClickTokenWithCredentialsWithHttpInfo(credentials, tokenId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Process One-Click Token with Credentials This operation assigns the given token to the transaction and process it.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID is used to load the corresponding token and to process the transaction with it.</param>
+        /// <returns>ApiResponse of Transaction</returns>
+        public ApiResponse< Transaction > ProcessOneClickTokenWithCredentialsWithHttpInfo (string credentials, long? tokenId)
+        {
+            // verify the required parameter 'credentials' is set
+            if (credentials == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->ProcessOneClickTokenWithCredentials");
+            }
+            // verify the required parameter 'tokenId' is set
+            if (tokenId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'tokenId' when calling TransactionService->ProcessOneClickTokenWithCredentials");
+            }
+
+            var localVarPath = "/transaction/processOneClickTokenWithCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (credentials != null) localVarQueryParams.Add("credentials", ApiClient.ParameterToString(credentials)); // query parameter
+            if (tokenId != null) localVarQueryParams.Add("tokenId", ApiClient.ParameterToString(tokenId)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ProcessOneClickTokenWithCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Transaction>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Transaction) ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+        }
+
+        /// <summary>
+        /// Process One-Click Token with Credentials This operation assigns the given token to the transaction and process it.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID is used to load the corresponding token and to process the transaction with it.</param>
+        /// <returns>Task of Transaction</returns>
+        public async System.Threading.Tasks.Task<Transaction> ProcessOneClickTokenWithCredentialsAsync (string credentials, long? tokenId)
+        {
+             ApiResponse<Transaction> localVarResponse = await ProcessOneClickTokenWithCredentialsAsyncWithHttpInfo(credentials, tokenId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Process One-Click Token with Credentials This operation assigns the given token to the transaction and process it.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="tokenId">The token ID is used to load the corresponding token and to process the transaction with it.</param>
+        /// <returns>Task of ApiResponse (Transaction)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Transaction>> ProcessOneClickTokenWithCredentialsAsyncWithHttpInfo (string credentials, long? tokenId)
+        {
+            // verify the required parameter 'credentials' is set
+            if (credentials == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->ProcessOneClickTokenWithCredentials");
+            }
+            // verify the required parameter 'tokenId' is set
+            if (tokenId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'tokenId' when calling TransactionService->ProcessOneClickTokenWithCredentials");
+            }
+
+            var localVarPath = "/transaction/processOneClickTokenWithCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (credentials != null) localVarQueryParams.Add("credentials", ApiClient.ParameterToString(credentials)); // query parameter
+            if (tokenId != null) localVarQueryParams.Add("tokenId", ApiClient.ParameterToString(tokenId)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ProcessOneClickTokenWithCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Transaction>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Transaction) ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+        }
+
+        /// <summary>
         /// Read Reads the entity with the given &#39;id&#39; and returns it.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
@@ -2243,6 +3434,144 @@ namespace Customweb.Wallee.Service
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("Read", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Transaction>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Transaction) ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+        }
+
+        /// <summary>
+        /// Read With Credentials Reads the transaction with the given &#39;id&#39; and returns it. This method uses the credentials to authenticate and identify the transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Transaction</returns>
+        public Transaction ReadWithCredentials (string credentials)
+        {
+             ApiResponse<Transaction> localVarResponse = ReadWithCredentialsWithHttpInfo(credentials);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Read With Credentials Reads the transaction with the given &#39;id&#39; and returns it. This method uses the credentials to authenticate and identify the transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>ApiResponse of Transaction</returns>
+        public ApiResponse< Transaction > ReadWithCredentialsWithHttpInfo (string credentials)
+        {
+            // verify the required parameter 'credentials' is set
+            if (credentials == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->ReadWithCredentials");
+            }
+
+            var localVarPath = "/transaction/readWithCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "*/*"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (credentials != null) localVarQueryParams.Add("credentials", ApiClient.ParameterToString(credentials)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ReadWithCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Transaction>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Transaction) ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+        }
+
+        /// <summary>
+        /// Read With Credentials Reads the transaction with the given &#39;id&#39; and returns it. This method uses the credentials to authenticate and identify the transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of Transaction</returns>
+        public async System.Threading.Tasks.Task<Transaction> ReadWithCredentialsAsync (string credentials)
+        {
+             ApiResponse<Transaction> localVarResponse = await ReadWithCredentialsAsyncWithHttpInfo(credentials);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Read With Credentials Reads the transaction with the given &#39;id&#39; and returns it. This method uses the credentials to authenticate and identify the transaction.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <returns>Task of ApiResponse (Transaction)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Transaction>> ReadWithCredentialsAsyncWithHttpInfo (string credentials)
+        {
+            // verify the required parameter 'credentials' is set
+            if (credentials == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->ReadWithCredentials");
+            }
+
+            var localVarPath = "/transaction/readWithCredentials";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "*/*"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (credentials != null) localVarQueryParams.Add("credentials", ApiClient.ParameterToString(credentials)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ReadWithCredentials", localVarResponse);
                 if (exception != null) throw exception;
             }
 

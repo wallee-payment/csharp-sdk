@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,26 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// RestCountry model.
+    /// Country
     /// </summary>
     [DataContract]
     public partial class RestCountry :  IEquatable<RestCountry>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="RestCountry" /> class.
         /// </summary>
-        /// <param name="ISOCode2Letter">The ISO code 2 letter identifies the country by two chars as defined in ISO 3166-1 (e.g. US, DE, CH).</param>
-        /// <param name="ISOCode3Letter">The ISO code 3 letter identifies the country by three chars as defined in ISO 3166-1 (e.g. CHE, USA, GBR).</param>
-        /// <param name="Name">The name labels the country by a name in English.</param>
-        /// <param name="NumericCode">The numeric code identifies the country by a three digit number as defined in ISO 3166-1 (e.g. 840, 826, 756).</param>
-        /// <param name="StateCodes">The state codes field is a list of all states associated with this country. The list contains the identifiers of the states. The identifiers corresponds to the ISO 3166-2 subdivision identifier.</param>
-        public RestCountry(string ISOCode2Letter = default(string), string ISOCode3Letter = default(string), string Name = default(string), string NumericCode = default(string), List<string> StateCodes = default(List<string>))
+        [JsonConstructorAttribute]
+        public RestCountry()
         {
-            this.ISOCode2Letter = ISOCode2Letter;
-            this.ISOCode3Letter = ISOCode3Letter;
-            this.Name = Name;
-            this.NumericCode = NumericCode;
-            this.StateCodes = StateCodes;
         }
 
         /// <summary>
@@ -42,35 +52,35 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The ISO code 2 letter identifies the country by two chars as defined in ISO 3166-1 (e.g. US, DE, CH).</value>
         [DataMember(Name="ISOCode2Letter", EmitDefaultValue=false)]
-        public string ISOCode2Letter { get; set; }
+        public string ISOCode2Letter { get; private set; }
 
         /// <summary>
         /// The ISO code 3 letter identifies the country by three chars as defined in ISO 3166-1 (e.g. CHE, USA, GBR).
         /// </summary>
         /// <value>The ISO code 3 letter identifies the country by three chars as defined in ISO 3166-1 (e.g. CHE, USA, GBR).</value>
         [DataMember(Name="ISOCode3Letter", EmitDefaultValue=false)]
-        public string ISOCode3Letter { get; set; }
+        public string ISOCode3Letter { get; private set; }
 
         /// <summary>
         /// The name labels the country by a name in English.
         /// </summary>
         /// <value>The name labels the country by a name in English.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         /// <summary>
         /// The numeric code identifies the country by a three digit number as defined in ISO 3166-1 (e.g. 840, 826, 756).
         /// </summary>
         /// <value>The numeric code identifies the country by a three digit number as defined in ISO 3166-1 (e.g. 840, 826, 756).</value>
         [DataMember(Name="numericCode", EmitDefaultValue=false)]
-        public string NumericCode { get; set; }
+        public string NumericCode { get; private set; }
 
         /// <summary>
         /// The state codes field is a list of all states associated with this country. The list contains the identifiers of the states. The identifiers corresponds to the ISO 3166-2 subdivision identifier.
         /// </summary>
         /// <value>The state codes field is a list of all states associated with this country. The list contains the identifiers of the states. The identifiers corresponds to the ISO 3166-2 subdivision identifier.</value>
         [DataMember(Name="stateCodes", EmitDefaultValue=false)]
-        public List<string> StateCodes { get; set; }
+        public List<string> StateCodes { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,15 +88,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class RestCountry {\n");
-            sb.Append("  ISOCode2Letter: ").Append(ISOCode2Letter).Append("\n");
-            sb.Append("  ISOCode3Letter: ").Append(ISOCode3Letter).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  NumericCode: ").Append(NumericCode).Append("\n");
-            sb.Append("  StateCodes: ").Append(StateCodes).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -157,17 +159,26 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.ISOCode2Letter != null)
+                {
                     hash = hash * 59 + this.ISOCode2Letter.GetHashCode();
+                }
                 if (this.ISOCode3Letter != null)
+                {
                     hash = hash * 59 + this.ISOCode3Letter.GetHashCode();
+                }
                 if (this.Name != null)
+                {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
                 if (this.NumericCode != null)
+                {
                     hash = hash * 59 + this.NumericCode.GetHashCode();
+                }
                 if (this.StateCodes != null)
+                {
                     hash = hash * 59 + this.StateCodes.GetHashCode();
+                }
                 return hash;
             }
         }

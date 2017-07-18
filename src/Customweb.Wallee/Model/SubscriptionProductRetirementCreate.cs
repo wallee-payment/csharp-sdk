@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,52 +33,38 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// SubscriptionProductRetirementCreate model.
+    /// Product Retirement
     /// </summary>
     [DataContract]
     public partial class SubscriptionProductRetirementCreate :  IEquatable<SubscriptionProductRetirementCreate>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionProductRetirementCreate" /> class.
         /// </summary>
-        /// <param name="CreatedOn">The created on date indicates the date on which the entity was stored into the database.</param>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="LinkedSpaceId">The linked space id holds the ID of the space to which the entity belongs to.</param>
-        /// <param name="Product">Product</param>
+        [JsonConstructorAttribute]
+        protected SubscriptionProductRetirementCreate() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SubscriptionProductRetirementCreate" /> class.
+        /// </summary>
+        /// <param name="Product">Product (required)</param>
         /// <param name="RespectTerminiationPeriodsEnabled">RespectTerminiationPeriodsEnabled</param>
         /// <param name="TargetProduct">TargetProduct</param>
-        /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</param>
-        public SubscriptionProductRetirementCreate(DateTime? CreatedOn = default(DateTime?), long? Id = default(long?), long? LinkedSpaceId = default(long?), long? Product = default(long?), bool? RespectTerminiationPeriodsEnabled = default(bool?), long? TargetProduct = default(long?), int? Version = default(int?))
+        public SubscriptionProductRetirementCreate(bool? RespectTerminiationPeriodsEnabled = default(bool?), long? TargetProduct = default(long?), long? Product = default(long?))
         {
-            this.CreatedOn = CreatedOn;
-            this.Id = Id;
-            this.LinkedSpaceId = LinkedSpaceId;
-            this.Product = Product;
+            // to ensure "Product" is required (not null)
+            if (Product == null)
+            {
+                throw new ArgumentNullException("Product is a required property for SubscriptionProductRetirementCreate and cannot be null");
+            }
+            else
+            {
+                this.Product = Product;
+            }
             this.RespectTerminiationPeriodsEnabled = RespectTerminiationPeriodsEnabled;
             this.TargetProduct = TargetProduct;
-            this.Version = Version;
         }
-
-        /// <summary>
-        /// The created on date indicates the date on which the entity was stored into the database.
-        /// </summary>
-        /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
-        public DateTime? CreatedOn { get; set; }
-
-        /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
-        /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
-
-        /// <summary>
-        /// The linked space id holds the ID of the space to which the entity belongs to.
-        /// </summary>
-        /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; set; }
 
         /// <summary>
         /// Product
@@ -84,29 +88,12 @@ namespace Customweb.Wallee.Model
         public long? TargetProduct { get; set; }
 
         /// <summary>
-        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
-        /// </summary>
-        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class SubscriptionProductRetirementCreate {\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  Product: ").Append(Product).Append("\n");
-            sb.Append("  RespectTerminiationPeriodsEnabled: ").Append(RespectTerminiationPeriodsEnabled).Append("\n");
-            sb.Append("  TargetProduct: ").Append(TargetProduct).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -142,21 +129,6 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
-                    this.CreatedOn == other.CreatedOn ||
-                    this.CreatedOn != null &&
-                    this.CreatedOn.Equals(other.CreatedOn)
-                ) && 
-                (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
-                ) && 
-                (
-                    this.LinkedSpaceId == other.LinkedSpaceId ||
-                    this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(other.LinkedSpaceId)
-                ) && 
-                (
                     this.Product == other.Product ||
                     this.Product != null &&
                     this.Product.Equals(other.Product)
@@ -170,11 +142,6 @@ namespace Customweb.Wallee.Model
                     this.TargetProduct == other.TargetProduct ||
                     this.TargetProduct != null &&
                     this.TargetProduct.Equals(other.TargetProduct)
-                ) && 
-                (
-                    this.Version == other.Version ||
-                    this.Version != null &&
-                    this.Version.Equals(other.Version)
                 );
         }
 
@@ -187,21 +154,18 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
-                if (this.CreatedOn != null)
-                    hash = hash * 59 + this.CreatedOn.GetHashCode();
-                if (this.Id != null)
-                    hash = hash * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
                 if (this.Product != null)
+                {
                     hash = hash * 59 + this.Product.GetHashCode();
+                }
                 if (this.RespectTerminiationPeriodsEnabled != null)
+                {
                     hash = hash * 59 + this.RespectTerminiationPeriodsEnabled.GetHashCode();
+                }
                 if (this.TargetProduct != null)
+                {
                     hash = hash * 59 + this.TargetProduct.GetHashCode();
-                if (this.Version != null)
-                    hash = hash * 59 + this.Version.GetHashCode();
+                }
                 return hash;
             }
         }

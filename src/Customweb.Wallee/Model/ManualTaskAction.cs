@@ -1,4 +1,22 @@
-
+/**
+ * Wallee SDK Client
+ *
+ * This client allows to interact with the Wallee API.
+ *
+ * Wallee API: 1.0.0
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 using System;
 using System.Linq;
 using System.IO;
@@ -15,24 +33,18 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// ManualTaskAction model.
+    /// Manual Task Action
     /// </summary>
     [DataContract]
     public partial class ManualTaskAction :  IEquatable<ManualTaskAction>
     {
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ManualTaskAction" /> class.
         /// </summary>
-        /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely.</param>
-        /// <param name="Label">Label</param>
-        /// <param name="Style">Style</param>
-        /// <param name="TaskType">TaskType</param>
-        public ManualTaskAction(long? Id = default(long?), Dictionary<string, string> Label = default(Dictionary<string, string>), ManualTaskActionStyle Style = default(ManualTaskActionStyle), long? TaskType = default(long?))
+        [JsonConstructorAttribute]
+        public ManualTaskAction()
         {
-            this.Id = Id;
-            this.Label = Label;
-            this.Style = Style;
-            this.TaskType = TaskType;
         }
 
         /// <summary>
@@ -40,28 +52,28 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        public long? Id { get; private set; }
 
         /// <summary>
         /// Label
         /// </summary>
         /// <value>Label</value>
         [DataMember(Name="label", EmitDefaultValue=false)]
-        public Dictionary<string, string> Label { get; set; }
+        public Dictionary<string, string> Label { get; private set; }
 
         /// <summary>
         /// Style
         /// </summary>
         /// <value>Style</value>
         [DataMember(Name="style", EmitDefaultValue=false)]
-        public ManualTaskActionStyle Style { get; set; }
+        public ManualTaskActionStyle? Style { get; private set; }
 
         /// <summary>
         /// TaskType
         /// </summary>
         /// <value>TaskType</value>
         [DataMember(Name="taskType", EmitDefaultValue=false)]
-        public long? TaskType { get; set; }
+        public long? TaskType { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,14 +81,7 @@ namespace Customweb.Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
-            sb.Append("class ManualTaskAction {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Label: ").Append(Label).Append("\n");
-            sb.Append("  Style: ").Append(Style).Append("\n");
-            sb.Append("  TaskType: ").Append(TaskType).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
+            return this.ToJson();
         }
 
         /// <summary>
@@ -142,15 +147,22 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                // Suitable nullity checks etc, of course :)
                 if (this.Id != null)
+                {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
                 if (this.Label != null)
+                {
                     hash = hash * 59 + this.Label.GetHashCode();
+                }
                 if (this.Style != null)
+                {
                     hash = hash * 59 + this.Style.GetHashCode();
+                }
                 if (this.TaskType != null)
+                {
                     hash = hash * 59 + this.TaskType.GetHashCode();
+                }
                 return hash;
             }
         }
