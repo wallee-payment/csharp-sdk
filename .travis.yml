@@ -16,5 +16,5 @@ deploy:
   script:
     - /bin/bash ./deploy.sh
   on:
-    branch: master
+    repo: wallee-payment/wallee-csharp-sdk
     tags: true
