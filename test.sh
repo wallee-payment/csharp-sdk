@@ -17,5 +17,3 @@ mono nuget.exe install NUnit.Runners -Version 2.6.2 -OutputDirectory packages
 echo "[INFO] Build the solution and run the unit test"
 msbuild Customweb.Wallee.sln && \
     mono ./packages/NUnit.Runners.2.6.2/tools/nunit-console.exe src/Customweb.Wallee.Test/bin/Debug/Customweb.Wallee.Test.dll
-
-echo "[INFO] Test finished."
