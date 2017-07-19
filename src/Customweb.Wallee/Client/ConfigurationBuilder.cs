@@ -27,7 +27,7 @@ namespace Customweb.Wallee.Client
         {
         }
 
-        private string _basePath = "https://staging-wallee.com:443/api";
+        private string _basePath = "https://app-wallee.com:443/api";
 
         /// <summary>
         /// Sets the base API path.
