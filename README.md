@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/wallee-payment/wallee-csharp-sdk.svg?branch=master)](https://travis-ci.org/wallee-payment/wallee-csharp-sdk)
+
 # wallee-csharp-sdk
 The C# SDK allows an easy integration of wallee into C# and .net applications.
 
