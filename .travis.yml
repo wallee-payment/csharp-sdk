@@ -4,6 +4,19 @@ mono:
   - 5.0.1
   - 4.8.1
   - 3.12.1
+env: WALLEE_SDK_VERSION=1.0.0
 solution: Customweb.Wallee.sln
+before_script:
+  - chmod 755 ./build.sh
+  - chmod 755 ./test.sh
+  - chmod 755 ./deploy.sh
 script:
-  - /bin/sh ./mono_nunit_test.sh
+  - /bin/sh ./build.sh
+  - /bin/sh ./test.sh
+deploy:
+  provider: script
+  script:
+    - /bin/bash ./deploy.sh
+  on:
+    branch: master
+    tags: true
