@@ -66,7 +66,7 @@ namespace Customweb.Wallee.Test
                                                    Country: "CH",
                                                    City: "Winterthur",
                                                    PostCode: "8400",
-                                                   DateOfBirth: new DateTime(1988, 4, 19),
+                                                   //DateOfBirth: new DateTime(1988, 4, 19),
                                                    OrganizationName: "Test GmbH",
                                                    MobilePhoneNumber: "+41791234567",
                                                    PhoneNumber: "+41011234567",
