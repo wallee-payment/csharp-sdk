@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Abstract Space
     /// </summary>
     [DataContract]
-    public partial class AbstractSpaceUpdate :  IEquatable<AbstractSpaceUpdate>
+    public partial class AbstractSpaceUpdate :  IEquatable<AbstractSpaceUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Customweb.Wallee.Model
         /// <param name="State">State</param>
         /// <param name="TechnicalContactAddresses">The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.</param>
         /// <param name="TimeZone">The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.</param>
-        public AbstractSpaceUpdate(SpaceAddressCreate PostalAddress = default(SpaceAddressCreate), List<string> TechnicalContactAddresses = default(List<string>), CreationEntityState? State = default(CreationEntityState?), string Name = default(string), long? RequestLimit = default(long?), string TimeZone = default(string))
+        public AbstractSpaceUpdate(string Name = default(string), SpaceAddressCreate PostalAddress = default(SpaceAddressCreate), CreationEntityState? State = default(CreationEntityState?), List<string> TechnicalContactAddresses = default(List<string>), long? RequestLimit = default(long?), string TimeZone = default(string))
         {
             this.Name = Name;
             this.PostalAddress = PostalAddress;
@@ -210,6 +210,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

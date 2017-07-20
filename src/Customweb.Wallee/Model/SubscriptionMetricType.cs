@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The subscription metric type identifies the type of the metric.
     /// </summary>
     [DataContract]
-    public partial class SubscriptionMetricType :  IEquatable<SubscriptionMetricType>
+    public partial class SubscriptionMetricType :  IEquatable<SubscriptionMetricType>, IValidatableObject
     {
 
         /// <summary>
@@ -167,6 +167,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Space
     /// </summary>
     [DataContract]
-    public partial class SpaceCreate : AbstractSpaceUpdate,  IEquatable<SpaceCreate>
+    public partial class SpaceCreate : AbstractSpaceUpdate,  IEquatable<SpaceCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Customweb.Wallee.Model
         /// Initializes a new instance of the <see cref="SpaceCreate" /> class.
         /// </summary>
         /// <param name="Account">The account to which the space belongs to. (required)</param>
-        public SpaceCreate(SpaceAddressCreate PostalAddress = default(SpaceAddressCreate), List<string> TechnicalContactAddresses = default(List<string>), CreationEntityState? State = default(CreationEntityState?), string Name = default(string), long? RequestLimit = default(long?), long? Account = default(long?), string TimeZone = default(string))
+        public SpaceCreate(long? Account = default(long?), string Name = default(string), SpaceAddressCreate PostalAddress = default(SpaceAddressCreate), List<string> TechnicalContactAddresses = default(List<string>), long? RequestLimit = default(long?), CreationEntityState? State = default(CreationEntityState?), string TimeZone = default(string))
         {
             // to ensure "Account" is required (not null)
             if (Account == null)
@@ -194,6 +194,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

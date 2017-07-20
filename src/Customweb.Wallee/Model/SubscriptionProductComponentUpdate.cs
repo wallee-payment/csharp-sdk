@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Product Component
     /// </summary>
     [DataContract]
-    public partial class SubscriptionProductComponentUpdate :  IEquatable<SubscriptionProductComponentUpdate>
+    public partial class SubscriptionProductComponentUpdate :  IEquatable<SubscriptionProductComponentUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Reference">The component reference is used to identify the component by external systems and it marks components to represent the same component within different product versions.</param>
         /// <param name="SortOrder">The sort order controls in which order the component is listed. The sort order is used to order the components in ascending order.</param>
         /// <param name="TaxClass">The tax class of the component determines the taxes which are applicable on all fees linked with the component.</param>
-        public SubscriptionProductComponentUpdate(long? ComponentGroup = default(long?), long? TaxClass = default(long?), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), long? Version = default(long?), bool? DefaultComponent = default(bool?), DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), long? Reference = default(long?), int? SortOrder = default(int?), long? Id = default(long?), int? ComponentChangeWeight = default(int?))
+        public SubscriptionProductComponentUpdate(DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), long? Id = default(long?), long? Reference = default(long?), int? SortOrder = default(int?), int? ComponentChangeWeight = default(int?), bool? DefaultComponent = default(bool?), long? TaxClass = default(long?), long? Version = default(long?), long? ComponentGroup = default(long?), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -304,6 +304,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

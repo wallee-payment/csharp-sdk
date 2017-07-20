@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Abstract Metric
     /// </summary>
     [DataContract]
-    public partial class AbstractSubscriptionMetricUpdate :  IEquatable<AbstractSubscriptionMetricUpdate>
+    public partial class AbstractSubscriptionMetricUpdate :  IEquatable<AbstractSubscriptionMetricUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -138,6 +138,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

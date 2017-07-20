@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Line Item
     /// </summary>
     [DataContract]
-    public partial class LineItemCreate :  IEquatable<LineItemCreate>
+    public partial class LineItemCreate :  IEquatable<LineItemCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Taxes">Taxes</param>
         /// <param name="Type">Type (required)</param>
         /// <param name="UniqueId">The unique id identifies the line item within the set of line items associated with the transaction. (required)</param>
-        public LineItemCreate(decimal? Quantity = default(decimal?), List<TaxCreate> Taxes = default(List<TaxCreate>), string UniqueId = default(string), LineItemType? Type = default(LineItemType?), string Sku = default(string), Dictionary<string, LineItemAttributeCreate> Attributes = default(Dictionary<string, LineItemAttributeCreate>), decimal? AmountIncludingTax = default(decimal?), string Name = default(string), bool? ShippingRequired = default(bool?))
+        public LineItemCreate(decimal? AmountIncludingTax = default(decimal?), string Sku = default(string), List<TaxCreate> Taxes = default(List<TaxCreate>), string UniqueId = default(string), LineItemType? Type = default(LineItemType?), decimal? Quantity = default(decimal?), Dictionary<string, LineItemAttributeCreate> Attributes = default(Dictionary<string, LineItemAttributeCreate>), string Name = default(string), bool? ShippingRequired = default(bool?))
         {
             // to ensure "AmountIncludingTax" is required (not null)
             if (AmountIncludingTax == null)
@@ -310,6 +310,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

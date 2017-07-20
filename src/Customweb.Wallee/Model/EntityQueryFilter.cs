@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The query filter allows to restrict the entities which are returned.
     /// </summary>
     [DataContract]
-    public partial class EntityQueryFilter :  IEquatable<EntityQueryFilter>
+    public partial class EntityQueryFilter :  IEquatable<EntityQueryFilter>, IValidatableObject
     {
 
         /// <summary>
@@ -183,6 +183,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

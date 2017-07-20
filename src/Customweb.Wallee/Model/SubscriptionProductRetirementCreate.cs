@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Product Retirement
     /// </summary>
     [DataContract]
-    public partial class SubscriptionProductRetirementCreate :  IEquatable<SubscriptionProductRetirementCreate>
+    public partial class SubscriptionProductRetirementCreate :  IEquatable<SubscriptionProductRetirementCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Product">Product (required)</param>
         /// <param name="RespectTerminiationPeriodsEnabled">RespectTerminiationPeriodsEnabled</param>
         /// <param name="TargetProduct">TargetProduct</param>
-        public SubscriptionProductRetirementCreate(bool? RespectTerminiationPeriodsEnabled = default(bool?), long? TargetProduct = default(long?), long? Product = default(long?))
+        public SubscriptionProductRetirementCreate(long? TargetProduct = default(long?), long? Product = default(long?), bool? RespectTerminiationPeriodsEnabled = default(bool?))
         {
             // to ensure "Product" is required (not null)
             if (Product == null)
@@ -170,6 +170,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

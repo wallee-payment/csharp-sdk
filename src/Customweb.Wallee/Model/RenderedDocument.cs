@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Rendered Document
     /// </summary>
     [DataContract]
-    public partial class RenderedDocument :  IEquatable<RenderedDocument>
+    public partial class RenderedDocument :  IEquatable<RenderedDocument>, IValidatableObject
     {
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Data</value>
         [DataMember(Name="data", EmitDefaultValue=false)]
-        public List<string> Data { get; private set; }
+        public List<byte[]> Data { get; private set; }
 
         /// <summary>
         /// DocumentTemplateType
@@ -167,6 +167,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The installment plan allows to setup a template for an installment.
     /// </summary>
     [DataContract]
-    public partial class InstallmentPlanConfiguration :  IEquatable<InstallmentPlanConfiguration>
+    public partial class InstallmentPlanConfiguration :  IEquatable<InstallmentPlanConfiguration>, IValidatableObject
     {
 
         /// <summary>
@@ -375,6 +375,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

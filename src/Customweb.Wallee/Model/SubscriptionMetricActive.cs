@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// A metric represents the usage of a resource that can be measured.
     /// </summary>
     [DataContract]
-    public partial class SubscriptionMetricActive : SubscriptionMetricUpdate,  IEquatable<SubscriptionMetricActive>
+    public partial class SubscriptionMetricActive : SubscriptionMetricUpdate,  IEquatable<SubscriptionMetricActive>, IValidatableObject
     {
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Customweb.Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionMetricActive" /> class.
         /// </summary>
-        public SubscriptionMetricActive(DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), long? Version = default(long?), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), long? Id = default(long?))
+        public SubscriptionMetricActive(long? Id = default(long?), long? Version = default(long?), DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate))
         {
             this.Id = Id;
             this.Version = Version;
@@ -148,6 +148,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

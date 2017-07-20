@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Webhook Listener
     /// </summary>
     [DataContract]
-    public partial class WebhookListenerCreate : AbstractWebhookListenerUpdate,  IEquatable<WebhookListenerCreate>
+    public partial class WebhookListenerCreate : AbstractWebhookListenerUpdate,  IEquatable<WebhookListenerCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Identity">The identity which will be used to sign messages sent by this listener.</param>
         /// <param name="NotifyEveryChange">Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.</param>
         /// <param name="Url">The URL which is invoked by the listener to notify the application about the event. (required)</param>
-        public WebhookListenerCreate(bool? NotifyEveryChange = default(bool?), long? Identity = default(long?), CreationEntityState? State = default(CreationEntityState?), long? Entity = default(long?), long? Url = default(long?), List<string> EntityStates = default(List<string>), string Name = default(string))
+        public WebhookListenerCreate(bool? NotifyEveryChange = default(bool?), long? Identity = default(long?), long? Url = default(long?), CreationEntityState? State = default(CreationEntityState?), string Name = default(string), List<string> EntityStates = default(List<string>), long? Entity = default(long?))
         {
             // to ensure "Entity" is required (not null)
             if (Entity == null)
@@ -242,6 +242,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

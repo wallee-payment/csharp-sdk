@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Token
     /// </summary>
     [DataContract]
-    public partial class TokenCreate : AbstractTokenUpdate,  IEquatable<TokenCreate>
+    public partial class TokenCreate : AbstractTokenUpdate,  IEquatable<TokenCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="ExternalId">The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity. (required)</param>
         /// <param name="State">State</param>
-        public TokenCreate(bool? EnabledForOneClickPayment = default(bool?), string CustomerId = default(string), string CustomerEmailAddress = default(string), CreationEntityState? State = default(CreationEntityState?), string ExternalId = default(string), string Language = default(string), string TokenReference = default(string))
+        public TokenCreate(string CustomerEmailAddress = default(string), bool? EnabledForOneClickPayment = default(bool?), CreationEntityState? State = default(CreationEntityState?), string Language = default(string), string TokenReference = default(string), string CustomerId = default(string), string ExternalId = default(string))
         {
             // to ensure "ExternalId" is required (not null)
             if (ExternalId == null)
@@ -202,6 +202,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

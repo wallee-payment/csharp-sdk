@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The transaction invoice represents the invoice document for a particular transaction.
     /// </summary>
     [DataContract]
-    public partial class TransactionInvoice : TransactionAwareEntity,  IEquatable<TransactionInvoice>
+    public partial class TransactionInvoice : TransactionAwareEntity,  IEquatable<TransactionInvoice>, IValidatableObject
     {
 
         /// <summary>
@@ -386,6 +386,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

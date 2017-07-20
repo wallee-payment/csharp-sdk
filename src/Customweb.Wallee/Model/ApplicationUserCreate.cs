@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Application User
     /// </summary>
     [DataContract]
-    public partial class ApplicationUserCreate : AbstractApplicationUserUpdate,  IEquatable<ApplicationUserCreate>
+    public partial class ApplicationUserCreate : AbstractApplicationUserUpdate,  IEquatable<ApplicationUserCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Customweb.Wallee.Model
         /// Initializes a new instance of the <see cref="ApplicationUserCreate" /> class.
         /// </summary>
         /// <param name="PrimaryAccount">The account that this user is associated with. The account owner will be able to manage this user. (required)</param>
-        public ApplicationUserCreate(long? PrimaryAccount = default(long?), CreationEntityState? State = default(CreationEntityState?), string Name = default(string))
+        public ApplicationUserCreate(string Name = default(string), CreationEntityState? State = default(CreationEntityState?), long? PrimaryAccount = default(long?))
         {
             // to ensure "PrimaryAccount" is required (not null)
             if (PrimaryAccount == null)
@@ -154,6 +154,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

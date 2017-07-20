@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The subscription charge represents a single charge carried out for a particular subscription.
     /// </summary>
     [DataContract]
-    public partial class SubscriptionChargeCreate :  IEquatable<SubscriptionChargeCreate>
+    public partial class SubscriptionChargeCreate :  IEquatable<SubscriptionChargeCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Reference">Reference</param>
         /// <param name="Subscription">The field subscription indicates the subscription to which the charge belongs to. (required)</param>
         /// <param name="SuccessUrl">The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.</param>
-        public SubscriptionChargeCreate(string Reference = default(string), long? Subscription = default(long?), string ExternalId = default(string), SubscriptionChargeProcessingType? ProcessingType = default(SubscriptionChargeProcessingType?), DateTime? PlannedExecutionDate = default(DateTime?), string SuccessUrl = default(string), string FailedUrl = default(string))
+        public SubscriptionChargeCreate(DateTime? PlannedExecutionDate = default(DateTime?), string SuccessUrl = default(string), SubscriptionChargeProcessingType? ProcessingType = default(SubscriptionChargeProcessingType?), long? Subscription = default(long?), string Reference = default(string), string ExternalId = default(string), string FailedUrl = default(string))
         {
             // to ensure "ExternalId" is required (not null)
             if (ExternalId == null)
@@ -258,6 +258,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

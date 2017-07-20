@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Abstract Webhook URL
     /// </summary>
     [DataContract]
-    public partial class AbstractWebhookUrlUpdate :  IEquatable<AbstractWebhookUrlUpdate>
+    public partial class AbstractWebhookUrlUpdate :  IEquatable<AbstractWebhookUrlUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Name">The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</param>
         /// <param name="State">State</param>
         /// <param name="Url">The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter&#x3D;value.</param>
-        public AbstractWebhookUrlUpdate(CreationEntityState? State = default(CreationEntityState?), string Name = default(string), string Url = default(string))
+        public AbstractWebhookUrlUpdate(string Url = default(string), CreationEntityState? State = default(CreationEntityState?), string Name = default(string))
         {
             this.Name = Name;
             this.State = State;
@@ -156,6 +156,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

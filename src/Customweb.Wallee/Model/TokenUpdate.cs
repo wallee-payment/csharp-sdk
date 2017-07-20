@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Token
     /// </summary>
     [DataContract]
-    public partial class TokenUpdate : AbstractTokenUpdate,  IEquatable<TokenUpdate>
+    public partial class TokenUpdate : AbstractTokenUpdate,  IEquatable<TokenUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
         /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
-        public TokenUpdate(bool? EnabledForOneClickPayment = default(bool?), string CustomerId = default(string), string CustomerEmailAddress = default(string), long? Version = default(long?), string Language = default(string), long? Id = default(long?), string TokenReference = default(string))
+        public TokenUpdate(long? Id = default(long?), string CustomerEmailAddress = default(string), bool? EnabledForOneClickPayment = default(bool?), long? Version = default(long?), string Language = default(string), string TokenReference = default(string), string CustomerId = default(string))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -210,6 +210,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

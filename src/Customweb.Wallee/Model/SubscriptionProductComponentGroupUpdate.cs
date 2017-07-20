@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Product Component Group
     /// </summary>
     [DataContract]
-    public partial class SubscriptionProductComponentGroupUpdate :  IEquatable<SubscriptionProductComponentGroupUpdate>
+    public partial class SubscriptionProductComponentGroupUpdate :  IEquatable<SubscriptionProductComponentGroupUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Optional">The component group can be optional. This means no component has to be selected by the subscriber.</param>
         /// <param name="ProductVersion">ProductVersion</param>
         /// <param name="SortOrder">The sort order controls in which order the component group is listed. The sort order is used to order the component groups in ascending order.</param>
-        public SubscriptionProductComponentGroupUpdate(long? ProductVersion = default(long?), long? Version = default(long?), long? Id = default(long?), bool? Optional = default(bool?), int? SortOrder = default(int?), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate))
+        public SubscriptionProductComponentGroupUpdate(long? Id = default(long?), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), int? SortOrder = default(int?), long? Version = default(long?), bool? Optional = default(bool?), long? ProductVersion = default(long?))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -232,6 +232,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

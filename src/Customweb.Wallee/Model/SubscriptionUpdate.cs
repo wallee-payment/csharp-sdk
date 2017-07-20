@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Subscription
     /// </summary>
     [DataContract]
-    public partial class SubscriptionUpdate :  IEquatable<SubscriptionUpdate>
+    public partial class SubscriptionUpdate :  IEquatable<SubscriptionUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
         /// <param name="Description">Description</param>
         /// <param name="PlannedTerminationDate">PlannedTerminationDate</param>
-        public SubscriptionUpdate(string Description = default(string), long? Version = default(long?), long? Id = default(long?), DateTime? PlannedTerminationDate = default(DateTime?))
+        public SubscriptionUpdate(string Description = default(string), long? Id = default(long?), DateTime? PlannedTerminationDate = default(DateTime?), long? Version = default(long?))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -196,6 +196,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The metric usage is the actual usage of a metric for a particular subscription as collected by an external application.
     /// </summary>
     [DataContract]
-    public partial class SubscriptionMetricUsageReport :  IEquatable<SubscriptionMetricUsageReport>
+    public partial class SubscriptionMetricUsageReport :  IEquatable<SubscriptionMetricUsageReport>, IValidatableObject
     {
 
         /// <summary>
@@ -279,6 +279,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

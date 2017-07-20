@@ -36,13 +36,13 @@ namespace Customweb.Wallee.Model
     /// Webhook URL
     /// </summary>
     [DataContract]
-    public partial class WebhookUrlCreate : AbstractWebhookUrlUpdate,  IEquatable<WebhookUrlCreate>
+    public partial class WebhookUrlCreate : AbstractWebhookUrlUpdate,  IEquatable<WebhookUrlCreate>, IValidatableObject
     {
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WebhookUrlCreate" /> class.
         /// </summary>
-        public WebhookUrlCreate(CreationEntityState? State = default(CreationEntityState?), string Name = default(string), string Url = default(string))
+        public WebhookUrlCreate(string Url = default(string), string Name = default(string), CreationEntityState? State = default(CreationEntityState?))
         {
             this.Name = Name;
             this.State = State;
@@ -132,6 +132,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

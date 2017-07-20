@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Abstract Product
     /// </summary>
     [DataContract]
-    public partial class AbstractSubscriptionProductActive :  IEquatable<AbstractSubscriptionProductActive>
+    public partial class AbstractSubscriptionProductActive :  IEquatable<AbstractSubscriptionProductActive>, IValidatableObject
     {
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Name">The product name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</param>
         /// <param name="SortOrder">The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.</param>
         /// <param name="State">State</param>
-        public AbstractSubscriptionProductActive(string Name = default(string), string FailedPaymentSuspensionPeriod = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), int? SortOrder = default(int?), SubscriptionProductState? State = default(SubscriptionProductState?))
+        public AbstractSubscriptionProductActive(string FailedPaymentSuspensionPeriod = default(string), int? SortOrder = default(int?), SubscriptionProductState? State = default(SubscriptionProductState?), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string Name = default(string))
         {
             this.AllowedPaymentMethodConfigurations = AllowedPaymentMethodConfigurations;
             this.FailedPaymentSuspensionPeriod = FailedPaymentSuspensionPeriod;
@@ -192,6 +192,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

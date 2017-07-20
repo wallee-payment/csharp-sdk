@@ -36,14 +36,14 @@ namespace Customweb.Wallee.Model
     /// Account
     /// </summary>
     [DataContract]
-    public partial class AccountCreate : AbstractAccountUpdate,  IEquatable<AccountCreate>
+    public partial class AccountCreate : AbstractAccountUpdate,  IEquatable<AccountCreate>, IValidatableObject
     {
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountCreate" /> class.
         /// </summary>
         /// <param name="ParentAccount">The account which is responsible for administering the account.</param>
-        public AccountCreate(string Name = default(string), long? ParentAccount = default(long?), long? SubaccountLimit = default(long?))
+        public AccountCreate(string Name = default(string), long? SubaccountLimit = default(long?), long? ParentAccount = default(long?))
         {
             this.ParentAccount = ParentAccount;
             this.Name = Name;
@@ -140,6 +140,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

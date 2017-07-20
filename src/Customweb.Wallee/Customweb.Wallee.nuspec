@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
     <metadata>
         <!-- The identifier that must be unique within the hosting gallery -->
-        <id>Customweb.Wallee.SDK</id>
+        <id>Customweb.Wallee</id>
         <title>wallee SDK</title>
 
         <!-- The package version number that is used when resolving dependencies -->
@@ -19,7 +19,7 @@
 
         <!-- The description can be used in package manager UI. Note that the
              nuget.org gallery uses information you add in the portal. -->
-        <description>wallee SDK for C#</description>
+        <description>The wallee SDK for C#.</description>
         <copyright>Copyright © 2017 by customweb GmbH</copyright>
         <licenseUrl>https://github.com/wallee-payment/wallee-csharp-sdk/blob/master/LICENSE.txt</licenseUrl>
         <iconUrl>https://app-wallee.com/assets/images/wallee-icon-primary.svg</iconUrl>
@@ -28,15 +28,17 @@
 
         <!-- Dependencies are automatically installed when the package is installed -->
         <dependencies>
-
-            <dependency id="NewtonSoft.Json" version="10.0.3" />
-            <dependency id="RestSharp" version="105.2.3" />
-
+            <group targetFramework="net45" >
+              <dependency id="NewtonSoft.Json" version="9.0.1" />
+              <dependency id="RestSharp" version="105.2.3" />
+            </group>
         </dependencies>
     </metadata>
     <files>
 
         <!-- A readme.txt will be displayed when the package is installed -->
         <file src="../../README.md" target="" />
+        <file src="../../bin/Customweb.Wallee.dll" target="lib/net45" />
+        <file src="../../bin/Customweb.Wallee.xml" target="lib/net45" />
     </files>
 </package>

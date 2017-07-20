@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// A subscription product represents a product to which a subscriber can subscribe to. A product defines how much the subscription costs and in what cycles the subscribe is charged.
     /// </summary>
     [DataContract]
-    public partial class SubscriptionProduct :  IEquatable<SubscriptionProduct>
+    public partial class SubscriptionProduct :  IEquatable<SubscriptionProduct>, IValidatableObject
     {
 
         /// <summary>
@@ -279,6 +279,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

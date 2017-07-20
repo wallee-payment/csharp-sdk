@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Delivery Indication
     /// </summary>
     [DataContract]
-    public partial class DeliveryIndication : TransactionAwareEntity,  IEquatable<DeliveryIndication>
+    public partial class DeliveryIndication : TransactionAwareEntity,  IEquatable<DeliveryIndication>, IValidatableObject
     {
 
         /// <summary>
@@ -290,6 +290,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

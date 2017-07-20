@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Suspension
     /// </summary>
     [DataContract]
-    public partial class SubscriptionSuspensionCreate :  IEquatable<SubscriptionSuspensionCreate>
+    public partial class SubscriptionSuspensionCreate :  IEquatable<SubscriptionSuspensionCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Note">The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.</param>
         /// <param name="PlannedEndDate">The planned end date of the suspension identifies the date on which the suspension will be ended automatically. (required)</param>
         /// <param name="Subscription">Subscription (required)</param>
-        public SubscriptionSuspensionCreate(SubscriptionSuspensionAction? EndAction = default(SubscriptionSuspensionAction?), long? Subscription = default(long?), DateTime? PlannedEndDate = default(DateTime?), string Note = default(string))
+        public SubscriptionSuspensionCreate(SubscriptionSuspensionAction? EndAction = default(SubscriptionSuspensionAction?), string Note = default(string), long? Subscription = default(long?), DateTime? PlannedEndDate = default(DateTime?))
         {
             // to ensure "EndAction" is required (not null)
             if (EndAction == null)
@@ -204,6 +204,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

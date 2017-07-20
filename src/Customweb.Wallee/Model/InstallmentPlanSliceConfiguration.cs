@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The installment plan slice defines a single slice of an installment plan.
     /// </summary>
     [DataContract]
-    public partial class InstallmentPlanSliceConfiguration :  IEquatable<InstallmentPlanSliceConfiguration>
+    public partial class InstallmentPlanSliceConfiguration :  IEquatable<InstallmentPlanSliceConfiguration>, IValidatableObject
     {
 
         /// <summary>
@@ -263,6 +263,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

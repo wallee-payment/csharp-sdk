@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Subscription
     /// </summary>
     [DataContract]
-    public partial class SubscriptionPending : SubscriptionUpdate,  IEquatable<SubscriptionPending>
+    public partial class SubscriptionPending : SubscriptionUpdate,  IEquatable<SubscriptionPending>, IValidatableObject
     {
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Reference">Reference</param>
         /// <param name="Subscriber">Subscriber</param>
         /// <param name="Token">Token</param>
-        public SubscriptionPending(long? Token = default(long?), string Reference = default(string), long? Subscriber = default(long?), string Description = default(string), long? Version = default(long?), long? Id = default(long?), DateTime? PlannedTerminationDate = default(DateTime?))
+        public SubscriptionPending(string Description = default(string), long? Id = default(long?), DateTime? PlannedTerminationDate = default(DateTime?), long? Token = default(long?), long? Subscriber = default(long?), long? Version = default(long?), string Reference = default(string))
         {
             this.Reference = Reference;
             this.Subscriber = Subscriber;
@@ -202,6 +202,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

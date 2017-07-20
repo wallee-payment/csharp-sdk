@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Product Period Fee
     /// </summary>
     [DataContract]
-    public partial class ProductPeriodFeeUpdate :  IEquatable<ProductPeriodFeeUpdate>
+    public partial class ProductPeriodFeeUpdate :  IEquatable<ProductPeriodFeeUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Name">The name of the fee should describe for the subscriber in few words for what the fee is for.</param>
         /// <param name="NumberOfFreeTrialPeriods">The number of free trial periods specify how many periods are free of charge at the begining of the subscription.</param>
         /// <param name="PeriodFee">The period fee is charged for every period of the subscription except for those periods which are trial periods.</param>
-        public ProductPeriodFeeUpdate(List<PersistableCurrencyAmountUpdate> PeriodFee = default(List<PersistableCurrencyAmountUpdate>), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), long? Version = default(long?), long? Id = default(long?), int? NumberOfFreeTrialPeriods = default(int?), DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), long? Component = default(long?))
+        public ProductPeriodFeeUpdate(int? NumberOfFreeTrialPeriods = default(int?), long? Id = default(long?), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), List<PersistableCurrencyAmountUpdate> PeriodFee = default(List<PersistableCurrencyAmountUpdate>), long? Version = default(long?), long? Component = default(long?))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -250,6 +250,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

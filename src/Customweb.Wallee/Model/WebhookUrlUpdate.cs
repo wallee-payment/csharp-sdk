@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Webhook URL
     /// </summary>
     [DataContract]
-    public partial class WebhookUrlUpdate : AbstractWebhookUrlUpdate,  IEquatable<WebhookUrlUpdate>
+    public partial class WebhookUrlUpdate : AbstractWebhookUrlUpdate,  IEquatable<WebhookUrlUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
         /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
-        public WebhookUrlUpdate(CreationEntityState? State = default(CreationEntityState?), string Name = default(string), long? Version = default(long?), string Url = default(string), long? Id = default(long?))
+        public WebhookUrlUpdate(long? Id = default(long?), string Url = default(string), long? Version = default(long?), string Name = default(string), CreationEntityState? State = default(CreationEntityState?))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -190,6 +190,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

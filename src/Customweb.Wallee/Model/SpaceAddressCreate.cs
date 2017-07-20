@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Space Address
     /// </summary>
     [DataContract]
-    public partial class SpaceAddressCreate :  IEquatable<SpaceAddressCreate>
+    public partial class SpaceAddressCreate :  IEquatable<SpaceAddressCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Salutation">Salutation</param>
         /// <param name="SortingCode">The sorting code identifies the post office at which the post box is located in.</param>
         /// <param name="Street">Street</param>
-        public SpaceAddressCreate(string FamilyName = default(string), string PostalState = default(string), string GivenName = default(string), string Salutation = default(string), string City = default(string), string SalesTaxNumber = default(string), string DependentLocality = default(string), string PostCode = default(string), string SortingCode = default(string), string Country = default(string), string EmailAddress = default(string), string Street = default(string), string OrganizationName = default(string))
+        public SpaceAddressCreate(string Salutation = default(string), string PostCode = default(string), string Street = default(string), string GivenName = default(string), string FamilyName = default(string), string OrganizationName = default(string), string SortingCode = default(string), string City = default(string), string Country = default(string), string PostalState = default(string), string DependentLocality = default(string), string SalesTaxNumber = default(string), string EmailAddress = default(string))
         {
             this.City = City;
             this.Country = Country;
@@ -336,6 +336,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

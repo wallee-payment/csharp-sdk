@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Line Item Reduction . Create
     /// </summary>
     [DataContract]
-    public partial class LineItemReductionCreate :  IEquatable<LineItemReductionCreate>
+    public partial class LineItemReductionCreate :  IEquatable<LineItemReductionCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Customweb.Wallee.Model
         /// <param name="LineItemUniqueId">The unique id identifies the line item on which the reduction is applied on. (required)</param>
         /// <param name="QuantityReduction">QuantityReduction (required)</param>
         /// <param name="UnitPriceReduction">UnitPriceReduction (required)</param>
-        public LineItemReductionCreate(decimal? UnitPriceReduction = default(decimal?), decimal? QuantityReduction = default(decimal?), string LineItemUniqueId = default(string))
+        public LineItemReductionCreate(string LineItemUniqueId = default(string), decimal? UnitPriceReduction = default(decimal?), decimal? QuantityReduction = default(decimal?))
         {
             // to ensure "LineItemUniqueId" is required (not null)
             if (LineItemUniqueId == null)
@@ -186,6 +186,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

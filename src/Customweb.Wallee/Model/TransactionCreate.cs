@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Transaction
     /// </summary>
     [DataContract]
-    public partial class TransactionCreate : AbstractTransactionPending,  IEquatable<TransactionCreate>
+    public partial class TransactionCreate : AbstractTransactionPending,  IEquatable<TransactionCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Customweb.Wallee.Model
         /// <param name="ChargeRetryEnabled">When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.</param>
         /// <param name="CustomersPresence">CustomersPresence (required)</param>
         /// <param name="SpaceViewId">SpaceViewId</param>
-        public TransactionCreate(List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string ShippingMethod = default(string), long? SpaceViewId = default(long?), CustomersPresence? CustomersPresence = default(CustomersPresence?), string CustomerEmailAddress = default(string), string Currency = default(string), long? Token = default(long?), AddressCreate BillingAddress = default(AddressCreate), bool? ChargeRetryEnabled = default(bool?), AddressCreate ShippingAddress = default(AddressCreate), string SuccessUrl = default(string), string InvoiceMerchantReference = default(string), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string Language = default(string), string MerchantReference = default(string), string CustomerId = default(string), Dictionary<string, string> MetaData = default(Dictionary<string, string>), List<LineItemCreate> LineItems = default(List<LineItemCreate>), string FailedUrl = default(string))
+        public TransactionCreate(string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), string Language = default(string), string Currency = default(string), string FailedUrl = default(string), bool? ChargeRetryEnabled = default(bool?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), CustomersPresence? CustomersPresence = default(CustomersPresence?), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? SpaceViewId = default(long?), long? Token = default(long?), string ShippingMethod = default(string), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string CustomerEmailAddress = default(string))
         {
             // to ensure "CustomersPresence" is required (not null)
             if (CustomersPresence == null)
@@ -330,6 +330,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

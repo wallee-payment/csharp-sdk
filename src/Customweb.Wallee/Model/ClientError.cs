@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// An error that is returned as the result of a bad user request or a misconfiguration.
     /// </summary>
     [DataContract]
-    public partial class ClientError :  IEquatable<ClientError>
+    public partial class ClientError :  IEquatable<ClientError>, IValidatableObject
     {
 
         /// <summary>
@@ -183,6 +183,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

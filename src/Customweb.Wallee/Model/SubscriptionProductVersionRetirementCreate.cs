@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Product Version Retirement
     /// </summary>
     [DataContract]
-    public partial class SubscriptionProductVersionRetirementCreate :  IEquatable<SubscriptionProductVersionRetirementCreate>
+    public partial class SubscriptionProductVersionRetirementCreate :  IEquatable<SubscriptionProductVersionRetirementCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Customweb.Wallee.Model
         /// <param name="ProductVersion">ProductVersion (required)</param>
         /// <param name="RespectTerminiationPeriodsEnabled">RespectTerminiationPeriodsEnabled</param>
         /// <param name="TargetProduct">TargetProduct</param>
-        public SubscriptionProductVersionRetirementCreate(long? ProductVersion = default(long?), bool? RespectTerminiationPeriodsEnabled = default(bool?), long? TargetProduct = default(long?))
+        public SubscriptionProductVersionRetirementCreate(long? TargetProduct = default(long?), long? ProductVersion = default(long?), bool? RespectTerminiationPeriodsEnabled = default(bool?))
         {
             // to ensure "ProductVersion" is required (not null)
             if (ProductVersion == null)
@@ -170,6 +170,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

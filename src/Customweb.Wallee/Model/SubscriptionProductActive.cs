@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// A subscription product represents a product to which a subscriber can subscribe to. A product defines how much the subscription costs and in what cycles the subscribe is charged.
     /// </summary>
     [DataContract]
-    public partial class SubscriptionProductActive : AbstractSubscriptionProductActive,  IEquatable<SubscriptionProductActive>
+    public partial class SubscriptionProductActive : AbstractSubscriptionProductActive,  IEquatable<SubscriptionProductActive>, IValidatableObject
     {
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
         /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
-        public SubscriptionProductActive(string Name = default(string), string FailedPaymentSuspensionPeriod = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), long? Version = default(long?), long? Id = default(long?), int? SortOrder = default(int?), SubscriptionProductState? State = default(SubscriptionProductState?))
+        public SubscriptionProductActive(string FailedPaymentSuspensionPeriod = default(string), long? Id = default(long?), int? SortOrder = default(int?), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), SubscriptionProductState? State = default(SubscriptionProductState?), long? Version = default(long?), string Name = default(string))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -210,6 +210,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

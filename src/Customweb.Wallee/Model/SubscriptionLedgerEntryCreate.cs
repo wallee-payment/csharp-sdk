@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The subscription ledger entry represents a single change on the subscription balance.
     /// </summary>
     [DataContract]
-    public partial class SubscriptionLedgerEntryCreate :  IEquatable<SubscriptionLedgerEntryCreate>
+    public partial class SubscriptionLedgerEntryCreate :  IEquatable<SubscriptionLedgerEntryCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Customweb.Wallee.Model
         /// <param name="SubscriptionVersion">SubscriptionVersion (required)</param>
         /// <param name="Taxes">Taxes</param>
         /// <param name="Title">Title (required)</param>
-        public SubscriptionLedgerEntryCreate(decimal? Quantity = default(decimal?), long? SubscriptionVersion = default(long?), List<TaxCreate> Taxes = default(List<TaxCreate>), string Title = default(string), string ExternalId = default(string), decimal? AmountIncludingTax = default(decimal?))
+        public SubscriptionLedgerEntryCreate(decimal? AmountIncludingTax = default(decimal?), string Title = default(string), long? SubscriptionVersion = default(long?), List<TaxCreate> Taxes = default(List<TaxCreate>), decimal? Quantity = default(decimal?), string ExternalId = default(string))
         {
             // to ensure "AmountIncludingTax" is required (not null)
             if (AmountIncludingTax == null)
@@ -256,6 +256,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

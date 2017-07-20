@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The refund represents a credit back to the customer. It can be issued by the merchant or by the customer (reversal).
     /// </summary>
     [DataContract]
-    public partial class RefundCreate :  IEquatable<RefundCreate>
+    public partial class RefundCreate :  IEquatable<RefundCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Reductions">Reductions (required)</param>
         /// <param name="Transaction">Transaction (required)</param>
         /// <param name="Type">Type (required)</param>
-        public RefundCreate(long? Transaction = default(long?), List<LineItemReductionCreate> Reductions = default(List<LineItemReductionCreate>), string ExternalId = default(string), string MerchantReference = default(string), RefundType? Type = default(RefundType?))
+        public RefundCreate(long? Transaction = default(long?), string ExternalId = default(string), RefundType? Type = default(RefundType?), string MerchantReference = default(string), List<LineItemReductionCreate> Reductions = default(List<LineItemReductionCreate>))
         {
             // to ensure "ExternalId" is required (not null)
             if (ExternalId == null)
@@ -230,6 +230,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

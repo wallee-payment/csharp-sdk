@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// A document template contains the customizations for a particular document template type.
     /// </summary>
     [DataContract]
-    public partial class DocumentTemplate :  IEquatable<DocumentTemplate>
+    public partial class DocumentTemplate :  IEquatable<DocumentTemplate>, IValidatableObject
     {
 
         /// <summary>
@@ -247,6 +247,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

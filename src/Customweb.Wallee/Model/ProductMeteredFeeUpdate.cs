@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Product Metered Fee
     /// </summary>
     [DataContract]
-    public partial class ProductMeteredFeeUpdate :  IEquatable<ProductMeteredFeeUpdate>
+    public partial class ProductMeteredFeeUpdate :  IEquatable<ProductMeteredFeeUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Metric">Metric</param>
         /// <param name="Name">The name of the fee should describe for the subscriber in few words for what the fee is for.</param>
         /// <param name="TierPricing">The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.</param>
-        public ProductMeteredFeeUpdate(ProductMeteredTierPricing? TierPricing = default(ProductMeteredTierPricing?), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), long? Version = default(long?), long? Metric = default(long?), long? Id = default(long?), DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), long? Component = default(long?))
+        public ProductMeteredFeeUpdate(ProductMeteredTierPricing? TierPricing = default(ProductMeteredTierPricing?), long? Id = default(long?), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), long? Version = default(long?), long? Metric = default(long?), long? Component = default(long?))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -250,6 +250,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

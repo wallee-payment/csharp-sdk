@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The metric usage is the actual usage of a metric for a particular subscription as collected by an external application.
     /// </summary>
     [DataContract]
-    public partial class SubscriptionMetricUsageReportCreate :  IEquatable<SubscriptionMetricUsageReportCreate>
+    public partial class SubscriptionMetricUsageReportCreate :  IEquatable<SubscriptionMetricUsageReportCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Customweb.Wallee.Model
         /// <param name="ExternalId">The external id identifies the metric usage uniquely. (required)</param>
         /// <param name="Metric">The metric usage report is linked to the metric for which the usage should be recorded. (required)</param>
         /// <param name="Subscription">The subscription to which the usage is added to. (required)</param>
-        public SubscriptionMetricUsageReportCreate(string ExternalId = default(string), long? Subscription = default(long?), decimal? ConsumedUnits = default(decimal?), long? Metric = default(long?), string Description = default(string))
+        public SubscriptionMetricUsageReportCreate(string ExternalId = default(string), long? Subscription = default(long?), long? Metric = default(long?), decimal? ConsumedUnits = default(decimal?), string Description = default(string))
         {
             // to ensure "ConsumedUnits" is required (not null)
             if (ConsumedUnits == null)
@@ -230,6 +230,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

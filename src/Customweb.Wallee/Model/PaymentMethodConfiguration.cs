@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The payment method configuration builds the base to connect with different payment method connectors.
     /// </summary>
     [DataContract]
-    public partial class PaymentMethodConfiguration :  IEquatable<PaymentMethodConfiguration>
+    public partial class PaymentMethodConfiguration :  IEquatable<PaymentMethodConfiguration>, IValidatableObject
     {
 
         /// <summary>
@@ -327,6 +327,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

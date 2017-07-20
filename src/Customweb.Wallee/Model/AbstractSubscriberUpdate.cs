@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Abstract Subscriber
     /// </summary>
     [DataContract]
-    public partial class AbstractSubscriberUpdate :  IEquatable<AbstractSubscriberUpdate>
+    public partial class AbstractSubscriberUpdate :  IEquatable<AbstractSubscriberUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Language">The subscriber language determines the language which is used to communicate with the subscriber in emails and documents (e.g. invoices).</param>
         /// <param name="Reference">The subscriber reference identifies the subscriber in administrative interfaces (e.g. customer id).</param>
         /// <param name="ShippingAddress">ShippingAddress</param>
-        public AbstractSubscriberUpdate(AddressCreate BillingAddress = default(AddressCreate), string EmailAddress = default(string), AddressCreate ShippingAddress = default(AddressCreate), string Language = default(string), string Description = default(string), List<long?> DisallowedPaymentMethodConfigurations = default(List<long?>), string Reference = default(string), List<long?> AdditionalAllowedPaymentMethodConfigurations = default(List<long?>))
+        public AbstractSubscriberUpdate(List<long?> AdditionalAllowedPaymentMethodConfigurations = default(List<long?>), string Description = default(string), string Reference = default(string), AddressCreate BillingAddress = default(AddressCreate), List<long?> DisallowedPaymentMethodConfigurations = default(List<long?>), AddressCreate ShippingAddress = default(AddressCreate), string Language = default(string), string EmailAddress = default(string))
         {
             this.AdditionalAllowedPaymentMethodConfigurations = AdditionalAllowedPaymentMethodConfigurations;
             this.BillingAddress = BillingAddress;
@@ -246,6 +246,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

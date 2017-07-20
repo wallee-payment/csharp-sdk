@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Transaction Invoice Replacement
     /// </summary>
     [DataContract]
-    public partial class TransactionInvoiceReplacement :  IEquatable<TransactionInvoiceReplacement>
+    public partial class TransactionInvoiceReplacement :  IEquatable<TransactionInvoiceReplacement>, IValidatableObject
     {
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Customweb.Wallee.Model
         /// <param name="LineItems">LineItems (required)</param>
         /// <param name="MerchantReference">MerchantReference</param>
         /// <param name="SentToCustomer">When the connector is configured to send the invoice to the customer and this property is true the customer will receive an email with the updated invoice. When this property is false no invoice is sent.</param>
-        public TransactionInvoiceReplacement(List<LineItemCreate> LineItems = default(List<LineItemCreate>), bool? SentToCustomer = default(bool?), string ExternalId = default(string), string MerchantReference = default(string), DateTime? DueOn = default(DateTime?))
+        public TransactionInvoiceReplacement(bool? SentToCustomer = default(bool?), List<LineItemCreate> LineItems = default(List<LineItemCreate>), DateTime? DueOn = default(DateTime?), string MerchantReference = default(string), string ExternalId = default(string))
         {
             // to ensure "ExternalId" is required (not null)
             if (ExternalId == null)
@@ -214,6 +214,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

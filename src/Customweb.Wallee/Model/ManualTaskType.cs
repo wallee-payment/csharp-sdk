@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The manual task type indicates what kind of manual task is required to be executed by the human.
     /// </summary>
     [DataContract]
-    public partial class ManualTaskType :  IEquatable<ManualTaskType>
+    public partial class ManualTaskType :  IEquatable<ManualTaskType>, IValidatableObject
     {
 
         /// <summary>
@@ -167,6 +167,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

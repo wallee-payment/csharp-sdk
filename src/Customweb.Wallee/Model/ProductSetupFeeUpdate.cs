@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Product Setup Fee
     /// </summary>
     [DataContract]
-    public partial class ProductSetupFeeUpdate :  IEquatable<ProductSetupFeeUpdate>
+    public partial class ProductSetupFeeUpdate :  IEquatable<ProductSetupFeeUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Customweb.Wallee.Model
         /// <param name="OnDowngradeCreditedAmount">When the subscription is changed and the change is considered as a downgrade the amount defined by this property will be credited to the subscriber.</param>
         /// <param name="OnUpgradeCreditedAmount">When the subscription is changed and the change is considered as a upgrade the amount defined by this property will be credited to the subscriber.</param>
         /// <param name="SetupFee">The setup fee is charged when the subscriber subscribes to this component. The setup fee is debited with the first charge for the subscriptions.</param>
-        public ProductSetupFeeUpdate(List<PersistableCurrencyAmountUpdate> OnUpgradeCreditedAmount = default(List<PersistableCurrencyAmountUpdate>), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), long? Version = default(long?), List<PersistableCurrencyAmountUpdate> OnDowngradeCreditedAmount = default(List<PersistableCurrencyAmountUpdate>), long? Id = default(long?), List<PersistableCurrencyAmountUpdate> SetupFee = default(List<PersistableCurrencyAmountUpdate>), DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), long? Component = default(long?))
+        public ProductSetupFeeUpdate(long? Id = default(long?), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), DatabaseTranslatedStringCreate Description = default(DatabaseTranslatedStringCreate), List<PersistableCurrencyAmountUpdate> SetupFee = default(List<PersistableCurrencyAmountUpdate>), List<PersistableCurrencyAmountUpdate> OnDowngradeCreditedAmount = default(List<PersistableCurrencyAmountUpdate>), long? Version = default(long?), List<PersistableCurrencyAmountUpdate> OnUpgradeCreditedAmount = default(List<PersistableCurrencyAmountUpdate>), long? Component = default(long?))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -268,6 +268,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

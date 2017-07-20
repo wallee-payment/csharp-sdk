@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Currency
     /// </summary>
     [DataContract]
-    public partial class RestCurrency :  IEquatable<RestCurrency>
+    public partial class RestCurrency :  IEquatable<RestCurrency>, IValidatableObject
     {
 
         /// <summary>
@@ -151,6 +151,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

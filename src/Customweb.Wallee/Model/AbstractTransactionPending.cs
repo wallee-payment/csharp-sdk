@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Abstract Transaction
     /// </summary>
     [DataContract]
-    public partial class AbstractTransactionPending :  IEquatable<AbstractTransactionPending>
+    public partial class AbstractTransactionPending :  IEquatable<AbstractTransactionPending>, IValidatableObject
     {
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Customweb.Wallee.Model
         /// <param name="ShippingMethod">ShippingMethod</param>
         /// <param name="SuccessUrl">The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.</param>
         /// <param name="Token">Token</param>
-        public AbstractTransactionPending(List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), AddressCreate BillingAddress = default(AddressCreate), string MerchantReference = default(string), string CustomerEmailAddress = default(string), string Language = default(string), string Currency = default(string), string SuccessUrl = default(string), string CustomerId = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), long? Token = default(long?), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string InvoiceMerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), string ShippingMethod = default(string), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string FailedUrl = default(string))
+        public AbstractTransactionPending(List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string SuccessUrl = default(string), string InvoiceMerchantReference = default(string), string Currency = default(string), long? Token = default(long?), AddressCreate BillingAddress = default(AddressCreate), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string FailedUrl = default(string), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string ShippingMethod = default(string), string CustomerId = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), AddressCreate ShippingAddress = default(AddressCreate), string Language = default(string), string MerchantReference = default(string), string CustomerEmailAddress = default(string))
         {
             this.AllowedPaymentMethodBrands = AllowedPaymentMethodBrands;
             this.AllowedPaymentMethodConfigurations = AllowedPaymentMethodConfigurations;
@@ -390,6 +390,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

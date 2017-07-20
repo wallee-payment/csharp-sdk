@@ -12,7 +12,7 @@ mono nuget.exe install src/Customweb.Wallee/packages.config -o packages;
 
 echo "[INFO] Copy DLLs to the 'bin' folder"
 mkdir -p bin;
-cp packages/Newtonsoft.Json.10.0.3/lib/net45/Newtonsoft.Json.dll bin/Newtonsoft.Json.dll;
+cp packages/Newtonsoft.Json.9.0.1/lib/net45/Newtonsoft.Json.dll bin/Newtonsoft.Json.dll;
 cp packages/RestSharp.105.2.3/lib/net45/RestSharp.dll bin/RestSharp.dll;
 
 echo "[INFO] Run 'mcs' to build bin/Customweb.Wallee.dll"

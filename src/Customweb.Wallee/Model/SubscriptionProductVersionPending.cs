@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Product Version
     /// </summary>
     [DataContract]
-    public partial class SubscriptionProductVersionPending :  IEquatable<SubscriptionProductVersionPending>
+    public partial class SubscriptionProductVersionPending :  IEquatable<SubscriptionProductVersionPending>, IValidatableObject
     {
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Customweb.Wallee.Model
         /// <param name="NumberOfNoticePeriods">The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.</param>
         /// <param name="Product">Each product version is linked to a product.</param>
         /// <param name="State">State</param>
-        public SubscriptionProductVersionPending(int? NumberOfNoticePeriods = default(int?), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), string BillingCycle = default(string), SubscriptionProductVersionState? State = default(SubscriptionProductVersionState?), long? Version = default(long?), int? MinimalNumberOfPeriods = default(int?), long? Id = default(long?), string Comment = default(string), long? Product = default(long?), List<string> EnabledCurrencies = default(List<string>), string DefaultCurrency = default(string))
+        public SubscriptionProductVersionPending(long? Id = default(long?), List<string> EnabledCurrencies = default(List<string>), int? MinimalNumberOfPeriods = default(int?), SubscriptionProductVersionState? State = default(SubscriptionProductVersionState?), long? Version = default(long?), string Comment = default(string), string DefaultCurrency = default(string), long? Product = default(long?), string BillingCycle = default(string), DatabaseTranslatedStringCreate Name = default(DatabaseTranslatedStringCreate), int? NumberOfNoticePeriods = default(int?))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -322,6 +322,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

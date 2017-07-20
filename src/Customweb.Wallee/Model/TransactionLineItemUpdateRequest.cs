@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Transaction Line Item Update Request
     /// </summary>
     [DataContract]
-    public partial class TransactionLineItemUpdateRequest :  IEquatable<TransactionLineItemUpdateRequest>
+    public partial class TransactionLineItemUpdateRequest :  IEquatable<TransactionLineItemUpdateRequest>, IValidatableObject
     {
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="NewLineItems">NewLineItems</param>
         /// <param name="TransactionId">TransactionId (required)</param>
-        public TransactionLineItemUpdateRequest(List<LineItemCreate> NewLineItems = default(List<LineItemCreate>), long? TransactionId = default(long?))
+        public TransactionLineItemUpdateRequest(long? TransactionId = default(long?), List<LineItemCreate> NewLineItems = default(List<LineItemCreate>))
         {
             // to ensure "TransactionId" is required (not null)
             if (TransactionId == null)
@@ -152,6 +152,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// A subscriber represents everyone who is subscribed to a product.
     /// </summary>
     [DataContract]
-    public partial class SubscriberCreate : AbstractSubscriberUpdate,  IEquatable<SubscriberCreate>
+    public partial class SubscriberCreate : AbstractSubscriberUpdate,  IEquatable<SubscriberCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="State">State</param>
         /// <param name="ExternalId">The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity. (required)</param>
-        public SubscriberCreate(CreationEntityState? State = default(CreationEntityState?), string EmailAddress = default(string), string ExternalId = default(string), string Language = default(string), string Description = default(string), List<long?> DisallowedPaymentMethodConfigurations = default(List<long?>), string Reference = default(string), AddressCreate BillingAddress = default(AddressCreate), List<long?> AdditionalAllowedPaymentMethodConfigurations = default(List<long?>), AddressCreate ShippingAddress = default(AddressCreate))
+        public SubscriberCreate(List<long?> AdditionalAllowedPaymentMethodConfigurations = default(List<long?>), string Description = default(string), string Reference = default(string), CreationEntityState? State = default(CreationEntityState?), AddressCreate ShippingAddress = default(AddressCreate), List<long?> DisallowedPaymentMethodConfigurations = default(List<long?>), AddressCreate BillingAddress = default(AddressCreate), string ExternalId = default(string), string Language = default(string), string EmailAddress = default(string))
         {
             // to ensure "ExternalId" is required (not null)
             if (ExternalId == null)
@@ -232,6 +232,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Webhook Listener
     /// </summary>
     [DataContract]
-    public partial class WebhookListenerUpdate : AbstractWebhookListenerUpdate,  IEquatable<WebhookListenerUpdate>
+    public partial class WebhookListenerUpdate : AbstractWebhookListenerUpdate,  IEquatable<WebhookListenerUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
         /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
-        public WebhookListenerUpdate(CreationEntityState? State = default(CreationEntityState?), long? Version = default(long?), long? Id = default(long?), string Name = default(string))
+        public WebhookListenerUpdate(long? Id = default(long?), long? Version = default(long?), CreationEntityState? State = default(CreationEntityState?), string Name = default(string))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -180,6 +180,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

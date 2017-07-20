@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// A subscription product represents a product to which a subscriber can subscribe to. A product defines how much the subscription costs and in what cycles the subscribe is charged.
     /// </summary>
     [DataContract]
-    public partial class SubscriptionProductCreate : AbstractSubscriptionProductActive,  IEquatable<SubscriptionProductCreate>
+    public partial class SubscriptionProductCreate : AbstractSubscriptionProductActive,  IEquatable<SubscriptionProductCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Customweb.Wallee.Model
         /// Initializes a new instance of the <see cref="SubscriptionProductCreate" /> class.
         /// </summary>
         /// <param name="Reference">The product reference identifies the product for external systems. This field may contain the product&#39;s SKU. (required)</param>
-        public SubscriptionProductCreate(string Reference = default(string), string Name = default(string), string FailedPaymentSuspensionPeriod = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), int? SortOrder = default(int?), SubscriptionProductState? State = default(SubscriptionProductState?))
+        public SubscriptionProductCreate(string FailedPaymentSuspensionPeriod = default(string), int? SortOrder = default(int?), string Reference = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), SubscriptionProductState? State = default(SubscriptionProductState?), string Name = default(string))
         {
             // to ensure "Reference" is required (not null)
             if (Reference == null)
@@ -184,6 +184,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

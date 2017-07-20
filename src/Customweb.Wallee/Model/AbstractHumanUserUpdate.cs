@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Abstract Human User
     /// </summary>
     [DataContract]
-    public partial class AbstractHumanUserUpdate :  IEquatable<AbstractHumanUserUpdate>
+    public partial class AbstractHumanUserUpdate :  IEquatable<AbstractHumanUserUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Lastname">The last name of the user.</param>
         /// <param name="State">State</param>
         /// <param name="TimeZone">The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.</param>
-        public AbstractHumanUserUpdate(string Firstname = default(string), string Language = default(string), CreationEntityState? State = default(CreationEntityState?), string TimeZone = default(string), string EmailAddress = default(string), string Lastname = default(string))
+        public AbstractHumanUserUpdate(string Language = default(string), CreationEntityState? State = default(CreationEntityState?), string EmailAddress = default(string), string Lastname = default(string), string TimeZone = default(string), string Firstname = default(string))
         {
             this.EmailAddress = EmailAddress;
             this.Firstname = Firstname;
@@ -210,6 +210,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

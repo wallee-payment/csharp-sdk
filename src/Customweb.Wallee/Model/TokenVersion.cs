@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Token Version
     /// </summary>
     [DataContract]
-    public partial class TokenVersion :  IEquatable<TokenVersion>
+    public partial class TokenVersion :  IEquatable<TokenVersion>, IValidatableObject
     {
 
         /// <summary>
@@ -375,6 +375,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

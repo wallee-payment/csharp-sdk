@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Line Item Attribute . Create
     /// </summary>
     [DataContract]
-    public partial class LineItemAttributeCreate :  IEquatable<LineItemAttributeCreate>
+    public partial class LineItemAttributeCreate :  IEquatable<LineItemAttributeCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Label">Label</param>
         /// <param name="Value">Value</param>
-        public LineItemAttributeCreate(string Value = default(string), string Label = default(string))
+        public LineItemAttributeCreate(string Label = default(string), string Value = default(string))
         {
             this.Label = Label;
             this.Value = Value;
@@ -138,6 +138,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

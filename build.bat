@@ -8,6 +8,6 @@ if not exist ".\nuget.exe" powershell -Command "(new-object System.Net.WebClient
 
 if not exist ".\bin" mkdir bin
 
-copy packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll bin\Newtonsoft.Json.dll
+copy packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll bin\Newtonsoft.Json.dll
 copy packages\RestSharp.105.2.3\lib\net45\RestSharp.dll bin\RestSharp.dll
 %CSCPATH%\csc  /reference:bin\Newtonsoft.Json.dll;bin\RestSharp.dll;System.ComponentModel.DataAnnotations.dll  /target:library /out:bin\Customweb.Wallee.dll /recurse:src\Customweb.Wallee\*.cs /doc:bin\Customweb.Wallee.xml

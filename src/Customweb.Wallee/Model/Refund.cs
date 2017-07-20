@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The refund represents a credit back to the customer. It can be issued by the merchant or by the customer (reversal).
     /// </summary>
     [DataContract]
-    public partial class Refund :  IEquatable<Refund>
+    public partial class Refund :  IEquatable<Refund>, IValidatableObject
     {
 
         /// <summary>
@@ -503,6 +503,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

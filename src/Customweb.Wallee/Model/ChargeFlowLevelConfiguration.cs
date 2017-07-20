@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Charge Flow Level Configuration
     /// </summary>
     [DataContract]
-    public partial class ChargeFlowLevelConfiguration :  IEquatable<ChargeFlowLevelConfiguration>
+    public partial class ChargeFlowLevelConfiguration :  IEquatable<ChargeFlowLevelConfiguration>, IValidatableObject
     {
 
         /// <summary>
@@ -263,6 +263,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

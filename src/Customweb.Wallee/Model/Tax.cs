@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Tax
     /// </summary>
     [DataContract]
-    public partial class Tax :  IEquatable<Tax>
+    public partial class Tax :  IEquatable<Tax>, IValidatableObject
     {
 
         /// <summary>
@@ -135,6 +135,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

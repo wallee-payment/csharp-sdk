@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Database Translated String Item
     /// </summary>
     [DataContract]
-    public partial class DatabaseTranslatedStringItemCreate :  IEquatable<DatabaseTranslatedStringItemCreate>
+    public partial class DatabaseTranslatedStringItemCreate :  IEquatable<DatabaseTranslatedStringItemCreate>, IValidatableObject
     {
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Language">Language (required)</param>
         /// <param name="Translation">Translation</param>
-        public DatabaseTranslatedStringItemCreate(string Language = default(string), string Translation = default(string))
+        public DatabaseTranslatedStringItemCreate(string Translation = default(string), string Language = default(string))
         {
             // to ensure "Language" is required (not null)
             if (Language == null)
@@ -152,6 +152,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

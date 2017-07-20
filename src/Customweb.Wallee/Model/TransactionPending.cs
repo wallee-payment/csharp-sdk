@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Transaction
     /// </summary>
     [DataContract]
-    public partial class TransactionPending : AbstractTransactionPending,  IEquatable<TransactionPending>
+    public partial class TransactionPending : AbstractTransactionPending,  IEquatable<TransactionPending>, IValidatableObject
     {
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
         /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
-        public TransactionPending(List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string ShippingMethod = default(string), long? Version = default(long?), long? Id = default(long?), string CustomerEmailAddress = default(string), string Currency = default(string), long? Token = default(long?), AddressCreate BillingAddress = default(AddressCreate), AddressCreate ShippingAddress = default(AddressCreate), string SuccessUrl = default(string), string InvoiceMerchantReference = default(string), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string Language = default(string), string MerchantReference = default(string), string CustomerId = default(string), Dictionary<string, string> MetaData = default(Dictionary<string, string>), List<LineItemCreate> LineItems = default(List<LineItemCreate>), string FailedUrl = default(string))
+        public TransactionPending(long? Id = default(long?), string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), string Language = default(string), string Currency = default(string), string FailedUrl = default(string), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? Token = default(long?), long? Version = default(long?), string ShippingMethod = default(string), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string CustomerEmailAddress = default(string))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -320,6 +320,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

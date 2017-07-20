@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// The subscription create request holds all the data required to create a new subscription.
     /// </summary>
     [DataContract]
-    public partial class SubscriptionCreateRequest :  IEquatable<SubscriptionCreateRequest>
+    public partial class SubscriptionCreateRequest :  IEquatable<SubscriptionCreateRequest>, IValidatableObject
     {
 
         /// <summary>
@@ -167,6 +167,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

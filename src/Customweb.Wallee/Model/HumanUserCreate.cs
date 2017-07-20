@@ -36,13 +36,13 @@ namespace Customweb.Wallee.Model
     /// Human User
     /// </summary>
     [DataContract]
-    public partial class HumanUserCreate : AbstractHumanUserUpdate,  IEquatable<HumanUserCreate>
+    public partial class HumanUserCreate : AbstractHumanUserUpdate,  IEquatable<HumanUserCreate>, IValidatableObject
     {
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HumanUserCreate" /> class.
         /// </summary>
-        public HumanUserCreate(string Firstname = default(string), string Language = default(string), CreationEntityState? State = default(CreationEntityState?), string TimeZone = default(string), string EmailAddress = default(string), string Lastname = default(string))
+        public HumanUserCreate(string Language = default(string), string EmailAddress = default(string), string Lastname = default(string), CreationEntityState? State = default(CreationEntityState?), string TimeZone = default(string), string Firstname = default(string))
         {
             this.EmailAddress = EmailAddress;
             this.Firstname = Firstname;
@@ -162,6 +162,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

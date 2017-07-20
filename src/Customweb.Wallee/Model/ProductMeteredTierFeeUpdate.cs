@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Product Metered Tier Fee
     /// </summary>
     [DataContract]
-    public partial class ProductMeteredTierFeeUpdate :  IEquatable<ProductMeteredTierFeeUpdate>
+    public partial class ProductMeteredTierFeeUpdate :  IEquatable<ProductMeteredTierFeeUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Fee">The fee determines the amount which is charged. The consumed metric is multiplied by the defined fee. The resulting amount is charged at the end of the period.</param>
         /// <param name="MeteredFee">MeteredFee</param>
         /// <param name="StartRange">The start range defines the metered consumption of the metric from which on the defined fee gets applied. This means when a subscription consumes a value of 10 or more and the start range is set to 10 the fee defined on the tier will be applied.</param>
-        public ProductMeteredTierFeeUpdate(long? Version = default(long?), long? Id = default(long?), decimal? StartRange = default(decimal?), long? MeteredFee = default(long?), List<PersistableCurrencyAmountUpdate> Fee = default(List<PersistableCurrencyAmountUpdate>))
+        public ProductMeteredTierFeeUpdate(long? Id = default(long?), long? MeteredFee = default(long?), List<PersistableCurrencyAmountUpdate> Fee = default(List<PersistableCurrencyAmountUpdate>), long? Version = default(long?), decimal? StartRange = default(decimal?))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -214,6 +214,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

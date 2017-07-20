@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Human User
     /// </summary>
     [DataContract]
-    public partial class HumanUserUpdate : AbstractHumanUserUpdate,  IEquatable<HumanUserUpdate>
+    public partial class HumanUserUpdate : AbstractHumanUserUpdate,  IEquatable<HumanUserUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
         /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
-        public HumanUserUpdate(string Firstname = default(string), string Language = default(string), CreationEntityState? State = default(CreationEntityState?), long? Version = default(long?), long? Id = default(long?), string TimeZone = default(string), string EmailAddress = default(string), string Lastname = default(string))
+        public HumanUserUpdate(long? Id = default(long?), string Language = default(string), string EmailAddress = default(string), long? Version = default(long?), string Lastname = default(string), CreationEntityState? State = default(CreationEntityState?), string TimeZone = default(string), string Firstname = default(string))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -220,6 +220,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

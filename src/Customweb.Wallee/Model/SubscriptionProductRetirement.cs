@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Product Retirement
     /// </summary>
     [DataContract]
-    public partial class SubscriptionProductRetirement :  IEquatable<SubscriptionProductRetirement>
+    public partial class SubscriptionProductRetirement :  IEquatable<SubscriptionProductRetirement>, IValidatableObject
     {
 
         /// <summary>
@@ -215,6 +215,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

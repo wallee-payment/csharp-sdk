@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Space
     /// </summary>
     [DataContract]
-    public partial class SpaceUpdate : AbstractSpaceUpdate,  IEquatable<SpaceUpdate>
+    public partial class SpaceUpdate : AbstractSpaceUpdate,  IEquatable<SpaceUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
         /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
-        public SpaceUpdate(SpaceAddressCreate PostalAddress = default(SpaceAddressCreate), List<string> TechnicalContactAddresses = default(List<string>), CreationEntityState? State = default(CreationEntityState?), string Name = default(string), long? Version = default(long?), long? RequestLimit = default(long?), long? Id = default(long?), string TimeZone = default(string))
+        public SpaceUpdate(string Name = default(string), long? Id = default(long?), SpaceAddressCreate PostalAddress = default(SpaceAddressCreate), long? Version = default(long?), List<string> TechnicalContactAddresses = default(List<string>), long? RequestLimit = default(long?), CreationEntityState? State = default(CreationEntityState?), string TimeZone = default(string))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -220,6 +220,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }

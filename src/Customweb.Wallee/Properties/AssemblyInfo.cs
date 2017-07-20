@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("wallee SDK")]
-[assembly: AssemblyDescription("wallee SDK for C#")]
+[assembly: AssemblyDescription("The wallee SDK for C#.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("customweb GmbH")]
 [assembly: AssemblyProduct("wallee")]

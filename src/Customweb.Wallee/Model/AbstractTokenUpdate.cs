@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Abstract Token
     /// </summary>
     [DataContract]
-    public partial class AbstractTokenUpdate :  IEquatable<AbstractTokenUpdate>
+    public partial class AbstractTokenUpdate :  IEquatable<AbstractTokenUpdate>, IValidatableObject
     {
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Customweb.Wallee.Model
         /// <param name="EnabledForOneClickPayment">When a token is enabled for one-click payments the buyer will be able to select the token within the iFrame or on the payment page to pay with the token. The usage of the token will reduce the number of steps the buyer has to go through. The buyer is linked via the customer ID on the transaction with the token. Means the token will be visible for buyers with the same customer ID. Additionally the payment method has to be configured to allow the one-click payments.</param>
         /// <param name="Language">Language</param>
         /// <param name="TokenReference">Use something that it is easy to identify and may help you find the token (e.g. customer id, email address).</param>
-        public AbstractTokenUpdate(bool? EnabledForOneClickPayment = default(bool?), string CustomerId = default(string), string CustomerEmailAddress = default(string), string Language = default(string), string TokenReference = default(string))
+        public AbstractTokenUpdate(string CustomerEmailAddress = default(string), bool? EnabledForOneClickPayment = default(bool?), string Language = default(string), string TokenReference = default(string), string CustomerId = default(string))
         {
             this.CustomerEmailAddress = CustomerEmailAddress;
             this.CustomerId = CustomerId;
@@ -192,6 +192,15 @@ namespace Customweb.Wallee.Model
             }
         }
 
+        /// <summary>
+        /// To validate all properties of the instance
+        /// </summary>
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<System.ComponentModel.DataAnnotations.ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
+        {
+            yield break;
+        }
     }
 
 }
