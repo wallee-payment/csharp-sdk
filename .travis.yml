@@ -7,6 +7,7 @@ script:
   - /bin/sh ./build.sh
   - /bin/sh ./test.sh
 deploy:
+  skip_cleanup: true
   provider: script
   script:
     - /bin/sh ./deploy.sh
