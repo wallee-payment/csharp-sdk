@@ -1,7 +1,8 @@
 language: csharp
+sudo: false
 mono:
   - latest
-env: WALLEE_SDK_VERSION=1.0.0
+env: WALLEE_SDK_VERSION=1.0.1
 solution: Customweb.Wallee.sln
 script:
   - /bin/sh ./build.sh

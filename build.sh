@@ -6,7 +6,7 @@ netfx=${frameworkVersion#net}
 echo "[INFO] Target framework: ${frameworkVersion}"
 
 echo "[INFO] Download nuget and packages"
-wget -nc https://nuget.org/nuget.exe;
+wget -nc https://dist.nuget.org/win-x86-commandline/v4.1.0/nuget.exe;
 mozroots --import --sync
 mono nuget.exe install src/Customweb.Wallee/packages.config -o packages;
 
