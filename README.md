@@ -1,7 +1,11 @@
 [![Build Status](https://travis-ci.org/wallee-payment/wallee-csharp-sdk.svg?branch=master)](https://travis-ci.org/wallee-payment/wallee-csharp-sdk)
 
-# wallee-csharp-sdk
+# wallee-csharp-sdk ![NuGet Status](https://buildstats.info/nuget/Customweb.Wallee)
 The C# SDK allows an easy integration of wallee into C# and .net applications.
+
+To Install from the Nuget Package Manager Console:
+
+	PM> Install-Package Customweb.Wallee
 
 ## Documentation
 https://app-wallee.com/doc/api/web-service
