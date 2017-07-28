@@ -86,7 +86,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>CustomersPresence</value>
         [DataMember(Name = "customersPresence", EmitDefaultValue = false)]
-        public CustomersPresence? CustomersPresence { get; set; }
+        public CustomersPresence CustomersPresence { get; set; }
 
         /// <summary>
         /// SpaceViewId
