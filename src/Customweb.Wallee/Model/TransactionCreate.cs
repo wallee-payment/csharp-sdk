@@ -36,13 +36,13 @@ namespace Customweb.Wallee.Model
     /// Transaction
     /// </summary>
     [DataContract]
-    public partial class TransactionCreate : AbstractTransactionPending,  IEquatable<TransactionCreate>, IValidatableObject
+    public partial class TransactionCreate : AbstractTransactionPending, IEquatable<TransactionCreate>, IValidatableObject
     {
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionCreate" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
+        [JsonConstructor]
         protected TransactionCreate() { }
 
         /// <summary>
@@ -51,17 +51,9 @@ namespace Customweb.Wallee.Model
         /// <param name="ChargeRetryEnabled">When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.</param>
         /// <param name="CustomersPresence">CustomersPresence (required)</param>
         /// <param name="SpaceViewId">SpaceViewId</param>
-        public TransactionCreate(string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), string Language = default(string), string Currency = default(string), string FailedUrl = default(string), bool? ChargeRetryEnabled = default(bool?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), CustomersPresence? CustomersPresence = default(CustomersPresence?), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? SpaceViewId = default(long?), long? Token = default(long?), string ShippingMethod = default(string), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string CustomerEmailAddress = default(string))
+        public TransactionCreate(CustomersPresence CustomersPresence, string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), string Language = default(string), string Currency = default(string), string FailedUrl = default(string), bool? ChargeRetryEnabled = default(bool?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? SpaceViewId = default(long?), long? Token = default(long?), string ShippingMethod = default(string), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string CustomerEmailAddress = default(string))
         {
-            // to ensure "CustomersPresence" is required (not null)
-            if (CustomersPresence == null)
-            {
-                throw new ArgumentNullException("CustomersPresence is a required property for TransactionCreate and cannot be null");
-            }
-            else
-            {
-                this.CustomersPresence = CustomersPresence;
-            }
+            this.CustomersPresence = CustomersPresence;
             this.ChargeRetryEnabled = ChargeRetryEnabled;
             this.SpaceViewId = SpaceViewId;
             this.AllowedPaymentMethodBrands = AllowedPaymentMethodBrands;
@@ -86,21 +78,21 @@ namespace Customweb.Wallee.Model
         /// When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.
         /// </summary>
         /// <value>When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.</value>
-        [DataMember(Name="chargeRetryEnabled", EmitDefaultValue=false)]
+        [DataMember(Name = "chargeRetryEnabled", EmitDefaultValue = false)]
         public bool? ChargeRetryEnabled { get; set; }
 
         /// <summary>
         /// CustomersPresence
         /// </summary>
         /// <value>CustomersPresence</value>
-        [DataMember(Name="customersPresence", EmitDefaultValue=false)]
-        public CustomersPresence? CustomersPresence { get; set; }
+        [DataMember(Name = "customersPresence", EmitDefaultValue = false)]
+        public CustomersPresence CustomersPresence { get; set; }
 
         /// <summary>
         /// SpaceViewId
         /// </summary>
         /// <value>SpaceViewId</value>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
+        [DataMember(Name = "spaceViewId", EmitDefaultValue = false)]
         public long? SpaceViewId { get; set; }
 
         /// <summary>
@@ -143,97 +135,97 @@ namespace Customweb.Wallee.Model
                 return false;
             }
 
-            return 
+            return
                 (
                     this.ChargeRetryEnabled == other.ChargeRetryEnabled ||
                     this.ChargeRetryEnabled != null &&
                     this.ChargeRetryEnabled.Equals(other.ChargeRetryEnabled)
-                ) && 
+                ) &&
                 (
                     this.CustomersPresence == other.CustomersPresence ||
                     this.CustomersPresence != null &&
                     this.CustomersPresence.Equals(other.CustomersPresence)
-                ) && 
+                ) &&
                 (
                     this.SpaceViewId == other.SpaceViewId ||
                     this.SpaceViewId != null &&
                     this.SpaceViewId.Equals(other.SpaceViewId)
-                ) && 
+                ) &&
                 (
                     this.AllowedPaymentMethodBrands == other.AllowedPaymentMethodBrands ||
                     this.AllowedPaymentMethodBrands != null &&
                     this.AllowedPaymentMethodBrands.SequenceEqual(other.AllowedPaymentMethodBrands)
-                ) && 
+                ) &&
                 (
                     this.AllowedPaymentMethodConfigurations == other.AllowedPaymentMethodConfigurations ||
                     this.AllowedPaymentMethodConfigurations != null &&
                     this.AllowedPaymentMethodConfigurations.SequenceEqual(other.AllowedPaymentMethodConfigurations)
-                ) && 
+                ) &&
                 (
                     this.BillingAddress == other.BillingAddress ||
                     this.BillingAddress != null &&
                     this.BillingAddress.Equals(other.BillingAddress)
-                ) && 
+                ) &&
                 (
                     this.Currency == other.Currency ||
                     this.Currency != null &&
                     this.Currency.Equals(other.Currency)
-                ) && 
+                ) &&
                 (
                     this.CustomerEmailAddress == other.CustomerEmailAddress ||
                     this.CustomerEmailAddress != null &&
                     this.CustomerEmailAddress.Equals(other.CustomerEmailAddress)
-                ) && 
+                ) &&
                 (
                     this.CustomerId == other.CustomerId ||
                     this.CustomerId != null &&
                     this.CustomerId.Equals(other.CustomerId)
-                ) && 
+                ) &&
                 (
                     this.FailedUrl == other.FailedUrl ||
                     this.FailedUrl != null &&
                     this.FailedUrl.Equals(other.FailedUrl)
-                ) && 
+                ) &&
                 (
                     this.InvoiceMerchantReference == other.InvoiceMerchantReference ||
                     this.InvoiceMerchantReference != null &&
                     this.InvoiceMerchantReference.Equals(other.InvoiceMerchantReference)
-                ) && 
+                ) &&
                 (
                     this.Language == other.Language ||
                     this.Language != null &&
                     this.Language.Equals(other.Language)
-                ) && 
+                ) &&
                 (
                     this.LineItems == other.LineItems ||
                     this.LineItems != null &&
                     this.LineItems.SequenceEqual(other.LineItems)
-                ) && 
+                ) &&
                 (
                     this.MerchantReference == other.MerchantReference ||
                     this.MerchantReference != null &&
                     this.MerchantReference.Equals(other.MerchantReference)
-                ) && 
+                ) &&
                 (
                     this.MetaData == other.MetaData ||
                     this.MetaData != null &&
                     this.MetaData.SequenceEqual(other.MetaData)
-                ) && 
+                ) &&
                 (
                     this.ShippingAddress == other.ShippingAddress ||
                     this.ShippingAddress != null &&
                     this.ShippingAddress.Equals(other.ShippingAddress)
-                ) && 
+                ) &&
                 (
                     this.ShippingMethod == other.ShippingMethod ||
                     this.ShippingMethod != null &&
                     this.ShippingMethod.Equals(other.ShippingMethod)
-                ) && 
+                ) &&
                 (
                     this.SuccessUrl == other.SuccessUrl ||
                     this.SuccessUrl != null &&
                     this.SuccessUrl.Equals(other.SuccessUrl)
-                ) && 
+                ) &&
                 (
                     this.Token == other.Token ||
                     this.Token != null &&
