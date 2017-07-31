@@ -1,12 +1,12 @@
 using System;
-using System.Collections;
+using System.Configuration;
 using System.Collections.Generic;
 
 using NUnit.Framework;
 
 using Customweb.Wallee.Model;
-using Customweb.Wallee.Client;
 using Customweb.Wallee.Service;
+using Configuration = Customweb.Wallee.Client.Configuration;
 
 namespace Customweb.Wallee.Test
 {
@@ -26,11 +26,12 @@ namespace Customweb.Wallee.Test
         [SetUp]
         public void SetUpTest()
         {
-            spaceId = long.Parse(Environment.GetEnvironmentVariable("APPLICATION_SPACE_ID"));
+            var appSettings = ConfigurationManager.AppSettings;
 
-            var authenticationKey = Environment.GetEnvironmentVariable("APPLICATION_AUTHENTICATION_KEY");
-            var applicationUserID = Environment.GetEnvironmentVariable("APPLICATION_USER_ID");
-            var basePath = Environment.GetEnvironmentVariable("API_URL_BASE_PATH");
+            spaceId = long.Parse(appSettings.Get("Wallee.Test.Transaction.SpaceId"));
+            var authenticationKey = appSettings.Get("Wallee.Test.Transaction.AuthenticationKey");
+            var applicationUserID = appSettings.Get("Wallee.Test.Transaction.ApplicationUserId");
+            var basePath = appSettings.Get("Wallee.Test.Transaction.BasePath");
 
             Configuration configuration = Configuration.Builder()
                                       .AuthenticationKey(authenticationKey)
@@ -66,7 +67,7 @@ namespace Customweb.Wallee.Test
                                                    Country: "CH",
                                                    City: "Winterthur",
                                                    PostCode: "8400",
-                                                   //DateOfBirth: new DateTime(1988, 4, 19),
+                                                   DateOfBirth: new DateTime(1988, 4, 19),
                                                    OrganizationName: "Test GmbH",
                                                    MobilePhoneNumber: "+41791234567",
                                                    PhoneNumber: "+41011234567",
