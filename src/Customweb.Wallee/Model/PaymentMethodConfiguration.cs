@@ -111,6 +111,27 @@ namespace Customweb.Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
+        /// The resolved description uses the specified description or the default one when it is not overridden.
+        /// </summary>
+        /// <value>The resolved description uses the specified description or the default one when it is not overridden.</value>
+        [DataMember(Name="resolvedDescription", EmitDefaultValue=false)]
+        public Dictionary<string, string> ResolvedDescription { get; private set; }
+
+        /// <summary>
+        /// The resolved URL of the image to use with this payment method.
+        /// </summary>
+        /// <value>The resolved URL of the image to use with this payment method.</value>
+        [DataMember(Name="resolvedImageUrl", EmitDefaultValue=false)]
+        public string ResolvedImageUrl { get; private set; }
+
+        /// <summary>
+        /// The resolved title uses the specified title or the default one when it is not overridden.
+        /// </summary>
+        /// <value>The resolved title uses the specified title or the default one when it is not overridden.</value>
+        [DataMember(Name="resolvedTitle", EmitDefaultValue=false)]
+        public Dictionary<string, string> ResolvedTitle { get; private set; }
+
+        /// <summary>
         /// The sort order of the payment method determines the ordering of the methods shown to the user during the payment process.
         /// </summary>
         /// <value>The sort order of the payment method determines the ordering of the methods shown to the user during the payment process.</value>
@@ -232,6 +253,21 @@ namespace Customweb.Wallee.Model
                     this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
                 ) && 
                 (
+                    this.ResolvedDescription == other.ResolvedDescription ||
+                    this.ResolvedDescription != null &&
+                    this.ResolvedDescription.SequenceEqual(other.ResolvedDescription)
+                ) && 
+                (
+                    this.ResolvedImageUrl == other.ResolvedImageUrl ||
+                    this.ResolvedImageUrl != null &&
+                    this.ResolvedImageUrl.Equals(other.ResolvedImageUrl)
+                ) && 
+                (
+                    this.ResolvedTitle == other.ResolvedTitle ||
+                    this.ResolvedTitle != null &&
+                    this.ResolvedTitle.SequenceEqual(other.ResolvedTitle)
+                ) && 
+                (
                     this.SortOrder == other.SortOrder ||
                     this.SortOrder != null &&
                     this.SortOrder.Equals(other.SortOrder)
@@ -302,6 +338,18 @@ namespace Customweb.Wallee.Model
                 if (this.PlannedPurgeDate != null)
                 {
                     hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
+                }
+                if (this.ResolvedDescription != null)
+                {
+                    hash = hash * 59 + this.ResolvedDescription.GetHashCode();
+                }
+                if (this.ResolvedImageUrl != null)
+                {
+                    hash = hash * 59 + this.ResolvedImageUrl.GetHashCode();
+                }
+                if (this.ResolvedTitle != null)
+                {
+                    hash = hash * 59 + this.ResolvedTitle.GetHashCode();
                 }
                 if (this.SortOrder != null)
                 {

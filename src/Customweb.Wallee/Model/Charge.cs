@@ -111,6 +111,13 @@ namespace Customweb.Wallee.Model
         public ChargeType? Type { get; private set; }
 
         /// <summary>
+        /// The failure message describes for an end user why the charge is failed in the language of the user. This is only provided when the charge is marked as failed.
+        /// </summary>
+        /// <value>The failure message describes for an end user why the charge is failed in the language of the user. This is only provided when the charge is marked as failed.</value>
+        [DataMember(Name="userFailureMessage", EmitDefaultValue=false)]
+        public string UserFailureMessage { get; private set; }
+
+        /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
@@ -204,6 +211,11 @@ namespace Customweb.Wallee.Model
                     this.Type.Equals(other.Type)
                 ) && 
                 (
+                    this.UserFailureMessage == other.UserFailureMessage ||
+                    this.UserFailureMessage != null &&
+                    this.UserFailureMessage.Equals(other.UserFailureMessage)
+                ) && 
+                (
                     this.Version == other.Version ||
                     this.Version != null &&
                     this.Version.Equals(other.Version)
@@ -269,6 +281,10 @@ namespace Customweb.Wallee.Model
                 if (this.Type != null)
                 {
                     hash = hash * 59 + this.Type.GetHashCode();
+                }
+                if (this.UserFailureMessage != null)
+                {
+                    hash = hash * 59 + this.UserFailureMessage.GetHashCode();
                 }
                 if (this.Version != null)
                 {

@@ -42,27 +42,13 @@ namespace Customweb.Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionCreate" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected TransactionCreate() { }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="TransactionCreate" /> class.
-        /// </summary>
         /// <param name="ChargeRetryEnabled">When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.</param>
-        /// <param name="CustomersPresence">CustomersPresence (required)</param>
+        /// <param name="CustomersPresence">CustomersPresence</param>
         /// <param name="SpaceViewId">SpaceViewId</param>
-        public TransactionCreate(string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), string Language = default(string), string Currency = default(string), string FailedUrl = default(string), bool? ChargeRetryEnabled = default(bool?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), CustomersPresence? CustomersPresence = default(CustomersPresence?), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? SpaceViewId = default(long?), long? Token = default(long?), string ShippingMethod = default(string), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string CustomerEmailAddress = default(string))
+        public TransactionCreate(string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), string Language = default(string), string Currency = default(string), string FailedUrl = default(string), CustomersPresence? CustomersPresence = default(CustomersPresence?), bool? ChargeRetryEnabled = default(bool?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? SpaceViewId = default(long?), long? Token = default(long?), string ShippingMethod = default(string), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string CustomerEmailAddress = default(string))
         {
-            // to ensure "CustomersPresence" is required (not null)
-            if (CustomersPresence == null)
-            {
-                throw new ArgumentNullException("CustomersPresence is a required property for TransactionCreate and cannot be null");
-            }
-            else
-            {
-                this.CustomersPresence = CustomersPresence;
-            }
             this.ChargeRetryEnabled = ChargeRetryEnabled;
+            this.CustomersPresence = CustomersPresence;
             this.SpaceViewId = SpaceViewId;
             this.AllowedPaymentMethodBrands = AllowedPaymentMethodBrands;
             this.AllowedPaymentMethodConfigurations = AllowedPaymentMethodConfigurations;

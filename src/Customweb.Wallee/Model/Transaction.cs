@@ -188,6 +188,13 @@ namespace Customweb.Wallee.Model
         public string FailedUrl { get; private set; }
 
         /// <summary>
+        /// The failure reason describes why the transaction failed. This is only provided when the transaction is marked as failed.
+        /// </summary>
+        /// <value>The failure reason describes why the transaction failed. This is only provided when the transaction is marked as failed.</value>
+        [DataMember(Name="failureReason", EmitDefaultValue=false)]
+        public FailureReason FailureReason { get; private set; }
+
+        /// <summary>
         /// Group
         /// </summary>
         /// <value>Group</value>
@@ -333,6 +340,13 @@ namespace Customweb.Wallee.Model
         /// <value>UserAgentHeader</value>
         [DataMember(Name="userAgentHeader", EmitDefaultValue=false)]
         public string UserAgentHeader { get; private set; }
+
+        /// <summary>
+        /// The failure message describes for an end user why the transaction is failed in the language of the user. This is only provided when the transaction is marked as failed.
+        /// </summary>
+        /// <value>The failure message describes for an end user why the transaction is failed in the language of the user. This is only provided when the transaction is marked as failed.</value>
+        [DataMember(Name="userFailureMessage", EmitDefaultValue=false)]
+        public string UserFailureMessage { get; private set; }
 
         /// <summary>
         /// The user interface type defines through which user interface the transaction has been processed resp. created.
@@ -490,6 +504,11 @@ namespace Customweb.Wallee.Model
                     this.FailedUrl.Equals(other.FailedUrl)
                 ) && 
                 (
+                    this.FailureReason == other.FailureReason ||
+                    this.FailureReason != null &&
+                    this.FailureReason.Equals(other.FailureReason)
+                ) && 
+                (
                     this.Group == other.Group ||
                     this.Group != null &&
                     this.Group.Equals(other.Group)
@@ -595,6 +614,11 @@ namespace Customweb.Wallee.Model
                     this.UserAgentHeader.Equals(other.UserAgentHeader)
                 ) && 
                 (
+                    this.UserFailureMessage == other.UserFailureMessage ||
+                    this.UserFailureMessage != null &&
+                    this.UserFailureMessage.Equals(other.UserFailureMessage)
+                ) && 
+                (
                     this.UserInterfaceType == other.UserInterfaceType ||
                     this.UserInterfaceType != null &&
                     this.UserInterfaceType.Equals(other.UserInterfaceType)
@@ -695,6 +719,10 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.FailedUrl.GetHashCode();
                 }
+                if (this.FailureReason != null)
+                {
+                    hash = hash * 59 + this.FailureReason.GetHashCode();
+                }
                 if (this.Group != null)
                 {
                     hash = hash * 59 + this.Group.GetHashCode();
@@ -778,6 +806,10 @@ namespace Customweb.Wallee.Model
                 if (this.UserAgentHeader != null)
                 {
                     hash = hash * 59 + this.UserAgentHeader.GetHashCode();
+                }
+                if (this.UserFailureMessage != null)
+                {
+                    hash = hash * 59 + this.UserFailureMessage.GetHashCode();
                 }
                 if (this.UserInterfaceType != null)
                 {
