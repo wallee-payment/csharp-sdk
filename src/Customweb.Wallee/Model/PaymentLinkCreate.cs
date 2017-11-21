@@ -33,44 +33,46 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// A subscriber represents everyone who is subscribed to a product.
+    /// The payment link defines an URL to automatically create transactions.
     /// </summary>
     [DataContract]
-    public partial class SubscriberCreate : AbstractSubscriberUpdate,  IEquatable<SubscriberCreate>, IValidatableObject
+    public partial class PaymentLinkCreate : AbstractPaymentLinkUpdate,  IEquatable<PaymentLinkCreate>, IValidatableObject
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SubscriberCreate" /> class.
+        /// Initializes a new instance of the <see cref="PaymentLinkCreate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SubscriberCreate() { }
+        protected PaymentLinkCreate() { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SubscriberCreate" /> class.
+        /// Initializes a new instance of the <see cref="PaymentLinkCreate" /> class.
         /// </summary>
         /// <param name="State">State</param>
         /// <param name="ExternalId">The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity. (required)</param>
-        public SubscriberCreate(List<long?> AdditionalAllowedPaymentMethodConfigurations = default(List<long?>), string Description = default(string), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string Reference = default(string), CreationEntityState? State = default(CreationEntityState?), AddressCreate ShippingAddress = default(AddressCreate), List<long?> DisallowedPaymentMethodConfigurations = default(List<long?>), AddressCreate BillingAddress = default(AddressCreate), string ExternalId = default(string), string Language = default(string), string EmailAddress = default(string))
+        public PaymentLinkCreate(string Name = default(string), DateTime? AvailableFrom = default(DateTime?), string Currency = default(string), List<PaymentMethodConfiguration> AllowedPaymentMethodConfigurations = default(List<PaymentMethodConfiguration>), DateTime? AvailableUntil = default(DateTime?), bool? ShippingAddressRequired = default(bool?), int? MaximalNumberOfTransactions = default(int?), CreationEntityState? State = default(CreationEntityState?), List<LineItemCreate> LineItems = default(List<LineItemCreate>), long? AppliedSpaceView = default(long?), string ExternalId = default(string), bool? BillingAddressRequired = default(bool?), string Language = default(string))
         {
             // to ensure "ExternalId" is required (not null)
             if (ExternalId == null)
             {
-                throw new ArgumentNullException("ExternalId is a required property for SubscriberCreate and cannot be null");
+                throw new ArgumentNullException("ExternalId is a required property for PaymentLinkCreate and cannot be null");
             }
             else
             {
                 this.ExternalId = ExternalId;
             }
             this.State = State;
-            this.AdditionalAllowedPaymentMethodConfigurations = AdditionalAllowedPaymentMethodConfigurations;
-            this.BillingAddress = BillingAddress;
-            this.Description = Description;
-            this.DisallowedPaymentMethodConfigurations = DisallowedPaymentMethodConfigurations;
-            this.EmailAddress = EmailAddress;
+            this.AllowedPaymentMethodConfigurations = AllowedPaymentMethodConfigurations;
+            this.AppliedSpaceView = AppliedSpaceView;
+            this.AvailableFrom = AvailableFrom;
+            this.AvailableUntil = AvailableUntil;
+            this.BillingAddressRequired = BillingAddressRequired;
+            this.Currency = Currency;
             this.Language = Language;
-            this.MetaData = MetaData;
-            this.Reference = Reference;
-            this.ShippingAddress = ShippingAddress;
+            this.LineItems = LineItems;
+            this.MaximalNumberOfTransactions = MaximalNumberOfTransactions;
+            this.Name = Name;
+            this.ShippingAddressRequired = ShippingAddressRequired;
         }
 
         /// <summary>
@@ -112,15 +114,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as SubscriberCreate);
+            return this.Equals(obj as PaymentLinkCreate);
         }
 
         /// <summary>
-        /// Returns true if SubscriberCreate instances are equal
+        /// Returns true if PaymentLinkCreate instances are equal
         /// </summary>
-        /// <param name="other">Instance of SubscriberCreate to be compared</param>
+        /// <param name="other">Instance of PaymentLinkCreate to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SubscriberCreate other)
+        public bool Equals(PaymentLinkCreate other)
         {
             if (other == null)
             {
@@ -139,29 +141,34 @@ namespace Customweb.Wallee.Model
                     this.ExternalId.Equals(other.ExternalId)
                 ) && 
                 (
-                    this.AdditionalAllowedPaymentMethodConfigurations == other.AdditionalAllowedPaymentMethodConfigurations ||
-                    this.AdditionalAllowedPaymentMethodConfigurations != null &&
-                    this.AdditionalAllowedPaymentMethodConfigurations.SequenceEqual(other.AdditionalAllowedPaymentMethodConfigurations)
+                    this.AllowedPaymentMethodConfigurations == other.AllowedPaymentMethodConfigurations ||
+                    this.AllowedPaymentMethodConfigurations != null &&
+                    this.AllowedPaymentMethodConfigurations.SequenceEqual(other.AllowedPaymentMethodConfigurations)
                 ) && 
                 (
-                    this.BillingAddress == other.BillingAddress ||
-                    this.BillingAddress != null &&
-                    this.BillingAddress.Equals(other.BillingAddress)
+                    this.AppliedSpaceView == other.AppliedSpaceView ||
+                    this.AppliedSpaceView != null &&
+                    this.AppliedSpaceView.Equals(other.AppliedSpaceView)
                 ) && 
                 (
-                    this.Description == other.Description ||
-                    this.Description != null &&
-                    this.Description.Equals(other.Description)
+                    this.AvailableFrom == other.AvailableFrom ||
+                    this.AvailableFrom != null &&
+                    this.AvailableFrom.Equals(other.AvailableFrom)
                 ) && 
                 (
-                    this.DisallowedPaymentMethodConfigurations == other.DisallowedPaymentMethodConfigurations ||
-                    this.DisallowedPaymentMethodConfigurations != null &&
-                    this.DisallowedPaymentMethodConfigurations.SequenceEqual(other.DisallowedPaymentMethodConfigurations)
+                    this.AvailableUntil == other.AvailableUntil ||
+                    this.AvailableUntil != null &&
+                    this.AvailableUntil.Equals(other.AvailableUntil)
                 ) && 
                 (
-                    this.EmailAddress == other.EmailAddress ||
-                    this.EmailAddress != null &&
-                    this.EmailAddress.Equals(other.EmailAddress)
+                    this.BillingAddressRequired == other.BillingAddressRequired ||
+                    this.BillingAddressRequired != null &&
+                    this.BillingAddressRequired.Equals(other.BillingAddressRequired)
+                ) && 
+                (
+                    this.Currency == other.Currency ||
+                    this.Currency != null &&
+                    this.Currency.Equals(other.Currency)
                 ) && 
                 (
                     this.Language == other.Language ||
@@ -169,19 +176,24 @@ namespace Customweb.Wallee.Model
                     this.Language.Equals(other.Language)
                 ) && 
                 (
-                    this.MetaData == other.MetaData ||
-                    this.MetaData != null &&
-                    this.MetaData.SequenceEqual(other.MetaData)
+                    this.LineItems == other.LineItems ||
+                    this.LineItems != null &&
+                    this.LineItems.SequenceEqual(other.LineItems)
                 ) && 
                 (
-                    this.Reference == other.Reference ||
-                    this.Reference != null &&
-                    this.Reference.Equals(other.Reference)
+                    this.MaximalNumberOfTransactions == other.MaximalNumberOfTransactions ||
+                    this.MaximalNumberOfTransactions != null &&
+                    this.MaximalNumberOfTransactions.Equals(other.MaximalNumberOfTransactions)
                 ) && 
                 (
-                    this.ShippingAddress == other.ShippingAddress ||
-                    this.ShippingAddress != null &&
-                    this.ShippingAddress.Equals(other.ShippingAddress)
+                    this.Name == other.Name ||
+                    this.Name != null &&
+                    this.Name.Equals(other.Name)
+                ) && 
+                (
+                    this.ShippingAddressRequired == other.ShippingAddressRequired ||
+                    this.ShippingAddressRequired != null &&
+                    this.ShippingAddressRequired.Equals(other.ShippingAddressRequired)
                 );
         }
 
@@ -202,41 +214,49 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.ExternalId.GetHashCode();
                 }
-                if (this.AdditionalAllowedPaymentMethodConfigurations != null)
+                if (this.AllowedPaymentMethodConfigurations != null)
                 {
-                    hash = hash * 59 + this.AdditionalAllowedPaymentMethodConfigurations.GetHashCode();
+                    hash = hash * 59 + this.AllowedPaymentMethodConfigurations.GetHashCode();
                 }
-                if (this.BillingAddress != null)
+                if (this.AppliedSpaceView != null)
                 {
-                    hash = hash * 59 + this.BillingAddress.GetHashCode();
+                    hash = hash * 59 + this.AppliedSpaceView.GetHashCode();
                 }
-                if (this.Description != null)
+                if (this.AvailableFrom != null)
                 {
-                    hash = hash * 59 + this.Description.GetHashCode();
+                    hash = hash * 59 + this.AvailableFrom.GetHashCode();
                 }
-                if (this.DisallowedPaymentMethodConfigurations != null)
+                if (this.AvailableUntil != null)
                 {
-                    hash = hash * 59 + this.DisallowedPaymentMethodConfigurations.GetHashCode();
+                    hash = hash * 59 + this.AvailableUntil.GetHashCode();
                 }
-                if (this.EmailAddress != null)
+                if (this.BillingAddressRequired != null)
                 {
-                    hash = hash * 59 + this.EmailAddress.GetHashCode();
+                    hash = hash * 59 + this.BillingAddressRequired.GetHashCode();
+                }
+                if (this.Currency != null)
+                {
+                    hash = hash * 59 + this.Currency.GetHashCode();
                 }
                 if (this.Language != null)
                 {
                     hash = hash * 59 + this.Language.GetHashCode();
                 }
-                if (this.MetaData != null)
+                if (this.LineItems != null)
                 {
-                    hash = hash * 59 + this.MetaData.GetHashCode();
+                    hash = hash * 59 + this.LineItems.GetHashCode();
                 }
-                if (this.Reference != null)
+                if (this.MaximalNumberOfTransactions != null)
                 {
-                    hash = hash * 59 + this.Reference.GetHashCode();
+                    hash = hash * 59 + this.MaximalNumberOfTransactions.GetHashCode();
                 }
-                if (this.ShippingAddress != null)
+                if (this.Name != null)
                 {
-                    hash = hash * 59 + this.ShippingAddress.GetHashCode();
+                    hash = hash * 59 + this.Name.GetHashCode();
+                }
+                if (this.ShippingAddressRequired != null)
+                {
+                    hash = hash * 59 + this.ShippingAddressRequired.GetHashCode();
                 }
                 return hash;
             }

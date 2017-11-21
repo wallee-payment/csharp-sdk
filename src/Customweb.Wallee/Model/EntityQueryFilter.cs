@@ -43,8 +43,31 @@ namespace Customweb.Wallee.Model
         /// Initializes a new instance of the <see cref="EntityQueryFilter" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public EntityQueryFilter()
+        protected EntityQueryFilter() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EntityQueryFilter" /> class.
+        /// </summary>
+        /// <param name="Children">The &#39;children&#39; can contain other filter nodes which are applied to the query. This property is only applicable on filter types &#39;OR&#39; and &#39;AND&#39;.</param>
+        /// <param name="FieldName">The &#39;fieldName&#39; indicates the property on the entity which should be filtered. This property is only applicable on filter type &#39;LEAF&#39;.</param>
+        /// <param name="Operator">The &#39;operator&#39; indicates what kind of filtering on the &#39;fieldName&#39; is executed on. This property is only applicable on filter type &#39;LEAF&#39;.</param>
+        /// <param name="Type">The filter type controls how the query node is interpreted. I.e. if the node acts as leaf node or as a filter group. (required)</param>
+        /// <param name="Value">The &#39;value&#39; is used to compare with the &#39;fieldName&#39; as defined by the &#39;operator&#39;. This property is only applicable on filter type &#39;LEAF&#39;.</param>
+        public EntityQueryFilter(EntityQueryFilterType? Type = default(EntityQueryFilterType?), CriteriaOperator? Operator = default(CriteriaOperator?), Object Value = default(Object), List<EntityQueryFilter> Children = default(List<EntityQueryFilter>), string FieldName = default(string))
         {
+            // to ensure "Type" is required (not null)
+            if (Type == null)
+            {
+                throw new ArgumentNullException("Type is a required property for EntityQueryFilter and cannot be null");
+            }
+            else
+            {
+                this.Type = Type;
+            }
+            this.Children = Children;
+            this.FieldName = FieldName;
+            this.Operator = Operator;
+            this.Value = Value;
         }
 
         /// <summary>
@@ -52,35 +75,35 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The &#39;children&#39; can contain other filter nodes which are applied to the query. This property is only applicable on filter types &#39;OR&#39; and &#39;AND&#39;.</value>
         [DataMember(Name="children", EmitDefaultValue=false)]
-        public List<EntityQueryFilter> Children { get; private set; }
+        public List<EntityQueryFilter> Children { get; set; }
 
         /// <summary>
         /// The &#39;fieldName&#39; indicates the property on the entity which should be filtered. This property is only applicable on filter type &#39;LEAF&#39;.
         /// </summary>
         /// <value>The &#39;fieldName&#39; indicates the property on the entity which should be filtered. This property is only applicable on filter type &#39;LEAF&#39;.</value>
         [DataMember(Name="fieldName", EmitDefaultValue=false)]
-        public string FieldName { get; private set; }
+        public string FieldName { get; set; }
 
         /// <summary>
         /// The 'operator' indicates what kind of filtering on the 'fieldName' is executed on. This property is only applicable on filter type 'LEAF'.
         /// </summary>
         /// <value>The 'operator' indicates what kind of filtering on the 'fieldName' is executed on. This property is only applicable on filter type 'LEAF'.</value>
         [DataMember(Name="operator", EmitDefaultValue=false)]
-        public CriteriaOperator? Operator { get; private set; }
+        public CriteriaOperator? Operator { get; set; }
 
         /// <summary>
         /// The filter type controls how the query node is interpreted. I.e. if the node acts as leaf node or as a filter group.
         /// </summary>
         /// <value>The filter type controls how the query node is interpreted. I.e. if the node acts as leaf node or as a filter group.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public EntityQueryFilterType? Type { get; private set; }
+        public EntityQueryFilterType? Type { get; set; }
 
         /// <summary>
         /// The &#39;value&#39; is used to compare with the &#39;fieldName&#39; as defined by the &#39;operator&#39;. This property is only applicable on filter type &#39;LEAF&#39;.
         /// </summary>
         /// <value>The &#39;value&#39; is used to compare with the &#39;fieldName&#39; as defined by the &#39;operator&#39;. This property is only applicable on filter type &#39;LEAF&#39;.</value>
         [DataMember(Name="value", EmitDefaultValue=false)]
-        public Object Value { get; private set; }
+        public Object Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

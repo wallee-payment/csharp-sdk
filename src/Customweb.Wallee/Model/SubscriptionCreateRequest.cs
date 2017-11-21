@@ -43,8 +43,45 @@ namespace Customweb.Wallee.Model
         /// Initializes a new instance of the <see cref="SubscriptionCreateRequest" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public SubscriptionCreateRequest()
+        protected SubscriptionCreateRequest() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SubscriptionCreateRequest" /> class.
+        /// </summary>
+        /// <param name="Currency">Currency (required)</param>
+        /// <param name="Product">The subscription has to be linked with a product. (required)</param>
+        /// <param name="SelectedComponents">SelectedComponents</param>
+        /// <param name="Subscription">Subscription (required)</param>
+        public SubscriptionCreateRequest(long? Product = default(long?), string Currency = default(string), long? Subscription = default(long?), List<SubscriptionProductComponentReference> SelectedComponents = default(List<SubscriptionProductComponentReference>))
         {
+            // to ensure "Currency" is required (not null)
+            if (Currency == null)
+            {
+                throw new ArgumentNullException("Currency is a required property for SubscriptionCreateRequest and cannot be null");
+            }
+            else
+            {
+                this.Currency = Currency;
+            }
+            // to ensure "Product" is required (not null)
+            if (Product == null)
+            {
+                throw new ArgumentNullException("Product is a required property for SubscriptionCreateRequest and cannot be null");
+            }
+            else
+            {
+                this.Product = Product;
+            }
+            // to ensure "Subscription" is required (not null)
+            if (Subscription == null)
+            {
+                throw new ArgumentNullException("Subscription is a required property for SubscriptionCreateRequest and cannot be null");
+            }
+            else
+            {
+                this.Subscription = Subscription;
+            }
+            this.SelectedComponents = SelectedComponents;
         }
 
         /// <summary>
@@ -52,28 +89,28 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>Currency</value>
         [DataMember(Name="currency", EmitDefaultValue=false)]
-        public string Currency { get; private set; }
+        public string Currency { get; set; }
 
         /// <summary>
         /// The subscription has to be linked with a product.
         /// </summary>
         /// <value>The subscription has to be linked with a product.</value>
         [DataMember(Name="product", EmitDefaultValue=false)]
-        public SubscriptionProduct Product { get; private set; }
+        public long? Product { get; set; }
 
         /// <summary>
         /// SelectedComponents
         /// </summary>
         /// <value>SelectedComponents</value>
         [DataMember(Name="selectedComponents", EmitDefaultValue=false)]
-        public List<SubscriptionProductComponentReference> SelectedComponents { get; private set; }
+        public List<SubscriptionProductComponentReference> SelectedComponents { get; set; }
 
         /// <summary>
         /// Subscription
         /// </summary>
         /// <value>Subscription</value>
         [DataMember(Name="subscription", EmitDefaultValue=false)]
-        public SubscriptionPending Subscription { get; private set; }
+        public long? Subscription { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

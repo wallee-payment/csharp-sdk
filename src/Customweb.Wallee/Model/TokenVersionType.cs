@@ -33,26 +33,33 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Webhook Listener Entity
+    /// Token Version Type
     /// </summary>
     [DataContract]
-    public partial class WebhookListenerEntity :  IEquatable<WebhookListenerEntity>, IValidatableObject
+    public partial class TokenVersionType :  IEquatable<TokenVersionType>, IValidatableObject
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookListenerEntity" /> class.
+        /// Initializes a new instance of the <see cref="TokenVersionType" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public WebhookListenerEntity()
+        public TokenVersionType()
         {
         }
 
         /// <summary>
-        /// DisplayName
+        /// Description
         /// </summary>
-        /// <value>DisplayName</value>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
-        public string DisplayName { get; private set; }
+        /// <value>Description</value>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public Dictionary<string, string> Description { get; private set; }
+
+        /// <summary>
+        /// Feature
+        /// </summary>
+        /// <value>Feature</value>
+        [DataMember(Name="feature", EmitDefaultValue=false)]
+        public Feature Feature { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
@@ -67,13 +74,6 @@ namespace Customweb.Wallee.Model
         /// <value>Name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
-
-        /// <summary>
-        /// TechnicalName
-        /// </summary>
-        /// <value>TechnicalName</value>
-        [DataMember(Name="technicalName", EmitDefaultValue=false)]
-        public string TechnicalName { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,15 +100,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as WebhookListenerEntity);
+            return this.Equals(obj as TokenVersionType);
         }
 
         /// <summary>
-        /// Returns true if WebhookListenerEntity instances are equal
+        /// Returns true if TokenVersionType instances are equal
         /// </summary>
-        /// <param name="other">Instance of WebhookListenerEntity to be compared</param>
+        /// <param name="other">Instance of TokenVersionType to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WebhookListenerEntity other)
+        public bool Equals(TokenVersionType other)
         {
             if (other == null)
             {
@@ -117,9 +117,14 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
-                    this.DisplayName == other.DisplayName ||
-                    this.DisplayName != null &&
-                    this.DisplayName.Equals(other.DisplayName)
+                    this.Description == other.Description ||
+                    this.Description != null &&
+                    this.Description.SequenceEqual(other.Description)
+                ) && 
+                (
+                    this.Feature == other.Feature ||
+                    this.Feature != null &&
+                    this.Feature.Equals(other.Feature)
                 ) && 
                 (
                     this.Id == other.Id ||
@@ -130,11 +135,6 @@ namespace Customweb.Wallee.Model
                     this.Name == other.Name ||
                     this.Name != null &&
                     this.Name.SequenceEqual(other.Name)
-                ) && 
-                (
-                    this.TechnicalName == other.TechnicalName ||
-                    this.TechnicalName != null &&
-                    this.TechnicalName.Equals(other.TechnicalName)
                 );
         }
 
@@ -147,9 +147,13 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                if (this.DisplayName != null)
+                if (this.Description != null)
                 {
-                    hash = hash * 59 + this.DisplayName.GetHashCode();
+                    hash = hash * 59 + this.Description.GetHashCode();
+                }
+                if (this.Feature != null)
+                {
+                    hash = hash * 59 + this.Feature.GetHashCode();
                 }
                 if (this.Id != null)
                 {
@@ -158,10 +162,6 @@ namespace Customweb.Wallee.Model
                 if (this.Name != null)
                 {
                     hash = hash * 59 + this.Name.GetHashCode();
-                }
-                if (this.TechnicalName != null)
-                {
-                    hash = hash * 59 + this.TechnicalName.GetHashCode();
                 }
                 return hash;
             }

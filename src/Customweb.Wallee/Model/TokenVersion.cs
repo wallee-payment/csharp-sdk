@@ -76,6 +76,13 @@ namespace Customweb.Wallee.Model
         public ChargeAttemptEnvironment? Environment { get; private set; }
 
         /// <summary>
+        /// The expires on date indicates when token version expires. Once this date is reached the token version is marked as obsolete.
+        /// </summary>
+        /// <value>The expires on date indicates when token version expires. Once this date is reached the token version is marked as obsolete.</value>
+        [DataMember(Name="expiresOn", EmitDefaultValue=false)]
+        public DateTime? ExpiresOn { get; private set; }
+
+        /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
@@ -160,6 +167,13 @@ namespace Customweb.Wallee.Model
         public Token Token { get; private set; }
 
         /// <summary>
+        /// The token version type determines what kind of token it is and by which payment connector the token can be processed by.
+        /// </summary>
+        /// <value>The token version type determines what kind of token it is and by which payment connector the token can be processed by.</value>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public TokenVersionType Type { get; private set; }
+
+        /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
@@ -228,6 +242,11 @@ namespace Customweb.Wallee.Model
                     this.Environment.Equals(other.Environment)
                 ) && 
                 (
+                    this.ExpiresOn == other.ExpiresOn ||
+                    this.ExpiresOn != null &&
+                    this.ExpiresOn.Equals(other.ExpiresOn)
+                ) && 
+                (
                     this.Id == other.Id ||
                     this.Id != null &&
                     this.Id.Equals(other.Id)
@@ -288,6 +307,11 @@ namespace Customweb.Wallee.Model
                     this.Token.Equals(other.Token)
                 ) && 
                 (
+                    this.Type == other.Type ||
+                    this.Type != null &&
+                    this.Type.Equals(other.Type)
+                ) && 
+                (
                     this.Version == other.Version ||
                     this.Version != null &&
                     this.Version.Equals(other.Version)
@@ -318,6 +342,10 @@ namespace Customweb.Wallee.Model
                 if (this.Environment != null)
                 {
                     hash = hash * 59 + this.Environment.GetHashCode();
+                }
+                if (this.ExpiresOn != null)
+                {
+                    hash = hash * 59 + this.ExpiresOn.GetHashCode();
                 }
                 if (this.Id != null)
                 {
@@ -366,6 +394,10 @@ namespace Customweb.Wallee.Model
                 if (this.Token != null)
                 {
                     hash = hash * 59 + this.Token.GetHashCode();
+                }
+                if (this.Type != null)
+                {
+                    hash = hash * 59 + this.Type.GetHashCode();
                 }
                 if (this.Version != null)
                 {

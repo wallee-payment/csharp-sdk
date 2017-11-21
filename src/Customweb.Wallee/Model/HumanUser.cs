@@ -36,7 +36,7 @@ namespace Customweb.Wallee.Model
     /// Human User
     /// </summary>
     [DataContract]
-    public partial class HumanUser : User,  IEquatable<HumanUser>, IValidatableObject
+    public partial class HumanUser :  IEquatable<HumanUser>, IValidatableObject
     {
 
         /// <summary>
@@ -90,6 +90,13 @@ namespace Customweb.Wallee.Model
         public Account PrimaryAccount { get; private set; }
 
         /// <summary>
+        /// The scope to which the user belongs to.
+        /// </summary>
+        /// <value>The scope to which the user belongs to.</value>
+        [DataMember(Name="scope", EmitDefaultValue=false)]
+        public Scope Scope { get; private set; }
+
+        /// <summary>
         /// The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.
         /// </summary>
         /// <value>The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.</value>
@@ -109,7 +116,7 @@ namespace Customweb.Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public new string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -168,39 +175,14 @@ namespace Customweb.Wallee.Model
                     this.PrimaryAccount.Equals(other.PrimaryAccount)
                 ) && 
                 (
-                    this.TimeZone == other.TimeZone ||
-                    this.TimeZone != null &&
-                    this.TimeZone.Equals(other.TimeZone)
-                ) && 
-                (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
-                ) && 
-                (
-                    this.PlannedPurgeDate == other.PlannedPurgeDate ||
-                    this.PlannedPurgeDate != null &&
-                    this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
-                ) && 
-                (
                     this.Scope == other.Scope ||
                     this.Scope != null &&
                     this.Scope.Equals(other.Scope)
                 ) && 
                 (
-                    this.State == other.State ||
-                    this.State != null &&
-                    this.State.Equals(other.State)
-                ) && 
-                (
-                    this.UserType == other.UserType ||
-                    this.UserType != null &&
-                    this.UserType.Equals(other.UserType)
-                ) && 
-                (
-                    this.Version == other.Version ||
-                    this.Version != null &&
-                    this.Version.Equals(other.Version)
+                    this.TimeZone == other.TimeZone ||
+                    this.TimeZone != null &&
+                    this.TimeZone.Equals(other.TimeZone)
                 );
         }
 
@@ -237,33 +219,13 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.PrimaryAccount.GetHashCode();
                 }
-                if (this.TimeZone != null)
-                {
-                    hash = hash * 59 + this.TimeZone.GetHashCode();
-                }
-                if (this.Id != null)
-                {
-                    hash = hash * 59 + this.Id.GetHashCode();
-                }
-                if (this.PlannedPurgeDate != null)
-                {
-                    hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
-                }
                 if (this.Scope != null)
                 {
                     hash = hash * 59 + this.Scope.GetHashCode();
                 }
-                if (this.State != null)
+                if (this.TimeZone != null)
                 {
-                    hash = hash * 59 + this.State.GetHashCode();
-                }
-                if (this.UserType != null)
-                {
-                    hash = hash * 59 + this.UserType.GetHashCode();
-                }
-                if (this.Version != null)
-                {
-                    hash = hash * 59 + this.Version.GetHashCode();
+                    hash = hash * 59 + this.TimeZone.GetHashCode();
                 }
                 return hash;
             }

@@ -33,26 +33,26 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Webhook Listener Entity
+    /// Role
     /// </summary>
     [DataContract]
-    public partial class WebhookListenerEntity :  IEquatable<WebhookListenerEntity>, IValidatableObject
+    public partial class Role :  IEquatable<Role>, IValidatableObject
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookListenerEntity" /> class.
+        /// Initializes a new instance of the <see cref="Role" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public WebhookListenerEntity()
+        public Role()
         {
         }
 
         /// <summary>
-        /// DisplayName
+        /// The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.
         /// </summary>
-        /// <value>DisplayName</value>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
-        public string DisplayName { get; private set; }
+        /// <value>The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.</value>
+        [DataMember(Name="account", EmitDefaultValue=false)]
+        public Account Account { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
@@ -62,18 +62,39 @@ namespace Customweb.Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Name
+        /// The name of this role is used to identify the role within administrative interfaces.
         /// </summary>
-        /// <value>Name</value>
+        /// <value>The name of this role is used to identify the role within administrative interfaces.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; private set; }
+        public DatabaseTranslatedString Name { get; private set; }
 
         /// <summary>
-        /// TechnicalName
+        /// Set of permissions that are granted to this role.
         /// </summary>
-        /// <value>TechnicalName</value>
-        [DataMember(Name="technicalName", EmitDefaultValue=false)]
-        public string TechnicalName { get; private set; }
+        /// <value>Set of permissions that are granted to this role.</value>
+        [DataMember(Name="permissions", EmitDefaultValue=false)]
+        public List<Permission> Permissions { get; private set; }
+
+        /// <summary>
+        /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+        /// </summary>
+        /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        public DateTime? PlannedPurgeDate { get; private set; }
+
+        /// <summary>
+        /// State
+        /// </summary>
+        /// <value>State</value>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public CreationEntityState? State { get; private set; }
+
+        /// <summary>
+        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// </summary>
+        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,15 +121,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as WebhookListenerEntity);
+            return this.Equals(obj as Role);
         }
 
         /// <summary>
-        /// Returns true if WebhookListenerEntity instances are equal
+        /// Returns true if Role instances are equal
         /// </summary>
-        /// <param name="other">Instance of WebhookListenerEntity to be compared</param>
+        /// <param name="other">Instance of Role to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WebhookListenerEntity other)
+        public bool Equals(Role other)
         {
             if (other == null)
             {
@@ -117,9 +138,9 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
-                    this.DisplayName == other.DisplayName ||
-                    this.DisplayName != null &&
-                    this.DisplayName.Equals(other.DisplayName)
+                    this.Account == other.Account ||
+                    this.Account != null &&
+                    this.Account.Equals(other.Account)
                 ) && 
                 (
                     this.Id == other.Id ||
@@ -129,12 +150,27 @@ namespace Customweb.Wallee.Model
                 (
                     this.Name == other.Name ||
                     this.Name != null &&
-                    this.Name.SequenceEqual(other.Name)
+                    this.Name.Equals(other.Name)
                 ) && 
                 (
-                    this.TechnicalName == other.TechnicalName ||
-                    this.TechnicalName != null &&
-                    this.TechnicalName.Equals(other.TechnicalName)
+                    this.Permissions == other.Permissions ||
+                    this.Permissions != null &&
+                    this.Permissions.SequenceEqual(other.Permissions)
+                ) && 
+                (
+                    this.PlannedPurgeDate == other.PlannedPurgeDate ||
+                    this.PlannedPurgeDate != null &&
+                    this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
+                ) && 
+                (
+                    this.State == other.State ||
+                    this.State != null &&
+                    this.State.Equals(other.State)
+                ) && 
+                (
+                    this.Version == other.Version ||
+                    this.Version != null &&
+                    this.Version.Equals(other.Version)
                 );
         }
 
@@ -147,9 +183,9 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                if (this.DisplayName != null)
+                if (this.Account != null)
                 {
-                    hash = hash * 59 + this.DisplayName.GetHashCode();
+                    hash = hash * 59 + this.Account.GetHashCode();
                 }
                 if (this.Id != null)
                 {
@@ -159,9 +195,21 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.Name.GetHashCode();
                 }
-                if (this.TechnicalName != null)
+                if (this.Permissions != null)
                 {
-                    hash = hash * 59 + this.TechnicalName.GetHashCode();
+                    hash = hash * 59 + this.Permissions.GetHashCode();
+                }
+                if (this.PlannedPurgeDate != null)
+                {
+                    hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
+                }
+                if (this.State != null)
+                {
+                    hash = hash * 59 + this.State.GetHashCode();
+                }
+                if (this.Version != null)
+                {
+                    hash = hash * 59 + this.Version.GetHashCode();
                 }
                 return hash;
             }

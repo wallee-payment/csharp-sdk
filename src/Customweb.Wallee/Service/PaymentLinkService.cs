@@ -31,7 +31,7 @@ namespace Customweb.Wallee.Service
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface ITokenService : IApiAccessor
+    public interface IPaymentLinkService : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -66,9 +66,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity">The token object with the properties which should be created.</param>
-        /// <returns>Token</returns>
-        Token Create (long? spaceId, TokenCreate entity);
+        /// <param name="entity">The payment link object with the properties which should be created.</param>
+        /// <returns>PaymentLink</returns>
+        PaymentLink Create (long? spaceId, PaymentLinkCreate entity);
 
         /// <summary>
         /// Create
@@ -78,9 +78,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity">The token object with the properties which should be created.</param>
-        /// <returns>ApiResponse of Token</returns>
-        ApiResponse<Token> CreateWithHttpInfo (long? spaceId, TokenCreate entity);
+        /// <param name="entity">The payment link object with the properties which should be created.</param>
+        /// <returns>ApiResponse of PaymentLink</returns>
+        ApiResponse<PaymentLink> CreateWithHttpInfo (long? spaceId, PaymentLinkCreate entity);
 
         /// <summary>
         /// Delete
@@ -114,9 +114,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the token which should be returned.</param>
-        /// <returns>Token</returns>
-        Token Read (long? spaceId, long? id);
+        /// <param name="id">The id of the payment links which should be returned.</param>
+        /// <returns>PaymentLink</returns>
+        PaymentLink Read (long? spaceId, long? id);
 
         /// <summary>
         /// Read
@@ -126,9 +126,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the token which should be returned.</param>
-        /// <returns>ApiResponse of Token</returns>
-        ApiResponse<Token> ReadWithHttpInfo (long? spaceId, long? id);
+        /// <param name="id">The id of the payment links which should be returned.</param>
+        /// <returns>ApiResponse of PaymentLink</returns>
+        ApiResponse<PaymentLink> ReadWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
         /// Search
@@ -138,9 +138,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the tokens which are returned by the search.</param>
-        /// <returns>List&lt;Token&gt;</returns>
-        List<Token> Search (long? spaceId, EntityQuery query);
+        /// <param name="query">The query restricts the payment links which are returned by the search.</param>
+        /// <returns>List&lt;PaymentLink&gt;</returns>
+        List<PaymentLink> Search (long? spaceId, EntityQuery query);
 
         /// <summary>
         /// Search
@@ -150,9 +150,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the tokens which are returned by the search.</param>
-        /// <returns>ApiResponse of List&lt;Token&gt;</returns>
-        ApiResponse<List<Token>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+        /// <param name="query">The query restricts the payment links which are returned by the search.</param>
+        /// <returns>ApiResponse of List&lt;PaymentLink&gt;</returns>
+        ApiResponse<List<PaymentLink>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
 
         /// <summary>
         /// Update
@@ -163,8 +163,8 @@ namespace Customweb.Wallee.Service
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
-        /// <returns>Token</returns>
-        Token Update (long? spaceId, TokenUpdate entity);
+        /// <returns>PaymentLink</returns>
+        PaymentLink Update (long? spaceId, PaymentLinkUpdate entity);
 
         /// <summary>
         /// Update
@@ -175,8 +175,8 @@ namespace Customweb.Wallee.Service
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
-        /// <returns>ApiResponse of Token</returns>
-        ApiResponse<Token> UpdateWithHttpInfo (long? spaceId, TokenUpdate entity);
+        /// <returns>ApiResponse of PaymentLink</returns>
+        ApiResponse<PaymentLink> UpdateWithHttpInfo (long? spaceId, PaymentLinkUpdate entity);
 
         #endregion Synchronous Operations
         #region Asynchronous Operations
@@ -213,9 +213,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity">The token object with the properties which should be created.</param>
-        /// <returns>Task of Token</returns>
-        System.Threading.Tasks.Task<Token> CreateAsync (long? spaceId, TokenCreate entity);
+        /// <param name="entity">The payment link object with the properties which should be created.</param>
+        /// <returns>Task of PaymentLink</returns>
+        System.Threading.Tasks.Task<PaymentLink> CreateAsync (long? spaceId, PaymentLinkCreate entity);
 
         /// <summary>
         /// Create
@@ -225,9 +225,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity">The token object with the properties which should be created.</param>
-        /// <returns>Task of ApiResponse (Token)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Token>> CreateAsyncWithHttpInfo (long? spaceId, TokenCreate entity);
+        /// <param name="entity">The payment link object with the properties which should be created.</param>
+        /// <returns>Task of ApiResponse (PaymentLink)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PaymentLink>> CreateAsyncWithHttpInfo (long? spaceId, PaymentLinkCreate entity);
 
         /// <summary>
         /// Delete
@@ -261,9 +261,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the token which should be returned.</param>
-        /// <returns>Task of Token</returns>
-        System.Threading.Tasks.Task<Token> ReadAsync (long? spaceId, long? id);
+        /// <param name="id">The id of the payment links which should be returned.</param>
+        /// <returns>Task of PaymentLink</returns>
+        System.Threading.Tasks.Task<PaymentLink> ReadAsync (long? spaceId, long? id);
 
         /// <summary>
         /// Read
@@ -273,9 +273,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the token which should be returned.</param>
-        /// <returns>Task of ApiResponse (Token)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Token>> ReadAsyncWithHttpInfo (long? spaceId, long? id);
+        /// <param name="id">The id of the payment links which should be returned.</param>
+        /// <returns>Task of ApiResponse (PaymentLink)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PaymentLink>> ReadAsyncWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
         /// Search
@@ -285,9 +285,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the tokens which are returned by the search.</param>
-        /// <returns>Task of List&lt;Token&gt;</returns>
-        System.Threading.Tasks.Task<List<Token>> SearchAsync (long? spaceId, EntityQuery query);
+        /// <param name="query">The query restricts the payment links which are returned by the search.</param>
+        /// <returns>Task of List&lt;PaymentLink&gt;</returns>
+        System.Threading.Tasks.Task<List<PaymentLink>> SearchAsync (long? spaceId, EntityQuery query);
 
         /// <summary>
         /// Search
@@ -297,9 +297,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the tokens which are returned by the search.</param>
-        /// <returns>Task of ApiResponse (List&lt;Token&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Token>>> SearchAsyncWithHttpInfo (long? spaceId, EntityQuery query);
+        /// <param name="query">The query restricts the payment links which are returned by the search.</param>
+        /// <returns>Task of ApiResponse (List&lt;PaymentLink&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<PaymentLink>>> SearchAsyncWithHttpInfo (long? spaceId, EntityQuery query);
 
         /// <summary>
         /// Update
@@ -310,8 +310,8 @@ namespace Customweb.Wallee.Service
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
-        /// <returns>Task of Token</returns>
-        System.Threading.Tasks.Task<Token> UpdateAsync (long? spaceId, TokenUpdate entity);
+        /// <returns>Task of PaymentLink</returns>
+        System.Threading.Tasks.Task<PaymentLink> UpdateAsync (long? spaceId, PaymentLinkUpdate entity);
 
         /// <summary>
         /// Update
@@ -322,25 +322,25 @@ namespace Customweb.Wallee.Service
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
-        /// <returns>Task of ApiResponse (Token)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Token>> UpdateAsyncWithHttpInfo (long? spaceId, TokenUpdate entity);
+        /// <returns>Task of ApiResponse (PaymentLink)</returns>
+        System.Threading.Tasks.Task<ApiResponse<PaymentLink>> UpdateAsyncWithHttpInfo (long? spaceId, PaymentLinkUpdate entity);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class TokenService : ITokenService
+    public partial class PaymentLinkService : IPaymentLinkService
     {
         private readonly Customweb.Wallee.Client.ExceptionFactory _exceptionFactory;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TokenService"/> class
+        /// Initializes a new instance of the <see cref="PaymentLinkService"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public TokenService(Configuration configuration = null)
+        public PaymentLinkService(Configuration configuration = null)
         {
             this._configuration = CheckArgument.NotNull("configuration", configuration);
             this._apiClient = new ApiClient(configuration);
@@ -401,10 +401,10 @@ namespace Customweb.Wallee.Service
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->Count");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentLinkService->Count");
             }
 
-            var localVarPath = "/token/count";
+            var localVarPath = "/payment-link/count";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -479,10 +479,10 @@ namespace Customweb.Wallee.Service
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->Count");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentLinkService->Count");
             }
 
-            var localVarPath = "/token/count";
+            var localVarPath = "/payment-link/count";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -539,11 +539,11 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity">The token object with the properties which should be created.</param>
-        /// <returns>Token</returns>
-        public Token Create (long? spaceId, TokenCreate entity)
+        /// <param name="entity">The payment link object with the properties which should be created.</param>
+        /// <returns>PaymentLink</returns>
+        public PaymentLink Create (long? spaceId, PaymentLinkCreate entity)
         {
-             ApiResponse<Token> localVarResponse = CreateWithHttpInfo(spaceId, entity);
+             ApiResponse<PaymentLink> localVarResponse = CreateWithHttpInfo(spaceId, entity);
              return localVarResponse.Data;
         }
 
@@ -552,22 +552,22 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity">The token object with the properties which should be created.</param>
-        /// <returns>ApiResponse of Token</returns>
-        public ApiResponse< Token > CreateWithHttpInfo (long? spaceId, TokenCreate entity)
+        /// <param name="entity">The payment link object with the properties which should be created.</param>
+        /// <returns>ApiResponse of PaymentLink</returns>
+        public ApiResponse< PaymentLink > CreateWithHttpInfo (long? spaceId, PaymentLinkCreate entity)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->Create");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentLinkService->Create");
             }
             // verify the required parameter 'entity' is set
             if (entity == null)
             {
-                throw new ApiException(400, "Missing required parameter 'entity' when calling TokenService->Create");
+                throw new ApiException(400, "Missing required parameter 'entity' when calling PaymentLinkService->Create");
             }
 
-            var localVarPath = "/token/create";
+            var localVarPath = "/payment-link/create";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -612,9 +612,9 @@ namespace Customweb.Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Token>(localVarStatusCode,
+            return new ApiResponse<PaymentLink>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Token) ApiClient.Deserialize(localVarResponse, typeof(Token)));
+                (PaymentLink) ApiClient.Deserialize(localVarResponse, typeof(PaymentLink)));
         }
 
         /// <summary>
@@ -622,11 +622,11 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity">The token object with the properties which should be created.</param>
-        /// <returns>Task of Token</returns>
-        public async System.Threading.Tasks.Task<Token> CreateAsync (long? spaceId, TokenCreate entity)
+        /// <param name="entity">The payment link object with the properties which should be created.</param>
+        /// <returns>Task of PaymentLink</returns>
+        public async System.Threading.Tasks.Task<PaymentLink> CreateAsync (long? spaceId, PaymentLinkCreate entity)
         {
-             ApiResponse<Token> localVarResponse = await CreateAsyncWithHttpInfo(spaceId, entity);
+             ApiResponse<PaymentLink> localVarResponse = await CreateAsyncWithHttpInfo(spaceId, entity);
              return localVarResponse.Data;
         }
 
@@ -635,22 +635,22 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity">The token object with the properties which should be created.</param>
-        /// <returns>Task of ApiResponse (Token)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Token>> CreateAsyncWithHttpInfo (long? spaceId, TokenCreate entity)
+        /// <param name="entity">The payment link object with the properties which should be created.</param>
+        /// <returns>Task of ApiResponse (PaymentLink)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<PaymentLink>> CreateAsyncWithHttpInfo (long? spaceId, PaymentLinkCreate entity)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->Create");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentLinkService->Create");
             }
             // verify the required parameter 'entity' is set
             if (entity == null)
             {
-                throw new ApiException(400, "Missing required parameter 'entity' when calling TokenService->Create");
+                throw new ApiException(400, "Missing required parameter 'entity' when calling PaymentLinkService->Create");
             }
 
-            var localVarPath = "/token/create";
+            var localVarPath = "/payment-link/create";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -697,9 +697,9 @@ namespace Customweb.Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Token>(localVarStatusCode,
+            return new ApiResponse<PaymentLink>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Token) ApiClient.Deserialize(localVarResponse, typeof(Token)));
+                (PaymentLink) ApiClient.Deserialize(localVarResponse, typeof(PaymentLink)));
         }
 
         /// <summary>
@@ -726,15 +726,15 @@ namespace Customweb.Wallee.Service
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->Delete");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentLinkService->Delete");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                throw new ApiException(400, "Missing required parameter 'id' when calling TokenService->Delete");
+                throw new ApiException(400, "Missing required parameter 'id' when calling PaymentLinkService->Delete");
             }
 
-            var localVarPath = "/token/delete";
+            var localVarPath = "/payment-link/delete";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -808,15 +808,15 @@ namespace Customweb.Wallee.Service
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->Delete");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentLinkService->Delete");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                throw new ApiException(400, "Missing required parameter 'id' when calling TokenService->Delete");
+                throw new ApiException(400, "Missing required parameter 'id' when calling PaymentLinkService->Delete");
             }
 
-            var localVarPath = "/token/delete";
+            var localVarPath = "/payment-link/delete";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -873,11 +873,11 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the token which should be returned.</param>
-        /// <returns>Token</returns>
-        public Token Read (long? spaceId, long? id)
+        /// <param name="id">The id of the payment links which should be returned.</param>
+        /// <returns>PaymentLink</returns>
+        public PaymentLink Read (long? spaceId, long? id)
         {
-             ApiResponse<Token> localVarResponse = ReadWithHttpInfo(spaceId, id);
+             ApiResponse<PaymentLink> localVarResponse = ReadWithHttpInfo(spaceId, id);
              return localVarResponse.Data;
         }
 
@@ -886,22 +886,22 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the token which should be returned.</param>
-        /// <returns>ApiResponse of Token</returns>
-        public ApiResponse< Token > ReadWithHttpInfo (long? spaceId, long? id)
+        /// <param name="id">The id of the payment links which should be returned.</param>
+        /// <returns>ApiResponse of PaymentLink</returns>
+        public ApiResponse< PaymentLink > ReadWithHttpInfo (long? spaceId, long? id)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->Read");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentLinkService->Read");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                throw new ApiException(400, "Missing required parameter 'id' when calling TokenService->Read");
+                throw new ApiException(400, "Missing required parameter 'id' when calling PaymentLinkService->Read");
             }
 
-            var localVarPath = "/token/read";
+            var localVarPath = "/payment-link/read";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -939,9 +939,9 @@ namespace Customweb.Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Token>(localVarStatusCode,
+            return new ApiResponse<PaymentLink>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Token) ApiClient.Deserialize(localVarResponse, typeof(Token)));
+                (PaymentLink) ApiClient.Deserialize(localVarResponse, typeof(PaymentLink)));
         }
 
         /// <summary>
@@ -949,11 +949,11 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the token which should be returned.</param>
-        /// <returns>Task of Token</returns>
-        public async System.Threading.Tasks.Task<Token> ReadAsync (long? spaceId, long? id)
+        /// <param name="id">The id of the payment links which should be returned.</param>
+        /// <returns>Task of PaymentLink</returns>
+        public async System.Threading.Tasks.Task<PaymentLink> ReadAsync (long? spaceId, long? id)
         {
-             ApiResponse<Token> localVarResponse = await ReadAsyncWithHttpInfo(spaceId, id);
+             ApiResponse<PaymentLink> localVarResponse = await ReadAsyncWithHttpInfo(spaceId, id);
              return localVarResponse.Data;
         }
 
@@ -962,22 +962,22 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the token which should be returned.</param>
-        /// <returns>Task of ApiResponse (Token)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Token>> ReadAsyncWithHttpInfo (long? spaceId, long? id)
+        /// <param name="id">The id of the payment links which should be returned.</param>
+        /// <returns>Task of ApiResponse (PaymentLink)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<PaymentLink>> ReadAsyncWithHttpInfo (long? spaceId, long? id)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->Read");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentLinkService->Read");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                throw new ApiException(400, "Missing required parameter 'id' when calling TokenService->Read");
+                throw new ApiException(400, "Missing required parameter 'id' when calling PaymentLinkService->Read");
             }
 
-            var localVarPath = "/token/read";
+            var localVarPath = "/payment-link/read";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -1017,9 +1017,9 @@ namespace Customweb.Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Token>(localVarStatusCode,
+            return new ApiResponse<PaymentLink>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Token) ApiClient.Deserialize(localVarResponse, typeof(Token)));
+                (PaymentLink) ApiClient.Deserialize(localVarResponse, typeof(PaymentLink)));
         }
 
         /// <summary>
@@ -1027,11 +1027,11 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the tokens which are returned by the search.</param>
-        /// <returns>List&lt;Token&gt;</returns>
-        public List<Token> Search (long? spaceId, EntityQuery query)
+        /// <param name="query">The query restricts the payment links which are returned by the search.</param>
+        /// <returns>List&lt;PaymentLink&gt;</returns>
+        public List<PaymentLink> Search (long? spaceId, EntityQuery query)
         {
-             ApiResponse<List<Token>> localVarResponse = SearchWithHttpInfo(spaceId, query);
+             ApiResponse<List<PaymentLink>> localVarResponse = SearchWithHttpInfo(spaceId, query);
              return localVarResponse.Data;
         }
 
@@ -1040,22 +1040,22 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the tokens which are returned by the search.</param>
-        /// <returns>ApiResponse of List&lt;Token&gt;</returns>
-        public ApiResponse< List<Token> > SearchWithHttpInfo (long? spaceId, EntityQuery query)
+        /// <param name="query">The query restricts the payment links which are returned by the search.</param>
+        /// <returns>ApiResponse of List&lt;PaymentLink&gt;</returns>
+        public ApiResponse< List<PaymentLink> > SearchWithHttpInfo (long? spaceId, EntityQuery query)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->Search");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentLinkService->Search");
             }
             // verify the required parameter 'query' is set
             if (query == null)
             {
-                throw new ApiException(400, "Missing required parameter 'query' when calling TokenService->Search");
+                throw new ApiException(400, "Missing required parameter 'query' when calling PaymentLinkService->Search");
             }
 
-            var localVarPath = "/token/search";
+            var localVarPath = "/payment-link/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -1100,9 +1100,9 @@ namespace Customweb.Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Token>>(localVarStatusCode,
+            return new ApiResponse<List<PaymentLink>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Token>) ApiClient.Deserialize(localVarResponse, typeof(List<Token>)));
+                (List<PaymentLink>) ApiClient.Deserialize(localVarResponse, typeof(List<PaymentLink>)));
         }
 
         /// <summary>
@@ -1110,11 +1110,11 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the tokens which are returned by the search.</param>
-        /// <returns>Task of List&lt;Token&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Token>> SearchAsync (long? spaceId, EntityQuery query)
+        /// <param name="query">The query restricts the payment links which are returned by the search.</param>
+        /// <returns>Task of List&lt;PaymentLink&gt;</returns>
+        public async System.Threading.Tasks.Task<List<PaymentLink>> SearchAsync (long? spaceId, EntityQuery query)
         {
-             ApiResponse<List<Token>> localVarResponse = await SearchAsyncWithHttpInfo(spaceId, query);
+             ApiResponse<List<PaymentLink>> localVarResponse = await SearchAsyncWithHttpInfo(spaceId, query);
              return localVarResponse.Data;
         }
 
@@ -1123,22 +1123,22 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the tokens which are returned by the search.</param>
-        /// <returns>Task of ApiResponse (List&lt;Token&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Token>>> SearchAsyncWithHttpInfo (long? spaceId, EntityQuery query)
+        /// <param name="query">The query restricts the payment links which are returned by the search.</param>
+        /// <returns>Task of ApiResponse (List&lt;PaymentLink&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<PaymentLink>>> SearchAsyncWithHttpInfo (long? spaceId, EntityQuery query)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->Search");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentLinkService->Search");
             }
             // verify the required parameter 'query' is set
             if (query == null)
             {
-                throw new ApiException(400, "Missing required parameter 'query' when calling TokenService->Search");
+                throw new ApiException(400, "Missing required parameter 'query' when calling PaymentLinkService->Search");
             }
 
-            var localVarPath = "/token/search";
+            var localVarPath = "/payment-link/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -1185,9 +1185,9 @@ namespace Customweb.Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Token>>(localVarStatusCode,
+            return new ApiResponse<List<PaymentLink>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Token>) ApiClient.Deserialize(localVarResponse, typeof(List<Token>)));
+                (List<PaymentLink>) ApiClient.Deserialize(localVarResponse, typeof(List<PaymentLink>)));
         }
 
         /// <summary>
@@ -1196,10 +1196,10 @@ namespace Customweb.Wallee.Service
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
-        /// <returns>Token</returns>
-        public Token Update (long? spaceId, TokenUpdate entity)
+        /// <returns>PaymentLink</returns>
+        public PaymentLink Update (long? spaceId, PaymentLinkUpdate entity)
         {
-             ApiResponse<Token> localVarResponse = UpdateWithHttpInfo(spaceId, entity);
+             ApiResponse<PaymentLink> localVarResponse = UpdateWithHttpInfo(spaceId, entity);
              return localVarResponse.Data;
         }
 
@@ -1209,21 +1209,21 @@ namespace Customweb.Wallee.Service
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
-        /// <returns>ApiResponse of Token</returns>
-        public ApiResponse< Token > UpdateWithHttpInfo (long? spaceId, TokenUpdate entity)
+        /// <returns>ApiResponse of PaymentLink</returns>
+        public ApiResponse< PaymentLink > UpdateWithHttpInfo (long? spaceId, PaymentLinkUpdate entity)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->Update");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentLinkService->Update");
             }
             // verify the required parameter 'entity' is set
             if (entity == null)
             {
-                throw new ApiException(400, "Missing required parameter 'entity' when calling TokenService->Update");
+                throw new ApiException(400, "Missing required parameter 'entity' when calling PaymentLinkService->Update");
             }
 
-            var localVarPath = "/token/update";
+            var localVarPath = "/payment-link/update";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -1268,9 +1268,9 @@ namespace Customweb.Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Token>(localVarStatusCode,
+            return new ApiResponse<PaymentLink>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Token) ApiClient.Deserialize(localVarResponse, typeof(Token)));
+                (PaymentLink) ApiClient.Deserialize(localVarResponse, typeof(PaymentLink)));
         }
 
         /// <summary>
@@ -1279,10 +1279,10 @@ namespace Customweb.Wallee.Service
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
-        /// <returns>Task of Token</returns>
-        public async System.Threading.Tasks.Task<Token> UpdateAsync (long? spaceId, TokenUpdate entity)
+        /// <returns>Task of PaymentLink</returns>
+        public async System.Threading.Tasks.Task<PaymentLink> UpdateAsync (long? spaceId, PaymentLinkUpdate entity)
         {
-             ApiResponse<Token> localVarResponse = await UpdateAsyncWithHttpInfo(spaceId, entity);
+             ApiResponse<PaymentLink> localVarResponse = await UpdateAsyncWithHttpInfo(spaceId, entity);
              return localVarResponse.Data;
         }
 
@@ -1292,21 +1292,21 @@ namespace Customweb.Wallee.Service
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
-        /// <returns>Task of ApiResponse (Token)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Token>> UpdateAsyncWithHttpInfo (long? spaceId, TokenUpdate entity)
+        /// <returns>Task of ApiResponse (PaymentLink)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<PaymentLink>> UpdateAsyncWithHttpInfo (long? spaceId, PaymentLinkUpdate entity)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->Update");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentLinkService->Update");
             }
             // verify the required parameter 'entity' is set
             if (entity == null)
             {
-                throw new ApiException(400, "Missing required parameter 'entity' when calling TokenService->Update");
+                throw new ApiException(400, "Missing required parameter 'entity' when calling PaymentLinkService->Update");
             }
 
-            var localVarPath = "/token/update";
+            var localVarPath = "/payment-link/update";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -1353,9 +1353,9 @@ namespace Customweb.Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Token>(localVarStatusCode,
+            return new ApiResponse<PaymentLink>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Token) ApiClient.Deserialize(localVarResponse, typeof(Token)));
+                (PaymentLink) ApiClient.Deserialize(localVarResponse, typeof(PaymentLink)));
         }
 
     }

@@ -42,8 +42,10 @@ namespace Customweb.Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="HumanUserCreate" /> class.
         /// </summary>
-        public HumanUserCreate(string Language = default(string), string EmailAddress = default(string), string Lastname = default(string), CreationEntityState? State = default(CreationEntityState?), string TimeZone = default(string), string Firstname = default(string))
+        /// <param name="PrimaryAccount">The primary account links the user to a specific account.</param>
+        public HumanUserCreate(string Language = default(string), long? PrimaryAccount = default(long?), string EmailAddress = default(string), string Lastname = default(string), CreationEntityState? State = default(CreationEntityState?), string TimeZone = default(string), string Firstname = default(string))
         {
+            this.PrimaryAccount = PrimaryAccount;
             this.EmailAddress = EmailAddress;
             this.Firstname = Firstname;
             this.Language = Language;
@@ -51,6 +53,13 @@ namespace Customweb.Wallee.Model
             this.State = State;
             this.TimeZone = TimeZone;
         }
+
+        /// <summary>
+        /// The primary account links the user to a specific account.
+        /// </summary>
+        /// <value>The primary account links the user to a specific account.</value>
+        [DataMember(Name="primaryAccount", EmitDefaultValue=false)]
+        public long? PrimaryAccount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,6 +103,11 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
+                    this.PrimaryAccount == other.PrimaryAccount ||
+                    this.PrimaryAccount != null &&
+                    this.PrimaryAccount.Equals(other.PrimaryAccount)
+                ) && 
+                (
                     this.EmailAddress == other.EmailAddress ||
                     this.EmailAddress != null &&
                     this.EmailAddress.Equals(other.EmailAddress)
@@ -134,6 +148,10 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
+                if (this.PrimaryAccount != null)
+                {
+                    hash = hash * 59 + this.PrimaryAccount.GetHashCode();
+                }
                 if (this.EmailAddress != null)
                 {
                     hash = hash * 59 + this.EmailAddress.GetHashCode();

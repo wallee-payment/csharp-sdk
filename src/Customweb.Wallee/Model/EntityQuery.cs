@@ -42,9 +42,18 @@ namespace Customweb.Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityQuery" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public EntityQuery()
+        /// <param name="Filter">The filter node defines the root filter node of the query. The root node may contain multiple sub nodes with different filters in it.</param>
+        /// <param name="Language">The language is applied to the ordering of the entities returned. Some entity fields are language dependent and hence the language is required to order them.</param>
+        /// <param name="NumberOfEntities">The number of entities defines how many entities should be returned. There is a maximum of 100 entities.</param>
+        /// <param name="OrderBys">The order bys allows to define the ordering of the entities returned by the search.</param>
+        /// <param name="StartingEntity">The &#39;starting entity&#39; defines the entity number at which the returned result should start. The entity number is the consecutive number of the entity as returned and it is not the entity id.</param>
+        public EntityQuery(EntityQueryFilter Filter = default(EntityQueryFilter), string Language = default(string), List<EntityQueryOrderBy> OrderBys = default(List<EntityQueryOrderBy>), int? NumberOfEntities = default(int?), int? StartingEntity = default(int?))
         {
+            this.Filter = Filter;
+            this.Language = Language;
+            this.NumberOfEntities = NumberOfEntities;
+            this.OrderBys = OrderBys;
+            this.StartingEntity = StartingEntity;
         }
 
         /// <summary>
@@ -52,35 +61,35 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>The filter node defines the root filter node of the query. The root node may contain multiple sub nodes with different filters in it.</value>
         [DataMember(Name="filter", EmitDefaultValue=false)]
-        public EntityQueryFilter Filter { get; private set; }
+        public EntityQueryFilter Filter { get; set; }
 
         /// <summary>
         /// The language is applied to the ordering of the entities returned. Some entity fields are language dependent and hence the language is required to order them.
         /// </summary>
         /// <value>The language is applied to the ordering of the entities returned. Some entity fields are language dependent and hence the language is required to order them.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
-        public string Language { get; private set; }
+        public string Language { get; set; }
 
         /// <summary>
-        /// The number of entities defines how many entities should be returned. There is a maximum of 500 entities.
+        /// The number of entities defines how many entities should be returned. There is a maximum of 100 entities.
         /// </summary>
-        /// <value>The number of entities defines how many entities should be returned. There is a maximum of 500 entities.</value>
+        /// <value>The number of entities defines how many entities should be returned. There is a maximum of 100 entities.</value>
         [DataMember(Name="numberOfEntities", EmitDefaultValue=false)]
-        public int? NumberOfEntities { get; private set; }
+        public int? NumberOfEntities { get; set; }
 
         /// <summary>
         /// The order bys allows to define the ordering of the entities returned by the search.
         /// </summary>
         /// <value>The order bys allows to define the ordering of the entities returned by the search.</value>
         [DataMember(Name="orderBys", EmitDefaultValue=false)]
-        public List<EntityQueryOrderBy> OrderBys { get; private set; }
+        public List<EntityQueryOrderBy> OrderBys { get; set; }
 
         /// <summary>
         /// The &#39;starting entity&#39; defines the entity number at which the returned result should start. The entity number is the consecutive number of the entity as returned and it is not the entity id.
         /// </summary>
         /// <value>The &#39;starting entity&#39; defines the entity number at which the returned result should start. The entity number is the consecutive number of the entity as returned and it is not the entity id.</value>
         [DataMember(Name="startingEntity", EmitDefaultValue=false)]
-        public int? StartingEntity { get; private set; }
+        public int? StartingEntity { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

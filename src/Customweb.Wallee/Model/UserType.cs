@@ -38,6 +38,12 @@ namespace Customweb.Wallee.Model
         HUMAN_USER,
         
         /// <summary>
+        /// Enum SINGLE_SIGNON_USER for "SINGLE_SIGNON_USER"
+        /// </summary>
+        [EnumMember(Value = "SINGLE_SIGNON_USER")]
+        SINGLE_SIGNON_USER,
+        
+        /// <summary>
         /// Enum APPLICATION_USER for "APPLICATION_USER"
         /// </summary>
         [EnumMember(Value = "APPLICATION_USER")]

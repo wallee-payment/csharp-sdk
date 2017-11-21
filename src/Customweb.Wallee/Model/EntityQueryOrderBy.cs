@@ -43,8 +43,33 @@ namespace Customweb.Wallee.Model
         /// Initializes a new instance of the <see cref="EntityQueryOrderBy" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public EntityQueryOrderBy()
+        protected EntityQueryOrderBy() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EntityQueryOrderBy" /> class.
+        /// </summary>
+        /// <param name="FieldName">FieldName (required)</param>
+        /// <param name="Sorting">Sorting (required)</param>
+        public EntityQueryOrderBy(string FieldName = default(string), EntityQueryOrderByType? Sorting = default(EntityQueryOrderByType?))
         {
+            // to ensure "FieldName" is required (not null)
+            if (FieldName == null)
+            {
+                throw new ArgumentNullException("FieldName is a required property for EntityQueryOrderBy and cannot be null");
+            }
+            else
+            {
+                this.FieldName = FieldName;
+            }
+            // to ensure "Sorting" is required (not null)
+            if (Sorting == null)
+            {
+                throw new ArgumentNullException("Sorting is a required property for EntityQueryOrderBy and cannot be null");
+            }
+            else
+            {
+                this.Sorting = Sorting;
+            }
         }
 
         /// <summary>
@@ -52,14 +77,14 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <value>FieldName</value>
         [DataMember(Name="fieldName", EmitDefaultValue=false)]
-        public string FieldName { get; private set; }
+        public string FieldName { get; set; }
 
         /// <summary>
         /// Sorting
         /// </summary>
         /// <value>Sorting</value>
         [DataMember(Name="sorting", EmitDefaultValue=false)]
-        public EntityQueryOrderByType? Sorting { get; private set; }
+        public EntityQueryOrderByType? Sorting { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -33,47 +33,47 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Webhook Listener Entity
+    /// The metric usage provides details about the consumption of a particular metric.
     /// </summary>
     [DataContract]
-    public partial class WebhookListenerEntity :  IEquatable<WebhookListenerEntity>, IValidatableObject
+    public partial class MetricUsage :  IEquatable<MetricUsage>, IValidatableObject
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookListenerEntity" /> class.
+        /// Initializes a new instance of the <see cref="MetricUsage" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public WebhookListenerEntity()
+        public MetricUsage()
         {
         }
 
         /// <summary>
-        /// DisplayName
+        /// The consumed units provide the value of how much has been consumed of the particular metric.
         /// </summary>
-        /// <value>DisplayName</value>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
-        public string DisplayName { get; private set; }
+        /// <value>The consumed units provide the value of how much has been consumed of the particular metric.</value>
+        [DataMember(Name="consumedUnits", EmitDefaultValue=false)]
+        public decimal? ConsumedUnits { get; private set; }
 
         /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
+        /// The metric description describes the metric.
         /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
+        /// <value>The metric description describes the metric.</value>
+        [DataMember(Name="metricDescription", EmitDefaultValue=false)]
+        public Dictionary<string, string> MetricDescription { get; private set; }
 
         /// <summary>
-        /// Name
+        /// The metric ID identifies the metric for consumed units.
         /// </summary>
-        /// <value>Name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; private set; }
+        /// <value>The metric ID identifies the metric for consumed units.</value>
+        [DataMember(Name="metricId", EmitDefaultValue=false)]
+        public long? MetricId { get; private set; }
 
         /// <summary>
-        /// TechnicalName
+        /// The metric name defines the name of the consumed units.
         /// </summary>
-        /// <value>TechnicalName</value>
-        [DataMember(Name="technicalName", EmitDefaultValue=false)]
-        public string TechnicalName { get; private set; }
+        /// <value>The metric name defines the name of the consumed units.</value>
+        [DataMember(Name="metricName", EmitDefaultValue=false)]
+        public Dictionary<string, string> MetricName { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,15 +100,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as WebhookListenerEntity);
+            return this.Equals(obj as MetricUsage);
         }
 
         /// <summary>
-        /// Returns true if WebhookListenerEntity instances are equal
+        /// Returns true if MetricUsage instances are equal
         /// </summary>
-        /// <param name="other">Instance of WebhookListenerEntity to be compared</param>
+        /// <param name="other">Instance of MetricUsage to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WebhookListenerEntity other)
+        public bool Equals(MetricUsage other)
         {
             if (other == null)
             {
@@ -117,24 +117,24 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
-                    this.DisplayName == other.DisplayName ||
-                    this.DisplayName != null &&
-                    this.DisplayName.Equals(other.DisplayName)
+                    this.ConsumedUnits == other.ConsumedUnits ||
+                    this.ConsumedUnits != null &&
+                    this.ConsumedUnits.Equals(other.ConsumedUnits)
                 ) && 
                 (
-                    this.Id == other.Id ||
-                    this.Id != null &&
-                    this.Id.Equals(other.Id)
+                    this.MetricDescription == other.MetricDescription ||
+                    this.MetricDescription != null &&
+                    this.MetricDescription.SequenceEqual(other.MetricDescription)
                 ) && 
                 (
-                    this.Name == other.Name ||
-                    this.Name != null &&
-                    this.Name.SequenceEqual(other.Name)
+                    this.MetricId == other.MetricId ||
+                    this.MetricId != null &&
+                    this.MetricId.Equals(other.MetricId)
                 ) && 
                 (
-                    this.TechnicalName == other.TechnicalName ||
-                    this.TechnicalName != null &&
-                    this.TechnicalName.Equals(other.TechnicalName)
+                    this.MetricName == other.MetricName ||
+                    this.MetricName != null &&
+                    this.MetricName.SequenceEqual(other.MetricName)
                 );
         }
 
@@ -147,21 +147,21 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                if (this.DisplayName != null)
+                if (this.ConsumedUnits != null)
                 {
-                    hash = hash * 59 + this.DisplayName.GetHashCode();
+                    hash = hash * 59 + this.ConsumedUnits.GetHashCode();
                 }
-                if (this.Id != null)
+                if (this.MetricDescription != null)
                 {
-                    hash = hash * 59 + this.Id.GetHashCode();
+                    hash = hash * 59 + this.MetricDescription.GetHashCode();
                 }
-                if (this.Name != null)
+                if (this.MetricId != null)
                 {
-                    hash = hash * 59 + this.Name.GetHashCode();
+                    hash = hash * 59 + this.MetricId.GetHashCode();
                 }
-                if (this.TechnicalName != null)
+                if (this.MetricName != null)
                 {
-                    hash = hash * 59 + this.TechnicalName.GetHashCode();
+                    hash = hash * 59 + this.MetricName.GetHashCode();
                 }
                 return hash;
             }

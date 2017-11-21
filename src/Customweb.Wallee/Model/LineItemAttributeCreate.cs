@@ -42,12 +42,34 @@ namespace Customweb.Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LineItemAttributeCreate" /> class.
         /// </summary>
-        /// <param name="Label">Label</param>
-        /// <param name="Value">Value</param>
+        [JsonConstructorAttribute]
+        protected LineItemAttributeCreate() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="LineItemAttributeCreate" /> class.
+        /// </summary>
+        /// <param name="Label">Label (required)</param>
+        /// <param name="Value">Value (required)</param>
         public LineItemAttributeCreate(string Label = default(string), string Value = default(string))
         {
-            this.Label = Label;
-            this.Value = Value;
+            // to ensure "Label" is required (not null)
+            if (Label == null)
+            {
+                throw new ArgumentNullException("Label is a required property for LineItemAttributeCreate and cannot be null");
+            }
+            else
+            {
+                this.Label = Label;
+            }
+            // to ensure "Value" is required (not null)
+            if (Value == null)
+            {
+                throw new ArgumentNullException("Value is a required property for LineItemAttributeCreate and cannot be null");
+            }
+            else
+            {
+                this.Value = Value;
+            }
         }
 
         /// <summary>

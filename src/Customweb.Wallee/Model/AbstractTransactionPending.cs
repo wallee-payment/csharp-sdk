@@ -46,7 +46,7 @@ namespace Customweb.Wallee.Model
         /// <param name="AllowedPaymentMethodConfigurations">AllowedPaymentMethodConfigurations</param>
         /// <param name="BillingAddress">BillingAddress</param>
         /// <param name="Currency">Currency</param>
-        /// <param name="CustomerEmailAddress">The customer email address is the email address of the customer. If no email address is used provided on the shipping or billing address this address is used.</param>
+        /// <param name="CustomerEmailAddress">The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.</param>
         /// <param name="CustomerId">CustomerId</param>
         /// <param name="FailedUrl">The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.</param>
         /// <param name="InvoiceMerchantReference">InvoiceMerchantReference</param>
@@ -57,8 +57,9 @@ namespace Customweb.Wallee.Model
         /// <param name="ShippingAddress">ShippingAddress</param>
         /// <param name="ShippingMethod">ShippingMethod</param>
         /// <param name="SuccessUrl">The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.</param>
+        /// <param name="TimeZone">The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.</param>
         /// <param name="Token">Token</param>
-        public AbstractTransactionPending(List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string SuccessUrl = default(string), string InvoiceMerchantReference = default(string), string Currency = default(string), long? Token = default(long?), AddressCreate BillingAddress = default(AddressCreate), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string FailedUrl = default(string), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string ShippingMethod = default(string), string CustomerId = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), AddressCreate ShippingAddress = default(AddressCreate), string Language = default(string), string MerchantReference = default(string), string CustomerEmailAddress = default(string))
+        public AbstractTransactionPending(List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string SuccessUrl = default(string), string InvoiceMerchantReference = default(string), string Currency = default(string), long? Token = default(long?), AddressCreate BillingAddress = default(AddressCreate), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string CustomerEmailAddress = default(string), string FailedUrl = default(string), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string ShippingMethod = default(string), string CustomerId = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), AddressCreate ShippingAddress = default(AddressCreate), string Language = default(string), string MerchantReference = default(string), string TimeZone = default(string))
         {
             this.AllowedPaymentMethodBrands = AllowedPaymentMethodBrands;
             this.AllowedPaymentMethodConfigurations = AllowedPaymentMethodConfigurations;
@@ -75,6 +76,7 @@ namespace Customweb.Wallee.Model
             this.ShippingAddress = ShippingAddress;
             this.ShippingMethod = ShippingMethod;
             this.SuccessUrl = SuccessUrl;
+            this.TimeZone = TimeZone;
             this.Token = Token;
         }
 
@@ -107,9 +109,9 @@ namespace Customweb.Wallee.Model
         public string Currency { get; set; }
 
         /// <summary>
-        /// The customer email address is the email address of the customer. If no email address is used provided on the shipping or billing address this address is used.
+        /// The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.
         /// </summary>
-        /// <value>The customer email address is the email address of the customer. If no email address is used provided on the shipping or billing address this address is used.</value>
+        /// <value>The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.</value>
         [DataMember(Name="customerEmailAddress", EmitDefaultValue=false)]
         public string CustomerEmailAddress { get; set; }
 
@@ -182,6 +184,13 @@ namespace Customweb.Wallee.Model
         /// <value>The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.</value>
         [DataMember(Name="successUrl", EmitDefaultValue=false)]
         public string SuccessUrl { get; set; }
+
+        /// <summary>
+        /// The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
+        /// </summary>
+        /// <value>The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.</value>
+        [DataMember(Name="timeZone", EmitDefaultValue=false)]
+        public string TimeZone { get; set; }
 
         /// <summary>
         /// Token
@@ -307,6 +316,11 @@ namespace Customweb.Wallee.Model
                     this.SuccessUrl.Equals(other.SuccessUrl)
                 ) && 
                 (
+                    this.TimeZone == other.TimeZone ||
+                    this.TimeZone != null &&
+                    this.TimeZone.Equals(other.TimeZone)
+                ) && 
+                (
                     this.Token == other.Token ||
                     this.Token != null &&
                     this.Token.Equals(other.Token)
@@ -381,6 +395,10 @@ namespace Customweb.Wallee.Model
                 if (this.SuccessUrl != null)
                 {
                     hash = hash * 59 + this.SuccessUrl.GetHashCode();
+                }
+                if (this.TimeZone != null)
+                {
+                    hash = hash * 59 + this.TimeZone.GetHashCode();
                 }
                 if (this.Token != null)
                 {

@@ -33,26 +33,19 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Webhook Listener Entity
+    /// User Space Role
     /// </summary>
     [DataContract]
-    public partial class WebhookListenerEntity :  IEquatable<WebhookListenerEntity>, IValidatableObject
+    public partial class UserSpaceRole :  IEquatable<UserSpaceRole>, IValidatableObject
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookListenerEntity" /> class.
+        /// Initializes a new instance of the <see cref="UserSpaceRole" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public WebhookListenerEntity()
+        public UserSpaceRole()
         {
         }
-
-        /// <summary>
-        /// DisplayName
-        /// </summary>
-        /// <value>DisplayName</value>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
-        public string DisplayName { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
@@ -62,18 +55,32 @@ namespace Customweb.Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Name
+        /// Role
         /// </summary>
-        /// <value>Name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; private set; }
+        /// <value>Role</value>
+        [DataMember(Name="role", EmitDefaultValue=false)]
+        public long? Role { get; private set; }
 
         /// <summary>
-        /// TechnicalName
+        /// Space
         /// </summary>
-        /// <value>TechnicalName</value>
-        [DataMember(Name="technicalName", EmitDefaultValue=false)]
-        public string TechnicalName { get; private set; }
+        /// <value>Space</value>
+        [DataMember(Name="space", EmitDefaultValue=false)]
+        public long? Space { get; private set; }
+
+        /// <summary>
+        /// User
+        /// </summary>
+        /// <value>User</value>
+        [DataMember(Name="user", EmitDefaultValue=false)]
+        public long? User { get; private set; }
+
+        /// <summary>
+        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// </summary>
+        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,15 +107,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as WebhookListenerEntity);
+            return this.Equals(obj as UserSpaceRole);
         }
 
         /// <summary>
-        /// Returns true if WebhookListenerEntity instances are equal
+        /// Returns true if UserSpaceRole instances are equal
         /// </summary>
-        /// <param name="other">Instance of WebhookListenerEntity to be compared</param>
+        /// <param name="other">Instance of UserSpaceRole to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WebhookListenerEntity other)
+        public bool Equals(UserSpaceRole other)
         {
             if (other == null)
             {
@@ -117,24 +124,29 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
-                    this.DisplayName == other.DisplayName ||
-                    this.DisplayName != null &&
-                    this.DisplayName.Equals(other.DisplayName)
-                ) && 
-                (
                     this.Id == other.Id ||
                     this.Id != null &&
                     this.Id.Equals(other.Id)
                 ) && 
                 (
-                    this.Name == other.Name ||
-                    this.Name != null &&
-                    this.Name.SequenceEqual(other.Name)
+                    this.Role == other.Role ||
+                    this.Role != null &&
+                    this.Role.Equals(other.Role)
                 ) && 
                 (
-                    this.TechnicalName == other.TechnicalName ||
-                    this.TechnicalName != null &&
-                    this.TechnicalName.Equals(other.TechnicalName)
+                    this.Space == other.Space ||
+                    this.Space != null &&
+                    this.Space.Equals(other.Space)
+                ) && 
+                (
+                    this.User == other.User ||
+                    this.User != null &&
+                    this.User.Equals(other.User)
+                ) && 
+                (
+                    this.Version == other.Version ||
+                    this.Version != null &&
+                    this.Version.Equals(other.Version)
                 );
         }
 
@@ -147,21 +159,25 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                if (this.DisplayName != null)
-                {
-                    hash = hash * 59 + this.DisplayName.GetHashCode();
-                }
                 if (this.Id != null)
                 {
                     hash = hash * 59 + this.Id.GetHashCode();
                 }
-                if (this.Name != null)
+                if (this.Role != null)
                 {
-                    hash = hash * 59 + this.Name.GetHashCode();
+                    hash = hash * 59 + this.Role.GetHashCode();
                 }
-                if (this.TechnicalName != null)
+                if (this.Space != null)
                 {
-                    hash = hash * 59 + this.TechnicalName.GetHashCode();
+                    hash = hash * 59 + this.Space.GetHashCode();
+                }
+                if (this.User != null)
+                {
+                    hash = hash * 59 + this.User.GetHashCode();
+                }
+                if (this.Version != null)
+                {
+                    hash = hash * 59 + this.Version.GetHashCode();
                 }
                 return hash;
             }

@@ -33,26 +33,33 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Webhook Listener Entity
+    /// User Account Role
     /// </summary>
     [DataContract]
-    public partial class WebhookListenerEntity :  IEquatable<WebhookListenerEntity>, IValidatableObject
+    public partial class UserAccountRole :  IEquatable<UserAccountRole>, IValidatableObject
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WebhookListenerEntity" /> class.
+        /// Initializes a new instance of the <see cref="UserAccountRole" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public WebhookListenerEntity()
+        public UserAccountRole()
         {
         }
 
         /// <summary>
-        /// DisplayName
+        /// Account
         /// </summary>
-        /// <value>DisplayName</value>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
-        public string DisplayName { get; private set; }
+        /// <value>Account</value>
+        [DataMember(Name="account", EmitDefaultValue=false)]
+        public long? Account { get; private set; }
+
+        /// <summary>
+        /// AppliesOnSubAccount
+        /// </summary>
+        /// <value>AppliesOnSubAccount</value>
+        [DataMember(Name="appliesOnSubAccount", EmitDefaultValue=false)]
+        public bool? AppliesOnSubAccount { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
@@ -62,18 +69,25 @@ namespace Customweb.Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Name
+        /// Role
         /// </summary>
-        /// <value>Name</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; private set; }
+        /// <value>Role</value>
+        [DataMember(Name="role", EmitDefaultValue=false)]
+        public long? Role { get; private set; }
 
         /// <summary>
-        /// TechnicalName
+        /// User
         /// </summary>
-        /// <value>TechnicalName</value>
-        [DataMember(Name="technicalName", EmitDefaultValue=false)]
-        public string TechnicalName { get; private set; }
+        /// <value>User</value>
+        [DataMember(Name="user", EmitDefaultValue=false)]
+        public long? User { get; private set; }
+
+        /// <summary>
+        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// </summary>
+        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        [DataMember(Name="version", EmitDefaultValue=false)]
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -100,15 +114,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as WebhookListenerEntity);
+            return this.Equals(obj as UserAccountRole);
         }
 
         /// <summary>
-        /// Returns true if WebhookListenerEntity instances are equal
+        /// Returns true if UserAccountRole instances are equal
         /// </summary>
-        /// <param name="other">Instance of WebhookListenerEntity to be compared</param>
+        /// <param name="other">Instance of UserAccountRole to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WebhookListenerEntity other)
+        public bool Equals(UserAccountRole other)
         {
             if (other == null)
             {
@@ -117,9 +131,14 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
-                    this.DisplayName == other.DisplayName ||
-                    this.DisplayName != null &&
-                    this.DisplayName.Equals(other.DisplayName)
+                    this.Account == other.Account ||
+                    this.Account != null &&
+                    this.Account.Equals(other.Account)
+                ) && 
+                (
+                    this.AppliesOnSubAccount == other.AppliesOnSubAccount ||
+                    this.AppliesOnSubAccount != null &&
+                    this.AppliesOnSubAccount.Equals(other.AppliesOnSubAccount)
                 ) && 
                 (
                     this.Id == other.Id ||
@@ -127,14 +146,19 @@ namespace Customweb.Wallee.Model
                     this.Id.Equals(other.Id)
                 ) && 
                 (
-                    this.Name == other.Name ||
-                    this.Name != null &&
-                    this.Name.SequenceEqual(other.Name)
+                    this.Role == other.Role ||
+                    this.Role != null &&
+                    this.Role.Equals(other.Role)
                 ) && 
                 (
-                    this.TechnicalName == other.TechnicalName ||
-                    this.TechnicalName != null &&
-                    this.TechnicalName.Equals(other.TechnicalName)
+                    this.User == other.User ||
+                    this.User != null &&
+                    this.User.Equals(other.User)
+                ) && 
+                (
+                    this.Version == other.Version ||
+                    this.Version != null &&
+                    this.Version.Equals(other.Version)
                 );
         }
 
@@ -147,21 +171,29 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                if (this.DisplayName != null)
+                if (this.Account != null)
                 {
-                    hash = hash * 59 + this.DisplayName.GetHashCode();
+                    hash = hash * 59 + this.Account.GetHashCode();
+                }
+                if (this.AppliesOnSubAccount != null)
+                {
+                    hash = hash * 59 + this.AppliesOnSubAccount.GetHashCode();
                 }
                 if (this.Id != null)
                 {
                     hash = hash * 59 + this.Id.GetHashCode();
                 }
-                if (this.Name != null)
+                if (this.Role != null)
                 {
-                    hash = hash * 59 + this.Name.GetHashCode();
+                    hash = hash * 59 + this.Role.GetHashCode();
                 }
-                if (this.TechnicalName != null)
+                if (this.User != null)
                 {
-                    hash = hash * 59 + this.TechnicalName.GetHashCode();
+                    hash = hash * 59 + this.User.GetHashCode();
+                }
+                if (this.Version != null)
+                {
+                    hash = hash * 59 + this.Version.GetHashCode();
                 }
                 return hash;
             }

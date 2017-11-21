@@ -76,11 +76,25 @@ namespace Customweb.Wallee.Model
         public decimal? AuthorizationAmount { get; private set; }
 
         /// <summary>
+        /// This is the time on which the transaction will be timed out when it is not at least authorized. The timeout time may change over time.
+        /// </summary>
+        /// <value>This is the time on which the transaction will be timed out when it is not at least authorized. The timeout time may change over time.</value>
+        [DataMember(Name="authorizationTimeoutOn", EmitDefaultValue=false)]
+        public DateTime? AuthorizationTimeoutOn { get; private set; }
+
+        /// <summary>
         /// AuthorizedOn
         /// </summary>
         /// <value>AuthorizedOn</value>
         [DataMember(Name="authorizedOn", EmitDefaultValue=false)]
         public DateTime? AuthorizedOn { get; private set; }
+
+        /// <summary>
+        /// When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.
+        /// </summary>
+        /// <value>When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.</value>
+        [DataMember(Name="autoConfirmationEnabled", EmitDefaultValue=false)]
+        public bool? AutoConfirmationEnabled { get; private set; }
 
         /// <summary>
         /// BillingAddress
@@ -146,9 +160,9 @@ namespace Customweb.Wallee.Model
         public string Currency { get; private set; }
 
         /// <summary>
-        /// The customer email address is the email address of the customer. If no email address is used provided on the shipping or billing address this address is used.
+        /// The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.
         /// </summary>
-        /// <value>The customer email address is the email address of the customer. If no email address is used provided on the shipping or billing address this address is used.</value>
+        /// <value>The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.</value>
         [DataMember(Name="customerEmailAddress", EmitDefaultValue=false)]
         public string CustomerEmailAddress { get; private set; }
 
@@ -160,9 +174,9 @@ namespace Customweb.Wallee.Model
         public string CustomerId { get; private set; }
 
         /// <summary>
-        /// CustomersPresence
+        /// The customer's presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
         /// </summary>
-        /// <value>CustomersPresence</value>
+        /// <value>The customer's presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.</value>
         [DataMember(Name="customersPresence", EmitDefaultValue=false)]
         public CustomersPresence? CustomersPresence { get; private set; }
 
@@ -328,6 +342,13 @@ namespace Customweb.Wallee.Model
         public string SuccessUrl { get; private set; }
 
         /// <summary>
+        /// The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
+        /// </summary>
+        /// <value>The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.</value>
+        [DataMember(Name="timeZone", EmitDefaultValue=false)]
+        public string TimeZone { get; private set; }
+
+        /// <summary>
         /// Token
         /// </summary>
         /// <value>Token</value>
@@ -424,9 +445,19 @@ namespace Customweb.Wallee.Model
                     this.AuthorizationAmount.Equals(other.AuthorizationAmount)
                 ) && 
                 (
+                    this.AuthorizationTimeoutOn == other.AuthorizationTimeoutOn ||
+                    this.AuthorizationTimeoutOn != null &&
+                    this.AuthorizationTimeoutOn.Equals(other.AuthorizationTimeoutOn)
+                ) && 
+                (
                     this.AuthorizedOn == other.AuthorizedOn ||
                     this.AuthorizedOn != null &&
                     this.AuthorizedOn.Equals(other.AuthorizedOn)
+                ) && 
+                (
+                    this.AutoConfirmationEnabled == other.AutoConfirmationEnabled ||
+                    this.AutoConfirmationEnabled != null &&
+                    this.AutoConfirmationEnabled.Equals(other.AutoConfirmationEnabled)
                 ) && 
                 (
                     this.BillingAddress == other.BillingAddress ||
@@ -604,6 +635,11 @@ namespace Customweb.Wallee.Model
                     this.SuccessUrl.Equals(other.SuccessUrl)
                 ) && 
                 (
+                    this.TimeZone == other.TimeZone ||
+                    this.TimeZone != null &&
+                    this.TimeZone.Equals(other.TimeZone)
+                ) && 
+                (
                     this.Token == other.Token ||
                     this.Token != null &&
                     this.Token.Equals(other.Token)
@@ -655,9 +691,17 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.AuthorizationAmount.GetHashCode();
                 }
+                if (this.AuthorizationTimeoutOn != null)
+                {
+                    hash = hash * 59 + this.AuthorizationTimeoutOn.GetHashCode();
+                }
                 if (this.AuthorizedOn != null)
                 {
                     hash = hash * 59 + this.AuthorizedOn.GetHashCode();
+                }
+                if (this.AutoConfirmationEnabled != null)
+                {
+                    hash = hash * 59 + this.AutoConfirmationEnabled.GetHashCode();
                 }
                 if (this.BillingAddress != null)
                 {
@@ -798,6 +842,10 @@ namespace Customweb.Wallee.Model
                 if (this.SuccessUrl != null)
                 {
                     hash = hash * 59 + this.SuccessUrl.GetHashCode();
+                }
+                if (this.TimeZone != null)
+                {
+                    hash = hash * 59 + this.TimeZone.GetHashCode();
                 }
                 if (this.Token != null)
                 {

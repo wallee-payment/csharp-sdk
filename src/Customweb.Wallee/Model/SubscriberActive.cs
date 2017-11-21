@@ -49,7 +49,7 @@ namespace Customweb.Wallee.Model
         /// Initializes a new instance of the <see cref="SubscriberActive" /> class.
         /// </summary>
         /// <param name="State">State</param>
-        public SubscriberActive(long? Id = default(long?), List<long?> AdditionalAllowedPaymentMethodConfigurations = default(List<long?>), string Description = default(string), string Reference = default(string), CreationEntityState? State = default(CreationEntityState?), AddressCreate ShippingAddress = default(AddressCreate), long? Version = default(long?), List<long?> DisallowedPaymentMethodConfigurations = default(List<long?>), AddressCreate BillingAddress = default(AddressCreate), string Language = default(string), string EmailAddress = default(string))
+        public SubscriberActive(long? Id = default(long?), List<long?> AdditionalAllowedPaymentMethodConfigurations = default(List<long?>), string Description = default(string), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string Reference = default(string), CreationEntityState? State = default(CreationEntityState?), AddressCreate ShippingAddress = default(AddressCreate), long? Version = default(long?), List<long?> DisallowedPaymentMethodConfigurations = default(List<long?>), AddressCreate BillingAddress = default(AddressCreate), string Language = default(string), string EmailAddress = default(string))
         {
             this.State = State;
             this.Id = Id;
@@ -60,6 +60,7 @@ namespace Customweb.Wallee.Model
             this.DisallowedPaymentMethodConfigurations = DisallowedPaymentMethodConfigurations;
             this.EmailAddress = EmailAddress;
             this.Language = Language;
+            this.MetaData = MetaData;
             this.Reference = Reference;
             this.ShippingAddress = ShippingAddress;
         }
@@ -158,6 +159,11 @@ namespace Customweb.Wallee.Model
                     this.Language.Equals(other.Language)
                 ) && 
                 (
+                    this.MetaData == other.MetaData ||
+                    this.MetaData != null &&
+                    this.MetaData.SequenceEqual(other.MetaData)
+                ) && 
+                (
                     this.Reference == other.Reference ||
                     this.Reference != null &&
                     this.Reference.Equals(other.Reference)
@@ -213,6 +219,10 @@ namespace Customweb.Wallee.Model
                 if (this.Language != null)
                 {
                     hash = hash * 59 + this.Language.GetHashCode();
+                }
+                if (this.MetaData != null)
+                {
+                    hash = hash * 59 + this.MetaData.GetHashCode();
                 }
                 if (this.Reference != null)
                 {

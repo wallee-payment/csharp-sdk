@@ -42,11 +42,13 @@ namespace Customweb.Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionCreate" /> class.
         /// </summary>
+        /// <param name="AutoConfirmationEnabled">When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.</param>
         /// <param name="ChargeRetryEnabled">When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.</param>
-        /// <param name="CustomersPresence">CustomersPresence</param>
+        /// <param name="CustomersPresence">The customer&#39;s presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.</param>
         /// <param name="SpaceViewId">SpaceViewId</param>
-        public TransactionCreate(string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), string Language = default(string), string Currency = default(string), string FailedUrl = default(string), CustomersPresence? CustomersPresence = default(CustomersPresence?), bool? ChargeRetryEnabled = default(bool?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? SpaceViewId = default(long?), long? Token = default(long?), string ShippingMethod = default(string), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string CustomerEmailAddress = default(string))
+        public TransactionCreate(string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), CustomersPresence? CustomersPresence = default(CustomersPresence?), string Language = default(string), string Currency = default(string), string CustomerEmailAddress = default(string), string FailedUrl = default(string), bool? ChargeRetryEnabled = default(bool?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? SpaceViewId = default(long?), long? Token = default(long?), string ShippingMethod = default(string), bool? AutoConfirmationEnabled = default(bool?), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string TimeZone = default(string))
         {
+            this.AutoConfirmationEnabled = AutoConfirmationEnabled;
             this.ChargeRetryEnabled = ChargeRetryEnabled;
             this.CustomersPresence = CustomersPresence;
             this.SpaceViewId = SpaceViewId;
@@ -65,8 +67,16 @@ namespace Customweb.Wallee.Model
             this.ShippingAddress = ShippingAddress;
             this.ShippingMethod = ShippingMethod;
             this.SuccessUrl = SuccessUrl;
+            this.TimeZone = TimeZone;
             this.Token = Token;
         }
+
+        /// <summary>
+        /// When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.
+        /// </summary>
+        /// <value>When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.</value>
+        [DataMember(Name="autoConfirmationEnabled", EmitDefaultValue=false)]
+        public bool? AutoConfirmationEnabled { get; set; }
 
         /// <summary>
         /// When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.
@@ -76,9 +86,9 @@ namespace Customweb.Wallee.Model
         public bool? ChargeRetryEnabled { get; set; }
 
         /// <summary>
-        /// CustomersPresence
+        /// The customer's presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.
         /// </summary>
-        /// <value>CustomersPresence</value>
+        /// <value>The customer's presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.</value>
         [DataMember(Name="customersPresence", EmitDefaultValue=false)]
         public CustomersPresence? CustomersPresence { get; set; }
 
@@ -130,6 +140,11 @@ namespace Customweb.Wallee.Model
             }
 
             return 
+                (
+                    this.AutoConfirmationEnabled == other.AutoConfirmationEnabled ||
+                    this.AutoConfirmationEnabled != null &&
+                    this.AutoConfirmationEnabled.Equals(other.AutoConfirmationEnabled)
+                ) && 
                 (
                     this.ChargeRetryEnabled == other.ChargeRetryEnabled ||
                     this.ChargeRetryEnabled != null &&
@@ -221,6 +236,11 @@ namespace Customweb.Wallee.Model
                     this.SuccessUrl.Equals(other.SuccessUrl)
                 ) && 
                 (
+                    this.TimeZone == other.TimeZone ||
+                    this.TimeZone != null &&
+                    this.TimeZone.Equals(other.TimeZone)
+                ) && 
+                (
                     this.Token == other.Token ||
                     this.Token != null &&
                     this.Token.Equals(other.Token)
@@ -236,6 +256,10 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
+                if (this.AutoConfirmationEnabled != null)
+                {
+                    hash = hash * 59 + this.AutoConfirmationEnabled.GetHashCode();
+                }
                 if (this.ChargeRetryEnabled != null)
                 {
                     hash = hash * 59 + this.ChargeRetryEnabled.GetHashCode();
@@ -307,6 +331,10 @@ namespace Customweb.Wallee.Model
                 if (this.SuccessUrl != null)
                 {
                     hash = hash * 59 + this.SuccessUrl.GetHashCode();
+                }
+                if (this.TimeZone != null)
+                {
+                    hash = hash * 59 + this.TimeZone.GetHashCode();
                 }
                 if (this.Token != null)
                 {

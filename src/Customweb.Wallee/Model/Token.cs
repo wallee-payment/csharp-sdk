@@ -118,6 +118,13 @@ namespace Customweb.Wallee.Model
         public CreationEntityState? State { get; private set; }
 
         /// <summary>
+        /// The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
+        /// </summary>
+        /// <value>The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.</value>
+        [DataMember(Name="timeZone", EmitDefaultValue=false)]
+        public string TimeZone { get; private set; }
+
+        /// <summary>
         /// Use something that it is easy to identify and may help you find the token (e.g. customer id, email address).
         /// </summary>
         /// <value>Use something that it is easy to identify and may help you find the token (e.g. customer id, email address).</value>
@@ -223,6 +230,11 @@ namespace Customweb.Wallee.Model
                     this.State.Equals(other.State)
                 ) && 
                 (
+                    this.TimeZone == other.TimeZone ||
+                    this.TimeZone != null &&
+                    this.TimeZone.Equals(other.TimeZone)
+                ) && 
+                (
                     this.TokenReference == other.TokenReference ||
                     this.TokenReference != null &&
                     this.TokenReference.Equals(other.TokenReference)
@@ -282,6 +294,10 @@ namespace Customweb.Wallee.Model
                 if (this.State != null)
                 {
                     hash = hash * 59 + this.State.GetHashCode();
+                }
+                if (this.TimeZone != null)
+                {
+                    hash = hash * 59 + this.TimeZone.GetHashCode();
                 }
                 if (this.TokenReference != null)
                 {

@@ -111,6 +111,13 @@ namespace Customweb.Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
+        /// Meta data allow to store additional data along the object.
+        /// </summary>
+        /// <value>Meta data allow to store additional data along the object.</value>
+        [DataMember(Name="metaData", EmitDefaultValue=false)]
+        public Dictionary<string, string> MetaData { get; private set; }
+
+        /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
@@ -232,6 +239,11 @@ namespace Customweb.Wallee.Model
                     this.LinkedSpaceId.Equals(other.LinkedSpaceId)
                 ) && 
                 (
+                    this.MetaData == other.MetaData ||
+                    this.MetaData != null &&
+                    this.MetaData.SequenceEqual(other.MetaData)
+                ) && 
+                (
                     this.PlannedPurgeDate == other.PlannedPurgeDate ||
                     this.PlannedPurgeDate != null &&
                     this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
@@ -302,6 +314,10 @@ namespace Customweb.Wallee.Model
                 if (this.LinkedSpaceId != null)
                 {
                     hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
+                }
+                if (this.MetaData != null)
+                {
+                    hash = hash * 59 + this.MetaData.GetHashCode();
                 }
                 if (this.PlannedPurgeDate != null)
                 {

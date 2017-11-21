@@ -50,7 +50,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
         /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
-        public TokenUpdate(long? Id = default(long?), string CustomerEmailAddress = default(string), bool? EnabledForOneClickPayment = default(bool?), long? Version = default(long?), string Language = default(string), string TokenReference = default(string), string CustomerId = default(string))
+        public TokenUpdate(long? Id = default(long?), string CustomerEmailAddress = default(string), bool? EnabledForOneClickPayment = default(bool?), long? Version = default(long?), string Language = default(string), string TokenReference = default(string), string CustomerId = default(string), string TimeZone = default(string))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -74,6 +74,7 @@ namespace Customweb.Wallee.Model
             this.CustomerId = CustomerId;
             this.EnabledForOneClickPayment = EnabledForOneClickPayment;
             this.Language = Language;
+            this.TimeZone = TimeZone;
             this.TokenReference = TokenReference;
         }
 
@@ -163,6 +164,11 @@ namespace Customweb.Wallee.Model
                     this.Language.Equals(other.Language)
                 ) && 
                 (
+                    this.TimeZone == other.TimeZone ||
+                    this.TimeZone != null &&
+                    this.TimeZone.Equals(other.TimeZone)
+                ) && 
+                (
                     this.TokenReference == other.TokenReference ||
                     this.TokenReference != null &&
                     this.TokenReference.Equals(other.TokenReference)
@@ -201,6 +207,10 @@ namespace Customweb.Wallee.Model
                 if (this.Language != null)
                 {
                     hash = hash * 59 + this.Language.GetHashCode();
+                }
+                if (this.TimeZone != null)
+                {
+                    hash = hash * 59 + this.TimeZone.GetHashCode();
                 }
                 if (this.TokenReference != null)
                 {
