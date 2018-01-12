@@ -1509,12 +1509,12 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -1591,12 +1591,12 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2433,12 +2433,12 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2508,12 +2508,12 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2578,12 +2578,12 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2645,12 +2645,12 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2721,13 +2721,13 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
+                "*/*"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2797,13 +2797,13 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
+                "*/*"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2875,12 +2875,12 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -2950,12 +2950,12 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -3027,13 +3027,13 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
+                "*/*"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -3103,13 +3103,13 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
+                "*/*"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -3331,13 +3331,13 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
+                "*/*"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -3407,13 +3407,13 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
+                "*/*"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -3478,13 +3478,13 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
+                "*/*"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -3546,13 +3546,13 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
+                "*/*"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "*/*"
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -3959,12 +3959,12 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
@@ -4041,12 +4041,12 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)

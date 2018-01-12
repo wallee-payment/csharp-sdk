@@ -76,6 +76,13 @@ namespace Customweb.Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
+        /// Environment
+        /// </summary>
+        /// <value>Environment</value>
+        [DataMember(Name="environment", EmitDefaultValue=false)]
+        public Environment? Environment { get; private set; }
+
+        /// <summary>
         /// The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.
         /// </summary>
         /// <value>The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.</value>
@@ -284,6 +291,11 @@ namespace Customweb.Wallee.Model
                     this.CreatedOn.Equals(other.CreatedOn)
                 ) && 
                 (
+                    this.Environment == other.Environment ||
+                    this.Environment != null &&
+                    this.Environment.Equals(other.Environment)
+                ) && 
+                (
                     this.ExternalId == other.ExternalId ||
                     this.ExternalId != null &&
                     this.ExternalId.Equals(other.ExternalId)
@@ -414,6 +426,10 @@ namespace Customweb.Wallee.Model
                 if (this.CreatedOn != null)
                 {
                     hash = hash * 59 + this.CreatedOn.GetHashCode();
+                }
+                if (this.Environment != null)
+                {
+                    hash = hash * 59 + this.Environment.GetHashCode();
                 }
                 if (this.ExternalId != null)
                 {

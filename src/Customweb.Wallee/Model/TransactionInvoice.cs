@@ -83,6 +83,13 @@ namespace Customweb.Wallee.Model
         public DateTime? DueOn { get; private set; }
 
         /// <summary>
+        /// Environment
+        /// </summary>
+        /// <value>Environment</value>
+        [DataMember(Name="environment", EmitDefaultValue=false)]
+        public Environment? Environment { get; private set; }
+
+        /// <summary>
         /// ExternalId
         /// </summary>
         /// <value>ExternalId</value>
@@ -226,6 +233,11 @@ namespace Customweb.Wallee.Model
                     this.DueOn.Equals(other.DueOn)
                 ) && 
                 (
+                    this.Environment == other.Environment ||
+                    this.Environment != null &&
+                    this.Environment.Equals(other.Environment)
+                ) && 
+                (
                     this.ExternalId == other.ExternalId ||
                     this.ExternalId != null &&
                     this.ExternalId.Equals(other.ExternalId)
@@ -325,6 +337,10 @@ namespace Customweb.Wallee.Model
                 if (this.DueOn != null)
                 {
                     hash = hash * 59 + this.DueOn.GetHashCode();
+                }
+                if (this.Environment != null)
+                {
+                    hash = hash * 59 + this.Environment.GetHashCode();
                 }
                 if (this.ExternalId != null)
                 {

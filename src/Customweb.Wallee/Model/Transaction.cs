@@ -55,6 +55,13 @@ namespace Customweb.Wallee.Model
         public string AcceptHeader { get; private set; }
 
         /// <summary>
+        /// The accept language contains the header which indicates the language preferences of the buyer.
+        /// </summary>
+        /// <value>The accept language contains the header which indicates the language preferences of the buyer.</value>
+        [DataMember(Name="acceptLanguageHeader", EmitDefaultValue=false)]
+        public string AcceptLanguageHeader { get; private set; }
+
+        /// <summary>
         /// AllowedPaymentMethodBrands
         /// </summary>
         /// <value>AllowedPaymentMethodBrands</value>
@@ -181,11 +188,32 @@ namespace Customweb.Wallee.Model
         public CustomersPresence? CustomersPresence { get; private set; }
 
         /// <summary>
+        /// The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.
+        /// </summary>
+        /// <value>The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.</value>
+        [DataMember(Name="deviceSessionIdentifier", EmitDefaultValue=false)]
+        public string DeviceSessionIdentifier { get; private set; }
+
+        /// <summary>
         /// The transaction&#39;s end of life indicates the date from which on no operation can be carried out anymore.
         /// </summary>
         /// <value>The transaction&#39;s end of life indicates the date from which on no operation can be carried out anymore.</value>
         [DataMember(Name="endOfLife", EmitDefaultValue=false)]
         public DateTime? EndOfLife { get; private set; }
+
+        /// <summary>
+        /// Environment
+        /// </summary>
+        /// <value>Environment</value>
+        [DataMember(Name="environment", EmitDefaultValue=false)]
+        public Environment? Environment { get; private set; }
+
+        /// <summary>
+        /// The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
+        /// </summary>
+        /// <value>The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.</value>
+        [DataMember(Name="environmentSelectionStrategy", EmitDefaultValue=false)]
+        public TransactionEnvironmentSelectionStrategy? EnvironmentSelectionStrategy { get; private set; }
 
         /// <summary>
         /// FailedOn
@@ -223,9 +251,9 @@ namespace Customweb.Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// InternetProtocolAddress
+        /// The Internet Protocol (IP) address identifies the device of the buyer.
         /// </summary>
-        /// <value>InternetProtocolAddress</value>
+        /// <value>The Internet Protocol (IP) address identifies the device of the buyer.</value>
         [DataMember(Name="internetProtocolAddress", EmitDefaultValue=false)]
         public string InternetProtocolAddress { get; private set; }
 
@@ -356,9 +384,9 @@ namespace Customweb.Wallee.Model
         public Token Token { get; private set; }
 
         /// <summary>
-        /// UserAgentHeader
+        /// The user agent header provides the exact string which contains the user agent of the buyer.
         /// </summary>
-        /// <value>UserAgentHeader</value>
+        /// <value>The user agent header provides the exact string which contains the user agent of the buyer.</value>
         [DataMember(Name="userAgentHeader", EmitDefaultValue=false)]
         public string UserAgentHeader { get; private set; }
 
@@ -428,6 +456,11 @@ namespace Customweb.Wallee.Model
                     this.AcceptHeader == other.AcceptHeader ||
                     this.AcceptHeader != null &&
                     this.AcceptHeader.Equals(other.AcceptHeader)
+                ) && 
+                (
+                    this.AcceptLanguageHeader == other.AcceptLanguageHeader ||
+                    this.AcceptLanguageHeader != null &&
+                    this.AcceptLanguageHeader.Equals(other.AcceptLanguageHeader)
                 ) && 
                 (
                     this.AllowedPaymentMethodBrands == other.AllowedPaymentMethodBrands ||
@@ -520,9 +553,24 @@ namespace Customweb.Wallee.Model
                     this.CustomersPresence.Equals(other.CustomersPresence)
                 ) && 
                 (
+                    this.DeviceSessionIdentifier == other.DeviceSessionIdentifier ||
+                    this.DeviceSessionIdentifier != null &&
+                    this.DeviceSessionIdentifier.Equals(other.DeviceSessionIdentifier)
+                ) && 
+                (
                     this.EndOfLife == other.EndOfLife ||
                     this.EndOfLife != null &&
                     this.EndOfLife.Equals(other.EndOfLife)
+                ) && 
+                (
+                    this.Environment == other.Environment ||
+                    this.Environment != null &&
+                    this.Environment.Equals(other.Environment)
+                ) && 
+                (
+                    this.EnvironmentSelectionStrategy == other.EnvironmentSelectionStrategy ||
+                    this.EnvironmentSelectionStrategy != null &&
+                    this.EnvironmentSelectionStrategy.Equals(other.EnvironmentSelectionStrategy)
                 ) && 
                 (
                     this.FailedOn == other.FailedOn ||
@@ -679,6 +727,10 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.AcceptHeader.GetHashCode();
                 }
+                if (this.AcceptLanguageHeader != null)
+                {
+                    hash = hash * 59 + this.AcceptLanguageHeader.GetHashCode();
+                }
                 if (this.AllowedPaymentMethodBrands != null)
                 {
                     hash = hash * 59 + this.AllowedPaymentMethodBrands.GetHashCode();
@@ -751,9 +803,21 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.CustomersPresence.GetHashCode();
                 }
+                if (this.DeviceSessionIdentifier != null)
+                {
+                    hash = hash * 59 + this.DeviceSessionIdentifier.GetHashCode();
+                }
                 if (this.EndOfLife != null)
                 {
                     hash = hash * 59 + this.EndOfLife.GetHashCode();
+                }
+                if (this.Environment != null)
+                {
+                    hash = hash * 59 + this.Environment.GetHashCode();
+                }
+                if (this.EnvironmentSelectionStrategy != null)
+                {
+                    hash = hash * 59 + this.EnvironmentSelectionStrategy.GetHashCode();
                 }
                 if (this.FailedOn != null)
                 {

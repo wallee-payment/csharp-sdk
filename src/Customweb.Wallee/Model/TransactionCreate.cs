@@ -45,12 +45,18 @@ namespace Customweb.Wallee.Model
         /// <param name="AutoConfirmationEnabled">When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.</param>
         /// <param name="ChargeRetryEnabled">When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.</param>
         /// <param name="CustomersPresence">The customer&#39;s presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.</param>
+        /// <param name="DeviceSessionIdentifier">The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.</param>
+        /// <param name="Environment">Environment</param>
+        /// <param name="EnvironmentSelectionStrategy">The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.</param>
         /// <param name="SpaceViewId">SpaceViewId</param>
-        public TransactionCreate(string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), CustomersPresence? CustomersPresence = default(CustomersPresence?), string Language = default(string), string Currency = default(string), string CustomerEmailAddress = default(string), string FailedUrl = default(string), bool? ChargeRetryEnabled = default(bool?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? SpaceViewId = default(long?), long? Token = default(long?), string ShippingMethod = default(string), bool? AutoConfirmationEnabled = default(bool?), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string TimeZone = default(string))
+        public TransactionCreate(TransactionEnvironmentSelectionStrategy? EnvironmentSelectionStrategy = default(TransactionEnvironmentSelectionStrategy?), string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), CustomersPresence? CustomersPresence = default(CustomersPresence?), string Language = default(string), Environment? Environment = default(Environment?), string Currency = default(string), string CustomerEmailAddress = default(string), string FailedUrl = default(string), bool? ChargeRetryEnabled = default(bool?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? SpaceViewId = default(long?), long? Token = default(long?), string ShippingMethod = default(string), bool? AutoConfirmationEnabled = default(bool?), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string DeviceSessionIdentifier = default(string), string TimeZone = default(string))
         {
             this.AutoConfirmationEnabled = AutoConfirmationEnabled;
             this.ChargeRetryEnabled = ChargeRetryEnabled;
             this.CustomersPresence = CustomersPresence;
+            this.DeviceSessionIdentifier = DeviceSessionIdentifier;
+            this.Environment = Environment;
+            this.EnvironmentSelectionStrategy = EnvironmentSelectionStrategy;
             this.SpaceViewId = SpaceViewId;
             this.AllowedPaymentMethodBrands = AllowedPaymentMethodBrands;
             this.AllowedPaymentMethodConfigurations = AllowedPaymentMethodConfigurations;
@@ -91,6 +97,27 @@ namespace Customweb.Wallee.Model
         /// <value>The customer's presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.</value>
         [DataMember(Name="customersPresence", EmitDefaultValue=false)]
         public CustomersPresence? CustomersPresence { get; set; }
+
+        /// <summary>
+        /// The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.
+        /// </summary>
+        /// <value>The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.</value>
+        [DataMember(Name="deviceSessionIdentifier", EmitDefaultValue=false)]
+        public string DeviceSessionIdentifier { get; set; }
+
+        /// <summary>
+        /// Environment
+        /// </summary>
+        /// <value>Environment</value>
+        [DataMember(Name="environment", EmitDefaultValue=false)]
+        public Environment? Environment { get; set; }
+
+        /// <summary>
+        /// The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
+        /// </summary>
+        /// <value>The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.</value>
+        [DataMember(Name="environmentSelectionStrategy", EmitDefaultValue=false)]
+        public TransactionEnvironmentSelectionStrategy? EnvironmentSelectionStrategy { get; set; }
 
         /// <summary>
         /// SpaceViewId
@@ -154,6 +181,21 @@ namespace Customweb.Wallee.Model
                     this.CustomersPresence == other.CustomersPresence ||
                     this.CustomersPresence != null &&
                     this.CustomersPresence.Equals(other.CustomersPresence)
+                ) && 
+                (
+                    this.DeviceSessionIdentifier == other.DeviceSessionIdentifier ||
+                    this.DeviceSessionIdentifier != null &&
+                    this.DeviceSessionIdentifier.Equals(other.DeviceSessionIdentifier)
+                ) && 
+                (
+                    this.Environment == other.Environment ||
+                    this.Environment != null &&
+                    this.Environment.Equals(other.Environment)
+                ) && 
+                (
+                    this.EnvironmentSelectionStrategy == other.EnvironmentSelectionStrategy ||
+                    this.EnvironmentSelectionStrategy != null &&
+                    this.EnvironmentSelectionStrategy.Equals(other.EnvironmentSelectionStrategy)
                 ) && 
                 (
                     this.SpaceViewId == other.SpaceViewId ||
@@ -267,6 +309,18 @@ namespace Customweb.Wallee.Model
                 if (this.CustomersPresence != null)
                 {
                     hash = hash * 59 + this.CustomersPresence.GetHashCode();
+                }
+                if (this.DeviceSessionIdentifier != null)
+                {
+                    hash = hash * 59 + this.DeviceSessionIdentifier.GetHashCode();
+                }
+                if (this.Environment != null)
+                {
+                    hash = hash * 59 + this.Environment.GetHashCode();
+                }
+                if (this.EnvironmentSelectionStrategy != null)
+                {
+                    hash = hash * 59 + this.EnvironmentSelectionStrategy.GetHashCode();
                 }
                 if (this.SpaceViewId != null)
                 {

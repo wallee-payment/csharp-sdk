@@ -20,7 +20,7 @@
         <!-- The description can be used in package manager UI. Note that the
              nuget.org gallery uses information you add in the portal. -->
         <description>The wallee SDK for C#.</description>
-        <copyright>Copyright © 2017 by customweb GmbH</copyright>
+        <copyright>Copyright © 2018 by customweb GmbH</copyright>
         <licenseUrl>https://github.com/wallee-payment/wallee-csharp-sdk/blob/master/LICENSE.txt</licenseUrl>
         <iconUrl>https://app-wallee.com/assets/images/wallee-icon-primary.svg</iconUrl>
 

@@ -69,13 +69,6 @@ namespace Customweb.Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// TemplateResource
-        /// </summary>
-        /// <value>TemplateResource</value>
-        [DataMember(Name="templateResource", EmitDefaultValue=false)]
-        public string TemplateResource { get; private set; }
-
-        /// <summary>
         /// Title
         /// </summary>
         /// <value>Title</value>
@@ -139,11 +132,6 @@ namespace Customweb.Wallee.Model
                     this.Id.Equals(other.Id)
                 ) && 
                 (
-                    this.TemplateResource == other.TemplateResource ||
-                    this.TemplateResource != null &&
-                    this.TemplateResource.Equals(other.TemplateResource)
-                ) && 
-                (
                     this.Title == other.Title ||
                     this.Title != null &&
                     this.Title.SequenceEqual(other.Title)
@@ -170,10 +158,6 @@ namespace Customweb.Wallee.Model
                 if (this.Id != null)
                 {
                     hash = hash * 59 + this.Id.GetHashCode();
-                }
-                if (this.TemplateResource != null)
-                {
-                    hash = hash * 59 + this.TemplateResource.GetHashCode();
                 }
                 if (this.Title != null)
                 {
