@@ -1,22 +1,3 @@
-/**
- * Wallee SDK Client
- *
- * This client allows to interact with the Wallee API.
- *
- * Wallee API: 1.0.0
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 using System;
 using System.Linq;
 using System.IO;
@@ -46,6 +27,13 @@ namespace Customweb.Wallee.Model
         public PaymentProcessorConfiguration()
         {
         }
+
+        /// <summary>
+        /// The contract links the processor configuration with the contract that is used to process payments.
+        /// </summary>
+        /// <value>The contract links the processor configuration with the contract that is used to process payments.</value>
+        [DataMember(Name="contractId", EmitDefaultValue=false)]
+        public long? ContractId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
@@ -138,6 +126,11 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
+                    this.ContractId == other.ContractId ||
+                    this.ContractId != null &&
+                    this.ContractId.Equals(other.ContractId)
+                ) && 
+                (
                     this.Id == other.Id ||
                     this.Id != null &&
                     this.Id.Equals(other.Id)
@@ -183,6 +176,10 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
+                if (this.ContractId != null)
+                {
+                    hash = hash * 59 + this.ContractId.GetHashCode();
+                }
                 if (this.Id != null)
                 {
                     hash = hash * 59 + this.Id.GetHashCode();

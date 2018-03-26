@@ -1,22 +1,3 @@
-/**
- * Wallee SDK Client
- *
- * This client allows to interact with the Wallee API.
- *
- * Wallee API: 1.0.0
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 using System;
 using System.Linq;
 using System.IO;
@@ -53,6 +34,20 @@ namespace Customweb.Wallee.Model
         /// <value>DataCollectionType</value>
         [DataMember(Name="dataCollectionType", EmitDefaultValue=false)]
         public DataCollectionType? DataCollectionType { get; private set; }
+
+        /// <summary>
+        /// Deprecated
+        /// </summary>
+        /// <value>Deprecated</value>
+        [DataMember(Name="deprecated", EmitDefaultValue=false)]
+        public bool? Deprecated { get; private set; }
+
+        /// <summary>
+        /// DeprecationReason
+        /// </summary>
+        /// <value>DeprecationReason</value>
+        [DataMember(Name="deprecationReason", EmitDefaultValue=false)]
+        public Dictionary<string, string> DeprecationReason { get; private set; }
 
         /// <summary>
         /// Description
@@ -171,6 +166,16 @@ namespace Customweb.Wallee.Model
                     this.DataCollectionType.Equals(other.DataCollectionType)
                 ) && 
                 (
+                    this.Deprecated == other.Deprecated ||
+                    this.Deprecated != null &&
+                    this.Deprecated.Equals(other.Deprecated)
+                ) && 
+                (
+                    this.DeprecationReason == other.DeprecationReason ||
+                    this.DeprecationReason != null &&
+                    this.DeprecationReason.SequenceEqual(other.DeprecationReason)
+                ) && 
+                (
                     this.Description == other.Description ||
                     this.Description != null &&
                     this.Description.SequenceEqual(other.Description)
@@ -234,6 +239,14 @@ namespace Customweb.Wallee.Model
                 if (this.DataCollectionType != null)
                 {
                     hash = hash * 59 + this.DataCollectionType.GetHashCode();
+                }
+                if (this.Deprecated != null)
+                {
+                    hash = hash * 59 + this.Deprecated.GetHashCode();
+                }
+                if (this.DeprecationReason != null)
+                {
+                    hash = hash * 59 + this.DeprecationReason.GetHashCode();
                 }
                 if (this.Description != null)
                 {

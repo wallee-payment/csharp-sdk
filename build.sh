@@ -1,35 +1,18 @@
 #!/usr/bin/env bash
+echo "[INFO] Restoring NuGet packages."
+msbuild /t:restore
 
-frameworkVersion=net45
-netfx=${frameworkVersion#net}
-
-echo "[INFO] Target framework: ${frameworkVersion}"
-
-echo "[INFO] Download nuget and packages"
-wget -nc https://dist.nuget.org/win-x86-commandline/v4.1.0/nuget.exe;
-mozroots --import --sync
-mono nuget.exe install src/Customweb.Wallee/packages.config -o packages;
-
-echo "[INFO] Copy DLLs to the 'bin' folder"
-mkdir -p bin;
-cp packages/Newtonsoft.Json.9.0.1/lib/net45/Newtonsoft.Json.dll bin/Newtonsoft.Json.dll;
-cp packages/RestSharp.105.2.3/lib/net45/RestSharp.dll bin/RestSharp.dll;
-
-echo "[INFO] Run 'mcs' to build bin/Customweb.Wallee.dll"
-mcs -sdk:${netfx} -r:bin/Newtonsoft.Json.dll,\
-bin/RestSharp.dll,\
-System.ComponentModel.DataAnnotations.dll,\
-System.Runtime.Serialization.dll \
--target:library \
--out:bin/Customweb.Wallee.dll \
--recurse:'src/Customweb.Wallee/*.cs' \
--doc:bin/Customweb.Wallee.xml \
--platform:anycpu
+echo "[INFO] Building Customweb.Wallee.csproj."
+msbuild src/Customweb.Wallee/Customweb.Wallee.csproj /t:pack /p:Configuration=Release /p:Platform="Any CPU" /p:GenerateDocumentation=true /p:DocumentationFile=Customweb.Wallee.xml
 
 if [ $? -ne 0 ]
 then
-  echo "[ERROR] Compilation failed with exit code $?"
+  echo "[ERROR] Compilation failed with exit code $?."
   exit 1
 else
-  echo "[INFO] bin/Customweb.Wallee.dll was created successfully"
+  echo "[INFO] Compilation was successfully."
 fi
+
+
+echo "[INFO] Copying created NuGet package."
+cp "src/Customweb.Wallee/bin/Any CPU/Release/Customweb.Wallee.1.0.5.dll" ./Customweb.Wallee.1.0.5.nupkg;
