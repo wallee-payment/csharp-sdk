@@ -20,6 +20,7 @@ using System;
 using Customweb.Wallee.Model;
 using Customweb.Wallee.Client;
 using Customweb.Wallee.Service;
+using System.Collections.Generic;
 
 namespace WalleeExample
 {
@@ -27,37 +28,57 @@ namespace WalleeExample
     {
         public static void Main(string[] args)
         {
-            // Space ID.
-            const long spaceId = 1;
-
-            // Create API service configuration.
+            // Configuration. 
+            const long spaceId = 405;
+            const string userId = "512";  
+            const string secret = "FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=";
+           
             Configuration configuration = Configuration.Builder()
-	               .ApplicationUserID("application-user-id")
-	               .AuthenticationKey("application-user-authentication-key")
-	               .Build();
+                .ApplicationUserID(userId)
+                .AuthenticationKey(secret)
+                .Build();
 
-            // Create token service instance.
+            // Create API service instances.
             var tokenService = new TokenService(configuration);
+            var transactionService = new TransactionService(configuration);
 
-            // Create token.
-            TokenCreate tokenCreate = new TokenCreate()
+            // Optionally create token for recurring payments.
+            var tokenCreate = new TokenCreate(ExternalId: Guid.NewGuid().ToString())
             {
-                CustomerEmailAddress = "test@customweb.com",
-                TokenReference = "test@customweb.com",
+                CustomerEmailAddress = "spam@customweb.com",
+                TokenReference = "spam@customweb.com",
                 CustomerId = new Random().Next().ToString(),
-                ExternalId = Guid.NewGuid().ToString(),
                 EnabledForOneClickPayment = true
             };
 
-            try
+            var token = tokenService.Create(spaceId, tokenCreate);
+
+            // Create transaction.
+            var lineItem = new LineItemCreate
+                (
+                 Name: "Red T-Shirt",
+                 Sku: "red-t-shirt-1",
+                 UniqueId: "2130",
+                 Quantity: 1,
+                 Type: LineItemType.PRODUCT,
+                 AmountIncludingTax: 22.91m
+                );
+
+            var transactionCreate = new TransactionCreate
             {
-                // Send create request.
-                var token = tokenService.Create(spaceId, tokenCreate);
-            }
-            catch(ApiException e)
-            {
-                throw new Exception($"Failed to create token in Space {spaceId}.", e);
-            }
+                Currency = "EUR",
+                LineItems = new List<LineItemCreate>() { lineItem },
+                AutoConfirmationEnabled = true,
+                Token = token.Id
+            };
+
+            // Send create transaction request.
+            var transaction = transactionService.Create(spaceId, transactionCreate);
+
+            // Create payment page URL.
+            var redirectionUrl = transactionService.BuildPaymentPageUrl(spaceId, transaction.Id);
+            System.Console.WriteLine("Payment URL: " + redirectionUrl);
+
         }
     }
 }
