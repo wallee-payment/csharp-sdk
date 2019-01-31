@@ -64,6 +64,13 @@ namespace Customweb.Wallee.Model
         public decimal? AuthorizationAmount { get; private set; }
 
         /// <summary>
+        /// The environment in which this transaction was successfully authorized.
+        /// </summary>
+        /// <value>The environment in which this transaction was successfully authorized.</value>
+        [DataMember(Name="authorizationEnvironment", EmitDefaultValue=false)]
+        public ChargeAttemptEnvironment? AuthorizationEnvironment { get; private set; }
+
+        /// <summary>
         /// This is the time on which the transaction will be timed out when it is not at least authorized. The timeout time may change over time.
         /// </summary>
         /// <value>This is the time on which the transaction will be timed out when it is not at least authorized. The timeout time may change over time.</value>
@@ -97,6 +104,13 @@ namespace Customweb.Wallee.Model
         /// <value>When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.</value>
         [DataMember(Name="chargeRetryEnabled", EmitDefaultValue=false)]
         public bool? ChargeRetryEnabled { get; private set; }
+
+        /// <summary>
+        /// The completed amount is the amount which of the succesful completion.
+        /// </summary>
+        /// <value>The completed amount is the amount which of the succesful completion.</value>
+        [DataMember(Name="completedAmount", EmitDefaultValue=false)]
+        public decimal? CompletedAmount { get; private set; }
 
         /// <summary>
         /// CompletedOn
@@ -167,6 +181,13 @@ namespace Customweb.Wallee.Model
         /// <value>The customer's presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, 'Virtually Present' is used by default.</value>
         [DataMember(Name="customersPresence", EmitDefaultValue=false)]
         public CustomersPresence? CustomersPresence { get; private set; }
+
+        /// <summary>
+        /// This date indicates when the decision has been made if a transaction should be delivered or not.
+        /// </summary>
+        /// <value>This date indicates when the decision has been made if a transaction should be delivered or not.</value>
+        [DataMember(Name="deliveryDecisionMadeOn", EmitDefaultValue=false)]
+        public DateTime? DeliveryDecisionMadeOn { get; private set; }
 
         /// <summary>
         /// The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.
@@ -288,6 +309,13 @@ namespace Customweb.Wallee.Model
         public Dictionary<string, string> MetaData { get; private set; }
 
         /// <summary>
+        /// Parent
+        /// </summary>
+        /// <value>Parent</value>
+        [DataMember(Name="parent", EmitDefaultValue=false)]
+        public long? Parent { get; private set; }
+
+        /// <summary>
         /// PaymentConnectorConfiguration
         /// </summary>
         /// <value>PaymentConnectorConfiguration</value>
@@ -363,6 +391,13 @@ namespace Customweb.Wallee.Model
         /// <value>Token</value>
         [DataMember(Name="token", EmitDefaultValue=false)]
         public Token Token { get; private set; }
+
+        /// <summary>
+        /// The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
+        /// </summary>
+        /// <value>The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.</value>
+        [DataMember(Name="tokenizationMode", EmitDefaultValue=false)]
+        public TokenizationnMode? TokenizationMode { get; private set; }
 
         /// <summary>
         /// The user agent header provides the exact string which contains the user agent of the buyer.
@@ -459,6 +494,11 @@ namespace Customweb.Wallee.Model
                     this.AuthorizationAmount.Equals(other.AuthorizationAmount)
                 ) && 
                 (
+                    this.AuthorizationEnvironment == other.AuthorizationEnvironment ||
+                    this.AuthorizationEnvironment != null &&
+                    this.AuthorizationEnvironment.Equals(other.AuthorizationEnvironment)
+                ) && 
+                (
                     this.AuthorizationTimeoutOn == other.AuthorizationTimeoutOn ||
                     this.AuthorizationTimeoutOn != null &&
                     this.AuthorizationTimeoutOn.Equals(other.AuthorizationTimeoutOn)
@@ -482,6 +522,11 @@ namespace Customweb.Wallee.Model
                     this.ChargeRetryEnabled == other.ChargeRetryEnabled ||
                     this.ChargeRetryEnabled != null &&
                     this.ChargeRetryEnabled.Equals(other.ChargeRetryEnabled)
+                ) && 
+                (
+                    this.CompletedAmount == other.CompletedAmount ||
+                    this.CompletedAmount != null &&
+                    this.CompletedAmount.Equals(other.CompletedAmount)
                 ) && 
                 (
                     this.CompletedOn == other.CompletedOn ||
@@ -532,6 +577,11 @@ namespace Customweb.Wallee.Model
                     this.CustomersPresence == other.CustomersPresence ||
                     this.CustomersPresence != null &&
                     this.CustomersPresence.Equals(other.CustomersPresence)
+                ) && 
+                (
+                    this.DeliveryDecisionMadeOn == other.DeliveryDecisionMadeOn ||
+                    this.DeliveryDecisionMadeOn != null &&
+                    this.DeliveryDecisionMadeOn.Equals(other.DeliveryDecisionMadeOn)
                 ) && 
                 (
                     this.DeviceSessionIdentifier == other.DeviceSessionIdentifier ||
@@ -619,6 +669,11 @@ namespace Customweb.Wallee.Model
                     this.MetaData.SequenceEqual(other.MetaData)
                 ) && 
                 (
+                    this.Parent == other.Parent ||
+                    this.Parent != null &&
+                    this.Parent.Equals(other.Parent)
+                ) && 
+                (
                     this.PaymentConnectorConfiguration == other.PaymentConnectorConfiguration ||
                     this.PaymentConnectorConfiguration != null &&
                     this.PaymentConnectorConfiguration.Equals(other.PaymentConnectorConfiguration)
@@ -674,6 +729,11 @@ namespace Customweb.Wallee.Model
                     this.Token.Equals(other.Token)
                 ) && 
                 (
+                    this.TokenizationMode == other.TokenizationMode ||
+                    this.TokenizationMode != null &&
+                    this.TokenizationMode.Equals(other.TokenizationMode)
+                ) && 
+                (
                     this.UserAgentHeader == other.UserAgentHeader ||
                     this.UserAgentHeader != null &&
                     this.UserAgentHeader.Equals(other.UserAgentHeader)
@@ -724,6 +784,10 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.AuthorizationAmount.GetHashCode();
                 }
+                if (this.AuthorizationEnvironment != null)
+                {
+                    hash = hash * 59 + this.AuthorizationEnvironment.GetHashCode();
+                }
                 if (this.AuthorizationTimeoutOn != null)
                 {
                     hash = hash * 59 + this.AuthorizationTimeoutOn.GetHashCode();
@@ -743,6 +807,10 @@ namespace Customweb.Wallee.Model
                 if (this.ChargeRetryEnabled != null)
                 {
                     hash = hash * 59 + this.ChargeRetryEnabled.GetHashCode();
+                }
+                if (this.CompletedAmount != null)
+                {
+                    hash = hash * 59 + this.CompletedAmount.GetHashCode();
                 }
                 if (this.CompletedOn != null)
                 {
@@ -783,6 +851,10 @@ namespace Customweb.Wallee.Model
                 if (this.CustomersPresence != null)
                 {
                     hash = hash * 59 + this.CustomersPresence.GetHashCode();
+                }
+                if (this.DeliveryDecisionMadeOn != null)
+                {
+                    hash = hash * 59 + this.DeliveryDecisionMadeOn.GetHashCode();
                 }
                 if (this.DeviceSessionIdentifier != null)
                 {
@@ -852,6 +924,10 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.MetaData.GetHashCode();
                 }
+                if (this.Parent != null)
+                {
+                    hash = hash * 59 + this.Parent.GetHashCode();
+                }
                 if (this.PaymentConnectorConfiguration != null)
                 {
                     hash = hash * 59 + this.PaymentConnectorConfiguration.GetHashCode();
@@ -895,6 +971,10 @@ namespace Customweb.Wallee.Model
                 if (this.Token != null)
                 {
                     hash = hash * 59 + this.Token.GetHashCode();
+                }
+                if (this.TokenizationMode != null)
+                {
+                    hash = hash * 59 + this.TokenizationMode.GetHashCode();
                 }
                 if (this.UserAgentHeader != null)
                 {

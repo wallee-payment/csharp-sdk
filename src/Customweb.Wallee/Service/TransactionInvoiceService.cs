@@ -83,6 +83,32 @@ namespace Customweb.Wallee.Service
         ApiResponse<RenderedDocument> GetInvoiceDocumentWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
+        /// getInvoiceDocumentWithTargetMediaType
+        /// </summary>
+        /// <remarks>
+        /// Returns the PDF document for the transaction invoice with given id and target media type id.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice to get the document for.</param>
+        /// <param name="targetMediaTypeId">The id of the target media type for which the invoice should be generated for.</param>
+        /// <returns>RenderedDocument</returns>
+        RenderedDocument GetInvoiceDocumentWithTargetMediaType (long? spaceId, long? id, long? targetMediaTypeId);
+
+        /// <summary>
+        /// getInvoiceDocumentWithTargetMediaType
+        /// </summary>
+        /// <remarks>
+        /// Returns the PDF document for the transaction invoice with given id and target media type id.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice to get the document for.</param>
+        /// <param name="targetMediaTypeId">The id of the target media type for which the invoice should be generated for.</param>
+        /// <returns>ApiResponse of RenderedDocument</returns>
+        ApiResponse<RenderedDocument> GetInvoiceDocumentWithTargetMediaTypeWithHttpInfo (long? spaceId, long? id, long? targetMediaTypeId);
+
+        /// <summary>
         /// isReplacementPossible
         /// </summary>
         /// <remarks>
@@ -105,6 +131,30 @@ namespace Customweb.Wallee.Service
         /// <param name="id">The invoice which should be checked if a replacement is possible.</param>
         /// <returns>ApiResponse of bool?</returns>
         ApiResponse<bool?> IsReplacementPossibleWithHttpInfo (long? spaceId, long? id);
+
+        /// <summary>
+        /// Mark as Derecognized
+        /// </summary>
+        /// <remarks>
+        /// Marks the transaction invoice with the given id as derecognized.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as derecognized.</param>
+        /// <returns>TransactionInvoice</returns>
+        TransactionInvoice MarkAsDerecognized (long? spaceId, long? id);
+
+        /// <summary>
+        /// Mark as Derecognized
+        /// </summary>
+        /// <remarks>
+        /// Marks the transaction invoice with the given id as derecognized.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as derecognized.</param>
+        /// <returns>ApiResponse of TransactionInvoice</returns>
+        ApiResponse<TransactionInvoice> MarkAsDerecognizedWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
         /// Mark as Paid
@@ -256,6 +306,32 @@ namespace Customweb.Wallee.Service
         System.Threading.Tasks.Task<ApiResponse<RenderedDocument>> GetInvoiceDocumentAsyncWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
+        /// getInvoiceDocumentWithTargetMediaType
+        /// </summary>
+        /// <remarks>
+        /// Returns the PDF document for the transaction invoice with given id and target media type id.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice to get the document for.</param>
+        /// <param name="targetMediaTypeId">The id of the target media type for which the invoice should be generated for.</param>
+        /// <returns>Task of RenderedDocument</returns>
+        System.Threading.Tasks.Task<RenderedDocument> GetInvoiceDocumentWithTargetMediaTypeAsync (long? spaceId, long? id, long? targetMediaTypeId);
+
+        /// <summary>
+        /// getInvoiceDocumentWithTargetMediaType
+        /// </summary>
+        /// <remarks>
+        /// Returns the PDF document for the transaction invoice with given id and target media type id.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice to get the document for.</param>
+        /// <param name="targetMediaTypeId">The id of the target media type for which the invoice should be generated for.</param>
+        /// <returns>Task of ApiResponse (RenderedDocument)</returns>
+        System.Threading.Tasks.Task<ApiResponse<RenderedDocument>> GetInvoiceDocumentWithTargetMediaTypeAsyncWithHttpInfo (long? spaceId, long? id, long? targetMediaTypeId);
+
+        /// <summary>
         /// isReplacementPossible
         /// </summary>
         /// <remarks>
@@ -278,6 +354,30 @@ namespace Customweb.Wallee.Service
         /// <param name="id">The invoice which should be checked if a replacement is possible.</param>
         /// <returns>Task of ApiResponse (bool?)</returns>
         System.Threading.Tasks.Task<ApiResponse<bool?>> IsReplacementPossibleAsyncWithHttpInfo (long? spaceId, long? id);
+
+        /// <summary>
+        /// Mark as Derecognized
+        /// </summary>
+        /// <remarks>
+        /// Marks the transaction invoice with the given id as derecognized.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as derecognized.</param>
+        /// <returns>Task of TransactionInvoice</returns>
+        System.Threading.Tasks.Task<TransactionInvoice> MarkAsDerecognizedAsync (long? spaceId, long? id);
+
+        /// <summary>
+        /// Mark as Derecognized
+        /// </summary>
+        /// <remarks>
+        /// Marks the transaction invoice with the given id as derecognized.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as derecognized.</param>
+        /// <returns>Task of ApiResponse (TransactionInvoice)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TransactionInvoice>> MarkAsDerecognizedAsyncWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
         /// Mark as Paid
@@ -741,6 +841,176 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
+        /// getInvoiceDocumentWithTargetMediaType Returns the PDF document for the transaction invoice with given id and target media type id.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice to get the document for.</param>
+        /// <param name="targetMediaTypeId">The id of the target media type for which the invoice should be generated for.</param>
+        /// <returns>RenderedDocument</returns>
+        public RenderedDocument GetInvoiceDocumentWithTargetMediaType (long? spaceId, long? id, long? targetMediaTypeId)
+        {
+             ApiResponse<RenderedDocument> localVarResponse = GetInvoiceDocumentWithTargetMediaTypeWithHttpInfo(spaceId, id, targetMediaTypeId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// getInvoiceDocumentWithTargetMediaType Returns the PDF document for the transaction invoice with given id and target media type id.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice to get the document for.</param>
+        /// <param name="targetMediaTypeId">The id of the target media type for which the invoice should be generated for.</param>
+        /// <returns>ApiResponse of RenderedDocument</returns>
+        public ApiResponse< RenderedDocument > GetInvoiceDocumentWithTargetMediaTypeWithHttpInfo (long? spaceId, long? id, long? targetMediaTypeId)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionInvoiceService->GetInvoiceDocumentWithTargetMediaType");
+            }
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionInvoiceService->GetInvoiceDocumentWithTargetMediaType");
+            }
+            // verify the required parameter 'targetMediaTypeId' is set
+            if (targetMediaTypeId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'targetMediaTypeId' when calling TransactionInvoiceService->GetInvoiceDocumentWithTargetMediaType");
+            }
+
+            var localVarPath = "/transaction-invoice/getInvoiceDocumentWithTargetMediaType";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "*/*"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
+            if (targetMediaTypeId != null) localVarQueryParams.Add("targetMediaTypeId", ApiClient.ParameterToString(targetMediaTypeId)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetInvoiceDocumentWithTargetMediaType", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<RenderedDocument>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (RenderedDocument) ApiClient.Deserialize(localVarResponse, typeof(RenderedDocument)));
+        }
+
+        /// <summary>
+        /// getInvoiceDocumentWithTargetMediaType Returns the PDF document for the transaction invoice with given id and target media type id.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice to get the document for.</param>
+        /// <param name="targetMediaTypeId">The id of the target media type for which the invoice should be generated for.</param>
+        /// <returns>Task of RenderedDocument</returns>
+        public async System.Threading.Tasks.Task<RenderedDocument> GetInvoiceDocumentWithTargetMediaTypeAsync (long? spaceId, long? id, long? targetMediaTypeId)
+        {
+             ApiResponse<RenderedDocument> localVarResponse = await GetInvoiceDocumentWithTargetMediaTypeAsyncWithHttpInfo(spaceId, id, targetMediaTypeId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// getInvoiceDocumentWithTargetMediaType Returns the PDF document for the transaction invoice with given id and target media type id.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice to get the document for.</param>
+        /// <param name="targetMediaTypeId">The id of the target media type for which the invoice should be generated for.</param>
+        /// <returns>Task of ApiResponse (RenderedDocument)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<RenderedDocument>> GetInvoiceDocumentWithTargetMediaTypeAsyncWithHttpInfo (long? spaceId, long? id, long? targetMediaTypeId)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionInvoiceService->GetInvoiceDocumentWithTargetMediaType");
+            }
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionInvoiceService->GetInvoiceDocumentWithTargetMediaType");
+            }
+            // verify the required parameter 'targetMediaTypeId' is set
+            if (targetMediaTypeId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'targetMediaTypeId' when calling TransactionInvoiceService->GetInvoiceDocumentWithTargetMediaType");
+            }
+
+            var localVarPath = "/transaction-invoice/getInvoiceDocumentWithTargetMediaType";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "*/*"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
+            if (targetMediaTypeId != null) localVarQueryParams.Add("targetMediaTypeId", ApiClient.ParameterToString(targetMediaTypeId)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetInvoiceDocumentWithTargetMediaType", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<RenderedDocument>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (RenderedDocument) ApiClient.Deserialize(localVarResponse, typeof(RenderedDocument)));
+        }
+
+        /// <summary>
         /// isReplacementPossible Returns whether the transaction invoice with the given id can be replaced.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
@@ -892,6 +1162,160 @@ namespace Customweb.Wallee.Service
             return new ApiResponse<bool?>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (bool?) ApiClient.Deserialize(localVarResponse, typeof(bool?)));
+        }
+
+        /// <summary>
+        /// Mark as Derecognized Marks the transaction invoice with the given id as derecognized.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as derecognized.</param>
+        /// <returns>TransactionInvoice</returns>
+        public TransactionInvoice MarkAsDerecognized (long? spaceId, long? id)
+        {
+             ApiResponse<TransactionInvoice> localVarResponse = MarkAsDerecognizedWithHttpInfo(spaceId, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Mark as Derecognized Marks the transaction invoice with the given id as derecognized.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as derecognized.</param>
+        /// <returns>ApiResponse of TransactionInvoice</returns>
+        public ApiResponse< TransactionInvoice > MarkAsDerecognizedWithHttpInfo (long? spaceId, long? id)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionInvoiceService->MarkAsDerecognized");
+            }
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionInvoiceService->MarkAsDerecognized");
+            }
+
+            var localVarPath = "/transaction-invoice/markAsDerecognized";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MarkAsDerecognized", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TransactionInvoice>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (TransactionInvoice) ApiClient.Deserialize(localVarResponse, typeof(TransactionInvoice)));
+        }
+
+        /// <summary>
+        /// Mark as Derecognized Marks the transaction invoice with the given id as derecognized.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as derecognized.</param>
+        /// <returns>Task of TransactionInvoice</returns>
+        public async System.Threading.Tasks.Task<TransactionInvoice> MarkAsDerecognizedAsync (long? spaceId, long? id)
+        {
+             ApiResponse<TransactionInvoice> localVarResponse = await MarkAsDerecognizedAsyncWithHttpInfo(spaceId, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Mark as Derecognized Marks the transaction invoice with the given id as derecognized.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction invoice which should be marked as derecognized.</param>
+        /// <returns>Task of ApiResponse (TransactionInvoice)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<TransactionInvoice>> MarkAsDerecognizedAsyncWithHttpInfo (long? spaceId, long? id)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionInvoiceService->MarkAsDerecognized");
+            }
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionInvoiceService->MarkAsDerecognized");
+            }
+
+            var localVarPath = "/transaction-invoice/markAsDerecognized";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MarkAsDerecognized", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TransactionInvoice>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (TransactionInvoice) ApiClient.Deserialize(localVarResponse, typeof(TransactionInvoice)));
         }
 
         /// <summary>

@@ -19,6 +19,12 @@ namespace Customweb.Wallee.Model
         FORCE_TEST_ENVIRONMENT,
         
         /// <summary>
+        /// Enum FORCE_PRODUCTION_ENVIRONMENT for "FORCE_PRODUCTION_ENVIRONMENT"
+        /// </summary>
+        [EnumMember(Value = "FORCE_PRODUCTION_ENVIRONMENT")]
+        FORCE_PRODUCTION_ENVIRONMENT,
+        
+        /// <summary>
         /// Enum USE_CONFIGURATION for "USE_CONFIGURATION"
         /// </summary>
         [EnumMember(Value = "USE_CONFIGURATION")]

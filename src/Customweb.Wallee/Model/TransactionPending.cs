@@ -31,7 +31,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
         /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
-        public TransactionPending(long? Id = default(long?), string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), string Language = default(string), string Currency = default(string), string CustomerEmailAddress = default(string), string FailedUrl = default(string), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? Token = default(long?), long? Version = default(long?), string ShippingMethod = default(string), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string TimeZone = default(string))
+        public TransactionPending(long? Id = default(long?), string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), string Language = default(string), string Currency = default(string), string CustomerEmailAddress = default(string), string FailedUrl = default(string), TokenizationnMode? TokenizationMode = default(TokenizationnMode?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? Token = default(long?), long? Version = default(long?), string ShippingMethod = default(string), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string TimeZone = default(string))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -68,6 +68,7 @@ namespace Customweb.Wallee.Model
             this.SuccessUrl = SuccessUrl;
             this.TimeZone = TimeZone;
             this.Token = Token;
+            this.TokenizationMode = TokenizationMode;
         }
 
         /// <summary>
@@ -219,6 +220,11 @@ namespace Customweb.Wallee.Model
                     this.Token == other.Token ||
                     this.Token != null &&
                     this.Token.Equals(other.Token)
+                ) && 
+                (
+                    this.TokenizationMode == other.TokenizationMode ||
+                    this.TokenizationMode != null &&
+                    this.TokenizationMode.Equals(other.TokenizationMode)
                 );
         }
 
@@ -306,6 +312,10 @@ namespace Customweb.Wallee.Model
                 if (this.Token != null)
                 {
                     hash = hash * 59 + this.Token.GetHashCode();
+                }
+                if (this.TokenizationMode != null)
+                {
+                    hash = hash * 59 + this.TokenizationMode.GetHashCode();
                 }
                 return hash;
             }

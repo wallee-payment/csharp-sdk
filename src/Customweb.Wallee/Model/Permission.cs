@@ -92,6 +92,13 @@ namespace Customweb.Wallee.Model
         public Dictionary<string, string> Title { get; private set; }
 
         /// <summary>
+        /// TwoFactorRequired
+        /// </summary>
+        /// <value>TwoFactorRequired</value>
+        [DataMember(Name="twoFactorRequired", EmitDefaultValue=false)]
+        public bool? TwoFactorRequired { get; private set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -176,6 +183,11 @@ namespace Customweb.Wallee.Model
                     this.Title == other.Title ||
                     this.Title != null &&
                     this.Title.SequenceEqual(other.Title)
+                ) && 
+                (
+                    this.TwoFactorRequired == other.TwoFactorRequired ||
+                    this.TwoFactorRequired != null &&
+                    this.TwoFactorRequired.Equals(other.TwoFactorRequired)
                 );
         }
 
@@ -223,6 +235,10 @@ namespace Customweb.Wallee.Model
                 if (this.Title != null)
                 {
                     hash = hash * 59 + this.Title.GetHashCode();
+                }
+                if (this.TwoFactorRequired != null)
+                {
+                    hash = hash * 59 + this.TwoFactorRequired.GetHashCode();
                 }
                 return hash;
             }

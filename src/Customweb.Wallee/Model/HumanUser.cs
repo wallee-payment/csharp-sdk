@@ -64,6 +64,20 @@ namespace Customweb.Wallee.Model
         public string Lastname { get; private set; }
 
         /// <summary>
+        /// MobilePhoneNumber
+        /// </summary>
+        /// <value>MobilePhoneNumber</value>
+        [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=false)]
+        public string MobilePhoneNumber { get; private set; }
+
+        /// <summary>
+        /// Defines whether a users mobile phone number is verified or not.
+        /// </summary>
+        /// <value>Defines whether a users mobile phone number is verified or not.</value>
+        [DataMember(Name="mobilePhoneVerified", EmitDefaultValue=false)]
+        public bool? MobilePhoneVerified { get; private set; }
+
+        /// <summary>
         /// The primary account links the user to a specific account.
         /// </summary>
         /// <value>The primary account links the user to a specific account.</value>
@@ -83,6 +97,20 @@ namespace Customweb.Wallee.Model
         /// <value>The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; private set; }
+
+        /// <summary>
+        /// Defines whether two-factor authentication is enabled for this user.
+        /// </summary>
+        /// <value>Defines whether two-factor authentication is enabled for this user.</value>
+        [DataMember(Name="twoFactorEnabled", EmitDefaultValue=false)]
+        public bool? TwoFactorEnabled { get; private set; }
+
+        /// <summary>
+        /// TwoFactorType
+        /// </summary>
+        /// <value>TwoFactorType</value>
+        [DataMember(Name="twoFactorType", EmitDefaultValue=false)]
+        public TwoFactorAuthenticationType TwoFactorType { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -151,6 +179,16 @@ namespace Customweb.Wallee.Model
                     this.Lastname.Equals(other.Lastname)
                 ) && 
                 (
+                    this.MobilePhoneNumber == other.MobilePhoneNumber ||
+                    this.MobilePhoneNumber != null &&
+                    this.MobilePhoneNumber.Equals(other.MobilePhoneNumber)
+                ) && 
+                (
+                    this.MobilePhoneVerified == other.MobilePhoneVerified ||
+                    this.MobilePhoneVerified != null &&
+                    this.MobilePhoneVerified.Equals(other.MobilePhoneVerified)
+                ) && 
+                (
                     this.PrimaryAccount == other.PrimaryAccount ||
                     this.PrimaryAccount != null &&
                     this.PrimaryAccount.Equals(other.PrimaryAccount)
@@ -164,6 +202,16 @@ namespace Customweb.Wallee.Model
                     this.TimeZone == other.TimeZone ||
                     this.TimeZone != null &&
                     this.TimeZone.Equals(other.TimeZone)
+                ) && 
+                (
+                    this.TwoFactorEnabled == other.TwoFactorEnabled ||
+                    this.TwoFactorEnabled != null &&
+                    this.TwoFactorEnabled.Equals(other.TwoFactorEnabled)
+                ) && 
+                (
+                    this.TwoFactorType == other.TwoFactorType ||
+                    this.TwoFactorType != null &&
+                    this.TwoFactorType.Equals(other.TwoFactorType)
                 );
         }
 
@@ -196,6 +244,14 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.Lastname.GetHashCode();
                 }
+                if (this.MobilePhoneNumber != null)
+                {
+                    hash = hash * 59 + this.MobilePhoneNumber.GetHashCode();
+                }
+                if (this.MobilePhoneVerified != null)
+                {
+                    hash = hash * 59 + this.MobilePhoneVerified.GetHashCode();
+                }
                 if (this.PrimaryAccount != null)
                 {
                     hash = hash * 59 + this.PrimaryAccount.GetHashCode();
@@ -207,6 +263,14 @@ namespace Customweb.Wallee.Model
                 if (this.TimeZone != null)
                 {
                     hash = hash * 59 + this.TimeZone.GetHashCode();
+                }
+                if (this.TwoFactorEnabled != null)
+                {
+                    hash = hash * 59 + this.TwoFactorEnabled.GetHashCode();
+                }
+                if (this.TwoFactorType != null)
+                {
+                    hash = hash * 59 + this.TwoFactorType.GetHashCode();
                 }
                 return hash;
             }

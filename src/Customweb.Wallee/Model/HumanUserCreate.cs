@@ -24,15 +24,17 @@ namespace Customweb.Wallee.Model
         /// Initializes a new instance of the <see cref="HumanUserCreate" /> class.
         /// </summary>
         /// <param name="PrimaryAccount">The primary account links the user to a specific account.</param>
-        public HumanUserCreate(string Language = default(string), long? PrimaryAccount = default(long?), string EmailAddress = default(string), string Lastname = default(string), CreationEntityState? State = default(CreationEntityState?), string TimeZone = default(string), string Firstname = default(string))
+        public HumanUserCreate(string MobilePhoneNumber = default(string), string Language = default(string), bool? TwoFactorEnabled = default(bool?), long? PrimaryAccount = default(long?), string EmailAddress = default(string), string Lastname = default(string), CreationEntityState? State = default(CreationEntityState?), string TimeZone = default(string), string Firstname = default(string))
         {
             this.PrimaryAccount = PrimaryAccount;
             this.EmailAddress = EmailAddress;
             this.Firstname = Firstname;
             this.Language = Language;
             this.Lastname = Lastname;
+            this.MobilePhoneNumber = MobilePhoneNumber;
             this.State = State;
             this.TimeZone = TimeZone;
+            this.TwoFactorEnabled = TwoFactorEnabled;
         }
 
         /// <summary>
@@ -109,6 +111,11 @@ namespace Customweb.Wallee.Model
                     this.Lastname.Equals(other.Lastname)
                 ) && 
                 (
+                    this.MobilePhoneNumber == other.MobilePhoneNumber ||
+                    this.MobilePhoneNumber != null &&
+                    this.MobilePhoneNumber.Equals(other.MobilePhoneNumber)
+                ) && 
+                (
                     this.State == other.State ||
                     this.State != null &&
                     this.State.Equals(other.State)
@@ -117,6 +124,11 @@ namespace Customweb.Wallee.Model
                     this.TimeZone == other.TimeZone ||
                     this.TimeZone != null &&
                     this.TimeZone.Equals(other.TimeZone)
+                ) && 
+                (
+                    this.TwoFactorEnabled == other.TwoFactorEnabled ||
+                    this.TwoFactorEnabled != null &&
+                    this.TwoFactorEnabled.Equals(other.TwoFactorEnabled)
                 );
         }
 
@@ -149,6 +161,10 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.Lastname.GetHashCode();
                 }
+                if (this.MobilePhoneNumber != null)
+                {
+                    hash = hash * 59 + this.MobilePhoneNumber.GetHashCode();
+                }
                 if (this.State != null)
                 {
                     hash = hash * 59 + this.State.GetHashCode();
@@ -156,6 +172,10 @@ namespace Customweb.Wallee.Model
                 if (this.TimeZone != null)
                 {
                     hash = hash * 59 + this.TimeZone.GetHashCode();
+                }
+                if (this.TwoFactorEnabled != null)
+                {
+                    hash = hash * 59 + this.TwoFactorEnabled.GetHashCode();
                 }
                 return hash;
             }

@@ -30,7 +30,7 @@ namespace Customweb.Wallee.Model
         /// <param name="Environment">Environment</param>
         /// <param name="EnvironmentSelectionStrategy">The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.</param>
         /// <param name="SpaceViewId">SpaceViewId</param>
-        public TransactionCreate(TransactionEnvironmentSelectionStrategy? EnvironmentSelectionStrategy = default(TransactionEnvironmentSelectionStrategy?), string InvoiceMerchantReference = default(string), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), CustomersPresence? CustomersPresence = default(CustomersPresence?), string Language = default(string), Environment? Environment = default(Environment?), string Currency = default(string), string CustomerEmailAddress = default(string), string FailedUrl = default(string), bool? ChargeRetryEnabled = default(bool?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), long? SpaceViewId = default(long?), long? Token = default(long?), string ShippingMethod = default(string), bool? AutoConfirmationEnabled = default(bool?), AddressCreate BillingAddress = default(AddressCreate), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string DeviceSessionIdentifier = default(string), string TimeZone = default(string))
+        public TransactionCreate(string InvoiceMerchantReference = default(string), string Language = default(string), string Currency = default(string), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string CustomerId = default(string), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), long? SpaceViewId = default(long?), long? Token = default(long?), string ShippingMethod = default(string), List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string DeviceSessionIdentifier = default(string), string TimeZone = default(string), TransactionEnvironmentSelectionStrategy? EnvironmentSelectionStrategy = default(TransactionEnvironmentSelectionStrategy?), string SuccessUrl = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), CustomersPresence? CustomersPresence = default(CustomersPresence?), Environment? Environment = default(Environment?), string CustomerEmailAddress = default(string), string FailedUrl = default(string), TokenizationnMode? TokenizationMode = default(TokenizationnMode?), bool? ChargeRetryEnabled = default(bool?), string MerchantReference = default(string), AddressCreate ShippingAddress = default(AddressCreate), bool? AutoConfirmationEnabled = default(bool?), AddressCreate BillingAddress = default(AddressCreate))
         {
             this.AutoConfirmationEnabled = AutoConfirmationEnabled;
             this.ChargeRetryEnabled = ChargeRetryEnabled;
@@ -56,6 +56,7 @@ namespace Customweb.Wallee.Model
             this.SuccessUrl = SuccessUrl;
             this.TimeZone = TimeZone;
             this.Token = Token;
+            this.TokenizationMode = TokenizationMode;
         }
 
         /// <summary>
@@ -267,6 +268,11 @@ namespace Customweb.Wallee.Model
                     this.Token == other.Token ||
                     this.Token != null &&
                     this.Token.Equals(other.Token)
+                ) && 
+                (
+                    this.TokenizationMode == other.TokenizationMode ||
+                    this.TokenizationMode != null &&
+                    this.TokenizationMode.Equals(other.TokenizationMode)
                 );
         }
 
@@ -374,6 +380,10 @@ namespace Customweb.Wallee.Model
                 if (this.Token != null)
                 {
                     hash = hash * 59 + this.Token.GetHashCode();
+                }
+                if (this.TokenizationMode != null)
+                {
+                    hash = hash * 59 + this.TokenizationMode.GetHashCode();
                 }
                 return hash;
             }

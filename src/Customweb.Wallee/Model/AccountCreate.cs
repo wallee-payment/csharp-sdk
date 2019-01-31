@@ -23,9 +23,25 @@ namespace Customweb.Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountCreate" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
+        protected AccountCreate() { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AccountCreate" /> class.
+        /// </summary>
         /// <param name="ParentAccount">The account which is responsible for administering the account.</param>
-        public AccountCreate(string Name = default(string), long? SubaccountLimit = default(long?), long? ParentAccount = default(long?))
+        /// <param name="Scope">This is the scope to which the account belongs to. (required)</param>
+        public AccountCreate(string Name = default(string), long? SubaccountLimit = default(long?), long? ParentAccount = default(long?), long? Scope = default(long?))
         {
+            // to ensure "Scope" is required (not null)
+            if (Scope == null)
+            {
+                throw new ArgumentNullException("Scope is a required property for AccountCreate and cannot be null");
+            }
+            else
+            {
+                this.Scope = Scope;
+            }
             this.ParentAccount = ParentAccount;
             this.Name = Name;
             this.SubaccountLimit = SubaccountLimit;
@@ -37,6 +53,13 @@ namespace Customweb.Wallee.Model
         /// <value>The account which is responsible for administering the account.</value>
         [DataMember(Name="parentAccount", EmitDefaultValue=false)]
         public long? ParentAccount { get; set; }
+
+        /// <summary>
+        /// This is the scope to which the account belongs to.
+        /// </summary>
+        /// <value>This is the scope to which the account belongs to.</value>
+        [DataMember(Name="scope", EmitDefaultValue=false)]
+        public long? Scope { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -85,6 +108,11 @@ namespace Customweb.Wallee.Model
                     this.ParentAccount.Equals(other.ParentAccount)
                 ) && 
                 (
+                    this.Scope == other.Scope ||
+                    this.Scope != null &&
+                    this.Scope.Equals(other.Scope)
+                ) && 
+                (
                     this.Name == other.Name ||
                     this.Name != null &&
                     this.Name.Equals(other.Name)
@@ -108,6 +136,10 @@ namespace Customweb.Wallee.Model
                 if (this.ParentAccount != null)
                 {
                     hash = hash * 59 + this.ParentAccount.GetHashCode();
+                }
+                if (this.Scope != null)
+                {
+                    hash = hash * 59 + this.Scope.GetHashCode();
                 }
                 if (this.Name != null)
                 {

@@ -29,11 +29,13 @@ namespace Customweb.Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionPending" /> class.
         /// </summary>
+        /// <param name="Affiliate">Affiliate</param>
         /// <param name="Reference">Reference</param>
         /// <param name="Subscriber">Subscriber</param>
         /// <param name="Token">Token</param>
-        public SubscriptionPending(string Description = default(string), long? Id = default(long?), DateTime? PlannedTerminationDate = default(DateTime?), long? Token = default(long?), long? Subscriber = default(long?), long? Version = default(long?), string Reference = default(string))
+        public SubscriptionPending(string Description = default(string), long? Id = default(long?), DateTime? PlannedTerminationDate = default(DateTime?), long? Token = default(long?), long? Subscriber = default(long?), long? Affiliate = default(long?), long? Version = default(long?), string Reference = default(string))
         {
+            this.Affiliate = Affiliate;
             this.Reference = Reference;
             this.Subscriber = Subscriber;
             this.Token = Token;
@@ -42,6 +44,13 @@ namespace Customweb.Wallee.Model
             this.Description = Description;
             this.PlannedTerminationDate = PlannedTerminationDate;
         }
+
+        /// <summary>
+        /// Affiliate
+        /// </summary>
+        /// <value>Affiliate</value>
+        [DataMember(Name="affiliate", EmitDefaultValue=false)]
+        public long? Affiliate { get; set; }
 
         /// <summary>
         /// Reference
@@ -106,6 +115,11 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
+                    this.Affiliate == other.Affiliate ||
+                    this.Affiliate != null &&
+                    this.Affiliate.Equals(other.Affiliate)
+                ) && 
+                (
                     this.Reference == other.Reference ||
                     this.Reference != null &&
                     this.Reference.Equals(other.Reference)
@@ -151,6 +165,10 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
+                if (this.Affiliate != null)
+                {
+                    hash = hash * 59 + this.Affiliate.GetHashCode();
+                }
                 if (this.Reference != null)
                 {
                     hash = hash * 59 + this.Reference.GetHashCode();

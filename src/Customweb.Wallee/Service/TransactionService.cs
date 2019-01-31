@@ -225,6 +225,30 @@ namespace Customweb.Wallee.Service
         ApiResponse<Object> DeleteOneClickTokenWithCredentialsWithHttpInfo (string credentials, long? tokenId);
 
         /// <summary>
+        /// Export
+        /// </summary>
+        /// <remarks>
+        /// Exports the transactions into a CSV file. The file will contain the properties defined in the request.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>byte[]</returns>
+        byte[] Export (long? spaceId, EntityExportRequest request);
+
+        /// <summary>
+        /// Export
+        /// </summary>
+        /// <remarks>
+        /// Exports the transactions into a CSV file. The file will contain the properties defined in the request.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>ApiResponse of byte[]</returns>
+        ApiResponse<byte[]> ExportWithHttpInfo (long? spaceId, EntityExportRequest request);
+
+        /// <summary>
         /// Fetch One Click Tokens with Credentials
         /// </summary>
         /// <remarks>
@@ -387,6 +411,30 @@ namespace Customweb.Wallee.Service
         /// <param name="tokenId">The token ID is used to load the corresponding token and to process the transaction with it.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> ProcessOneClickTokenWithCredentialsWithHttpInfo (string credentials, long? tokenId);
+
+        /// <summary>
+        /// Process Without User Interaction
+        /// </summary>
+        /// <remarks>
+        /// This operation processes the transaction without requiring that the customer is present. Means this operation applies strategies to process the transaction without a direct interaction with the buyer. This operation is suitable for recurring transactions.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be processed.</param>
+        /// <returns>Transaction</returns>
+        Transaction ProcessWithoutUserInteraction (long? spaceId, long? id);
+
+        /// <summary>
+        /// Process Without User Interaction
+        /// </summary>
+        /// <remarks>
+        /// This operation processes the transaction without requiring that the customer is present. Means this operation applies strategies to process the transaction without a direct interaction with the buyer. This operation is suitable for recurring transactions.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be processed.</param>
+        /// <returns>ApiResponse of Transaction</returns>
+        ApiResponse<Transaction> ProcessWithoutUserInteractionWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
         /// Read
@@ -700,6 +748,30 @@ namespace Customweb.Wallee.Service
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteOneClickTokenWithCredentialsAsyncWithHttpInfo (string credentials, long? tokenId);
 
         /// <summary>
+        /// Export
+        /// </summary>
+        /// <remarks>
+        /// Exports the transactions into a CSV file. The file will contain the properties defined in the request.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>Task of byte[]</returns>
+        System.Threading.Tasks.Task<byte[]> ExportAsync (long? spaceId, EntityExportRequest request);
+
+        /// <summary>
+        /// Export
+        /// </summary>
+        /// <remarks>
+        /// Exports the transactions into a CSV file. The file will contain the properties defined in the request.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> ExportAsyncWithHttpInfo (long? spaceId, EntityExportRequest request);
+
+        /// <summary>
         /// Fetch One Click Tokens with Credentials
         /// </summary>
         /// <remarks>
@@ -862,6 +934,30 @@ namespace Customweb.Wallee.Service
         /// <param name="tokenId">The token ID is used to load the corresponding token and to process the transaction with it.</param>
         /// <returns>Task of ApiResponse (Transaction)</returns>
         System.Threading.Tasks.Task<ApiResponse<Transaction>> ProcessOneClickTokenWithCredentialsAsyncWithHttpInfo (string credentials, long? tokenId);
+
+        /// <summary>
+        /// Process Without User Interaction
+        /// </summary>
+        /// <remarks>
+        /// This operation processes the transaction without requiring that the customer is present. Means this operation applies strategies to process the transaction without a direct interaction with the buyer. This operation is suitable for recurring transactions.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be processed.</param>
+        /// <returns>Task of Transaction</returns>
+        System.Threading.Tasks.Task<Transaction> ProcessWithoutUserInteractionAsync (long? spaceId, long? id);
+
+        /// <summary>
+        /// Process Without User Interaction
+        /// </summary>
+        /// <remarks>
+        /// This operation processes the transaction without requiring that the customer is present. Means this operation applies strategies to process the transaction without a direct interaction with the buyer. This operation is suitable for recurring transactions.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be processed.</param>
+        /// <returns>Task of ApiResponse (Transaction)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Transaction>> ProcessWithoutUserInteractionAsyncWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
         /// Read
@@ -1509,6 +1605,7 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1591,6 +1688,7 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -2254,6 +2352,176 @@ namespace Customweb.Wallee.Service
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
+        }
+
+        /// <summary>
+        /// Export Exports the transactions into a CSV file. The file will contain the properties defined in the request.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>byte[]</returns>
+        public byte[] Export (long? spaceId, EntityExportRequest request)
+        {
+             ApiResponse<byte[]> localVarResponse = ExportWithHttpInfo(spaceId, request);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Export Exports the transactions into a CSV file. The file will contain the properties defined in the request.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>ApiResponse of byte[]</returns>
+        public ApiResponse< byte[] > ExportWithHttpInfo (long? spaceId, EntityExportRequest request)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionService->Export");
+            }
+            // verify the required parameter 'request' is set
+            if (request == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'request' when calling TransactionService->Export");
+            }
+
+            var localVarPath = "/transaction/export";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8", 
+                "text/csv"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (request != null && request.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = ApiClient.Serialize(request); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = request; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Export", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<byte[]>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (byte[]) ApiClient.Deserialize(localVarResponse, typeof(byte[])));
+        }
+
+        /// <summary>
+        /// Export Exports the transactions into a CSV file. The file will contain the properties defined in the request.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>Task of byte[]</returns>
+        public async System.Threading.Tasks.Task<byte[]> ExportAsync (long? spaceId, EntityExportRequest request)
+        {
+             ApiResponse<byte[]> localVarResponse = await ExportAsyncWithHttpInfo(spaceId, request);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Export Exports the transactions into a CSV file. The file will contain the properties defined in the request.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> ExportAsyncWithHttpInfo (long? spaceId, EntityExportRequest request)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionService->Export");
+            }
+            // verify the required parameter 'request' is set
+            if (request == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'request' when calling TransactionService->Export");
+            }
+
+            var localVarPath = "/transaction/export";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8", 
+                "text/csv"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (request != null && request.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = ApiClient.Serialize(request); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = request; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Export", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<byte[]>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (byte[]) ApiClient.Deserialize(localVarResponse, typeof(byte[])));
         }
 
         /// <summary>
@@ -3280,6 +3548,156 @@ namespace Customweb.Wallee.Service
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ProcessOneClickTokenWithCredentials", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Transaction>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Transaction) ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+        }
+
+        /// <summary>
+        /// Process Without User Interaction This operation processes the transaction without requiring that the customer is present. Means this operation applies strategies to process the transaction without a direct interaction with the buyer. This operation is suitable for recurring transactions.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be processed.</param>
+        /// <returns>Transaction</returns>
+        public Transaction ProcessWithoutUserInteraction (long? spaceId, long? id)
+        {
+             ApiResponse<Transaction> localVarResponse = ProcessWithoutUserInteractionWithHttpInfo(spaceId, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Process Without User Interaction This operation processes the transaction without requiring that the customer is present. Means this operation applies strategies to process the transaction without a direct interaction with the buyer. This operation is suitable for recurring transactions.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be processed.</param>
+        /// <returns>ApiResponse of Transaction</returns>
+        public ApiResponse< Transaction > ProcessWithoutUserInteractionWithHttpInfo (long? spaceId, long? id)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionService->ProcessWithoutUserInteraction");
+            }
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionService->ProcessWithoutUserInteraction");
+            }
+
+            var localVarPath = "/transaction/processWithoutUserInteraction";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ProcessWithoutUserInteraction", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Transaction>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Transaction) ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+        }
+
+        /// <summary>
+        /// Process Without User Interaction This operation processes the transaction without requiring that the customer is present. Means this operation applies strategies to process the transaction without a direct interaction with the buyer. This operation is suitable for recurring transactions.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be processed.</param>
+        /// <returns>Task of Transaction</returns>
+        public async System.Threading.Tasks.Task<Transaction> ProcessWithoutUserInteractionAsync (long? spaceId, long? id)
+        {
+             ApiResponse<Transaction> localVarResponse = await ProcessWithoutUserInteractionAsyncWithHttpInfo(spaceId, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Process Without User Interaction This operation processes the transaction without requiring that the customer is present. Means this operation applies strategies to process the transaction without a direct interaction with the buyer. This operation is suitable for recurring transactions.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The id of the transaction which should be processed.</param>
+        /// <returns>Task of ApiResponse (Transaction)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Transaction>> ProcessWithoutUserInteractionAsyncWithHttpInfo (long? spaceId, long? id)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionService->ProcessWithoutUserInteraction");
+            }
+            // verify the required parameter 'id' is set
+            if (id == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionService->ProcessWithoutUserInteraction");
+            }
+
+            var localVarPath = "/transaction/processWithoutUserInteraction";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ProcessWithoutUserInteraction", localVarResponse);
                 if (exception != null) throw exception;
             }
 

@@ -14,40 +14,19 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Document Template Type
+    /// Document Template Type Group
     /// </summary>
     [DataContract]
-    public partial class DocumentTemplateType :  IEquatable<DocumentTemplateType>, IValidatableObject
+    public partial class DocumentTemplateTypeGroup :  IEquatable<DocumentTemplateTypeGroup>, IValidatableObject
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DocumentTemplateType" /> class.
+        /// Initializes a new instance of the <see cref="DocumentTemplateTypeGroup" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public DocumentTemplateType()
+        public DocumentTemplateTypeGroup()
         {
         }
-
-        /// <summary>
-        /// Description
-        /// </summary>
-        /// <value>Description</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; private set; }
-
-        /// <summary>
-        /// Feature
-        /// </summary>
-        /// <value>Feature</value>
-        [DataMember(Name="feature", EmitDefaultValue=false)]
-        public long? Feature { get; private set; }
-
-        /// <summary>
-        /// Group
-        /// </summary>
-        /// <value>Group</value>
-        [DataMember(Name="group", EmitDefaultValue=false)]
-        public DocumentTemplateTypeGroup Group { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
@@ -88,15 +67,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as DocumentTemplateType);
+            return this.Equals(obj as DocumentTemplateTypeGroup);
         }
 
         /// <summary>
-        /// Returns true if DocumentTemplateType instances are equal
+        /// Returns true if DocumentTemplateTypeGroup instances are equal
         /// </summary>
-        /// <param name="other">Instance of DocumentTemplateType to be compared</param>
+        /// <param name="other">Instance of DocumentTemplateTypeGroup to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DocumentTemplateType other)
+        public bool Equals(DocumentTemplateTypeGroup other)
         {
             if (other == null)
             {
@@ -104,21 +83,6 @@ namespace Customweb.Wallee.Model
             }
 
             return 
-                (
-                    this.Description == other.Description ||
-                    this.Description != null &&
-                    this.Description.SequenceEqual(other.Description)
-                ) && 
-                (
-                    this.Feature == other.Feature ||
-                    this.Feature != null &&
-                    this.Feature.Equals(other.Feature)
-                ) && 
-                (
-                    this.Group == other.Group ||
-                    this.Group != null &&
-                    this.Group.Equals(other.Group)
-                ) && 
                 (
                     this.Id == other.Id ||
                     this.Id != null &&
@@ -140,18 +104,6 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                if (this.Description != null)
-                {
-                    hash = hash * 59 + this.Description.GetHashCode();
-                }
-                if (this.Feature != null)
-                {
-                    hash = hash * 59 + this.Feature.GetHashCode();
-                }
-                if (this.Group != null)
-                {
-                    hash = hash * 59 + this.Group.GetHashCode();
-                }
                 if (this.Id != null)
                 {
                     hash = hash * 59 + this.Id.GetHashCode();

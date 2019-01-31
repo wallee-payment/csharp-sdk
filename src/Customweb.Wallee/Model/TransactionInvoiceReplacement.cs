@@ -29,12 +29,13 @@ namespace Customweb.Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionInvoiceReplacement" /> class.
         /// </summary>
+        /// <param name="BillingAddress">BillingAddress</param>
         /// <param name="DueOn">The date on which the invoice should be paid on.</param>
-        /// <param name="ExternalId">ExternalId (required)</param>
+        /// <param name="ExternalId">The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity. (required)</param>
         /// <param name="LineItems">LineItems (required)</param>
         /// <param name="MerchantReference">MerchantReference</param>
         /// <param name="SentToCustomer">When the connector is configured to send the invoice to the customer and this property is true the customer will receive an email with the updated invoice. When this property is false no invoice is sent.</param>
-        public TransactionInvoiceReplacement(bool? SentToCustomer = default(bool?), List<LineItemCreate> LineItems = default(List<LineItemCreate>), DateTime? DueOn = default(DateTime?), string MerchantReference = default(string), string ExternalId = default(string))
+        public TransactionInvoiceReplacement(bool? SentToCustomer = default(bool?), List<LineItemCreate> LineItems = default(List<LineItemCreate>), AddressCreate BillingAddress = default(AddressCreate), DateTime? DueOn = default(DateTime?), string MerchantReference = default(string), string ExternalId = default(string))
         {
             // to ensure "ExternalId" is required (not null)
             if (ExternalId == null)
@@ -54,10 +55,18 @@ namespace Customweb.Wallee.Model
             {
                 this.LineItems = LineItems;
             }
+            this.BillingAddress = BillingAddress;
             this.DueOn = DueOn;
             this.MerchantReference = MerchantReference;
             this.SentToCustomer = SentToCustomer;
         }
+
+        /// <summary>
+        /// BillingAddress
+        /// </summary>
+        /// <value>BillingAddress</value>
+        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
+        public AddressCreate BillingAddress { get; set; }
 
         /// <summary>
         /// The date on which the invoice should be paid on.
@@ -67,9 +76,9 @@ namespace Customweb.Wallee.Model
         public DateTime? DueOn { get; set; }
 
         /// <summary>
-        /// ExternalId
+        /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
-        /// <value>ExternalId</value>
+        /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
@@ -136,6 +145,11 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
+                    this.BillingAddress == other.BillingAddress ||
+                    this.BillingAddress != null &&
+                    this.BillingAddress.Equals(other.BillingAddress)
+                ) && 
+                (
                     this.DueOn == other.DueOn ||
                     this.DueOn != null &&
                     this.DueOn.Equals(other.DueOn)
@@ -171,6 +185,10 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
+                if (this.BillingAddress != null)
+                {
+                    hash = hash * 59 + this.BillingAddress.GetHashCode();
+                }
                 if (this.DueOn != null)
                 {
                     hash = hash * 59 + this.DueOn.GetHashCode();

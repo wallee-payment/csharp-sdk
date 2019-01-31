@@ -31,7 +31,7 @@ namespace Customweb.Wallee.Service
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IRefundService : IApiAccessor
+    public interface ISubscriptionAffiliateService : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -59,78 +59,52 @@ namespace Customweb.Wallee.Service
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
 
         /// <summary>
-        /// fail
+        /// Create
         /// </summary>
         /// <remarks>
-        /// This operation allows to mark a refund as failed which is in state MANUAL_CHECK.
+        /// Creates the entity with the given properties.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as failed.</param>
-        /// <returns>Refund</returns>
-        Refund Fail (long? spaceId, long? refundId);
+        /// <param name="entity">The subscription affiliate object with the properties which should be created.</param>
+        /// <returns>SubscriptionAffiliate</returns>
+        SubscriptionAffiliate Create (long? spaceId, SubscriptionAffiliateCreate entity);
 
         /// <summary>
-        /// fail
+        /// Create
         /// </summary>
         /// <remarks>
-        /// This operation allows to mark a refund as failed which is in state MANUAL_CHECK.
+        /// Creates the entity with the given properties.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as failed.</param>
-        /// <returns>ApiResponse of Refund</returns>
-        ApiResponse<Refund> FailWithHttpInfo (long? spaceId, long? refundId);
+        /// <param name="entity">The subscription affiliate object with the properties which should be created.</param>
+        /// <returns>ApiResponse of SubscriptionAffiliate</returns>
+        ApiResponse<SubscriptionAffiliate> CreateWithHttpInfo (long? spaceId, SubscriptionAffiliateCreate entity);
 
         /// <summary>
-        /// getRefundDocument
+        /// Delete
         /// </summary>
         /// <remarks>
-        /// Returns the PDF document for the refund with given id.
+        /// Deletes the entity with the given id.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <returns>RenderedDocument</returns>
-        RenderedDocument GetRefundDocument (long? spaceId, long? id);
+        /// <param name="id"></param>
+        /// <returns></returns>
+        void Delete (long? spaceId, long? id);
 
         /// <summary>
-        /// getRefundDocument
+        /// Delete
         /// </summary>
         /// <remarks>
-        /// Returns the PDF document for the refund with given id.
+        /// Deletes the entity with the given id.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <returns>ApiResponse of RenderedDocument</returns>
-        ApiResponse<RenderedDocument> GetRefundDocumentWithHttpInfo (long? spaceId, long? id);
-
-        /// <summary>
-        /// getRefundDocumentWithTargetMediaType
-        /// </summary>
-        /// <remarks>
-        /// Returns the PDF document for the refund with given id and the given target media type.
-        /// </remarks>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <param name="targetMediaTypeId">The id of the target media type for which the refund should be generated for.</param>
-        /// <returns>RenderedDocument</returns>
-        RenderedDocument GetRefundDocumentWithTargetMediaType (long? spaceId, long? id, long? targetMediaTypeId);
-
-        /// <summary>
-        /// getRefundDocumentWithTargetMediaType
-        /// </summary>
-        /// <remarks>
-        /// Returns the PDF document for the refund with given id and the given target media type.
-        /// </remarks>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <param name="targetMediaTypeId">The id of the target media type for which the refund should be generated for.</param>
-        /// <returns>ApiResponse of RenderedDocument</returns>
-        ApiResponse<RenderedDocument> GetRefundDocumentWithTargetMediaTypeWithHttpInfo (long? spaceId, long? id, long? targetMediaTypeId);
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
         /// Read
@@ -140,9 +114,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund which should be returned.</param>
-        /// <returns>Refund</returns>
-        Refund Read (long? spaceId, long? id);
+        /// <param name="id">The id of the subscription affiliate case which should be returned.</param>
+        /// <returns>SubscriptionAffiliate</returns>
+        SubscriptionAffiliate Read (long? spaceId, long? id);
 
         /// <summary>
         /// Read
@@ -152,33 +126,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund which should be returned.</param>
-        /// <returns>ApiResponse of Refund</returns>
-        ApiResponse<Refund> ReadWithHttpInfo (long? spaceId, long? id);
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <remarks>
-        /// This operation creates and executes a refund of a particular transaction.
-        /// </remarks>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="refund">The refund object which should be created.</param>
-        /// <returns>Refund</returns>
-        Refund Refund (long? spaceId, RefundCreate refund);
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <remarks>
-        /// This operation creates and executes a refund of a particular transaction.
-        /// </remarks>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="refund">The refund object which should be created.</param>
-        /// <returns>ApiResponse of Refund</returns>
-        ApiResponse<Refund> RefundWithHttpInfo (long? spaceId, RefundCreate refund);
+        /// <param name="id">The id of the subscription affiliate case which should be returned.</param>
+        /// <returns>ApiResponse of SubscriptionAffiliate</returns>
+        ApiResponse<SubscriptionAffiliate> ReadWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
         /// Search
@@ -188,9 +138,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the refunds which are returned by the search.</param>
-        /// <returns>List&lt;Refund&gt;</returns>
-        List<Refund> Search (long? spaceId, EntityQuery query);
+        /// <param name="query">The query restricts the affiliates which are returned by the search.</param>
+        /// <returns>List&lt;SubscriptionAffiliate&gt;</returns>
+        List<SubscriptionAffiliate> Search (long? spaceId, EntityQuery query);
 
         /// <summary>
         /// Search
@@ -200,33 +150,33 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the refunds which are returned by the search.</param>
-        /// <returns>ApiResponse of List&lt;Refund&gt;</returns>
-        ApiResponse<List<Refund>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+        /// <param name="query">The query restricts the affiliates which are returned by the search.</param>
+        /// <returns>ApiResponse of List&lt;SubscriptionAffiliate&gt;</returns>
+        ApiResponse<List<SubscriptionAffiliate>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
 
         /// <summary>
-        /// succeed
+        /// Update
         /// </summary>
         /// <remarks>
-        /// This operation allows to mark a refund as successful which is in state MANUAL_CHECK.
+        /// This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as successful.</param>
-        /// <returns>Refund</returns>
-        Refund Succeed (long? spaceId, long? refundId);
+        /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>SubscriptionAffiliate</returns>
+        SubscriptionAffiliate Update (long? spaceId, SubscriptionAffiliateUpdate entity);
 
         /// <summary>
-        /// succeed
+        /// Update
         /// </summary>
         /// <remarks>
-        /// This operation allows to mark a refund as successful which is in state MANUAL_CHECK.
+        /// This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as successful.</param>
-        /// <returns>ApiResponse of Refund</returns>
-        ApiResponse<Refund> SucceedWithHttpInfo (long? spaceId, long? refundId);
+        /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>ApiResponse of SubscriptionAffiliate</returns>
+        ApiResponse<SubscriptionAffiliate> UpdateWithHttpInfo (long? spaceId, SubscriptionAffiliateUpdate entity);
 
         #endregion Synchronous Operations
         #region Asynchronous Operations
@@ -256,78 +206,52 @@ namespace Customweb.Wallee.Service
         System.Threading.Tasks.Task<ApiResponse<long?>> CountAsyncWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
 
         /// <summary>
-        /// fail
+        /// Create
         /// </summary>
         /// <remarks>
-        /// This operation allows to mark a refund as failed which is in state MANUAL_CHECK.
+        /// Creates the entity with the given properties.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as failed.</param>
-        /// <returns>Task of Refund</returns>
-        System.Threading.Tasks.Task<Refund> FailAsync (long? spaceId, long? refundId);
+        /// <param name="entity">The subscription affiliate object with the properties which should be created.</param>
+        /// <returns>Task of SubscriptionAffiliate</returns>
+        System.Threading.Tasks.Task<SubscriptionAffiliate> CreateAsync (long? spaceId, SubscriptionAffiliateCreate entity);
 
         /// <summary>
-        /// fail
+        /// Create
         /// </summary>
         /// <remarks>
-        /// This operation allows to mark a refund as failed which is in state MANUAL_CHECK.
+        /// Creates the entity with the given properties.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as failed.</param>
-        /// <returns>Task of ApiResponse (Refund)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Refund>> FailAsyncWithHttpInfo (long? spaceId, long? refundId);
+        /// <param name="entity">The subscription affiliate object with the properties which should be created.</param>
+        /// <returns>Task of ApiResponse (SubscriptionAffiliate)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SubscriptionAffiliate>> CreateAsyncWithHttpInfo (long? spaceId, SubscriptionAffiliateCreate entity);
 
         /// <summary>
-        /// getRefundDocument
+        /// Delete
         /// </summary>
         /// <remarks>
-        /// Returns the PDF document for the refund with given id.
+        /// Deletes the entity with the given id.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <returns>Task of RenderedDocument</returns>
-        System.Threading.Tasks.Task<RenderedDocument> GetRefundDocumentAsync (long? spaceId, long? id);
+        /// <param name="id"></param>
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteAsync (long? spaceId, long? id);
 
         /// <summary>
-        /// getRefundDocument
+        /// Delete
         /// </summary>
         /// <remarks>
-        /// Returns the PDF document for the refund with given id.
+        /// Deletes the entity with the given id.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <returns>Task of ApiResponse (RenderedDocument)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RenderedDocument>> GetRefundDocumentAsyncWithHttpInfo (long? spaceId, long? id);
-
-        /// <summary>
-        /// getRefundDocumentWithTargetMediaType
-        /// </summary>
-        /// <remarks>
-        /// Returns the PDF document for the refund with given id and the given target media type.
-        /// </remarks>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <param name="targetMediaTypeId">The id of the target media type for which the refund should be generated for.</param>
-        /// <returns>Task of RenderedDocument</returns>
-        System.Threading.Tasks.Task<RenderedDocument> GetRefundDocumentWithTargetMediaTypeAsync (long? spaceId, long? id, long? targetMediaTypeId);
-
-        /// <summary>
-        /// getRefundDocumentWithTargetMediaType
-        /// </summary>
-        /// <remarks>
-        /// Returns the PDF document for the refund with given id and the given target media type.
-        /// </remarks>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <param name="targetMediaTypeId">The id of the target media type for which the refund should be generated for.</param>
-        /// <returns>Task of ApiResponse (RenderedDocument)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RenderedDocument>> GetRefundDocumentWithTargetMediaTypeAsyncWithHttpInfo (long? spaceId, long? id, long? targetMediaTypeId);
+        /// <param name="id"></param>
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAsyncWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
         /// Read
@@ -337,9 +261,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund which should be returned.</param>
-        /// <returns>Task of Refund</returns>
-        System.Threading.Tasks.Task<Refund> ReadAsync (long? spaceId, long? id);
+        /// <param name="id">The id of the subscription affiliate case which should be returned.</param>
+        /// <returns>Task of SubscriptionAffiliate</returns>
+        System.Threading.Tasks.Task<SubscriptionAffiliate> ReadAsync (long? spaceId, long? id);
 
         /// <summary>
         /// Read
@@ -349,33 +273,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund which should be returned.</param>
-        /// <returns>Task of ApiResponse (Refund)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Refund>> ReadAsyncWithHttpInfo (long? spaceId, long? id);
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <remarks>
-        /// This operation creates and executes a refund of a particular transaction.
-        /// </remarks>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="refund">The refund object which should be created.</param>
-        /// <returns>Task of Refund</returns>
-        System.Threading.Tasks.Task<Refund> RefundAsync (long? spaceId, RefundCreate refund);
-
-        /// <summary>
-        /// create
-        /// </summary>
-        /// <remarks>
-        /// This operation creates and executes a refund of a particular transaction.
-        /// </remarks>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="refund">The refund object which should be created.</param>
-        /// <returns>Task of ApiResponse (Refund)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Refund>> RefundAsyncWithHttpInfo (long? spaceId, RefundCreate refund);
+        /// <param name="id">The id of the subscription affiliate case which should be returned.</param>
+        /// <returns>Task of ApiResponse (SubscriptionAffiliate)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SubscriptionAffiliate>> ReadAsyncWithHttpInfo (long? spaceId, long? id);
 
         /// <summary>
         /// Search
@@ -385,9 +285,9 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the refunds which are returned by the search.</param>
-        /// <returns>Task of List&lt;Refund&gt;</returns>
-        System.Threading.Tasks.Task<List<Refund>> SearchAsync (long? spaceId, EntityQuery query);
+        /// <param name="query">The query restricts the affiliates which are returned by the search.</param>
+        /// <returns>Task of List&lt;SubscriptionAffiliate&gt;</returns>
+        System.Threading.Tasks.Task<List<SubscriptionAffiliate>> SearchAsync (long? spaceId, EntityQuery query);
 
         /// <summary>
         /// Search
@@ -397,50 +297,50 @@ namespace Customweb.Wallee.Service
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the refunds which are returned by the search.</param>
-        /// <returns>Task of ApiResponse (List&lt;Refund&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<Refund>>> SearchAsyncWithHttpInfo (long? spaceId, EntityQuery query);
+        /// <param name="query">The query restricts the affiliates which are returned by the search.</param>
+        /// <returns>Task of ApiResponse (List&lt;SubscriptionAffiliate&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<SubscriptionAffiliate>>> SearchAsyncWithHttpInfo (long? spaceId, EntityQuery query);
 
         /// <summary>
-        /// succeed
+        /// Update
         /// </summary>
         /// <remarks>
-        /// This operation allows to mark a refund as successful which is in state MANUAL_CHECK.
+        /// This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as successful.</param>
-        /// <returns>Task of Refund</returns>
-        System.Threading.Tasks.Task<Refund> SucceedAsync (long? spaceId, long? refundId);
+        /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>Task of SubscriptionAffiliate</returns>
+        System.Threading.Tasks.Task<SubscriptionAffiliate> UpdateAsync (long? spaceId, SubscriptionAffiliateUpdate entity);
 
         /// <summary>
-        /// succeed
+        /// Update
         /// </summary>
         /// <remarks>
-        /// This operation allows to mark a refund as successful which is in state MANUAL_CHECK.
+        /// This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as successful.</param>
-        /// <returns>Task of ApiResponse (Refund)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Refund>> SucceedAsyncWithHttpInfo (long? spaceId, long? refundId);
+        /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>Task of ApiResponse (SubscriptionAffiliate)</returns>
+        System.Threading.Tasks.Task<ApiResponse<SubscriptionAffiliate>> UpdateAsyncWithHttpInfo (long? spaceId, SubscriptionAffiliateUpdate entity);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class RefundService : IRefundService
+    public partial class SubscriptionAffiliateService : ISubscriptionAffiliateService
     {
         private readonly Customweb.Wallee.Client.ExceptionFactory _exceptionFactory;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RefundService"/> class
+        /// Initializes a new instance of the <see cref="SubscriptionAffiliateService"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public RefundService(Configuration configuration = null)
+        public SubscriptionAffiliateService(Configuration configuration = null)
         {
             this._configuration = CheckArgument.NotNull("configuration", configuration);
             this._apiClient = new ApiClient(configuration);
@@ -501,10 +401,10 @@ namespace Customweb.Wallee.Service
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->Count");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionAffiliateService->Count");
             }
 
-            var localVarPath = "/refund/count";
+            var localVarPath = "/subscription-affiliate/count";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -579,10 +479,10 @@ namespace Customweb.Wallee.Service
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->Count");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionAffiliateService->Count");
             }
 
-            var localVarPath = "/refund/count";
+            var localVarPath = "/subscription-affiliate/count";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -635,39 +535,39 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// fail This operation allows to mark a refund as failed which is in state MANUAL_CHECK.
+        /// Create Creates the entity with the given properties.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as failed.</param>
-        /// <returns>Refund</returns>
-        public Refund Fail (long? spaceId, long? refundId)
+        /// <param name="entity">The subscription affiliate object with the properties which should be created.</param>
+        /// <returns>SubscriptionAffiliate</returns>
+        public SubscriptionAffiliate Create (long? spaceId, SubscriptionAffiliateCreate entity)
         {
-             ApiResponse<Refund> localVarResponse = FailWithHttpInfo(spaceId, refundId);
+             ApiResponse<SubscriptionAffiliate> localVarResponse = CreateWithHttpInfo(spaceId, entity);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// fail This operation allows to mark a refund as failed which is in state MANUAL_CHECK.
+        /// Create Creates the entity with the given properties.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as failed.</param>
-        /// <returns>ApiResponse of Refund</returns>
-        public ApiResponse< Refund > FailWithHttpInfo (long? spaceId, long? refundId)
+        /// <param name="entity">The subscription affiliate object with the properties which should be created.</param>
+        /// <returns>ApiResponse of SubscriptionAffiliate</returns>
+        public ApiResponse< SubscriptionAffiliate > CreateWithHttpInfo (long? spaceId, SubscriptionAffiliateCreate entity)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->Fail");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionAffiliateService->Create");
             }
-            // verify the required parameter 'refundId' is set
-            if (refundId == null)
+            // verify the required parameter 'entity' is set
+            if (entity == null)
             {
-                throw new ApiException(400, "Missing required parameter 'refundId' when calling RefundService->Fail");
+                throw new ApiException(400, "Missing required parameter 'entity' when calling SubscriptionAffiliateService->Create");
             }
 
-            var localVarPath = "/refund/fail";
+            var localVarPath = "/subscription-affiliate/create";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -677,6 +577,7 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -689,7 +590,14 @@ namespace Customweb.Wallee.Service
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
-            if (refundId != null) localVarQueryParams.Add("refundId", ApiClient.ParameterToString(refundId)); // query parameter
+            if (entity != null && entity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = ApiClient.Serialize(entity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = entity; // byte array
+            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
@@ -700,49 +608,49 @@ namespace Customweb.Wallee.Service
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Fail", localVarResponse);
+                Exception exception = ExceptionFactory("Create", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Refund>(localVarStatusCode,
+            return new ApiResponse<SubscriptionAffiliate>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Refund) ApiClient.Deserialize(localVarResponse, typeof(Refund)));
+                (SubscriptionAffiliate) ApiClient.Deserialize(localVarResponse, typeof(SubscriptionAffiliate)));
         }
 
         /// <summary>
-        /// fail This operation allows to mark a refund as failed which is in state MANUAL_CHECK.
+        /// Create Creates the entity with the given properties.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as failed.</param>
-        /// <returns>Task of Refund</returns>
-        public async System.Threading.Tasks.Task<Refund> FailAsync (long? spaceId, long? refundId)
+        /// <param name="entity">The subscription affiliate object with the properties which should be created.</param>
+        /// <returns>Task of SubscriptionAffiliate</returns>
+        public async System.Threading.Tasks.Task<SubscriptionAffiliate> CreateAsync (long? spaceId, SubscriptionAffiliateCreate entity)
         {
-             ApiResponse<Refund> localVarResponse = await FailAsyncWithHttpInfo(spaceId, refundId);
+             ApiResponse<SubscriptionAffiliate> localVarResponse = await CreateAsyncWithHttpInfo(spaceId, entity);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// fail This operation allows to mark a refund as failed which is in state MANUAL_CHECK.
+        /// Create Creates the entity with the given properties.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as failed.</param>
-        /// <returns>Task of ApiResponse (Refund)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Refund>> FailAsyncWithHttpInfo (long? spaceId, long? refundId)
+        /// <param name="entity">The subscription affiliate object with the properties which should be created.</param>
+        /// <returns>Task of ApiResponse (SubscriptionAffiliate)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SubscriptionAffiliate>> CreateAsyncWithHttpInfo (long? spaceId, SubscriptionAffiliateCreate entity)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->Fail");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionAffiliateService->Create");
             }
-            // verify the required parameter 'refundId' is set
-            if (refundId == null)
+            // verify the required parameter 'entity' is set
+            if (entity == null)
             {
-                throw new ApiException(400, "Missing required parameter 'refundId' when calling RefundService->Fail");
+                throw new ApiException(400, "Missing required parameter 'entity' when calling SubscriptionAffiliateService->Create");
             }
 
-            var localVarPath = "/refund/fail";
+            var localVarPath = "/subscription-affiliate/create";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -752,6 +660,7 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -766,7 +675,14 @@ namespace Customweb.Wallee.Service
             }
 
             if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
-            if (refundId != null) localVarQueryParams.Add("refundId", ApiClient.ParameterToString(refundId)); // query parameter
+            if (entity != null && entity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = ApiClient.Serialize(entity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = entity; // byte array
+            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
@@ -777,49 +693,48 @@ namespace Customweb.Wallee.Service
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Fail", localVarResponse);
+                Exception exception = ExceptionFactory("Create", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Refund>(localVarStatusCode,
+            return new ApiResponse<SubscriptionAffiliate>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Refund) ApiClient.Deserialize(localVarResponse, typeof(Refund)));
+                (SubscriptionAffiliate) ApiClient.Deserialize(localVarResponse, typeof(SubscriptionAffiliate)));
         }
 
         /// <summary>
-        /// getRefundDocument Returns the PDF document for the refund with given id.
+        /// Delete Deletes the entity with the given id.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <returns>RenderedDocument</returns>
-        public RenderedDocument GetRefundDocument (long? spaceId, long? id)
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public void Delete (long? spaceId, long? id)
         {
-             ApiResponse<RenderedDocument> localVarResponse = GetRefundDocumentWithHttpInfo(spaceId, id);
-             return localVarResponse.Data;
+             DeleteWithHttpInfo(spaceId, id);
         }
 
         /// <summary>
-        /// getRefundDocument Returns the PDF document for the refund with given id.
+        /// Delete Deletes the entity with the given id.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <returns>ApiResponse of RenderedDocument</returns>
-        public ApiResponse< RenderedDocument > GetRefundDocumentWithHttpInfo (long? spaceId, long? id)
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> DeleteWithHttpInfo (long? spaceId, long? id)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->GetRefundDocument");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionAffiliateService->Delete");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                throw new ApiException(400, "Missing required parameter 'id' when calling RefundService->GetRefundDocument");
+                throw new ApiException(400, "Missing required parameter 'id' when calling SubscriptionAffiliateService->Delete");
             }
 
-            var localVarPath = "/refund/getRefundDocument";
+            var localVarPath = "/subscription-affiliate/delete";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -829,7 +744,7 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "*/*"
+                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -842,60 +757,66 @@ namespace Customweb.Wallee.Service
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
-            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
+            if (id != null && id.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = ApiClient.Serialize(id); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = id; // byte array
+            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetRefundDocument", localVarResponse);
+                Exception exception = ExceptionFactory("Delete", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<RenderedDocument>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (RenderedDocument) ApiClient.Deserialize(localVarResponse, typeof(RenderedDocument)));
+                null);
         }
 
         /// <summary>
-        /// getRefundDocument Returns the PDF document for the refund with given id.
+        /// Delete Deletes the entity with the given id.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <returns>Task of RenderedDocument</returns>
-        public async System.Threading.Tasks.Task<RenderedDocument> GetRefundDocumentAsync (long? spaceId, long? id)
+        /// <param name="id"></param>
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteAsync (long? spaceId, long? id)
         {
-             ApiResponse<RenderedDocument> localVarResponse = await GetRefundDocumentAsyncWithHttpInfo(spaceId, id);
-             return localVarResponse.Data;
+             await DeleteAsyncWithHttpInfo(spaceId, id);
         }
 
         /// <summary>
-        /// getRefundDocument Returns the PDF document for the refund with given id.
+        /// Delete Deletes the entity with the given id.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <returns>Task of ApiResponse (RenderedDocument)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<RenderedDocument>> GetRefundDocumentAsyncWithHttpInfo (long? spaceId, long? id)
+        /// <param name="id"></param>
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAsyncWithHttpInfo (long? spaceId, long? id)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->GetRefundDocument");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionAffiliateService->Delete");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                throw new ApiException(400, "Missing required parameter 'id' when calling RefundService->GetRefundDocument");
+                throw new ApiException(400, "Missing required parameter 'id' when calling SubscriptionAffiliateService->Delete");
             }
 
-            var localVarPath = "/refund/getRefundDocument";
+            var localVarPath = "/subscription-affiliate/delete";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -905,7 +826,7 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "*/*"
+                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -920,194 +841,31 @@ namespace Customweb.Wallee.Service
             }
 
             if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
-            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
+            if (id != null && id.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = ApiClient.Serialize(id); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = id; // byte array
+            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("GetRefundDocument", localVarResponse);
+                Exception exception = ExceptionFactory("Delete", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<RenderedDocument>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (RenderedDocument) ApiClient.Deserialize(localVarResponse, typeof(RenderedDocument)));
-        }
-
-        /// <summary>
-        /// getRefundDocumentWithTargetMediaType Returns the PDF document for the refund with given id and the given target media type.
-        /// </summary>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <param name="targetMediaTypeId">The id of the target media type for which the refund should be generated for.</param>
-        /// <returns>RenderedDocument</returns>
-        public RenderedDocument GetRefundDocumentWithTargetMediaType (long? spaceId, long? id, long? targetMediaTypeId)
-        {
-             ApiResponse<RenderedDocument> localVarResponse = GetRefundDocumentWithTargetMediaTypeWithHttpInfo(spaceId, id, targetMediaTypeId);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// getRefundDocumentWithTargetMediaType Returns the PDF document for the refund with given id and the given target media type.
-        /// </summary>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <param name="targetMediaTypeId">The id of the target media type for which the refund should be generated for.</param>
-        /// <returns>ApiResponse of RenderedDocument</returns>
-        public ApiResponse< RenderedDocument > GetRefundDocumentWithTargetMediaTypeWithHttpInfo (long? spaceId, long? id, long? targetMediaTypeId)
-        {
-            // verify the required parameter 'spaceId' is set
-            if (spaceId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->GetRefundDocumentWithTargetMediaType");
-            }
-            // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling RefundService->GetRefundDocumentWithTargetMediaType");
-            }
-            // verify the required parameter 'targetMediaTypeId' is set
-            if (targetMediaTypeId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'targetMediaTypeId' when calling RefundService->GetRefundDocumentWithTargetMediaType");
-            }
-
-            var localVarPath = "/refund/getRefundDocumentWithTargetMediaType";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>();
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "*/*"
-            };
-            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
-            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
-            if (targetMediaTypeId != null) localVarQueryParams.Add("targetMediaTypeId", ApiClient.ParameterToString(targetMediaTypeId)); // query parameter
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GetRefundDocumentWithTargetMediaType", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<RenderedDocument>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (RenderedDocument) ApiClient.Deserialize(localVarResponse, typeof(RenderedDocument)));
-        }
-
-        /// <summary>
-        /// getRefundDocumentWithTargetMediaType Returns the PDF document for the refund with given id and the given target media type.
-        /// </summary>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <param name="targetMediaTypeId">The id of the target media type for which the refund should be generated for.</param>
-        /// <returns>Task of RenderedDocument</returns>
-        public async System.Threading.Tasks.Task<RenderedDocument> GetRefundDocumentWithTargetMediaTypeAsync (long? spaceId, long? id, long? targetMediaTypeId)
-        {
-             ApiResponse<RenderedDocument> localVarResponse = await GetRefundDocumentWithTargetMediaTypeAsyncWithHttpInfo(spaceId, id, targetMediaTypeId);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// getRefundDocumentWithTargetMediaType Returns the PDF document for the refund with given id and the given target media type.
-        /// </summary>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund to get the document for.</param>
-        /// <param name="targetMediaTypeId">The id of the target media type for which the refund should be generated for.</param>
-        /// <returns>Task of ApiResponse (RenderedDocument)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<RenderedDocument>> GetRefundDocumentWithTargetMediaTypeAsyncWithHttpInfo (long? spaceId, long? id, long? targetMediaTypeId)
-        {
-            // verify the required parameter 'spaceId' is set
-            if (spaceId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->GetRefundDocumentWithTargetMediaType");
-            }
-            // verify the required parameter 'id' is set
-            if (id == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'id' when calling RefundService->GetRefundDocumentWithTargetMediaType");
-            }
-            // verify the required parameter 'targetMediaTypeId' is set
-            if (targetMediaTypeId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'targetMediaTypeId' when calling RefundService->GetRefundDocumentWithTargetMediaType");
-            }
-
-            var localVarPath = "/refund/getRefundDocumentWithTargetMediaType";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>();
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "*/*"
-            };
-            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-            {
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-            }
-
-            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
-            if (id != null) localVarQueryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
-            if (targetMediaTypeId != null) localVarQueryParams.Add("targetMediaTypeId", ApiClient.ParameterToString(targetMediaTypeId)); // query parameter
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("GetRefundDocumentWithTargetMediaType", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<RenderedDocument>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (RenderedDocument) ApiClient.Deserialize(localVarResponse, typeof(RenderedDocument)));
+                null);
         }
 
         /// <summary>
@@ -1115,11 +873,11 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund which should be returned.</param>
-        /// <returns>Refund</returns>
-        public Refund Read (long? spaceId, long? id)
+        /// <param name="id">The id of the subscription affiliate case which should be returned.</param>
+        /// <returns>SubscriptionAffiliate</returns>
+        public SubscriptionAffiliate Read (long? spaceId, long? id)
         {
-             ApiResponse<Refund> localVarResponse = ReadWithHttpInfo(spaceId, id);
+             ApiResponse<SubscriptionAffiliate> localVarResponse = ReadWithHttpInfo(spaceId, id);
              return localVarResponse.Data;
         }
 
@@ -1128,22 +886,22 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund which should be returned.</param>
-        /// <returns>ApiResponse of Refund</returns>
-        public ApiResponse< Refund > ReadWithHttpInfo (long? spaceId, long? id)
+        /// <param name="id">The id of the subscription affiliate case which should be returned.</param>
+        /// <returns>ApiResponse of SubscriptionAffiliate</returns>
+        public ApiResponse< SubscriptionAffiliate > ReadWithHttpInfo (long? spaceId, long? id)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->Read");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionAffiliateService->Read");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                throw new ApiException(400, "Missing required parameter 'id' when calling RefundService->Read");
+                throw new ApiException(400, "Missing required parameter 'id' when calling SubscriptionAffiliateService->Read");
             }
 
-            var localVarPath = "/refund/read";
+            var localVarPath = "/subscription-affiliate/read";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -1181,9 +939,9 @@ namespace Customweb.Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Refund>(localVarStatusCode,
+            return new ApiResponse<SubscriptionAffiliate>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Refund) ApiClient.Deserialize(localVarResponse, typeof(Refund)));
+                (SubscriptionAffiliate) ApiClient.Deserialize(localVarResponse, typeof(SubscriptionAffiliate)));
         }
 
         /// <summary>
@@ -1191,11 +949,11 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund which should be returned.</param>
-        /// <returns>Task of Refund</returns>
-        public async System.Threading.Tasks.Task<Refund> ReadAsync (long? spaceId, long? id)
+        /// <param name="id">The id of the subscription affiliate case which should be returned.</param>
+        /// <returns>Task of SubscriptionAffiliate</returns>
+        public async System.Threading.Tasks.Task<SubscriptionAffiliate> ReadAsync (long? spaceId, long? id)
         {
-             ApiResponse<Refund> localVarResponse = await ReadAsyncWithHttpInfo(spaceId, id);
+             ApiResponse<SubscriptionAffiliate> localVarResponse = await ReadAsyncWithHttpInfo(spaceId, id);
              return localVarResponse.Data;
         }
 
@@ -1204,22 +962,22 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the refund which should be returned.</param>
-        /// <returns>Task of ApiResponse (Refund)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Refund>> ReadAsyncWithHttpInfo (long? spaceId, long? id)
+        /// <param name="id">The id of the subscription affiliate case which should be returned.</param>
+        /// <returns>Task of ApiResponse (SubscriptionAffiliate)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SubscriptionAffiliate>> ReadAsyncWithHttpInfo (long? spaceId, long? id)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->Read");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionAffiliateService->Read");
             }
             // verify the required parameter 'id' is set
             if (id == null)
             {
-                throw new ApiException(400, "Missing required parameter 'id' when calling RefundService->Read");
+                throw new ApiException(400, "Missing required parameter 'id' when calling SubscriptionAffiliateService->Read");
             }
 
-            var localVarPath = "/refund/read";
+            var localVarPath = "/subscription-affiliate/read";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -1259,177 +1017,9 @@ namespace Customweb.Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Refund>(localVarStatusCode,
+            return new ApiResponse<SubscriptionAffiliate>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Refund) ApiClient.Deserialize(localVarResponse, typeof(Refund)));
-        }
-
-        /// <summary>
-        /// create This operation creates and executes a refund of a particular transaction.
-        /// </summary>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="refund">The refund object which should be created.</param>
-        /// <returns>Refund</returns>
-        public Refund Refund (long? spaceId, RefundCreate refund)
-        {
-             ApiResponse<Refund> localVarResponse = RefundWithHttpInfo(spaceId, refund);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// create This operation creates and executes a refund of a particular transaction.
-        /// </summary>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="refund">The refund object which should be created.</param>
-        /// <returns>ApiResponse of Refund</returns>
-        public ApiResponse< Refund > RefundWithHttpInfo (long? spaceId, RefundCreate refund)
-        {
-            // verify the required parameter 'spaceId' is set
-            if (spaceId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->Refund");
-            }
-            // verify the required parameter 'refund' is set
-            if (refund == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'refund' when calling RefundService->Refund");
-            }
-
-            var localVarPath = "/refund/refund";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>();
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
-            if (refund != null && refund.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = ApiClient.Serialize(refund); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = refund; // byte array
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Refund", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Refund>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Refund) ApiClient.Deserialize(localVarResponse, typeof(Refund)));
-        }
-
-        /// <summary>
-        /// create This operation creates and executes a refund of a particular transaction.
-        /// </summary>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="refund">The refund object which should be created.</param>
-        /// <returns>Task of Refund</returns>
-        public async System.Threading.Tasks.Task<Refund> RefundAsync (long? spaceId, RefundCreate refund)
-        {
-             ApiResponse<Refund> localVarResponse = await RefundAsyncWithHttpInfo(spaceId, refund);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// create This operation creates and executes a refund of a particular transaction.
-        /// </summary>
-        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="refund">The refund object which should be created.</param>
-        /// <returns>Task of ApiResponse (Refund)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Refund>> RefundAsyncWithHttpInfo (long? spaceId, RefundCreate refund)
-        {
-            // verify the required parameter 'spaceId' is set
-            if (spaceId == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->Refund");
-            }
-            // verify the required parameter 'refund' is set
-            if (refund == null)
-            {
-                throw new ApiException(400, "Missing required parameter 'refund' when calling RefundService->Refund");
-            }
-
-            var localVarPath = "/refund/refund";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new Dictionary<String, String>();
-            var localVarHeaderParams = new Dictionary<String, String>();
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-            {
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-            }
-
-            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
-            if (refund != null && refund.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = ApiClient.Serialize(refund); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = refund; // byte array
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Refund", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Refund>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Refund) ApiClient.Deserialize(localVarResponse, typeof(Refund)));
+                (SubscriptionAffiliate) ApiClient.Deserialize(localVarResponse, typeof(SubscriptionAffiliate)));
         }
 
         /// <summary>
@@ -1437,11 +1027,11 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the refunds which are returned by the search.</param>
-        /// <returns>List&lt;Refund&gt;</returns>
-        public List<Refund> Search (long? spaceId, EntityQuery query)
+        /// <param name="query">The query restricts the affiliates which are returned by the search.</param>
+        /// <returns>List&lt;SubscriptionAffiliate&gt;</returns>
+        public List<SubscriptionAffiliate> Search (long? spaceId, EntityQuery query)
         {
-             ApiResponse<List<Refund>> localVarResponse = SearchWithHttpInfo(spaceId, query);
+             ApiResponse<List<SubscriptionAffiliate>> localVarResponse = SearchWithHttpInfo(spaceId, query);
              return localVarResponse.Data;
         }
 
@@ -1450,22 +1040,22 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the refunds which are returned by the search.</param>
-        /// <returns>ApiResponse of List&lt;Refund&gt;</returns>
-        public ApiResponse< List<Refund> > SearchWithHttpInfo (long? spaceId, EntityQuery query)
+        /// <param name="query">The query restricts the affiliates which are returned by the search.</param>
+        /// <returns>ApiResponse of List&lt;SubscriptionAffiliate&gt;</returns>
+        public ApiResponse< List<SubscriptionAffiliate> > SearchWithHttpInfo (long? spaceId, EntityQuery query)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->Search");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionAffiliateService->Search");
             }
             // verify the required parameter 'query' is set
             if (query == null)
             {
-                throw new ApiException(400, "Missing required parameter 'query' when calling RefundService->Search");
+                throw new ApiException(400, "Missing required parameter 'query' when calling SubscriptionAffiliateService->Search");
             }
 
-            var localVarPath = "/refund/search";
+            var localVarPath = "/subscription-affiliate/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -1510,9 +1100,9 @@ namespace Customweb.Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Refund>>(localVarStatusCode,
+            return new ApiResponse<List<SubscriptionAffiliate>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Refund>) ApiClient.Deserialize(localVarResponse, typeof(List<Refund>)));
+                (List<SubscriptionAffiliate>) ApiClient.Deserialize(localVarResponse, typeof(List<SubscriptionAffiliate>)));
         }
 
         /// <summary>
@@ -1520,11 +1110,11 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the refunds which are returned by the search.</param>
-        /// <returns>Task of List&lt;Refund&gt;</returns>
-        public async System.Threading.Tasks.Task<List<Refund>> SearchAsync (long? spaceId, EntityQuery query)
+        /// <param name="query">The query restricts the affiliates which are returned by the search.</param>
+        /// <returns>Task of List&lt;SubscriptionAffiliate&gt;</returns>
+        public async System.Threading.Tasks.Task<List<SubscriptionAffiliate>> SearchAsync (long? spaceId, EntityQuery query)
         {
-             ApiResponse<List<Refund>> localVarResponse = await SearchAsyncWithHttpInfo(spaceId, query);
+             ApiResponse<List<SubscriptionAffiliate>> localVarResponse = await SearchAsyncWithHttpInfo(spaceId, query);
              return localVarResponse.Data;
         }
 
@@ -1533,22 +1123,22 @@ namespace Customweb.Wallee.Service
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the refunds which are returned by the search.</param>
-        /// <returns>Task of ApiResponse (List&lt;Refund&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<Refund>>> SearchAsyncWithHttpInfo (long? spaceId, EntityQuery query)
+        /// <param name="query">The query restricts the affiliates which are returned by the search.</param>
+        /// <returns>Task of ApiResponse (List&lt;SubscriptionAffiliate&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<SubscriptionAffiliate>>> SearchAsyncWithHttpInfo (long? spaceId, EntityQuery query)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->Search");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionAffiliateService->Search");
             }
             // verify the required parameter 'query' is set
             if (query == null)
             {
-                throw new ApiException(400, "Missing required parameter 'query' when calling RefundService->Search");
+                throw new ApiException(400, "Missing required parameter 'query' when calling SubscriptionAffiliateService->Search");
             }
 
-            var localVarPath = "/refund/search";
+            var localVarPath = "/subscription-affiliate/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -1595,45 +1185,45 @@ namespace Customweb.Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<Refund>>(localVarStatusCode,
+            return new ApiResponse<List<SubscriptionAffiliate>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Refund>) ApiClient.Deserialize(localVarResponse, typeof(List<Refund>)));
+                (List<SubscriptionAffiliate>) ApiClient.Deserialize(localVarResponse, typeof(List<SubscriptionAffiliate>)));
         }
 
         /// <summary>
-        /// succeed This operation allows to mark a refund as successful which is in state MANUAL_CHECK.
+        /// Update This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as successful.</param>
-        /// <returns>Refund</returns>
-        public Refund Succeed (long? spaceId, long? refundId)
+        /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>SubscriptionAffiliate</returns>
+        public SubscriptionAffiliate Update (long? spaceId, SubscriptionAffiliateUpdate entity)
         {
-             ApiResponse<Refund> localVarResponse = SucceedWithHttpInfo(spaceId, refundId);
+             ApiResponse<SubscriptionAffiliate> localVarResponse = UpdateWithHttpInfo(spaceId, entity);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// succeed This operation allows to mark a refund as successful which is in state MANUAL_CHECK.
+        /// Update This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as successful.</param>
-        /// <returns>ApiResponse of Refund</returns>
-        public ApiResponse< Refund > SucceedWithHttpInfo (long? spaceId, long? refundId)
+        /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>ApiResponse of SubscriptionAffiliate</returns>
+        public ApiResponse< SubscriptionAffiliate > UpdateWithHttpInfo (long? spaceId, SubscriptionAffiliateUpdate entity)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->Succeed");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionAffiliateService->Update");
             }
-            // verify the required parameter 'refundId' is set
-            if (refundId == null)
+            // verify the required parameter 'entity' is set
+            if (entity == null)
             {
-                throw new ApiException(400, "Missing required parameter 'refundId' when calling RefundService->Succeed");
+                throw new ApiException(400, "Missing required parameter 'entity' when calling SubscriptionAffiliateService->Update");
             }
 
-            var localVarPath = "/refund/succeed";
+            var localVarPath = "/subscription-affiliate/update";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -1643,6 +1233,7 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1655,7 +1246,14 @@ namespace Customweb.Wallee.Service
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
-            if (refundId != null) localVarQueryParams.Add("refundId", ApiClient.ParameterToString(refundId)); // query parameter
+            if (entity != null && entity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = ApiClient.Serialize(entity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = entity; // byte array
+            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
@@ -1666,49 +1264,49 @@ namespace Customweb.Wallee.Service
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Succeed", localVarResponse);
+                Exception exception = ExceptionFactory("Update", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Refund>(localVarStatusCode,
+            return new ApiResponse<SubscriptionAffiliate>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Refund) ApiClient.Deserialize(localVarResponse, typeof(Refund)));
+                (SubscriptionAffiliate) ApiClient.Deserialize(localVarResponse, typeof(SubscriptionAffiliate)));
         }
 
         /// <summary>
-        /// succeed This operation allows to mark a refund as successful which is in state MANUAL_CHECK.
+        /// Update This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as successful.</param>
-        /// <returns>Task of Refund</returns>
-        public async System.Threading.Tasks.Task<Refund> SucceedAsync (long? spaceId, long? refundId)
+        /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>Task of SubscriptionAffiliate</returns>
+        public async System.Threading.Tasks.Task<SubscriptionAffiliate> UpdateAsync (long? spaceId, SubscriptionAffiliateUpdate entity)
         {
-             ApiResponse<Refund> localVarResponse = await SucceedAsyncWithHttpInfo(spaceId, refundId);
+             ApiResponse<SubscriptionAffiliate> localVarResponse = await UpdateAsyncWithHttpInfo(spaceId, entity);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// succeed This operation allows to mark a refund as successful which is in state MANUAL_CHECK.
+        /// Update This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="refundId">The id of the refund which should be marked as successful.</param>
-        /// <returns>Task of ApiResponse (Refund)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Refund>> SucceedAsyncWithHttpInfo (long? spaceId, long? refundId)
+        /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>Task of ApiResponse (SubscriptionAffiliate)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<SubscriptionAffiliate>> UpdateAsyncWithHttpInfo (long? spaceId, SubscriptionAffiliateUpdate entity)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
             {
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling RefundService->Succeed");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionAffiliateService->Update");
             }
-            // verify the required parameter 'refundId' is set
-            if (refundId == null)
+            // verify the required parameter 'entity' is set
+            if (entity == null)
             {
-                throw new ApiException(400, "Missing required parameter 'refundId' when calling RefundService->Succeed");
+                throw new ApiException(400, "Missing required parameter 'entity' when calling SubscriptionAffiliateService->Update");
             }
 
-            var localVarPath = "/refund/succeed";
+            var localVarPath = "/subscription-affiliate/update";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new Dictionary<String, String>();
             var localVarHeaderParams = new Dictionary<String, String>();
@@ -1718,6 +1316,7 @@ namespace Customweb.Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1732,7 +1331,14 @@ namespace Customweb.Wallee.Service
             }
 
             if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
-            if (refundId != null) localVarQueryParams.Add("refundId", ApiClient.ParameterToString(refundId)); // query parameter
+            if (entity != null && entity.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = ApiClient.Serialize(entity); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = entity; // byte array
+            }
 
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
@@ -1743,13 +1349,13 @@ namespace Customweb.Wallee.Service
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Succeed", localVarResponse);
+                Exception exception = ExceptionFactory("Update", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Refund>(localVarStatusCode,
+            return new ApiResponse<SubscriptionAffiliate>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Refund) ApiClient.Deserialize(localVarResponse, typeof(Refund)));
+                (SubscriptionAffiliate) ApiClient.Deserialize(localVarResponse, typeof(SubscriptionAffiliate)));
         }
 
     }

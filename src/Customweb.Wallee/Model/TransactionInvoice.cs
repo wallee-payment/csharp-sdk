@@ -36,6 +36,13 @@ namespace Customweb.Wallee.Model
         public decimal? Amount { get; private set; }
 
         /// <summary>
+        /// BillingAddress
+        /// </summary>
+        /// <value>BillingAddress</value>
+        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
+        public Address BillingAddress { get; private set; }
+
+        /// <summary>
         /// Completion
         /// </summary>
         /// <value>Completion</value>
@@ -71,9 +78,9 @@ namespace Customweb.Wallee.Model
         public Environment? Environment { get; private set; }
 
         /// <summary>
-        /// ExternalId
+        /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
-        /// <value>ExternalId</value>
+        /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
@@ -194,6 +201,11 @@ namespace Customweb.Wallee.Model
                     this.Amount.Equals(other.Amount)
                 ) && 
                 (
+                    this.BillingAddress == other.BillingAddress ||
+                    this.BillingAddress != null &&
+                    this.BillingAddress.Equals(other.BillingAddress)
+                ) && 
+                (
                     this.Completion == other.Completion ||
                     this.Completion != null &&
                     this.Completion.Equals(other.Completion)
@@ -302,6 +314,10 @@ namespace Customweb.Wallee.Model
                 if (this.Amount != null)
                 {
                     hash = hash * 59 + this.Amount.GetHashCode();
+                }
+                if (this.BillingAddress != null)
+                {
+                    hash = hash * 59 + this.BillingAddress.GetHashCode();
                 }
                 if (this.Completion != null)
                 {

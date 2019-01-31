@@ -31,7 +31,8 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="State">State</param>
         /// <param name="ExternalId">The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity. (required)</param>
-        public PaymentLinkCreate(string Name = default(string), DateTime? AvailableFrom = default(DateTime?), string Currency = default(string), List<PaymentMethodConfiguration> AllowedPaymentMethodConfigurations = default(List<PaymentMethodConfiguration>), DateTime? AvailableUntil = default(DateTime?), bool? ShippingAddressRequired = default(bool?), int? MaximalNumberOfTransactions = default(int?), CreationEntityState? State = default(CreationEntityState?), List<LineItemCreate> LineItems = default(List<LineItemCreate>), long? AppliedSpaceView = default(long?), string ExternalId = default(string), bool? BillingAddressRequired = default(bool?), string Language = default(string))
+        /// <param name="ProtectionMode">The protection mode determines if the payment link is protected against tampering and in what way.</param>
+        public PaymentLinkCreate(string Name = default(string), DateTime? AvailableFrom = default(DateTime?), string Currency = default(string), List<PaymentMethodConfiguration> AllowedPaymentMethodConfigurations = default(List<PaymentMethodConfiguration>), DateTime? AvailableUntil = default(DateTime?), PaymentLinkProtectionMode? ProtectionMode = default(PaymentLinkProtectionMode?), bool? ShippingAddressRequired = default(bool?), int? MaximalNumberOfTransactions = default(int?), CreationEntityState? State = default(CreationEntityState?), List<LineItemCreate> LineItems = default(List<LineItemCreate>), long? AppliedSpaceView = default(long?), string ExternalId = default(string), bool? BillingAddressRequired = default(bool?), string Language = default(string))
         {
             // to ensure "ExternalId" is required (not null)
             if (ExternalId == null)
@@ -43,6 +44,7 @@ namespace Customweb.Wallee.Model
                 this.ExternalId = ExternalId;
             }
             this.State = State;
+            this.ProtectionMode = ProtectionMode;
             this.AllowedPaymentMethodConfigurations = AllowedPaymentMethodConfigurations;
             this.AppliedSpaceView = AppliedSpaceView;
             this.AvailableFrom = AvailableFrom;
@@ -69,6 +71,13 @@ namespace Customweb.Wallee.Model
         /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
+
+        /// <summary>
+        /// The protection mode determines if the payment link is protected against tampering and in what way.
+        /// </summary>
+        /// <value>The protection mode determines if the payment link is protected against tampering and in what way.</value>
+        [DataMember(Name="protectionMode", EmitDefaultValue=false)]
+        public PaymentLinkProtectionMode? ProtectionMode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,6 +129,11 @@ namespace Customweb.Wallee.Model
                     this.ExternalId == other.ExternalId ||
                     this.ExternalId != null &&
                     this.ExternalId.Equals(other.ExternalId)
+                ) && 
+                (
+                    this.ProtectionMode == other.ProtectionMode ||
+                    this.ProtectionMode != null &&
+                    this.ProtectionMode.Equals(other.ProtectionMode)
                 ) && 
                 (
                     this.AllowedPaymentMethodConfigurations == other.AllowedPaymentMethodConfigurations ||
@@ -194,6 +208,10 @@ namespace Customweb.Wallee.Model
                 if (this.ExternalId != null)
                 {
                     hash = hash * 59 + this.ExternalId.GetHashCode();
+                }
+                if (this.ProtectionMode != null)
+                {
+                    hash = hash * 59 + this.ProtectionMode.GetHashCode();
                 }
                 if (this.AllowedPaymentMethodConfigurations != null)
                 {

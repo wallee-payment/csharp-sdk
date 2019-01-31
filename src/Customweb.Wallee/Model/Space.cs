@@ -85,9 +85,9 @@ namespace Customweb.Wallee.Model
         public SpaceAddress PostalAddress { get; private set; }
 
         /// <summary>
-        /// The request limit defines the maximum number of API request accepted within 2 minutes per cluster node. This limit can only be changed with special privileges.
+        /// The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.
         /// </summary>
-        /// <value>The request limit defines the maximum number of API request accepted within 2 minutes per cluster node. This limit can only be changed with special privileges.</value>
+        /// <value>The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.</value>
         [DataMember(Name="requestLimit", EmitDefaultValue=false)]
         public long? RequestLimit { get; private set; }
 

@@ -207,6 +207,32 @@ namespace Customweb.Wallee.Service
         ApiResponse<List<Subscription>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
 
         /// <summary>
+        /// Search Subscription Invoices
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to search for subscription invoices.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="subscriptionId">The id of the subscription for which the invoices should be searched for.</param>
+        /// <param name="query">The query restricts the invoices which are returned by the search.</param>
+        /// <returns>List&lt;TransactionInvoice&gt;</returns>
+        List<TransactionInvoice> SearchSubscriptionInvoices (long? spaceId, long? subscriptionId, EntityQuery query);
+
+        /// <summary>
+        /// Search Subscription Invoices
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to search for subscription invoices.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="subscriptionId">The id of the subscription for which the invoices should be searched for.</param>
+        /// <param name="query">The query restricts the invoices which are returned by the search.</param>
+        /// <returns>ApiResponse of List&lt;TransactionInvoice&gt;</returns>
+        ApiResponse<List<TransactionInvoice>> SearchSubscriptionInvoicesWithHttpInfo (long? spaceId, long? subscriptionId, EntityQuery query);
+
+        /// <summary>
         /// terminate
         /// </summary>
         /// <remarks>
@@ -432,6 +458,32 @@ namespace Customweb.Wallee.Service
         /// <param name="query">The query restricts the subscriptions which are returned by the search.</param>
         /// <returns>Task of ApiResponse (List&lt;Subscription&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<Subscription>>> SearchAsyncWithHttpInfo (long? spaceId, EntityQuery query);
+
+        /// <summary>
+        /// Search Subscription Invoices
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to search for subscription invoices.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="subscriptionId">The id of the subscription for which the invoices should be searched for.</param>
+        /// <param name="query">The query restricts the invoices which are returned by the search.</param>
+        /// <returns>Task of List&lt;TransactionInvoice&gt;</returns>
+        System.Threading.Tasks.Task<List<TransactionInvoice>> SearchSubscriptionInvoicesAsync (long? spaceId, long? subscriptionId, EntityQuery query);
+
+        /// <summary>
+        /// Search Subscription Invoices
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to search for subscription invoices.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="subscriptionId">The id of the subscription for which the invoices should be searched for.</param>
+        /// <param name="query">The query restricts the invoices which are returned by the search.</param>
+        /// <returns>Task of ApiResponse (List&lt;TransactionInvoice&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<TransactionInvoice>>> SearchSubscriptionInvoicesAsyncWithHttpInfo (long? spaceId, long? subscriptionId, EntityQuery query);
 
         /// <summary>
         /// terminate
@@ -1664,6 +1716,190 @@ namespace Customweb.Wallee.Service
             return new ApiResponse<List<Subscription>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<Subscription>) ApiClient.Deserialize(localVarResponse, typeof(List<Subscription>)));
+        }
+
+        /// <summary>
+        /// Search Subscription Invoices This operation allows to search for subscription invoices.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="subscriptionId">The id of the subscription for which the invoices should be searched for.</param>
+        /// <param name="query">The query restricts the invoices which are returned by the search.</param>
+        /// <returns>List&lt;TransactionInvoice&gt;</returns>
+        public List<TransactionInvoice> SearchSubscriptionInvoices (long? spaceId, long? subscriptionId, EntityQuery query)
+        {
+             ApiResponse<List<TransactionInvoice>> localVarResponse = SearchSubscriptionInvoicesWithHttpInfo(spaceId, subscriptionId, query);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Search Subscription Invoices This operation allows to search for subscription invoices.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="subscriptionId">The id of the subscription for which the invoices should be searched for.</param>
+        /// <param name="query">The query restricts the invoices which are returned by the search.</param>
+        /// <returns>ApiResponse of List&lt;TransactionInvoice&gt;</returns>
+        public ApiResponse< List<TransactionInvoice> > SearchSubscriptionInvoicesWithHttpInfo (long? spaceId, long? subscriptionId, EntityQuery query)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionService->SearchSubscriptionInvoices");
+            }
+            // verify the required parameter 'subscriptionId' is set
+            if (subscriptionId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'subscriptionId' when calling SubscriptionService->SearchSubscriptionInvoices");
+            }
+            // verify the required parameter 'query' is set
+            if (query == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'query' when calling SubscriptionService->SearchSubscriptionInvoices");
+            }
+
+            var localVarPath = "/subscription/searchSubscriptionInvoices";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (subscriptionId != null) localVarQueryParams.Add("subscriptionId", ApiClient.ParameterToString(subscriptionId)); // query parameter
+            if (query != null && query.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = ApiClient.Serialize(query); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = query; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SearchSubscriptionInvoices", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<TransactionInvoice>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<TransactionInvoice>) ApiClient.Deserialize(localVarResponse, typeof(List<TransactionInvoice>)));
+        }
+
+        /// <summary>
+        /// Search Subscription Invoices This operation allows to search for subscription invoices.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="subscriptionId">The id of the subscription for which the invoices should be searched for.</param>
+        /// <param name="query">The query restricts the invoices which are returned by the search.</param>
+        /// <returns>Task of List&lt;TransactionInvoice&gt;</returns>
+        public async System.Threading.Tasks.Task<List<TransactionInvoice>> SearchSubscriptionInvoicesAsync (long? spaceId, long? subscriptionId, EntityQuery query)
+        {
+             ApiResponse<List<TransactionInvoice>> localVarResponse = await SearchSubscriptionInvoicesAsyncWithHttpInfo(spaceId, subscriptionId, query);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Search Subscription Invoices This operation allows to search for subscription invoices.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="subscriptionId">The id of the subscription for which the invoices should be searched for.</param>
+        /// <param name="query">The query restricts the invoices which are returned by the search.</param>
+        /// <returns>Task of ApiResponse (List&lt;TransactionInvoice&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<TransactionInvoice>>> SearchSubscriptionInvoicesAsyncWithHttpInfo (long? spaceId, long? subscriptionId, EntityQuery query)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionService->SearchSubscriptionInvoices");
+            }
+            // verify the required parameter 'subscriptionId' is set
+            if (subscriptionId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'subscriptionId' when calling SubscriptionService->SearchSubscriptionInvoices");
+            }
+            // verify the required parameter 'query' is set
+            if (query == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'query' when calling SubscriptionService->SearchSubscriptionInvoices");
+            }
+
+            var localVarPath = "/subscription/searchSubscriptionInvoices";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (subscriptionId != null) localVarQueryParams.Add("subscriptionId", ApiClient.ParameterToString(subscriptionId)); // query parameter
+            if (query != null && query.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = ApiClient.Serialize(query); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = query; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SearchSubscriptionInvoices", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<List<TransactionInvoice>>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (List<TransactionInvoice>) ApiClient.Deserialize(localVarResponse, typeof(List<TransactionInvoice>)));
         }
 
         /// <summary>

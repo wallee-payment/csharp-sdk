@@ -78,6 +78,13 @@ namespace Customweb.Wallee.Model
         public bool? RestrictedActive { get; private set; }
 
         /// <summary>
+        /// This is the scope to which the account belongs to.
+        /// </summary>
+        /// <value>This is the scope to which the account belongs to.</value>
+        [DataMember(Name="scope", EmitDefaultValue=false)]
+        public long? Scope { get; private set; }
+
+        /// <summary>
         /// State
         /// </summary>
         /// <value>State</value>
@@ -182,6 +189,11 @@ namespace Customweb.Wallee.Model
                     this.RestrictedActive.Equals(other.RestrictedActive)
                 ) && 
                 (
+                    this.Scope == other.Scope ||
+                    this.Scope != null &&
+                    this.Scope.Equals(other.Scope)
+                ) && 
+                (
                     this.State == other.State ||
                     this.State != null &&
                     this.State.Equals(other.State)
@@ -239,6 +251,10 @@ namespace Customweb.Wallee.Model
                 if (this.RestrictedActive != null)
                 {
                     hash = hash * 59 + this.RestrictedActive.GetHashCode();
+                }
+                if (this.Scope != null)
+                {
+                    hash = hash * 59 + this.Scope.GetHashCode();
                 }
                 if (this.State != null)
                 {

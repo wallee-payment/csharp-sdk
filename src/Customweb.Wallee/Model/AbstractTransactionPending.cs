@@ -40,7 +40,8 @@ namespace Customweb.Wallee.Model
         /// <param name="SuccessUrl">The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.</param>
         /// <param name="TimeZone">The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.</param>
         /// <param name="Token">Token</param>
-        public AbstractTransactionPending(List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string SuccessUrl = default(string), string InvoiceMerchantReference = default(string), string Currency = default(string), long? Token = default(long?), AddressCreate BillingAddress = default(AddressCreate), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string CustomerEmailAddress = default(string), string FailedUrl = default(string), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string ShippingMethod = default(string), string CustomerId = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), AddressCreate ShippingAddress = default(AddressCreate), string Language = default(string), string MerchantReference = default(string), string TimeZone = default(string))
+        /// <param name="TokenizationMode">The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.</param>
+        public AbstractTransactionPending(List<PaymentMethodBrand> AllowedPaymentMethodBrands = default(List<PaymentMethodBrand>), string SuccessUrl = default(string), string InvoiceMerchantReference = default(string), string Currency = default(string), long? Token = default(long?), AddressCreate BillingAddress = default(AddressCreate), List<long?> AllowedPaymentMethodConfigurations = default(List<long?>), string CustomerEmailAddress = default(string), string FailedUrl = default(string), TokenizationnMode? TokenizationMode = default(TokenizationnMode?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string ShippingMethod = default(string), string CustomerId = default(string), List<LineItemCreate> LineItems = default(List<LineItemCreate>), AddressCreate ShippingAddress = default(AddressCreate), string Language = default(string), string MerchantReference = default(string), string TimeZone = default(string))
         {
             this.AllowedPaymentMethodBrands = AllowedPaymentMethodBrands;
             this.AllowedPaymentMethodConfigurations = AllowedPaymentMethodConfigurations;
@@ -59,6 +60,7 @@ namespace Customweb.Wallee.Model
             this.SuccessUrl = SuccessUrl;
             this.TimeZone = TimeZone;
             this.Token = Token;
+            this.TokenizationMode = TokenizationMode;
         }
 
         /// <summary>
@@ -179,6 +181,13 @@ namespace Customweb.Wallee.Model
         /// <value>Token</value>
         [DataMember(Name="token", EmitDefaultValue=false)]
         public long? Token { get; set; }
+
+        /// <summary>
+        /// The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
+        /// </summary>
+        /// <value>The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.</value>
+        [DataMember(Name="tokenizationMode", EmitDefaultValue=false)]
+        public TokenizationnMode? TokenizationMode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -305,6 +314,11 @@ namespace Customweb.Wallee.Model
                     this.Token == other.Token ||
                     this.Token != null &&
                     this.Token.Equals(other.Token)
+                ) && 
+                (
+                    this.TokenizationMode == other.TokenizationMode ||
+                    this.TokenizationMode != null &&
+                    this.TokenizationMode.Equals(other.TokenizationMode)
                 );
         }
 
@@ -384,6 +398,10 @@ namespace Customweb.Wallee.Model
                 if (this.Token != null)
                 {
                     hash = hash * 59 + this.Token.GetHashCode();
+                }
+                if (this.TokenizationMode != null)
+                {
+                    hash = hash * 59 + this.TokenizationMode.GetHashCode();
                 }
                 return hash;
             }

@@ -14,29 +14,33 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Space
+    /// Subscription Affiliate
     /// </summary>
     [DataContract]
-    public partial class SpaceUpdate : AbstractSpaceUpdate,  IEquatable<SpaceUpdate>, IValidatableObject
+    public partial class SubscriptionAffiliateUpdate :  IEquatable<SubscriptionAffiliateUpdate>, IValidatableObject
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpaceUpdate" /> class.
+        /// Initializes a new instance of the <see cref="SubscriptionAffiliateUpdate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected SpaceUpdate() { }
+        protected SubscriptionAffiliateUpdate() { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpaceUpdate" /> class.
+        /// Initializes a new instance of the <see cref="SubscriptionAffiliateUpdate" /> class.
         /// </summary>
         /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
         /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
-        public SpaceUpdate(string Name = default(string), long? Id = default(long?), SpaceAddressCreate PostalAddress = default(SpaceAddressCreate), long? Version = default(long?), List<string> TechnicalContactAddresses = default(List<string>), CreationEntityState? State = default(CreationEntityState?), string TimeZone = default(string), long? RequestLimit = default(long?))
+        /// <param name="Language">Language</param>
+        /// <param name="MetaData">Meta data allow to store additional data along the object.</param>
+        /// <param name="Name">Name</param>
+        /// <param name="State">State</param>
+        public SubscriptionAffiliateUpdate(long? Id = default(long?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), CreationEntityState? State = default(CreationEntityState?), long? Version = default(long?), string Name = default(string), string Language = default(string))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
             {
-                throw new ArgumentNullException("Id is a required property for SpaceUpdate and cannot be null");
+                throw new ArgumentNullException("Id is a required property for SubscriptionAffiliateUpdate and cannot be null");
             }
             else
             {
@@ -45,18 +49,16 @@ namespace Customweb.Wallee.Model
             // to ensure "Version" is required (not null)
             if (Version == null)
             {
-                throw new ArgumentNullException("Version is a required property for SpaceUpdate and cannot be null");
+                throw new ArgumentNullException("Version is a required property for SubscriptionAffiliateUpdate and cannot be null");
             }
             else
             {
                 this.Version = Version;
             }
+            this.Language = Language;
+            this.MetaData = MetaData;
             this.Name = Name;
-            this.PostalAddress = PostalAddress;
-            this.RequestLimit = RequestLimit;
             this.State = State;
-            this.TechnicalContactAddresses = TechnicalContactAddresses;
-            this.TimeZone = TimeZone;
         }
 
         /// <summary>
@@ -74,6 +76,34 @@ namespace Customweb.Wallee.Model
         public long? Version { get; set; }
 
         /// <summary>
+        /// Language
+        /// </summary>
+        /// <value>Language</value>
+        [DataMember(Name="language", EmitDefaultValue=false)]
+        public string Language { get; set; }
+
+        /// <summary>
+        /// Meta data allow to store additional data along the object.
+        /// </summary>
+        /// <value>Meta data allow to store additional data along the object.</value>
+        [DataMember(Name="metaData", EmitDefaultValue=false)]
+        public Dictionary<string, string> MetaData { get; set; }
+
+        /// <summary>
+        /// Name
+        /// </summary>
+        /// <value>Name</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// State
+        /// </summary>
+        /// <value>State</value>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public CreationEntityState? State { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -86,7 +116,7 @@ namespace Customweb.Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public new string ToJson()
+        public string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -98,15 +128,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as SpaceUpdate);
+            return this.Equals(obj as SubscriptionAffiliateUpdate);
         }
 
         /// <summary>
-        /// Returns true if SpaceUpdate instances are equal
+        /// Returns true if SubscriptionAffiliateUpdate instances are equal
         /// </summary>
-        /// <param name="other">Instance of SpaceUpdate to be compared</param>
+        /// <param name="other">Instance of SubscriptionAffiliateUpdate to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SpaceUpdate other)
+        public bool Equals(SubscriptionAffiliateUpdate other)
         {
             if (other == null)
             {
@@ -125,34 +155,24 @@ namespace Customweb.Wallee.Model
                     this.Version.Equals(other.Version)
                 ) && 
                 (
+                    this.Language == other.Language ||
+                    this.Language != null &&
+                    this.Language.Equals(other.Language)
+                ) && 
+                (
+                    this.MetaData == other.MetaData ||
+                    this.MetaData != null &&
+                    this.MetaData.SequenceEqual(other.MetaData)
+                ) && 
+                (
                     this.Name == other.Name ||
                     this.Name != null &&
                     this.Name.Equals(other.Name)
                 ) && 
                 (
-                    this.PostalAddress == other.PostalAddress ||
-                    this.PostalAddress != null &&
-                    this.PostalAddress.Equals(other.PostalAddress)
-                ) && 
-                (
-                    this.RequestLimit == other.RequestLimit ||
-                    this.RequestLimit != null &&
-                    this.RequestLimit.Equals(other.RequestLimit)
-                ) && 
-                (
                     this.State == other.State ||
                     this.State != null &&
                     this.State.Equals(other.State)
-                ) && 
-                (
-                    this.TechnicalContactAddresses == other.TechnicalContactAddresses ||
-                    this.TechnicalContactAddresses != null &&
-                    this.TechnicalContactAddresses.SequenceEqual(other.TechnicalContactAddresses)
-                ) && 
-                (
-                    this.TimeZone == other.TimeZone ||
-                    this.TimeZone != null &&
-                    this.TimeZone.Equals(other.TimeZone)
                 );
         }
 
@@ -173,29 +193,21 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.Version.GetHashCode();
                 }
+                if (this.Language != null)
+                {
+                    hash = hash * 59 + this.Language.GetHashCode();
+                }
+                if (this.MetaData != null)
+                {
+                    hash = hash * 59 + this.MetaData.GetHashCode();
+                }
                 if (this.Name != null)
                 {
                     hash = hash * 59 + this.Name.GetHashCode();
                 }
-                if (this.PostalAddress != null)
-                {
-                    hash = hash * 59 + this.PostalAddress.GetHashCode();
-                }
-                if (this.RequestLimit != null)
-                {
-                    hash = hash * 59 + this.RequestLimit.GetHashCode();
-                }
                 if (this.State != null)
                 {
                     hash = hash * 59 + this.State.GetHashCode();
-                }
-                if (this.TechnicalContactAddresses != null)
-                {
-                    hash = hash * 59 + this.TechnicalContactAddresses.GetHashCode();
-                }
-                if (this.TimeZone != null)
-                {
-                    hash = hash * 59 + this.TimeZone.GetHashCode();
                 }
                 return hash;
             }

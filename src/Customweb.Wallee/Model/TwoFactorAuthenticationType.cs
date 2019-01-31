@@ -14,26 +14,19 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Payment Method
+    /// Two Factor Authentication Type
     /// </summary>
     [DataContract]
-    public partial class PaymentMethod :  IEquatable<PaymentMethod>, IValidatableObject
+    public partial class TwoFactorAuthenticationType :  IEquatable<TwoFactorAuthenticationType>, IValidatableObject
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PaymentMethod" /> class.
+        /// Initializes a new instance of the <see cref="TwoFactorAuthenticationType" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public PaymentMethod()
+        public TwoFactorAuthenticationType()
         {
         }
-
-        /// <summary>
-        /// DataCollectionTypes
-        /// </summary>
-        /// <value>DataCollectionTypes</value>
-        [DataMember(Name="dataCollectionTypes", EmitDefaultValue=false)]
-        public List<DataCollectionType> DataCollectionTypes { get; private set; }
 
         /// <summary>
         /// Description
@@ -43,6 +36,20 @@ namespace Customweb.Wallee.Model
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
+        /// Feature
+        /// </summary>
+        /// <value>Feature</value>
+        [DataMember(Name="feature", EmitDefaultValue=false)]
+        public long? Feature { get; private set; }
+
+        /// <summary>
+        /// Icon
+        /// </summary>
+        /// <value>Icon</value>
+        [DataMember(Name="icon", EmitDefaultValue=false)]
+        public string Icon { get; private set; }
+
+        /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
@@ -50,32 +57,11 @@ namespace Customweb.Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// ImagePath
-        /// </summary>
-        /// <value>ImagePath</value>
-        [DataMember(Name="imagePath", EmitDefaultValue=false)]
-        public string ImagePath { get; private set; }
-
-        /// <summary>
-        /// MerchantDescription
-        /// </summary>
-        /// <value>MerchantDescription</value>
-        [DataMember(Name="merchantDescription", EmitDefaultValue=false)]
-        public Dictionary<string, string> MerchantDescription { get; private set; }
-
-        /// <summary>
         /// Name
         /// </summary>
         /// <value>Name</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
-
-        /// <summary>
-        /// SupportedCurrencies
-        /// </summary>
-        /// <value>SupportedCurrencies</value>
-        [DataMember(Name="supportedCurrencies", EmitDefaultValue=false)]
-        public List<string> SupportedCurrencies { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -102,15 +88,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as PaymentMethod);
+            return this.Equals(obj as TwoFactorAuthenticationType);
         }
 
         /// <summary>
-        /// Returns true if PaymentMethod instances are equal
+        /// Returns true if TwoFactorAuthenticationType instances are equal
         /// </summary>
-        /// <param name="other">Instance of PaymentMethod to be compared</param>
+        /// <param name="other">Instance of TwoFactorAuthenticationType to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(PaymentMethod other)
+        public bool Equals(TwoFactorAuthenticationType other)
         {
             if (other == null)
             {
@@ -119,14 +105,19 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
-                    this.DataCollectionTypes == other.DataCollectionTypes ||
-                    this.DataCollectionTypes != null &&
-                    this.DataCollectionTypes.SequenceEqual(other.DataCollectionTypes)
-                ) && 
-                (
                     this.Description == other.Description ||
                     this.Description != null &&
                     this.Description.SequenceEqual(other.Description)
+                ) && 
+                (
+                    this.Feature == other.Feature ||
+                    this.Feature != null &&
+                    this.Feature.Equals(other.Feature)
+                ) && 
+                (
+                    this.Icon == other.Icon ||
+                    this.Icon != null &&
+                    this.Icon.Equals(other.Icon)
                 ) && 
                 (
                     this.Id == other.Id ||
@@ -134,24 +125,9 @@ namespace Customweb.Wallee.Model
                     this.Id.Equals(other.Id)
                 ) && 
                 (
-                    this.ImagePath == other.ImagePath ||
-                    this.ImagePath != null &&
-                    this.ImagePath.Equals(other.ImagePath)
-                ) && 
-                (
-                    this.MerchantDescription == other.MerchantDescription ||
-                    this.MerchantDescription != null &&
-                    this.MerchantDescription.SequenceEqual(other.MerchantDescription)
-                ) && 
-                (
                     this.Name == other.Name ||
                     this.Name != null &&
                     this.Name.SequenceEqual(other.Name)
-                ) && 
-                (
-                    this.SupportedCurrencies == other.SupportedCurrencies ||
-                    this.SupportedCurrencies != null &&
-                    this.SupportedCurrencies.SequenceEqual(other.SupportedCurrencies)
                 );
         }
 
@@ -164,33 +140,25 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                if (this.DataCollectionTypes != null)
-                {
-                    hash = hash * 59 + this.DataCollectionTypes.GetHashCode();
-                }
                 if (this.Description != null)
                 {
                     hash = hash * 59 + this.Description.GetHashCode();
+                }
+                if (this.Feature != null)
+                {
+                    hash = hash * 59 + this.Feature.GetHashCode();
+                }
+                if (this.Icon != null)
+                {
+                    hash = hash * 59 + this.Icon.GetHashCode();
                 }
                 if (this.Id != null)
                 {
                     hash = hash * 59 + this.Id.GetHashCode();
                 }
-                if (this.ImagePath != null)
-                {
-                    hash = hash * 59 + this.ImagePath.GetHashCode();
-                }
-                if (this.MerchantDescription != null)
-                {
-                    hash = hash * 59 + this.MerchantDescription.GetHashCode();
-                }
                 if (this.Name != null)
                 {
                     hash = hash * 59 + this.Name.GetHashCode();
-                }
-                if (this.SupportedCurrencies != null)
-                {
-                    hash = hash * 59 + this.SupportedCurrencies.GetHashCode();
                 }
                 return hash;
             }

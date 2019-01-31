@@ -24,10 +24,12 @@ namespace Customweb.Wallee.Model
         /// Initializes a new instance of the <see cref="AbstractApplicationUserUpdate" /> class.
         /// </summary>
         /// <param name="Name">The user name is used to identify the application user in administrative interfaces.</param>
+        /// <param name="RequestLimit">The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.</param>
         /// <param name="State">State</param>
-        public AbstractApplicationUserUpdate(string Name = default(string), CreationEntityState? State = default(CreationEntityState?))
+        public AbstractApplicationUserUpdate(string Name = default(string), CreationEntityState? State = default(CreationEntityState?), long? RequestLimit = default(long?))
         {
             this.Name = Name;
+            this.RequestLimit = RequestLimit;
             this.State = State;
         }
 
@@ -37,6 +39,13 @@ namespace Customweb.Wallee.Model
         /// <value>The user name is used to identify the application user in administrative interfaces.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.
+        /// </summary>
+        /// <value>The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.</value>
+        [DataMember(Name="requestLimit", EmitDefaultValue=false)]
+        public long? RequestLimit { get; set; }
 
         /// <summary>
         /// State
@@ -92,6 +101,11 @@ namespace Customweb.Wallee.Model
                     this.Name.Equals(other.Name)
                 ) && 
                 (
+                    this.RequestLimit == other.RequestLimit ||
+                    this.RequestLimit != null &&
+                    this.RequestLimit.Equals(other.RequestLimit)
+                ) && 
+                (
                     this.State == other.State ||
                     this.State != null &&
                     this.State.Equals(other.State)
@@ -110,6 +124,10 @@ namespace Customweb.Wallee.Model
                 if (this.Name != null)
                 {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
+                if (this.RequestLimit != null)
+                {
+                    hash = hash * 59 + this.RequestLimit.GetHashCode();
                 }
                 if (this.State != null)
                 {

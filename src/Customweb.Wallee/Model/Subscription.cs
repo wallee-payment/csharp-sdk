@@ -29,6 +29,13 @@ namespace Customweb.Wallee.Model
         }
 
         /// <summary>
+        /// Affiliate
+        /// </summary>
+        /// <value>Affiliate</value>
+        [DataMember(Name="affiliate", EmitDefaultValue=false)]
+        public SubscriptionAffiliate Affiliate { get; private set; }
+
+        /// <summary>
         /// CreatedOn
         /// </summary>
         /// <value>CreatedOn</value>
@@ -175,6 +182,11 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
+                    this.Affiliate == other.Affiliate ||
+                    this.Affiliate != null &&
+                    this.Affiliate.Equals(other.Affiliate)
+                ) && 
+                (
                     this.CreatedOn == other.CreatedOn ||
                     this.CreatedOn != null &&
                     this.CreatedOn.Equals(other.CreatedOn)
@@ -260,6 +272,10 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
+                if (this.Affiliate != null)
+                {
+                    hash = hash * 59 + this.Affiliate.GetHashCode();
+                }
                 if (this.CreatedOn != null)
                 {
                     hash = hash * 59 + this.CreatedOn.GetHashCode();

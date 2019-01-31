@@ -127,6 +127,13 @@ namespace Customweb.Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
+        /// The protection mode determines if the payment link is protected against tampering and in what way.
+        /// </summary>
+        /// <value>The protection mode determines if the payment link is protected against tampering and in what way.</value>
+        [DataMember(Name="protectionMode", EmitDefaultValue=false)]
+        public PaymentLinkProtectionMode? ProtectionMode { get; private set; }
+
+        /// <summary>
         /// By making the shipping address required the transaction can only be created when a shipping address is provided within the request.
         /// </summary>
         /// <value>By making the shipping address required the transaction can only be created when a shipping address is provided within the request.</value>
@@ -266,6 +273,11 @@ namespace Customweb.Wallee.Model
                     this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
                 ) && 
                 (
+                    this.ProtectionMode == other.ProtectionMode ||
+                    this.ProtectionMode != null &&
+                    this.ProtectionMode.Equals(other.ProtectionMode)
+                ) && 
+                (
                     this.ShippingAddressRequired == other.ShippingAddressRequired ||
                     this.ShippingAddressRequired != null &&
                     this.ShippingAddressRequired.Equals(other.ShippingAddressRequired)
@@ -351,6 +363,10 @@ namespace Customweb.Wallee.Model
                 if (this.PlannedPurgeDate != null)
                 {
                     hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
+                }
+                if (this.ProtectionMode != null)
+                {
+                    hash = hash * 59 + this.ProtectionMode.GetHashCode();
                 }
                 if (this.ShippingAddressRequired != null)
                 {

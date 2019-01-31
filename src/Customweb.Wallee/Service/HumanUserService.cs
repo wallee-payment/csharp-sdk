@@ -101,6 +101,28 @@ namespace Customweb.Wallee.Service
         ApiResponse<Object> DeleteWithHttpInfo (long? id);
 
         /// <summary>
+        /// Export
+        /// </summary>
+        /// <remarks>
+        /// Exports the human users into a CSV file. The file will contain the properties defined in the request.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>byte[]</returns>
+        byte[] Export (EntityExportRequest request);
+
+        /// <summary>
+        /// Export
+        /// </summary>
+        /// <remarks>
+        /// Exports the human users into a CSV file. The file will contain the properties defined in the request.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>ApiResponse of byte[]</returns>
+        ApiResponse<byte[]> ExportWithHttpInfo (EntityExportRequest request);
+
+        /// <summary>
         /// Read
         /// </summary>
         /// <remarks>
@@ -234,6 +256,28 @@ namespace Customweb.Wallee.Service
         /// <param name="id"></param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> DeleteAsyncWithHttpInfo (long? id);
+
+        /// <summary>
+        /// Export
+        /// </summary>
+        /// <remarks>
+        /// Exports the human users into a CSV file. The file will contain the properties defined in the request.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>Task of byte[]</returns>
+        System.Threading.Tasks.Task<byte[]> ExportAsync (EntityExportRequest request);
+
+        /// <summary>
+        /// Export
+        /// </summary>
+        /// <remarks>
+        /// Exports the human users into a CSV file. The file will contain the properties defined in the request.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        System.Threading.Tasks.Task<ApiResponse<byte[]>> ExportAsyncWithHttpInfo (EntityExportRequest request);
 
         /// <summary>
         /// Read
@@ -794,6 +838,160 @@ namespace Customweb.Wallee.Service
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
+        }
+
+        /// <summary>
+        /// Export Exports the human users into a CSV file. The file will contain the properties defined in the request.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>byte[]</returns>
+        public byte[] Export (EntityExportRequest request)
+        {
+             ApiResponse<byte[]> localVarResponse = ExportWithHttpInfo(request);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Export Exports the human users into a CSV file. The file will contain the properties defined in the request.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>ApiResponse of byte[]</returns>
+        public ApiResponse< byte[] > ExportWithHttpInfo (EntityExportRequest request)
+        {
+            // verify the required parameter 'request' is set
+            if (request == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'request' when calling HumanUserService->Export");
+            }
+
+            var localVarPath = "/human-user/export";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8", 
+                "text/csv"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (request != null && request.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = ApiClient.Serialize(request); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = request; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Export", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<byte[]>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (byte[]) ApiClient.Deserialize(localVarResponse, typeof(byte[])));
+        }
+
+        /// <summary>
+        /// Export Exports the human users into a CSV file. The file will contain the properties defined in the request.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>Task of byte[]</returns>
+        public async System.Threading.Tasks.Task<byte[]> ExportAsync (EntityExportRequest request)
+        {
+             ApiResponse<byte[]> localVarResponse = await ExportAsyncWithHttpInfo(request);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Export Exports the human users into a CSV file. The file will contain the properties defined in the request.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="request">The request controls the entries which are exported.</param>
+        /// <returns>Task of ApiResponse (byte[])</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<byte[]>> ExportAsyncWithHttpInfo (EntityExportRequest request)
+        {
+            // verify the required parameter 'request' is set
+            if (request == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'request' when calling HumanUserService->Export");
+            }
+
+            var localVarPath = "/human-user/export";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8", 
+                "text/csv"
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (request != null && request.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = ApiClient.Serialize(request); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = request; // byte array
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Export", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<byte[]>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (byte[]) ApiClient.Deserialize(localVarResponse, typeof(byte[])));
         }
 
         /// <summary>

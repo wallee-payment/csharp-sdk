@@ -14,44 +14,30 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Application User
+    /// Subscription Affiliate
     /// </summary>
     [DataContract]
-    public partial class ApplicationUserCreate : AbstractApplicationUserUpdate,  IEquatable<ApplicationUserCreate>, IValidatableObject
+    public partial class SubscriptionAffiliateInactive : SubscriptionAffiliateUpdate,  IEquatable<SubscriptionAffiliateInactive>, IValidatableObject
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApplicationUserCreate" /> class.
+        /// Initializes a new instance of the <see cref="SubscriptionAffiliateInactive" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ApplicationUserCreate() { }
+        protected SubscriptionAffiliateInactive() { }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApplicationUserCreate" /> class.
+        /// Initializes a new instance of the <see cref="SubscriptionAffiliateInactive" /> class.
         /// </summary>
-        /// <param name="PrimaryAccount">The account that this user is associated with. The account owner will be able to manage this user. (required)</param>
-        public ApplicationUserCreate(string Name = default(string), CreationEntityState? State = default(CreationEntityState?), long? PrimaryAccount = default(long?), long? RequestLimit = default(long?))
+        public SubscriptionAffiliateInactive(long? Id = default(long?), Dictionary<string, string> MetaData = default(Dictionary<string, string>), string Name = default(string), long? Version = default(long?), CreationEntityState? State = default(CreationEntityState?), string Language = default(string))
         {
-            // to ensure "PrimaryAccount" is required (not null)
-            if (PrimaryAccount == null)
-            {
-                throw new ArgumentNullException("PrimaryAccount is a required property for ApplicationUserCreate and cannot be null");
-            }
-            else
-            {
-                this.PrimaryAccount = PrimaryAccount;
-            }
+            this.Id = Id;
+            this.Version = Version;
+            this.Language = Language;
+            this.MetaData = MetaData;
             this.Name = Name;
-            this.RequestLimit = RequestLimit;
             this.State = State;
         }
-
-        /// <summary>
-        /// The account that this user is associated with. The account owner will be able to manage this user.
-        /// </summary>
-        /// <value>The account that this user is associated with. The account owner will be able to manage this user.</value>
-        [DataMember(Name="primaryAccount", EmitDefaultValue=false)]
-        public long? PrimaryAccount { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,15 +64,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as ApplicationUserCreate);
+            return this.Equals(obj as SubscriptionAffiliateInactive);
         }
 
         /// <summary>
-        /// Returns true if ApplicationUserCreate instances are equal
+        /// Returns true if SubscriptionAffiliateInactive instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApplicationUserCreate to be compared</param>
+        /// <param name="other">Instance of SubscriptionAffiliateInactive to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApplicationUserCreate other)
+        public bool Equals(SubscriptionAffiliateInactive other)
         {
             if (other == null)
             {
@@ -95,19 +81,29 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
-                    this.PrimaryAccount == other.PrimaryAccount ||
-                    this.PrimaryAccount != null &&
-                    this.PrimaryAccount.Equals(other.PrimaryAccount)
+                    this.Id == other.Id ||
+                    this.Id != null &&
+                    this.Id.Equals(other.Id)
+                ) && 
+                (
+                    this.Version == other.Version ||
+                    this.Version != null &&
+                    this.Version.Equals(other.Version)
+                ) && 
+                (
+                    this.Language == other.Language ||
+                    this.Language != null &&
+                    this.Language.Equals(other.Language)
+                ) && 
+                (
+                    this.MetaData == other.MetaData ||
+                    this.MetaData != null &&
+                    this.MetaData.SequenceEqual(other.MetaData)
                 ) && 
                 (
                     this.Name == other.Name ||
                     this.Name != null &&
                     this.Name.Equals(other.Name)
-                ) && 
-                (
-                    this.RequestLimit == other.RequestLimit ||
-                    this.RequestLimit != null &&
-                    this.RequestLimit.Equals(other.RequestLimit)
                 ) && 
                 (
                     this.State == other.State ||
@@ -125,17 +121,25 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                if (this.PrimaryAccount != null)
+                if (this.Id != null)
                 {
-                    hash = hash * 59 + this.PrimaryAccount.GetHashCode();
+                    hash = hash * 59 + this.Id.GetHashCode();
+                }
+                if (this.Version != null)
+                {
+                    hash = hash * 59 + this.Version.GetHashCode();
+                }
+                if (this.Language != null)
+                {
+                    hash = hash * 59 + this.Language.GetHashCode();
+                }
+                if (this.MetaData != null)
+                {
+                    hash = hash * 59 + this.MetaData.GetHashCode();
                 }
                 if (this.Name != null)
                 {
                     hash = hash * 59 + this.Name.GetHashCode();
-                }
-                if (this.RequestLimit != null)
-                {
-                    hash = hash * 59 + this.RequestLimit.GetHashCode();
                 }
                 if (this.State != null)
                 {

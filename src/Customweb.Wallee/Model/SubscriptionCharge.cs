@@ -78,6 +78,13 @@ namespace Customweb.Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
+        /// Language
+        /// </summary>
+        /// <value>Language</value>
+        [DataMember(Name="language", EmitDefaultValue=false)]
+        public string Language { get; private set; }
+
+        /// <summary>
         /// LedgerEntries
         /// </summary>
         /// <value>LedgerEntries</value>
@@ -245,6 +252,11 @@ namespace Customweb.Wallee.Model
                     this.Id.Equals(other.Id)
                 ) && 
                 (
+                    this.Language == other.Language ||
+                    this.Language != null &&
+                    this.Language.Equals(other.Language)
+                ) && 
+                (
                     this.LedgerEntries == other.LedgerEntries ||
                     this.LedgerEntries != null &&
                     this.LedgerEntries.SequenceEqual(other.LedgerEntries)
@@ -347,6 +359,10 @@ namespace Customweb.Wallee.Model
                 if (this.Id != null)
                 {
                     hash = hash * 59 + this.Id.GetHashCode();
+                }
+                if (this.Language != null)
+                {
+                    hash = hash * 59 + this.Language.GetHashCode();
                 }
                 if (this.LedgerEntries != null)
                 {

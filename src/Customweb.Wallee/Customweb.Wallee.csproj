@@ -4,8 +4,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>Customweb.Wallee</PackageId>
-    <Version>1.0.5</Version>
-    <FileVersion>1.0.5</FileVersion>
+    <Version>1.0.6</Version>
+    <FileVersion>1.0.6</FileVersion>
     <Description>The wallee SDK for C#.</Description>
     <Copyright>Copyright © 2018 by customweb GmbH</Copyright>
     <Title>wallee SDK</Title>

@@ -31,7 +31,7 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required)</param>
         /// <param name="Version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required)</param>
-        public ApplicationUserUpdate(string Name = default(string), long? Id = default(long?), long? Version = default(long?), CreationEntityState? State = default(CreationEntityState?))
+        public ApplicationUserUpdate(string Name = default(string), long? Id = default(long?), long? Version = default(long?), CreationEntityState? State = default(CreationEntityState?), long? RequestLimit = default(long?))
         {
             // to ensure "Id" is required (not null)
             if (Id == null)
@@ -52,6 +52,7 @@ namespace Customweb.Wallee.Model
                 this.Version = Version;
             }
             this.Name = Name;
+            this.RequestLimit = RequestLimit;
             this.State = State;
         }
 
@@ -126,6 +127,11 @@ namespace Customweb.Wallee.Model
                     this.Name.Equals(other.Name)
                 ) && 
                 (
+                    this.RequestLimit == other.RequestLimit ||
+                    this.RequestLimit != null &&
+                    this.RequestLimit.Equals(other.RequestLimit)
+                ) && 
+                (
                     this.State == other.State ||
                     this.State != null &&
                     this.State.Equals(other.State)
@@ -152,6 +158,10 @@ namespace Customweb.Wallee.Model
                 if (this.Name != null)
                 {
                     hash = hash * 59 + this.Name.GetHashCode();
+                }
+                if (this.RequestLimit != null)
+                {
+                    hash = hash * 59 + this.RequestLimit.GetHashCode();
                 }
                 if (this.State != null)
                 {

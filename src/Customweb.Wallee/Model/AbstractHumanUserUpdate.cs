@@ -27,16 +27,20 @@ namespace Customweb.Wallee.Model
         /// <param name="Firstname">The first name of the user.</param>
         /// <param name="Language">The preferred language of the user.</param>
         /// <param name="Lastname">The last name of the user.</param>
+        /// <param name="MobilePhoneNumber">MobilePhoneNumber</param>
         /// <param name="State">State</param>
         /// <param name="TimeZone">The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.</param>
-        public AbstractHumanUserUpdate(string Language = default(string), CreationEntityState? State = default(CreationEntityState?), string EmailAddress = default(string), string Lastname = default(string), string TimeZone = default(string), string Firstname = default(string))
+        /// <param name="TwoFactorEnabled">Defines whether two-factor authentication is enabled for this user.</param>
+        public AbstractHumanUserUpdate(string Language = default(string), string MobilePhoneNumber = default(string), bool? TwoFactorEnabled = default(bool?), CreationEntityState? State = default(CreationEntityState?), string EmailAddress = default(string), string Lastname = default(string), string TimeZone = default(string), string Firstname = default(string))
         {
             this.EmailAddress = EmailAddress;
             this.Firstname = Firstname;
             this.Language = Language;
             this.Lastname = Lastname;
+            this.MobilePhoneNumber = MobilePhoneNumber;
             this.State = State;
             this.TimeZone = TimeZone;
+            this.TwoFactorEnabled = TwoFactorEnabled;
         }
 
         /// <summary>
@@ -68,6 +72,13 @@ namespace Customweb.Wallee.Model
         public string Lastname { get; set; }
 
         /// <summary>
+        /// MobilePhoneNumber
+        /// </summary>
+        /// <value>MobilePhoneNumber</value>
+        [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=false)]
+        public string MobilePhoneNumber { get; set; }
+
+        /// <summary>
         /// State
         /// </summary>
         /// <value>State</value>
@@ -80,6 +91,13 @@ namespace Customweb.Wallee.Model
         /// <value>The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; set; }
+
+        /// <summary>
+        /// Defines whether two-factor authentication is enabled for this user.
+        /// </summary>
+        /// <value>Defines whether two-factor authentication is enabled for this user.</value>
+        [DataMember(Name="twoFactorEnabled", EmitDefaultValue=false)]
+        public bool? TwoFactorEnabled { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -143,6 +161,11 @@ namespace Customweb.Wallee.Model
                     this.Lastname.Equals(other.Lastname)
                 ) && 
                 (
+                    this.MobilePhoneNumber == other.MobilePhoneNumber ||
+                    this.MobilePhoneNumber != null &&
+                    this.MobilePhoneNumber.Equals(other.MobilePhoneNumber)
+                ) && 
+                (
                     this.State == other.State ||
                     this.State != null &&
                     this.State.Equals(other.State)
@@ -151,6 +174,11 @@ namespace Customweb.Wallee.Model
                     this.TimeZone == other.TimeZone ||
                     this.TimeZone != null &&
                     this.TimeZone.Equals(other.TimeZone)
+                ) && 
+                (
+                    this.TwoFactorEnabled == other.TwoFactorEnabled ||
+                    this.TwoFactorEnabled != null &&
+                    this.TwoFactorEnabled.Equals(other.TwoFactorEnabled)
                 );
         }
 
@@ -179,6 +207,10 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.Lastname.GetHashCode();
                 }
+                if (this.MobilePhoneNumber != null)
+                {
+                    hash = hash * 59 + this.MobilePhoneNumber.GetHashCode();
+                }
                 if (this.State != null)
                 {
                     hash = hash * 59 + this.State.GetHashCode();
@@ -186,6 +218,10 @@ namespace Customweb.Wallee.Model
                 if (this.TimeZone != null)
                 {
                     hash = hash * 59 + this.TimeZone.GetHashCode();
+                }
+                if (this.TwoFactorEnabled != null)
+                {
+                    hash = hash * 59 + this.TwoFactorEnabled.GetHashCode();
                 }
                 return hash;
             }

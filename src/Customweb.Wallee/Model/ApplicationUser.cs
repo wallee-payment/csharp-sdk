@@ -43,6 +43,13 @@ namespace Customweb.Wallee.Model
         public Account PrimaryAccount { get; private set; }
 
         /// <summary>
+        /// The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.
+        /// </summary>
+        /// <value>The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.</value>
+        [DataMember(Name="requestLimit", EmitDefaultValue=false)]
+        public long? RequestLimit { get; private set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -94,6 +101,11 @@ namespace Customweb.Wallee.Model
                     this.PrimaryAccount.Equals(other.PrimaryAccount)
                 ) && 
                 (
+                    this.RequestLimit == other.RequestLimit ||
+                    this.RequestLimit != null &&
+                    this.RequestLimit.Equals(other.RequestLimit)
+                ) && 
+                (
                     this.Id == other.Id ||
                     this.Id != null &&
                     this.Id.Equals(other.Id)
@@ -141,6 +153,10 @@ namespace Customweb.Wallee.Model
                 if (this.PrimaryAccount != null)
                 {
                     hash = hash * 59 + this.PrimaryAccount.GetHashCode();
+                }
+                if (this.RequestLimit != null)
+                {
+                    hash = hash * 59 + this.RequestLimit.GetHashCode();
                 }
                 if (this.Id != null)
                 {

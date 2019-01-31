@@ -66,7 +66,7 @@ namespace Customweb.Wallee.Service
         /// Process With 3-D Secure
         /// </summary>
         /// <remarks>
-        /// The process method will process the transaction with the given card details by evenutually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
+        /// The process method will process the transaction with the given card details by eventually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -80,7 +80,7 @@ namespace Customweb.Wallee.Service
         /// Process With 3-D Secure
         /// </summary>
         /// <remarks>
-        /// The process method will process the transaction with the given card details by evenutually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
+        /// The process method will process the transaction with the given card details by eventually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -125,7 +125,7 @@ namespace Customweb.Wallee.Service
         /// Process With 3-D Secure
         /// </summary>
         /// <remarks>
-        /// The process method will process the transaction with the given card details by evenutually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
+        /// The process method will process the transaction with the given card details by eventually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -139,7 +139,7 @@ namespace Customweb.Wallee.Service
         /// Process With 3-D Secure
         /// </summary>
         /// <remarks>
-        /// The process method will process the transaction with the given card details by evenutually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
+        /// The process method will process the transaction with the given card details by eventually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
         /// </remarks>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -401,7 +401,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// Process With 3-D Secure The process method will process the transaction with the given card details by evenutually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
+        /// Process With 3-D Secure The process method will process the transaction with the given card details by eventually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -416,7 +416,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// Process With 3-D Secure The process method will process the transaction with the given card details by evenutually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
+        /// Process With 3-D Secure The process method will process the transaction with the given card details by eventually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -499,7 +499,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// Process With 3-D Secure The process method will process the transaction with the given card details by evenutually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
+        /// Process With 3-D Secure The process method will process the transaction with the given card details by eventually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -514,7 +514,7 @@ namespace Customweb.Wallee.Service
         }
 
         /// <summary>
-        /// Process With 3-D Secure The process method will process the transaction with the given card details by evenutually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
+        /// Process With 3-D Secure The process method will process the transaction with the given card details by eventually using 3-D secure. The buyer has to be redirect to the URL returned by this method.
         /// </summary>
         /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>

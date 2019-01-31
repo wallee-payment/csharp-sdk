@@ -204,6 +204,13 @@ namespace Customweb.Wallee.Model
         public RefundType? Type { get; private set; }
 
         /// <summary>
+        /// UpdatedInvoice
+        /// </summary>
+        /// <value>UpdatedInvoice</value>
+        [DataMember(Name="updatedInvoice", EmitDefaultValue=false)]
+        public long? UpdatedInvoice { get; private set; }
+
+        /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
@@ -377,6 +384,11 @@ namespace Customweb.Wallee.Model
                     this.Type.Equals(other.Type)
                 ) && 
                 (
+                    this.UpdatedInvoice == other.UpdatedInvoice ||
+                    this.UpdatedInvoice != null &&
+                    this.UpdatedInvoice.Equals(other.UpdatedInvoice)
+                ) && 
+                (
                     this.Version == other.Version ||
                     this.Version != null &&
                     this.Version.Equals(other.Version)
@@ -491,6 +503,10 @@ namespace Customweb.Wallee.Model
                 if (this.Type != null)
                 {
                     hash = hash * 59 + this.Type.GetHashCode();
+                }
+                if (this.UpdatedInvoice != null)
+                {
+                    hash = hash * 59 + this.UpdatedInvoice.GetHashCode();
                 }
                 if (this.Version != null)
                 {

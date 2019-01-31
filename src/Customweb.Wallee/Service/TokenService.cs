@@ -83,6 +83,30 @@ namespace Customweb.Wallee.Service
         ApiResponse<Token> CreateWithHttpInfo (long? spaceId, TokenCreate entity);
 
         /// <summary>
+        /// Create Transaction for Token Update
+        /// </summary>
+        /// <remarks>
+        /// This operation creates a transaction which allows the updating of the provided token.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="tokenId">The id of the token which should be updated.</param>
+        /// <returns>Transaction</returns>
+        Transaction CreateTransactionForTokenUpdate (long? spaceId, long? tokenId);
+
+        /// <summary>
+        /// Create Transaction for Token Update
+        /// </summary>
+        /// <remarks>
+        /// This operation creates a transaction which allows the updating of the provided token.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="tokenId">The id of the token which should be updated.</param>
+        /// <returns>ApiResponse of Transaction</returns>
+        ApiResponse<Transaction> CreateTransactionForTokenUpdateWithHttpInfo (long? spaceId, long? tokenId);
+
+        /// <summary>
         /// Delete
         /// </summary>
         /// <remarks>
@@ -228,6 +252,30 @@ namespace Customweb.Wallee.Service
         /// <param name="entity">The token object with the properties which should be created.</param>
         /// <returns>Task of ApiResponse (Token)</returns>
         System.Threading.Tasks.Task<ApiResponse<Token>> CreateAsyncWithHttpInfo (long? spaceId, TokenCreate entity);
+
+        /// <summary>
+        /// Create Transaction for Token Update
+        /// </summary>
+        /// <remarks>
+        /// This operation creates a transaction which allows the updating of the provided token.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="tokenId">The id of the token which should be updated.</param>
+        /// <returns>Task of Transaction</returns>
+        System.Threading.Tasks.Task<Transaction> CreateTransactionForTokenUpdateAsync (long? spaceId, long? tokenId);
+
+        /// <summary>
+        /// Create Transaction for Token Update
+        /// </summary>
+        /// <remarks>
+        /// This operation creates a transaction which allows the updating of the provided token.
+        /// </remarks>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="tokenId">The id of the token which should be updated.</param>
+        /// <returns>Task of ApiResponse (Transaction)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Transaction>> CreateTransactionForTokenUpdateAsyncWithHttpInfo (long? spaceId, long? tokenId);
 
         /// <summary>
         /// Delete
@@ -700,6 +748,156 @@ namespace Customweb.Wallee.Service
             return new ApiResponse<Token>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (Token) ApiClient.Deserialize(localVarResponse, typeof(Token)));
+        }
+
+        /// <summary>
+        /// Create Transaction for Token Update This operation creates a transaction which allows the updating of the provided token.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="tokenId">The id of the token which should be updated.</param>
+        /// <returns>Transaction</returns>
+        public Transaction CreateTransactionForTokenUpdate (long? spaceId, long? tokenId)
+        {
+             ApiResponse<Transaction> localVarResponse = CreateTransactionForTokenUpdateWithHttpInfo(spaceId, tokenId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create Transaction for Token Update This operation creates a transaction which allows the updating of the provided token.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="tokenId">The id of the token which should be updated.</param>
+        /// <returns>ApiResponse of Transaction</returns>
+        public ApiResponse< Transaction > CreateTransactionForTokenUpdateWithHttpInfo (long? spaceId, long? tokenId)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->CreateTransactionForTokenUpdate");
+            }
+            // verify the required parameter 'tokenId' is set
+            if (tokenId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'tokenId' when calling TokenService->CreateTransactionForTokenUpdate");
+            }
+
+            var localVarPath = "/token/createTransactionForTokenUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (tokenId != null) localVarQueryParams.Add("tokenId", ApiClient.ParameterToString(tokenId)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateTransactionForTokenUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Transaction>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Transaction) ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+        }
+
+        /// <summary>
+        /// Create Transaction for Token Update This operation creates a transaction which allows the updating of the provided token.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="tokenId">The id of the token which should be updated.</param>
+        /// <returns>Task of Transaction</returns>
+        public async System.Threading.Tasks.Task<Transaction> CreateTransactionForTokenUpdateAsync (long? spaceId, long? tokenId)
+        {
+             ApiResponse<Transaction> localVarResponse = await CreateTransactionForTokenUpdateAsyncWithHttpInfo(spaceId, tokenId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create Transaction for Token Update This operation creates a transaction which allows the updating of the provided token.
+        /// </summary>
+        /// <exception cref="Customweb.Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="tokenId">The id of the token which should be updated.</param>
+        /// <returns>Task of ApiResponse (Transaction)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Transaction>> CreateTransactionForTokenUpdateAsyncWithHttpInfo (long? spaceId, long? tokenId)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->CreateTransactionForTokenUpdate");
+            }
+            // verify the required parameter 'tokenId' is set
+            if (tokenId == null)
+            {
+                throw new ApiException(400, "Missing required parameter 'tokenId' when calling TokenService->CreateTransactionForTokenUpdate");
+            }
+
+            var localVarPath = "/token/createTransactionForTokenUpdate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new Dictionary<String, String>();
+            var localVarHeaderParams = new Dictionary<String, String>();
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+            {
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+            }
+
+            if (spaceId != null) localVarQueryParams.Add("spaceId", ApiClient.ParameterToString(spaceId)); // query parameter
+            if (tokenId != null) localVarQueryParams.Add("tokenId", ApiClient.ParameterToString(tokenId)); // query parameter
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateTransactionForTokenUpdate", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Transaction>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Transaction) ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
         }
 
         /// <summary>

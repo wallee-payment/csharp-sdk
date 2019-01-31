@@ -25,11 +25,11 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="Name">The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</param>
         /// <param name="PostalAddress">The address to use in communication with clients for example in email, documents etc.</param>
-        /// <param name="RequestLimit">The request limit defines the maximum number of API request accepted within 2 minutes per cluster node. This limit can only be changed with special privileges.</param>
+        /// <param name="RequestLimit">The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.</param>
         /// <param name="State">State</param>
         /// <param name="TechnicalContactAddresses">The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.</param>
         /// <param name="TimeZone">The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.</param>
-        public AbstractSpaceUpdate(string Name = default(string), SpaceAddressCreate PostalAddress = default(SpaceAddressCreate), CreationEntityState? State = default(CreationEntityState?), List<string> TechnicalContactAddresses = default(List<string>), long? RequestLimit = default(long?), string TimeZone = default(string))
+        public AbstractSpaceUpdate(string Name = default(string), SpaceAddressCreate PostalAddress = default(SpaceAddressCreate), CreationEntityState? State = default(CreationEntityState?), List<string> TechnicalContactAddresses = default(List<string>), string TimeZone = default(string), long? RequestLimit = default(long?))
         {
             this.Name = Name;
             this.PostalAddress = PostalAddress;
@@ -54,9 +54,9 @@ namespace Customweb.Wallee.Model
         public SpaceAddressCreate PostalAddress { get; set; }
 
         /// <summary>
-        /// The request limit defines the maximum number of API request accepted within 2 minutes per cluster node. This limit can only be changed with special privileges.
+        /// The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.
         /// </summary>
-        /// <value>The request limit defines the maximum number of API request accepted within 2 minutes per cluster node. This limit can only be changed with special privileges.</value>
+        /// <value>The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.</value>
         [DataMember(Name="requestLimit", EmitDefaultValue=false)]
         public long? RequestLimit { get; set; }
 

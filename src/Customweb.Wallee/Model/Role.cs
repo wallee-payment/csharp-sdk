@@ -71,6 +71,13 @@ namespace Customweb.Wallee.Model
         public CreationEntityState? State { get; private set; }
 
         /// <summary>
+        /// Defines whether having been granted this role will force a user to use two-factor authentication.
+        /// </summary>
+        /// <value>Defines whether having been granted this role will force a user to use two-factor authentication.</value>
+        [DataMember(Name="twoFactorRequired", EmitDefaultValue=false)]
+        public bool? TwoFactorRequired { get; private set; }
+
+        /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
@@ -149,6 +156,11 @@ namespace Customweb.Wallee.Model
                     this.State.Equals(other.State)
                 ) && 
                 (
+                    this.TwoFactorRequired == other.TwoFactorRequired ||
+                    this.TwoFactorRequired != null &&
+                    this.TwoFactorRequired.Equals(other.TwoFactorRequired)
+                ) && 
+                (
                     this.Version == other.Version ||
                     this.Version != null &&
                     this.Version.Equals(other.Version)
@@ -187,6 +199,10 @@ namespace Customweb.Wallee.Model
                 if (this.State != null)
                 {
                     hash = hash * 59 + this.State.GetHashCode();
+                }
+                if (this.TwoFactorRequired != null)
+                {
+                    hash = hash * 59 + this.TwoFactorRequired.GetHashCode();
                 }
                 if (this.Version != null)
                 {

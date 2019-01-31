@@ -14,33 +14,26 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// A document template contains the customizations for a particular document template type.
+    /// Subscription Affiliate
     /// </summary>
     [DataContract]
-    public partial class DocumentTemplate :  IEquatable<DocumentTemplate>, IValidatableObject
+    public partial class SubscriptionAffiliate :  IEquatable<SubscriptionAffiliate>, IValidatableObject
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DocumentTemplate" /> class.
+        /// Initializes a new instance of the <see cref="SubscriptionAffiliate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public DocumentTemplate()
+        public SubscriptionAffiliate()
         {
         }
 
         /// <summary>
-        /// The default document template is used whenever no specific template is specified for a particular template type.
+        /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
-        /// <value>The default document template is used whenever no specific template is specified for a particular template type.</value>
-        [DataMember(Name="defaultTemplate", EmitDefaultValue=false)]
-        public bool? DefaultTemplate { get; private set; }
-
-        /// <summary>
-        /// DeliveryEnabled
-        /// </summary>
-        /// <value>DeliveryEnabled</value>
-        [DataMember(Name="deliveryEnabled", EmitDefaultValue=false)]
-        public bool? DeliveryEnabled { get; private set; }
+        /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        public string ExternalId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
@@ -50,11 +43,25 @@ namespace Customweb.Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
+        /// Language
+        /// </summary>
+        /// <value>Language</value>
+        [DataMember(Name="language", EmitDefaultValue=false)]
+        public string Language { get; private set; }
+
+        /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
         [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
+
+        /// <summary>
+        /// Meta data allow to store additional data along the object.
+        /// </summary>
+        /// <value>Meta data allow to store additional data along the object.</value>
+        [DataMember(Name="metaData", EmitDefaultValue=false)]
+        public Dictionary<string, string> MetaData { get; private set; }
 
         /// <summary>
         /// Name
@@ -71,11 +78,11 @@ namespace Customweb.Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// SpaceId
+        /// Reference
         /// </summary>
-        /// <value>SpaceId</value>
-        [DataMember(Name="spaceId", EmitDefaultValue=false)]
-        public long? SpaceId { get; private set; }
+        /// <value>Reference</value>
+        [DataMember(Name="reference", EmitDefaultValue=false)]
+        public string Reference { get; private set; }
 
         /// <summary>
         /// State
@@ -83,20 +90,6 @@ namespace Customweb.Wallee.Model
         /// <value>State</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; private set; }
-
-        /// <summary>
-        /// TemplateResource
-        /// </summary>
-        /// <value>TemplateResource</value>
-        [DataMember(Name="templateResource", EmitDefaultValue=false)]
-        public ResourcePath TemplateResource { get; private set; }
-
-        /// <summary>
-        /// Type
-        /// </summary>
-        /// <value>Type</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public long? Type { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
@@ -130,15 +123,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as DocumentTemplate);
+            return this.Equals(obj as SubscriptionAffiliate);
         }
 
         /// <summary>
-        /// Returns true if DocumentTemplate instances are equal
+        /// Returns true if SubscriptionAffiliate instances are equal
         /// </summary>
-        /// <param name="other">Instance of DocumentTemplate to be compared</param>
+        /// <param name="other">Instance of SubscriptionAffiliate to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DocumentTemplate other)
+        public bool Equals(SubscriptionAffiliate other)
         {
             if (other == null)
             {
@@ -147,14 +140,9 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
-                    this.DefaultTemplate == other.DefaultTemplate ||
-                    this.DefaultTemplate != null &&
-                    this.DefaultTemplate.Equals(other.DefaultTemplate)
-                ) && 
-                (
-                    this.DeliveryEnabled == other.DeliveryEnabled ||
-                    this.DeliveryEnabled != null &&
-                    this.DeliveryEnabled.Equals(other.DeliveryEnabled)
+                    this.ExternalId == other.ExternalId ||
+                    this.ExternalId != null &&
+                    this.ExternalId.Equals(other.ExternalId)
                 ) && 
                 (
                     this.Id == other.Id ||
@@ -162,9 +150,19 @@ namespace Customweb.Wallee.Model
                     this.Id.Equals(other.Id)
                 ) && 
                 (
+                    this.Language == other.Language ||
+                    this.Language != null &&
+                    this.Language.Equals(other.Language)
+                ) && 
+                (
                     this.LinkedSpaceId == other.LinkedSpaceId ||
                     this.LinkedSpaceId != null &&
                     this.LinkedSpaceId.Equals(other.LinkedSpaceId)
+                ) && 
+                (
+                    this.MetaData == other.MetaData ||
+                    this.MetaData != null &&
+                    this.MetaData.SequenceEqual(other.MetaData)
                 ) && 
                 (
                     this.Name == other.Name ||
@@ -177,24 +175,14 @@ namespace Customweb.Wallee.Model
                     this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
                 ) && 
                 (
-                    this.SpaceId == other.SpaceId ||
-                    this.SpaceId != null &&
-                    this.SpaceId.Equals(other.SpaceId)
+                    this.Reference == other.Reference ||
+                    this.Reference != null &&
+                    this.Reference.Equals(other.Reference)
                 ) && 
                 (
                     this.State == other.State ||
                     this.State != null &&
                     this.State.Equals(other.State)
-                ) && 
-                (
-                    this.TemplateResource == other.TemplateResource ||
-                    this.TemplateResource != null &&
-                    this.TemplateResource.Equals(other.TemplateResource)
-                ) && 
-                (
-                    this.Type == other.Type ||
-                    this.Type != null &&
-                    this.Type.Equals(other.Type)
                 ) && 
                 (
                     this.Version == other.Version ||
@@ -212,21 +200,25 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                if (this.DefaultTemplate != null)
+                if (this.ExternalId != null)
                 {
-                    hash = hash * 59 + this.DefaultTemplate.GetHashCode();
-                }
-                if (this.DeliveryEnabled != null)
-                {
-                    hash = hash * 59 + this.DeliveryEnabled.GetHashCode();
+                    hash = hash * 59 + this.ExternalId.GetHashCode();
                 }
                 if (this.Id != null)
                 {
                     hash = hash * 59 + this.Id.GetHashCode();
                 }
+                if (this.Language != null)
+                {
+                    hash = hash * 59 + this.Language.GetHashCode();
+                }
                 if (this.LinkedSpaceId != null)
                 {
                     hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
+                }
+                if (this.MetaData != null)
+                {
+                    hash = hash * 59 + this.MetaData.GetHashCode();
                 }
                 if (this.Name != null)
                 {
@@ -236,21 +228,13 @@ namespace Customweb.Wallee.Model
                 {
                     hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
                 }
-                if (this.SpaceId != null)
+                if (this.Reference != null)
                 {
-                    hash = hash * 59 + this.SpaceId.GetHashCode();
+                    hash = hash * 59 + this.Reference.GetHashCode();
                 }
                 if (this.State != null)
                 {
                     hash = hash * 59 + this.State.GetHashCode();
-                }
-                if (this.TemplateResource != null)
-                {
-                    hash = hash * 59 + this.TemplateResource.GetHashCode();
-                }
-                if (this.Type != null)
-                {
-                    hash = hash * 59 + this.Type.GetHashCode();
                 }
                 if (this.Version != null)
                 {

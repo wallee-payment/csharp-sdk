@@ -14,26 +14,19 @@ using System.ComponentModel.DataAnnotations;
 namespace Customweb.Wallee.Model
 {
     /// <summary>
-    /// Application User
+    /// Subscription Affiliate
     /// </summary>
     [DataContract]
-    public partial class ApplicationUserCreateWithMacKey : ApplicationUser,  IEquatable<ApplicationUserCreateWithMacKey>, IValidatableObject
+    public partial class SubscriptionAffiliateDeleted : SubscriptionAffiliate,  IEquatable<SubscriptionAffiliateDeleted>, IValidatableObject
     {
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApplicationUserCreateWithMacKey" /> class.
+        /// Initializes a new instance of the <see cref="SubscriptionAffiliateDeleted" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public ApplicationUserCreateWithMacKey()
+        public SubscriptionAffiliateDeleted()
         {
         }
-
-        /// <summary>
-        /// MacKey
-        /// </summary>
-        /// <value>MacKey</value>
-        [DataMember(Name="macKey", EmitDefaultValue=false)]
-        public string MacKey { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,15 +53,15 @@ namespace Customweb.Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object obj)
         {
-            return this.Equals(obj as ApplicationUserCreateWithMacKey);
+            return this.Equals(obj as SubscriptionAffiliateDeleted);
         }
 
         /// <summary>
-        /// Returns true if ApplicationUserCreateWithMacKey instances are equal
+        /// Returns true if SubscriptionAffiliateDeleted instances are equal
         /// </summary>
-        /// <param name="other">Instance of ApplicationUserCreateWithMacKey to be compared</param>
+        /// <param name="other">Instance of SubscriptionAffiliateDeleted to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ApplicationUserCreateWithMacKey other)
+        public bool Equals(SubscriptionAffiliateDeleted other)
         {
             if (other == null)
             {
@@ -77,9 +70,9 @@ namespace Customweb.Wallee.Model
 
             return 
                 (
-                    this.MacKey == other.MacKey ||
-                    this.MacKey != null &&
-                    this.MacKey.Equals(other.MacKey)
+                    this.ExternalId == other.ExternalId ||
+                    this.ExternalId != null &&
+                    this.ExternalId.Equals(other.ExternalId)
                 ) && 
                 (
                     this.Id == other.Id ||
@@ -87,29 +80,19 @@ namespace Customweb.Wallee.Model
                     this.Id.Equals(other.Id)
                 ) && 
                 (
-                    this.PlannedPurgeDate == other.PlannedPurgeDate ||
-                    this.PlannedPurgeDate != null &&
-                    this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
+                    this.Language == other.Language ||
+                    this.Language != null &&
+                    this.Language.Equals(other.Language)
                 ) && 
                 (
-                    this.Scope == other.Scope ||
-                    this.Scope != null &&
-                    this.Scope.Equals(other.Scope)
+                    this.LinkedSpaceId == other.LinkedSpaceId ||
+                    this.LinkedSpaceId != null &&
+                    this.LinkedSpaceId.Equals(other.LinkedSpaceId)
                 ) && 
                 (
-                    this.State == other.State ||
-                    this.State != null &&
-                    this.State.Equals(other.State)
-                ) && 
-                (
-                    this.UserType == other.UserType ||
-                    this.UserType != null &&
-                    this.UserType.Equals(other.UserType)
-                ) && 
-                (
-                    this.Version == other.Version ||
-                    this.Version != null &&
-                    this.Version.Equals(other.Version)
+                    this.MetaData == other.MetaData ||
+                    this.MetaData != null &&
+                    this.MetaData.SequenceEqual(other.MetaData)
                 ) && 
                 (
                     this.Name == other.Name ||
@@ -117,14 +100,24 @@ namespace Customweb.Wallee.Model
                     this.Name.Equals(other.Name)
                 ) && 
                 (
-                    this.PrimaryAccount == other.PrimaryAccount ||
-                    this.PrimaryAccount != null &&
-                    this.PrimaryAccount.Equals(other.PrimaryAccount)
+                    this.PlannedPurgeDate == other.PlannedPurgeDate ||
+                    this.PlannedPurgeDate != null &&
+                    this.PlannedPurgeDate.Equals(other.PlannedPurgeDate)
                 ) && 
                 (
-                    this.RequestLimit == other.RequestLimit ||
-                    this.RequestLimit != null &&
-                    this.RequestLimit.Equals(other.RequestLimit)
+                    this.Reference == other.Reference ||
+                    this.Reference != null &&
+                    this.Reference.Equals(other.Reference)
+                ) && 
+                (
+                    this.State == other.State ||
+                    this.State != null &&
+                    this.State.Equals(other.State)
+                ) && 
+                (
+                    this.Version == other.Version ||
+                    this.Version != null &&
+                    this.Version.Equals(other.Version)
                 );
         }
 
@@ -137,45 +130,45 @@ namespace Customweb.Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 41;
-                if (this.MacKey != null)
+                if (this.ExternalId != null)
                 {
-                    hash = hash * 59 + this.MacKey.GetHashCode();
+                    hash = hash * 59 + this.ExternalId.GetHashCode();
                 }
                 if (this.Id != null)
                 {
                     hash = hash * 59 + this.Id.GetHashCode();
                 }
-                if (this.PlannedPurgeDate != null)
+                if (this.Language != null)
                 {
-                    hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
+                    hash = hash * 59 + this.Language.GetHashCode();
                 }
-                if (this.Scope != null)
+                if (this.LinkedSpaceId != null)
                 {
-                    hash = hash * 59 + this.Scope.GetHashCode();
+                    hash = hash * 59 + this.LinkedSpaceId.GetHashCode();
                 }
-                if (this.State != null)
+                if (this.MetaData != null)
                 {
-                    hash = hash * 59 + this.State.GetHashCode();
-                }
-                if (this.UserType != null)
-                {
-                    hash = hash * 59 + this.UserType.GetHashCode();
-                }
-                if (this.Version != null)
-                {
-                    hash = hash * 59 + this.Version.GetHashCode();
+                    hash = hash * 59 + this.MetaData.GetHashCode();
                 }
                 if (this.Name != null)
                 {
                     hash = hash * 59 + this.Name.GetHashCode();
                 }
-                if (this.PrimaryAccount != null)
+                if (this.PlannedPurgeDate != null)
                 {
-                    hash = hash * 59 + this.PrimaryAccount.GetHashCode();
+                    hash = hash * 59 + this.PlannedPurgeDate.GetHashCode();
                 }
-                if (this.RequestLimit != null)
+                if (this.Reference != null)
                 {
-                    hash = hash * 59 + this.RequestLimit.GetHashCode();
+                    hash = hash * 59 + this.Reference.GetHashCode();
+                }
+                if (this.State != null)
+                {
+                    hash = hash * 59 + this.State.GetHashCode();
+                }
+                if (this.Version != null)
+                {
+                    hash = hash * 59 + this.Version.GetHashCode();
                 }
                 return hash;
             }

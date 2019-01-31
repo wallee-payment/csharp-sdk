@@ -31,19 +31,10 @@ namespace Customweb.Wallee.Model
         /// </summary>
         /// <param name="CardHolderName">The card holder name is the name printed onto the card. It identifies the person who owns the card.</param>
         /// <param name="CardVerificationCode">The card verification code (CVC) is a 3 to 4 digit code typically printed on the back of the card. It helps to ensure that the card holder is authorizing the transaction. For card not-present transactions this field is optional.</param>
-        /// <param name="ExpiryDate">The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09). (required)</param>
+        /// <param name="ExpiryDate">The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).</param>
         /// <param name="PrimaryAccountNumber">The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card. (required)</param>
         public UnencryptedCardDataCreate(string CardVerificationCode = default(string), string ExpiryDate = default(string), string CardHolderName = default(string), string PrimaryAccountNumber = default(string))
         {
-            // to ensure "ExpiryDate" is required (not null)
-            if (ExpiryDate == null)
-            {
-                throw new ArgumentNullException("ExpiryDate is a required property for UnencryptedCardDataCreate and cannot be null");
-            }
-            else
-            {
-                this.ExpiryDate = ExpiryDate;
-            }
             // to ensure "PrimaryAccountNumber" is required (not null)
             if (PrimaryAccountNumber == null)
             {
@@ -55,6 +46,7 @@ namespace Customweb.Wallee.Model
             }
             this.CardHolderName = CardHolderName;
             this.CardVerificationCode = CardVerificationCode;
+            this.ExpiryDate = ExpiryDate;
         }
 
         /// <summary>
