@@ -15,4 +15,4 @@ fi
 
 
 echo "[INFO] Copying created NuGet package."
-cp "src/Wallee/bin/Any CPU/Release/Wallee.2.0.0.nupkg" ./Wallee.2.0.0.nupkg;
+cp "src/Wallee/bin/Any CPU/Release/Wallee.2.0.1.nupkg" ./Wallee.2.0.1.nupkg;

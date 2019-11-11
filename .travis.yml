@@ -1,17 +1,11 @@
 language: csharp
-sudo: false
-mono:
-  - latest
-dotnet: 2.1.101	
+dist: xenial
 solution: Wallee.sln
+git:
+    quiet: true
+install:
+    - nuget restore Wallee.sln
+    - nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
 script:
-  - dotnet restore
-  - /bin/sh ./build.sh
-  - /bin/sh ./test.sh
-deploy:
-  skip_cleanup: true
-  provider: script
-  script:
-    - /bin/sh ./deploy.sh
-  on:
-    tags: true
+    - dotnet msbuild /t:restore Wallee.sln
+    - dotnet msbuild Wallee.sln /t:build /p:Configuration=Release
