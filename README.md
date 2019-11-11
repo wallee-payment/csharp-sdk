@@ -1,84 +1,170 @@
-[![Build Status](https://travis-ci.org/wallee-payment/wallee-csharp-sdk.svg?branch=master)](https://travis-ci.org/wallee-payment/wallee-csharp-sdk) [![NuGet Status](https://buildstats.info/nuget/Customweb.Wallee)](https://www.nuget.org/packages/Customweb.Wallee/1.0.6)
+[![Build Status](https://travis-ci.org/wallee-payment/csharp-sdk.svg?branch=master)](https://travis-ci.org/wallee-payment/csharp-sdk)
 
-# wallee-csharp-sdk
-The C# SDK allows an easy integration of wallee into C# and .NET applications.
+# wallee C# Library
 
-To Install from the Nuget Package Manager Console:
+The wallee C# library wraps around the wallee API. This library facilitates your interaction with various services such as transactions, accounts, and subscriptions.
 
-	PM> Install-Package Customweb.Wallee
 
 ## Documentation
-https://app-wallee.com/doc/api/web-service
 
-## Usage
+[wallee Web Service API](https://app-wallee.com/doc/api/web-service)
 
-### Example
+
+<a name="frameworks-supported"></a>
+## Frameworks supported
+- .NET 4.5 or later
+- Windows Phone 7.1 (Mango)
+
+<a name="dependencies"></a>
+## Dependencies
+- [RestSharp](https://www.nuget.org/packages/RestSharp) - 105.1.0
+- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 11.0.2
+- [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 1.3.0
+
+The DLLs included in the package may not be the latest version. We recommend using [NuGet](https://docs.nuget.org/consume/installing-nuget) to obtain the latest version of the packages:
+```
+Install-Package RestSharp
+Install-Package Newtonsoft.Json
+Install-Package JsonSubTypes
+```
+
+NOTE: RestSharp versions greater than 105.1.0 have a bug which causes file uploads to fail. See [RestSharp#742](https://github.com/restsharp/RestSharp/issues/742)
+
+<a name="installation"></a>
+## Installation
+Run the following command to generate the DLL
+- [Mac/Linux] `/bin/sh build.sh`
+- [Windows] `build.bat`
+
+Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
+```csharp
+using Wallee.Service;
+using Wallee.Client;
+using Wallee.Model;
+```
+<a name="packaging"></a>
+## Packaging
+
+A `.nuspec` is included with the project. You can follow the Nuget quickstart to [create](https://docs.microsoft.com/en-us/nuget/quickstart/create-and-publish-a-package#create-the-package) and [publish](https://docs.microsoft.com/en-us/nuget/quickstart/create-and-publish-a-package#publish-the-package) packages.
+
+This `.nuspec` uses placeholders from the `.csproj`, so build the `.csproj` directly:
+
+```
+nuget pack -Build -OutputDirectory out Wallee.csproj
+```
+
+Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-packages/local-feeds) or [other host](https://docs.microsoft.com/en-us/nuget/hosting-packages/overview) and consume the new package via Nuget as usual.
+
+<a name="getting-started"></a>
+## Getting Started
 
 ```csharp
 using System;
-
-using Customweb.Wallee.Model;
-using Customweb.Wallee.Client;
-using Customweb.Wallee.Service;
+using System.Configuration;
 using System.Collections.Generic;
 
-namespace WalleeExample
+using NUnit.Framework;
+
+using Wallee.Model;
+using Wallee.Service;
+using Wallee.Client;
+
+namespace Wallee.Test
 {
-    internal class Program
+    /// <summary>
+    ///  Class for testing TransactionService.
+    /// </summary>
+    [TestFixture]
+    public class TransactionPaymentPageServiceTest
     {
-        public static void Main(string[] args)
+        private TransactionService transactionService;
+        private TransactionCreate transactionCreate;
+        private Configuration configuration;
+        private long spaceId;
+        private string applicationUserID;
+        private string authenticationKey;
+        private ApiResponse<Transaction> transaction;
+
+        /// <summary>
+        /// Setup before each unit test.
+        /// </summary>
+        [SetUp]
+        public void SetUpTest()
         {
-            // Configuration. 
-            const long spaceId = 405;
-            const string userId = "512";  
-            const string secret = "FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=";
-           
-            Configuration configuration = Configuration.Builder()
-                .ApplicationUserID(userId)
-                .AuthenticationKey(secret)
-                .Build();
+            this.spaceId = 405;
+            this.authenticationKey = "FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=";
+            this.applicationUserID = "512";
+            this.configuration = new Configuration(this.applicationUserID, this.authenticationKey);
+            this.transactionService = new TransactionService(configuration);
+            this.CreateTransaction();
+        }
 
-            // Create API service instances.
-            var tokenService = new TokenService(configuration);
-            var transactionService = new TransactionService(configuration);
+        private void CreateTransaction() {
 
-            // Optionally create token for recurring payments.
-            var tokenCreate = new TokenCreate(ExternalId: Guid.NewGuid().ToString())
+            AddressCreate billingAddress = new AddressCreate();
+            billingAddress.Salutation = "Ms";
+            billingAddress.GivenName = "Good";
+            billingAddress.FamilyName = "Customer";
+            billingAddress.Gender = Gender.FEMALE;
+            billingAddress.Country = "CH";
+            billingAddress.City = "Winterthur";
+            billingAddress.PostCode = "8400";
+            billingAddress.DateOfBirth = new DateTime(1988, 4, 19);
+            billingAddress.OrganizationName = "Test GmbH";
+            billingAddress.MobilePhoneNumber = "+41791234567";
+            billingAddress.EmailAddress = "test@wallee.com";
+
+            LineItemCreate lineItem1 = new LineItemCreate(
+                name: "Item 1",
+                uniqueId: "unique-id-item-1",
+                type: LineItemType.PRODUCT,
+                quantity: 1,
+                amountIncludingTax: (decimal) 67.47
+            );
+            lineItem1.Sku = "item-1";
+            lineItem1.ShippingRequired = true;
+
+            this.transactionCreate = new TransactionCreate(new List<LineItemCreate>() { lineItem1 });
+            this.transactionCreate.BillingAddress = billingAddress;
+            this.transactionCreate.ShippingAddress = billingAddress;
+            this.transactionCreate.CustomerEmailAddress = billingAddress.EmailAddress;
+            this.transactionCreate.CustomerId = "cutomer-x";
+            this.transactionCreate.MerchantReference = Guid.NewGuid().ToString();
+            this.transactionCreate.InvoiceMerchantReference = "order-1";
+            this.transactionCreate.SuccessUrl = "http://localhost/success?orderId=1";
+            this.transactionCreate.FailedUrl = "http://localhost/failed?orderId=1";
+            this.transactionCreate.ShippingMethod = "Test Shipping";
+            this.transactionCreate.ChargeRetryEnabled = false;
+            this.transactionCreate.AllowedPaymentMethodConfigurations = new List<long?>() { 8656L };
+            this.transactionCreate.Language = "en-US";
+            this.transactionCreate.Currency = "CHF";
+
+            try
             {
-                CustomerEmailAddress = "spam@customweb.com",
-                TokenReference = "spam@customweb.com",
-                CustomerId = new Random().Next().ToString(),
-                EnabledForOneClickPayment = true
-            };
-
-            var token = tokenService.Create(spaceId, tokenCreate);
-
-            // Create transaction.
-            var lineItem = new LineItemCreate
-                (
-                 Name: "Red T-Shirt",
-                 Sku: "red-t-shirt-1",
-                 UniqueId: "2130",
-                 Quantity: 1,
-                 Type: LineItemType.PRODUCT,
-                 AmountIncludingTax: 22.91m
+                this.transaction = this.transactionService.CreateWithHttpInfo(
+                    this.spaceId,
+                    this.transactionCreate
                 );
+            } catch (ApiException e){
+                Assert.Fail("Failed to create transaction. Reason: " + e.Message + " Details: " + e.ErrorContent);
+            }
 
-            var transactionCreate = new TransactionCreate
-            {
-                Currency = "EUR",
-                LineItems = new List<LineItemCreate>() { lineItem },
-                AutoConfirmationEnabled = true,
-                Token = token.Id
-            };
+        }
 
-            // Send create transaction request.
-            var transaction = transactionService.Create(spaceId, transactionCreate);
-
-            // Create payment page URL.
-            var redirectionUrl = transactionService.BuildPaymentPageUrl(spaceId, transaction.Id);
-            System.Console.WriteLine("Payment URL: " + redirectionUrl);
-
+        /// <summary>
+        /// Test transaction creation.
+        /// </summary>
+        [Test]
+        public void TestPaymentPageUrl() {
+            TransactionPaymentPageService transactionPaymentPageService = new TransactionPaymentPageService(this.configuration);
+            String paymentPageUrl     = null;
+            try {
+                paymentPageUrl = transactionPaymentPageService.PaymentPageUrl(this.spaceId, this.transaction.Data.Id);
+            } catch (ApiException e) {
+                Console.WriteLine(e.ToString());
+            }
+            Console.WriteLine(paymentPageUrl);
+            Assert.IsTrue(paymentPageUrl.Contains("http"));
         }
     }
 }
@@ -86,4 +172,4 @@ namespace WalleeExample
 
 ## License
 
-Please see the [license file](https://github.com/wallee-payment/wallee-csharp-sdk/blob/master/LICENSE.txt) for more information.
+Please see the [license file](https://github.com/wallee-payment/csharp-sdk/blob/master/LICENSE) for more information.

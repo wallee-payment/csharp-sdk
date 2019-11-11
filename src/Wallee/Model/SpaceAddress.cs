@@ -1,0 +1,274 @@
+using System;
+using System.Linq;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.ComponentModel.DataAnnotations;
+using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+
+namespace Wallee.Model
+{
+    /// <summary>
+    /// SpaceAddress
+    /// </summary>
+    [DataContract]
+    public partial class SpaceAddress :  IEquatable<SpaceAddress>
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SpaceAddress" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public SpaceAddress()
+        {
+        }
+
+        /// <summary>
+        /// Gets or Sets City
+        /// </summary>
+        [DataMember(Name="city", EmitDefaultValue=false)]
+        public string City { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Country
+        /// </summary>
+        [DataMember(Name="country", EmitDefaultValue=false)]
+        public string Country { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets DependentLocality
+        /// </summary>
+        [DataMember(Name="dependentLocality", EmitDefaultValue=false)]
+        public string DependentLocality { get; private set; }
+
+        /// <summary>
+        /// The email address is used within emails and as reply to address.
+        /// </summary>
+        /// <value>The email address is used within emails and as reply to address.</value>
+        [DataMember(Name="emailAddress", EmitDefaultValue=false)]
+        public string EmailAddress { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets FamilyName
+        /// </summary>
+        [DataMember(Name="familyName", EmitDefaultValue=false)]
+        public string FamilyName { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets GivenName
+        /// </summary>
+        [DataMember(Name="givenName", EmitDefaultValue=false)]
+        public string GivenName { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets OrganizationName
+        /// </summary>
+        [DataMember(Name="organizationName", EmitDefaultValue=false)]
+        public string OrganizationName { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets PostCode
+        /// </summary>
+        [DataMember(Name="postCode", EmitDefaultValue=false)]
+        public string PostCode { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets PostalState
+        /// </summary>
+        [DataMember(Name="postalState", EmitDefaultValue=false)]
+        public string PostalState { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets SalesTaxNumber
+        /// </summary>
+        [DataMember(Name="salesTaxNumber", EmitDefaultValue=false)]
+        public string SalesTaxNumber { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Salutation
+        /// </summary>
+        [DataMember(Name="salutation", EmitDefaultValue=false)]
+        public string Salutation { get; private set; }
+
+        /// <summary>
+        /// The sorting code identifies the post office at which the post box is located in.
+        /// </summary>
+        /// <value>The sorting code identifies the post office at which the post box is located in.</value>
+        [DataMember(Name="sortingCode", EmitDefaultValue=false)]
+        public string SortingCode { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Street
+        /// </summary>
+        [DataMember(Name="street", EmitDefaultValue=false)]
+        public string Street { get; private set; }
+
+        /// <summary>
+        /// Returns the string presentation of the object
+        /// </summary>
+        /// <returns>String presentation of the object</returns>
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            sb.Append("class SpaceAddress {\n");
+            sb.Append("  City: ").Append(City).Append("\n");
+            sb.Append("  Country: ").Append(Country).Append("\n");
+            sb.Append("  DependentLocality: ").Append(DependentLocality).Append("\n");
+            sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
+            sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");
+            sb.Append("  GivenName: ").Append(GivenName).Append("\n");
+            sb.Append("  OrganizationName: ").Append(OrganizationName).Append("\n");
+            sb.Append("  PostCode: ").Append(PostCode).Append("\n");
+            sb.Append("  PostalState: ").Append(PostalState).Append("\n");
+            sb.Append("  SalesTaxNumber: ").Append(SalesTaxNumber).Append("\n");
+            sb.Append("  Salutation: ").Append(Salutation).Append("\n");
+            sb.Append("  SortingCode: ").Append(SortingCode).Append("\n");
+            sb.Append("  Street: ").Append(Street).Append("\n");
+            sb.Append("}\n");
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Returns the JSON string presentation of the object
+        /// </summary>
+        /// <returns>JSON string presentation of the object</returns>
+        public virtual string ToJson()
+        {
+            return JsonConvert.SerializeObject(this, Formatting.Indented);
+        }
+
+        /// <summary>
+        /// Returns true if objects are equal
+        /// </summary>
+        /// <param name="input">Object to be compared</param>
+        /// <returns>Boolean</returns>
+        public override bool Equals(object input)
+        {
+            return this.Equals(input as SpaceAddress);
+        }
+
+        /// <summary>
+        /// Returns true if SpaceAddress instances are equal
+        /// </summary>
+        /// <param name="input">Instance of SpaceAddress to be compared</param>
+        /// <returns>Boolean</returns>
+        public bool Equals(SpaceAddress input)
+        {
+            if (input == null)
+                return false;
+
+            return 
+                (
+                    this.City == input.City ||
+                    (this.City != null &&
+                    this.City.Equals(input.City))
+                ) && 
+                (
+                    this.Country == input.Country ||
+                    (this.Country != null &&
+                    this.Country.Equals(input.Country))
+                ) && 
+                (
+                    this.DependentLocality == input.DependentLocality ||
+                    (this.DependentLocality != null &&
+                    this.DependentLocality.Equals(input.DependentLocality))
+                ) && 
+                (
+                    this.EmailAddress == input.EmailAddress ||
+                    (this.EmailAddress != null &&
+                    this.EmailAddress.Equals(input.EmailAddress))
+                ) && 
+                (
+                    this.FamilyName == input.FamilyName ||
+                    (this.FamilyName != null &&
+                    this.FamilyName.Equals(input.FamilyName))
+                ) && 
+                (
+                    this.GivenName == input.GivenName ||
+                    (this.GivenName != null &&
+                    this.GivenName.Equals(input.GivenName))
+                ) && 
+                (
+                    this.OrganizationName == input.OrganizationName ||
+                    (this.OrganizationName != null &&
+                    this.OrganizationName.Equals(input.OrganizationName))
+                ) && 
+                (
+                    this.PostCode == input.PostCode ||
+                    (this.PostCode != null &&
+                    this.PostCode.Equals(input.PostCode))
+                ) && 
+                (
+                    this.PostalState == input.PostalState ||
+                    (this.PostalState != null &&
+                    this.PostalState.Equals(input.PostalState))
+                ) && 
+                (
+                    this.SalesTaxNumber == input.SalesTaxNumber ||
+                    (this.SalesTaxNumber != null &&
+                    this.SalesTaxNumber.Equals(input.SalesTaxNumber))
+                ) && 
+                (
+                    this.Salutation == input.Salutation ||
+                    (this.Salutation != null &&
+                    this.Salutation.Equals(input.Salutation))
+                ) && 
+                (
+                    this.SortingCode == input.SortingCode ||
+                    (this.SortingCode != null &&
+                    this.SortingCode.Equals(input.SortingCode))
+                ) && 
+                (
+                    this.Street == input.Street ||
+                    (this.Street != null &&
+                    this.Street.Equals(input.Street))
+                );
+        }
+
+        /// <summary>
+        /// Gets the hash code
+        /// </summary>
+        /// <returns>Hash code</returns>
+        public override int GetHashCode()
+        {
+            unchecked // Overflow is fine, just wrap
+            {
+                int hashCode = 41;
+                if (this.City != null)
+                    hashCode = hashCode * 59 + this.City.GetHashCode();
+                if (this.Country != null)
+                    hashCode = hashCode * 59 + this.Country.GetHashCode();
+                if (this.DependentLocality != null)
+                    hashCode = hashCode * 59 + this.DependentLocality.GetHashCode();
+                if (this.EmailAddress != null)
+                    hashCode = hashCode * 59 + this.EmailAddress.GetHashCode();
+                if (this.FamilyName != null)
+                    hashCode = hashCode * 59 + this.FamilyName.GetHashCode();
+                if (this.GivenName != null)
+                    hashCode = hashCode * 59 + this.GivenName.GetHashCode();
+                if (this.OrganizationName != null)
+                    hashCode = hashCode * 59 + this.OrganizationName.GetHashCode();
+                if (this.PostCode != null)
+                    hashCode = hashCode * 59 + this.PostCode.GetHashCode();
+                if (this.PostalState != null)
+                    hashCode = hashCode * 59 + this.PostalState.GetHashCode();
+                if (this.SalesTaxNumber != null)
+                    hashCode = hashCode * 59 + this.SalesTaxNumber.GetHashCode();
+                if (this.Salutation != null)
+                    hashCode = hashCode * 59 + this.Salutation.GetHashCode();
+                if (this.SortingCode != null)
+                    hashCode = hashCode * 59 + this.SortingCode.GetHashCode();
+                if (this.Street != null)
+                    hashCode = hashCode * 59 + this.Street.GetHashCode();
+                return hashCode;
+            }
+        }
+
+    }
+
+}

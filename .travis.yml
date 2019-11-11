@@ -3,7 +3,7 @@ sudo: false
 mono:
   - latest
 dotnet: 2.1.101	
-solution: Customweb.Wallee.sln
+solution: Wallee.sln
 script:
   - dotnet restore
   - /bin/sh ./build.sh
