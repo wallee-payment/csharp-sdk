@@ -16,18 +16,18 @@
         <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <RootNamespace>Wallee</RootNamespace>
-        <Version>2.0.1</Version>
+        <Version>2.0.3</Version>
         <PackageTags>Wallee;payment;sdk;Payment Integration</PackageTags>
-        <PackageIconUrl>https://app-wallee.com/assets/images/wallee-icon-primary.svg</PackageIconUrl>
+        <PackageIcon>https://app-wallee.com/assets/images/wallee-icon-primary.svg</PackageIcon>
         <PackageLicense>https://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicense>
         <License>https://www.apache.org/licenses/LICENSE-2.0.txt</License>
         <Icon>https://app-wallee.com/assets/images/wallee-icon-primary.svg</Icon>
         <Summary>wallee SDK for C#</Summary>
-        <ReleaseVersion>2.0.1</ReleaseVersion>
+        <ReleaseVersion>2.0.3</ReleaseVersion>
         <SynchReleaseVersion>false</SynchReleaseVersion>
         <Owners>customweb</Owners>
-        <RepositoryUrl>http://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
-        <PackageProjectUrl>http://github.com/wallee-payment/csharp-sdk</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/wallee-payment/csharp-sdk</PackageProjectUrl>
         <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 

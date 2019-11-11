@@ -7,5 +7,7 @@ install:
     - nuget restore Wallee.sln
     - nuget install NUnit.Console -Version 3.9.0 -OutputDirectory testrunner
 script:
-    - dotnet msbuild /t:restore Wallee.sln
-    - dotnet msbuild Wallee.sln /t:build /p:Configuration=Release
+    - msbuild /t:restore Wallee.sln
+    - msbuild Wallee.sln /t:build /p:Configuration=Release
+    - mono testrunner/NUnit.ConsoleRunner.3.9.0/tools/nunit3-console.exe ./src/Wallee.Test/bin/Release/net45/Wallee.Test.dll
+    - nuget push ./src/Wallee/bin/Release/Wallee.2.0.3.nupkg -Source nuget.org -ApiKey $NUGET_API_KEY_WALLEE  -Verbosity detailed
