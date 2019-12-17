@@ -82,12 +82,6 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets TerminalDeviceId
-        /// </summary>
-        [DataMember(Name="terminalDeviceId", EmitDefaultValue=false)]
-        public long? TerminalDeviceId { get; private set; }
-
-        /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name="type", EmitDefaultValue=false)]
@@ -116,7 +110,6 @@ namespace Wallee.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  TerminalDeviceId: ").Append(TerminalDeviceId).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
@@ -194,11 +187,6 @@ namespace Wallee.Model
                     this.State.Equals(input.State))
                 ) && 
                 (
-                    this.TerminalDeviceId == input.TerminalDeviceId ||
-                    (this.TerminalDeviceId != null &&
-                    this.TerminalDeviceId.Equals(input.TerminalDeviceId))
-                ) && 
-                (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
@@ -235,8 +223,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
-                if (this.TerminalDeviceId != null)
-                    hashCode = hashCode * 59 + this.TerminalDeviceId.GetHashCode();
                 if (this.Type != null)
                     hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.Version != null)

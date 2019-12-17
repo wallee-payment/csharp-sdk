@@ -1,41 +1,39 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
-        <TargetFramework>net45</TargetFramework>
+        <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    </PropertyGroup>
+    <PropertyGroup>
         <AssemblyName>Wallee</AssemblyName>
-        <Title>Wallee</Title>
-        <PackageId>Wallee</PackageId>
-        <OutputType>Library</OutputType>
-        <Authors>customweb GmbH</Authors>
-        <Company>customweb GmbH</Company>
         <AssemblyTitle>wallee SDK for C#</AssemblyTitle>
-        <Description>wallee SDK for C#</Description>
-        <Copyright>Apache-2.0</Copyright>
-        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+        <Authors>customweb GmbH</Authors>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <Company>customweb GmbH</Company>
+        <Copyright>Apache-2.0</Copyright>
+        <Description>wallee SDK for C#</Description>
         <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <RootNamespace>Wallee</RootNamespace>
-        <Version>2.0.3</Version>
-        <PackageTags>Wallee;payment;sdk;Payment Integration</PackageTags>
-        <PackageIcon>https://app-wallee.com/assets/images/wallee-icon-primary.svg</PackageIcon>
-        <PackageLicense>https://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicense>
-        <License>https://www.apache.org/licenses/LICENSE-2.0.txt</License>
-        <Icon>https://app-wallee.com/assets/images/wallee-icon-primary.svg</Icon>
-        <Summary>wallee SDK for C#</Summary>
-        <ReleaseVersion>2.0.3</ReleaseVersion>
-        <SynchReleaseVersion>false</SynchReleaseVersion>
-        <Owners>customweb</Owners>
-        <RepositoryUrl>https://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
+        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+        <PackageIconUrl>https://app-wallee.com/assets/images/wallee-icon-primary.svg</PackageIconUrl>
+        <PackageId>Wallee</PackageId>
+        <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicenseUrl>
         <PackageProjectUrl>https://github.com/wallee-payment/csharp-sdk</PackageProjectUrl>
+        <PackageVersion>2.0.4</PackageVersion>
+        <PackageTags>Wallee;payment;sdk;Payment Integration</PackageTags>
+        <OutputType>Library</OutputType>
+        <Owners>customweb</Owners>
+        <ReleaseVersion>2.0.4</ReleaseVersion>
         <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
+        <RootNamespace>Wallee</RootNamespace>
+        <Summary>wallee SDK for C#</Summary>
+        <SynchReleaseVersion>false</SynchReleaseVersion>
+        <Title>Wallee</Title>
     </PropertyGroup>
-
     <ItemGroup>
-            <PackageReference Include="RestSharp" Version="105.1.0"/>
+            <PackageReference Include="RestSharp" Version="106.2.1"/>
         <PackageReference Include="Newtonsoft.Json" Version="11.0.2"/>
         <PackageReference Include="JsonSubTypes" Version="1.3.0"/>
-        <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.2.0" />
+        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
     </ItemGroup>
 
         <ItemGroup>

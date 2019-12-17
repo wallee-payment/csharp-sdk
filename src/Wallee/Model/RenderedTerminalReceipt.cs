@@ -15,15 +15,15 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// RenderedDocument
+    /// RenderedTerminalReceipt
     /// </summary>
     [DataContract]
-    public partial class RenderedDocument :  IEquatable<RenderedDocument>
+    public partial class RenderedTerminalReceipt :  IEquatable<RenderedTerminalReceipt>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RenderedDocument" /> class.
+        /// Initializes a new instance of the <see cref="RenderedTerminalReceipt" /> class.
         /// </summary>
-        public RenderedDocument()
+        public RenderedTerminalReceipt()
         {
         }
 
@@ -34,22 +34,10 @@ namespace Wallee.Model
         public byte[] Data { get; set; }
 
         /// <summary>
-        /// Gets or Sets DocumentTemplateType
-        /// </summary>
-        [DataMember(Name="documentTemplateType", EmitDefaultValue=false)]
-        public long? DocumentTemplateType { get; private set; }
-
-        /// <summary>
         /// Gets or Sets MimeType
         /// </summary>
         [DataMember(Name="mimeType", EmitDefaultValue=false)]
         public string MimeType { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Title
-        /// </summary>
-        [DataMember(Name="title", EmitDefaultValue=false)]
-        public string Title { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -58,11 +46,9 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class RenderedDocument {\n");
+            sb.Append("class RenderedTerminalReceipt {\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
-            sb.Append("  DocumentTemplateType: ").Append(DocumentTemplateType).Append("\n");
             sb.Append("  MimeType: ").Append(MimeType).Append("\n");
-            sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -83,15 +69,15 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as RenderedDocument);
+            return this.Equals(input as RenderedTerminalReceipt);
         }
 
         /// <summary>
-        /// Returns true if RenderedDocument instances are equal
+        /// Returns true if RenderedTerminalReceipt instances are equal
         /// </summary>
-        /// <param name="input">Instance of RenderedDocument to be compared</param>
+        /// <param name="input">Instance of RenderedTerminalReceipt to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(RenderedDocument input)
+        public bool Equals(RenderedTerminalReceipt input)
         {
             if (input == null)
                 return false;
@@ -103,19 +89,9 @@ namespace Wallee.Model
                     this.Data.Equals(input.Data))
                 ) && 
                 (
-                    this.DocumentTemplateType == input.DocumentTemplateType ||
-                    (this.DocumentTemplateType != null &&
-                    this.DocumentTemplateType.Equals(input.DocumentTemplateType))
-                ) && 
-                (
                     this.MimeType == input.MimeType ||
                     (this.MimeType != null &&
                     this.MimeType.Equals(input.MimeType))
-                ) && 
-                (
-                    this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
                 );
         }
 
@@ -130,12 +106,8 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.Data != null)
                     hashCode = hashCode * 59 + this.Data.GetHashCode();
-                if (this.DocumentTemplateType != null)
-                    hashCode = hashCode * 59 + this.DocumentTemplateType.GetHashCode();
                 if (this.MimeType != null)
                     hashCode = hashCode * 59 + this.MimeType.GetHashCode();
-                if (this.Title != null)
-                    hashCode = hashCode * 59 + this.Title.GetHashCode();
                 return hashCode;
             }
         }

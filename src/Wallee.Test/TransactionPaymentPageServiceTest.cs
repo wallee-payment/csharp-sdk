@@ -102,7 +102,6 @@ namespace Wallee.Test
             } catch (ApiException e) {
                 Console.WriteLine(e.ToString());
             }
-            Console.WriteLine(paymentPageUrl);
             Assert.IsTrue(paymentPageUrl.Contains("http"));
         }
     }
