@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractWebhookUrlUpdate" /> class.
@@ -36,7 +36,7 @@ namespace Wallee.Model
         /// The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 
 
@@ -44,7 +44,7 @@ namespace Wallee.Model
         /// The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter&#x3D;value.
         /// </summary>
         /// <value>The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter&#x3D;value.</value>
-        [DataMember(Name="url", EmitDefaultValue=false)]
+        [DataMember(Name="url", EmitDefaultValue=true)]
         public string Url { get; set; }
 
         /// <summary>

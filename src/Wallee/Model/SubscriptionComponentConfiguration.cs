@@ -31,13 +31,13 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Component
         /// </summary>
-        [DataMember(Name="component", EmitDefaultValue=false)]
+        [DataMember(Name="component", EmitDefaultValue=true)]
         public long? Component { get; private set; }
 
         /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
-        [DataMember(Name="quantity", EmitDefaultValue=false)]
+        [DataMember(Name="quantity", EmitDefaultValue=true)]
         public decimal? Quantity { get; private set; }
 
         /// <summary>

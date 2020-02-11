@@ -18,8 +18,8 @@ The wallee C# library wraps around the wallee API. This library facilitates your
 <a name="dependencies"></a>
 ## Dependencies
 - [RestSharp](https://www.nuget.org/packages/RestSharp) - 106.2.1
-- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 11.0.2
-- [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 1.3.0
+- [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 12.0.2
+- [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 1.6.0
 
 The DLLs included in the package may not be the latest version. We recommend using [NuGet](https://docs.nuget.org/consume/installing-nuget) to obtain the latest version of the packages:
 ```
@@ -34,13 +34,13 @@ NOTE: RestSharp versions greater than 106.2.1 have a bug which causes file uploa
 ## Installation
 ```
 # Package Manager
-Install-Package Wallee -Version 2.0.4
+Install-Package Wallee -Version 2.0.5
 # .NET CLI
-dotnet add package Wallee --version 2.0.4
+dotnet add package Wallee --version 2.0.5
 # Paket CLI
-paket add Wallee --version 2.0.4
+paket add Wallee --version 2.0.5
 # PackageReference
-<PackageReference Include="Wallee" Version="2.0.4" />
+<PackageReference Include="Wallee" Version="2.0.5" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:

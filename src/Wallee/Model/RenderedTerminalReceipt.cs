@@ -30,13 +30,13 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name="data", EmitDefaultValue=false)]
+        [DataMember(Name="data", EmitDefaultValue=true)]
         public byte[] Data { get; set; }
 
         /// <summary>
         /// Gets or Sets MimeType
         /// </summary>
-        [DataMember(Name="mimeType", EmitDefaultValue=false)]
+        [DataMember(Name="mimeType", EmitDefaultValue=true)]
         public string MimeType { get; private set; }
 
         /// <summary>

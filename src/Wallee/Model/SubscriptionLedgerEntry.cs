@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public SubscriptionLedgerEntryState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionLedgerEntry" /> class.
@@ -36,98 +36,98 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AggregatedTaxRate
         /// </summary>
-        [DataMember(Name="aggregatedTaxRate", EmitDefaultValue=false)]
+        [DataMember(Name="aggregatedTaxRate", EmitDefaultValue=true)]
         public decimal? AggregatedTaxRate { get; private set; }
 
         /// <summary>
         /// Gets or Sets AmountExcludingTax
         /// </summary>
-        [DataMember(Name="amountExcludingTax", EmitDefaultValue=false)]
+        [DataMember(Name="amountExcludingTax", EmitDefaultValue=true)]
         public decimal? AmountExcludingTax { get; private set; }
 
         /// <summary>
         /// Gets or Sets AmountIncludingTax
         /// </summary>
-        [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
+        [DataMember(Name="amountIncludingTax", EmitDefaultValue=true)]
         public decimal? AmountIncludingTax { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name="createdBy", EmitDefaultValue=true)]
         public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
         /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
-        [DataMember(Name="quantity", EmitDefaultValue=false)]
+        [DataMember(Name="quantity", EmitDefaultValue=true)]
         public decimal? Quantity { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets SubscriptionVersion
         /// </summary>
-        [DataMember(Name="subscriptionVersion", EmitDefaultValue=false)]
+        [DataMember(Name="subscriptionVersion", EmitDefaultValue=true)]
         public long? SubscriptionVersion { get; private set; }
 
         /// <summary>
         /// Gets or Sets TaxAmount
         /// </summary>
-        [DataMember(Name="taxAmount", EmitDefaultValue=false)]
+        [DataMember(Name="taxAmount", EmitDefaultValue=true)]
         public decimal? TaxAmount { get; private set; }
 
         /// <summary>
         /// Gets or Sets Taxes
         /// </summary>
-        [DataMember(Name="taxes", EmitDefaultValue=false)]
+        [DataMember(Name="taxes", EmitDefaultValue=true)]
         public List<Tax> Taxes { get; private set; }
 
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name="title", EmitDefaultValue=false)]
+        [DataMember(Name="title", EmitDefaultValue=true)]
         public string Title { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

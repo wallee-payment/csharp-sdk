@@ -32,28 +32,28 @@ namespace Wallee.Model
         /// The code of the state identifies the state. The code is typically used within addresses. Some countries may not provide a code. For those the field is null.
         /// </summary>
         /// <value>The code of the state identifies the state. The code is typically used within addresses. Some countries may not provide a code. For those the field is null.</value>
-        [DataMember(Name="code", EmitDefaultValue=false)]
+        [DataMember(Name="code", EmitDefaultValue=true)]
         public string Code { get; private set; }
 
         /// <summary>
         /// The country code in ISO two letter format (e.g. UK, DE, CH, US).
         /// </summary>
         /// <value>The country code in ISO two letter format (e.g. UK, DE, CH, US).</value>
-        [DataMember(Name="countryCode", EmitDefaultValue=false)]
+        [DataMember(Name="countryCode", EmitDefaultValue=true)]
         public string CountryCode { get; private set; }
 
         /// <summary>
         /// The ID of the state corresponds to the subdivision identifier defined in ISO 3166-2. The format consists of the country code followed by a dash and a subdivision identifier.
         /// </summary>
         /// <value>The ID of the state corresponds to the subdivision identifier defined in ISO 3166-2. The format consists of the country code followed by a dash and a subdivision identifier.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public string Id { get; private set; }
 
         /// <summary>
         /// The name is a human readable label of the state in the language of the region.
         /// </summary>
         /// <value>The name is a human readable label of the state in the language of the region.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; private set; }
 
         /// <summary>

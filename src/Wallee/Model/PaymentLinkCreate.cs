@@ -53,21 +53,21 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public CreationEntityState State { get; set; }
 
         /// <summary>
         /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
         /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
         /// The protection mode determines if the payment link is protected against tampering and in what way.
         /// </summary>
         /// <value>The protection mode determines if the payment link is protected against tampering and in what way.</value>
-        [DataMember(Name="protectionMode", EmitDefaultValue=false)]
+        [DataMember(Name="protectionMode", EmitDefaultValue=true)]
         public PaymentLinkProtectionMode ProtectionMode { get; set; }
 
         /// <summary>

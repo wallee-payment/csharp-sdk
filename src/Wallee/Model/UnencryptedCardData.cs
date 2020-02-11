@@ -32,28 +32,28 @@ namespace Wallee.Model
         /// The card holder name is the name printed onto the card. It identifies the person who owns the card.
         /// </summary>
         /// <value>The card holder name is the name printed onto the card. It identifies the person who owns the card.</value>
-        [DataMember(Name="cardHolderName", EmitDefaultValue=false)]
+        [DataMember(Name="cardHolderName", EmitDefaultValue=true)]
         public string CardHolderName { get; private set; }
 
         /// <summary>
         /// The card verification code (CVC) is a 3 to 4 digit code typically printed on the back of the card. It helps to ensure that the card holder is authorizing the transaction. For card not-present transactions this field is optional.
         /// </summary>
         /// <value>The card verification code (CVC) is a 3 to 4 digit code typically printed on the back of the card. It helps to ensure that the card holder is authorizing the transaction. For card not-present transactions this field is optional.</value>
-        [DataMember(Name="cardVerificationCode", EmitDefaultValue=false)]
+        [DataMember(Name="cardVerificationCode", EmitDefaultValue=true)]
         public string CardVerificationCode { get; private set; }
 
         /// <summary>
         /// The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).
         /// </summary>
         /// <value>The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).</value>
-        [DataMember(Name="expiryDate", EmitDefaultValue=false)]
+        [DataMember(Name="expiryDate", EmitDefaultValue=true)]
         public string ExpiryDate { get; private set; }
 
         /// <summary>
         /// The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card.
         /// </summary>
         /// <value>The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card.</value>
-        [DataMember(Name="primaryAccountNumber", EmitDefaultValue=false)]
+        [DataMember(Name="primaryAccountNumber", EmitDefaultValue=true)]
         public string PrimaryAccountNumber { get; private set; }
 
         /// <summary>

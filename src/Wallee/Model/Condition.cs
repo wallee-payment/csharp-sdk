@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Condition" /> class.
@@ -37,35 +37,35 @@ namespace Wallee.Model
         /// The selected condition type defines how the configuration is applied to the transactions.
         /// </summary>
         /// <value>The selected condition type defines how the configuration is applied to the transactions.</value>
-        [DataMember(Name="conditionType", EmitDefaultValue=false)]
+        [DataMember(Name="conditionType", EmitDefaultValue=true)]
         public long? ConditionType { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The condition name is used internally to identify the condition. For example the name is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The condition name is used internally to identify the condition. For example the name is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
 
@@ -73,7 +73,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

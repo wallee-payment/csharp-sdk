@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name="type", EmitDefaultValue=true)]
         public RefundType Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="RefundCreate" /> class.
@@ -34,9 +34,8 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="RefundCreate" /> class.
         /// </summary>
         /// <param name="externalId">The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction. (required).</param>
-        /// <param name="reductions">reductions (required).</param>
         /// <param name="type">type (required).</param>
-        public RefundCreate(string externalId, List<LineItemReductionCreate> reductions, RefundType type)
+        public RefundCreate(string externalId, RefundType type)
         {
             // to ensure "externalId" is required (not null)
             if (externalId == null)
@@ -44,12 +43,6 @@ namespace Wallee.Model
                 throw new InvalidDataException("externalId is a required property for RefundCreate and cannot be null");
             }
             this.ExternalId = externalId;
-            // to ensure "reductions" is required (not null)
-            if (reductions == null)
-            {
-                throw new InvalidDataException("reductions is a required property for RefundCreate and cannot be null");
-            }
-            this.Reductions = reductions;
             // to ensure "type" is required (not null)
             if (type == null)
             {
@@ -59,34 +52,40 @@ namespace Wallee.Model
         }
 
         /// <summary>
+        /// Gets or Sets Amount
+        /// </summary>
+        [DataMember(Name="amount", EmitDefaultValue=true)]
+        public decimal? Amount { get; set; }
+
+        /// <summary>
         /// Gets or Sets Completion
         /// </summary>
-        [DataMember(Name="completion", EmitDefaultValue=false)]
+        [DataMember(Name="completion", EmitDefaultValue=true)]
         public long? Completion { get; set; }
 
         /// <summary>
         /// The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.
         /// </summary>
         /// <value>The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
         /// Gets or Sets MerchantReference
         /// </summary>
-        [DataMember(Name="merchantReference", EmitDefaultValue=false)]
+        [DataMember(Name="merchantReference", EmitDefaultValue=true)]
         public string MerchantReference { get; set; }
 
         /// <summary>
         /// Gets or Sets Reductions
         /// </summary>
-        [DataMember(Name="reductions", EmitDefaultValue=false)]
+        [DataMember(Name="reductions", EmitDefaultValue=true)]
         public List<LineItemReductionCreate> Reductions { get; set; }
 
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=false)]
+        [DataMember(Name="transaction", EmitDefaultValue=true)]
         public long? Transaction { get; set; }
 
 
@@ -98,6 +97,7 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class RefundCreate {\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  Completion: ").Append(Completion).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  MerchantReference: ").Append(MerchantReference).Append("\n");
@@ -139,6 +139,11 @@ namespace Wallee.Model
 
             return 
                 (
+                    this.Amount == input.Amount ||
+                    (this.Amount != null &&
+                    this.Amount.Equals(input.Amount))
+                ) && 
+                (
                     this.Completion == input.Completion ||
                     (this.Completion != null &&
                     this.Completion.Equals(input.Completion))
@@ -179,6 +184,8 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Amount != null)
+                    hashCode = hashCode * 59 + this.Amount.GetHashCode();
                 if (this.Completion != null)
                     hashCode = hashCode * 59 + this.Completion.GetHashCode();
                 if (this.ExternalId != null)

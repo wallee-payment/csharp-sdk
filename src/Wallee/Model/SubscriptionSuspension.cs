@@ -24,18 +24,18 @@ namespace Wallee.Model
         /// When the suspension reaches the planned end date the end action will be carried out. This action is only executed when the suspension is ended automatically based on the end date.
         /// </summary>
         /// <value>When the suspension reaches the planned end date the end action will be carried out. This action is only executed when the suspension is ended automatically based on the end date.</value>
-        [DataMember(Name="endAction", EmitDefaultValue=false)]
+        [DataMember(Name="endAction", EmitDefaultValue=true)]
         public SubscriptionSuspensionAction? EndAction { get; set; }
         /// <summary>
         /// The suspension reason indicates why a suspension has been created.
         /// </summary>
         /// <value>The suspension reason indicates why a suspension has been created.</value>
-        [DataMember(Name="reason", EmitDefaultValue=false)]
+        [DataMember(Name="reason", EmitDefaultValue=true)]
         public SubscriptionSuspensionReason? Reason { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public SubscriptionSuspensionState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionSuspension" /> class.
@@ -49,13 +49,13 @@ namespace Wallee.Model
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets EffectiveEndDate
         /// </summary>
-        [DataMember(Name="effectiveEndDate", EmitDefaultValue=false)]
+        [DataMember(Name="effectiveEndDate", EmitDefaultValue=true)]
         public DateTime? EffectiveEndDate { get; private set; }
 
 
@@ -63,47 +63,47 @@ namespace Wallee.Model
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.
         /// </summary>
         /// <value>The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.</value>
-        [DataMember(Name="note", EmitDefaultValue=false)]
+        [DataMember(Name="note", EmitDefaultValue=true)]
         public string Note { get; private set; }
 
         /// <summary>
         /// Gets or Sets PeriodBill
         /// </summary>
-        [DataMember(Name="periodBill", EmitDefaultValue=false)]
+        [DataMember(Name="periodBill", EmitDefaultValue=true)]
         public long? PeriodBill { get; private set; }
 
         /// <summary>
         /// The planned end date of the suspension identifies the date on which the suspension will be ended automatically.
         /// </summary>
         /// <value>The planned end date of the suspension identifies the date on which the suspension will be ended automatically.</value>
-        [DataMember(Name="plannedEndDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedEndDate", EmitDefaultValue=true)]
         public DateTime? PlannedEndDate { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
 
@@ -111,14 +111,14 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Subscription
         /// </summary>
-        [DataMember(Name="subscription", EmitDefaultValue=false)]
+        [DataMember(Name="subscription", EmitDefaultValue=true)]
         public long? Subscription { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

@@ -34,137 +34,137 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Charge
         /// </summary>
-        [DataMember(Name="charge", EmitDefaultValue=false)]
+        [DataMember(Name="charge", EmitDefaultValue=true)]
         public Charge Charge { get; private set; }
 
         /// <summary>
         /// Gets or Sets ConnectorConfiguration
         /// </summary>
-        [DataMember(Name="connectorConfiguration", EmitDefaultValue=false)]
+        [DataMember(Name="connectorConfiguration", EmitDefaultValue=true)]
         public PaymentConnectorConfiguration ConnectorConfiguration { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Environment
         /// </summary>
-        [DataMember(Name="environment", EmitDefaultValue=false)]
+        [DataMember(Name="environment", EmitDefaultValue=true)]
         public ChargeAttemptEnvironment Environment { get; private set; }
 
         /// <summary>
         /// Gets or Sets FailedOn
         /// </summary>
-        [DataMember(Name="failedOn", EmitDefaultValue=false)]
+        [DataMember(Name="failedOn", EmitDefaultValue=true)]
         public DateTime? FailedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets FailureReason
         /// </summary>
-        [DataMember(Name="failureReason", EmitDefaultValue=false)]
+        [DataMember(Name="failureReason", EmitDefaultValue=true)]
         public FailureReason FailureReason { get; private set; }
 
         /// <summary>
         /// Gets or Sets InitializingTokenVersion
         /// </summary>
-        [DataMember(Name="initializingTokenVersion", EmitDefaultValue=false)]
+        [DataMember(Name="initializingTokenVersion", EmitDefaultValue=true)]
         public bool? InitializingTokenVersion { get; private set; }
 
         /// <summary>
         /// Gets or Sets Invocation
         /// </summary>
-        [DataMember(Name="invocation", EmitDefaultValue=false)]
+        [DataMember(Name="invocation", EmitDefaultValue=true)]
         public ConnectorInvocation Invocation { get; private set; }
 
         /// <summary>
         /// Gets or Sets Labels
         /// </summary>
-        [DataMember(Name="labels", EmitDefaultValue=false)]
+        [DataMember(Name="labels", EmitDefaultValue=true)]
         public List<Label> Labels { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; private set; }
 
         /// <summary>
         /// Gets or Sets NextUpdateOn
         /// </summary>
-        [DataMember(Name="nextUpdateOn", EmitDefaultValue=false)]
+        [DataMember(Name="nextUpdateOn", EmitDefaultValue=true)]
         public DateTime? NextUpdateOn { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets RedirectionUrl
         /// </summary>
-        [DataMember(Name="redirectionUrl", EmitDefaultValue=false)]
+        [DataMember(Name="redirectionUrl", EmitDefaultValue=true)]
         public string RedirectionUrl { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
         public long? SpaceViewId { get; private set; }
 
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public ChargeAttemptState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets SucceededOn
         /// </summary>
-        [DataMember(Name="succeededOn", EmitDefaultValue=false)]
+        [DataMember(Name="succeededOn", EmitDefaultValue=true)]
         public DateTime? SucceededOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Terminal
         /// </summary>
-        [DataMember(Name="terminal", EmitDefaultValue=false)]
+        [DataMember(Name="terminal", EmitDefaultValue=true)]
         public PaymentTerminal Terminal { get; private set; }
 
         /// <summary>
         /// Gets or Sets TimeZone
         /// </summary>
-        [DataMember(Name="timeZone", EmitDefaultValue=false)]
+        [DataMember(Name="timeZone", EmitDefaultValue=true)]
         public string TimeZone { get; private set; }
 
         /// <summary>
         /// Gets or Sets TimeoutOn
         /// </summary>
-        [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
+        [DataMember(Name="timeoutOn", EmitDefaultValue=true)]
         public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets TokenVersion
         /// </summary>
-        [DataMember(Name="tokenVersion", EmitDefaultValue=false)]
+        [DataMember(Name="tokenVersion", EmitDefaultValue=true)]
         public TokenVersion TokenVersion { get; private set; }
 
         /// <summary>
         /// The user failure message contains the message for the user in case the attempt failed. The message is localized into the language specified on the transaction.
         /// </summary>
         /// <value>The user failure message contains the message for the user in case the attempt failed. The message is localized into the language specified on the transaction.</value>
-        [DataMember(Name="userFailureMessage", EmitDefaultValue=false)]
+        [DataMember(Name="userFailureMessage", EmitDefaultValue=true)]
         public string UserFailureMessage { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

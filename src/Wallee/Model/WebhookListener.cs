@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="WebhookListener" /> class.
@@ -37,56 +37,56 @@ namespace Wallee.Model
         /// The listener listens on state changes of the entity linked with the listener.
         /// </summary>
         /// <value>The listener listens on state changes of the entity linked with the listener.</value>
-        [DataMember(Name="entity", EmitDefaultValue=false)]
+        [DataMember(Name="entity", EmitDefaultValue=true)]
         public long? Entity { get; private set; }
 
         /// <summary>
         /// The target state identifies the state into which entities need to move into to trigger the webhook listener.
         /// </summary>
         /// <value>The target state identifies the state into which entities need to move into to trigger the webhook listener.</value>
-        [DataMember(Name="entityStates", EmitDefaultValue=false)]
+        [DataMember(Name="entityStates", EmitDefaultValue=true)]
         public List<string> EntityStates { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The identity which will be used to sign messages sent by this listener.
         /// </summary>
         /// <value>The identity which will be used to sign messages sent by this listener.</value>
-        [DataMember(Name="identity", EmitDefaultValue=false)]
+        [DataMember(Name="identity", EmitDefaultValue=true)]
         public WebhookIdentity Identity { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; private set; }
 
         /// <summary>
         /// Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.
         /// </summary>
         /// <value>Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.</value>
-        [DataMember(Name="notifyEveryChange", EmitDefaultValue=false)]
+        [DataMember(Name="notifyEveryChange", EmitDefaultValue=true)]
         public bool? NotifyEveryChange { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
 
@@ -94,14 +94,14 @@ namespace Wallee.Model
         /// The URL which is invoked by the listener to notify the application about the event.
         /// </summary>
         /// <value>The URL which is invoked by the listener to notify the application about the event.</value>
-        [DataMember(Name="url", EmitDefaultValue=false)]
+        [DataMember(Name="url", EmitDefaultValue=true)]
         public WebhookUrl Url { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

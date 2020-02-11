@@ -32,28 +32,28 @@ namespace Wallee.Model
         /// The example post codes allow the user to understand what we expect here.
         /// </summary>
         /// <value>The example post codes allow the user to understand what we expect here.</value>
-        [DataMember(Name="postCodeExamples", EmitDefaultValue=false)]
+        [DataMember(Name="postCodeExamples", EmitDefaultValue=true)]
         public List<string> PostCodeExamples { get; private set; }
 
         /// <summary>
         /// The post code regex is a regular expression which can validates the input of the post code.
         /// </summary>
         /// <value>The post code regex is a regular expression which can validates the input of the post code.</value>
-        [DataMember(Name="postCodeRegex", EmitDefaultValue=false)]
+        [DataMember(Name="postCodeRegex", EmitDefaultValue=true)]
         public string PostCodeRegex { get; private set; }
 
         /// <summary>
         /// The required fields indicate what fields are required within an address to comply with the address format.
         /// </summary>
         /// <value>The required fields indicate what fields are required within an address to comply with the address format.</value>
-        [DataMember(Name="requiredFields", EmitDefaultValue=false)]
+        [DataMember(Name="requiredFields", EmitDefaultValue=true)]
         public List<RestAddressFormatField> RequiredFields { get; private set; }
 
         /// <summary>
         /// The used fields indicate what fields are used within this address format.
         /// </summary>
         /// <value>The used fields indicate what fields are used within this address format.</value>
-        [DataMember(Name="usedFields", EmitDefaultValue=false)]
+        [DataMember(Name="usedFields", EmitDefaultValue=true)]
         public List<RestAddressFormatField> UsedFields { get; private set; }
 
         /// <summary>

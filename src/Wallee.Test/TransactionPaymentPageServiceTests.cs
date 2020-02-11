@@ -1,7 +1,10 @@
 using System;
-using System.Configuration;
+using System.IO;
 using System.Collections.Generic;
-
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Reflection;
+using RestSharp;
 using NUnit.Framework;
 
 using Wallee.Model;
@@ -10,31 +13,35 @@ using Wallee.Client;
 
 namespace Wallee.Test
 {
-
     /// <summary>
-    ///  Class for testing TransactionService.
+    ///  Class for testing TransactionPaymentPageService
     /// </summary>
+    /// <remarks>
+    /// Please update the test case below to test the API endpoint.
+    /// </remarks>
     [TestFixture]
-    public class TransactionServiceTest
+    public class TransactionPaymentPageServiceTests
     {
         private TransactionService transactionService;
+        private TransactionPaymentPageService transactionPaymentPageService;
         private TransactionCreate transactionCreate;
         private Configuration configuration;
         private long spaceId;
         private string applicationUserID;
         private string authenticationKey;
-        private ApiResponse<Transaction> transaction;
+        private Transaction transaction;
 
         /// <summary>
-        /// Setup before each unit test.
+        /// Setup before each unit test
         /// </summary>
         [SetUp]
-        public void SetUpTest()
+        public void Init()
         {
             this.spaceId = 405;
             this.authenticationKey = "FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=";
             this.applicationUserID = "512";
             this.configuration = new Configuration(this.applicationUserID, this.authenticationKey);
+            this.transactionPaymentPageService = new TransactionPaymentPageService(configuration);
             this.transactionService = new TransactionService(configuration);
             this.CreateTransaction();
         }
@@ -81,7 +88,7 @@ namespace Wallee.Test
 
             try
             {
-                this.transaction = this.transactionService.CreateWithHttpInfo(
+                this.transaction = this.transactionService.Create(
                     this.spaceId,
                     this.transactionCreate
                 );
@@ -92,13 +99,34 @@ namespace Wallee.Test
         }
 
         /// <summary>
-        /// Test transaction creation.
+        /// Clean up after each unit test
+        /// </summary>
+        [TearDown]
+        public void Cleanup()
+        {
+
+        }
+
+        /// <summary>
+        /// Test an transactionPaymentPageService of TransactionPaymentPageService
         /// </summary>
         [Test]
-        public void TestTransactionCreate()
+        public void InstanceTest()
         {
-            Assert.AreEqual(200, this.transaction.StatusCode);
-            Assert.AreEqual(this.spaceId, this.transaction.Data.LinkedSpaceId);
+            Assert.IsInstanceOf<TransactionPaymentPageService>(this.transactionPaymentPageService, "transactionPaymentPageService is a TransactionPaymentPageService");
         }
+
+        
+        /// <summary>
+        /// Test PaymentPageUrl
+        /// </summary>
+        [Test]
+        public void PaymentPageUrlTest()
+        {
+            var response = this.transactionPaymentPageService.PaymentPageUrl(this.spaceId, this.transaction.Id);
+            Assert.IsInstanceOf<string> (response, "response is string");
+        }
+        
     }
+
 }

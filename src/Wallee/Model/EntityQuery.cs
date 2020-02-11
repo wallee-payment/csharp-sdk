@@ -31,35 +31,35 @@ namespace Wallee.Model
         /// The filter node defines the root filter node of the query. The root node may contain multiple sub nodes with different filters in it.
         /// </summary>
         /// <value>The filter node defines the root filter node of the query. The root node may contain multiple sub nodes with different filters in it.</value>
-        [DataMember(Name="filter", EmitDefaultValue=false)]
+        [DataMember(Name="filter", EmitDefaultValue=true)]
         public EntityQueryFilter Filter { get; set; }
 
         /// <summary>
         /// The language is applied to the ordering of the entities returned. Some entity fields are language dependent and hence the language is required to order them.
         /// </summary>
         /// <value>The language is applied to the ordering of the entities returned. Some entity fields are language dependent and hence the language is required to order them.</value>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; set; }
 
         /// <summary>
         /// The number of entities defines how many entities should be returned. There is a maximum of 100 entities.
         /// </summary>
         /// <value>The number of entities defines how many entities should be returned. There is a maximum of 100 entities.</value>
-        [DataMember(Name="numberOfEntities", EmitDefaultValue=false)]
+        [DataMember(Name="numberOfEntities", EmitDefaultValue=true)]
         public int? NumberOfEntities { get; set; }
 
         /// <summary>
         /// The order bys allows to define the ordering of the entities returned by the search.
         /// </summary>
         /// <value>The order bys allows to define the ordering of the entities returned by the search.</value>
-        [DataMember(Name="orderBys", EmitDefaultValue=false)]
+        [DataMember(Name="orderBys", EmitDefaultValue=true)]
         public List<EntityQueryOrderBy> OrderBys { get; set; }
 
         /// <summary>
         /// The &#39;starting entity&#39; defines the entity number at which the returned result should start. The entity number is the consecutive number of the entity as returned and it is not the entity id.
         /// </summary>
         /// <value>The &#39;starting entity&#39; defines the entity number at which the returned result should start. The entity number is the consecutive number of the entity as returned and it is not the entity id.</value>
-        [DataMember(Name="startingEntity", EmitDefaultValue=false)]
+        [DataMember(Name="startingEntity", EmitDefaultValue=true)]
         public int? StartingEntity { get; set; }
 
         /// <summary>

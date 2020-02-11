@@ -23,17 +23,17 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ProcessingType
         /// </summary>
-        [DataMember(Name="processingType", EmitDefaultValue=false)]
+        [DataMember(Name="processingType", EmitDefaultValue=true)]
         public SubscriptionChargeProcessingType? ProcessingType { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public SubscriptionChargeState? State { get; set; }
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name="type", EmitDefaultValue=true)]
         public SubscriptionChargeType? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionCharge" /> class.
@@ -46,85 +46,85 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets CreatedOn
         /// </summary>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets DiscardedBy
         /// </summary>
-        [DataMember(Name="discardedBy", EmitDefaultValue=false)]
+        [DataMember(Name="discardedBy", EmitDefaultValue=true)]
         public long? DiscardedBy { get; private set; }
 
         /// <summary>
         /// Gets or Sets DiscardedOn
         /// </summary>
-        [DataMember(Name="discardedOn", EmitDefaultValue=false)]
+        [DataMember(Name="discardedOn", EmitDefaultValue=true)]
         public DateTime? DiscardedOn { get; private set; }
 
         /// <summary>
         /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
         /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// Gets or Sets FailedOn
         /// </summary>
-        [DataMember(Name="failedOn", EmitDefaultValue=false)]
+        [DataMember(Name="failedOn", EmitDefaultValue=true)]
         public DateTime? FailedOn { get; private set; }
 
         /// <summary>
         /// The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
         /// </summary>
         /// <value>The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.</value>
-        [DataMember(Name="failedUrl", EmitDefaultValue=false)]
+        [DataMember(Name="failedUrl", EmitDefaultValue=true)]
         public string FailedUrl { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; private set; }
 
         /// <summary>
         /// Gets or Sets LedgerEntries
         /// </summary>
-        [DataMember(Name="ledgerEntries", EmitDefaultValue=false)]
+        [DataMember(Name="ledgerEntries", EmitDefaultValue=true)]
         public List<SubscriptionLedgerEntry> LedgerEntries { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets PlannedExecutionDate
         /// </summary>
-        [DataMember(Name="plannedExecutionDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedExecutionDate", EmitDefaultValue=true)]
         public DateTime? PlannedExecutionDate { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets Reference
         /// </summary>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
+        [DataMember(Name="reference", EmitDefaultValue=true)]
         public string Reference { get; private set; }
 
 
@@ -132,26 +132,26 @@ namespace Wallee.Model
         /// The field subscription indicates the subscription to which the charge belongs to.
         /// </summary>
         /// <value>The field subscription indicates the subscription to which the charge belongs to.</value>
-        [DataMember(Name="subscription", EmitDefaultValue=false)]
+        [DataMember(Name="subscription", EmitDefaultValue=true)]
         public Subscription Subscription { get; private set; }
 
         /// <summary>
         /// Gets or Sets SucceedOn
         /// </summary>
-        [DataMember(Name="succeedOn", EmitDefaultValue=false)]
+        [DataMember(Name="succeedOn", EmitDefaultValue=true)]
         public DateTime? SucceedOn { get; private set; }
 
         /// <summary>
         /// The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
         /// </summary>
         /// <value>The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.</value>
-        [DataMember(Name="successUrl", EmitDefaultValue=false)]
+        [DataMember(Name="successUrl", EmitDefaultValue=true)]
         public string SuccessUrl { get; private set; }
 
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=false)]
+        [DataMember(Name="transaction", EmitDefaultValue=true)]
         public Transaction Transaction { get; private set; }
 
 
@@ -159,7 +159,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

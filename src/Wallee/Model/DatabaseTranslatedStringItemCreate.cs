@@ -42,13 +42,13 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; set; }
 
         /// <summary>
         /// Gets or Sets Translation
         /// </summary>
-        [DataMember(Name="translation", EmitDefaultValue=false)]
+        [DataMember(Name="translation", EmitDefaultValue=true)]
         public string Translation { get; set; }
 
         /// <summary>

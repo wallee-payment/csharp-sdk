@@ -32,21 +32,21 @@ namespace Wallee.Model
         /// Date when an error has occurred.
         /// </summary>
         /// <value>Date when an error has occurred.</value>
-        [DataMember(Name="date", EmitDefaultValue=false)]
+        [DataMember(Name="date", EmitDefaultValue=true)]
         public string Date { get; private set; }
 
         /// <summary>
         /// Unique identifier of an error.
         /// </summary>
         /// <value>Unique identifier of an error.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public string Id { get; private set; }
 
         /// <summary>
         /// This message describes an error.
         /// </summary>
         /// <value>This message describes an error.</value>
-        [DataMember(Name="message", EmitDefaultValue=false)]
+        [DataMember(Name="message", EmitDefaultValue=true)]
         public string Message { get; private set; }
 
         /// <summary>

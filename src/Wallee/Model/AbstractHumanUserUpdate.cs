@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractHumanUserUpdate" /> class.
@@ -36,34 +36,34 @@ namespace Wallee.Model
         /// The email address of the user.
         /// </summary>
         /// <value>The email address of the user.</value>
-        [DataMember(Name="emailAddress", EmitDefaultValue=false)]
+        [DataMember(Name="emailAddress", EmitDefaultValue=true)]
         public string EmailAddress { get; set; }
 
         /// <summary>
         /// The first name of the user.
         /// </summary>
         /// <value>The first name of the user.</value>
-        [DataMember(Name="firstname", EmitDefaultValue=false)]
+        [DataMember(Name="firstname", EmitDefaultValue=true)]
         public string Firstname { get; set; }
 
         /// <summary>
         /// The preferred language of the user.
         /// </summary>
         /// <value>The preferred language of the user.</value>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; set; }
 
         /// <summary>
         /// The last name of the user.
         /// </summary>
         /// <value>The last name of the user.</value>
-        [DataMember(Name="lastname", EmitDefaultValue=false)]
+        [DataMember(Name="lastname", EmitDefaultValue=true)]
         public string Lastname { get; set; }
 
         /// <summary>
         /// Gets or Sets MobilePhoneNumber
         /// </summary>
-        [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=false)]
+        [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=true)]
         public string MobilePhoneNumber { get; set; }
 
 
@@ -71,14 +71,14 @@ namespace Wallee.Model
         /// The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.
         /// </summary>
         /// <value>The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.</value>
-        [DataMember(Name="timeZone", EmitDefaultValue=false)]
+        [DataMember(Name="timeZone", EmitDefaultValue=true)]
         public string TimeZone { get; set; }
 
         /// <summary>
         /// Defines whether two-factor authentication is enabled for this user.
         /// </summary>
         /// <value>Defines whether two-factor authentication is enabled for this user.</value>
-        [DataMember(Name="twoFactorEnabled", EmitDefaultValue=false)]
+        [DataMember(Name="twoFactorEnabled", EmitDefaultValue=true)]
         public bool? TwoFactorEnabled { get; set; }
 
         /// <summary>

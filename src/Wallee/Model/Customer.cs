@@ -32,71 +32,71 @@ namespace Wallee.Model
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets CustomerId
         /// </summary>
-        [DataMember(Name="customerId", EmitDefaultValue=false)]
+        [DataMember(Name="customerId", EmitDefaultValue=true)]
         public string CustomerId { get; private set; }
 
         /// <summary>
         /// Gets or Sets EmailAddress
         /// </summary>
-        [DataMember(Name="emailAddress", EmitDefaultValue=false)]
+        [DataMember(Name="emailAddress", EmitDefaultValue=true)]
         public string EmailAddress { get; private set; }
 
         /// <summary>
         /// Gets or Sets FamilyName
         /// </summary>
-        [DataMember(Name="familyName", EmitDefaultValue=false)]
+        [DataMember(Name="familyName", EmitDefaultValue=true)]
         public string FamilyName { get; private set; }
 
         /// <summary>
         /// Gets or Sets GivenName
         /// </summary>
-        [DataMember(Name="givenName", EmitDefaultValue=false)]
+        [DataMember(Name="givenName", EmitDefaultValue=true)]
         public string GivenName { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Meta data allow to store additional data along the object.
         /// </summary>
         /// <value>Meta data allow to store additional data along the object.</value>
-        [DataMember(Name="metaData", EmitDefaultValue=false)]
+        [DataMember(Name="metaData", EmitDefaultValue=true)]
         public Dictionary<string, string> MetaData { get; private set; }
 
         /// <summary>
         /// Gets or Sets PreferredCurrency
         /// </summary>
-        [DataMember(Name="preferredCurrency", EmitDefaultValue=false)]
+        [DataMember(Name="preferredCurrency", EmitDefaultValue=true)]
         public string PreferredCurrency { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

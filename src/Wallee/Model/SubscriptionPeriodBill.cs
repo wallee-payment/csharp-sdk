@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public SubscriptionPeriodBillState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionPeriodBill" /> class.
@@ -36,66 +36,66 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets CreatedOn
         /// </summary>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets EffectivePeriodEndDate
         /// </summary>
-        [DataMember(Name="effectivePeriodEndDate", EmitDefaultValue=false)]
+        [DataMember(Name="effectivePeriodEndDate", EmitDefaultValue=true)]
         public DateTime? EffectivePeriodEndDate { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets PeriodStartDate
         /// </summary>
-        [DataMember(Name="periodStartDate", EmitDefaultValue=false)]
+        [DataMember(Name="periodStartDate", EmitDefaultValue=true)]
         public DateTime? PeriodStartDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets PlannedPeriodEndDate
         /// </summary>
-        [DataMember(Name="plannedPeriodEndDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPeriodEndDate", EmitDefaultValue=true)]
         public DateTime? PlannedPeriodEndDate { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets SubscriptionVersion
         /// </summary>
-        [DataMember(Name="subscriptionVersion", EmitDefaultValue=false)]
+        [DataMember(Name="subscriptionVersion", EmitDefaultValue=true)]
         public SubscriptionVersion SubscriptionVersion { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public InstallmentPaymentState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="InstallmentPayment" /> class.
@@ -37,46 +37,46 @@ namespace Wallee.Model
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets InitialTransaction
         /// </summary>
-        [DataMember(Name="initialTransaction", EmitDefaultValue=false)]
+        [DataMember(Name="initialTransaction", EmitDefaultValue=true)]
         public Transaction InitialTransaction { get; private set; }
 
         /// <summary>
         /// Gets or Sets LineItems
         /// </summary>
-        [DataMember(Name="lineItems", EmitDefaultValue=false)]
+        [DataMember(Name="lineItems", EmitDefaultValue=true)]
         public List<LineItem> LineItems { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets PlanConfiguration
         /// </summary>
-        [DataMember(Name="planConfiguration", EmitDefaultValue=false)]
+        [DataMember(Name="planConfiguration", EmitDefaultValue=true)]
         public long? PlanConfiguration { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
 
@@ -84,7 +84,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

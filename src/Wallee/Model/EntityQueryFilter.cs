@@ -24,13 +24,13 @@ namespace Wallee.Model
         /// The &#39;operator&#39; indicates what kind of filtering on the &#39;fieldName&#39; is executed on. This property is only applicable on filter type &#39;LEAF&#39;.
         /// </summary>
         /// <value>The &#39;operator&#39; indicates what kind of filtering on the &#39;fieldName&#39; is executed on. This property is only applicable on filter type &#39;LEAF&#39;.</value>
-        [DataMember(Name="operator", EmitDefaultValue=false)]
+        [DataMember(Name="operator", EmitDefaultValue=true)]
         public CriteriaOperator? Operator { get; set; }
         /// <summary>
         /// The filter type controls how the query node is interpreted. I.e. if the node acts as leaf node or as a filter group.
         /// </summary>
         /// <value>The filter type controls how the query node is interpreted. I.e. if the node acts as leaf node or as a filter group.</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name="type", EmitDefaultValue=true)]
         public EntityQueryFilterType Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityQueryFilter" /> class.
@@ -55,14 +55,14 @@ namespace Wallee.Model
         /// The &#39;children&#39; can contain other filter nodes which are applied to the query. This property is only applicable on filter types &#39;OR&#39; and &#39;AND&#39;.
         /// </summary>
         /// <value>The &#39;children&#39; can contain other filter nodes which are applied to the query. This property is only applicable on filter types &#39;OR&#39; and &#39;AND&#39;.</value>
-        [DataMember(Name="children", EmitDefaultValue=false)]
+        [DataMember(Name="children", EmitDefaultValue=true)]
         public List<EntityQueryFilter> Children { get; set; }
 
         /// <summary>
         /// The &#39;fieldName&#39; indicates the property on the entity which should be filtered. This property is only applicable on filter type &#39;LEAF&#39;.
         /// </summary>
         /// <value>The &#39;fieldName&#39; indicates the property on the entity which should be filtered. This property is only applicable on filter type &#39;LEAF&#39;.</value>
-        [DataMember(Name="fieldName", EmitDefaultValue=false)]
+        [DataMember(Name="fieldName", EmitDefaultValue=true)]
         public string FieldName { get; set; }
 
 
@@ -71,7 +71,7 @@ namespace Wallee.Model
         /// The &#39;value&#39; is used to compare with the &#39;fieldName&#39; as defined by the &#39;operator&#39;. This property is only applicable on filter type &#39;LEAF&#39;.
         /// </summary>
         /// <value>The &#39;value&#39; is used to compare with the &#39;fieldName&#39; as defined by the &#39;operator&#39;. This property is only applicable on filter type &#39;LEAF&#39;.</value>
-        [DataMember(Name="value", EmitDefaultValue=false)]
+        [DataMember(Name="value", EmitDefaultValue=true)]
         public Object Value { get; set; }
 
         /// <summary>

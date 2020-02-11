@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Sorting
         /// </summary>
-        [DataMember(Name="sorting", EmitDefaultValue=false)]
+        [DataMember(Name="sorting", EmitDefaultValue=true)]
         public EntityQueryOrderByType Sorting { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityQueryOrderBy" /> class.
@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets FieldName
         /// </summary>
-        [DataMember(Name="fieldName", EmitDefaultValue=false)]
+        [DataMember(Name="fieldName", EmitDefaultValue=true)]
         public string FieldName { get; set; }
 
 

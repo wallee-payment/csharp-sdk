@@ -24,41 +24,41 @@ namespace Wallee.Model
         /// The environment in which this transaction was successfully authorized.
         /// </summary>
         /// <value>The environment in which this transaction was successfully authorized.</value>
-        [DataMember(Name="authorizationEnvironment", EmitDefaultValue=false)]
+        [DataMember(Name="authorizationEnvironment", EmitDefaultValue=true)]
         public ChargeAttemptEnvironment? AuthorizationEnvironment { get; set; }
         /// <summary>
         /// The customer&#39;s presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.
         /// </summary>
         /// <value>The customer&#39;s presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.</value>
-        [DataMember(Name="customersPresence", EmitDefaultValue=false)]
+        [DataMember(Name="customersPresence", EmitDefaultValue=true)]
         public CustomersPresence? CustomersPresence { get; set; }
         /// <summary>
         /// Gets or Sets Environment
         /// </summary>
-        [DataMember(Name="environment", EmitDefaultValue=false)]
+        [DataMember(Name="environment", EmitDefaultValue=true)]
         public Environment? Environment { get; set; }
         /// <summary>
         /// The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
         /// </summary>
         /// <value>The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.</value>
-        [DataMember(Name="environmentSelectionStrategy", EmitDefaultValue=false)]
+        [DataMember(Name="environmentSelectionStrategy", EmitDefaultValue=true)]
         public TransactionEnvironmentSelectionStrategy? EnvironmentSelectionStrategy { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public TransactionState? State { get; set; }
         /// <summary>
         /// The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
         /// </summary>
         /// <value>The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.</value>
-        [DataMember(Name="tokenizationMode", EmitDefaultValue=false)]
+        [DataMember(Name="tokenizationMode", EmitDefaultValue=true)]
         public TokenizationMode? TokenizationMode { get; set; }
         /// <summary>
         /// The user interface type defines through which user interface the transaction has been processed resp. created.
         /// </summary>
         /// <value>The user interface type defines through which user interface the transaction has been processed resp. created.</value>
-        [DataMember(Name="userInterfaceType", EmitDefaultValue=false)]
+        [DataMember(Name="userInterfaceType", EmitDefaultValue=true)]
         public TransactionUserInterfaceType? UserInterfaceType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Transaction" /> class.
@@ -71,32 +71,32 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AcceptHeader
         /// </summary>
-        [DataMember(Name="acceptHeader", EmitDefaultValue=false)]
+        [DataMember(Name="acceptHeader", EmitDefaultValue=true)]
         public string AcceptHeader { get; private set; }
 
         /// <summary>
         /// The accept language contains the header which indicates the language preferences of the buyer.
         /// </summary>
         /// <value>The accept language contains the header which indicates the language preferences of the buyer.</value>
-        [DataMember(Name="acceptLanguageHeader", EmitDefaultValue=false)]
+        [DataMember(Name="acceptLanguageHeader", EmitDefaultValue=true)]
         public string AcceptLanguageHeader { get; private set; }
 
         /// <summary>
         /// Gets or Sets AllowedPaymentMethodBrands
         /// </summary>
-        [DataMember(Name="allowedPaymentMethodBrands", EmitDefaultValue=false)]
+        [DataMember(Name="allowedPaymentMethodBrands", EmitDefaultValue=true)]
         public List<PaymentMethodBrand> AllowedPaymentMethodBrands { get; private set; }
 
         /// <summary>
         /// Gets or Sets AllowedPaymentMethodConfigurations
         /// </summary>
-        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=false)]
+        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=true)]
         public List<long?> AllowedPaymentMethodConfigurations { get; private set; }
 
         /// <summary>
         /// Gets or Sets AuthorizationAmount
         /// </summary>
-        [DataMember(Name="authorizationAmount", EmitDefaultValue=false)]
+        [DataMember(Name="authorizationAmount", EmitDefaultValue=true)]
         public decimal? AuthorizationAmount { get; private set; }
 
 
@@ -104,96 +104,96 @@ namespace Wallee.Model
         /// This is the time on which the transaction will be timed out when it is not at least authorized. The timeout time may change over time.
         /// </summary>
         /// <value>This is the time on which the transaction will be timed out when it is not at least authorized. The timeout time may change over time.</value>
-        [DataMember(Name="authorizationTimeoutOn", EmitDefaultValue=false)]
+        [DataMember(Name="authorizationTimeoutOn", EmitDefaultValue=true)]
         public DateTime? AuthorizationTimeoutOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets AuthorizedOn
         /// </summary>
-        [DataMember(Name="authorizedOn", EmitDefaultValue=false)]
+        [DataMember(Name="authorizedOn", EmitDefaultValue=true)]
         public DateTime? AuthorizedOn { get; private set; }
 
         /// <summary>
         /// When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.
         /// </summary>
         /// <value>When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.</value>
-        [DataMember(Name="autoConfirmationEnabled", EmitDefaultValue=false)]
+        [DataMember(Name="autoConfirmationEnabled", EmitDefaultValue=true)]
         public bool? AutoConfirmationEnabled { get; private set; }
 
         /// <summary>
         /// Gets or Sets BillingAddress
         /// </summary>
-        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
+        [DataMember(Name="billingAddress", EmitDefaultValue=true)]
         public Address BillingAddress { get; private set; }
 
         /// <summary>
         /// When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.
         /// </summary>
         /// <value>When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.</value>
-        [DataMember(Name="chargeRetryEnabled", EmitDefaultValue=false)]
+        [DataMember(Name="chargeRetryEnabled", EmitDefaultValue=true)]
         public bool? ChargeRetryEnabled { get; private set; }
 
         /// <summary>
         /// The completed amount is the total amount which has been captured so far.
         /// </summary>
         /// <value>The completed amount is the total amount which has been captured so far.</value>
-        [DataMember(Name="completedAmount", EmitDefaultValue=false)]
+        [DataMember(Name="completedAmount", EmitDefaultValue=true)]
         public decimal? CompletedAmount { get; private set; }
 
         /// <summary>
         /// Gets or Sets CompletedOn
         /// </summary>
-        [DataMember(Name="completedOn", EmitDefaultValue=false)]
+        [DataMember(Name="completedOn", EmitDefaultValue=true)]
         public DateTime? CompletedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets CompletionTimeoutOn
         /// </summary>
-        [DataMember(Name="completionTimeoutOn", EmitDefaultValue=false)]
+        [DataMember(Name="completionTimeoutOn", EmitDefaultValue=true)]
         public DateTime? CompletionTimeoutOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets ConfirmedBy
         /// </summary>
-        [DataMember(Name="confirmedBy", EmitDefaultValue=false)]
+        [DataMember(Name="confirmedBy", EmitDefaultValue=true)]
         public long? ConfirmedBy { get; private set; }
 
         /// <summary>
         /// Gets or Sets ConfirmedOn
         /// </summary>
-        [DataMember(Name="confirmedOn", EmitDefaultValue=false)]
+        [DataMember(Name="confirmedOn", EmitDefaultValue=true)]
         public DateTime? ConfirmedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name="createdBy", EmitDefaultValue=true)]
         public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Currency
         /// </summary>
-        [DataMember(Name="currency", EmitDefaultValue=false)]
+        [DataMember(Name="currency", EmitDefaultValue=true)]
         public string Currency { get; private set; }
 
         /// <summary>
         /// The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.
         /// </summary>
         /// <value>The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.</value>
-        [DataMember(Name="customerEmailAddress", EmitDefaultValue=false)]
+        [DataMember(Name="customerEmailAddress", EmitDefaultValue=true)]
         public string CustomerEmailAddress { get; private set; }
 
         /// <summary>
         /// Gets or Sets CustomerId
         /// </summary>
-        [DataMember(Name="customerId", EmitDefaultValue=false)]
+        [DataMember(Name="customerId", EmitDefaultValue=true)]
         public string CustomerId { get; private set; }
 
 
@@ -201,21 +201,21 @@ namespace Wallee.Model
         /// This date indicates when the decision has been made if a transaction should be delivered or not.
         /// </summary>
         /// <value>This date indicates when the decision has been made if a transaction should be delivered or not.</value>
-        [DataMember(Name="deliveryDecisionMadeOn", EmitDefaultValue=false)]
+        [DataMember(Name="deliveryDecisionMadeOn", EmitDefaultValue=true)]
         public DateTime? DeliveryDecisionMadeOn { get; private set; }
 
         /// <summary>
         /// The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.
         /// </summary>
         /// <value>The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.</value>
-        [DataMember(Name="deviceSessionIdentifier", EmitDefaultValue=false)]
+        [DataMember(Name="deviceSessionIdentifier", EmitDefaultValue=true)]
         public string DeviceSessionIdentifier { get; private set; }
 
         /// <summary>
         /// The transaction&#39;s end of life indicates the date from which on no operation can be carried out anymore.
         /// </summary>
         /// <value>The transaction&#39;s end of life indicates the date from which on no operation can be carried out anymore.</value>
-        [DataMember(Name="endOfLife", EmitDefaultValue=false)]
+        [DataMember(Name="endOfLife", EmitDefaultValue=true)]
         public DateTime? EndOfLife { get; private set; }
 
 
@@ -223,135 +223,135 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets FailedOn
         /// </summary>
-        [DataMember(Name="failedOn", EmitDefaultValue=false)]
+        [DataMember(Name="failedOn", EmitDefaultValue=true)]
         public DateTime? FailedOn { get; private set; }
 
         /// <summary>
         /// The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
         /// </summary>
         /// <value>The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.</value>
-        [DataMember(Name="failedUrl", EmitDefaultValue=false)]
+        [DataMember(Name="failedUrl", EmitDefaultValue=true)]
         public string FailedUrl { get; private set; }
 
         /// <summary>
         /// The failure reason describes why the transaction failed. This is only provided when the transaction is marked as failed.
         /// </summary>
         /// <value>The failure reason describes why the transaction failed. This is only provided when the transaction is marked as failed.</value>
-        [DataMember(Name="failureReason", EmitDefaultValue=false)]
+        [DataMember(Name="failureReason", EmitDefaultValue=true)]
         public FailureReason FailureReason { get; private set; }
 
         /// <summary>
         /// Gets or Sets Group
         /// </summary>
-        [DataMember(Name="group", EmitDefaultValue=false)]
+        [DataMember(Name="group", EmitDefaultValue=true)]
         public TransactionGroup Group { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The Internet Protocol (IP) address identifies the device of the buyer.
         /// </summary>
         /// <value>The Internet Protocol (IP) address identifies the device of the buyer.</value>
-        [DataMember(Name="internetProtocolAddress", EmitDefaultValue=false)]
+        [DataMember(Name="internetProtocolAddress", EmitDefaultValue=true)]
         public string InternetProtocolAddress { get; private set; }
 
         /// <summary>
         /// Gets or Sets InternetProtocolAddressCountry
         /// </summary>
-        [DataMember(Name="internetProtocolAddressCountry", EmitDefaultValue=false)]
+        [DataMember(Name="internetProtocolAddressCountry", EmitDefaultValue=true)]
         public string InternetProtocolAddressCountry { get; private set; }
 
         /// <summary>
         /// Gets or Sets InvoiceMerchantReference
         /// </summary>
-        [DataMember(Name="invoiceMerchantReference", EmitDefaultValue=false)]
+        [DataMember(Name="invoiceMerchantReference", EmitDefaultValue=true)]
         public string InvoiceMerchantReference { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; private set; }
 
         /// <summary>
         /// Gets or Sets LineItems
         /// </summary>
-        [DataMember(Name="lineItems", EmitDefaultValue=false)]
+        [DataMember(Name="lineItems", EmitDefaultValue=true)]
         public List<LineItem> LineItems { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets MerchantReference
         /// </summary>
-        [DataMember(Name="merchantReference", EmitDefaultValue=false)]
+        [DataMember(Name="merchantReference", EmitDefaultValue=true)]
         public string MerchantReference { get; private set; }
 
         /// <summary>
         /// Meta data allow to store additional data along the object.
         /// </summary>
         /// <value>Meta data allow to store additional data along the object.</value>
-        [DataMember(Name="metaData", EmitDefaultValue=false)]
+        [DataMember(Name="metaData", EmitDefaultValue=true)]
         public Dictionary<string, string> MetaData { get; private set; }
 
         /// <summary>
         /// Gets or Sets Parent
         /// </summary>
-        [DataMember(Name="parent", EmitDefaultValue=false)]
+        [DataMember(Name="parent", EmitDefaultValue=true)]
         public long? Parent { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentConnectorConfiguration
         /// </summary>
-        [DataMember(Name="paymentConnectorConfiguration", EmitDefaultValue=false)]
+        [DataMember(Name="paymentConnectorConfiguration", EmitDefaultValue=true)]
         public PaymentConnectorConfiguration PaymentConnectorConfiguration { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProcessingOn
         /// </summary>
-        [DataMember(Name="processingOn", EmitDefaultValue=false)]
+        [DataMember(Name="processingOn", EmitDefaultValue=true)]
         public DateTime? ProcessingOn { get; private set; }
 
         /// <summary>
         /// The refunded amount is the total amount which has been refunded so far.
         /// </summary>
         /// <value>The refunded amount is the total amount which has been refunded so far.</value>
-        [DataMember(Name="refundedAmount", EmitDefaultValue=false)]
+        [DataMember(Name="refundedAmount", EmitDefaultValue=true)]
         public decimal? RefundedAmount { get; private set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
         /// </summary>
-        [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
+        [DataMember(Name="shippingAddress", EmitDefaultValue=true)]
         public Address ShippingAddress { get; private set; }
 
         /// <summary>
         /// Gets or Sets ShippingMethod
         /// </summary>
-        [DataMember(Name="shippingMethod", EmitDefaultValue=false)]
+        [DataMember(Name="shippingMethod", EmitDefaultValue=true)]
         public string ShippingMethod { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
         public long? SpaceViewId { get; private set; }
 
 
@@ -359,20 +359,20 @@ namespace Wallee.Model
         /// The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
         /// </summary>
         /// <value>The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.</value>
-        [DataMember(Name="successUrl", EmitDefaultValue=false)]
+        [DataMember(Name="successUrl", EmitDefaultValue=true)]
         public string SuccessUrl { get; private set; }
 
         /// <summary>
         /// The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
         /// </summary>
         /// <value>The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.</value>
-        [DataMember(Name="timeZone", EmitDefaultValue=false)]
+        [DataMember(Name="timeZone", EmitDefaultValue=true)]
         public string TimeZone { get; private set; }
 
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name="token", EmitDefaultValue=true)]
         public Token Token { get; private set; }
 
 
@@ -380,14 +380,14 @@ namespace Wallee.Model
         /// The user agent header provides the exact string which contains the user agent of the buyer.
         /// </summary>
         /// <value>The user agent header provides the exact string which contains the user agent of the buyer.</value>
-        [DataMember(Name="userAgentHeader", EmitDefaultValue=false)]
+        [DataMember(Name="userAgentHeader", EmitDefaultValue=true)]
         public string UserAgentHeader { get; private set; }
 
         /// <summary>
         /// The failure message describes for an end user why the transaction is failed in the language of the user. This is only provided when the transaction is marked as failed.
         /// </summary>
         /// <value>The failure message describes for an end user why the transaction is failed in the language of the user. This is only provided when the transaction is marked as failed.</value>
-        [DataMember(Name="userFailureMessage", EmitDefaultValue=false)]
+        [DataMember(Name="userFailureMessage", EmitDefaultValue=true)]
         public string UserFailureMessage { get; private set; }
 
 
@@ -395,7 +395,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

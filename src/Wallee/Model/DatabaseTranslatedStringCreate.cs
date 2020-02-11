@@ -30,7 +30,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Items
         /// </summary>
-        [DataMember(Name="items", EmitDefaultValue=false)]
+        [DataMember(Name="items", EmitDefaultValue=true)]
         public List<DatabaseTranslatedStringItemCreate> Items { get; set; }
 
         /// <summary>

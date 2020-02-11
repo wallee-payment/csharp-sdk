@@ -34,64 +34,64 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AsynchronousCharge
         /// </summary>
-        [DataMember(Name="asynchronousCharge", EmitDefaultValue=false)]
+        [DataMember(Name="asynchronousCharge", EmitDefaultValue=true)]
         public long? AsynchronousCharge { get; private set; }
 
         /// <summary>
         /// Gets or Sets Configuration
         /// </summary>
-        [DataMember(Name="configuration", EmitDefaultValue=false)]
+        [DataMember(Name="configuration", EmitDefaultValue=true)]
         public ChargeFlowLevelConfiguration Configuration { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public ChargeFlowLevelState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets SynchronousCharge
         /// </summary>
-        [DataMember(Name="synchronousCharge", EmitDefaultValue=false)]
+        [DataMember(Name="synchronousCharge", EmitDefaultValue=true)]
         public long? SynchronousCharge { get; private set; }
 
         /// <summary>
         /// Gets or Sets TimeoutOn
         /// </summary>
-        [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
+        [DataMember(Name="timeoutOn", EmitDefaultValue=true)]
         public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets TokenCharge
         /// </summary>
-        [DataMember(Name="tokenCharge", EmitDefaultValue=false)]
+        [DataMember(Name="tokenCharge", EmitDefaultValue=true)]
         public long? TokenCharge { get; private set; }
 
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=false)]
+        [DataMember(Name="transaction", EmitDefaultValue=true)]
         public Transaction Transaction { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

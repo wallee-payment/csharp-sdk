@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractApplicationUserUpdate" /> class.
@@ -36,14 +36,14 @@ namespace Wallee.Model
         /// The user name is used to identify the application user in administrative interfaces.
         /// </summary>
         /// <value>The user name is used to identify the application user in administrative interfaces.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 
         /// <summary>
         /// The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.
         /// </summary>
         /// <value>The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.</value>
-        [DataMember(Name="requestLimit", EmitDefaultValue=false)]
+        [DataMember(Name="requestLimit", EmitDefaultValue=true)]
         public long? RequestLimit { get; set; }
 
 

@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public PaymentTerminalLocationVersionState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentTerminalLocationVersion" /> class.
@@ -36,47 +36,47 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
-        [DataMember(Name="address", EmitDefaultValue=false)]
+        [DataMember(Name="address", EmitDefaultValue=true)]
         public PaymentTerminalAddress Address { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name="createdBy", EmitDefaultValue=true)]
         public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets Location
         /// </summary>
-        [DataMember(Name="location", EmitDefaultValue=false)]
+        [DataMember(Name="location", EmitDefaultValue=true)]
         public PaymentTerminalLocation Location { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
 
@@ -84,13 +84,13 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>
         /// Gets or Sets VersionAppliedImmediately
         /// </summary>
-        [DataMember(Name="versionAppliedImmediately", EmitDefaultValue=false)]
+        [DataMember(Name="versionAppliedImmediately", EmitDefaultValue=true)]
         public bool? VersionAppliedImmediately { get; private set; }
 
         /// <summary>

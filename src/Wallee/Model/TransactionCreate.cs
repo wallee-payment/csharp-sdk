@@ -61,47 +61,47 @@ namespace Wallee.Model
         /// When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.
         /// </summary>
         /// <value>When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.</value>
-        [DataMember(Name="autoConfirmationEnabled", EmitDefaultValue=false)]
+        [DataMember(Name="autoConfirmationEnabled", EmitDefaultValue=true)]
         public bool? AutoConfirmationEnabled { get; set; }
 
         /// <summary>
         /// When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.
         /// </summary>
         /// <value>When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.</value>
-        [DataMember(Name="chargeRetryEnabled", EmitDefaultValue=false)]
+        [DataMember(Name="chargeRetryEnabled", EmitDefaultValue=true)]
         public bool? ChargeRetryEnabled { get; set; }
 
         /// <summary>
         /// The customer&#39;s presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.
         /// </summary>
         /// <value>The customer&#39;s presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.</value>
-        [DataMember(Name="customersPresence", EmitDefaultValue=false)]
+        [DataMember(Name="customersPresence", EmitDefaultValue=true)]
         public CustomersPresence CustomersPresence { get; set; }
 
         /// <summary>
         /// The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.
         /// </summary>
         /// <value>The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.</value>
-        [DataMember(Name="deviceSessionIdentifier", EmitDefaultValue=false)]
+        [DataMember(Name="deviceSessionIdentifier", EmitDefaultValue=true)]
         public string DeviceSessionIdentifier { get; set; }
 
         /// <summary>
         /// Gets or Sets Environment
         /// </summary>
-        [DataMember(Name="environment", EmitDefaultValue=false)]
+        [DataMember(Name="environment", EmitDefaultValue=true)]
         public Environment Environment { get; set; }
 
         /// <summary>
         /// The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
         /// </summary>
         /// <value>The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.</value>
-        [DataMember(Name="environmentSelectionStrategy", EmitDefaultValue=false)]
+        [DataMember(Name="environmentSelectionStrategy", EmitDefaultValue=true)]
         public TransactionEnvironmentSelectionStrategy EnvironmentSelectionStrategy { get; set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
         public long? SpaceViewId { get; set; }
 
         /// <summary>

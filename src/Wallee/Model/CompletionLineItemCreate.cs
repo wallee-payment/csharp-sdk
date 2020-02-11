@@ -57,21 +57,21 @@ namespace Wallee.Model
         /// The total amount of the line item including any tax.
         /// </summary>
         /// <value>The total amount of the line item including any tax.</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name="amount", EmitDefaultValue=true)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// The quantity of the line item which should be completed.
         /// </summary>
         /// <value>The quantity of the line item which should be completed.</value>
-        [DataMember(Name="quantity", EmitDefaultValue=false)]
+        [DataMember(Name="quantity", EmitDefaultValue=true)]
         public decimal? Quantity { get; set; }
 
         /// <summary>
         /// The unique id identifies the line item on which the capture is applied on.
         /// </summary>
         /// <value>The unique id identifies the line item on which the capture is applied on.</value>
-        [DataMember(Name="uniqueId", EmitDefaultValue=false)]
+        [DataMember(Name="uniqueId", EmitDefaultValue=true)]
         public string UniqueId { get; set; }
 
         /// <summary>

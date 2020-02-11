@@ -70,38 +70,38 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AmountIncludingTax
         /// </summary>
-        [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
+        [DataMember(Name="amountIncludingTax", EmitDefaultValue=true)]
         public decimal? AmountIncludingTax { get; set; }
 
         /// <summary>
         /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
         /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 
         /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
-        [DataMember(Name="quantity", EmitDefaultValue=false)]
+        [DataMember(Name="quantity", EmitDefaultValue=true)]
         public decimal? Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets SubscriptionVersion
         /// </summary>
-        [DataMember(Name="subscriptionVersion", EmitDefaultValue=false)]
+        [DataMember(Name="subscriptionVersion", EmitDefaultValue=true)]
         public long? SubscriptionVersion { get; set; }
 
         /// <summary>
         /// Gets or Sets Taxes
         /// </summary>
-        [DataMember(Name="taxes", EmitDefaultValue=false)]
+        [DataMember(Name="taxes", EmitDefaultValue=true)]
         public List<TaxCreate> Taxes { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name="title", EmitDefaultValue=false)]
+        [DataMember(Name="title", EmitDefaultValue=true)]
         public string Title { get; set; }
 
         /// <summary>

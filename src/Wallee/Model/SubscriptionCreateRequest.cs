@@ -56,32 +56,32 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ComponentConfigurations
         /// </summary>
-        [DataMember(Name="componentConfigurations", EmitDefaultValue=false)]
+        [DataMember(Name="componentConfigurations", EmitDefaultValue=true)]
         public List<SubscriptionComponentReferenceConfiguration> ComponentConfigurations { get; set; }
 
         /// <summary>
         /// Gets or Sets Currency
         /// </summary>
-        [DataMember(Name="currency", EmitDefaultValue=false)]
+        [DataMember(Name="currency", EmitDefaultValue=true)]
         public string Currency { get; set; }
 
         /// <summary>
         /// The subscription has to be linked with a product.
         /// </summary>
         /// <value>The subscription has to be linked with a product.</value>
-        [DataMember(Name="product", EmitDefaultValue=false)]
+        [DataMember(Name="product", EmitDefaultValue=true)]
         public long? Product { get; set; }
 
         /// <summary>
         /// Gets or Sets SelectedComponents
         /// </summary>
-        [DataMember(Name="selectedComponents", EmitDefaultValue=false)]
+        [DataMember(Name="selectedComponents", EmitDefaultValue=true)]
         public List<SubscriptionProductComponentReference> SelectedComponents { get; set; }
 
         /// <summary>
         /// Gets or Sets Subscription
         /// </summary>
-        [DataMember(Name="subscription", EmitDefaultValue=false)]
+        [DataMember(Name="subscription", EmitDefaultValue=true)]
         public long? Subscription { get; set; }
 
         /// <summary>

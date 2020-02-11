@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Style
         /// </summary>
-        [DataMember(Name="style", EmitDefaultValue=false)]
+        [DataMember(Name="style", EmitDefaultValue=true)]
         public ManualTaskActionStyle? Style { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ManualTaskAction" /> class.
@@ -37,20 +37,20 @@ namespace Wallee.Model
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Label
         /// </summary>
-        [DataMember(Name="label", EmitDefaultValue=false)]
+        [DataMember(Name="label", EmitDefaultValue=true)]
         public Dictionary<string, string> Label { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets TaskType
         /// </summary>
-        [DataMember(Name="taskType", EmitDefaultValue=false)]
+        [DataMember(Name="taskType", EmitDefaultValue=true)]
         public long? TaskType { get; private set; }
 
         /// <summary>

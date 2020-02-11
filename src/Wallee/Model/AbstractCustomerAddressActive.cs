@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AddressType
         /// </summary>
-        [DataMember(Name="addressType", EmitDefaultValue=false)]
+        [DataMember(Name="addressType", EmitDefaultValue=true)]
         public CustomerAddressType? AddressType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractCustomerAddressActive" /> class.
@@ -35,7 +35,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
-        [DataMember(Name="address", EmitDefaultValue=false)]
+        [DataMember(Name="address", EmitDefaultValue=true)]
         public CustomerPostalAddressCreate Address { get; set; }
 
 

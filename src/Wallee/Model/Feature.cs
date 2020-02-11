@@ -31,50 +31,50 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Beta
         /// </summary>
-        [DataMember(Name="beta", EmitDefaultValue=false)]
+        [DataMember(Name="beta", EmitDefaultValue=true)]
         public bool? Beta { get; private set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name="description", EmitDefaultValue=true)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets LogoPath
         /// </summary>
-        [DataMember(Name="logoPath", EmitDefaultValue=false)]
+        [DataMember(Name="logoPath", EmitDefaultValue=true)]
         public string LogoPath { get; private set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// Gets or Sets RequiredFeatures
         /// </summary>
-        [DataMember(Name="requiredFeatures", EmitDefaultValue=false)]
+        [DataMember(Name="requiredFeatures", EmitDefaultValue=true)]
         public List<long?> RequiredFeatures { get; private set; }
 
         /// <summary>
         /// Gets or Sets SortOrder
         /// </summary>
-        [DataMember(Name="sortOrder", EmitDefaultValue=false)]
+        [DataMember(Name="sortOrder", EmitDefaultValue=true)]
         public int? SortOrder { get; private set; }
 
         /// <summary>
         /// Gets or Sets Visible
         /// </summary>
-        [DataMember(Name="visible", EmitDefaultValue=false)]
+        [DataMember(Name="visible", EmitDefaultValue=true)]
         public bool? Visible { get; private set; }
 
         /// <summary>

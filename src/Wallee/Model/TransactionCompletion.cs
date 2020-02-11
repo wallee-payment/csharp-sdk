@@ -35,165 +35,165 @@ namespace Wallee.Model
         /// The amount which is captured. The amount represents sum of line items including taxes.
         /// </summary>
         /// <value>The amount which is captured. The amount represents sum of line items including taxes.</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name="amount", EmitDefaultValue=true)]
         public decimal? Amount { get; private set; }
 
         /// <summary>
         /// The base line items on which the completion is applied on.
         /// </summary>
         /// <value>The base line items on which the completion is applied on.</value>
-        [DataMember(Name="baseLineItems", EmitDefaultValue=false)]
+        [DataMember(Name="baseLineItems", EmitDefaultValue=true)]
         public List<LineItem> BaseLineItems { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name="createdBy", EmitDefaultValue=true)]
         public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The external ID helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
         /// <value>The external ID helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// Gets or Sets FailedOn
         /// </summary>
-        [DataMember(Name="failedOn", EmitDefaultValue=false)]
+        [DataMember(Name="failedOn", EmitDefaultValue=true)]
         public DateTime? FailedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets FailureReason
         /// </summary>
-        [DataMember(Name="failureReason", EmitDefaultValue=false)]
+        [DataMember(Name="failureReason", EmitDefaultValue=true)]
         public FailureReason FailureReason { get; private set; }
 
         /// <summary>
         /// Gets or Sets Labels
         /// </summary>
-        [DataMember(Name="labels", EmitDefaultValue=false)]
+        [DataMember(Name="labels", EmitDefaultValue=true)]
         public List<Label> Labels { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; private set; }
 
         /// <summary>
         /// Indicates if this is the last completion. After the last completion is created the transaction cannot be completed anymore.
         /// </summary>
         /// <value>Indicates if this is the last completion. After the last completion is created the transaction cannot be completed anymore.</value>
-        [DataMember(Name="lastCompletion", EmitDefaultValue=false)]
+        [DataMember(Name="lastCompletion", EmitDefaultValue=true)]
         public bool? LastCompletion { get; private set; }
 
         /// <summary>
         /// Gets or Sets LineItemVersion
         /// </summary>
-        [DataMember(Name="lineItemVersion", EmitDefaultValue=false)]
+        [DataMember(Name="lineItemVersion", EmitDefaultValue=true)]
         public TransactionLineItemVersion LineItemVersion { get; private set; }
 
         /// <summary>
         /// The line items which are captured.
         /// </summary>
         /// <value>The line items which are captured.</value>
-        [DataMember(Name="lineItems", EmitDefaultValue=false)]
+        [DataMember(Name="lineItems", EmitDefaultValue=true)]
         public List<LineItem> LineItems { get; private set; }
 
         /// <summary>
         /// Gets or Sets Mode
         /// </summary>
-        [DataMember(Name="mode", EmitDefaultValue=false)]
+        [DataMember(Name="mode", EmitDefaultValue=true)]
         public TransactionCompletionMode Mode { get; private set; }
 
         /// <summary>
         /// Gets or Sets NextUpdateOn
         /// </summary>
-        [DataMember(Name="nextUpdateOn", EmitDefaultValue=false)]
+        [DataMember(Name="nextUpdateOn", EmitDefaultValue=true)]
         public DateTime? NextUpdateOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentInformation
         /// </summary>
-        [DataMember(Name="paymentInformation", EmitDefaultValue=false)]
+        [DataMember(Name="paymentInformation", EmitDefaultValue=true)]
         public string PaymentInformation { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProcessingOn
         /// </summary>
-        [DataMember(Name="processingOn", EmitDefaultValue=false)]
+        [DataMember(Name="processingOn", EmitDefaultValue=true)]
         public DateTime? ProcessingOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProcessorReference
         /// </summary>
-        [DataMember(Name="processorReference", EmitDefaultValue=false)]
+        [DataMember(Name="processorReference", EmitDefaultValue=true)]
         public string ProcessorReference { get; private set; }
 
         /// <summary>
         /// Gets or Sets RemainingLineItems
         /// </summary>
-        [DataMember(Name="remainingLineItems", EmitDefaultValue=false)]
+        [DataMember(Name="remainingLineItems", EmitDefaultValue=true)]
         public List<LineItem> RemainingLineItems { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
         public long? SpaceViewId { get; private set; }
 
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public TransactionCompletionState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets SucceededOn
         /// </summary>
-        [DataMember(Name="succeededOn", EmitDefaultValue=false)]
+        [DataMember(Name="succeededOn", EmitDefaultValue=true)]
         public DateTime? SucceededOn { get; private set; }
 
         /// <summary>
         /// The total sum of all taxes of line items.
         /// </summary>
         /// <value>The total sum of all taxes of line items.</value>
-        [DataMember(Name="taxAmount", EmitDefaultValue=false)]
+        [DataMember(Name="taxAmount", EmitDefaultValue=true)]
         public decimal? TaxAmount { get; private set; }
 
         /// <summary>
         /// Gets or Sets TimeZone
         /// </summary>
-        [DataMember(Name="timeZone", EmitDefaultValue=false)]
+        [DataMember(Name="timeZone", EmitDefaultValue=true)]
         public string TimeZone { get; private set; }
 
         /// <summary>
         /// Gets or Sets TimeoutOn
         /// </summary>
-        [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
+        [DataMember(Name="timeoutOn", EmitDefaultValue=true)]
         public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

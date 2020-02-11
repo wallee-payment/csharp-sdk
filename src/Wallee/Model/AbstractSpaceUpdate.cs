@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractSpaceUpdate" /> class.
@@ -36,28 +36,28 @@ namespace Wallee.Model
         /// The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 
         /// <summary>
         /// The address to use in communication with clients for example in email, documents etc.
         /// </summary>
         /// <value>The address to use in communication with clients for example in email, documents etc.</value>
-        [DataMember(Name="postalAddress", EmitDefaultValue=false)]
+        [DataMember(Name="postalAddress", EmitDefaultValue=true)]
         public SpaceAddressCreate PostalAddress { get; set; }
 
         /// <summary>
         /// This is the currency that is used to display aggregated amounts in the space.
         /// </summary>
         /// <value>This is the currency that is used to display aggregated amounts in the space.</value>
-        [DataMember(Name="primaryCurrency", EmitDefaultValue=false)]
+        [DataMember(Name="primaryCurrency", EmitDefaultValue=true)]
         public string PrimaryCurrency { get; set; }
 
         /// <summary>
         /// The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.
         /// </summary>
         /// <value>The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.</value>
-        [DataMember(Name="requestLimit", EmitDefaultValue=false)]
+        [DataMember(Name="requestLimit", EmitDefaultValue=true)]
         public long? RequestLimit { get; set; }
 
 
@@ -65,14 +65,14 @@ namespace Wallee.Model
         /// The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.
         /// </summary>
         /// <value>The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.</value>
-        [DataMember(Name="technicalContactAddresses", EmitDefaultValue=false)]
+        [DataMember(Name="technicalContactAddresses", EmitDefaultValue=true)]
         public List<string> TechnicalContactAddresses { get; set; }
 
         /// <summary>
         /// The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.
         /// </summary>
         /// <value>The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.</value>
-        [DataMember(Name="timeZone", EmitDefaultValue=false)]
+        [DataMember(Name="timeZone", EmitDefaultValue=true)]
         public string TimeZone { get; set; }
 
         /// <summary>

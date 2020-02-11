@@ -54,21 +54,21 @@ namespace Wallee.Model
         /// The listener listens on state changes of the entity linked with the listener.
         /// </summary>
         /// <value>The listener listens on state changes of the entity linked with the listener.</value>
-        [DataMember(Name="entity", EmitDefaultValue=false)]
+        [DataMember(Name="entity", EmitDefaultValue=true)]
         public long? Entity { get; set; }
 
         /// <summary>
         /// The identity which will be used to sign messages sent by this listener.
         /// </summary>
         /// <value>The identity which will be used to sign messages sent by this listener.</value>
-        [DataMember(Name="identity", EmitDefaultValue=false)]
+        [DataMember(Name="identity", EmitDefaultValue=true)]
         public long? Identity { get; set; }
 
         /// <summary>
         /// The URL which is invoked by the listener to notify the application about the event.
         /// </summary>
         /// <value>The URL which is invoked by the listener to notify the application about the event.</value>
-        [DataMember(Name="url", EmitDefaultValue=false)]
+        [DataMember(Name="url", EmitDefaultValue=true)]
         public long? Url { get; set; }
 
         /// <summary>

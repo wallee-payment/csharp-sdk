@@ -30,6 +30,12 @@ namespace Wallee.Model
         IFRAME,
         
         /// <summary>
+        /// Enum LIGHTBOX for value: LIGHTBOX
+        /// </summary>
+        [EnumMember(Value = "LIGHTBOX")]
+        LIGHTBOX,
+        
+        /// <summary>
         /// Enum PAYMENT_PAGE for value: PAYMENT_PAGE
         /// </summary>
         [EnumMember(Value = "PAYMENT_PAGE")]

@@ -34,69 +34,69 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AutomaticDecisionReason
         /// </summary>
-        [DataMember(Name="automaticDecisionReason", EmitDefaultValue=false)]
+        [DataMember(Name="automaticDecisionReason", EmitDefaultValue=true)]
         public DeliveryIndicationDecisionReason AutomaticDecisionReason { get; private set; }
 
         /// <summary>
         /// Gets or Sets AutomaticallyDecidedOn
         /// </summary>
-        [DataMember(Name="automaticallyDecidedOn", EmitDefaultValue=false)]
+        [DataMember(Name="automaticallyDecidedOn", EmitDefaultValue=true)]
         public DateTime? AutomaticallyDecidedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Completion
         /// </summary>
-        [DataMember(Name="completion", EmitDefaultValue=false)]
+        [DataMember(Name="completion", EmitDefaultValue=true)]
         public long? Completion { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets ManualDecisionTimeoutOn
         /// </summary>
-        [DataMember(Name="manualDecisionTimeoutOn", EmitDefaultValue=false)]
+        [DataMember(Name="manualDecisionTimeoutOn", EmitDefaultValue=true)]
         public DateTime? ManualDecisionTimeoutOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets ManuallyDecidedBy
         /// </summary>
-        [DataMember(Name="manuallyDecidedBy", EmitDefaultValue=false)]
+        [DataMember(Name="manuallyDecidedBy", EmitDefaultValue=true)]
         public long? ManuallyDecidedBy { get; private set; }
 
         /// <summary>
         /// Gets or Sets ManuallyDecidedOn
         /// </summary>
-        [DataMember(Name="manuallyDecidedOn", EmitDefaultValue=false)]
+        [DataMember(Name="manuallyDecidedOn", EmitDefaultValue=true)]
         public DateTime? ManuallyDecidedOn { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public DeliveryIndicationState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets TimeoutOn
         /// </summary>
-        [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
+        [DataMember(Name="timeoutOn", EmitDefaultValue=true)]
         public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=false)]
+        [DataMember(Name="transaction", EmitDefaultValue=true)]
         public Transaction Transaction { get; private set; }
 
         /// <summary>

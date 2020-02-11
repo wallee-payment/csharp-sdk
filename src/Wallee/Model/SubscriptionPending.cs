@@ -54,19 +54,19 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Reference
         /// </summary>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
+        [DataMember(Name="reference", EmitDefaultValue=true)]
         public string Reference { get; set; }
 
         /// <summary>
         /// Gets or Sets Subscriber
         /// </summary>
-        [DataMember(Name="subscriber", EmitDefaultValue=false)]
+        [DataMember(Name="subscriber", EmitDefaultValue=true)]
         public long? Subscriber { get; set; }
 
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name="token", EmitDefaultValue=true)]
         public long? Token { get; set; }
 
         /// <summary>

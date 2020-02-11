@@ -43,7 +43,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets TransactionInvoice
         /// </summary>
-        [DataMember(Name="transactionInvoice", EmitDefaultValue=false)]
+        [DataMember(Name="transactionInvoice", EmitDefaultValue=true)]
         public long? TransactionInvoice { get; set; }
 
         /// <summary>

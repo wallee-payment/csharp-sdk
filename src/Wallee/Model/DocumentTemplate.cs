@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="DocumentTemplate" /> class.
@@ -37,66 +37,66 @@ namespace Wallee.Model
         /// The default document template is used whenever no specific template is specified for a particular template type.
         /// </summary>
         /// <value>The default document template is used whenever no specific template is specified for a particular template type.</value>
-        [DataMember(Name="defaultTemplate", EmitDefaultValue=false)]
+        [DataMember(Name="defaultTemplate", EmitDefaultValue=true)]
         public bool? DefaultTemplate { get; private set; }
 
         /// <summary>
         /// Gets or Sets DeliveryEnabled
         /// </summary>
-        [DataMember(Name="deliveryEnabled", EmitDefaultValue=false)]
+        [DataMember(Name="deliveryEnabled", EmitDefaultValue=true)]
         public bool? DeliveryEnabled { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceId
         /// </summary>
-        [DataMember(Name="spaceId", EmitDefaultValue=false)]
+        [DataMember(Name="spaceId", EmitDefaultValue=true)]
         public long? SpaceId { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets TemplateResource
         /// </summary>
-        [DataMember(Name="templateResource", EmitDefaultValue=false)]
+        [DataMember(Name="templateResource", EmitDefaultValue=true)]
         public ResourcePath TemplateResource { get; private set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name="type", EmitDefaultValue=true)]
         public long? Type { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

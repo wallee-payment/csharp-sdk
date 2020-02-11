@@ -43,14 +43,14 @@ namespace Wallee.Model
         /// The properties is a list of property paths which should be exported.
         /// </summary>
         /// <value>The properties is a list of property paths which should be exported.</value>
-        [DataMember(Name="properties", EmitDefaultValue=false)]
+        [DataMember(Name="properties", EmitDefaultValue=true)]
         public List<string> Properties { get; set; }
 
         /// <summary>
         /// The query limits the returned entries. The query allows to restrict the entries to return and it allows to control the order of them.
         /// </summary>
         /// <value>The query limits the returned entries. The query allows to restrict the entries to return and it allows to control the order of them.</value>
-        [DataMember(Name="query", EmitDefaultValue=false)]
+        [DataMember(Name="query", EmitDefaultValue=true)]
         public EntityQuery Query { get; set; }
 
         /// <summary>

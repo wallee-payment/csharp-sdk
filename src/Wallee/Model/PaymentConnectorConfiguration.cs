@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentConnectorConfiguration" /> class.
@@ -37,74 +37,74 @@ namespace Wallee.Model
         /// This property indicates if the connector is currently used for processing transactions. In case either the payment method configuration or the processor configuration is not active the connector will not be used even though the connector state is active.
         /// </summary>
         /// <value>This property indicates if the connector is currently used for processing transactions. In case either the payment method configuration or the processor configuration is not active the connector will not be used even though the connector state is active.</value>
-        [DataMember(Name="applicableForTransactionProcessing", EmitDefaultValue=false)]
+        [DataMember(Name="applicableForTransactionProcessing", EmitDefaultValue=true)]
         public bool? ApplicableForTransactionProcessing { get; private set; }
 
         /// <summary>
         /// If a transaction meet all selected conditions the connector configuration will be used to process the transaction otherwise the next connector configuration in line will be chosen according to the priorities.
         /// </summary>
         /// <value>If a transaction meet all selected conditions the connector configuration will be used to process the transaction otherwise the next connector configuration in line will be chosen according to the priorities.</value>
-        [DataMember(Name="conditions", EmitDefaultValue=false)]
+        [DataMember(Name="conditions", EmitDefaultValue=true)]
         public List<long?> Conditions { get; private set; }
 
         /// <summary>
         /// Gets or Sets Connector
         /// </summary>
-        [DataMember(Name="connector", EmitDefaultValue=false)]
+        [DataMember(Name="connector", EmitDefaultValue=true)]
         public long? Connector { get; private set; }
 
         /// <summary>
         /// The connector configuration is only enabled for the selected space views. In case the set is empty the connector configuration is enabled for all space views.
         /// </summary>
         /// <value>The connector configuration is only enabled for the selected space views. In case the set is empty the connector configuration is enabled for all space views.</value>
-        [DataMember(Name="enabledSpaceViews", EmitDefaultValue=false)]
+        [DataMember(Name="enabledSpaceViews", EmitDefaultValue=true)]
         public List<long?> EnabledSpaceViews { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The connector configuration name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The connector configuration name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentMethodConfiguration
         /// </summary>
-        [DataMember(Name="paymentMethodConfiguration", EmitDefaultValue=false)]
+        [DataMember(Name="paymentMethodConfiguration", EmitDefaultValue=true)]
         public PaymentMethodConfiguration PaymentMethodConfiguration { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// The priority will define the order of choice of the connector configurations. The lower the value, the higher the priority is going to be. This value can also be a negative number in case you are adding a new configuration that you want to have a high priority and you dont want to change the priority of all the other configurations.
         /// </summary>
         /// <value>The priority will define the order of choice of the connector configurations. The lower the value, the higher the priority is going to be. This value can also be a negative number in case you are adding a new configuration that you want to have a high priority and you dont want to change the priority of all the other configurations.</value>
-        [DataMember(Name="priority", EmitDefaultValue=false)]
+        [DataMember(Name="priority", EmitDefaultValue=true)]
         public int? Priority { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProcessorConfiguration
         /// </summary>
-        [DataMember(Name="processorConfiguration", EmitDefaultValue=false)]
+        [DataMember(Name="processorConfiguration", EmitDefaultValue=true)]
         public PaymentProcessorConfiguration ProcessorConfiguration { get; private set; }
 
 
@@ -112,7 +112,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

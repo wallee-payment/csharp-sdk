@@ -43,7 +43,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=false)]
+        [DataMember(Name="transaction", EmitDefaultValue=true)]
         public long? Transaction { get; set; }
 
         /// <summary>

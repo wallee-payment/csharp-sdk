@@ -24,12 +24,12 @@ namespace Wallee.Model
         /// The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.
         /// </summary>
         /// <value>The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.</value>
-        [DataMember(Name="environment", EmitDefaultValue=false)]
+        [DataMember(Name="environment", EmitDefaultValue=true)]
         public DebtCollectionEnvironment? Environment { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public DebtCollectionCaseState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="DebtCollectionCase" /> class.
@@ -43,63 +43,63 @@ namespace Wallee.Model
         /// The amount is the total amount of the not paid items. The amount cannot be change once the case is reviewed.
         /// </summary>
         /// <value>The amount is the total amount of the not paid items. The amount cannot be change once the case is reviewed.</value>
-        [DataMember(Name="amount", EmitDefaultValue=false)]
+        [DataMember(Name="amount", EmitDefaultValue=true)]
         public decimal? Amount { get; private set; }
 
         /// <summary>
         /// The billing address of the case identifies the debtor.
         /// </summary>
         /// <value>The billing address of the case identifies the debtor.</value>
-        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
+        [DataMember(Name="billingAddress", EmitDefaultValue=true)]
         public Address BillingAddress { get; private set; }
 
         /// <summary>
         /// The closed on date indicates when the case is closed on.
         /// </summary>
         /// <value>The closed on date indicates when the case is closed on.</value>
-        [DataMember(Name="closedOn", EmitDefaultValue=false)]
+        [DataMember(Name="closedOn", EmitDefaultValue=true)]
         public DateTime? ClosedOn { get; private set; }
 
         /// <summary>
         /// The collector configuration determines how the debt collection case is processed.
         /// </summary>
         /// <value>The collector configuration determines how the debt collection case is processed.</value>
-        [DataMember(Name="collectorConfiguration", EmitDefaultValue=false)]
+        [DataMember(Name="collectorConfiguration", EmitDefaultValue=true)]
         public DebtCollectorConfiguration CollectorConfiguration { get; private set; }
 
         /// <summary>
         /// The contract date is the date on which the contract with the debtor was signed on.
         /// </summary>
         /// <value>The contract date is the date on which the contract with the debtor was signed on.</value>
-        [DataMember(Name="contractDate", EmitDefaultValue=false)]
+        [DataMember(Name="contractDate", EmitDefaultValue=true)]
         public DateTime? ContractDate { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The creator references the user which has created the debt collection case.
         /// </summary>
         /// <value>The creator references the user which has created the debt collection case.</value>
-        [DataMember(Name="creator", EmitDefaultValue=false)]
+        [DataMember(Name="creator", EmitDefaultValue=true)]
         public long? Creator { get; private set; }
 
         /// <summary>
         /// The currency defines the billing currency of the debt collection case.
         /// </summary>
         /// <value>The currency defines the billing currency of the debt collection case.</value>
-        [DataMember(Name="currency", EmitDefaultValue=false)]
+        [DataMember(Name="currency", EmitDefaultValue=true)]
         public string Currency { get; private set; }
 
         /// <summary>
         /// The due date indicates the date on which the amount receivable was due. This date has to be always in the past.
         /// </summary>
         /// <value>The due date indicates the date on which the amount receivable was due. This date has to be always in the past.</value>
-        [DataMember(Name="dueDate", EmitDefaultValue=false)]
+        [DataMember(Name="dueDate", EmitDefaultValue=true)]
         public DateTime? DueDate { get; private set; }
 
 
@@ -107,127 +107,127 @@ namespace Wallee.Model
         /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
         /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// The failed on date indicates when the case is failed on.
         /// </summary>
         /// <value>The failed on date indicates when the case is failed on.</value>
-        [DataMember(Name="failedOn", EmitDefaultValue=false)]
+        [DataMember(Name="failedOn", EmitDefaultValue=true)]
         public DateTime? FailedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets FailureReason
         /// </summary>
-        [DataMember(Name="failureReason", EmitDefaultValue=false)]
+        [DataMember(Name="failureReason", EmitDefaultValue=true)]
         public FailureReason FailureReason { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Labels
         /// </summary>
-        [DataMember(Name="labels", EmitDefaultValue=false)]
+        [DataMember(Name="labels", EmitDefaultValue=true)]
         public List<Label> Labels { get; private set; }
 
         /// <summary>
         /// The language indicates the language to be used in the communication with the debtor.
         /// </summary>
         /// <value>The language indicates the language to be used in the communication with the debtor.</value>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The line items of the debt collection case will be shown on documents sent to the debtor and the total of them makes up total amount to collect.
         /// </summary>
         /// <value>The line items of the debt collection case will be shown on documents sent to the debtor and the total of them makes up total amount to collect.</value>
-        [DataMember(Name="lineItems", EmitDefaultValue=false)]
+        [DataMember(Name="lineItems", EmitDefaultValue=true)]
         public List<LineItem> LineItems { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets NextAttemptOn
         /// </summary>
-        [DataMember(Name="nextAttemptOn", EmitDefaultValue=false)]
+        [DataMember(Name="nextAttemptOn", EmitDefaultValue=true)]
         public DateTime? NextAttemptOn { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// The processing started on date indicates the date on which the processing of the case started on.
         /// </summary>
         /// <value>The processing started on date indicates the date on which the processing of the case started on.</value>
-        [DataMember(Name="processingStartedOn", EmitDefaultValue=false)]
+        [DataMember(Name="processingStartedOn", EmitDefaultValue=true)]
         public DateTime? ProcessingStartedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProcessingTimeoutOn
         /// </summary>
-        [DataMember(Name="processingTimeoutOn", EmitDefaultValue=false)]
+        [DataMember(Name="processingTimeoutOn", EmitDefaultValue=true)]
         public DateTime? ProcessingTimeoutOn { get; private set; }
 
         /// <summary>
         /// The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case.
         /// </summary>
         /// <value>The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case.</value>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
+        [DataMember(Name="reference", EmitDefaultValue=true)]
         public string Reference { get; private set; }
 
         /// <summary>
         /// Gets or Sets ReviewStartedOn
         /// </summary>
-        [DataMember(Name="reviewStartedOn", EmitDefaultValue=false)]
+        [DataMember(Name="reviewStartedOn", EmitDefaultValue=true)]
         public DateTime? ReviewStartedOn { get; private set; }
 
         /// <summary>
         /// The reviewed on date indicates when the review of the case was conducted on.
         /// </summary>
         /// <value>The reviewed on date indicates when the review of the case was conducted on.</value>
-        [DataMember(Name="reviewedOn", EmitDefaultValue=false)]
+        [DataMember(Name="reviewedOn", EmitDefaultValue=true)]
         public DateTime? ReviewedOn { get; private set; }
 
         /// <summary>
         /// The reviewer references the user which has reviewed the case.
         /// </summary>
         /// <value>The reviewer references the user which has reviewed the case.</value>
-        [DataMember(Name="reviewer", EmitDefaultValue=false)]
+        [DataMember(Name="reviewer", EmitDefaultValue=true)]
         public long? Reviewer { get; private set; }
 
         /// <summary>
         /// The source of the debt collection case indicates the origin of the amount receivable.
         /// </summary>
         /// <value>The source of the debt collection case indicates the origin of the amount receivable.</value>
-        [DataMember(Name="source", EmitDefaultValue=false)]
+        [DataMember(Name="source", EmitDefaultValue=true)]
         public DebtCollectionCaseSource Source { get; private set; }
 
         /// <summary>
         /// The source entity ID points to the object which is the origin of the debt collection case. This ID is only set when the case was triggered by an internal process.
         /// </summary>
         /// <value>The source entity ID points to the object which is the origin of the debt collection case. This ID is only set when the case was triggered by an internal process.</value>
-        [DataMember(Name="sourceEntityId", EmitDefaultValue=false)]
+        [DataMember(Name="sourceEntityId", EmitDefaultValue=true)]
         public long? SourceEntityId { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
         public long? SpaceViewId { get; private set; }
 
 
@@ -235,7 +235,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

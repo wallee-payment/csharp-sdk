@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractWebhookListenerUpdate" /> class.
@@ -36,21 +36,21 @@ namespace Wallee.Model
         /// The target state identifies the state into which entities need to move into to trigger the webhook listener.
         /// </summary>
         /// <value>The target state identifies the state into which entities need to move into to trigger the webhook listener.</value>
-        [DataMember(Name="entityStates", EmitDefaultValue=false)]
+        [DataMember(Name="entityStates", EmitDefaultValue=true)]
         public List<string> EntityStates { get; set; }
 
         /// <summary>
         /// The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 
         /// <summary>
         /// Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.
         /// </summary>
         /// <value>Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.</value>
-        [DataMember(Name="notifyEveryChange", EmitDefaultValue=false)]
+        [DataMember(Name="notifyEveryChange", EmitDefaultValue=true)]
         public bool? NotifyEveryChange { get; set; }
 
 

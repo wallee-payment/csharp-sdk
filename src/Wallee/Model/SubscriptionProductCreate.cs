@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.
         /// </summary>
         /// <value>The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.</value>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
+        [DataMember(Name="reference", EmitDefaultValue=true)]
         public string Reference { get; set; }
 
         /// <summary>

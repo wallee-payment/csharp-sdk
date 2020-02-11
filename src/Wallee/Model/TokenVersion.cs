@@ -23,12 +23,12 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Environment
         /// </summary>
-        [DataMember(Name="environment", EmitDefaultValue=false)]
+        [DataMember(Name="environment", EmitDefaultValue=true)]
         public ChargeAttemptEnvironment? Environment { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public TokenVersionState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenVersion" /> class.
@@ -41,20 +41,20 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ActivatedOn
         /// </summary>
-        [DataMember(Name="activatedOn", EmitDefaultValue=false)]
+        [DataMember(Name="activatedOn", EmitDefaultValue=true)]
         public DateTime? ActivatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets BillingAddress
         /// </summary>
-        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
+        [DataMember(Name="billingAddress", EmitDefaultValue=true)]
         public Address BillingAddress { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
 
@@ -62,103 +62,110 @@ namespace Wallee.Model
         /// The expires on date indicates when token version expires. Once this date is reached the token version is marked as obsolete.
         /// </summary>
         /// <value>The expires on date indicates when token version expires. Once this date is reached the token version is marked as obsolete.</value>
-        [DataMember(Name="expiresOn", EmitDefaultValue=false)]
+        [DataMember(Name="expiresOn", EmitDefaultValue=true)]
         public DateTime? ExpiresOn { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Labels
         /// </summary>
-        [DataMember(Name="labels", EmitDefaultValue=false)]
+        [DataMember(Name="labels", EmitDefaultValue=true)]
         public List<Label> Labels { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; private set; }
 
         /// <summary>
         /// Gets or Sets ObsoletedOn
         /// </summary>
-        [DataMember(Name="obsoletedOn", EmitDefaultValue=false)]
+        [DataMember(Name="obsoletedOn", EmitDefaultValue=true)]
         public DateTime? ObsoletedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentConnectorConfiguration
         /// </summary>
-        [DataMember(Name="paymentConnectorConfiguration", EmitDefaultValue=false)]
+        [DataMember(Name="paymentConnectorConfiguration", EmitDefaultValue=true)]
         public PaymentConnectorConfiguration PaymentConnectorConfiguration { get; private set; }
+
+        /// <summary>
+        /// The payment information hash set contains hashes of the payment information represented by this token version.
+        /// </summary>
+        /// <value>The payment information hash set contains hashes of the payment information represented by this token version.</value>
+        [DataMember(Name="paymentInformationHashes", EmitDefaultValue=true)]
+        public List<PaymentInformationHash> PaymentInformationHashes { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentMethod
         /// </summary>
-        [DataMember(Name="paymentMethod", EmitDefaultValue=false)]
+        [DataMember(Name="paymentMethod", EmitDefaultValue=true)]
         public long? PaymentMethod { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentMethodBrand
         /// </summary>
-        [DataMember(Name="paymentMethodBrand", EmitDefaultValue=false)]
+        [DataMember(Name="paymentMethodBrand", EmitDefaultValue=true)]
         public long? PaymentMethodBrand { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProcessorToken
         /// </summary>
-        [DataMember(Name="processorToken", EmitDefaultValue=false)]
+        [DataMember(Name="processorToken", EmitDefaultValue=true)]
         public string ProcessorToken { get; private set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
         /// </summary>
-        [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
+        [DataMember(Name="shippingAddress", EmitDefaultValue=true)]
         public Address ShippingAddress { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name="token", EmitDefaultValue=true)]
         public Token Token { get; private set; }
 
         /// <summary>
         /// The token version type determines what kind of token it is and by which payment connector the token can be processed by.
         /// </summary>
         /// <value>The token version type determines what kind of token it is and by which payment connector the token can be processed by.</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name="type", EmitDefaultValue=true)]
         public TokenVersionType Type { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>
@@ -181,6 +188,7 @@ namespace Wallee.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ObsoletedOn: ").Append(ObsoletedOn).Append("\n");
             sb.Append("  PaymentConnectorConfiguration: ").Append(PaymentConnectorConfiguration).Append("\n");
+            sb.Append("  PaymentInformationHashes: ").Append(PaymentInformationHashes).Append("\n");
             sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
             sb.Append("  PaymentMethodBrand: ").Append(PaymentMethodBrand).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
@@ -285,6 +293,11 @@ namespace Wallee.Model
                     this.PaymentConnectorConfiguration.Equals(input.PaymentConnectorConfiguration))
                 ) && 
                 (
+                    this.PaymentInformationHashes == input.PaymentInformationHashes ||
+                    this.PaymentInformationHashes != null &&
+                    this.PaymentInformationHashes.SequenceEqual(input.PaymentInformationHashes)
+                ) && 
+                (
                     this.PaymentMethod == input.PaymentMethod ||
                     (this.PaymentMethod != null &&
                     this.PaymentMethod.Equals(input.PaymentMethod))
@@ -364,6 +377,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ObsoletedOn.GetHashCode();
                 if (this.PaymentConnectorConfiguration != null)
                     hashCode = hashCode * 59 + this.PaymentConnectorConfiguration.GetHashCode();
+                if (this.PaymentInformationHashes != null)
+                    hashCode = hashCode * 59 + this.PaymentInformationHashes.GetHashCode();
                 if (this.PaymentMethod != null)
                     hashCode = hashCode * 59 + this.PaymentMethod.GetHashCode();
                 if (this.PaymentMethodBrand != null)

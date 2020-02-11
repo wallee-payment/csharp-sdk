@@ -57,19 +57,19 @@ namespace Wallee.Model
         /// The unique id identifies the line item on which the reduction is applied on.
         /// </summary>
         /// <value>The unique id identifies the line item on which the reduction is applied on.</value>
-        [DataMember(Name="lineItemUniqueId", EmitDefaultValue=false)]
+        [DataMember(Name="lineItemUniqueId", EmitDefaultValue=true)]
         public string LineItemUniqueId { get; set; }
 
         /// <summary>
         /// Gets or Sets QuantityReduction
         /// </summary>
-        [DataMember(Name="quantityReduction", EmitDefaultValue=false)]
+        [DataMember(Name="quantityReduction", EmitDefaultValue=true)]
         public decimal? QuantityReduction { get; set; }
 
         /// <summary>
         /// Gets or Sets UnitPriceReduction
         /// </summary>
-        [DataMember(Name="unitPriceReduction", EmitDefaultValue=false)]
+        [DataMember(Name="unitPriceReduction", EmitDefaultValue=true)]
         public decimal? UnitPriceReduction { get; set; }
 
         /// <summary>

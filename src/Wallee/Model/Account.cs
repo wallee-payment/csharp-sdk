@@ -23,13 +23,13 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public AccountState? State { get; set; }
         /// <summary>
         /// The account type defines which role and capabilities it has.
         /// </summary>
         /// <value>The account type defines which role and capabilities it has.</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name="type", EmitDefaultValue=true)]
         public AccountType? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Account" /> class.
@@ -43,56 +43,56 @@ namespace Wallee.Model
         /// Active means that this account and all accounts in the hierarchy are active.
         /// </summary>
         /// <value>Active means that this account and all accounts in the hierarchy are active.</value>
-        [DataMember(Name="active", EmitDefaultValue=false)]
+        [DataMember(Name="active", EmitDefaultValue=true)]
         public bool? Active { get; private set; }
 
         /// <summary>
         /// This property is true when all accounts in the hierarchy are active or restricted active.
         /// </summary>
         /// <value>This property is true when all accounts in the hierarchy are active or restricted active.</value>
-        [DataMember(Name="activeOrRestrictedActive", EmitDefaultValue=false)]
+        [DataMember(Name="activeOrRestrictedActive", EmitDefaultValue=true)]
         public bool? ActiveOrRestrictedActive { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The name of the account identifies the account within the administrative interface.
         /// </summary>
         /// <value>The name of the account identifies the account within the administrative interface.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; private set; }
 
         /// <summary>
         /// The account which is responsible for administering the account.
         /// </summary>
         /// <value>The account which is responsible for administering the account.</value>
-        [DataMember(Name="parentAccount", EmitDefaultValue=false)]
+        [DataMember(Name="parentAccount", EmitDefaultValue=true)]
         public Account ParentAccount { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.
         /// </summary>
         /// <value>Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.</value>
-        [DataMember(Name="restrictedActive", EmitDefaultValue=false)]
+        [DataMember(Name="restrictedActive", EmitDefaultValue=true)]
         public bool? RestrictedActive { get; private set; }
 
         /// <summary>
         /// This is the scope to which the account belongs to.
         /// </summary>
         /// <value>This is the scope to which the account belongs to.</value>
-        [DataMember(Name="scope", EmitDefaultValue=false)]
+        [DataMember(Name="scope", EmitDefaultValue=true)]
         public long? Scope { get; private set; }
 
 
@@ -100,7 +100,7 @@ namespace Wallee.Model
         /// This property restricts the number of subaccounts which can be created within this account.
         /// </summary>
         /// <value>This property restricts the number of subaccounts which can be created within this account.</value>
-        [DataMember(Name="subaccountLimit", EmitDefaultValue=false)]
+        [DataMember(Name="subaccountLimit", EmitDefaultValue=true)]
         public long? SubaccountLimit { get; private set; }
 
 
@@ -108,7 +108,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

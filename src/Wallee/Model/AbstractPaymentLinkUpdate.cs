@@ -31,77 +31,77 @@ namespace Wallee.Model
         /// The allowed payment method configurations restrict the payment methods which can be used with this payment link.
         /// </summary>
         /// <value>The allowed payment method configurations restrict the payment methods which can be used with this payment link.</value>
-        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=false)]
+        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=true)]
         public List<PaymentMethodConfiguration> AllowedPaymentMethodConfigurations { get; set; }
 
         /// <summary>
         /// The payment link can be conducted in a specific space view. The space view may apply a specific design to the payment page.
         /// </summary>
         /// <value>The payment link can be conducted in a specific space view. The space view may apply a specific design to the payment page.</value>
-        [DataMember(Name="appliedSpaceView", EmitDefaultValue=false)]
+        [DataMember(Name="appliedSpaceView", EmitDefaultValue=true)]
         public long? AppliedSpaceView { get; set; }
 
         /// <summary>
         /// The available from date defines the earliest date on which the payment link can be used. When no date is specified there will be no restriction.
         /// </summary>
         /// <value>The available from date defines the earliest date on which the payment link can be used. When no date is specified there will be no restriction.</value>
-        [DataMember(Name="availableFrom", EmitDefaultValue=false)]
+        [DataMember(Name="availableFrom", EmitDefaultValue=true)]
         public DateTime? AvailableFrom { get; set; }
 
         /// <summary>
         /// The available from date defines the latest date on which the payment link can be used to initialize a transaction. When no date is specified there will be no restriction.
         /// </summary>
         /// <value>The available from date defines the latest date on which the payment link can be used to initialize a transaction. When no date is specified there will be no restriction.</value>
-        [DataMember(Name="availableUntil", EmitDefaultValue=false)]
+        [DataMember(Name="availableUntil", EmitDefaultValue=true)]
         public DateTime? AvailableUntil { get; set; }
 
         /// <summary>
         /// By making the billing address required the transaction can only be created when a billing address is provided within the request.
         /// </summary>
         /// <value>By making the billing address required the transaction can only be created when a billing address is provided within the request.</value>
-        [DataMember(Name="billingAddressRequired", EmitDefaultValue=false)]
+        [DataMember(Name="billingAddressRequired", EmitDefaultValue=true)]
         public bool? BillingAddressRequired { get; set; }
 
         /// <summary>
         /// The currency defines in which currency the payment is executed in. If no currency is defined it has to be specified within the request parameter &#39;currency&#39;.
         /// </summary>
         /// <value>The currency defines in which currency the payment is executed in. If no currency is defined it has to be specified within the request parameter &#39;currency&#39;.</value>
-        [DataMember(Name="currency", EmitDefaultValue=false)]
+        [DataMember(Name="currency", EmitDefaultValue=true)]
         public string Currency { get; set; }
 
         /// <summary>
         /// The language defines the language of the payment page. If no language is provided it can be provided through the request parameter.
         /// </summary>
         /// <value>The language defines the language of the payment page. If no language is provided it can be provided through the request parameter.</value>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; set; }
 
         /// <summary>
         /// The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters.
         /// </summary>
         /// <value>The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters.</value>
-        [DataMember(Name="lineItems", EmitDefaultValue=false)]
+        [DataMember(Name="lineItems", EmitDefaultValue=true)]
         public List<LineItemCreate> LineItems { get; set; }
 
         /// <summary>
         /// The maximal number of transactions limits the number of transactions which can be created with this payment link.
         /// </summary>
         /// <value>The maximal number of transactions limits the number of transactions which can be created with this payment link.</value>
-        [DataMember(Name="maximalNumberOfTransactions", EmitDefaultValue=false)]
+        [DataMember(Name="maximalNumberOfTransactions", EmitDefaultValue=true)]
         public int? MaximalNumberOfTransactions { get; set; }
 
         /// <summary>
         /// The payment link name is used internally to identify the payment link. For example the name is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The payment link name is used internally to identify the payment link. For example the name is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 
         /// <summary>
         /// By making the shipping address required the transaction can only be created when a shipping address is provided within the request.
         /// </summary>
         /// <value>By making the shipping address required the transaction can only be created when a shipping address is provided within the request.</value>
-        [DataMember(Name="shippingAddressRequired", EmitDefaultValue=false)]
+        [DataMember(Name="shippingAddressRequired", EmitDefaultValue=true)]
         public bool? ShippingAddressRequired { get; set; }
 
         /// <summary>

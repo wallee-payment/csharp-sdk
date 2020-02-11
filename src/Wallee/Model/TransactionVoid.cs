@@ -34,100 +34,100 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name="createdBy", EmitDefaultValue=true)]
         public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets FailedOn
         /// </summary>
-        [DataMember(Name="failedOn", EmitDefaultValue=false)]
+        [DataMember(Name="failedOn", EmitDefaultValue=true)]
         public DateTime? FailedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets FailureReason
         /// </summary>
-        [DataMember(Name="failureReason", EmitDefaultValue=false)]
+        [DataMember(Name="failureReason", EmitDefaultValue=true)]
         public FailureReason FailureReason { get; private set; }
 
         /// <summary>
         /// Gets or Sets Labels
         /// </summary>
-        [DataMember(Name="labels", EmitDefaultValue=false)]
+        [DataMember(Name="labels", EmitDefaultValue=true)]
         public List<Label> Labels { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; private set; }
 
         /// <summary>
         /// Gets or Sets Mode
         /// </summary>
-        [DataMember(Name="mode", EmitDefaultValue=false)]
+        [DataMember(Name="mode", EmitDefaultValue=true)]
         public TransactionVoidMode Mode { get; private set; }
 
         /// <summary>
         /// Gets or Sets NextUpdateOn
         /// </summary>
-        [DataMember(Name="nextUpdateOn", EmitDefaultValue=false)]
+        [DataMember(Name="nextUpdateOn", EmitDefaultValue=true)]
         public DateTime? NextUpdateOn { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProcessorReference
         /// </summary>
-        [DataMember(Name="processorReference", EmitDefaultValue=false)]
+        [DataMember(Name="processorReference", EmitDefaultValue=true)]
         public string ProcessorReference { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
         public long? SpaceViewId { get; private set; }
 
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public TransactionVoidState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets SucceededOn
         /// </summary>
-        [DataMember(Name="succeededOn", EmitDefaultValue=false)]
+        [DataMember(Name="succeededOn", EmitDefaultValue=true)]
         public DateTime? SucceededOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets TimeoutOn
         /// </summary>
-        [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
+        [DataMember(Name="timeoutOn", EmitDefaultValue=true)]
         public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=false)]
+        [DataMember(Name="transaction", EmitDefaultValue=true)]
         public Transaction Transaction { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

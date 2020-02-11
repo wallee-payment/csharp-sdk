@@ -32,46 +32,46 @@ namespace Wallee.Model
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProductVersion
         /// </summary>
-        [DataMember(Name="productVersion", EmitDefaultValue=false)]
+        [DataMember(Name="productVersion", EmitDefaultValue=true)]
         public SubscriptionProductVersion ProductVersion { get; private set; }
 
         /// <summary>
         /// Gets or Sets RespectTerminiationPeriodsEnabled
         /// </summary>
-        [DataMember(Name="respectTerminiationPeriodsEnabled", EmitDefaultValue=false)]
+        [DataMember(Name="respectTerminiationPeriodsEnabled", EmitDefaultValue=true)]
         public bool? RespectTerminiationPeriodsEnabled { get; private set; }
 
         /// <summary>
         /// Gets or Sets TargetProduct
         /// </summary>
-        [DataMember(Name="targetProduct", EmitDefaultValue=false)]
+        [DataMember(Name="targetProduct", EmitDefaultValue=true)]
         public SubscriptionProduct TargetProduct { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

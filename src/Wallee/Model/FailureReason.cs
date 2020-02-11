@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Category
         /// </summary>
-        [DataMember(Name="category", EmitDefaultValue=false)]
+        [DataMember(Name="category", EmitDefaultValue=true)]
         public FailureCategory? Category { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="FailureReason" /> class.
@@ -37,26 +37,26 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name="description", EmitDefaultValue=true)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// Gets or Sets Features
         /// </summary>
-        [DataMember(Name="features", EmitDefaultValue=false)]
+        [DataMember(Name="features", EmitDefaultValue=true)]
         public List<long?> Features { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>

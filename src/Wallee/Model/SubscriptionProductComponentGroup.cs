@@ -32,48 +32,48 @@ namespace Wallee.Model
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The component group name will be shown when the components are selected. This can be visible to the subscriber.
         /// </summary>
         /// <value>The component group name will be shown when the components are selected. This can be visible to the subscriber.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public DatabaseTranslatedString Name { get; private set; }
 
         /// <summary>
         /// The component group can be optional. This means no component has to be selected by the subscriber.
         /// </summary>
         /// <value>The component group can be optional. This means no component has to be selected by the subscriber.</value>
-        [DataMember(Name="optional", EmitDefaultValue=false)]
+        [DataMember(Name="optional", EmitDefaultValue=true)]
         public bool? Optional { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProductVersion
         /// </summary>
-        [DataMember(Name="productVersion", EmitDefaultValue=false)]
+        [DataMember(Name="productVersion", EmitDefaultValue=true)]
         public SubscriptionProductVersion ProductVersion { get; private set; }
 
         /// <summary>
         /// The sort order controls in which order the component group is listed. The sort order is used to order the component groups in ascending order.
         /// </summary>
         /// <value>The sort order controls in which order the component group is listed. The sort order is used to order the component groups in ascending order.</value>
-        [DataMember(Name="sortOrder", EmitDefaultValue=false)]
+        [DataMember(Name="sortOrder", EmitDefaultValue=true)]
         public int? SortOrder { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

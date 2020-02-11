@@ -31,14 +31,14 @@ namespace Wallee.Model
         /// The name of the account identifies the account within the administrative interface.
         /// </summary>
         /// <value>The name of the account identifies the account within the administrative interface.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 
         /// <summary>
         /// This property restricts the number of subaccounts which can be created within this account.
         /// </summary>
         /// <value>This property restricts the number of subaccounts which can be created within this account.</value>
-        [DataMember(Name="subaccountLimit", EmitDefaultValue=false)]
+        [DataMember(Name="subaccountLimit", EmitDefaultValue=true)]
         public long? SubaccountLimit { get; set; }
 
         /// <summary>

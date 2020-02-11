@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
+        [DataMember(Name="type", EmitDefaultValue=true)]
         public LineItemType Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="LineItemCreate" /> class.
@@ -75,49 +75,49 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AmountIncludingTax
         /// </summary>
-        [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
+        [DataMember(Name="amountIncludingTax", EmitDefaultValue=true)]
         public decimal? AmountIncludingTax { get; set; }
 
         /// <summary>
         /// Gets or Sets Attributes
         /// </summary>
-        [DataMember(Name="attributes", EmitDefaultValue=false)]
+        [DataMember(Name="attributes", EmitDefaultValue=true)]
         public Dictionary<string, LineItemAttributeCreate> Attributes { get; set; }
 
         /// <summary>
         /// Gets or Sets DiscountIncludingTax
         /// </summary>
-        [DataMember(Name="discountIncludingTax", EmitDefaultValue=false)]
+        [DataMember(Name="discountIncludingTax", EmitDefaultValue=true)]
         public decimal? DiscountIncludingTax { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
-        [DataMember(Name="quantity", EmitDefaultValue=false)]
+        [DataMember(Name="quantity", EmitDefaultValue=true)]
         public decimal? Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingRequired
         /// </summary>
-        [DataMember(Name="shippingRequired", EmitDefaultValue=false)]
+        [DataMember(Name="shippingRequired", EmitDefaultValue=true)]
         public bool? ShippingRequired { get; set; }
 
         /// <summary>
         /// Gets or Sets Sku
         /// </summary>
-        [DataMember(Name="sku", EmitDefaultValue=false)]
+        [DataMember(Name="sku", EmitDefaultValue=true)]
         public string Sku { get; set; }
 
         /// <summary>
         /// Gets or Sets Taxes
         /// </summary>
-        [DataMember(Name="taxes", EmitDefaultValue=false)]
+        [DataMember(Name="taxes", EmitDefaultValue=true)]
         public List<TaxCreate> Taxes { get; set; }
 
 
@@ -125,7 +125,7 @@ namespace Wallee.Model
         /// The unique id identifies the line item within the set of line items associated with the transaction.
         /// </summary>
         /// <value>The unique id identifies the line item within the set of line items associated with the transaction.</value>
-        [DataMember(Name="uniqueId", EmitDefaultValue=false)]
+        [DataMember(Name="uniqueId", EmitDefaultValue=true)]
         public string UniqueId { get; set; }
 
         /// <summary>

@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public PaymentContractState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentContract" /> class.
@@ -36,90 +36,90 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Account
         /// </summary>
-        [DataMember(Name="account", EmitDefaultValue=false)]
+        [DataMember(Name="account", EmitDefaultValue=true)]
         public Account Account { get; private set; }
 
         /// <summary>
         /// Gets or Sets ActivatedOn
         /// </summary>
-        [DataMember(Name="activatedOn", EmitDefaultValue=false)]
+        [DataMember(Name="activatedOn", EmitDefaultValue=true)]
         public DateTime? ActivatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets ContractIdentifier
         /// </summary>
-        [DataMember(Name="contractIdentifier", EmitDefaultValue=false)]
+        [DataMember(Name="contractIdentifier", EmitDefaultValue=true)]
         public string ContractIdentifier { get; private set; }
 
         /// <summary>
         /// Gets or Sets ContractType
         /// </summary>
-        [DataMember(Name="contractType", EmitDefaultValue=false)]
+        [DataMember(Name="contractType", EmitDefaultValue=true)]
         public PaymentContractType ContractType { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
+        [DataMember(Name="createdBy", EmitDefaultValue=true)]
         public User CreatedBy { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
         /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets RejectedOn
         /// </summary>
-        [DataMember(Name="rejectedOn", EmitDefaultValue=false)]
+        [DataMember(Name="rejectedOn", EmitDefaultValue=true)]
         public DateTime? RejectedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets RejectionReason
         /// </summary>
-        [DataMember(Name="rejectionReason", EmitDefaultValue=false)]
+        [DataMember(Name="rejectionReason", EmitDefaultValue=true)]
         public FailureReason RejectionReason { get; private set; }
 
         /// <summary>
         /// Gets or Sets StartTerminatingOn
         /// </summary>
-        [DataMember(Name="startTerminatingOn", EmitDefaultValue=false)]
+        [DataMember(Name="startTerminatingOn", EmitDefaultValue=true)]
         public DateTime? StartTerminatingOn { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets TerminatedBy
         /// </summary>
-        [DataMember(Name="terminatedBy", EmitDefaultValue=false)]
+        [DataMember(Name="terminatedBy", EmitDefaultValue=true)]
         public User TerminatedBy { get; private set; }
 
         /// <summary>
         /// Gets or Sets TerminatedOn
         /// </summary>
-        [DataMember(Name="terminatedOn", EmitDefaultValue=false)]
+        [DataMember(Name="terminatedOn", EmitDefaultValue=true)]
         public DateTime? TerminatedOn { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

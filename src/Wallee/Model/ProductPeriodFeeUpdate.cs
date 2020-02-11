@@ -50,55 +50,55 @@ namespace Wallee.Model
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public long? Version { get; set; }
 
         /// <summary>
         /// Gets or Sets Component
         /// </summary>
-        [DataMember(Name="component", EmitDefaultValue=false)]
+        [DataMember(Name="component", EmitDefaultValue=true)]
         public long? Component { get; set; }
 
         /// <summary>
         /// The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
         /// </summary>
         /// <value>The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name="description", EmitDefaultValue=true)]
         public DatabaseTranslatedStringCreate Description { get; set; }
 
         /// <summary>
         /// The ledger entry title will be used for the title in the ledger entry and in the invoice.
         /// </summary>
         /// <value>The ledger entry title will be used for the title in the ledger entry and in the invoice.</value>
-        [DataMember(Name="ledgerEntryTitle", EmitDefaultValue=false)]
+        [DataMember(Name="ledgerEntryTitle", EmitDefaultValue=true)]
         public DatabaseTranslatedStringCreate LedgerEntryTitle { get; set; }
 
         /// <summary>
         /// The name of the fee should describe for the subscriber in few words for what the fee is for.
         /// </summary>
         /// <value>The name of the fee should describe for the subscriber in few words for what the fee is for.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public DatabaseTranslatedStringCreate Name { get; set; }
 
         /// <summary>
         /// The number of free trial periods specify how many periods are free of charge at the begining of the subscription.
         /// </summary>
         /// <value>The number of free trial periods specify how many periods are free of charge at the begining of the subscription.</value>
-        [DataMember(Name="numberOfFreeTrialPeriods", EmitDefaultValue=false)]
+        [DataMember(Name="numberOfFreeTrialPeriods", EmitDefaultValue=true)]
         public int? NumberOfFreeTrialPeriods { get; set; }
 
         /// <summary>
         /// The period fee is charged for every period of the subscription except for those periods which are trial periods.
         /// </summary>
         /// <value>The period fee is charged for every period of the subscription except for those periods which are trial periods.</value>
-        [DataMember(Name="periodFee", EmitDefaultValue=false)]
+        [DataMember(Name="periodFee", EmitDefaultValue=true)]
         public List<PersistableCurrencyAmountUpdate> PeriodFee { get; set; }
 
         /// <summary>

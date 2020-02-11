@@ -31,19 +31,19 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AmountIncludingTax
         /// </summary>
-        [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
+        [DataMember(Name="amountIncludingTax", EmitDefaultValue=true)]
         public decimal? AmountIncludingTax { get; private set; }
 
         /// <summary>
         /// Gets or Sets DueOn
         /// </summary>
-        [DataMember(Name="dueOn", EmitDefaultValue=false)]
+        [DataMember(Name="dueOn", EmitDefaultValue=true)]
         public DateTime? DueOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets LineItems
         /// </summary>
-        [DataMember(Name="lineItems", EmitDefaultValue=false)]
+        [DataMember(Name="lineItems", EmitDefaultValue=true)]
         public List<LineItem> LineItems { get; private set; }
 
         /// <summary>

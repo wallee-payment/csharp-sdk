@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name="state", EmitDefaultValue=true)]
         public SubscriptionState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Subscription" /> class.
@@ -36,102 +36,108 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ActivatedOn
         /// </summary>
-        [DataMember(Name="activatedOn", EmitDefaultValue=false)]
+        [DataMember(Name="activatedOn", EmitDefaultValue=true)]
         public DateTime? ActivatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Affiliate
         /// </summary>
-        [DataMember(Name="affiliate", EmitDefaultValue=false)]
+        [DataMember(Name="affiliate", EmitDefaultValue=true)]
         public SubscriptionAffiliate Affiliate { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedOn
         /// </summary>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets InitializedOn
         /// </summary>
-        [DataMember(Name="initializedOn", EmitDefaultValue=false)]
+        [DataMember(Name="initializedOn", EmitDefaultValue=true)]
         public DateTime? InitializedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets PlannedTerminationDate
         /// </summary>
-        [DataMember(Name="plannedTerminationDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedTerminationDate", EmitDefaultValue=true)]
         public DateTime? PlannedTerminationDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets Reference
         /// </summary>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
+        [DataMember(Name="reference", EmitDefaultValue=true)]
         public string Reference { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets Subscriber
         /// </summary>
-        [DataMember(Name="subscriber", EmitDefaultValue=false)]
+        [DataMember(Name="subscriber", EmitDefaultValue=true)]
         public Subscriber Subscriber { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets TerminatedBy
+        /// </summary>
+        [DataMember(Name="terminatedBy", EmitDefaultValue=true)]
+        public long? TerminatedBy { get; private set; }
 
         /// <summary>
         /// Gets or Sets TerminatedOn
         /// </summary>
-        [DataMember(Name="terminatedOn", EmitDefaultValue=false)]
+        [DataMember(Name="terminatedOn", EmitDefaultValue=true)]
         public DateTime? TerminatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets TerminatingOn
         /// </summary>
-        [DataMember(Name="terminatingOn", EmitDefaultValue=false)]
+        [DataMember(Name="terminatingOn", EmitDefaultValue=true)]
         public DateTime? TerminatingOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
-        [DataMember(Name="token", EmitDefaultValue=false)]
+        [DataMember(Name="token", EmitDefaultValue=true)]
         public Token Token { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>
@@ -155,6 +161,7 @@ namespace Wallee.Model
             sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Subscriber: ").Append(Subscriber).Append("\n");
+            sb.Append("  TerminatedBy: ").Append(TerminatedBy).Append("\n");
             sb.Append("  TerminatedOn: ").Append(TerminatedOn).Append("\n");
             sb.Append("  TerminatingOn: ").Append(TerminatingOn).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -259,6 +266,11 @@ namespace Wallee.Model
                     this.Subscriber.Equals(input.Subscriber))
                 ) && 
                 (
+                    this.TerminatedBy == input.TerminatedBy ||
+                    (this.TerminatedBy != null &&
+                    this.TerminatedBy.Equals(input.TerminatedBy))
+                ) && 
+                (
                     this.TerminatedOn == input.TerminatedOn ||
                     (this.TerminatedOn != null &&
                     this.TerminatedOn.Equals(input.TerminatedOn))
@@ -315,6 +327,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.Subscriber != null)
                     hashCode = hashCode * 59 + this.Subscriber.GetHashCode();
+                if (this.TerminatedBy != null)
+                    hashCode = hashCode * 59 + this.TerminatedBy.GetHashCode();
                 if (this.TerminatedOn != null)
                     hashCode = hashCode * 59 + this.TerminatedOn.GetHashCode();
                 if (this.TerminatingOn != null)

@@ -46,7 +46,7 @@ namespace Wallee.Model
         /// The account that this user is associated with. The account owner will be able to manage this user.
         /// </summary>
         /// <value>The account that this user is associated with. The account owner will be able to manage this user.</value>
-        [DataMember(Name="primaryAccount", EmitDefaultValue=false)]
+        [DataMember(Name="primaryAccount", EmitDefaultValue=true)]
         public long? PrimaryAccount { get; set; }
 
         /// <summary>

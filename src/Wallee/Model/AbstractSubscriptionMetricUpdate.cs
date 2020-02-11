@@ -30,13 +30,13 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name="description", EmitDefaultValue=true)]
         public DatabaseTranslatedStringCreate Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name="name", EmitDefaultValue=true)]
         public DatabaseTranslatedStringCreate Name { get; set; }
 
         /// <summary>

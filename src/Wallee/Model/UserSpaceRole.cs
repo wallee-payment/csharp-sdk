@@ -32,32 +32,32 @@ namespace Wallee.Model
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Role
         /// </summary>
-        [DataMember(Name="role", EmitDefaultValue=false)]
+        [DataMember(Name="role", EmitDefaultValue=true)]
         public long? Role { get; private set; }
 
         /// <summary>
         /// Gets or Sets Space
         /// </summary>
-        [DataMember(Name="space", EmitDefaultValue=false)]
+        [DataMember(Name="space", EmitDefaultValue=true)]
         public long? Space { get; private set; }
 
         /// <summary>
         /// Gets or Sets User
         /// </summary>
-        [DataMember(Name="user", EmitDefaultValue=false)]
+        [DataMember(Name="user", EmitDefaultValue=true)]
         public long? User { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

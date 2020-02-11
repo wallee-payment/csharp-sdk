@@ -31,20 +31,20 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets DisplayName
         /// </summary>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
+        [DataMember(Name="displayName", EmitDefaultValue=true)]
         public string DisplayName { get; private set; }
 
         /// <summary>
         /// Gets or Sets Feature
         /// </summary>
-        [DataMember(Name="feature", EmitDefaultValue=false)]
+        [DataMember(Name="feature", EmitDefaultValue=true)]
         public Feature Feature { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>

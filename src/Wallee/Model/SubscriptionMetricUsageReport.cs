@@ -32,75 +32,75 @@ namespace Wallee.Model
         /// The consumed units describe the amount of resources consumed. Those consumed units will be billed in the next billing cycle.
         /// </summary>
         /// <value>The consumed units describe the amount of resources consumed. Those consumed units will be billed in the next billing cycle.</value>
-        [DataMember(Name="consumedUnits", EmitDefaultValue=false)]
+        [DataMember(Name="consumedUnits", EmitDefaultValue=true)]
         public decimal? ConsumedUnits { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedByUserId
         /// </summary>
-        [DataMember(Name="createdByUserId", EmitDefaultValue=false)]
+        [DataMember(Name="createdByUserId", EmitDefaultValue=true)]
         public long? CreatedByUserId { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedOn
         /// </summary>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The metric usage report description describe the reported usage. This description may be shown to the end user.
         /// </summary>
         /// <value>The metric usage report description describe the reported usage. This description may be shown to the end user.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name="description", EmitDefaultValue=true)]
         public string Description { get; private set; }
 
         /// <summary>
         /// The external id identifies the metric usage uniquely.
         /// </summary>
         /// <value>The external id identifies the metric usage uniquely.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The metric usage report is linked to the metric for which the usage should be recorded.
         /// </summary>
         /// <value>The metric usage report is linked to the metric for which the usage should be recorded.</value>
-        [DataMember(Name="metric", EmitDefaultValue=false)]
+        [DataMember(Name="metric", EmitDefaultValue=true)]
         public long? Metric { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// The subscription to which the usage is added to.
         /// </summary>
         /// <value>The subscription to which the usage is added to.</value>
-        [DataMember(Name="subscription", EmitDefaultValue=false)]
+        [DataMember(Name="subscription", EmitDefaultValue=true)]
         public long? Subscription { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

@@ -31,19 +31,19 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name="language", EmitDefaultValue=true)]
         public string Language { get; private set; }
 
         /// <summary>
         /// Gets or Sets LanguageCode
         /// </summary>
-        [DataMember(Name="languageCode", EmitDefaultValue=false)]
+        [DataMember(Name="languageCode", EmitDefaultValue=true)]
         public string LanguageCode { get; private set; }
 
         /// <summary>
         /// Gets or Sets Translation
         /// </summary>
-        [DataMember(Name="translation", EmitDefaultValue=false)]
+        [DataMember(Name="translation", EmitDefaultValue=true)]
         public string Translation { get; private set; }
 
         /// <summary>

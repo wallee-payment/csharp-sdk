@@ -30,25 +30,25 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name="data", EmitDefaultValue=false)]
+        [DataMember(Name="data", EmitDefaultValue=true)]
         public byte[] Data { get; set; }
 
         /// <summary>
         /// Gets or Sets DocumentTemplateType
         /// </summary>
-        [DataMember(Name="documentTemplateType", EmitDefaultValue=false)]
+        [DataMember(Name="documentTemplateType", EmitDefaultValue=true)]
         public long? DocumentTemplateType { get; private set; }
 
         /// <summary>
         /// Gets or Sets MimeType
         /// </summary>
-        [DataMember(Name="mimeType", EmitDefaultValue=false)]
+        [DataMember(Name="mimeType", EmitDefaultValue=true)]
         public string MimeType { get; private set; }
 
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name="title", EmitDefaultValue=false)]
+        [DataMember(Name="title", EmitDefaultValue=true)]
         public string Title { get; private set; }
 
         /// <summary>

@@ -32,71 +32,71 @@ namespace Wallee.Model
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets DebtCollectionCase
         /// </summary>
-        [DataMember(Name="debtCollectionCase", EmitDefaultValue=false)]
+        [DataMember(Name="debtCollectionCase", EmitDefaultValue=true)]
         public long? DebtCollectionCase { get; private set; }
 
         /// <summary>
         /// Gets or Sets FileName
         /// </summary>
-        [DataMember(Name="fileName", EmitDefaultValue=false)]
+        [DataMember(Name="fileName", EmitDefaultValue=true)]
         public string FileName { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Labels
         /// </summary>
-        [DataMember(Name="labels", EmitDefaultValue=false)]
+        [DataMember(Name="labels", EmitDefaultValue=true)]
         public List<Label> Labels { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets MimeType
         /// </summary>
-        [DataMember(Name="mimeType", EmitDefaultValue=false)]
+        [DataMember(Name="mimeType", EmitDefaultValue=true)]
         public string MimeType { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets StorageId
         /// </summary>
-        [DataMember(Name="storageId", EmitDefaultValue=false)]
+        [DataMember(Name="storageId", EmitDefaultValue=true)]
         public string StorageId { get; private set; }
 
         /// <summary>
         /// Gets or Sets UniqueId
         /// </summary>
-        [DataMember(Name="uniqueId", EmitDefaultValue=false)]
+        [DataMember(Name="uniqueId", EmitDefaultValue=true)]
         public string UniqueId { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
+        [DataMember(Name="version", EmitDefaultValue=true)]
         public int? Version { get; private set; }
 
         /// <summary>

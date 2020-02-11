@@ -31,32 +31,32 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Country
         /// </summary>
-        [DataMember(Name="country", EmitDefaultValue=false)]
+        [DataMember(Name="country", EmitDefaultValue=true)]
         public string Country { get; private set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name="description", EmitDefaultValue=true)]
         public List<LocalizedString> Description { get; private set; }
 
         /// <summary>
         /// Gets or Sets EnglishDescription
         /// </summary>
-        [DataMember(Name="englishDescription", EmitDefaultValue=false)]
+        [DataMember(Name="englishDescription", EmitDefaultValue=true)]
         public string EnglishDescription { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
+        [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Shortcut
         /// </summary>
-        [DataMember(Name="shortcut", EmitDefaultValue=false)]
+        [DataMember(Name="shortcut", EmitDefaultValue=true)]
         public List<LocalizedString> Shortcut { get; private set; }
 
         /// <summary>
