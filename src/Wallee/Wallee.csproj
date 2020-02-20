@@ -17,11 +17,11 @@
         <PackageId>Wallee</PackageId>
         <PackageLicenseUrl>https://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicenseUrl>
         <PackageProjectUrl>https://github.com/wallee-payment/csharp-sdk</PackageProjectUrl>
-        <PackageVersion>2.0.5</PackageVersion>
+        <PackageVersion>2.0.6</PackageVersion>
         <PackageTags>Wallee;payment;sdk;Payment Integration</PackageTags>
         <OutputType>Library</OutputType>
         <Owners>customweb</Owners>
-        <ReleaseVersion>2.0.5</ReleaseVersion>
+        <ReleaseVersion>2.0.6</ReleaseVersion>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
         <RootNamespace>Wallee</RootNamespace>

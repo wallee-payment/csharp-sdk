@@ -24,11 +24,11 @@ namespace Wallee.Test
     {
         private TransactionService transactionService;
         private TransactionCreate transactionCreate;
-        private Configuration configuration;
-        private long spaceId;
-        private string applicationUserID;
-        private string authenticationKey;
         private Transaction transaction;
+        private Configuration configuration;
+        private long spaceId = 405;
+        private string applicationUserID = "512";
+        private string authenticationKey = "FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=";
 
         /// <summary>
         /// Setup before each unit test
@@ -36,11 +36,8 @@ namespace Wallee.Test
         [SetUp]
         public void Init()
         {
-            this.spaceId = 405;
-            this.authenticationKey = "FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=";
-            this.applicationUserID = "512";
             this.configuration = new Configuration(this.applicationUserID, this.authenticationKey);
-            this.transactionService = new TransactionService(configuration);
+            this.transactionService = new TransactionService(this.configuration);
             this.CreateTransaction();
         }
 
@@ -328,12 +325,10 @@ namespace Wallee.Test
         [Test]
         public void SearchTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
             EntityQueryFilter entityQueryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF);
             entityQueryFilter.FieldName = "id";
             entityQueryFilter.Value = this.transaction.Id;
             entityQueryFilter.Operator = CriteriaOperator.EQUALS;
-            entityQueryFilter.Type = EntityQueryFilterType.LEAF;
 
             EntityQuery entityQuery = new EntityQuery();
             entityQuery.Filter = entityQueryFilter;
