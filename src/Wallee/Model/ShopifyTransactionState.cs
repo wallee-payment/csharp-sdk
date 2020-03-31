@@ -15,37 +15,43 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// Defines RefundType
+    /// Defines ShopifyTransactionState
     /// </summary>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum RefundType
+    public enum ShopifyTransactionState
     {
         
         /// <summary>
-        /// Enum MERCHANT_INITIATED_ONLINE for value: MERCHANT_INITIATED_ONLINE
+        /// Enum PENDING for value: PENDING
         /// </summary>
-        [EnumMember(Value = "MERCHANT_INITIATED_ONLINE")]
-        MERCHANT_INITIATED_ONLINE,
+        [EnumMember(Value = "PENDING")]
+        PENDING,
         
         /// <summary>
-        /// Enum MERCHANT_INITIATED_OFFLINE for value: MERCHANT_INITIATED_OFFLINE
+        /// Enum AUTHORIZED for value: AUTHORIZED
         /// </summary>
-        [EnumMember(Value = "MERCHANT_INITIATED_OFFLINE")]
-        MERCHANT_INITIATED_OFFLINE,
+        [EnumMember(Value = "AUTHORIZED")]
+        AUTHORIZED,
         
         /// <summary>
-        /// Enum CUSTOMER_INITIATED_AUTOMATIC for value: CUSTOMER_INITIATED_AUTOMATIC
+        /// Enum COMPLETED for value: COMPLETED
         /// </summary>
-        [EnumMember(Value = "CUSTOMER_INITIATED_AUTOMATIC")]
-        CUSTOMER_INITIATED_AUTOMATIC,
+        [EnumMember(Value = "COMPLETED")]
+        COMPLETED,
         
         /// <summary>
-        /// Enum CUSTOMER_INITIATED_MANUAL for value: CUSTOMER_INITIATED_MANUAL
+        /// Enum FAILED for value: FAILED
         /// </summary>
-        [EnumMember(Value = "CUSTOMER_INITIATED_MANUAL")]
-        CUSTOMER_INITIATED_MANUAL
+        [EnumMember(Value = "FAILED")]
+        FAILED,
+        
+        /// <summary>
+        /// Enum CONFLICTING for value: CONFLICTING
+        /// </summary>
+        [EnumMember(Value = "CONFLICTING")]
+        CONFLICTING
     }
 
 }

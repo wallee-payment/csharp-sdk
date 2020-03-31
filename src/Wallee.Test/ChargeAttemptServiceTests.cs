@@ -149,7 +149,6 @@ namespace Wallee.Test
         [Test]
         public void SearchTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
             EntityQueryFilter entityQueryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF);
             entityQueryFilter.FieldName = "charge.transaction.id";
             entityQueryFilter.Value = this.transaction.Id;
@@ -158,7 +157,7 @@ namespace Wallee.Test
             EntityQuery entityQuery = new EntityQuery();
             entityQuery.Filter = entityQueryFilter;
 
-            var response = chargeAttemptService.Search(this.spaceId, entityQuery);
+            var response = this.chargeAttemptService.Search(this.spaceId, entityQuery);
             Assert.IsInstanceOf<List<ChargeAttempt>> (response, "response is List<ChargeAttempt>");
         }
         

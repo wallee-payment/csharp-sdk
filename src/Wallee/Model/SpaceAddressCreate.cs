@@ -71,16 +71,16 @@ namespace Wallee.Model
         public string OrganizationName { get; set; }
 
         /// <summary>
-        /// Gets or Sets PostCode
-        /// </summary>
-        [DataMember(Name="postCode", EmitDefaultValue=true)]
-        public string PostCode { get; set; }
-
-        /// <summary>
         /// Gets or Sets PostalState
         /// </summary>
         [DataMember(Name="postalState", EmitDefaultValue=true)]
         public string PostalState { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Postcode
+        /// </summary>
+        [DataMember(Name="postcode", EmitDefaultValue=true)]
+        public string Postcode { get; set; }
 
         /// <summary>
         /// Gets or Sets SalesTaxNumber
@@ -122,8 +122,8 @@ namespace Wallee.Model
             sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");
             sb.Append("  GivenName: ").Append(GivenName).Append("\n");
             sb.Append("  OrganizationName: ").Append(OrganizationName).Append("\n");
-            sb.Append("  PostCode: ").Append(PostCode).Append("\n");
             sb.Append("  PostalState: ").Append(PostalState).Append("\n");
+            sb.Append("  Postcode: ").Append(Postcode).Append("\n");
             sb.Append("  SalesTaxNumber: ").Append(SalesTaxNumber).Append("\n");
             sb.Append("  Salutation: ").Append(Salutation).Append("\n");
             sb.Append("  SortingCode: ").Append(SortingCode).Append("\n");
@@ -198,14 +198,14 @@ namespace Wallee.Model
                     this.OrganizationName.Equals(input.OrganizationName))
                 ) && 
                 (
-                    this.PostCode == input.PostCode ||
-                    (this.PostCode != null &&
-                    this.PostCode.Equals(input.PostCode))
-                ) && 
-                (
                     this.PostalState == input.PostalState ||
                     (this.PostalState != null &&
                     this.PostalState.Equals(input.PostalState))
+                ) && 
+                (
+                    this.Postcode == input.Postcode ||
+                    (this.Postcode != null &&
+                    this.Postcode.Equals(input.Postcode))
                 ) && 
                 (
                     this.SalesTaxNumber == input.SalesTaxNumber ||
@@ -252,10 +252,10 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.GivenName.GetHashCode();
                 if (this.OrganizationName != null)
                     hashCode = hashCode * 59 + this.OrganizationName.GetHashCode();
-                if (this.PostCode != null)
-                    hashCode = hashCode * 59 + this.PostCode.GetHashCode();
                 if (this.PostalState != null)
                     hashCode = hashCode * 59 + this.PostalState.GetHashCode();
+                if (this.Postcode != null)
+                    hashCode = hashCode * 59 + this.Postcode.GetHashCode();
                 if (this.SalesTaxNumber != null)
                     hashCode = hashCode * 59 + this.SalesTaxNumber.GetHashCode();
                 if (this.Salutation != null)

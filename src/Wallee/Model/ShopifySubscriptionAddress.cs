@@ -15,139 +15,38 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// CustomerPostalAddressCreate
+    /// ShopifySubscriptionAddress
     /// </summary>
     [DataContract]
-    public partial class CustomerPostalAddressCreate :  IEquatable<CustomerPostalAddressCreate>
+    public partial class ShopifySubscriptionAddress : Address,  IEquatable<ShopifySubscriptionAddress>
     {
         /// <summary>
-        /// Gets or Sets Gender
+        /// Initializes a new instance of the <see cref="ShopifySubscriptionAddress" /> class.
         /// </summary>
-        [DataMember(Name="gender", EmitDefaultValue=true)]
-        public Gender? Gender { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CustomerPostalAddressCreate" /> class.
-        /// </summary>
-        public CustomerPostalAddressCreate()
+        [JsonConstructorAttribute]
+        public ShopifySubscriptionAddress()
         {
         }
 
-        /// <summary>
-        /// Gets or Sets City
-        /// </summary>
-        [DataMember(Name="city", EmitDefaultValue=true)]
-        public string City { get; set; }
-
-        /// <summary>
-        /// Gets or Sets CommercialRegisterNumber
-        /// </summary>
-        [DataMember(Name="commercialRegisterNumber", EmitDefaultValue=true)]
-        public string CommercialRegisterNumber { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Country
-        /// </summary>
-        [DataMember(Name="country", EmitDefaultValue=true)]
-        public string Country { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DateOfBirth
-        /// </summary>
-        [DataMember(Name="dateOfBirth", EmitDefaultValue=true)]
-        [JsonConverter(typeof(SwaggerDateConverter))]
-        public DateTime? DateOfBirth { get; set; }
-
-        /// <summary>
-        /// Gets or Sets DependentLocality
-        /// </summary>
-        [DataMember(Name="dependentLocality", EmitDefaultValue=true)]
-        public string DependentLocality { get; set; }
-
-        /// <summary>
-        /// Gets or Sets EmailAddress
-        /// </summary>
-        [DataMember(Name="emailAddress", EmitDefaultValue=true)]
-        public string EmailAddress { get; set; }
-
-        /// <summary>
-        /// Gets or Sets FamilyName
-        /// </summary>
-        [DataMember(Name="familyName", EmitDefaultValue=true)]
-        public string FamilyName { get; set; }
 
 
-        /// <summary>
-        /// Gets or Sets GivenName
-        /// </summary>
-        [DataMember(Name="givenName", EmitDefaultValue=true)]
-        public string GivenName { get; set; }
 
-        /// <summary>
-        /// Gets or Sets LegalOrganizationForm
-        /// </summary>
-        [DataMember(Name="legalOrganizationForm", EmitDefaultValue=true)]
-        public long? LegalOrganizationForm { get; set; }
 
-        /// <summary>
-        /// Gets or Sets MobilePhoneNumber
-        /// </summary>
-        [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=true)]
-        public string MobilePhoneNumber { get; set; }
 
-        /// <summary>
-        /// Gets or Sets OrganizationName
-        /// </summary>
-        [DataMember(Name="organizationName", EmitDefaultValue=true)]
-        public string OrganizationName { get; set; }
 
-        /// <summary>
-        /// Gets or Sets PhoneNumber
-        /// </summary>
-        [DataMember(Name="phoneNumber", EmitDefaultValue=true)]
-        public string PhoneNumber { get; set; }
 
-        /// <summary>
-        /// Gets or Sets PostalState
-        /// </summary>
-        [DataMember(Name="postalState", EmitDefaultValue=true)]
-        public string PostalState { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Postcode
-        /// </summary>
-        [DataMember(Name="postcode", EmitDefaultValue=true)]
-        public string Postcode { get; set; }
 
-        /// <summary>
-        /// Gets or Sets SalesTaxNumber
-        /// </summary>
-        [DataMember(Name="salesTaxNumber", EmitDefaultValue=true)]
-        public string SalesTaxNumber { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Salutation
-        /// </summary>
-        [DataMember(Name="salutation", EmitDefaultValue=true)]
-        public string Salutation { get; set; }
 
-        /// <summary>
-        /// Gets or Sets SocialSecurityNumber
-        /// </summary>
-        [DataMember(Name="socialSecurityNumber", EmitDefaultValue=true)]
-        public string SocialSecurityNumber { get; set; }
 
-        /// <summary>
-        /// The sorting code identifies the post office at which the post box is located in.
-        /// </summary>
-        /// <value>The sorting code identifies the post office at which the post box is located in.</value>
-        [DataMember(Name="sortingCode", EmitDefaultValue=true)]
-        public string SortingCode { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Street
-        /// </summary>
-        [DataMember(Name="street", EmitDefaultValue=true)]
-        public string Street { get; set; }
+
+
+
+
+
+
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -156,7 +55,8 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class CustomerPostalAddressCreate {\n");
+            sb.Append("class ShopifySubscriptionAddress {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
             sb.Append("  CommercialRegisterNumber: ").Append(CommercialRegisterNumber).Append("\n");
             sb.Append("  Country: ").Append(Country).Append("\n");
@@ -185,7 +85,7 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public override string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
@@ -197,115 +97,115 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CustomerPostalAddressCreate);
+            return this.Equals(input as ShopifySubscriptionAddress);
         }
 
         /// <summary>
-        /// Returns true if CustomerPostalAddressCreate instances are equal
+        /// Returns true if ShopifySubscriptionAddress instances are equal
         /// </summary>
-        /// <param name="input">Instance of CustomerPostalAddressCreate to be compared</param>
+        /// <param name="input">Instance of ShopifySubscriptionAddress to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(CustomerPostalAddressCreate input)
+        public bool Equals(ShopifySubscriptionAddress input)
         {
             if (input == null)
                 return false;
 
-            return 
+            return base.Equals(input) && 
                 (
                     this.City == input.City ||
                     (this.City != null &&
                     this.City.Equals(input.City))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.CommercialRegisterNumber == input.CommercialRegisterNumber ||
                     (this.CommercialRegisterNumber != null &&
                     this.CommercialRegisterNumber.Equals(input.CommercialRegisterNumber))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Country == input.Country ||
                     (this.Country != null &&
                     this.Country.Equals(input.Country))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.DateOfBirth == input.DateOfBirth ||
                     (this.DateOfBirth != null &&
                     this.DateOfBirth.Equals(input.DateOfBirth))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.DependentLocality == input.DependentLocality ||
                     (this.DependentLocality != null &&
                     this.DependentLocality.Equals(input.DependentLocality))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.EmailAddress == input.EmailAddress ||
                     (this.EmailAddress != null &&
                     this.EmailAddress.Equals(input.EmailAddress))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.FamilyName == input.FamilyName ||
                     (this.FamilyName != null &&
                     this.FamilyName.Equals(input.FamilyName))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Gender == input.Gender ||
                     (this.Gender != null &&
                     this.Gender.Equals(input.Gender))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.GivenName == input.GivenName ||
                     (this.GivenName != null &&
                     this.GivenName.Equals(input.GivenName))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.LegalOrganizationForm == input.LegalOrganizationForm ||
                     (this.LegalOrganizationForm != null &&
                     this.LegalOrganizationForm.Equals(input.LegalOrganizationForm))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.MobilePhoneNumber == input.MobilePhoneNumber ||
                     (this.MobilePhoneNumber != null &&
                     this.MobilePhoneNumber.Equals(input.MobilePhoneNumber))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.OrganizationName == input.OrganizationName ||
                     (this.OrganizationName != null &&
                     this.OrganizationName.Equals(input.OrganizationName))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.PhoneNumber == input.PhoneNumber ||
                     (this.PhoneNumber != null &&
                     this.PhoneNumber.Equals(input.PhoneNumber))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.PostalState == input.PostalState ||
                     (this.PostalState != null &&
                     this.PostalState.Equals(input.PostalState))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Postcode == input.Postcode ||
                     (this.Postcode != null &&
                     this.Postcode.Equals(input.Postcode))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.SalesTaxNumber == input.SalesTaxNumber ||
                     (this.SalesTaxNumber != null &&
                     this.SalesTaxNumber.Equals(input.SalesTaxNumber))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Salutation == input.Salutation ||
                     (this.Salutation != null &&
                     this.Salutation.Equals(input.Salutation))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.SocialSecurityNumber == input.SocialSecurityNumber ||
                     (this.SocialSecurityNumber != null &&
                     this.SocialSecurityNumber.Equals(input.SocialSecurityNumber))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.SortingCode == input.SortingCode ||
                     (this.SortingCode != null &&
                     this.SortingCode.Equals(input.SortingCode))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Street == input.Street ||
                     (this.Street != null &&
@@ -321,7 +221,7 @@ namespace Wallee.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hashCode = base.GetHashCode();
                 if (this.City != null)
                     hashCode = hashCode * 59 + this.City.GetHashCode();
                 if (this.CommercialRegisterNumber != null)

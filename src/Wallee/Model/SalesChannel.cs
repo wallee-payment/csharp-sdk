@@ -15,16 +15,16 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// ChargeFlowLevelConfigurationType
+    /// SalesChannel
     /// </summary>
     [DataContract]
-    public partial class ChargeFlowLevelConfigurationType :  IEquatable<ChargeFlowLevelConfigurationType>
+    public partial class SalesChannel :  IEquatable<SalesChannel>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChargeFlowLevelConfigurationType" /> class.
+        /// Initializes a new instance of the <see cref="SalesChannel" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public ChargeFlowLevelConfigurationType()
+        public SalesChannel()
         {
         }
 
@@ -42,12 +42,6 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Label
-        /// </summary>
-        [DataMember(Name="label", EmitDefaultValue=true)]
-        public Dictionary<string, string> Label { get; private set; }
-
-        /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name="name", EmitDefaultValue=true)]
@@ -60,10 +54,9 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ChargeFlowLevelConfigurationType {\n");
+            sb.Append("class SalesChannel {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -85,15 +78,15 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ChargeFlowLevelConfigurationType);
+            return this.Equals(input as SalesChannel);
         }
 
         /// <summary>
-        /// Returns true if ChargeFlowLevelConfigurationType instances are equal
+        /// Returns true if SalesChannel instances are equal
         /// </summary>
-        /// <param name="input">Instance of ChargeFlowLevelConfigurationType to be compared</param>
+        /// <param name="input">Instance of SalesChannel to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ChargeFlowLevelConfigurationType input)
+        public bool Equals(SalesChannel input)
         {
             if (input == null)
                 return false;
@@ -108,11 +101,6 @@ namespace Wallee.Model
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Label == input.Label ||
-                    this.Label != null &&
-                    this.Label.SequenceEqual(input.Label)
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -134,8 +122,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Label != null)
-                    hashCode = hashCode * 59 + this.Label.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 return hashCode;

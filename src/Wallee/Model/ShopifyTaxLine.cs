@@ -15,24 +15,24 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// ChargeFlowLevelConfigurationType
+    /// ShopifyTaxLine
     /// </summary>
     [DataContract]
-    public partial class ChargeFlowLevelConfigurationType :  IEquatable<ChargeFlowLevelConfigurationType>
+    public partial class ShopifyTaxLine :  IEquatable<ShopifyTaxLine>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ChargeFlowLevelConfigurationType" /> class.
+        /// Initializes a new instance of the <see cref="ShopifyTaxLine" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public ChargeFlowLevelConfigurationType()
+        public ShopifyTaxLine()
         {
         }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// Gets or Sets FractionRate
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=true)]
-        public Dictionary<string, string> Description { get; private set; }
+        [DataMember(Name="fractionRate", EmitDefaultValue=true)]
+        public decimal? FractionRate { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
@@ -42,16 +42,23 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Label
+        /// Gets or Sets Rate
         /// </summary>
-        [DataMember(Name="label", EmitDefaultValue=true)]
-        public Dictionary<string, string> Label { get; private set; }
+        [DataMember(Name="rate", EmitDefaultValue=true)]
+        public decimal? Rate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=true)]
-        public Dictionary<string, string> Name { get; private set; }
+        [DataMember(Name="title", EmitDefaultValue=true)]
+        public string Title { get; private set; }
+
+        /// <summary>
+        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// </summary>
+        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        [DataMember(Name="version", EmitDefaultValue=true)]
+        public int? Version { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -60,11 +67,12 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ChargeFlowLevelConfigurationType {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("class ShopifyTaxLine {\n");
+            sb.Append("  FractionRate: ").Append(FractionRate).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Label: ").Append(Label).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Rate: ").Append(Rate).Append("\n");
+            sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,24 +93,24 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ChargeFlowLevelConfigurationType);
+            return this.Equals(input as ShopifyTaxLine);
         }
 
         /// <summary>
-        /// Returns true if ChargeFlowLevelConfigurationType instances are equal
+        /// Returns true if ShopifyTaxLine instances are equal
         /// </summary>
-        /// <param name="input">Instance of ChargeFlowLevelConfigurationType to be compared</param>
+        /// <param name="input">Instance of ShopifyTaxLine to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ChargeFlowLevelConfigurationType input)
+        public bool Equals(ShopifyTaxLine input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Description == input.Description ||
-                    this.Description != null &&
-                    this.Description.SequenceEqual(input.Description)
+                    this.FractionRate == input.FractionRate ||
+                    (this.FractionRate != null &&
+                    this.FractionRate.Equals(input.FractionRate))
                 ) && 
                 (
                     this.Id == input.Id ||
@@ -110,14 +118,19 @@ namespace Wallee.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Label == input.Label ||
-                    this.Label != null &&
-                    this.Label.SequenceEqual(input.Label)
+                    this.Rate == input.Rate ||
+                    (this.Rate != null &&
+                    this.Rate.Equals(input.Rate))
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    this.Name != null &&
-                    this.Name.SequenceEqual(input.Name)
+                    this.Title == input.Title ||
+                    (this.Title != null &&
+                    this.Title.Equals(input.Title))
+                ) && 
+                (
+                    this.Version == input.Version ||
+                    (this.Version != null &&
+                    this.Version.Equals(input.Version))
                 );
         }
 
@@ -130,14 +143,16 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
+                if (this.FractionRate != null)
+                    hashCode = hashCode * 59 + this.FractionRate.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Label != null)
-                    hashCode = hashCode * 59 + this.Label.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Rate != null)
+                    hashCode = hashCode * 59 + this.Rate.GetHashCode();
+                if (this.Title != null)
+                    hashCode = hashCode * 59 + this.Title.GetHashCode();
+                if (this.Version != null)
+                    hashCode = hashCode * 59 + this.Version.GetHashCode();
                 return hashCode;
             }
         }

@@ -112,6 +112,12 @@ namespace Wallee.Model
         public string RedirectionUrl { get; private set; }
 
         /// <summary>
+        /// Gets or Sets SalesChannel
+        /// </summary>
+        [DataMember(Name="salesChannel", EmitDefaultValue=true)]
+        public long? SalesChannel { get; private set; }
+
+        /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
         [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
@@ -192,6 +198,7 @@ namespace Wallee.Model
             sb.Append("  NextUpdateOn: ").Append(NextUpdateOn).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  RedirectionUrl: ").Append(RedirectionUrl).Append("\n");
+            sb.Append("  SalesChannel: ").Append(SalesChannel).Append("\n");
             sb.Append("  SpaceViewId: ").Append(SpaceViewId).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  SucceededOn: ").Append(SucceededOn).Append("\n");
@@ -316,6 +323,11 @@ namespace Wallee.Model
                     this.RedirectionUrl.Equals(input.RedirectionUrl))
                 ) && base.Equals(input) && 
                 (
+                    this.SalesChannel == input.SalesChannel ||
+                    (this.SalesChannel != null &&
+                    this.SalesChannel.Equals(input.SalesChannel))
+                ) && base.Equals(input) && 
+                (
                     this.SpaceViewId == input.SpaceViewId ||
                     (this.SpaceViewId != null &&
                     this.SpaceViewId.Equals(input.SpaceViewId))
@@ -403,6 +415,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
                 if (this.RedirectionUrl != null)
                     hashCode = hashCode * 59 + this.RedirectionUrl.GetHashCode();
+                if (this.SalesChannel != null)
+                    hashCode = hashCode * 59 + this.SalesChannel.GetHashCode();
                 if (this.SpaceViewId != null)
                     hashCode = hashCode * 59 + this.SpaceViewId.GetHashCode();
                 if (this.State != null)

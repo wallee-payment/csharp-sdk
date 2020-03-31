@@ -101,6 +101,13 @@ namespace Wallee.Model
 
 
         /// <summary>
+        /// The sales channel through which the transaction was placed.
+        /// </summary>
+        /// <value>The sales channel through which the transaction was placed.</value>
+        [DataMember(Name="authorizationSalesChannel", EmitDefaultValue=true)]
+        public long? AuthorizationSalesChannel { get; private set; }
+
+        /// <summary>
         /// This is the time on which the transaction will be timed out when it is not at least authorized. The timeout time may change over time.
         /// </summary>
         /// <value>This is the time on which the transaction will be timed out when it is not at least authorized. The timeout time may change over time.</value>
@@ -412,6 +419,7 @@ namespace Wallee.Model
             sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
             sb.Append("  AuthorizationAmount: ").Append(AuthorizationAmount).Append("\n");
             sb.Append("  AuthorizationEnvironment: ").Append(AuthorizationEnvironment).Append("\n");
+            sb.Append("  AuthorizationSalesChannel: ").Append(AuthorizationSalesChannel).Append("\n");
             sb.Append("  AuthorizationTimeoutOn: ").Append(AuthorizationTimeoutOn).Append("\n");
             sb.Append("  AuthorizedOn: ").Append(AuthorizedOn).Append("\n");
             sb.Append("  AutoConfirmationEnabled: ").Append(AutoConfirmationEnabled).Append("\n");
@@ -526,6 +534,11 @@ namespace Wallee.Model
                     this.AuthorizationEnvironment == input.AuthorizationEnvironment ||
                     (this.AuthorizationEnvironment != null &&
                     this.AuthorizationEnvironment.Equals(input.AuthorizationEnvironment))
+                ) && 
+                (
+                    this.AuthorizationSalesChannel == input.AuthorizationSalesChannel ||
+                    (this.AuthorizationSalesChannel != null &&
+                    this.AuthorizationSalesChannel.Equals(input.AuthorizationSalesChannel))
                 ) && 
                 (
                     this.AuthorizationTimeoutOn == input.AuthorizationTimeoutOn ||
@@ -805,6 +818,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.AuthorizationAmount.GetHashCode();
                 if (this.AuthorizationEnvironment != null)
                     hashCode = hashCode * 59 + this.AuthorizationEnvironment.GetHashCode();
+                if (this.AuthorizationSalesChannel != null)
+                    hashCode = hashCode * 59 + this.AuthorizationSalesChannel.GetHashCode();
                 if (this.AuthorizationTimeoutOn != null)
                     hashCode = hashCode * 59 + this.AuthorizationTimeoutOn.GetHashCode();
                 if (this.AuthorizedOn != null)

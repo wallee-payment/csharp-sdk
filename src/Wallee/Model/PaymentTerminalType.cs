@@ -29,12 +29,6 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets ActiveAccountRequired
-        /// </summary>
-        [DataMember(Name="activeAccountRequired", EmitDefaultValue=true)]
-        public bool? ActiveAccountRequired { get; private set; }
-
-        /// <summary>
         /// Gets or Sets Description
         /// </summary>
         [DataMember(Name="description", EmitDefaultValue=true)]
@@ -61,7 +55,6 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class PaymentTerminalType {\n");
-            sb.Append("  ActiveAccountRequired: ").Append(ActiveAccountRequired).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -100,11 +93,6 @@ namespace Wallee.Model
 
             return 
                 (
-                    this.ActiveAccountRequired == input.ActiveAccountRequired ||
-                    (this.ActiveAccountRequired != null &&
-                    this.ActiveAccountRequired.Equals(input.ActiveAccountRequired))
-                ) && 
-                (
                     this.Description == input.Description ||
                     this.Description != null &&
                     this.Description.SequenceEqual(input.Description)
@@ -130,8 +118,6 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ActiveAccountRequired != null)
-                    hashCode = hashCode * 59 + this.ActiveAccountRequired.GetHashCode();
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Id != null)
