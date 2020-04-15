@@ -219,6 +219,13 @@ namespace Wallee.Model
         public string DeviceSessionIdentifier { get; private set; }
 
         /// <summary>
+        /// Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.
+        /// </summary>
+        /// <value>Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.</value>
+        [DataMember(Name="emailsDisabled", EmitDefaultValue=true)]
+        public bool? EmailsDisabled { get; private set; }
+
+        /// <summary>
         /// The transaction&#39;s end of life indicates the date from which on no operation can be carried out anymore.
         /// </summary>
         /// <value>The transaction&#39;s end of life indicates the date from which on no operation can be carried out anymore.</value>
@@ -438,6 +445,7 @@ namespace Wallee.Model
             sb.Append("  CustomersPresence: ").Append(CustomersPresence).Append("\n");
             sb.Append("  DeliveryDecisionMadeOn: ").Append(DeliveryDecisionMadeOn).Append("\n");
             sb.Append("  DeviceSessionIdentifier: ").Append(DeviceSessionIdentifier).Append("\n");
+            sb.Append("  EmailsDisabled: ").Append(EmailsDisabled).Append("\n");
             sb.Append("  EndOfLife: ").Append(EndOfLife).Append("\n");
             sb.Append("  Environment: ").Append(Environment).Append("\n");
             sb.Append("  EnvironmentSelectionStrategy: ").Append(EnvironmentSelectionStrategy).Append("\n");
@@ -629,6 +637,11 @@ namespace Wallee.Model
                     this.DeviceSessionIdentifier == input.DeviceSessionIdentifier ||
                     (this.DeviceSessionIdentifier != null &&
                     this.DeviceSessionIdentifier.Equals(input.DeviceSessionIdentifier))
+                ) && 
+                (
+                    this.EmailsDisabled == input.EmailsDisabled ||
+                    (this.EmailsDisabled != null &&
+                    this.EmailsDisabled.Equals(input.EmailsDisabled))
                 ) && 
                 (
                     this.EndOfLife == input.EndOfLife ||
@@ -856,6 +869,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.DeliveryDecisionMadeOn.GetHashCode();
                 if (this.DeviceSessionIdentifier != null)
                     hashCode = hashCode * 59 + this.DeviceSessionIdentifier.GetHashCode();
+                if (this.EmailsDisabled != null)
+                    hashCode = hashCode * 59 + this.EmailsDisabled.GetHashCode();
                 if (this.EndOfLife != null)
                     hashCode = hashCode * 59 + this.EndOfLife.GetHashCode();
                 if (this.Environment != null)

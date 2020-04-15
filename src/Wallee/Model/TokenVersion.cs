@@ -66,6 +66,12 @@ namespace Wallee.Model
         public DateTime? ExpiresOn { get; private set; }
 
         /// <summary>
+        /// Gets or Sets IconUrl
+        /// </summary>
+        [DataMember(Name="iconUrl", EmitDefaultValue=true)]
+        public string IconUrl { get; private set; }
+
+        /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
@@ -181,6 +187,7 @@ namespace Wallee.Model
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  Environment: ").Append(Environment).Append("\n");
             sb.Append("  ExpiresOn: ").Append(ExpiresOn).Append("\n");
+            sb.Append("  IconUrl: ").Append(IconUrl).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Labels: ").Append(Labels).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
@@ -256,6 +263,11 @@ namespace Wallee.Model
                     this.ExpiresOn == input.ExpiresOn ||
                     (this.ExpiresOn != null &&
                     this.ExpiresOn.Equals(input.ExpiresOn))
+                ) && 
+                (
+                    this.IconUrl == input.IconUrl ||
+                    (this.IconUrl != null &&
+                    this.IconUrl.Equals(input.IconUrl))
                 ) && 
                 (
                     this.Id == input.Id ||
@@ -363,6 +375,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Environment.GetHashCode();
                 if (this.ExpiresOn != null)
                     hashCode = hashCode * 59 + this.ExpiresOn.GetHashCode();
+                if (this.IconUrl != null)
+                    hashCode = hashCode * 59 + this.IconUrl.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Labels != null)

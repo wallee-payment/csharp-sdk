@@ -54,6 +54,12 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
+        /// Gets or Sets MachineName
+        /// </summary>
+        [DataMember(Name="machineName", EmitDefaultValue=true)]
+        public string MachineName { get; private set; }
+
+        /// <summary>
         /// The name of the scope is shown to the user where the user should select a scope.
         /// </summary>
         /// <value>The name of the scope is shown to the user where the user should select a scope.</value>
@@ -113,6 +119,7 @@ namespace Wallee.Model
             sb.Append("  DomainName: ").Append(DomainName).Append("\n");
             sb.Append("  Features: ").Append(Features).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  MachineName: ").Append(MachineName).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
@@ -171,6 +178,11 @@ namespace Wallee.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.MachineName == input.MachineName ||
+                    (this.MachineName != null &&
+                    this.MachineName.Equals(input.MachineName))
+                ) && 
+                (
                     this.Name == input.Name ||
                     (this.Name != null &&
                     this.Name.Equals(input.Name))
@@ -227,6 +239,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Features.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.MachineName != null)
+                    hashCode = hashCode * 59 + this.MachineName.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.PlannedPurgeDate != null)

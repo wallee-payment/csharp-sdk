@@ -32,17 +32,18 @@ using Wallee.Client;
 namespace Wallee.Test
 {
     /// <summary>
-    ///  Class for testing TransactionPaymentPageService
+    ///  Class for testing TransactionIframeService
     /// </summary>
     [TestFixture]
-    public class TransactionPaymentPageServiceTests
+    public class TransactionIframeServiceTests
     {
+
         private readonly long SpaceId = 405;
         private readonly string ApplicationUserID = "512";
         private readonly string AuthenticationKey = "FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=";
 
         private Configuration Configuration;
-        private TransactionPaymentPageService TransactionPaymentPageService;
+        private TransactionIframeService TransactionIframeService;
         private TransactionCreate TransactionPayload;
         private TransactionService TransactionService;
 
@@ -52,12 +53,13 @@ namespace Wallee.Test
         [SetUp]
         public void Init()
         {
-            if (this.Configuration == null) {
+            if (this.Configuration == null)
+            {
                 this.Configuration = new Configuration(this.ApplicationUserID, this.AuthenticationKey);
             }
-            if (this.TransactionPaymentPageService == null)
+            if (this.TransactionIframeService == null)
             {
-                this.TransactionPaymentPageService = new TransactionPaymentPageService(this.Configuration);
+                this.TransactionIframeService = new TransactionIframeService(this.Configuration);
             }
             if (this.TransactionService == null)
             {
@@ -121,23 +123,23 @@ namespace Wallee.Test
         }
 
         /// <summary>
-        /// Test an instance of TransactionPaymentPageService
+        /// Test an instance of TransactionIframeService
         /// </summary>
         [Test]
         public void InstanceTest()
         {
-            Assert.IsInstanceOf<TransactionPaymentPageService>(TransactionPaymentPageService, "instance is a TransactionPaymentPageService");
+            Assert.IsInstanceOf<TransactionIframeService>(TransactionIframeService, "instance is a TransactionIframeService");
         }
 
         
         /// <summary>
-        /// Test PaymentPageUrl
+        /// Test JavascriptUrl
         /// </summary>
         [Test]
-        public void PaymentPageUrlTest()
+        public void JavascriptUrlTest()
         {
             Transaction transaction = this.TransactionService.Create(this.SpaceId, this.GetTransactionPayload());
-            var response = TransactionPaymentPageService.PaymentPageUrl(this.SpaceId, transaction.Id);
+            var response = TransactionIframeService.JavascriptUrl(this.SpaceId, transaction.Id);
             Assert.IsInstanceOf<string> (response, "response is string");
         }
         

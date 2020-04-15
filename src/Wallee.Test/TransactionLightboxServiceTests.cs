@@ -32,17 +32,17 @@ using Wallee.Client;
 namespace Wallee.Test
 {
     /// <summary>
-    ///  Class for testing TransactionPaymentPageService
+    ///  Class for testing TransactionLightboxService
     /// </summary>
     [TestFixture]
-    public class TransactionPaymentPageServiceTests
+    public class TransactionLightboxServiceTests
     {
         private readonly long SpaceId = 405;
         private readonly string ApplicationUserID = "512";
         private readonly string AuthenticationKey = "FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=";
 
         private Configuration Configuration;
-        private TransactionPaymentPageService TransactionPaymentPageService;
+        private TransactionLightboxService TransactionLightboxService;
         private TransactionCreate TransactionPayload;
         private TransactionService TransactionService;
 
@@ -55,9 +55,9 @@ namespace Wallee.Test
             if (this.Configuration == null) {
                 this.Configuration = new Configuration(this.ApplicationUserID, this.AuthenticationKey);
             }
-            if (this.TransactionPaymentPageService == null)
+            if (this.TransactionLightboxService == null)
             {
-                this.TransactionPaymentPageService = new TransactionPaymentPageService(this.Configuration);
+                this.TransactionLightboxService = new TransactionLightboxService(this.Configuration);
             }
             if (this.TransactionService == null)
             {
@@ -121,23 +121,23 @@ namespace Wallee.Test
         }
 
         /// <summary>
-        /// Test an instance of TransactionPaymentPageService
+        /// Test an instance of TransactionLightboxService
         /// </summary>
         [Test]
         public void InstanceTest()
         {
-            Assert.IsInstanceOf<TransactionPaymentPageService>(TransactionPaymentPageService, "instance is a TransactionPaymentPageService");
+            Assert.IsInstanceOf<TransactionLightboxService>(TransactionLightboxService, "instance is a TransactionLightboxService");
         }
 
         
         /// <summary>
-        /// Test PaymentPageUrl
+        /// Test JavascriptUrl
         /// </summary>
         [Test]
-        public void PaymentPageUrlTest()
+        public void JavascriptUrlTest()
         {
             Transaction transaction = this.TransactionService.Create(this.SpaceId, this.GetTransactionPayload());
-            var response = TransactionPaymentPageService.PaymentPageUrl(this.SpaceId, transaction.Id);
+            var response = TransactionLightboxService.JavascriptUrl(this.SpaceId, transaction.Id);
             Assert.IsInstanceOf<string> (response, "response is string");
         }
         

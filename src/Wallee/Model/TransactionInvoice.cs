@@ -57,6 +57,13 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
+        /// The id of the user which marked the invoice as derecognized.
+        /// </summary>
+        /// <value>The id of the user which marked the invoice as derecognized.</value>
+        [DataMember(Name="derecognizedBy", EmitDefaultValue=true)]
+        public long? DerecognizedBy { get; private set; }
+
+        /// <summary>
         /// The date on which the invoice is marked as derecognized.
         /// </summary>
         /// <value>The date on which the invoice is marked as derecognized.</value>
@@ -169,6 +176,7 @@ namespace Wallee.Model
             sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
             sb.Append("  Completion: ").Append(Completion).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  DerecognizedBy: ").Append(DerecognizedBy).Append("\n");
             sb.Append("  DerecognizedOn: ").Append(DerecognizedOn).Append("\n");
             sb.Append("  DueOn: ").Append(DueOn).Append("\n");
             sb.Append("  Environment: ").Append(Environment).Append("\n");
@@ -252,6 +260,11 @@ namespace Wallee.Model
                     this.CreatedOn == input.CreatedOn ||
                     (this.CreatedOn != null &&
                     this.CreatedOn.Equals(input.CreatedOn))
+                ) && base.Equals(input) && 
+                (
+                    this.DerecognizedBy == input.DerecognizedBy ||
+                    (this.DerecognizedBy != null &&
+                    this.DerecognizedBy.Equals(input.DerecognizedBy))
                 ) && base.Equals(input) && 
                 (
                     this.DerecognizedOn == input.DerecognizedOn ||
@@ -353,6 +366,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Completion.GetHashCode();
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
+                if (this.DerecognizedBy != null)
+                    hashCode = hashCode * 59 + this.DerecognizedBy.GetHashCode();
                 if (this.DerecognizedOn != null)
                     hashCode = hashCode * 59 + this.DerecognizedOn.GetHashCode();
                 if (this.DueOn != null)

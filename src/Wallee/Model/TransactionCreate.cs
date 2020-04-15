@@ -86,6 +86,13 @@ namespace Wallee.Model
         public string DeviceSessionIdentifier { get; set; }
 
         /// <summary>
+        /// Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.
+        /// </summary>
+        /// <value>Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.</value>
+        [DataMember(Name="emailsDisabled", EmitDefaultValue=true)]
+        public bool? EmailsDisabled { get; set; }
+
+        /// <summary>
         /// Gets or Sets Environment
         /// </summary>
         [DataMember(Name="environment", EmitDefaultValue=true)]
@@ -135,6 +142,7 @@ namespace Wallee.Model
             sb.Append("  ChargeRetryEnabled: ").Append(ChargeRetryEnabled).Append("\n");
             sb.Append("  CustomersPresence: ").Append(CustomersPresence).Append("\n");
             sb.Append("  DeviceSessionIdentifier: ").Append(DeviceSessionIdentifier).Append("\n");
+            sb.Append("  EmailsDisabled: ").Append(EmailsDisabled).Append("\n");
             sb.Append("  Environment: ").Append(Environment).Append("\n");
             sb.Append("  EnvironmentSelectionStrategy: ").Append(EnvironmentSelectionStrategy).Append("\n");
             sb.Append("  SpaceViewId: ").Append(SpaceViewId).Append("\n");
@@ -283,6 +291,11 @@ namespace Wallee.Model
                     this.DeviceSessionIdentifier.Equals(input.DeviceSessionIdentifier))
                 ) && base.Equals(input) && 
                 (
+                    this.EmailsDisabled == input.EmailsDisabled ||
+                    (this.EmailsDisabled != null &&
+                    this.EmailsDisabled.Equals(input.EmailsDisabled))
+                ) && base.Equals(input) && 
+                (
                     this.Environment == input.Environment ||
                     (this.Environment != null &&
                     this.Environment.Equals(input.Environment))
@@ -352,6 +365,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.CustomersPresence.GetHashCode();
                 if (this.DeviceSessionIdentifier != null)
                     hashCode = hashCode * 59 + this.DeviceSessionIdentifier.GetHashCode();
+                if (this.EmailsDisabled != null)
+                    hashCode = hashCode * 59 + this.EmailsDisabled.GetHashCode();
                 if (this.Environment != null)
                     hashCode = hashCode * 59 + this.Environment.GetHashCode();
                 if (this.EnvironmentSelectionStrategy != null)
