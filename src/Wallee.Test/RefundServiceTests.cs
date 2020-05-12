@@ -97,12 +97,12 @@ namespace Wallee.Test
                     Sku = "red-t-shirt-123"
                 };
 
-                // Customer Billind Address
+                // Customer Billing Address
                 AddressCreate billingAddress = new AddressCreate
                 {
                     City = "Winterthur",
                     Country = "CH",
-                    EmailAddress = "test@wallee.com",
+                    EmailAddress = "test@example.com",
                     FamilyName = "Customer",
                     GivenName = "Good",
                     Postcode = "8400",

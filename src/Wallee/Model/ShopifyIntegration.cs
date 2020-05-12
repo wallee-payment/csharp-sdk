@@ -65,6 +65,12 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
+        /// Gets or Sets Installed
+        /// </summary>
+        [DataMember(Name="installed", EmitDefaultValue=true)]
+        public bool? Installed { get; private set; }
+
+        /// <summary>
         /// Enabling the integrated payment form will embed the payment form in the Shopify shop. The app needs to be installed for this to be possible.
         /// </summary>
         /// <value>Enabling the integrated payment form will embed the payment form in the Shopify shop. The app needs to be installed for this to be possible.</value>
@@ -164,6 +170,7 @@ namespace Wallee.Model
             sb.Append("  AppVersion: ").Append(AppVersion).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  Installed: ").Append(Installed).Append("\n");
             sb.Append("  IntegratedPaymentFormEnabled: ").Append(IntegratedPaymentFormEnabled).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LoginName: ").Append(LoginName).Append("\n");
@@ -236,6 +243,11 @@ namespace Wallee.Model
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.Installed == input.Installed ||
+                    (this.Installed != null &&
+                    this.Installed.Equals(input.Installed))
                 ) && 
                 (
                     this.IntegratedPaymentFormEnabled == input.IntegratedPaymentFormEnabled ||
@@ -328,6 +340,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Currency.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.Installed != null)
+                    hashCode = hashCode * 59 + this.Installed.GetHashCode();
                 if (this.IntegratedPaymentFormEnabled != null)
                     hashCode = hashCode * 59 + this.IntegratedPaymentFormEnabled.GetHashCode();
                 if (this.Language != null)

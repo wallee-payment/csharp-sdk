@@ -182,8 +182,9 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="id">The id of the transaction which should be returned.</param>
+        /// <param name="integrationMode">The integration mode defines the type of integration that is applied on the transaction.</param>
         /// <returns>List&lt;PaymentMethodConfiguration&gt;</returns>
-        List<PaymentMethodConfiguration> FetchPossiblePaymentMethods (long? spaceId, long? id);
+        List<PaymentMethodConfiguration> FetchPaymentMethods (long? spaceId, long? id, string integrationMode);
 
         /// <summary>
         /// Fetch Possible Payment Methods
@@ -194,8 +195,9 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="id">The id of the transaction which should be returned.</param>
+        /// <param name="integrationMode">The integration mode defines the type of integration that is applied on the transaction.</param>
         /// <returns>ApiResponse of List&lt;PaymentMethodConfiguration&gt;</returns>
-        ApiResponse<List<PaymentMethodConfiguration>> FetchPossiblePaymentMethodsWithHttpInfo (long? spaceId, long? id);
+        ApiResponse<List<PaymentMethodConfiguration>> FetchPaymentMethodsWithHttpInfo (long? spaceId, long? id, string integrationMode);
         /// <summary>
         /// Fetch Possible Payment Methods with Credentials
         /// </summary>
@@ -204,8 +206,9 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="integrationMode">The integration mode defines the type of integration that is applied on the transaction.</param>
         /// <returns>List&lt;PaymentMethodConfiguration&gt;</returns>
-        List<PaymentMethodConfiguration> FetchPossiblePaymentMethodsWithCredentials (string credentials);
+        List<PaymentMethodConfiguration> FetchPaymentMethodsWithCredentials (string credentials, string integrationMode);
 
         /// <summary>
         /// Fetch Possible Payment Methods with Credentials
@@ -215,8 +218,9 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="integrationMode">The integration mode defines the type of integration that is applied on the transaction.</param>
         /// <returns>ApiResponse of List&lt;PaymentMethodConfiguration&gt;</returns>
-        ApiResponse<List<PaymentMethodConfiguration>> FetchPossiblePaymentMethodsWithCredentialsWithHttpInfo (string credentials);
+        ApiResponse<List<PaymentMethodConfiguration>> FetchPaymentMethodsWithCredentialsWithHttpInfo (string credentials, string integrationMode);
         /// <summary>
         /// getInvoiceDocument
         /// </summary>
@@ -1026,10 +1030,11 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="id">The id of the transaction which should be returned.</param>
+        /// <param name="integrationMode">The integration mode defines the type of integration that is applied on the transaction.</param>
         /// <returns>List&lt;PaymentMethodConfiguration&gt;</returns>
-        public List<PaymentMethodConfiguration> FetchPossiblePaymentMethods (long? spaceId, long? id)
+        public List<PaymentMethodConfiguration> FetchPaymentMethods (long? spaceId, long? id, string integrationMode)
         {
-             ApiResponse<List<PaymentMethodConfiguration>> localVarResponse = FetchPossiblePaymentMethodsWithHttpInfo(spaceId, id);
+             ApiResponse<List<PaymentMethodConfiguration>> localVarResponse = FetchPaymentMethodsWithHttpInfo(spaceId, id, integrationMode);
              return localVarResponse.Data;
         }
 
@@ -1039,17 +1044,21 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="id">The id of the transaction which should be returned.</param>
+        /// <param name="integrationMode">The integration mode defines the type of integration that is applied on the transaction.</param>
         /// <returns>ApiResponse of List&lt;PaymentMethodConfiguration&gt;</returns>
-        public ApiResponse< List<PaymentMethodConfiguration> > FetchPossiblePaymentMethodsWithHttpInfo (long? spaceId, long? id)
+        public ApiResponse< List<PaymentMethodConfiguration> > FetchPaymentMethodsWithHttpInfo (long? spaceId, long? id, string integrationMode)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionService->FetchPossiblePaymentMethods");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionService->FetchPaymentMethods");
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionService->FetchPossiblePaymentMethods");
+                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionService->FetchPaymentMethods");
+            // verify the required parameter 'integrationMode' is set
+            if (integrationMode == null)
+                throw new ApiException(400, "Missing required parameter 'integrationMode' when calling TransactionService->FetchPaymentMethods");
 
-            var localVarPath = "/transaction/fetchPossiblePaymentMethods";
+            var localVarPath = "/transaction/fetch-payment-methods";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1072,6 +1081,7 @@ namespace Wallee.Service
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (integrationMode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "integrationMode", integrationMode)); // query parameter
 
 
             // make the HTTP request
@@ -1083,7 +1093,7 @@ namespace Wallee.Service
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("FetchPossiblePaymentMethods", localVarResponse);
+                Exception exception = ExceptionFactory("FetchPaymentMethods", localVarResponse);
                 if (exception != null) throw exception;
             }
 
@@ -1096,10 +1106,11 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="integrationMode">The integration mode defines the type of integration that is applied on the transaction.</param>
         /// <returns>List&lt;PaymentMethodConfiguration&gt;</returns>
-        public List<PaymentMethodConfiguration> FetchPossiblePaymentMethodsWithCredentials (string credentials)
+        public List<PaymentMethodConfiguration> FetchPaymentMethodsWithCredentials (string credentials, string integrationMode)
         {
-             ApiResponse<List<PaymentMethodConfiguration>> localVarResponse = FetchPossiblePaymentMethodsWithCredentialsWithHttpInfo(credentials);
+             ApiResponse<List<PaymentMethodConfiguration>> localVarResponse = FetchPaymentMethodsWithCredentialsWithHttpInfo(credentials, integrationMode);
              return localVarResponse.Data;
         }
 
@@ -1108,14 +1119,18 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
+        /// <param name="integrationMode">The integration mode defines the type of integration that is applied on the transaction.</param>
         /// <returns>ApiResponse of List&lt;PaymentMethodConfiguration&gt;</returns>
-        public ApiResponse< List<PaymentMethodConfiguration> > FetchPossiblePaymentMethodsWithCredentialsWithHttpInfo (string credentials)
+        public ApiResponse< List<PaymentMethodConfiguration> > FetchPaymentMethodsWithCredentialsWithHttpInfo (string credentials, string integrationMode)
         {
             // verify the required parameter 'credentials' is set
             if (credentials == null)
-                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->FetchPossiblePaymentMethodsWithCredentials");
+                throw new ApiException(400, "Missing required parameter 'credentials' when calling TransactionService->FetchPaymentMethodsWithCredentials");
+            // verify the required parameter 'integrationMode' is set
+            if (integrationMode == null)
+                throw new ApiException(400, "Missing required parameter 'integrationMode' when calling TransactionService->FetchPaymentMethodsWithCredentials");
 
-            var localVarPath = "/transaction/fetchPossiblePaymentMethodsWithCredentials";
+            var localVarPath = "/transaction/fetch-payment-methods-with-credentials";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1137,6 +1152,7 @@ namespace Wallee.Service
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (credentials != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "credentials", credentials)); // query parameter
+            if (integrationMode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "integrationMode", integrationMode)); // query parameter
 
 
             // make the HTTP request
@@ -1148,7 +1164,7 @@ namespace Wallee.Service
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("FetchPossiblePaymentMethodsWithCredentials", localVarResponse);
+                Exception exception = ExceptionFactory("FetchPaymentMethodsWithCredentials", localVarResponse);
                 if (exception != null) throw exception;
             }
 

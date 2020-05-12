@@ -62,6 +62,20 @@ namespace Wallee.Model
         public TenantDatabase Database { get; private set; }
 
         /// <summary>
+        /// The ID of a user that deleted this entity.
+        /// </summary>
+        /// <value>The ID of a user that deleted this entity.</value>
+        [DataMember(Name="deletedBy", EmitDefaultValue=true)]
+        public long? DeletedBy { get; private set; }
+
+        /// <summary>
+        /// The date and time when this entity was deleted.
+        /// </summary>
+        /// <value>The date and time when this entity was deleted.</value>
+        [DataMember(Name="deletedOn", EmitDefaultValue=true)]
+        public DateTime? DeletedOn { get; private set; }
+
+        /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
@@ -144,6 +158,8 @@ namespace Wallee.Model
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  ActiveOrRestrictedActive: ").Append(ActiveOrRestrictedActive).Append("\n");
             sb.Append("  Database: ").Append(Database).Append("\n");
+            sb.Append("  DeletedBy: ").Append(DeletedBy).Append("\n");
+            sb.Append("  DeletedOn: ").Append(DeletedOn).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
@@ -208,6 +224,16 @@ namespace Wallee.Model
                     this.Database == input.Database ||
                     (this.Database != null &&
                     this.Database.Equals(input.Database))
+                ) && 
+                (
+                    this.DeletedBy == input.DeletedBy ||
+                    (this.DeletedBy != null &&
+                    this.DeletedBy.Equals(input.DeletedBy))
+                ) && 
+                (
+                    this.DeletedOn == input.DeletedOn ||
+                    (this.DeletedOn != null &&
+                    this.DeletedOn.Equals(input.DeletedOn))
                 ) && 
                 (
                     this.Id == input.Id ||
@@ -283,6 +309,10 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ActiveOrRestrictedActive.GetHashCode();
                 if (this.Database != null)
                     hashCode = hashCode * 59 + this.Database.GetHashCode();
+                if (this.DeletedBy != null)
+                    hashCode = hashCode * 59 + this.DeletedBy.GetHashCode();
+                if (this.DeletedOn != null)
+                    hashCode = hashCode * 59 + this.DeletedOn.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)

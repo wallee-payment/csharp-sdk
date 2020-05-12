@@ -204,6 +204,12 @@ namespace Wallee.Model
         public int? TerminationBillingCycles { get; private set; }
 
         /// <summary>
+        /// Gets or Sets UpdatedAt
+        /// </summary>
+        [DataMember(Name="updatedAt", EmitDefaultValue=true)]
+        public DateTime? UpdatedAt { get; private set; }
+
+        /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
@@ -245,6 +251,7 @@ namespace Wallee.Model
             sb.Append("  StoreOrderConfirmationEmailEnabled: ").Append(StoreOrderConfirmationEmailEnabled).Append("\n");
             sb.Append("  SubscriberSuspensionAllowed: ").Append(SubscriberSuspensionAllowed).Append("\n");
             sb.Append("  TerminationBillingCycles: ").Append(TerminationBillingCycles).Append("\n");
+            sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -416,6 +423,11 @@ namespace Wallee.Model
                     this.TerminationBillingCycles.Equals(input.TerminationBillingCycles))
                 ) && 
                 (
+                    this.UpdatedAt == input.UpdatedAt ||
+                    (this.UpdatedAt != null &&
+                    this.UpdatedAt.Equals(input.UpdatedAt))
+                ) && 
+                (
                     this.Version == input.Version ||
                     (this.Version != null &&
                     this.Version.Equals(input.Version))
@@ -485,6 +497,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.SubscriberSuspensionAllowed.GetHashCode();
                 if (this.TerminationBillingCycles != null)
                     hashCode = hashCode * 59 + this.TerminationBillingCycles.GetHashCode();
+                if (this.UpdatedAt != null)
+                    hashCode = hashCode * 59 + this.UpdatedAt.GetHashCode();
                 if (this.Version != null)
                     hashCode = hashCode * 59 + this.Version.GetHashCode();
                 return hashCode;

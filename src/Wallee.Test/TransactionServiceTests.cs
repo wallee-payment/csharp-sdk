@@ -92,12 +92,12 @@ namespace Wallee.Test
                     Sku = "red-t-shirt-123"
                 };
 
-                // Customer Billind Address
+                // Customer Billing Address
                 AddressCreate billingAddress = new AddressCreate
                 {
                     City = "Winterthur",
                     Country = "CH",
-                    EmailAddress = "test@wallee.com",
+                    EmailAddress = "test@example.com",
                     FamilyName = "Customer",
                     GivenName = "Good",
                     Postcode = "8400",
@@ -240,23 +240,21 @@ namespace Wallee.Test
         }
         
         /// <summary>
-        /// Test FetchPossiblePaymentMethods
+        /// Test FetchPaymentMethods
+        /// payment_page, iframe, lightbox, mobile_web_view, terminal, payment_link, charge_flow, direct_card_processing
         /// </summary>
         [Test]
-        public void FetchPossiblePaymentMethodsTest()
+        public void FetchPaymentMethodsTest()
         {
-            // TODO uncomment below to test the method and replace null with proper value
-            //long? spaceId = null;
-            //long? id = null;
-            //var response = TransactionService.FetchPossiblePaymentMethods(spaceId, id);
-            //Assert.IsInstanceOf<List<PaymentMethodConfiguration>> (response, "response is List<PaymentMethodConfiguration>");
+            var response = this.TransactionService.FetchPaymentMethods(this.SpaceId, this.Transaction.Id, "payment_page");
+            Assert.IsInstanceOf<List<PaymentMethodConfiguration>> (response, "response is List<PaymentMethodConfiguration>");
         }
         
         /// <summary>
-        /// Test FetchPossiblePaymentMethodsWithCredentials
+        /// Test FetchPaymentMethodsWithCredentials
         /// </summary>
         [Test]
-        public void FetchPossiblePaymentMethodsWithCredentialsTest()
+        public void FetchPaymentMethodsWithCredentialsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
             //string credentials = null;
