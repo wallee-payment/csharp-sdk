@@ -330,10 +330,11 @@ namespace Wallee.Test
 				System.Threading.Thread.Sleep(i * 30);
 				transaction = this.TransactionService.Read(this.SpaceId, transaction.Id);
 			}
-            transaction = this.TransactionService.ProcessWithoutUserInteraction(this.SpaceId, this.Transaction.Id);
+            transaction = this.TransactionService.ProcessWithoutUserInteraction(this.SpaceId, transaction.Id);
             TransactionState[] TransactionStates = {
                 TransactionState.AUTHORIZED,
-                TransactionState.FULFILL
+                TransactionState.FULFILL,
+				TransactionState.PROCESSING
             };
             Assert.AreEqual(true, Array.Exists(TransactionStates, element => element == transaction.State));
         }
