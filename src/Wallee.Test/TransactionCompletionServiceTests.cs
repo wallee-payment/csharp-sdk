@@ -159,13 +159,28 @@ namespace Wallee.Test
         [Test]
         public void CompleteOfflineTest()
         {
-            Transaction transaction = this.TransactionService.ProcessWithoutUserInteraction(this.SpaceId, this.Transaction.Id);
-            TransactionCompletion transactionCompletion = this.TransactionCompletionService.CompleteOffline(this.SpaceId, transaction.Id);
-            TransactionCompletionState[] TransactionCompletionStates = {
-                TransactionCompletionState.SUCCESSFUL,
-                TransactionCompletionState.PENDING
-            };
-            Assert.AreEqual(true, Array.Exists(TransactionCompletionStates, element => element == transactionCompletion.State));
+		    Transaction transaction = this.TransactionService.Create(this.SpaceId, this.GetTransactionPayload());
+			for (var i = 1; i <= 30; i++) {
+				Console.WriteLine(transaction.State);
+
+				if (TransactionState.AUTHORIZED == transaction.State) {
+					break;
+				}
+				System.Threading.Thread.Sleep(i * 30);
+				transaction = this.TransactionService.Read(this.SpaceId, transaction.Id);
+			}
+			if (TransactionState.AUTHORIZED == transaction.State) {
+				transaction = this.TransactionService.ProcessWithoutUserInteraction(this.SpaceId, this.Transaction.Id);
+				TransactionCompletion transactionCompletion = this.TransactionCompletionService.CompleteOffline(this.SpaceId, transaction.Id);
+				TransactionCompletionState[] TransactionCompletionStates = {
+					TransactionCompletionState.SUCCESSFUL,
+					TransactionCompletionState.PENDING
+				};
+				Assert.AreEqual(true, Array.Exists(TransactionCompletionStates, element => element == transactionCompletion.State));
+			} else {
+				Console.WriteLine("Transaction is not in state AUTHORIZED");
+				Assert.AreEqual(true, TransactionState.AUTHORIZED != transaction.State);
+			}
         }
 
         /// <summary>
@@ -175,13 +190,28 @@ namespace Wallee.Test
         public void CompleteOnlineTest()
         {
             Transaction transaction = this.TransactionService.Create(this.SpaceId, this.GetTransactionPayload());
-            transaction = this.TransactionService.ProcessWithoutUserInteraction(this.SpaceId, transaction.Id);
-            TransactionCompletion transactionCompletion = this.TransactionCompletionService.CompleteOnline(this.SpaceId, transaction.Id);
-            TransactionCompletionState[] TransactionCompletionStates = {
-                TransactionCompletionState.SUCCESSFUL,
-                TransactionCompletionState.PENDING
-            };
-            Assert.AreEqual(true, Array.Exists(TransactionCompletionStates, element => element == transactionCompletion.State));
+			for (var i = 1; i <= 30; i++) {
+				Console.WriteLine(transaction.State);
+
+				if (TransactionState.AUTHORIZED == transaction.State) {
+					break;
+				}
+				System.Threading.Thread.Sleep(i * 30);
+				transaction = this.TransactionService.Read(this.SpaceId, transaction.Id);
+			}
+
+			if (TransactionState.AUTHORIZED == transaction.State) {
+				transaction = this.TransactionService.ProcessWithoutUserInteraction(this.SpaceId, transaction.Id);
+				TransactionCompletion transactionCompletion = this.TransactionCompletionService.CompleteOnline(this.SpaceId, transaction.Id);
+				TransactionCompletionState[] TransactionCompletionStates = {
+					TransactionCompletionState.SUCCESSFUL,
+					TransactionCompletionState.PENDING
+				};
+				Assert.AreEqual(true, Array.Exists(TransactionCompletionStates, element => element == transactionCompletion.State));
+			} else {
+				Console.WriteLine("Transaction is not in state AUTHORIZED");
+				Assert.AreEqual(true, TransactionState.AUTHORIZED != transaction.State);
+			}
         }
         
         /// <summary>

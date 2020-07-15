@@ -249,8 +249,7 @@ namespace Wallee.Test
             for (var i = 1; i <= 5; i++) {
                 Console.WriteLine(transaction.State);
            
-                if (Array.Exists(TransactionStates, element => element == transaction.State))
-                {
+                if (Array.Exists(TransactionStates, element => element == transaction.State)) {
                     break;
                 }
                 System.Threading.Thread.Sleep(i * 30);

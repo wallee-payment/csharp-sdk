@@ -128,6 +128,12 @@ namespace Wallee.Model
         public DateTime? TerminatingOn { get; private set; }
 
         /// <summary>
+        /// Gets or Sets TerminationScheduledOn
+        /// </summary>
+        [DataMember(Name="terminationScheduledOn", EmitDefaultValue=true)]
+        public DateTime? TerminationScheduledOn { get; private set; }
+
+        /// <summary>
         /// Gets or Sets Token
         /// </summary>
         [DataMember(Name="token", EmitDefaultValue=true)]
@@ -164,6 +170,7 @@ namespace Wallee.Model
             sb.Append("  TerminatedBy: ").Append(TerminatedBy).Append("\n");
             sb.Append("  TerminatedOn: ").Append(TerminatedOn).Append("\n");
             sb.Append("  TerminatingOn: ").Append(TerminatingOn).Append("\n");
+            sb.Append("  TerminationScheduledOn: ").Append(TerminationScheduledOn).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
@@ -281,6 +288,11 @@ namespace Wallee.Model
                     this.TerminatingOn.Equals(input.TerminatingOn))
                 ) && 
                 (
+                    this.TerminationScheduledOn == input.TerminationScheduledOn ||
+                    (this.TerminationScheduledOn != null &&
+                    this.TerminationScheduledOn.Equals(input.TerminationScheduledOn))
+                ) && 
+                (
                     this.Token == input.Token ||
                     (this.Token != null &&
                     this.Token.Equals(input.Token))
@@ -333,6 +345,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.TerminatedOn.GetHashCode();
                 if (this.TerminatingOn != null)
                     hashCode = hashCode * 59 + this.TerminatingOn.GetHashCode();
+                if (this.TerminationScheduledOn != null)
+                    hashCode = hashCode * 59 + this.TerminationScheduledOn.GetHashCode();
                 if (this.Token != null)
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.Version != null)

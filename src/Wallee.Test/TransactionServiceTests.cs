@@ -320,7 +320,17 @@ namespace Wallee.Test
         [Test]
         public void ProcessWithoutUserInteractionTest()
         {
-            var transaction = this.TransactionService.ProcessWithoutUserInteraction(this.SpaceId, this.Transaction.Id);
+			Transaction transaction = this.TransactionService.Read(this.SpaceId, this.Transaction.Id);
+			for (var i = 1; i <= 30; i++) {
+				Console.WriteLine(transaction.State);
+
+				if (TransactionState.AUTHORIZED == transaction.State) {
+					break;
+				}
+				System.Threading.Thread.Sleep(i * 30);
+				transaction = this.TransactionService.Read(this.SpaceId, transaction.Id);
+			}
+            transaction = this.TransactionService.ProcessWithoutUserInteraction(this.SpaceId, this.Transaction.Id);
             TransactionState[] TransactionStates = {
                 TransactionState.AUTHORIZED,
                 TransactionState.FULFILL

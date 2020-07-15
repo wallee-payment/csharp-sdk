@@ -195,6 +195,20 @@ namespace Wallee.Model
         public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
+        /// The total applied fees is the sum of all fees that have been applied so far.
+        /// </summary>
+        /// <value>The total applied fees is the sum of all fees that have been applied so far.</value>
+        [DataMember(Name="totalAppliedFees", EmitDefaultValue=true)]
+        public decimal? TotalAppliedFees { get; private set; }
+
+        /// <summary>
+        /// The total settled amount is the total amount which has been settled so far.
+        /// </summary>
+        /// <value>The total settled amount is the total amount which has been settled so far.</value>
+        [DataMember(Name="totalSettledAmount", EmitDefaultValue=true)]
+        public decimal? TotalSettledAmount { get; private set; }
+
+        /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
         [DataMember(Name="transaction", EmitDefaultValue=true)]
@@ -248,6 +262,8 @@ namespace Wallee.Model
             sb.Append("  Taxes: ").Append(Taxes).Append("\n");
             sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
             sb.Append("  TimeoutOn: ").Append(TimeoutOn).Append("\n");
+            sb.Append("  TotalAppliedFees: ").Append(TotalAppliedFees).Append("\n");
+            sb.Append("  TotalSettledAmount: ").Append(TotalSettledAmount).Append("\n");
             sb.Append("  Transaction: ").Append(Transaction).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UpdatedInvoice: ").Append(UpdatedInvoice).Append("\n");
@@ -417,6 +433,16 @@ namespace Wallee.Model
                     this.TimeoutOn.Equals(input.TimeoutOn))
                 ) && 
                 (
+                    this.TotalAppliedFees == input.TotalAppliedFees ||
+                    (this.TotalAppliedFees != null &&
+                    this.TotalAppliedFees.Equals(input.TotalAppliedFees))
+                ) && 
+                (
+                    this.TotalSettledAmount == input.TotalSettledAmount ||
+                    (this.TotalSettledAmount != null &&
+                    this.TotalSettledAmount.Equals(input.TotalSettledAmount))
+                ) && 
+                (
                     this.Transaction == input.Transaction ||
                     (this.Transaction != null &&
                     this.Transaction.Equals(input.Transaction))
@@ -499,6 +525,10 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.TimeZone.GetHashCode();
                 if (this.TimeoutOn != null)
                     hashCode = hashCode * 59 + this.TimeoutOn.GetHashCode();
+                if (this.TotalAppliedFees != null)
+                    hashCode = hashCode * 59 + this.TotalAppliedFees.GetHashCode();
+                if (this.TotalSettledAmount != null)
+                    hashCode = hashCode * 59 + this.TotalSettledAmount.GetHashCode();
                 if (this.Transaction != null)
                     hashCode = hashCode * 59 + this.Transaction.GetHashCode();
                 if (this.Type != null)

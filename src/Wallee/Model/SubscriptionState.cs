@@ -54,6 +54,12 @@ namespace Wallee.Model
         SUSPENDED,
         
         /// <summary>
+        /// Enum TERMINATION_SCHEDULED for value: TERMINATION_SCHEDULED
+        /// </summary>
+        [EnumMember(Value = "TERMINATION_SCHEDULED")]
+        TERMINATION_SCHEDULED,
+        
+        /// <summary>
         /// Enum TERMINATING for value: TERMINATING
         /// </summary>
         [EnumMember(Value = "TERMINATING")]

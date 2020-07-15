@@ -34,6 +34,12 @@ namespace Wallee.Model
         }
 
         /// <summary>
+        /// Gets or Sets ContactAddress
+        /// </summary>
+        [DataMember(Name="contactAddress", EmitDefaultValue=true)]
+        public PaymentTerminalContactAddress ContactAddress { get; private set; }
+
+        /// <summary>
         /// Gets or Sets DefaultConfiguration
         /// </summary>
         [DataMember(Name="defaultConfiguration", EmitDefaultValue=true)]
@@ -89,6 +95,7 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class PaymentTerminalLocation {\n");
+            sb.Append("  ContactAddress: ").Append(ContactAddress).Append("\n");
             sb.Append("  DefaultConfiguration: ").Append(DefaultConfiguration).Append("\n");
             sb.Append("  DeliveryAddress: ").Append(DeliveryAddress).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
@@ -131,6 +138,11 @@ namespace Wallee.Model
                 return false;
 
             return 
+                (
+                    this.ContactAddress == input.ContactAddress ||
+                    (this.ContactAddress != null &&
+                    this.ContactAddress.Equals(input.ContactAddress))
+                ) && 
                 (
                     this.DefaultConfiguration == input.DefaultConfiguration ||
                     (this.DefaultConfiguration != null &&
@@ -182,6 +194,8 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ContactAddress != null)
+                    hashCode = hashCode * 59 + this.ContactAddress.GetHashCode();
                 if (this.DefaultConfiguration != null)
                     hashCode = hashCode * 59 + this.DefaultConfiguration.GetHashCode();
                 if (this.DeliveryAddress != null)

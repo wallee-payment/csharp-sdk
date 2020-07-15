@@ -391,6 +391,20 @@ namespace Wallee.Model
 
 
         /// <summary>
+        /// The total applied fees is the sum of all fees that have been applied so far.
+        /// </summary>
+        /// <value>The total applied fees is the sum of all fees that have been applied so far.</value>
+        [DataMember(Name="totalAppliedFees", EmitDefaultValue=true)]
+        public decimal? TotalAppliedFees { get; private set; }
+
+        /// <summary>
+        /// The total settled amount is the total amount which has been settled so far.
+        /// </summary>
+        /// <value>The total settled amount is the total amount which has been settled so far.</value>
+        [DataMember(Name="totalSettledAmount", EmitDefaultValue=true)]
+        public decimal? TotalSettledAmount { get; private set; }
+
+        /// <summary>
         /// The user agent header provides the exact string which contains the user agent of the buyer.
         /// </summary>
         /// <value>The user agent header provides the exact string which contains the user agent of the buyer.</value>
@@ -475,6 +489,8 @@ namespace Wallee.Model
             sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenizationMode: ").Append(TokenizationMode).Append("\n");
+            sb.Append("  TotalAppliedFees: ").Append(TotalAppliedFees).Append("\n");
+            sb.Append("  TotalSettledAmount: ").Append(TotalSettledAmount).Append("\n");
             sb.Append("  UserAgentHeader: ").Append(UserAgentHeader).Append("\n");
             sb.Append("  UserFailureMessage: ").Append(UserFailureMessage).Append("\n");
             sb.Append("  UserInterfaceType: ").Append(UserInterfaceType).Append("\n");
@@ -789,6 +805,16 @@ namespace Wallee.Model
                     this.TokenizationMode.Equals(input.TokenizationMode))
                 ) && 
                 (
+                    this.TotalAppliedFees == input.TotalAppliedFees ||
+                    (this.TotalAppliedFees != null &&
+                    this.TotalAppliedFees.Equals(input.TotalAppliedFees))
+                ) && 
+                (
+                    this.TotalSettledAmount == input.TotalSettledAmount ||
+                    (this.TotalSettledAmount != null &&
+                    this.TotalSettledAmount.Equals(input.TotalSettledAmount))
+                ) && 
+                (
                     this.UserAgentHeader == input.UserAgentHeader ||
                     (this.UserAgentHeader != null &&
                     this.UserAgentHeader.Equals(input.UserAgentHeader))
@@ -929,6 +955,10 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Token.GetHashCode();
                 if (this.TokenizationMode != null)
                     hashCode = hashCode * 59 + this.TokenizationMode.GetHashCode();
+                if (this.TotalAppliedFees != null)
+                    hashCode = hashCode * 59 + this.TotalAppliedFees.GetHashCode();
+                if (this.TotalSettledAmount != null)
+                    hashCode = hashCode * 59 + this.TotalSettledAmount.GetHashCode();
                 if (this.UserAgentHeader != null)
                     hashCode = hashCode * 59 + this.UserAgentHeader.GetHashCode();
                 if (this.UserFailureMessage != null)
