@@ -35,6 +35,12 @@ namespace Wallee.Model
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
+        /// Gets or Sets Icon
+        /// </summary>
+        [DataMember(Name="icon", EmitDefaultValue=true)]
+        public string Icon { get; private set; }
+
+        /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
@@ -48,6 +54,18 @@ namespace Wallee.Model
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
+        /// Gets or Sets Parent
+        /// </summary>
+        [DataMember(Name="parent", EmitDefaultValue=true)]
+        public SalesChannel Parent { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets SortOrder
+        /// </summary>
+        [DataMember(Name="sortOrder", EmitDefaultValue=true)]
+        public int? SortOrder { get; private set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -56,8 +74,11 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class SalesChannel {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Icon: ").Append(Icon).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Parent: ").Append(Parent).Append("\n");
+            sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -68,7 +89,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -98,6 +119,11 @@ namespace Wallee.Model
                     this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
+                    this.Icon == input.Icon ||
+                    (this.Icon != null &&
+                    this.Icon.Equals(input.Icon))
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -106,6 +132,16 @@ namespace Wallee.Model
                     this.Name == input.Name ||
                     this.Name != null &&
                     this.Name.SequenceEqual(input.Name)
+                ) && 
+                (
+                    this.Parent == input.Parent ||
+                    (this.Parent != null &&
+                    this.Parent.Equals(input.Parent))
+                ) && 
+                (
+                    this.SortOrder == input.SortOrder ||
+                    (this.SortOrder != null &&
+                    this.SortOrder.Equals(input.SortOrder))
                 );
         }
 
@@ -120,10 +156,16 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
+                if (this.Icon != null)
+                    hashCode = hashCode * 59 + this.Icon.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Parent != null)
+                    hashCode = hashCode * 59 + this.Parent.GetHashCode();
+                if (this.SortOrder != null)
+                    hashCode = hashCode * 59 + this.SortOrder.GetHashCode();
                 return hashCode;
             }
         }

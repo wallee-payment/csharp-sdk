@@ -15,10 +15,10 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// AbstractShopifySubscriptionProductActive
+    /// AbstractShopifySubscriptionProductUpdate
     /// </summary>
     [DataContract]
-    public partial class AbstractShopifySubscriptionProductActive :  IEquatable<AbstractShopifySubscriptionProductActive>
+    public partial class AbstractShopifySubscriptionProductUpdate :  IEquatable<AbstractShopifySubscriptionProductUpdate>
     {
         /// <summary>
         /// Define how frequently recurring orders should be created.
@@ -38,14 +38,9 @@ namespace Wallee.Model
         [DataMember(Name="pricingOption", EmitDefaultValue=true)]
         public ShopifySubscriptionProductPricingOption? PricingOption { get; set; }
         /// <summary>
-        /// Gets or Sets State
+        /// Initializes a new instance of the <see cref="AbstractShopifySubscriptionProductUpdate" /> class.
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
-        public ShopifySubscriptionProductState? State { get; set; }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AbstractShopifySubscriptionProductActive" /> class.
-        /// </summary>
-        public AbstractShopifySubscriptionProductActive()
+        public AbstractShopifySubscriptionProductUpdate()
         {
         }
 
@@ -104,7 +99,6 @@ namespace Wallee.Model
         [DataMember(Name="relativePriceAdjustment", EmitDefaultValue=true)]
         public decimal? RelativePriceAdjustment { get; set; }
 
-
         /// <summary>
         /// Define whether the order confirmation email of the Shopify shop is sent to the customer for recurring orders.
         /// </summary>
@@ -133,7 +127,7 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class AbstractShopifySubscriptionProductActive {\n");
+            sb.Append("class AbstractShopifySubscriptionProductUpdate {\n");
             sb.Append("  AbsolutePriceAdjustment: ").Append(AbsolutePriceAdjustment).Append("\n");
             sb.Append("  BillingDayOfMonth: ").Append(BillingDayOfMonth).Append("\n");
             sb.Append("  BillingIntervalAmount: ").Append(BillingIntervalAmount).Append("\n");
@@ -145,7 +139,6 @@ namespace Wallee.Model
             sb.Append("  MinimalBillingCycles: ").Append(MinimalBillingCycles).Append("\n");
             sb.Append("  PricingOption: ").Append(PricingOption).Append("\n");
             sb.Append("  RelativePriceAdjustment: ").Append(RelativePriceAdjustment).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  StoreOrderConfirmationEmailEnabled: ").Append(StoreOrderConfirmationEmailEnabled).Append("\n");
             sb.Append("  SubscriberSuspensionAllowed: ").Append(SubscriberSuspensionAllowed).Append("\n");
             sb.Append("  TerminationBillingCycles: ").Append(TerminationBillingCycles).Append("\n");
@@ -159,7 +152,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -169,15 +162,15 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as AbstractShopifySubscriptionProductActive);
+            return this.Equals(input as AbstractShopifySubscriptionProductUpdate);
         }
 
         /// <summary>
-        /// Returns true if AbstractShopifySubscriptionProductActive instances are equal
+        /// Returns true if AbstractShopifySubscriptionProductUpdate instances are equal
         /// </summary>
-        /// <param name="input">Instance of AbstractShopifySubscriptionProductActive to be compared</param>
+        /// <param name="input">Instance of AbstractShopifySubscriptionProductUpdate to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(AbstractShopifySubscriptionProductActive input)
+        public bool Equals(AbstractShopifySubscriptionProductUpdate input)
         {
             if (input == null)
                 return false;
@@ -239,11 +232,6 @@ namespace Wallee.Model
                     this.RelativePriceAdjustment.Equals(input.RelativePriceAdjustment))
                 ) && 
                 (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
-                ) && 
-                (
                     this.StoreOrderConfirmationEmailEnabled == input.StoreOrderConfirmationEmailEnabled ||
                     (this.StoreOrderConfirmationEmailEnabled != null &&
                     this.StoreOrderConfirmationEmailEnabled.Equals(input.StoreOrderConfirmationEmailEnabled))
@@ -291,8 +279,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.PricingOption.GetHashCode();
                 if (this.RelativePriceAdjustment != null)
                     hashCode = hashCode * 59 + this.RelativePriceAdjustment.GetHashCode();
-                if (this.State != null)
-                    hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.StoreOrderConfirmationEmailEnabled != null)
                     hashCode = hashCode * 59 + this.StoreOrderConfirmationEmailEnabled.GetHashCode();
                 if (this.SubscriberSuspensionAllowed != null)

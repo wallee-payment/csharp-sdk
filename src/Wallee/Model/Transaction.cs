@@ -27,6 +27,12 @@ namespace Wallee.Model
         [DataMember(Name="authorizationEnvironment", EmitDefaultValue=true)]
         public ChargeAttemptEnvironment? AuthorizationEnvironment { get; set; }
         /// <summary>
+        /// The completion behavior controls when the transaction is completed.
+        /// </summary>
+        /// <value>The completion behavior controls when the transaction is completed.</value>
+        [DataMember(Name="completionBehavior", EmitDefaultValue=true)]
+        public TransactionCompletionBehavior? CompletionBehavior { get; set; }
+        /// <summary>
         /// The customer&#39;s presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.
         /// </summary>
         /// <value>The customer&#39;s presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.</value>
@@ -152,6 +158,7 @@ namespace Wallee.Model
         /// </summary>
         [DataMember(Name="completedOn", EmitDefaultValue=true)]
         public DateTime? CompletedOn { get; private set; }
+
 
         /// <summary>
         /// Gets or Sets CompletionTimeoutOn
@@ -377,6 +384,13 @@ namespace Wallee.Model
         public string SuccessUrl { get; private set; }
 
         /// <summary>
+        /// The terminal on which the payment was processed.
+        /// </summary>
+        /// <value>The terminal on which the payment was processed.</value>
+        [DataMember(Name="terminal", EmitDefaultValue=true)]
+        public PaymentTerminal Terminal { get; private set; }
+
+        /// <summary>
         /// The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
         /// </summary>
         /// <value>The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.</value>
@@ -448,6 +462,7 @@ namespace Wallee.Model
             sb.Append("  ChargeRetryEnabled: ").Append(ChargeRetryEnabled).Append("\n");
             sb.Append("  CompletedAmount: ").Append(CompletedAmount).Append("\n");
             sb.Append("  CompletedOn: ").Append(CompletedOn).Append("\n");
+            sb.Append("  CompletionBehavior: ").Append(CompletionBehavior).Append("\n");
             sb.Append("  CompletionTimeoutOn: ").Append(CompletionTimeoutOn).Append("\n");
             sb.Append("  ConfirmedBy: ").Append(ConfirmedBy).Append("\n");
             sb.Append("  ConfirmedOn: ").Append(ConfirmedOn).Append("\n");
@@ -486,6 +501,7 @@ namespace Wallee.Model
             sb.Append("  SpaceViewId: ").Append(SpaceViewId).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  SuccessUrl: ").Append(SuccessUrl).Append("\n");
+            sb.Append("  Terminal: ").Append(Terminal).Append("\n");
             sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenizationMode: ").Append(TokenizationMode).Append("\n");
@@ -505,7 +521,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -598,6 +614,11 @@ namespace Wallee.Model
                     this.CompletedOn == input.CompletedOn ||
                     (this.CompletedOn != null &&
                     this.CompletedOn.Equals(input.CompletedOn))
+                ) && 
+                (
+                    this.CompletionBehavior == input.CompletionBehavior ||
+                    (this.CompletionBehavior != null &&
+                    this.CompletionBehavior.Equals(input.CompletionBehavior))
                 ) && 
                 (
                     this.CompletionTimeoutOn == input.CompletionTimeoutOn ||
@@ -790,6 +811,11 @@ namespace Wallee.Model
                     this.SuccessUrl.Equals(input.SuccessUrl))
                 ) && 
                 (
+                    this.Terminal == input.Terminal ||
+                    (this.Terminal != null &&
+                    this.Terminal.Equals(input.Terminal))
+                ) && 
+                (
                     this.TimeZone == input.TimeZone ||
                     (this.TimeZone != null &&
                     this.TimeZone.Equals(input.TimeZone))
@@ -873,6 +899,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.CompletedAmount.GetHashCode();
                 if (this.CompletedOn != null)
                     hashCode = hashCode * 59 + this.CompletedOn.GetHashCode();
+                if (this.CompletionBehavior != null)
+                    hashCode = hashCode * 59 + this.CompletionBehavior.GetHashCode();
                 if (this.CompletionTimeoutOn != null)
                     hashCode = hashCode * 59 + this.CompletionTimeoutOn.GetHashCode();
                 if (this.ConfirmedBy != null)
@@ -949,6 +977,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.SuccessUrl != null)
                     hashCode = hashCode * 59 + this.SuccessUrl.GetHashCode();
+                if (this.Terminal != null)
+                    hashCode = hashCode * 59 + this.Terminal.GetHashCode();
                 if (this.TimeZone != null)
                     hashCode = hashCode * 59 + this.TimeZone.GetHashCode();
                 if (this.Token != null)

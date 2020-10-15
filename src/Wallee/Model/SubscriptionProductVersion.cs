@@ -26,6 +26,12 @@ namespace Wallee.Model
         [DataMember(Name="state", EmitDefaultValue=true)]
         public SubscriptionProductVersionState? State { get; set; }
         /// <summary>
+        /// Strategy that is used for tax calculation in fees.
+        /// </summary>
+        /// <value>Strategy that is used for tax calculation in fees.</value>
+        [DataMember(Name="taxCalculation", EmitDefaultValue=true)]
+        public TaxCalculation? TaxCalculation { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionProductVersion" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -155,6 +161,7 @@ namespace Wallee.Model
         public DateTime? RetiringStartedOn { get; private set; }
 
 
+
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
@@ -189,6 +196,7 @@ namespace Wallee.Model
             sb.Append("  RetiringFinishedOn: ").Append(RetiringFinishedOn).Append("\n");
             sb.Append("  RetiringStartedOn: ").Append(RetiringStartedOn).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  TaxCalculation: ").Append(TaxCalculation).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -200,7 +208,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -320,6 +328,11 @@ namespace Wallee.Model
                     this.State.Equals(input.State))
                 ) && 
                 (
+                    this.TaxCalculation == input.TaxCalculation ||
+                    (this.TaxCalculation != null &&
+                    this.TaxCalculation.Equals(input.TaxCalculation))
+                ) && 
+                (
                     this.Version == input.Version ||
                     (this.Version != null &&
                     this.Version.Equals(input.Version))
@@ -373,6 +386,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.RetiringStartedOn.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
+                if (this.TaxCalculation != null)
+                    hashCode = hashCode * 59 + this.TaxCalculation.GetHashCode();
                 if (this.Version != null)
                     hashCode = hashCode * 59 + this.Version.GetHashCode();
                 return hashCode;

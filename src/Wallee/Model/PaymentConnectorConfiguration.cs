@@ -54,6 +54,13 @@ namespace Wallee.Model
         public long? Connector { get; private set; }
 
         /// <summary>
+        /// Defines the sales channels the connector configuration is enabled for. In case the set is empty, the connector configuration is enabled for all sales channels.
+        /// </summary>
+        /// <value>Defines the sales channels the connector configuration is enabled for. In case the set is empty, the connector configuration is enabled for all sales channels.</value>
+        [DataMember(Name="enabledSalesChannels", EmitDefaultValue=true)]
+        public List<SalesChannel> EnabledSalesChannels { get; private set; }
+
+        /// <summary>
         /// The connector configuration is only enabled for the selected space views. In case the set is empty the connector configuration is enabled for all space views.
         /// </summary>
         /// <value>The connector configuration is only enabled for the selected space views. In case the set is empty the connector configuration is enabled for all space views.</value>
@@ -126,6 +133,7 @@ namespace Wallee.Model
             sb.Append("  ApplicableForTransactionProcessing: ").Append(ApplicableForTransactionProcessing).Append("\n");
             sb.Append("  Conditions: ").Append(Conditions).Append("\n");
             sb.Append("  Connector: ").Append(Connector).Append("\n");
+            sb.Append("  EnabledSalesChannels: ").Append(EnabledSalesChannels).Append("\n");
             sb.Append("  EnabledSpaceViews: ").Append(EnabledSpaceViews).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
@@ -146,7 +154,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -184,6 +192,11 @@ namespace Wallee.Model
                     this.Connector == input.Connector ||
                     (this.Connector != null &&
                     this.Connector.Equals(input.Connector))
+                ) && 
+                (
+                    this.EnabledSalesChannels == input.EnabledSalesChannels ||
+                    this.EnabledSalesChannels != null &&
+                    this.EnabledSalesChannels.SequenceEqual(input.EnabledSalesChannels)
                 ) && 
                 (
                     this.EnabledSpaceViews == input.EnabledSpaceViews ||
@@ -252,6 +265,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Conditions.GetHashCode();
                 if (this.Connector != null)
                     hashCode = hashCode * 59 + this.Connector.GetHashCode();
+                if (this.EnabledSalesChannels != null)
+                    hashCode = hashCode * 59 + this.EnabledSalesChannels.GetHashCode();
                 if (this.EnabledSpaceViews != null)
                     hashCode = hashCode * 59 + this.EnabledSpaceViews.GetHashCode();
                 if (this.Id != null)

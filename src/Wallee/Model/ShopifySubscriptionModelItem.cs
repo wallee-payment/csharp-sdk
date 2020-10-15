@@ -15,15 +15,15 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// ShopifySubscriptionEditModelItem
+    /// ShopifySubscriptionModelItem
     /// </summary>
     [DataContract]
-    public partial class ShopifySubscriptionEditModelItem :  IEquatable<ShopifySubscriptionEditModelItem>
+    public partial class ShopifySubscriptionModelItem :  IEquatable<ShopifySubscriptionModelItem>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShopifySubscriptionEditModelItem" /> class.
+        /// Initializes a new instance of the <see cref="ShopifySubscriptionModelItem" /> class.
         /// </summary>
-        public ShopifySubscriptionEditModelItem()
+        public ShopifySubscriptionModelItem()
         {
         }
 
@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// Gets or Sets TaxLines
         /// </summary>
         [DataMember(Name="taxLines", EmitDefaultValue=true)]
-        public List<ShopifySubscriptionEditModelTaxLine> TaxLines { get; set; }
+        public List<ShopifySubscriptionModelTaxLine> TaxLines { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -64,7 +64,7 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ShopifySubscriptionEditModelItem {\n");
+            sb.Append("class ShopifySubscriptionModelItem {\n");
             sb.Append("  PriceIncludingTax: ").Append(PriceIncludingTax).Append("\n");
             sb.Append("  ProductId: ").Append(ProductId).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
@@ -80,7 +80,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -90,15 +90,15 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ShopifySubscriptionEditModelItem);
+            return this.Equals(input as ShopifySubscriptionModelItem);
         }
 
         /// <summary>
-        /// Returns true if ShopifySubscriptionEditModelItem instances are equal
+        /// Returns true if ShopifySubscriptionModelItem instances are equal
         /// </summary>
-        /// <param name="input">Instance of ShopifySubscriptionEditModelItem to be compared</param>
+        /// <param name="input">Instance of ShopifySubscriptionModelItem to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ShopifySubscriptionEditModelItem input)
+        public bool Equals(ShopifySubscriptionModelItem input)
         {
             if (input == null)
                 return false;

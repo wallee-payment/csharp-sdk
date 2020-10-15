@@ -18,7 +18,7 @@ namespace Wallee.Model
     /// ShopifySubscriptionProductCreate
     /// </summary>
     [DataContract]
-    public partial class ShopifySubscriptionProductCreate : AbstractShopifySubscriptionProductActive,  IEquatable<ShopifySubscriptionProductCreate>
+    public partial class ShopifySubscriptionProductCreate : AbstractShopifySubscriptionProductUpdate,  IEquatable<ShopifySubscriptionProductCreate>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscriptionProductCreate" /> class.
@@ -28,24 +28,30 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscriptionProductCreate" /> class.
         /// </summary>
+        /// <param name="shop">shop (required).</param>
         /// <param name="productVariantId">productVariantId (required).</param>
-        /// <param name="state">state (required).</param>
-        public ShopifySubscriptionProductCreate(string productVariantId, ShopifySubscriptionProductState state)
+        /// <param name="productId">The ID of the Shopify product that is enabled to be ordered as subscription. (required).</param>
+        public ShopifySubscriptionProductCreate(long? shop, string productVariantId, string productId)
         {
+            // to ensure "shop" is required (not null)
+            if (shop == null)
+            {
+                throw new InvalidDataException("shop is a required property for ShopifySubscriptionProductCreate and cannot be null");
+            }
+            this.Shop = shop;
             // to ensure "productVariantId" is required (not null)
             if (productVariantId == null)
             {
                 throw new InvalidDataException("productVariantId is a required property for ShopifySubscriptionProductCreate and cannot be null");
             }
             this.ProductVariantId = productVariantId;
-            // to ensure "state" is required (not null)
-            if (state == null)
+            // to ensure "productId" is required (not null)
+            if (productId == null)
             {
-                throw new InvalidDataException("state is a required property for ShopifySubscriptionProductCreate and cannot be null");
+                throw new InvalidDataException("productId is a required property for ShopifySubscriptionProductCreate and cannot be null");
             }
-            this.State = state;
+            this.ProductId = productId;
         }
-
 
 
 
@@ -100,7 +106,6 @@ namespace Wallee.Model
             sb.Append("  MinimalBillingCycles: ").Append(MinimalBillingCycles).Append("\n");
             sb.Append("  PricingOption: ").Append(PricingOption).Append("\n");
             sb.Append("  RelativePriceAdjustment: ").Append(RelativePriceAdjustment).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  StoreOrderConfirmationEmailEnabled: ").Append(StoreOrderConfirmationEmailEnabled).Append("\n");
             sb.Append("  SubscriberSuspensionAllowed: ").Append(SubscriberSuspensionAllowed).Append("\n");
             sb.Append("  TerminationBillingCycles: ").Append(TerminationBillingCycles).Append("\n");
@@ -117,7 +122,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public override string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -197,11 +202,6 @@ namespace Wallee.Model
                     this.RelativePriceAdjustment.Equals(input.RelativePriceAdjustment))
                 ) && base.Equals(input) && 
                 (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
-                ) && base.Equals(input) && 
-                (
                     this.StoreOrderConfirmationEmailEnabled == input.StoreOrderConfirmationEmailEnabled ||
                     (this.StoreOrderConfirmationEmailEnabled != null &&
                     this.StoreOrderConfirmationEmailEnabled.Equals(input.StoreOrderConfirmationEmailEnabled))
@@ -264,8 +264,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.PricingOption.GetHashCode();
                 if (this.RelativePriceAdjustment != null)
                     hashCode = hashCode * 59 + this.RelativePriceAdjustment.GetHashCode();
-                if (this.State != null)
-                    hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.StoreOrderConfirmationEmailEnabled != null)
                     hashCode = hashCode * 59 + this.StoreOrderConfirmationEmailEnabled.GetHashCode();
                 if (this.SubscriberSuspensionAllowed != null)

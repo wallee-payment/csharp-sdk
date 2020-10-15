@@ -15,37 +15,36 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// ShopifySubscriptionProductActive
+    /// ShopifySubscriptionProductUpdate
     /// </summary>
     [DataContract]
-    public partial class ShopifySubscriptionProductActive : AbstractShopifySubscriptionProductActive,  IEquatable<ShopifySubscriptionProductActive>
+    public partial class ShopifySubscriptionProductUpdate : AbstractShopifySubscriptionProductUpdate,  IEquatable<ShopifySubscriptionProductUpdate>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShopifySubscriptionProductActive" /> class.
+        /// Initializes a new instance of the <see cref="ShopifySubscriptionProductUpdate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ShopifySubscriptionProductActive() { }
+        protected ShopifySubscriptionProductUpdate() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShopifySubscriptionProductActive" /> class.
+        /// Initializes a new instance of the <see cref="ShopifySubscriptionProductUpdate" /> class.
         /// </summary>
         /// <param name="version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
         /// <param name="id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required).</param>
-        public ShopifySubscriptionProductActive(long? version, long? id)
+        public ShopifySubscriptionProductUpdate(long? version, long? id)
         {
             // to ensure "version" is required (not null)
             if (version == null)
             {
-                throw new InvalidDataException("version is a required property for ShopifySubscriptionProductActive and cannot be null");
+                throw new InvalidDataException("version is a required property for ShopifySubscriptionProductUpdate and cannot be null");
             }
             this.Version = version;
             // to ensure "id" is required (not null)
             if (id == null)
             {
-                throw new InvalidDataException("id is a required property for ShopifySubscriptionProductActive and cannot be null");
+                throw new InvalidDataException("id is a required property for ShopifySubscriptionProductUpdate and cannot be null");
             }
             this.Id = id;
         }
-
 
 
 
@@ -82,7 +81,7 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ShopifySubscriptionProductActive {\n");
+            sb.Append("class ShopifySubscriptionProductUpdate {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  AbsolutePriceAdjustment: ").Append(AbsolutePriceAdjustment).Append("\n");
             sb.Append("  BillingDayOfMonth: ").Append(BillingDayOfMonth).Append("\n");
@@ -95,7 +94,6 @@ namespace Wallee.Model
             sb.Append("  MinimalBillingCycles: ").Append(MinimalBillingCycles).Append("\n");
             sb.Append("  PricingOption: ").Append(PricingOption).Append("\n");
             sb.Append("  RelativePriceAdjustment: ").Append(RelativePriceAdjustment).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  StoreOrderConfirmationEmailEnabled: ").Append(StoreOrderConfirmationEmailEnabled).Append("\n");
             sb.Append("  SubscriberSuspensionAllowed: ").Append(SubscriberSuspensionAllowed).Append("\n");
             sb.Append("  TerminationBillingCycles: ").Append(TerminationBillingCycles).Append("\n");
@@ -111,7 +109,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public override string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -121,15 +119,15 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ShopifySubscriptionProductActive);
+            return this.Equals(input as ShopifySubscriptionProductUpdate);
         }
 
         /// <summary>
-        /// Returns true if ShopifySubscriptionProductActive instances are equal
+        /// Returns true if ShopifySubscriptionProductUpdate instances are equal
         /// </summary>
-        /// <param name="input">Instance of ShopifySubscriptionProductActive to be compared</param>
+        /// <param name="input">Instance of ShopifySubscriptionProductUpdate to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ShopifySubscriptionProductActive input)
+        public bool Equals(ShopifySubscriptionProductUpdate input)
         {
             if (input == null)
                 return false;
@@ -191,11 +189,6 @@ namespace Wallee.Model
                     this.RelativePriceAdjustment.Equals(input.RelativePriceAdjustment))
                 ) && base.Equals(input) && 
                 (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
-                ) && base.Equals(input) && 
-                (
                     this.StoreOrderConfirmationEmailEnabled == input.StoreOrderConfirmationEmailEnabled ||
                     (this.StoreOrderConfirmationEmailEnabled != null &&
                     this.StoreOrderConfirmationEmailEnabled.Equals(input.StoreOrderConfirmationEmailEnabled))
@@ -253,8 +246,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.PricingOption.GetHashCode();
                 if (this.RelativePriceAdjustment != null)
                     hashCode = hashCode * 59 + this.RelativePriceAdjustment.GetHashCode();
-                if (this.State != null)
-                    hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.StoreOrderConfirmationEmailEnabled != null)
                     hashCode = hashCode * 59 + this.StoreOrderConfirmationEmailEnabled.GetHashCode();
                 if (this.SubscriberSuspensionAllowed != null)

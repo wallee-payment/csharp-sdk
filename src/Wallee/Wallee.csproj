@@ -8,9 +8,9 @@
     <PropertyGroup>
         <AssemblyName>Wallee</AssemblyName>
         <AssemblyTitle>wallee SDK for C#</AssemblyTitle>
-        <Authors>customweb GmbH</Authors>
+        <Authors>wallee AG</Authors>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-        <Company>customweb GmbH</Company>
+        <Company>wallee AG</Company>
         <Copyright>Apache-2.0</Copyright>
         <Description>wallee SDK for C#</Description>
         <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
@@ -20,11 +20,11 @@
         <PackageId>Wallee</PackageId>
         <PackageLicense>https://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicense>
         <PackageProjectUrl>https://github.com/wallee-payment/csharp-sdk</PackageProjectUrl>
-        <PackageVersion>2.2.0</PackageVersion>
+        <PackageVersion>2.2.1</PackageVersion>
         <PackageTags>Wallee;payment;sdk;Payment Integration</PackageTags>
         <OutputType>Library</OutputType>
         <Owners>customweb</Owners>
-        <ReleaseVersion>2.2.0</ReleaseVersion>
+        <ReleaseVersion>2.2.1</ReleaseVersion>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
         <RootNamespace>Wallee</RootNamespace>

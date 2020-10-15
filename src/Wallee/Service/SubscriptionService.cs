@@ -373,7 +373,8 @@ namespace Wallee.Service
                 localVarPostBody = request; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -449,7 +450,8 @@ namespace Wallee.Service
                 localVarPostBody = filter; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -528,7 +530,8 @@ namespace Wallee.Service
                 localVarPostBody = createRequest; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -599,7 +602,8 @@ namespace Wallee.Service
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (subscriptionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "subscriptionId", subscriptionId)); // query parameter
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -676,7 +680,8 @@ namespace Wallee.Service
             if (successUrl != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "successUrl", successUrl)); // query parameter
             if (failedUrl != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "failedUrl", failedUrl)); // query parameter
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -748,7 +753,8 @@ namespace Wallee.Service
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -827,7 +833,8 @@ namespace Wallee.Service
                 localVarPostBody = query; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -912,7 +919,8 @@ namespace Wallee.Service
                 localVarPostBody = query; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -988,7 +996,8 @@ namespace Wallee.Service
             if (subscriptionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "subscriptionId", subscriptionId)); // query parameter
             if (respectTerminationPeriod != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "respectTerminationPeriod", respectTerminationPeriod)); // query parameter
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -1065,7 +1074,8 @@ namespace Wallee.Service
             if (subscriptionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "subscriptionId", subscriptionId)); // query parameter
             if (respectTerminationPeriod != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "respectTerminationPeriod", respectTerminationPeriod)); // query parameter
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,

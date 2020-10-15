@@ -38,6 +38,12 @@ namespace Wallee.Model
         public Charge Charge { get; private set; }
 
         /// <summary>
+        /// Gets or Sets CompletionBehavior
+        /// </summary>
+        [DataMember(Name="completionBehavior", EmitDefaultValue=true)]
+        public TransactionCompletionBehavior CompletionBehavior { get; private set; }
+
+        /// <summary>
         /// Gets or Sets ConnectorConfiguration
         /// </summary>
         [DataMember(Name="connectorConfiguration", EmitDefaultValue=true)]
@@ -186,6 +192,7 @@ namespace Wallee.Model
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  Charge: ").Append(Charge).Append("\n");
+            sb.Append("  CompletionBehavior: ").Append(CompletionBehavior).Append("\n");
             sb.Append("  ConnectorConfiguration: ").Append(ConnectorConfiguration).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  Environment: ").Append(Environment).Append("\n");
@@ -218,7 +225,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public override string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -261,6 +268,11 @@ namespace Wallee.Model
                     this.Charge == input.Charge ||
                     (this.Charge != null &&
                     this.Charge.Equals(input.Charge))
+                ) && base.Equals(input) && 
+                (
+                    this.CompletionBehavior == input.CompletionBehavior ||
+                    (this.CompletionBehavior != null &&
+                    this.CompletionBehavior.Equals(input.CompletionBehavior))
                 ) && base.Equals(input) && 
                 (
                     this.ConnectorConfiguration == input.ConnectorConfiguration ||
@@ -391,6 +403,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
                 if (this.Charge != null)
                     hashCode = hashCode * 59 + this.Charge.GetHashCode();
+                if (this.CompletionBehavior != null)
+                    hashCode = hashCode * 59 + this.CompletionBehavior.GetHashCode();
                 if (this.ConnectorConfiguration != null)
                     hashCode = hashCode * 59 + this.ConnectorConfiguration.GetHashCode();
                 if (this.CreatedOn != null)

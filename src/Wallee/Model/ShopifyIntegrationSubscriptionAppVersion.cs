@@ -15,12 +15,12 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// Defines ShopifyIntegrationAppVersion
+    /// Defines ShopifyIntegrationSubscriptionAppVersion
     /// </summary>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum ShopifyIntegrationAppVersion
+    public enum ShopifyIntegrationSubscriptionAppVersion
     {
         
         /// <summary>

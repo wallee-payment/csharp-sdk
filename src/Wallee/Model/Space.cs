@@ -55,6 +55,20 @@ namespace Wallee.Model
         public bool? ActiveOrRestrictedActive { get; private set; }
 
         /// <summary>
+        /// The ID of the user who created this entity.
+        /// </summary>
+        /// <value>The ID of the user who created this entity.</value>
+        [DataMember(Name="createdBy", EmitDefaultValue=true)]
+        public long? CreatedBy { get; private set; }
+
+        /// <summary>
+        /// The date and time when this entity was created.
+        /// </summary>
+        /// <value>The date and time when this entity was created.</value>
+        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        public DateTime? CreatedOn { get; private set; }
+
+        /// <summary>
         /// The database in which the space&#39;s data are stored in.
         /// </summary>
         /// <value>The database in which the space&#39;s data are stored in.</value>
@@ -81,6 +95,12 @@ namespace Wallee.Model
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets LastModifiedDate
+        /// </summary>
+        [DataMember(Name="lastModifiedDate", EmitDefaultValue=true)]
+        public DateTime? LastModifiedDate { get; private set; }
 
         /// <summary>
         /// The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
@@ -157,10 +177,13 @@ namespace Wallee.Model
             sb.Append("  Account: ").Append(Account).Append("\n");
             sb.Append("  Active: ").Append(Active).Append("\n");
             sb.Append("  ActiveOrRestrictedActive: ").Append(ActiveOrRestrictedActive).Append("\n");
+            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  Database: ").Append(Database).Append("\n");
             sb.Append("  DeletedBy: ").Append(DeletedBy).Append("\n");
             sb.Append("  DeletedOn: ").Append(DeletedOn).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  LastModifiedDate: ").Append(LastModifiedDate).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  PostalAddress: ").Append(PostalAddress).Append("\n");
@@ -181,7 +204,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -221,6 +244,16 @@ namespace Wallee.Model
                     this.ActiveOrRestrictedActive.Equals(input.ActiveOrRestrictedActive))
                 ) && 
                 (
+                    this.CreatedBy == input.CreatedBy ||
+                    (this.CreatedBy != null &&
+                    this.CreatedBy.Equals(input.CreatedBy))
+                ) && 
+                (
+                    this.CreatedOn == input.CreatedOn ||
+                    (this.CreatedOn != null &&
+                    this.CreatedOn.Equals(input.CreatedOn))
+                ) && 
+                (
                     this.Database == input.Database ||
                     (this.Database != null &&
                     this.Database.Equals(input.Database))
@@ -239,6 +272,11 @@ namespace Wallee.Model
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.LastModifiedDate == input.LastModifiedDate ||
+                    (this.LastModifiedDate != null &&
+                    this.LastModifiedDate.Equals(input.LastModifiedDate))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -307,6 +345,10 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Active.GetHashCode();
                 if (this.ActiveOrRestrictedActive != null)
                     hashCode = hashCode * 59 + this.ActiveOrRestrictedActive.GetHashCode();
+                if (this.CreatedBy != null)
+                    hashCode = hashCode * 59 + this.CreatedBy.GetHashCode();
+                if (this.CreatedOn != null)
+                    hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
                 if (this.Database != null)
                     hashCode = hashCode * 59 + this.Database.GetHashCode();
                 if (this.DeletedBy != null)
@@ -315,6 +357,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.DeletedOn.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.LastModifiedDate != null)
+                    hashCode = hashCode * 59 + this.LastModifiedDate.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.PlannedPurgeDate != null)

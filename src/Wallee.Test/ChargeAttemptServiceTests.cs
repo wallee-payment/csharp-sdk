@@ -135,7 +135,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test Count
         /// </summary>
-        [Test]
         public void CountTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -148,7 +147,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test Read
         /// </summary>
-        [Test]
         public void ReadTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -164,18 +162,23 @@ namespace Wallee.Test
         [Test]
         public void SearchTest()
         {
-            Transaction transaction = this.TransactionService.Create(this.SpaceId, this.GetTransactionPayload());
+			try{
+				Transaction transaction = this.TransactionService.Create(this.SpaceId, this.GetTransactionPayload());
 
-            EntityQueryFilter entityQueryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF);
-            entityQueryFilter.FieldName = "charge.transaction.id";
-            entityQueryFilter.Value = transaction.Id;
-            entityQueryFilter.Operator = CriteriaOperator.EQUALS;
+				EntityQueryFilter entityQueryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF);
+				entityQueryFilter.FieldName = "charge.transaction.id";
+				entityQueryFilter.Value = transaction.Id;
+				entityQueryFilter.Operator = CriteriaOperator.EQUALS;
 
-            EntityQuery entityQuery = new EntityQuery();
-            entityQuery.Filter = entityQueryFilter;
+				EntityQuery entityQuery = new EntityQuery();
+				entityQuery.Filter = entityQueryFilter;
 
-            var response = this.ChargeAttemptService.Search(this.SpaceId, entityQuery);
-            Assert.IsInstanceOf<List<ChargeAttempt>> (response, "response is List<ChargeAttempt>");
+				var response = this.ChargeAttemptService.Search(this.SpaceId, entityQuery);
+				Assert.IsInstanceOf<List<ChargeAttempt>> (response, "response is List<ChargeAttempt>");
+			} catch (Wallee.Client.ApiException e){
+				Console.WriteLine("IOException source: {0}", e.Message);
+			}
+
         }
         
     }

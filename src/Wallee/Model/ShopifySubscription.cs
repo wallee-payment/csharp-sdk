@@ -46,6 +46,13 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
+        /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+        /// </summary>
+        /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        public string ExternalId { get; private set; }
+
+        /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
@@ -53,10 +60,16 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets InitialTransaction
+        /// Gets or Sets InitialPaymentTransaction
         /// </summary>
-        [DataMember(Name="initialTransaction", EmitDefaultValue=true)]
-        public long? InitialTransaction { get; private set; }
+        [DataMember(Name="initialPaymentTransaction", EmitDefaultValue=true)]
+        public long? InitialPaymentTransaction { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets InitialShopifyTransaction
+        /// </summary>
+        [DataMember(Name="initialShopifyTransaction", EmitDefaultValue=true)]
+        public long? InitialShopifyTransaction { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
@@ -125,8 +138,10 @@ namespace Wallee.Model
             sb.Append("class ShopifySubscription {\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  InitialTransaction: ").Append(InitialTransaction).Append("\n");
+            sb.Append("  InitialPaymentTransaction: ").Append(InitialPaymentTransaction).Append("\n");
+            sb.Append("  InitialShopifyTransaction: ").Append(InitialShopifyTransaction).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  OrderRecurrenceNumber: ").Append(OrderRecurrenceNumber).Append("\n");
@@ -147,7 +162,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -182,14 +197,24 @@ namespace Wallee.Model
                     this.CreatedOn.Equals(input.CreatedOn))
                 ) && 
                 (
+                    this.ExternalId == input.ExternalId ||
+                    (this.ExternalId != null &&
+                    this.ExternalId.Equals(input.ExternalId))
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.InitialTransaction == input.InitialTransaction ||
-                    (this.InitialTransaction != null &&
-                    this.InitialTransaction.Equals(input.InitialTransaction))
+                    this.InitialPaymentTransaction == input.InitialPaymentTransaction ||
+                    (this.InitialPaymentTransaction != null &&
+                    this.InitialPaymentTransaction.Equals(input.InitialPaymentTransaction))
+                ) && 
+                (
+                    this.InitialShopifyTransaction == input.InitialShopifyTransaction ||
+                    (this.InitialShopifyTransaction != null &&
+                    this.InitialShopifyTransaction.Equals(input.InitialShopifyTransaction))
                 ) && 
                 (
                     this.Language == input.Language ||
@@ -256,10 +281,14 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.CreatedBy.GetHashCode();
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
+                if (this.ExternalId != null)
+                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.InitialTransaction != null)
-                    hashCode = hashCode * 59 + this.InitialTransaction.GetHashCode();
+                if (this.InitialPaymentTransaction != null)
+                    hashCode = hashCode * 59 + this.InitialPaymentTransaction.GetHashCode();
+                if (this.InitialShopifyTransaction != null)
+                    hashCode = hashCode * 59 + this.InitialShopifyTransaction.GetHashCode();
                 if (this.Language != null)
                     hashCode = hashCode * 59 + this.Language.GetHashCode();
                 if (this.LinkedSpaceId != null)

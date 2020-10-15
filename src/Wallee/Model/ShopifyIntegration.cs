@@ -21,15 +21,20 @@ namespace Wallee.Model
     public partial class ShopifyIntegration :  IEquatable<ShopifyIntegration>
     {
         /// <summary>
-        /// Gets or Sets AppVersion
+        /// Gets or Sets PaymentAppVersion
         /// </summary>
-        [DataMember(Name="appVersion", EmitDefaultValue=true)]
-        public ShopifyIntegrationAppVersion? AppVersion { get; set; }
+        [DataMember(Name="paymentAppVersion", EmitDefaultValue=true)]
+        public ShopifyIntegrationPaymentAppVersion? PaymentAppVersion { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=true)]
         public CreationEntityState? State { get; set; }
+        /// <summary>
+        /// Gets or Sets SubscriptionAppVersion
+        /// </summary>
+        [DataMember(Name="subscriptionAppVersion", EmitDefaultValue=true)]
+        public ShopifyIntegrationSubscriptionAppVersion? SubscriptionAppVersion { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifyIntegration" /> class.
         /// </summary>
@@ -37,6 +42,12 @@ namespace Wallee.Model
         public ShopifyIntegration()
         {
         }
+
+        /// <summary>
+        /// Gets or Sets AdditionalLineItemData
+        /// </summary>
+        [DataMember(Name="additionalLineItemData", EmitDefaultValue=true)]
+        public List<ShopifyAdditionalLineItemData> AdditionalLineItemData { get; private set; }
 
         /// <summary>
         /// Gets or Sets AllowInvoiceDownload
@@ -50,7 +61,6 @@ namespace Wallee.Model
         [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=true)]
         public List<PaymentMethodConfiguration> AllowedPaymentMethodConfigurations { get; private set; }
 
-
         /// <summary>
         /// Gets or Sets Currency
         /// </summary>
@@ -63,12 +73,6 @@ namespace Wallee.Model
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
         [DataMember(Name="id", EmitDefaultValue=true)]
         public long? Id { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Installed
-        /// </summary>
-        [DataMember(Name="installed", EmitDefaultValue=true)]
-        public bool? Installed { get; private set; }
 
         /// <summary>
         /// Enabling the integrated payment form will embed the payment form in the Shopify shop. The app needs to be installed for this to be possible.
@@ -98,19 +102,26 @@ namespace Wallee.Model
         [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; private set; }
 
+
+        /// <summary>
+        /// Gets or Sets PaymentInstalled
+        /// </summary>
+        [DataMember(Name="paymentInstalled", EmitDefaultValue=true)]
+        public bool? PaymentInstalled { get; private set; }
+
+        /// <summary>
+        /// Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
+        /// </summary>
+        /// <value>Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.</value>
+        [DataMember(Name="paymentProxyPath", EmitDefaultValue=true)]
+        public string PaymentProxyPath { get; private set; }
+
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
-
-        /// <summary>
-        /// Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
-        /// </summary>
-        /// <value>Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.</value>
-        [DataMember(Name="proxyPath", EmitDefaultValue=true)]
-        public string ProxyPath { get; private set; }
 
         /// <summary>
         /// Gets or Sets ReplacePaymentMethodImage
@@ -150,6 +161,20 @@ namespace Wallee.Model
         public long? SpaceViewId { get; private set; }
 
 
+
+        /// <summary>
+        /// Gets or Sets SubscriptionInstalled
+        /// </summary>
+        [DataMember(Name="subscriptionInstalled", EmitDefaultValue=true)]
+        public bool? SubscriptionInstalled { get; private set; }
+
+        /// <summary>
+        /// Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
+        /// </summary>
+        /// <value>Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.</value>
+        [DataMember(Name="subscriptionProxyPath", EmitDefaultValue=true)]
+        public string SubscriptionProxyPath { get; private set; }
+
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
@@ -165,18 +190,19 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ShopifyIntegration {\n");
+            sb.Append("  AdditionalLineItemData: ").Append(AdditionalLineItemData).Append("\n");
             sb.Append("  AllowInvoiceDownload: ").Append(AllowInvoiceDownload).Append("\n");
             sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
-            sb.Append("  AppVersion: ").Append(AppVersion).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Installed: ").Append(Installed).Append("\n");
             sb.Append("  IntegratedPaymentFormEnabled: ").Append(IntegratedPaymentFormEnabled).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LoginName: ").Append(LoginName).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PaymentAppVersion: ").Append(PaymentAppVersion).Append("\n");
+            sb.Append("  PaymentInstalled: ").Append(PaymentInstalled).Append("\n");
+            sb.Append("  PaymentProxyPath: ").Append(PaymentProxyPath).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  ProxyPath: ").Append(ProxyPath).Append("\n");
             sb.Append("  ReplacePaymentMethodImage: ").Append(ReplacePaymentMethodImage).Append("\n");
             sb.Append("  ShopName: ").Append(ShopName).Append("\n");
             sb.Append("  ShowPaymentInformation: ").Append(ShowPaymentInformation).Append("\n");
@@ -184,6 +210,9 @@ namespace Wallee.Model
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  SpaceViewId: ").Append(SpaceViewId).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  SubscriptionAppVersion: ").Append(SubscriptionAppVersion).Append("\n");
+            sb.Append("  SubscriptionInstalled: ").Append(SubscriptionInstalled).Append("\n");
+            sb.Append("  SubscriptionProxyPath: ").Append(SubscriptionProxyPath).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -195,7 +224,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -220,6 +249,11 @@ namespace Wallee.Model
 
             return 
                 (
+                    this.AdditionalLineItemData == input.AdditionalLineItemData ||
+                    this.AdditionalLineItemData != null &&
+                    this.AdditionalLineItemData.SequenceEqual(input.AdditionalLineItemData)
+                ) && 
+                (
                     this.AllowInvoiceDownload == input.AllowInvoiceDownload ||
                     (this.AllowInvoiceDownload != null &&
                     this.AllowInvoiceDownload.Equals(input.AllowInvoiceDownload))
@@ -230,11 +264,6 @@ namespace Wallee.Model
                     this.AllowedPaymentMethodConfigurations.SequenceEqual(input.AllowedPaymentMethodConfigurations)
                 ) && 
                 (
-                    this.AppVersion == input.AppVersion ||
-                    (this.AppVersion != null &&
-                    this.AppVersion.Equals(input.AppVersion))
-                ) && 
-                (
                     this.Currency == input.Currency ||
                     (this.Currency != null &&
                     this.Currency.Equals(input.Currency))
@@ -243,11 +272,6 @@ namespace Wallee.Model
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Installed == input.Installed ||
-                    (this.Installed != null &&
-                    this.Installed.Equals(input.Installed))
                 ) && 
                 (
                     this.IntegratedPaymentFormEnabled == input.IntegratedPaymentFormEnabled ||
@@ -270,14 +294,24 @@ namespace Wallee.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.PaymentAppVersion == input.PaymentAppVersion ||
+                    (this.PaymentAppVersion != null &&
+                    this.PaymentAppVersion.Equals(input.PaymentAppVersion))
+                ) && 
+                (
+                    this.PaymentInstalled == input.PaymentInstalled ||
+                    (this.PaymentInstalled != null &&
+                    this.PaymentInstalled.Equals(input.PaymentInstalled))
+                ) && 
+                (
+                    this.PaymentProxyPath == input.PaymentProxyPath ||
+                    (this.PaymentProxyPath != null &&
+                    this.PaymentProxyPath.Equals(input.PaymentProxyPath))
+                ) && 
+                (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||
                     (this.PlannedPurgeDate != null &&
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
-                ) && 
-                (
-                    this.ProxyPath == input.ProxyPath ||
-                    (this.ProxyPath != null &&
-                    this.ProxyPath.Equals(input.ProxyPath))
                 ) && 
                 (
                     this.ReplacePaymentMethodImage == input.ReplacePaymentMethodImage ||
@@ -315,6 +349,21 @@ namespace Wallee.Model
                     this.State.Equals(input.State))
                 ) && 
                 (
+                    this.SubscriptionAppVersion == input.SubscriptionAppVersion ||
+                    (this.SubscriptionAppVersion != null &&
+                    this.SubscriptionAppVersion.Equals(input.SubscriptionAppVersion))
+                ) && 
+                (
+                    this.SubscriptionInstalled == input.SubscriptionInstalled ||
+                    (this.SubscriptionInstalled != null &&
+                    this.SubscriptionInstalled.Equals(input.SubscriptionInstalled))
+                ) && 
+                (
+                    this.SubscriptionProxyPath == input.SubscriptionProxyPath ||
+                    (this.SubscriptionProxyPath != null &&
+                    this.SubscriptionProxyPath.Equals(input.SubscriptionProxyPath))
+                ) && 
+                (
                     this.Version == input.Version ||
                     (this.Version != null &&
                     this.Version.Equals(input.Version))
@@ -330,18 +379,16 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.AdditionalLineItemData != null)
+                    hashCode = hashCode * 59 + this.AdditionalLineItemData.GetHashCode();
                 if (this.AllowInvoiceDownload != null)
                     hashCode = hashCode * 59 + this.AllowInvoiceDownload.GetHashCode();
                 if (this.AllowedPaymentMethodConfigurations != null)
                     hashCode = hashCode * 59 + this.AllowedPaymentMethodConfigurations.GetHashCode();
-                if (this.AppVersion != null)
-                    hashCode = hashCode * 59 + this.AppVersion.GetHashCode();
                 if (this.Currency != null)
                     hashCode = hashCode * 59 + this.Currency.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Installed != null)
-                    hashCode = hashCode * 59 + this.Installed.GetHashCode();
                 if (this.IntegratedPaymentFormEnabled != null)
                     hashCode = hashCode * 59 + this.IntegratedPaymentFormEnabled.GetHashCode();
                 if (this.Language != null)
@@ -350,10 +397,14 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.LoginName.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.PaymentAppVersion != null)
+                    hashCode = hashCode * 59 + this.PaymentAppVersion.GetHashCode();
+                if (this.PaymentInstalled != null)
+                    hashCode = hashCode * 59 + this.PaymentInstalled.GetHashCode();
+                if (this.PaymentProxyPath != null)
+                    hashCode = hashCode * 59 + this.PaymentProxyPath.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.ProxyPath != null)
-                    hashCode = hashCode * 59 + this.ProxyPath.GetHashCode();
                 if (this.ReplacePaymentMethodImage != null)
                     hashCode = hashCode * 59 + this.ReplacePaymentMethodImage.GetHashCode();
                 if (this.ShopName != null)
@@ -368,6 +419,12 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.SpaceViewId.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
+                if (this.SubscriptionAppVersion != null)
+                    hashCode = hashCode * 59 + this.SubscriptionAppVersion.GetHashCode();
+                if (this.SubscriptionInstalled != null)
+                    hashCode = hashCode * 59 + this.SubscriptionInstalled.GetHashCode();
+                if (this.SubscriptionProxyPath != null)
+                    hashCode = hashCode * 59 + this.SubscriptionProxyPath.GetHashCode();
                 if (this.Version != null)
                     hashCode = hashCode * 59 + this.Version.GetHashCode();
                 return hashCode;

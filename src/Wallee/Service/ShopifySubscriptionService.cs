@@ -38,6 +38,29 @@ namespace Wallee.Service
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
         /// <summary>
+        /// Create
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to create a Shopify subscription.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="creationRequest"></param>
+        /// <returns>ShopifySubscriptionVersion</returns>
+        ShopifySubscriptionVersion Create (long? spaceId, ShopifySubscriptionCreationRequest creationRequest);
+
+        /// <summary>
+        /// Create
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to create a Shopify subscription.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="creationRequest"></param>
+        /// <returns>ApiResponse of ShopifySubscriptionVersion</returns>
+        ApiResponse<ShopifySubscriptionVersion> CreateWithHttpInfo (long? spaceId, ShopifySubscriptionCreationRequest creationRequest);
+        /// <summary>
         /// Read
         /// </summary>
         /// <remarks>
@@ -131,6 +154,29 @@ namespace Wallee.Service
         /// <param name="subscription"></param>
         /// <returns>ApiResponse of ShopifySubscriptionVersion</returns>
         ApiResponse<ShopifySubscriptionVersion> UpdateWithHttpInfo (long? spaceId, ShopifySubscriptionUpdateRequest subscription);
+        /// <summary>
+        /// Update Addresses
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to update a Shopify subscription addresses.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="updateRequest"></param>
+        /// <returns>ShopifySubscriptionVersion</returns>
+        ShopifySubscriptionVersion UpdateAddresses (long? spaceId, ShopifySubscriptionUpdateAddressesRequest updateRequest);
+
+        /// <summary>
+        /// Update Addresses
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to update a Shopify subscription addresses.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="updateRequest"></param>
+        /// <returns>ApiResponse of ShopifySubscriptionVersion</returns>
+        ApiResponse<ShopifySubscriptionVersion> UpdateAddressesWithHttpInfo (long? spaceId, ShopifySubscriptionUpdateAddressesRequest updateRequest);
         #endregion Synchronous Operations
     }
 
@@ -247,7 +293,8 @@ namespace Wallee.Service
                 localVarPostBody = filter; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -264,6 +311,86 @@ namespace Wallee.Service
             return new ApiResponse<long?>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (long?) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(long?)));
+        }
+        /// <summary>
+        /// Create This operation allows to create a Shopify subscription.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="creationRequest"></param>
+        /// <returns>ShopifySubscriptionVersion</returns>
+        public ShopifySubscriptionVersion Create (long? spaceId, ShopifySubscriptionCreationRequest creationRequest)
+        {
+             ApiResponse<ShopifySubscriptionVersion> localVarResponse = CreateWithHttpInfo(spaceId, creationRequest);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create This operation allows to create a Shopify subscription.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="creationRequest"></param>
+        /// <returns>ApiResponse of ShopifySubscriptionVersion</returns>
+        public ApiResponse< ShopifySubscriptionVersion > CreateWithHttpInfo (long? spaceId, ShopifySubscriptionCreationRequest creationRequest)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling ShopifySubscriptionService->Create");
+            // verify the required parameter 'creationRequest' is set
+            if (creationRequest == null)
+                throw new ApiException(400, "Missing required parameter 'creationRequest' when calling ShopifySubscriptionService->Create");
+
+            var localVarPath = "/shopify-subscription/create";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (creationRequest != null && creationRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(creationRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = creationRequest; // byte array
+            }
+
+			
+			this.Configuration.ApiClient.ResetTimeout();
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Create", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ShopifySubscriptionVersion>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ShopifySubscriptionVersion) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ShopifySubscriptionVersion)));
         }
         /// <summary>
         /// Read Reads the entity with the given &#39;id&#39; and returns it.
@@ -319,7 +446,8 @@ namespace Wallee.Service
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -398,7 +526,8 @@ namespace Wallee.Service
                 localVarPostBody = query; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -474,7 +603,8 @@ namespace Wallee.Service
             if (subscriptionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "subscriptionId", subscriptionId)); // query parameter
             if (respectTerminationPeriod != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "respectTerminationPeriod", respectTerminationPeriod)); // query parameter
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -553,7 +683,8 @@ namespace Wallee.Service
                 localVarPostBody = subscription; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -564,6 +695,86 @@ namespace Wallee.Service
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("Update", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ShopifySubscriptionVersion>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ShopifySubscriptionVersion) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ShopifySubscriptionVersion)));
+        }
+        /// <summary>
+        /// Update Addresses This operation allows to update a Shopify subscription addresses.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="updateRequest"></param>
+        /// <returns>ShopifySubscriptionVersion</returns>
+        public ShopifySubscriptionVersion UpdateAddresses (long? spaceId, ShopifySubscriptionUpdateAddressesRequest updateRequest)
+        {
+             ApiResponse<ShopifySubscriptionVersion> localVarResponse = UpdateAddressesWithHttpInfo(spaceId, updateRequest);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update Addresses This operation allows to update a Shopify subscription addresses.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="updateRequest"></param>
+        /// <returns>ApiResponse of ShopifySubscriptionVersion</returns>
+        public ApiResponse< ShopifySubscriptionVersion > UpdateAddressesWithHttpInfo (long? spaceId, ShopifySubscriptionUpdateAddressesRequest updateRequest)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling ShopifySubscriptionService->UpdateAddresses");
+            // verify the required parameter 'updateRequest' is set
+            if (updateRequest == null)
+                throw new ApiException(400, "Missing required parameter 'updateRequest' when calling ShopifySubscriptionService->UpdateAddresses");
+
+            var localVarPath = "/shopify-subscription/update-addresses";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (updateRequest != null && updateRequest.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(updateRequest); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = updateRequest; // byte array
+            }
+
+			
+			this.Configuration.ApiClient.ResetTimeout();
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("UpdateAddresses", localVarResponse);
                 if (exception != null) throw exception;
             }
 

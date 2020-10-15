@@ -46,8 +46,8 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="entity">The customer object with the properties which should be created.</param>
-        /// <returns>SubscriberCreate</returns>
-        SubscriberCreate Create (long? spaceId, SubscriberCreate entity);
+        /// <returns>Subscriber</returns>
+        Subscriber Create (long? spaceId, SubscriberCreate entity);
 
         /// <summary>
         /// Create
@@ -58,8 +58,8 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="entity">The customer object with the properties which should be created.</param>
-        /// <returns>ApiResponse of SubscriberCreate</returns>
-        ApiResponse<SubscriberCreate> CreateWithHttpInfo (long? spaceId, SubscriberCreate entity);
+        /// <returns>ApiResponse of Subscriber</returns>
+        ApiResponse<Subscriber> CreateWithHttpInfo (long? spaceId, SubscriberCreate entity);
         /// <summary>
         /// Delete
         /// </summary>
@@ -268,7 +268,8 @@ namespace Wallee.Service
                 localVarPostBody = filter; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -292,10 +293,10 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="entity">The customer object with the properties which should be created.</param>
-        /// <returns>SubscriberCreate</returns>
-        public SubscriberCreate Create (long? spaceId, SubscriberCreate entity)
+        /// <returns>Subscriber</returns>
+        public Subscriber Create (long? spaceId, SubscriberCreate entity)
         {
-             ApiResponse<SubscriberCreate> localVarResponse = CreateWithHttpInfo(spaceId, entity);
+             ApiResponse<Subscriber> localVarResponse = CreateWithHttpInfo(spaceId, entity);
              return localVarResponse.Data;
         }
 
@@ -305,8 +306,8 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="entity">The customer object with the properties which should be created.</param>
-        /// <returns>ApiResponse of SubscriberCreate</returns>
-        public ApiResponse< SubscriberCreate > CreateWithHttpInfo (long? spaceId, SubscriberCreate entity)
+        /// <returns>ApiResponse of Subscriber</returns>
+        public ApiResponse< Subscriber > CreateWithHttpInfo (long? spaceId, SubscriberCreate entity)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
@@ -347,7 +348,8 @@ namespace Wallee.Service
                 localVarPostBody = entity; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -361,9 +363,9 @@ namespace Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<SubscriberCreate>(localVarStatusCode,
+            return new ApiResponse<Subscriber>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (SubscriberCreate) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(SubscriberCreate)));
+                (Subscriber) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Subscriber)));
         }
         /// <summary>
         /// Delete Deletes the entity with the given id.
@@ -425,7 +427,8 @@ namespace Wallee.Service
                 localVarPostBody = id; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -497,7 +500,8 @@ namespace Wallee.Service
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -576,7 +580,8 @@ namespace Wallee.Service
                 localVarPostBody = query; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
@@ -655,7 +660,8 @@ namespace Wallee.Service
                 localVarPostBody = entity; // byte array
             }
 
-
+			
+			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,

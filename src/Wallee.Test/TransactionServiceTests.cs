@@ -151,7 +151,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test Confirm
         /// </summary>
-        [Test]
         public void ConfirmTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -191,7 +190,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test CreateTransactionCredentials
         /// </summary>
-        [Test]
         public void CreateTransactionCredentialsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -204,7 +202,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test DeleteOneClickTokenWithCredentials
         /// </summary>
-        [Test]
         public void DeleteOneClickTokenWithCredentialsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -217,7 +214,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test Export
         /// </summary>
-        [Test]
         public void ExportTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -230,7 +226,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test FetchOneClickTokensWithCredentials
         /// </summary>
-        [Test]
         public void FetchOneClickTokensWithCredentialsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -253,7 +248,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test FetchPaymentMethodsWithCredentials
         /// </summary>
-        [Test]
         public void FetchPaymentMethodsWithCredentialsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -265,7 +259,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test GetInvoiceDocument
         /// </summary>
-        [Test]
         public void GetInvoiceDocumentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -278,7 +271,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test GetLatestTransactionLineItemVersion
         /// </summary>
-        [Test]
         public void GetLatestTransactionLineItemVersionTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -291,7 +283,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test GetPackingSlip
         /// </summary>
-        [Test]
         public void GetPackingSlipTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -304,7 +295,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test ProcessOneClickTokenAndRedirectWithCredentials
         /// </summary>
-        [Test]
         public void ProcessOneClickTokenAndRedirectWithCredentialsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -352,7 +342,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test ReadWithCredentials
         /// </summary>
-        [Test]
         public void ReadWithCredentialsTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -364,7 +353,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test Search
         /// </summary>
-        [Test]
         public void SearchTest()
         {
             // TODO uncomment below to test the method and replace null with proper value

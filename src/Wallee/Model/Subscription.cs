@@ -52,6 +52,12 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
+        /// Gets or Sets CurrentProductVersion
+        /// </summary>
+        [DataMember(Name="currentProductVersion", EmitDefaultValue=true)]
+        public SubscriptionProductVersion CurrentProductVersion { get; private set; }
+
+        /// <summary>
         /// Gets or Sets Description
         /// </summary>
         [DataMember(Name="description", EmitDefaultValue=true)]
@@ -157,6 +163,7 @@ namespace Wallee.Model
             sb.Append("  ActivatedOn: ").Append(ActivatedOn).Append("\n");
             sb.Append("  Affiliate: ").Append(Affiliate).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  CurrentProductVersion: ").Append(CurrentProductVersion).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  InitializedOn: ").Append(InitializedOn).Append("\n");
@@ -183,7 +190,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -221,6 +228,11 @@ namespace Wallee.Model
                     this.CreatedOn == input.CreatedOn ||
                     (this.CreatedOn != null &&
                     this.CreatedOn.Equals(input.CreatedOn))
+                ) && 
+                (
+                    this.CurrentProductVersion == input.CurrentProductVersion ||
+                    (this.CurrentProductVersion != null &&
+                    this.CurrentProductVersion.Equals(input.CurrentProductVersion))
                 ) && 
                 (
                     this.Description == input.Description ||
@@ -319,6 +331,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Affiliate.GetHashCode();
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
+                if (this.CurrentProductVersion != null)
+                    hashCode = hashCode * 59 + this.CurrentProductVersion.GetHashCode();
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Id != null)

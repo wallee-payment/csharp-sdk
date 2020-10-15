@@ -26,6 +26,12 @@ namespace Wallee.Model
         [DataMember(Name="state", EmitDefaultValue=true)]
         public SubscriptionProductVersionState? State { get; set; }
         /// <summary>
+        /// Strategy that is used for tax calculation in fees.
+        /// </summary>
+        /// <value>Strategy that is used for tax calculation in fees.</value>
+        [DataMember(Name="taxCalculation", EmitDefaultValue=true)]
+        public TaxCalculation? TaxCalculation { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionProductVersionPending" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -122,6 +128,7 @@ namespace Wallee.Model
         public long? Product { get; set; }
 
 
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -141,6 +148,7 @@ namespace Wallee.Model
             sb.Append("  NumberOfNoticePeriods: ").Append(NumberOfNoticePeriods).Append("\n");
             sb.Append("  Product: ").Append(Product).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  TaxCalculation: ").Append(TaxCalculation).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -151,7 +159,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -229,6 +237,11 @@ namespace Wallee.Model
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
+                ) && 
+                (
+                    this.TaxCalculation == input.TaxCalculation ||
+                    (this.TaxCalculation != null &&
+                    this.TaxCalculation.Equals(input.TaxCalculation))
                 );
         }
 
@@ -263,6 +276,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Product.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
+                if (this.TaxCalculation != null)
+                    hashCode = hashCode * 59 + this.TaxCalculation.GetHashCode();
                 return hashCode;
             }
         }

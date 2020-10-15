@@ -78,6 +78,12 @@ namespace Wallee.Model
         public FailureReason FailureReason { get; private set; }
 
         /// <summary>
+        /// Gets or Sets InvoiceMerchantReference
+        /// </summary>
+        [DataMember(Name="invoiceMerchantReference", EmitDefaultValue=true)]
+        public string InvoiceMerchantReference { get; private set; }
+
+        /// <summary>
         /// Gets or Sets Labels
         /// </summary>
         [DataMember(Name="labels", EmitDefaultValue=true)]
@@ -215,6 +221,7 @@ namespace Wallee.Model
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  FailedOn: ").Append(FailedOn).Append("\n");
             sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
+            sb.Append("  InvoiceMerchantReference: ").Append(InvoiceMerchantReference).Append("\n");
             sb.Append("  Labels: ").Append(Labels).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LastCompletion: ").Append(LastCompletion).Append("\n");
@@ -244,7 +251,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public override string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -317,6 +324,11 @@ namespace Wallee.Model
                     this.FailureReason == input.FailureReason ||
                     (this.FailureReason != null &&
                     this.FailureReason.Equals(input.FailureReason))
+                ) && base.Equals(input) && 
+                (
+                    this.InvoiceMerchantReference == input.InvoiceMerchantReference ||
+                    (this.InvoiceMerchantReference != null &&
+                    this.InvoiceMerchantReference.Equals(input.InvoiceMerchantReference))
                 ) && base.Equals(input) && 
                 (
                     this.Labels == input.Labels ||
@@ -444,6 +456,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.FailedOn.GetHashCode();
                 if (this.FailureReason != null)
                     hashCode = hashCode * 59 + this.FailureReason.GetHashCode();
+                if (this.InvoiceMerchantReference != null)
+                    hashCode = hashCode * 59 + this.InvoiceMerchantReference.GetHashCode();
                 if (this.Labels != null)
                     hashCode = hashCode * 59 + this.Labels.GetHashCode();
                 if (this.Language != null)

@@ -31,7 +31,7 @@ namespace Wallee.Model
         /// <param name="currency">currency (required).</param>
         /// <param name="product">The subscription has to be linked with a product. (required).</param>
         /// <param name="subscription">subscription (required).</param>
-        public SubscriptionCreateRequest(string currency, long? product, long? subscription)
+        public SubscriptionCreateRequest(string currency, long? product, SubscriptionPending subscription)
         {
             // to ensure "currency" is required (not null)
             if (currency == null)
@@ -82,7 +82,7 @@ namespace Wallee.Model
         /// Gets or Sets Subscription
         /// </summary>
         [DataMember(Name="subscription", EmitDefaultValue=true)]
-        public long? Subscription { get; set; }
+        public SubscriptionPending Subscription { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -107,7 +107,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>

@@ -15,15 +15,15 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// ShopifySubscriptionEditModelTaxLine
+    /// ShopifySubscriptionModelTaxLine
     /// </summary>
     [DataContract]
-    public partial class ShopifySubscriptionEditModelTaxLine :  IEquatable<ShopifySubscriptionEditModelTaxLine>
+    public partial class ShopifySubscriptionModelTaxLine :  IEquatable<ShopifySubscriptionModelTaxLine>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShopifySubscriptionEditModelTaxLine" /> class.
+        /// Initializes a new instance of the <see cref="ShopifySubscriptionModelTaxLine" /> class.
         /// </summary>
-        public ShopifySubscriptionEditModelTaxLine()
+        public ShopifySubscriptionModelTaxLine()
         {
         }
 
@@ -46,7 +46,7 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ShopifySubscriptionEditModelTaxLine {\n");
+            sb.Append("class ShopifySubscriptionModelTaxLine {\n");
             sb.Append("  Rate: ").Append(Rate).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("}\n");
@@ -59,7 +59,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -69,15 +69,15 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ShopifySubscriptionEditModelTaxLine);
+            return this.Equals(input as ShopifySubscriptionModelTaxLine);
         }
 
         /// <summary>
-        /// Returns true if ShopifySubscriptionEditModelTaxLine instances are equal
+        /// Returns true if ShopifySubscriptionModelTaxLine instances are equal
         /// </summary>
-        /// <param name="input">Instance of ShopifySubscriptionEditModelTaxLine to be compared</param>
+        /// <param name="input">Instance of ShopifySubscriptionModelTaxLine to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ShopifySubscriptionEditModelTaxLine input)
+        public bool Equals(ShopifySubscriptionModelTaxLine input)
         {
             if (input == null)
                 return false;

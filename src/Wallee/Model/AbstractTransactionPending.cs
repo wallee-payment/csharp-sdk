@@ -21,6 +21,12 @@ namespace Wallee.Model
     public partial class AbstractTransactionPending :  IEquatable<AbstractTransactionPending>
     {
         /// <summary>
+        /// The completion behavior controls when the transaction is completed.
+        /// </summary>
+        /// <value>The completion behavior controls when the transaction is completed.</value>
+        [DataMember(Name="completionBehavior", EmitDefaultValue=true)]
+        public TransactionCompletionBehavior? CompletionBehavior { get; set; }
+        /// <summary>
         /// The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
         /// </summary>
         /// <value>The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.</value>
@@ -50,6 +56,7 @@ namespace Wallee.Model
         /// </summary>
         [DataMember(Name="billingAddress", EmitDefaultValue=true)]
         public AddressCreate BillingAddress { get; set; }
+
 
         /// <summary>
         /// Gets or Sets Currency
@@ -152,6 +159,7 @@ namespace Wallee.Model
             sb.Append("  AllowedPaymentMethodBrands: ").Append(AllowedPaymentMethodBrands).Append("\n");
             sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
             sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
+            sb.Append("  CompletionBehavior: ").Append(CompletionBehavior).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  CustomerEmailAddress: ").Append(CustomerEmailAddress).Append("\n");
             sb.Append("  CustomerId: ").Append(CustomerId).Append("\n");
@@ -177,7 +185,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -215,6 +223,11 @@ namespace Wallee.Model
                     this.BillingAddress == input.BillingAddress ||
                     (this.BillingAddress != null &&
                     this.BillingAddress.Equals(input.BillingAddress))
+                ) && 
+                (
+                    this.CompletionBehavior == input.CompletionBehavior ||
+                    (this.CompletionBehavior != null &&
+                    this.CompletionBehavior.Equals(input.CompletionBehavior))
                 ) && 
                 (
                     this.Currency == input.Currency ||
@@ -308,6 +321,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.AllowedPaymentMethodConfigurations.GetHashCode();
                 if (this.BillingAddress != null)
                     hashCode = hashCode * 59 + this.BillingAddress.GetHashCode();
+                if (this.CompletionBehavior != null)
+                    hashCode = hashCode * 59 + this.CompletionBehavior.GetHashCode();
                 if (this.Currency != null)
                     hashCode = hashCode * 59 + this.Currency.GetHashCode();
                 if (this.CustomerEmailAddress != null)

@@ -61,6 +61,12 @@ namespace Wallee.Model
         public string ExternalId { get; set; }
 
         /// <summary>
+        /// Gets or Sets InvoiceMerchantReference
+        /// </summary>
+        [DataMember(Name="invoiceMerchantReference", EmitDefaultValue=true)]
+        public string InvoiceMerchantReference { get; set; }
+
+        /// <summary>
         /// The last completion flag indicates if this is the last completion. After the last completion is created no further completions can be issued.
         /// </summary>
         /// <value>The last completion flag indicates if this is the last completion. After the last completion is created no further completions can be issued.</value>
@@ -90,6 +96,7 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class TransactionCompletionRequest {\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  InvoiceMerchantReference: ").Append(InvoiceMerchantReference).Append("\n");
             sb.Append("  LastCompletion: ").Append(LastCompletion).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
             sb.Append("  TransactionId: ").Append(TransactionId).Append("\n");
@@ -103,7 +110,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -133,6 +140,11 @@ namespace Wallee.Model
                     this.ExternalId.Equals(input.ExternalId))
                 ) && 
                 (
+                    this.InvoiceMerchantReference == input.InvoiceMerchantReference ||
+                    (this.InvoiceMerchantReference != null &&
+                    this.InvoiceMerchantReference.Equals(input.InvoiceMerchantReference))
+                ) && 
+                (
                     this.LastCompletion == input.LastCompletion ||
                     (this.LastCompletion != null &&
                     this.LastCompletion.Equals(input.LastCompletion))
@@ -160,6 +172,8 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
+                if (this.InvoiceMerchantReference != null)
+                    hashCode = hashCode * 59 + this.InvoiceMerchantReference.GetHashCode();
                 if (this.LastCompletion != null)
                     hashCode = hashCode * 59 + this.LastCompletion.GetHashCode();
                 if (this.LineItems != null)

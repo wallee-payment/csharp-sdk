@@ -164,14 +164,13 @@ namespace Wallee.Test
         [Test]
         public void InstanceTest()
         {
-            Assert.IsInstanceOf<RefundService>(RefundService, "instance is a RefundService");
+            Assert.IsInstanceOf<RefundService>(this.RefundService, "instance is a RefundService");
         }
 
         
         /// <summary>
         /// Test Count
         /// </summary>
-        [Test]
         public void CountTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -184,7 +183,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test Fail
         /// </summary>
-        [Test]
         public void FailTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -197,7 +195,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test GetRefundDocument
         /// </summary>
-        [Test]
         public void GetRefundDocumentTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -210,7 +207,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test GetRefundDocumentWithTargetMediaType
         /// </summary>
-        [Test]
         public void GetRefundDocumentWithTargetMediaTypeTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -224,7 +220,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test Read
         /// </summary>
-        [Test]
         public void ReadTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -269,7 +264,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test Search
         /// </summary>
-        [Test]
         public void SearchTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -282,7 +276,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test Succeed
         /// </summary>
-        [Test]
         public void SucceedTest()
         {
             // TODO uncomment below to test the method and replace null with proper value

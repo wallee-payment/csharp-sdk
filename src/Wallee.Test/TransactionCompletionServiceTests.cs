@@ -217,7 +217,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test CompletePartiallyOffline
         /// </summary>
-        [Test]
         public void CompletePartiallyOfflineTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -230,7 +229,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test CompletePartiallyOnline
         /// </summary>
-        [Test]
         public void CompletePartiallyOnlineTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -243,7 +241,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test Count
         /// </summary>
-        [Test]
         public void CountTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -256,7 +253,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test Read
         /// </summary>
-        [Test]
         public void ReadTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
@@ -269,7 +265,6 @@ namespace Wallee.Test
         /// <summary>
         /// Test Search
         /// </summary>
-        [Test]
         public void SearchTest()
         {
             // TODO uncomment below to test the method and replace null with proper value

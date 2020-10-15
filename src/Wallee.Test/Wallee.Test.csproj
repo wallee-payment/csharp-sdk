@@ -6,8 +6,8 @@
         <AssemblyName>Wallee.Test</AssemblyName>
         <PackageId>Wallee.Test</PackageId>
         <OutputType>Library</OutputType>
-        <Authors>customweb GmbH</Authors>
-        <Company>customweb GmbH</Company>
+        <Authors>wallee AG</Authors>
+        <Company>wallee AG</Company>
         <AssemblyTitle>wallee SDK for C#</AssemblyTitle>
         <Description>wallee SDK for C#</Description>
         <Copyright>Apache-2.0</Copyright>

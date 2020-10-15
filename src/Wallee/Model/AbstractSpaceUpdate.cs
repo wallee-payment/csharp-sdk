@@ -33,6 +33,12 @@ namespace Wallee.Model
         }
 
         /// <summary>
+        /// Gets or Sets LastModifiedDate
+        /// </summary>
+        [DataMember(Name="lastModifiedDate", EmitDefaultValue=true)]
+        public DateTime? LastModifiedDate { get; set; }
+
+        /// <summary>
         /// The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
@@ -83,6 +89,7 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class AbstractSpaceUpdate {\n");
+            sb.Append("  LastModifiedDate: ").Append(LastModifiedDate).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PostalAddress: ").Append(PostalAddress).Append("\n");
             sb.Append("  PrimaryCurrency: ").Append(PrimaryCurrency).Append("\n");
@@ -100,7 +107,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -124,6 +131,11 @@ namespace Wallee.Model
                 return false;
 
             return 
+                (
+                    this.LastModifiedDate == input.LastModifiedDate ||
+                    (this.LastModifiedDate != null &&
+                    this.LastModifiedDate.Equals(input.LastModifiedDate))
+                ) && 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
@@ -170,6 +182,8 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.LastModifiedDate != null)
+                    hashCode = hashCode * 59 + this.LastModifiedDate.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.PostalAddress != null)

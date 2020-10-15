@@ -53,6 +53,7 @@ namespace Wallee.Model
 
 
 
+
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
@@ -76,6 +77,7 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class SpaceUpdate {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
+            sb.Append("  LastModifiedDate: ").Append(LastModifiedDate).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PostalAddress: ").Append(PostalAddress).Append("\n");
             sb.Append("  PrimaryCurrency: ").Append(PrimaryCurrency).Append("\n");
@@ -95,7 +97,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public override string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -119,6 +121,11 @@ namespace Wallee.Model
                 return false;
 
             return base.Equals(input) && 
+                (
+                    this.LastModifiedDate == input.LastModifiedDate ||
+                    (this.LastModifiedDate != null &&
+                    this.LastModifiedDate.Equals(input.LastModifiedDate))
+                ) && base.Equals(input) && 
                 (
                     this.Name == input.Name ||
                     (this.Name != null &&
@@ -175,6 +182,8 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = base.GetHashCode();
+                if (this.LastModifiedDate != null)
+                    hashCode = hashCode * 59 + this.LastModifiedDate.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.PostalAddress != null)

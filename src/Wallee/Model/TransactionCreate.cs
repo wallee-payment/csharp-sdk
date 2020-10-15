@@ -57,6 +57,7 @@ namespace Wallee.Model
 
 
 
+
         /// <summary>
         /// When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.
         /// </summary>
@@ -123,6 +124,7 @@ namespace Wallee.Model
             sb.Append("  AllowedPaymentMethodBrands: ").Append(AllowedPaymentMethodBrands).Append("\n");
             sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
             sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
+            sb.Append("  CompletionBehavior: ").Append(CompletionBehavior).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  CustomerEmailAddress: ").Append(CustomerEmailAddress).Append("\n");
             sb.Append("  CustomerId: ").Append(CustomerId).Append("\n");
@@ -156,7 +158,7 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public override string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented);
+            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
@@ -194,6 +196,11 @@ namespace Wallee.Model
                     this.BillingAddress == input.BillingAddress ||
                     (this.BillingAddress != null &&
                     this.BillingAddress.Equals(input.BillingAddress))
+                ) && base.Equals(input) && 
+                (
+                    this.CompletionBehavior == input.CompletionBehavior ||
+                    (this.CompletionBehavior != null &&
+                    this.CompletionBehavior.Equals(input.CompletionBehavior))
                 ) && base.Equals(input) && 
                 (
                     this.Currency == input.Currency ||
@@ -327,6 +334,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.AllowedPaymentMethodConfigurations.GetHashCode();
                 if (this.BillingAddress != null)
                     hashCode = hashCode * 59 + this.BillingAddress.GetHashCode();
+                if (this.CompletionBehavior != null)
+                    hashCode = hashCode * 59 + this.CompletionBehavior.GetHashCode();
                 if (this.Currency != null)
                     hashCode = hashCode * 59 + this.Currency.GetHashCode();
                 if (this.CustomerEmailAddress != null)
