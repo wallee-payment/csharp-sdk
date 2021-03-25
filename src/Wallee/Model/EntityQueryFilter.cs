@@ -124,6 +124,7 @@ namespace Wallee.Model
                 (
                     this.Children == input.Children ||
                     this.Children != null &&
+                    input.Children != null &&
                     this.Children.SequenceEqual(input.Children)
                 ) && 
                 (
