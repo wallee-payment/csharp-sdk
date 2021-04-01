@@ -170,6 +170,7 @@ namespace Wallee.Model
                 (
                     this.Features == input.Features ||
                     this.Features != null &&
+                    input.Features != null &&
                     this.Features.SequenceEqual(input.Features)
                 ) && 
                 (
@@ -210,6 +211,7 @@ namespace Wallee.Model
                 (
                     this.Themes == input.Themes ||
                     this.Themes != null &&
+                    input.Themes != null &&
                     this.Themes.SequenceEqual(input.Themes)
                 ) && 
                 (

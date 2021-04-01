@@ -79,6 +79,7 @@ namespace Wallee.Model
                 (
                     this.Items == input.Items ||
                     this.Items != null &&
+                    input.Items != null &&
                     this.Items.SequenceEqual(input.Items)
                 );
         }

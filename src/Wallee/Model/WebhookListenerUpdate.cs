@@ -116,6 +116,7 @@ namespace Wallee.Model
                 (
                     this.EntityStates == input.EntityStates ||
                     this.EntityStates != null &&
+                    input.EntityStates != null &&
                     this.EntityStates.SequenceEqual(input.EntityStates)
                 ) && base.Equals(input) && 
                 (

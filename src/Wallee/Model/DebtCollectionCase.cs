@@ -384,6 +384,7 @@ namespace Wallee.Model
                 (
                     this.Labels == input.Labels ||
                     this.Labels != null &&
+                    input.Labels != null &&
                     this.Labels.SequenceEqual(input.Labels)
                 ) && 
                 (
@@ -394,6 +395,7 @@ namespace Wallee.Model
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
+                    input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
                 ) && 
                 (

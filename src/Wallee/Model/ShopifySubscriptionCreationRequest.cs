@@ -114,6 +114,12 @@ namespace Wallee.Model
         public string ExternalId { get; set; }
 
         /// <summary>
+        /// Gets or Sets InitialExecutionDate
+        /// </summary>
+        [DataMember(Name="initialExecutionDate", EmitDefaultValue=true)]
+        public DateTime? InitialExecutionDate { get; set; }
+
+        /// <summary>
         /// Gets or Sets Integration
         /// </summary>
         [DataMember(Name="integration", EmitDefaultValue=true)]
@@ -179,6 +185,7 @@ namespace Wallee.Model
             sb.Append("  BillingConfiguration: ").Append(BillingConfiguration).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  InitialExecutionDate: ").Append(InitialExecutionDate).Append("\n");
             sb.Append("  Integration: ").Append(Integration).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
@@ -243,6 +250,11 @@ namespace Wallee.Model
                     this.ExternalId.Equals(input.ExternalId))
                 ) && 
                 (
+                    this.InitialExecutionDate == input.InitialExecutionDate ||
+                    (this.InitialExecutionDate != null &&
+                    this.InitialExecutionDate.Equals(input.InitialExecutionDate))
+                ) && 
+                (
                     this.Integration == input.Integration ||
                     (this.Integration != null &&
                     this.Integration.Equals(input.Integration))
@@ -250,6 +262,7 @@ namespace Wallee.Model
                 (
                     this.Items == input.Items ||
                     this.Items != null &&
+                    input.Items != null &&
                     this.Items.SequenceEqual(input.Items)
                 ) && 
                 (
@@ -306,6 +319,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Currency.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
+                if (this.InitialExecutionDate != null)
+                    hashCode = hashCode * 59 + this.InitialExecutionDate.GetHashCode();
                 if (this.Integration != null)
                     hashCode = hashCode * 59 + this.Integration.GetHashCode();
                 if (this.Items != null)

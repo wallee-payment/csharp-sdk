@@ -175,11 +175,13 @@ namespace Wallee.Model
                 (
                     this.DeprecationReason == input.DeprecationReason ||
                     this.DeprecationReason != null &&
+                    input.DeprecationReason != null &&
                     this.DeprecationReason.SequenceEqual(input.DeprecationReason)
                 ) && 
                 (
                     this.Description == input.Description ||
                     this.Description != null &&
+                    input.Description != null &&
                     this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
@@ -195,6 +197,7 @@ namespace Wallee.Model
                 (
                     this.Name == input.Name ||
                     this.Name != null &&
+                    input.Name != null &&
                     this.Name.SequenceEqual(input.Name)
                 ) && 
                 (
@@ -220,11 +223,13 @@ namespace Wallee.Model
                 (
                     this.SupportedCustomersPresences == input.SupportedCustomersPresences ||
                     this.SupportedCustomersPresences != null &&
+                    input.SupportedCustomersPresences != null &&
                     this.SupportedCustomersPresences.SequenceEqual(input.SupportedCustomersPresences)
                 ) && 
                 (
                     this.SupportedFeatures == input.SupportedFeatures ||
                     this.SupportedFeatures != null &&
+                    input.SupportedFeatures != null &&
                     this.SupportedFeatures.SequenceEqual(input.SupportedFeatures)
                 );
         }

@@ -251,6 +251,7 @@ namespace Wallee.Model
                 (
                     this.AdditionalLineItemData == input.AdditionalLineItemData ||
                     this.AdditionalLineItemData != null &&
+                    input.AdditionalLineItemData != null &&
                     this.AdditionalLineItemData.SequenceEqual(input.AdditionalLineItemData)
                 ) && 
                 (
@@ -261,6 +262,7 @@ namespace Wallee.Model
                 (
                     this.AllowedPaymentMethodConfigurations == input.AllowedPaymentMethodConfigurations ||
                     this.AllowedPaymentMethodConfigurations != null &&
+                    input.AllowedPaymentMethodConfigurations != null &&
                     this.AllowedPaymentMethodConfigurations.SequenceEqual(input.AllowedPaymentMethodConfigurations)
                 ) && 
                 (

@@ -127,6 +127,7 @@ namespace Wallee.Model
                 (
                     this.OrderBys == input.OrderBys ||
                     this.OrderBys != null &&
+                    input.OrderBys != null &&
                     this.OrderBys.SequenceEqual(input.OrderBys)
                 ) && 
                 (

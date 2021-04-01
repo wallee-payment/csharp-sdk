@@ -118,6 +118,7 @@ namespace Wallee.Model
                 (
                     this.AllowedPaymentMethodConfigurations == input.AllowedPaymentMethodConfigurations ||
                     this.AllowedPaymentMethodConfigurations != null &&
+                    input.AllowedPaymentMethodConfigurations != null &&
                     this.AllowedPaymentMethodConfigurations.SequenceEqual(input.AllowedPaymentMethodConfigurations)
                 ) && base.Equals(input) && 
                 (

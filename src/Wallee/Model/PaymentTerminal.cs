@@ -40,6 +40,12 @@ namespace Wallee.Model
         public PaymentTerminalConfigurationVersion ConfigurationVersion { get; private set; }
 
         /// <summary>
+        /// Gets or Sets DefaultCurrency
+        /// </summary>
+        [DataMember(Name="defaultCurrency", EmitDefaultValue=true)]
+        public string DefaultCurrency { get; private set; }
+
+        /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
@@ -103,6 +109,7 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class PaymentTerminal {\n");
             sb.Append("  ConfigurationVersion: ").Append(ConfigurationVersion).Append("\n");
+            sb.Append("  DefaultCurrency: ").Append(DefaultCurrency).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Identifier: ").Append(Identifier).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
@@ -150,6 +157,11 @@ namespace Wallee.Model
                     this.ConfigurationVersion == input.ConfigurationVersion ||
                     (this.ConfigurationVersion != null &&
                     this.ConfigurationVersion.Equals(input.ConfigurationVersion))
+                ) && 
+                (
+                    this.DefaultCurrency == input.DefaultCurrency ||
+                    (this.DefaultCurrency != null &&
+                    this.DefaultCurrency.Equals(input.DefaultCurrency))
                 ) && 
                 (
                     this.Id == input.Id ||
@@ -209,6 +221,8 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.ConfigurationVersion != null)
                     hashCode = hashCode * 59 + this.ConfigurationVersion.GetHashCode();
+                if (this.DefaultCurrency != null)
+                    hashCode = hashCode * 59 + this.DefaultCurrency.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Identifier != null)

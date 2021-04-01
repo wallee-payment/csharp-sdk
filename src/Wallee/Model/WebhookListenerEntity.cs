@@ -100,6 +100,7 @@ namespace Wallee.Model
                 (
                     this.Name == input.Name ||
                     this.Name != null &&
+                    input.Name != null &&
                     this.Name.SequenceEqual(input.Name)
                 ) && 
                 (

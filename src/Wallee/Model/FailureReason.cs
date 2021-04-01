@@ -114,11 +114,13 @@ namespace Wallee.Model
                 (
                     this.Description == input.Description ||
                     this.Description != null &&
+                    input.Description != null &&
                     this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
                     this.Features == input.Features ||
                     this.Features != null &&
+                    input.Features != null &&
                     this.Features.SequenceEqual(input.Features)
                 ) && 
                 (
@@ -129,6 +131,7 @@ namespace Wallee.Model
                 (
                     this.Name == input.Name ||
                     this.Name != null &&
+                    input.Name != null &&
                     this.Name.SequenceEqual(input.Name)
                 );
         }

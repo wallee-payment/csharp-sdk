@@ -140,6 +140,7 @@ namespace Wallee.Model
                 (
                     this.Fee == input.Fee ||
                     this.Fee != null &&
+                    input.Fee != null &&
                     this.Fee.SequenceEqual(input.Fee)
                 ) && 
                 (

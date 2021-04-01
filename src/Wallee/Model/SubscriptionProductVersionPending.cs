@@ -211,6 +211,7 @@ namespace Wallee.Model
                 (
                     this.EnabledCurrencies == input.EnabledCurrencies ||
                     this.EnabledCurrencies != null &&
+                    input.EnabledCurrencies != null &&
                     this.EnabledCurrencies.SequenceEqual(input.EnabledCurrencies)
                 ) && 
                 (

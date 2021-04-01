@@ -310,6 +310,7 @@ namespace Wallee.Model
                 (
                     this.BaseLineItems == input.BaseLineItems ||
                     this.BaseLineItems != null &&
+                    input.BaseLineItems != null &&
                     this.BaseLineItems.SequenceEqual(input.BaseLineItems)
                 ) && 
                 (
@@ -355,6 +356,7 @@ namespace Wallee.Model
                 (
                     this.Labels == input.Labels ||
                     this.Labels != null &&
+                    input.Labels != null &&
                     this.Labels.SequenceEqual(input.Labels)
                 ) && 
                 (
@@ -365,6 +367,7 @@ namespace Wallee.Model
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
+                    input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
                 ) && 
                 (
@@ -400,11 +403,13 @@ namespace Wallee.Model
                 (
                     this.ReducedLineItems == input.ReducedLineItems ||
                     this.ReducedLineItems != null &&
+                    input.ReducedLineItems != null &&
                     this.ReducedLineItems.SequenceEqual(input.ReducedLineItems)
                 ) && 
                 (
                     this.Reductions == input.Reductions ||
                     this.Reductions != null &&
+                    input.Reductions != null &&
                     this.Reductions.SequenceEqual(input.Reductions)
                 ) && 
                 (
@@ -420,6 +425,7 @@ namespace Wallee.Model
                 (
                     this.Taxes == input.Taxes ||
                     this.Taxes != null &&
+                    input.Taxes != null &&
                     this.Taxes.SequenceEqual(input.Taxes)
                 ) && 
                 (

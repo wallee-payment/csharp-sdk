@@ -41,6 +41,33 @@ namespace Wallee.Service
         /// <param name="language">The language in which the messages should be rendered in. (optional)</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> PerformTransactionWithHttpInfo (long? spaceId, long? transactionId, long? terminalId, string language = null);
+        /// <summary>
+        /// Perform Payment Terminal Transaction (using TID)
+        /// </summary>
+        /// <remarks>
+        /// Starts a payment terminal transaction and waits for its completion. If the call returns with a long polling timeout status, you may try again. The processing of the transaction will be picked up where it was left off.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The ID of the transaction which is used to process with the terminal.</param>
+        /// <param name="terminalIdentifier">The identifier (aka TID) of the terminal which should be used to process the transaction.</param>
+        /// <param name="language">The language in which the messages should be rendered in. (optional)</param>
+        /// <returns>Transaction</returns>
+        Transaction PerformTransactionByIdentifier (long? spaceId, long? transactionId, string terminalIdentifier, string language = null);
+
+        /// <summary>
+        /// Perform Payment Terminal Transaction (using TID)
+        /// </summary>
+        /// <remarks>
+        /// Starts a payment terminal transaction and waits for its completion. If the call returns with a long polling timeout status, you may try again. The processing of the transaction will be picked up where it was left off.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The ID of the transaction which is used to process with the terminal.</param>
+        /// <param name="terminalIdentifier">The identifier (aka TID) of the terminal which should be used to process the transaction.</param>
+        /// <param name="language">The language in which the messages should be rendered in. (optional)</param>
+        /// <returns>ApiResponse of Transaction</returns>
+        ApiResponse<Transaction> PerformTransactionByIdentifierWithHttpInfo (long? spaceId, long? transactionId, string terminalIdentifier, string language = null);
         #endregion Synchronous Operations
     }
 
@@ -174,6 +201,88 @@ namespace Wallee.Service
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("PerformTransaction", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Transaction>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+        }
+        /// <summary>
+        /// Perform Payment Terminal Transaction (using TID) Starts a payment terminal transaction and waits for its completion. If the call returns with a long polling timeout status, you may try again. The processing of the transaction will be picked up where it was left off.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The ID of the transaction which is used to process with the terminal.</param>
+        /// <param name="terminalIdentifier">The identifier (aka TID) of the terminal which should be used to process the transaction.</param>
+        /// <param name="language">The language in which the messages should be rendered in. (optional)</param>
+        /// <returns>Transaction</returns>
+        public Transaction PerformTransactionByIdentifier (long? spaceId, long? transactionId, string terminalIdentifier, string language = null)
+        {
+             ApiResponse<Transaction> localVarResponse = PerformTransactionByIdentifierWithHttpInfo(spaceId, transactionId, terminalIdentifier, language);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Perform Payment Terminal Transaction (using TID) Starts a payment terminal transaction and waits for its completion. If the call returns with a long polling timeout status, you may try again. The processing of the transaction will be picked up where it was left off.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The ID of the transaction which is used to process with the terminal.</param>
+        /// <param name="terminalIdentifier">The identifier (aka TID) of the terminal which should be used to process the transaction.</param>
+        /// <param name="language">The language in which the messages should be rendered in. (optional)</param>
+        /// <returns>ApiResponse of Transaction</returns>
+        public ApiResponse< Transaction > PerformTransactionByIdentifierWithHttpInfo (long? spaceId, long? transactionId, string terminalIdentifier, string language = null)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentTerminalTillService->PerformTransactionByIdentifier");
+            // verify the required parameter 'transactionId' is set
+            if (transactionId == null)
+                throw new ApiException(400, "Missing required parameter 'transactionId' when calling PaymentTerminalTillService->PerformTransactionByIdentifier");
+            // verify the required parameter 'terminalIdentifier' is set
+            if (terminalIdentifier == null)
+                throw new ApiException(400, "Missing required parameter 'terminalIdentifier' when calling PaymentTerminalTillService->PerformTransactionByIdentifier");
+
+            var localVarPath = "/payment-terminal-till/perform-transaction-by-identifier";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (transactionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "transactionId", transactionId)); // query parameter
+            if (terminalIdentifier != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "terminalIdentifier", terminalIdentifier)); // query parameter
+            if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
+
+			this.Configuration.ApiClient.RestClient.Timeout = 90 * 1000;
+			
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PerformTransactionByIdentifier", localVarResponse);
                 if (exception != null) throw exception;
             }
 

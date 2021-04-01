@@ -105,6 +105,7 @@ namespace Wallee.Model
                 (
                     this.PostCodeExamples == input.PostCodeExamples ||
                     this.PostCodeExamples != null &&
+                    input.PostCodeExamples != null &&
                     this.PostCodeExamples.SequenceEqual(input.PostCodeExamples)
                 ) && 
                 (
@@ -115,11 +116,13 @@ namespace Wallee.Model
                 (
                     this.RequiredFields == input.RequiredFields ||
                     this.RequiredFields != null &&
+                    input.RequiredFields != null &&
                     this.RequiredFields.SequenceEqual(input.RequiredFields)
                 ) && 
                 (
                     this.UsedFields == input.UsedFields ||
                     this.UsedFields != null &&
+                    input.UsedFields != null &&
                     this.UsedFields.SequenceEqual(input.UsedFields)
                 );
         }

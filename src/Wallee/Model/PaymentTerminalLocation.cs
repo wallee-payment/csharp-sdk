@@ -37,19 +37,13 @@ namespace Wallee.Model
         /// Gets or Sets ContactAddress
         /// </summary>
         [DataMember(Name="contactAddress", EmitDefaultValue=true)]
-        public PaymentTerminalContactAddress ContactAddress { get; private set; }
+        public PaymentTerminalAddress ContactAddress { get; private set; }
 
         /// <summary>
         /// Gets or Sets DefaultConfiguration
         /// </summary>
         [DataMember(Name="defaultConfiguration", EmitDefaultValue=true)]
         public PaymentTerminalConfiguration DefaultConfiguration { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets DeliveryAddress
-        /// </summary>
-        [DataMember(Name="deliveryAddress", EmitDefaultValue=true)]
-        public PaymentTerminalAddress DeliveryAddress { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
@@ -97,7 +91,6 @@ namespace Wallee.Model
             sb.Append("class PaymentTerminalLocation {\n");
             sb.Append("  ContactAddress: ").Append(ContactAddress).Append("\n");
             sb.Append("  DefaultConfiguration: ").Append(DefaultConfiguration).Append("\n");
-            sb.Append("  DeliveryAddress: ").Append(DeliveryAddress).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -149,11 +142,6 @@ namespace Wallee.Model
                     this.DefaultConfiguration.Equals(input.DefaultConfiguration))
                 ) && 
                 (
-                    this.DeliveryAddress == input.DeliveryAddress ||
-                    (this.DeliveryAddress != null &&
-                    this.DeliveryAddress.Equals(input.DeliveryAddress))
-                ) && 
-                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -198,8 +186,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ContactAddress.GetHashCode();
                 if (this.DefaultConfiguration != null)
                     hashCode = hashCode * 59 + this.DefaultConfiguration.GetHashCode();
-                if (this.DeliveryAddress != null)
-                    hashCode = hashCode * 59 + this.DeliveryAddress.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.LinkedSpaceId != null)

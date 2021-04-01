@@ -136,6 +136,7 @@ namespace Wallee.Model
                 (
                     this.Conditions == input.Conditions ||
                     this.Conditions != null &&
+                    input.Conditions != null &&
                     this.Conditions.SequenceEqual(input.Conditions)
                 ) && 
                 (

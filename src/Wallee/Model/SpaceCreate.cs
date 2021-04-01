@@ -139,6 +139,7 @@ namespace Wallee.Model
                 (
                     this.TechnicalContactAddresses == input.TechnicalContactAddresses ||
                     this.TechnicalContactAddresses != null &&
+                    input.TechnicalContactAddresses != null &&
                     this.TechnicalContactAddresses.SequenceEqual(input.TechnicalContactAddresses)
                 ) && base.Equals(input) && 
                 (

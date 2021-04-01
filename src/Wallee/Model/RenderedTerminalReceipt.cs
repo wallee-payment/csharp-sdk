@@ -34,10 +34,25 @@ namespace Wallee.Model
         public byte[] Data { get; set; }
 
         /// <summary>
-        /// Gets or Sets MimeType
+        /// The mime type indicates the format of the receipt document. The mime type depends on the requested receipt format.
         /// </summary>
+        /// <value>The mime type indicates the format of the receipt document. The mime type depends on the requested receipt format.</value>
         [DataMember(Name="mimeType", EmitDefaultValue=true)]
         public string MimeType { get; private set; }
+
+        /// <summary>
+        /// The terminal might or might not print the receipt. This property is set to true when the configuration of the terminal forces the printing and the device supports the receipt printing.
+        /// </summary>
+        /// <value>The terminal might or might not print the receipt. This property is set to true when the configuration of the terminal forces the printing and the device supports the receipt printing.</value>
+        [DataMember(Name="printed", EmitDefaultValue=true)]
+        public bool? Printed { get; private set; }
+
+        /// <summary>
+        /// Each receipt has a different usage. The receipt type indicates for what resp. for whom the document is for.
+        /// </summary>
+        /// <value>Each receipt has a different usage. The receipt type indicates for what resp. for whom the document is for.</value>
+        [DataMember(Name="receiptType", EmitDefaultValue=true)]
+        public PaymentTerminalReceiptType ReceiptType { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -49,6 +64,8 @@ namespace Wallee.Model
             sb.Append("class RenderedTerminalReceipt {\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("  MimeType: ").Append(MimeType).Append("\n");
+            sb.Append("  Printed: ").Append(Printed).Append("\n");
+            sb.Append("  ReceiptType: ").Append(ReceiptType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -92,6 +109,16 @@ namespace Wallee.Model
                     this.MimeType == input.MimeType ||
                     (this.MimeType != null &&
                     this.MimeType.Equals(input.MimeType))
+                ) && 
+                (
+                    this.Printed == input.Printed ||
+                    (this.Printed != null &&
+                    this.Printed.Equals(input.Printed))
+                ) && 
+                (
+                    this.ReceiptType == input.ReceiptType ||
+                    (this.ReceiptType != null &&
+                    this.ReceiptType.Equals(input.ReceiptType))
                 );
         }
 
@@ -108,6 +135,10 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Data.GetHashCode();
                 if (this.MimeType != null)
                     hashCode = hashCode * 59 + this.MimeType.GetHashCode();
+                if (this.Printed != null)
+                    hashCode = hashCode * 59 + this.Printed.GetHashCode();
+                if (this.ReceiptType != null)
+                    hashCode = hashCode * 59 + this.ReceiptType.GetHashCode();
                 return hashCode;
             }
         }

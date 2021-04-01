@@ -114,6 +114,7 @@ namespace Wallee.Model
                 (
                     this.Description == input.Description ||
                     this.Description != null &&
+                    input.Description != null &&
                     this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
@@ -129,6 +130,7 @@ namespace Wallee.Model
                 (
                     this.Shortcut == input.Shortcut ||
                     this.Shortcut != null &&
+                    input.Shortcut != null &&
                     this.Shortcut.SequenceEqual(input.Shortcut)
                 );
         }

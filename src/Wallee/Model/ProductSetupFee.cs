@@ -176,16 +176,19 @@ namespace Wallee.Model
                 (
                     this.OnDowngradeCreditedAmount == input.OnDowngradeCreditedAmount ||
                     this.OnDowngradeCreditedAmount != null &&
+                    input.OnDowngradeCreditedAmount != null &&
                     this.OnDowngradeCreditedAmount.SequenceEqual(input.OnDowngradeCreditedAmount)
                 ) && 
                 (
                     this.OnUpgradeCreditedAmount == input.OnUpgradeCreditedAmount ||
                     this.OnUpgradeCreditedAmount != null &&
+                    input.OnUpgradeCreditedAmount != null &&
                     this.OnUpgradeCreditedAmount.SequenceEqual(input.OnUpgradeCreditedAmount)
                 ) && 
                 (
                     this.SetupFee == input.SetupFee ||
                     this.SetupFee != null &&
+                    input.SetupFee != null &&
                     this.SetupFee.SequenceEqual(input.SetupFee)
                 ) && 
                 (

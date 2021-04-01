@@ -123,11 +123,13 @@ namespace Wallee.Model
                 (
                     this.DataCollectionTypes == input.DataCollectionTypes ||
                     this.DataCollectionTypes != null &&
+                    input.DataCollectionTypes != null &&
                     this.DataCollectionTypes.SequenceEqual(input.DataCollectionTypes)
                 ) && 
                 (
                     this.Description == input.Description ||
                     this.Description != null &&
+                    input.Description != null &&
                     this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
@@ -143,16 +145,19 @@ namespace Wallee.Model
                 (
                     this.MerchantDescription == input.MerchantDescription ||
                     this.MerchantDescription != null &&
+                    input.MerchantDescription != null &&
                     this.MerchantDescription.SequenceEqual(input.MerchantDescription)
                 ) && 
                 (
                     this.Name == input.Name ||
                     this.Name != null &&
+                    input.Name != null &&
                     this.Name.SequenceEqual(input.Name)
                 ) && 
                 (
                     this.SupportedCurrencies == input.SupportedCurrencies ||
                     this.SupportedCurrencies != null &&
+                    input.SupportedCurrencies != null &&
                     this.SupportedCurrencies.SequenceEqual(input.SupportedCurrencies)
                 );
         }

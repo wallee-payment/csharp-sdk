@@ -65,6 +65,12 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
+        /// Gets or Sets DiscountIncludingTax
+        /// </summary>
+        [DataMember(Name="discountIncludingTax", EmitDefaultValue=true)]
+        public decimal? DiscountIncludingTax { get; private set; }
+
+        /// <summary>
         /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
         /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
@@ -143,6 +149,7 @@ namespace Wallee.Model
             sb.Append("  AmountIncludingTax: ").Append(AmountIncludingTax).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  DiscountIncludingTax: ").Append(DiscountIncludingTax).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
@@ -214,6 +221,11 @@ namespace Wallee.Model
                     this.CreatedOn.Equals(input.CreatedOn))
                 ) && 
                 (
+                    this.DiscountIncludingTax == input.DiscountIncludingTax ||
+                    (this.DiscountIncludingTax != null &&
+                    this.DiscountIncludingTax.Equals(input.DiscountIncludingTax))
+                ) && 
+                (
                     this.ExternalId == input.ExternalId ||
                     (this.ExternalId != null &&
                     this.ExternalId.Equals(input.ExternalId))
@@ -256,6 +268,7 @@ namespace Wallee.Model
                 (
                     this.Taxes == input.Taxes ||
                     this.Taxes != null &&
+                    input.Taxes != null &&
                     this.Taxes.SequenceEqual(input.Taxes)
                 ) && 
                 (
@@ -289,6 +302,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.CreatedBy.GetHashCode();
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
+                if (this.DiscountIncludingTax != null)
+                    hashCode = hashCode * 59 + this.DiscountIncludingTax.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.Id != null)

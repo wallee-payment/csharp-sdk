@@ -142,6 +142,7 @@ namespace Wallee.Model
                 (
                     this.AdditionalAllowedPaymentMethodConfigurations == input.AdditionalAllowedPaymentMethodConfigurations ||
                     this.AdditionalAllowedPaymentMethodConfigurations != null &&
+                    input.AdditionalAllowedPaymentMethodConfigurations != null &&
                     this.AdditionalAllowedPaymentMethodConfigurations.SequenceEqual(input.AdditionalAllowedPaymentMethodConfigurations)
                 ) && 
                 (
@@ -157,6 +158,7 @@ namespace Wallee.Model
                 (
                     this.DisallowedPaymentMethodConfigurations == input.DisallowedPaymentMethodConfigurations ||
                     this.DisallowedPaymentMethodConfigurations != null &&
+                    input.DisallowedPaymentMethodConfigurations != null &&
                     this.DisallowedPaymentMethodConfigurations.SequenceEqual(input.DisallowedPaymentMethodConfigurations)
                 ) && 
                 (
@@ -172,6 +174,7 @@ namespace Wallee.Model
                 (
                     this.MetaData == input.MetaData ||
                     this.MetaData != null &&
+                    input.MetaData != null &&
                     this.MetaData.SequenceEqual(input.MetaData)
                 ) && 
                 (

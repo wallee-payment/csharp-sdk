@@ -212,6 +212,7 @@ namespace Wallee.Model
                 (
                     this.Conditions == input.Conditions ||
                     this.Conditions != null &&
+                    input.Conditions != null &&
                     this.Conditions.SequenceEqual(input.Conditions)
                 ) && 
                 (
@@ -247,6 +248,7 @@ namespace Wallee.Model
                 (
                     this.PaymentMethodConfigurations == input.PaymentMethodConfigurations ||
                     this.PaymentMethodConfigurations != null &&
+                    input.PaymentMethodConfigurations != null &&
                     this.PaymentMethodConfigurations.SequenceEqual(input.PaymentMethodConfigurations)
                 ) && 
                 (

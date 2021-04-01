@@ -21,6 +21,18 @@ namespace Wallee.Model
     public partial class PaymentLinkUpdate :  IEquatable<PaymentLinkUpdate>
     {
         /// <summary>
+        /// The billing address handling mode controls if the address is collected or not and how it is collected.
+        /// </summary>
+        /// <value>The billing address handling mode controls if the address is collected or not and how it is collected.</value>
+        [DataMember(Name="billingAddressHandlingMode", EmitDefaultValue=true)]
+        public PaymentLinkAddressHandlingMode? BillingAddressHandlingMode { get; set; }
+        /// <summary>
+        /// The shipping address handling mode controls if the address is collected or not and how it is collected.
+        /// </summary>
+        /// <value>The shipping address handling mode controls if the address is collected or not and how it is collected.</value>
+        [DataMember(Name="shippingAddressHandlingMode", EmitDefaultValue=true)]
+        public PaymentLinkAddressHandlingMode? ShippingAddressHandlingMode { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="PaymentLinkUpdate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -88,12 +100,6 @@ namespace Wallee.Model
         [DataMember(Name="availableUntil", EmitDefaultValue=true)]
         public DateTime? AvailableUntil { get; set; }
 
-        /// <summary>
-        /// By making the billing address required the transaction can only be created when a billing address is provided within the request.
-        /// </summary>
-        /// <value>By making the billing address required the transaction can only be created when a billing address is provided within the request.</value>
-        [DataMember(Name="billingAddressRequired", EmitDefaultValue=true)]
-        public bool? BillingAddressRequired { get; set; }
 
         /// <summary>
         /// The currency defines in which currency the payment is executed in. If no currency is defined it has to be specified within the request parameter &#39;currency&#39;.
@@ -130,12 +136,6 @@ namespace Wallee.Model
         [DataMember(Name="name", EmitDefaultValue=true)]
         public string Name { get; set; }
 
-        /// <summary>
-        /// By making the shipping address required the transaction can only be created when a shipping address is provided within the request.
-        /// </summary>
-        /// <value>By making the shipping address required the transaction can only be created when a shipping address is provided within the request.</value>
-        [DataMember(Name="shippingAddressRequired", EmitDefaultValue=true)]
-        public bool? ShippingAddressRequired { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -151,13 +151,13 @@ namespace Wallee.Model
             sb.Append("  AppliedSpaceView: ").Append(AppliedSpaceView).Append("\n");
             sb.Append("  AvailableFrom: ").Append(AvailableFrom).Append("\n");
             sb.Append("  AvailableUntil: ").Append(AvailableUntil).Append("\n");
-            sb.Append("  BillingAddressRequired: ").Append(BillingAddressRequired).Append("\n");
+            sb.Append("  BillingAddressHandlingMode: ").Append(BillingAddressHandlingMode).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
             sb.Append("  MaximalNumberOfTransactions: ").Append(MaximalNumberOfTransactions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  ShippingAddressRequired: ").Append(ShippingAddressRequired).Append("\n");
+            sb.Append("  ShippingAddressHandlingMode: ").Append(ShippingAddressHandlingMode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -205,6 +205,7 @@ namespace Wallee.Model
                 (
                     this.AllowedPaymentMethodConfigurations == input.AllowedPaymentMethodConfigurations ||
                     this.AllowedPaymentMethodConfigurations != null &&
+                    input.AllowedPaymentMethodConfigurations != null &&
                     this.AllowedPaymentMethodConfigurations.SequenceEqual(input.AllowedPaymentMethodConfigurations)
                 ) && 
                 (
@@ -223,9 +224,9 @@ namespace Wallee.Model
                     this.AvailableUntil.Equals(input.AvailableUntil))
                 ) && 
                 (
-                    this.BillingAddressRequired == input.BillingAddressRequired ||
-                    (this.BillingAddressRequired != null &&
-                    this.BillingAddressRequired.Equals(input.BillingAddressRequired))
+                    this.BillingAddressHandlingMode == input.BillingAddressHandlingMode ||
+                    (this.BillingAddressHandlingMode != null &&
+                    this.BillingAddressHandlingMode.Equals(input.BillingAddressHandlingMode))
                 ) && 
                 (
                     this.Currency == input.Currency ||
@@ -240,6 +241,7 @@ namespace Wallee.Model
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
+                    input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
                 ) && 
                 (
@@ -253,9 +255,9 @@ namespace Wallee.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
-                    this.ShippingAddressRequired == input.ShippingAddressRequired ||
-                    (this.ShippingAddressRequired != null &&
-                    this.ShippingAddressRequired.Equals(input.ShippingAddressRequired))
+                    this.ShippingAddressHandlingMode == input.ShippingAddressHandlingMode ||
+                    (this.ShippingAddressHandlingMode != null &&
+                    this.ShippingAddressHandlingMode.Equals(input.ShippingAddressHandlingMode))
                 );
         }
 
@@ -280,8 +282,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.AvailableFrom.GetHashCode();
                 if (this.AvailableUntil != null)
                     hashCode = hashCode * 59 + this.AvailableUntil.GetHashCode();
-                if (this.BillingAddressRequired != null)
-                    hashCode = hashCode * 59 + this.BillingAddressRequired.GetHashCode();
+                if (this.BillingAddressHandlingMode != null)
+                    hashCode = hashCode * 59 + this.BillingAddressHandlingMode.GetHashCode();
                 if (this.Currency != null)
                     hashCode = hashCode * 59 + this.Currency.GetHashCode();
                 if (this.Language != null)
@@ -292,8 +294,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.MaximalNumberOfTransactions.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.ShippingAddressRequired != null)
-                    hashCode = hashCode * 59 + this.ShippingAddressRequired.GetHashCode();
+                if (this.ShippingAddressHandlingMode != null)
+                    hashCode = hashCode * 59 + this.ShippingAddressHandlingMode.GetHashCode();
                 return hashCode;
             }
         }

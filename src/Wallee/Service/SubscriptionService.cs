@@ -230,6 +230,31 @@ namespace Wallee.Service
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> TerminateWithHttpInfo (long? spaceId, long? subscriptionId, bool? respectTerminationPeriod);
         /// <summary>
+        /// update
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to update the subscription.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="subscriptionId"></param>
+        /// <param name="request"></param>
+        /// <returns>Subscription</returns>
+        Subscription Update (long? spaceId, long? subscriptionId, SubscriptionUpdateRequest request);
+
+        /// <summary>
+        /// update
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to update the subscription.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="subscriptionId"></param>
+        /// <param name="request"></param>
+        /// <returns>ApiResponse of Subscription</returns>
+        ApiResponse<Subscription> UpdateWithHttpInfo (long? spaceId, long? subscriptionId, SubscriptionUpdateRequest request);
+        /// <summary>
         /// update product version
         /// </summary>
         /// <remarks>
@@ -1014,6 +1039,92 @@ namespace Wallee.Service
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
+        }
+        /// <summary>
+        /// update This operation allows to update the subscription.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="subscriptionId"></param>
+        /// <param name="request"></param>
+        /// <returns>Subscription</returns>
+        public Subscription Update (long? spaceId, long? subscriptionId, SubscriptionUpdateRequest request)
+        {
+             ApiResponse<Subscription> localVarResponse = UpdateWithHttpInfo(spaceId, subscriptionId, request);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// update This operation allows to update the subscription.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="subscriptionId"></param>
+        /// <param name="request"></param>
+        /// <returns>ApiResponse of Subscription</returns>
+        public ApiResponse< Subscription > UpdateWithHttpInfo (long? spaceId, long? subscriptionId, SubscriptionUpdateRequest request)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionService->Update");
+            // verify the required parameter 'subscriptionId' is set
+            if (subscriptionId == null)
+                throw new ApiException(400, "Missing required parameter 'subscriptionId' when calling SubscriptionService->Update");
+            // verify the required parameter 'request' is set
+            if (request == null)
+                throw new ApiException(400, "Missing required parameter 'request' when calling SubscriptionService->Update");
+
+            var localVarPath = "/subscription/update";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (subscriptionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "subscriptionId", subscriptionId)); // query parameter
+            if (request != null && request.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(request); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = request; // byte array
+            }
+
+			
+			this.Configuration.ApiClient.ResetTimeout();
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Update", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Subscription>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Subscription) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Subscription)));
         }
         /// <summary>
         /// update product version The update product version operation updates the product version of the subscription to the latest active product version.

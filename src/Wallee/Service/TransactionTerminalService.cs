@@ -15,32 +15,28 @@ namespace Wallee.Service
     {
         #region Synchronous Operations
         /// <summary>
-        /// getTerminalReceipt
+        /// Fetch Receipts
         /// </summary>
         /// <remarks>
-        /// Returns the PDF document for the requested terminal receipt with the given page width.
+        /// Returns all receipts for the requested terminal transaction.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="transactionId">The ID of the transaction to get the receipt for.</param>
-        /// <param name="typeId"></param>
-        /// <param name="width"></param>
-        /// <returns>RenderedTerminalReceipt</returns>
-        RenderedTerminalReceipt Receipt (long? spaceId, long? transactionId, long? typeId, int? width);
+        /// <param name="request"></param>
+        /// <returns>List&lt;RenderedTerminalReceipt&gt;</returns>
+        List<RenderedTerminalReceipt> FetchReceipts (long? spaceId, TerminalReceiptFetchRequest request);
 
         /// <summary>
-        /// getTerminalReceipt
+        /// Fetch Receipts
         /// </summary>
         /// <remarks>
-        /// Returns the PDF document for the requested terminal receipt with the given page width.
+        /// Returns all receipts for the requested terminal transaction.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="transactionId">The ID of the transaction to get the receipt for.</param>
-        /// <param name="typeId"></param>
-        /// <param name="width"></param>
-        /// <returns>ApiResponse of RenderedTerminalReceipt</returns>
-        ApiResponse<RenderedTerminalReceipt> ReceiptWithHttpInfo (long? spaceId, long? transactionId, long? typeId, int? width);
+        /// <param name="request"></param>
+        /// <returns>ApiResponse of List&lt;RenderedTerminalReceipt&gt;</returns>
+        ApiResponse<List<RenderedTerminalReceipt>> FetchReceiptsWithHttpInfo (long? spaceId, TerminalReceiptFetchRequest request);
         /// <summary>
         /// Create Till Connection Credentials
         /// </summary>
@@ -127,45 +123,35 @@ namespace Wallee.Service
         }
 
         /// <summary>
-        /// getTerminalReceipt Returns the PDF document for the requested terminal receipt with the given page width.
+        /// Fetch Receipts Returns all receipts for the requested terminal transaction.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="transactionId">The ID of the transaction to get the receipt for.</param>
-        /// <param name="typeId"></param>
-        /// <param name="width"></param>
-        /// <returns>RenderedTerminalReceipt</returns>
-        public RenderedTerminalReceipt Receipt (long? spaceId, long? transactionId, long? typeId, int? width)
+        /// <param name="request"></param>
+        /// <returns>List&lt;RenderedTerminalReceipt&gt;</returns>
+        public List<RenderedTerminalReceipt> FetchReceipts (long? spaceId, TerminalReceiptFetchRequest request)
         {
-             ApiResponse<RenderedTerminalReceipt> localVarResponse = ReceiptWithHttpInfo(spaceId, transactionId, typeId, width);
+             ApiResponse<List<RenderedTerminalReceipt>> localVarResponse = FetchReceiptsWithHttpInfo(spaceId, request);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// getTerminalReceipt Returns the PDF document for the requested terminal receipt with the given page width.
+        /// Fetch Receipts Returns all receipts for the requested terminal transaction.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="transactionId">The ID of the transaction to get the receipt for.</param>
-        /// <param name="typeId"></param>
-        /// <param name="width"></param>
-        /// <returns>ApiResponse of RenderedTerminalReceipt</returns>
-        public ApiResponse< RenderedTerminalReceipt > ReceiptWithHttpInfo (long? spaceId, long? transactionId, long? typeId, int? width)
+        /// <param name="request"></param>
+        /// <returns>ApiResponse of List&lt;RenderedTerminalReceipt&gt;</returns>
+        public ApiResponse< List<RenderedTerminalReceipt> > FetchReceiptsWithHttpInfo (long? spaceId, TerminalReceiptFetchRequest request)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionTerminalService->Receipt");
-            // verify the required parameter 'transactionId' is set
-            if (transactionId == null)
-                throw new ApiException(400, "Missing required parameter 'transactionId' when calling TransactionTerminalService->Receipt");
-            // verify the required parameter 'typeId' is set
-            if (typeId == null)
-                throw new ApiException(400, "Missing required parameter 'typeId' when calling TransactionTerminalService->Receipt");
-            // verify the required parameter 'width' is set
-            if (width == null)
-                throw new ApiException(400, "Missing required parameter 'width' when calling TransactionTerminalService->Receipt");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionTerminalService->FetchReceipts");
+            // verify the required parameter 'request' is set
+            if (request == null)
+                throw new ApiException(400, "Missing required parameter 'request' when calling TransactionTerminalService->FetchReceipts");
 
-            var localVarPath = "/transaction-terminal/receipt";
+            var localVarPath = "/transaction-terminal/fetch-receipts";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -175,7 +161,7 @@ namespace Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "*/*"
+                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -188,28 +174,33 @@ namespace Wallee.Service
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
-            if (transactionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "transactionId", transactionId)); // query parameter
-            if (typeId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "typeId", typeId)); // query parameter
-            if (width != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "width", width)); // query parameter
+            if (request != null && request.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(request); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = request; // byte array
+            }
 
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
             IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Receipt", localVarResponse);
+                Exception exception = ExceptionFactory("FetchReceipts", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<RenderedTerminalReceipt>(localVarStatusCode,
+            return new ApiResponse<List<RenderedTerminalReceipt>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (RenderedTerminalReceipt) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RenderedTerminalReceipt)));
+                (List<RenderedTerminalReceipt>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<RenderedTerminalReceipt>)));
         }
         /// <summary>
         /// Create Till Connection Credentials This operation creates a set of credentials to use within the WebSocket.

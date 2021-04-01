@@ -130,11 +130,13 @@ namespace Wallee.Model
                 (
                     this.CompanyName == input.CompanyName ||
                     this.CompanyName != null &&
+                    input.CompanyName != null &&
                     this.CompanyName.SequenceEqual(input.CompanyName)
                 ) && 
                 (
                     this.Description == input.Description ||
                     this.Description != null &&
+                    input.Description != null &&
                     this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
@@ -145,6 +147,7 @@ namespace Wallee.Model
                 (
                     this.HeadquartersLocation == input.HeadquartersLocation ||
                     this.HeadquartersLocation != null &&
+                    input.HeadquartersLocation != null &&
                     this.HeadquartersLocation.SequenceEqual(input.HeadquartersLocation)
                 ) && 
                 (
@@ -160,11 +163,13 @@ namespace Wallee.Model
                 (
                     this.Name == input.Name ||
                     this.Name != null &&
+                    input.Name != null &&
                     this.Name.SequenceEqual(input.Name)
                 ) && 
                 (
                     this.ProductName == input.ProductName ||
                     this.ProductName != null &&
+                    input.ProductName != null &&
                     this.ProductName.SequenceEqual(input.ProductName)
                 );
         }

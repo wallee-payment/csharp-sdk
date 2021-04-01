@@ -34,6 +34,13 @@ namespace Wallee.Model
         }
 
         /// <summary>
+        /// The webhook URL is managed by the application and cannot be changed via the user interface.
+        /// </summary>
+        /// <value>The webhook URL is managed by the application and cannot be changed via the user interface.</value>
+        [DataMember(Name="applicationManaged", EmitDefaultValue=true)]
+        public bool? ApplicationManaged { get; private set; }
+
+        /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
@@ -84,6 +91,7 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class WebhookUrl {\n");
+            sb.Append("  ApplicationManaged: ").Append(ApplicationManaged).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -125,6 +133,11 @@ namespace Wallee.Model
                 return false;
 
             return 
+                (
+                    this.ApplicationManaged == input.ApplicationManaged ||
+                    (this.ApplicationManaged != null &&
+                    this.ApplicationManaged.Equals(input.ApplicationManaged))
+                ) && 
                 (
                     this.Id == input.Id ||
                     (this.Id != null &&
@@ -171,6 +184,8 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ApplicationManaged != null)
+                    hashCode = hashCode * 59 + this.ApplicationManaged.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.LinkedSpaceId != null)

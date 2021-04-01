@@ -185,11 +185,13 @@ namespace Wallee.Model
                 (
                     this.AllowedPaymentMethodBrands == input.AllowedPaymentMethodBrands ||
                     this.AllowedPaymentMethodBrands != null &&
+                    input.AllowedPaymentMethodBrands != null &&
                     this.AllowedPaymentMethodBrands.SequenceEqual(input.AllowedPaymentMethodBrands)
                 ) && base.Equals(input) && 
                 (
                     this.AllowedPaymentMethodConfigurations == input.AllowedPaymentMethodConfigurations ||
                     this.AllowedPaymentMethodConfigurations != null &&
+                    input.AllowedPaymentMethodConfigurations != null &&
                     this.AllowedPaymentMethodConfigurations.SequenceEqual(input.AllowedPaymentMethodConfigurations)
                 ) && base.Equals(input) && 
                 (
@@ -235,6 +237,7 @@ namespace Wallee.Model
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
+                    input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
                 ) && base.Equals(input) && 
                 (
@@ -245,6 +248,7 @@ namespace Wallee.Model
                 (
                     this.MetaData == input.MetaData ||
                     this.MetaData != null &&
+                    input.MetaData != null &&
                     this.MetaData.SequenceEqual(input.MetaData)
                 ) && base.Equals(input) && 
                 (

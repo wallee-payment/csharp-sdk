@@ -74,9 +74,9 @@ namespace Wallee.Model
         public long? ComponentGroup { get; set; }
 
         /// <summary>
-        /// When a component is marked as a &#39;default&#39; component it is used when no other component is selected by the user.
+        /// When a component is marked as a &#39;default&#39; component it is used as the default component in its group and will be preselected in the product configuration.
         /// </summary>
-        /// <value>When a component is marked as a &#39;default&#39; component it is used when no other component is selected by the user.</value>
+        /// <value>When a component is marked as a &#39;default&#39; component it is used as the default component in its group and will be preselected in the product configuration.</value>
         [DataMember(Name="defaultComponent", EmitDefaultValue=true)]
         public bool? DefaultComponent { get; set; }
 

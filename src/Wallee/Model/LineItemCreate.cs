@@ -188,6 +188,7 @@ namespace Wallee.Model
                 (
                     this.Attributes == input.Attributes ||
                     this.Attributes != null &&
+                    input.Attributes != null &&
                     this.Attributes.SequenceEqual(input.Attributes)
                 ) && 
                 (
@@ -218,6 +219,7 @@ namespace Wallee.Model
                 (
                     this.Taxes == input.Taxes ||
                     this.Taxes != null &&
+                    input.Taxes != null &&
                     this.Taxes.SequenceEqual(input.Taxes)
                 ) && 
                 (

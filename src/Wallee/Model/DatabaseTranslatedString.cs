@@ -94,6 +94,7 @@ namespace Wallee.Model
                 (
                     this.AvailableLanguages == input.AvailableLanguages ||
                     this.AvailableLanguages != null &&
+                    input.AvailableLanguages != null &&
                     this.AvailableLanguages.SequenceEqual(input.AvailableLanguages)
                 ) && 
                 (
@@ -104,6 +105,7 @@ namespace Wallee.Model
                 (
                     this.Items == input.Items ||
                     this.Items != null &&
+                    input.Items != null &&
                     this.Items.SequenceEqual(input.Items)
                 );
         }

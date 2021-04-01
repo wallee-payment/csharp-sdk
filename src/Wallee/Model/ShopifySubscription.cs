@@ -60,6 +60,12 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
+        /// Gets or Sets InitialExecutionDate
+        /// </summary>
+        [DataMember(Name="initialExecutionDate", EmitDefaultValue=true)]
+        public DateTime? InitialExecutionDate { get; private set; }
+
+        /// <summary>
         /// Gets or Sets InitialPaymentTransaction
         /// </summary>
         [DataMember(Name="initialPaymentTransaction", EmitDefaultValue=true)]
@@ -140,6 +146,7 @@ namespace Wallee.Model
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  InitialExecutionDate: ").Append(InitialExecutionDate).Append("\n");
             sb.Append("  InitialPaymentTransaction: ").Append(InitialPaymentTransaction).Append("\n");
             sb.Append("  InitialShopifyTransaction: ").Append(InitialShopifyTransaction).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
@@ -205,6 +212,11 @@ namespace Wallee.Model
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.InitialExecutionDate == input.InitialExecutionDate ||
+                    (this.InitialExecutionDate != null &&
+                    this.InitialExecutionDate.Equals(input.InitialExecutionDate))
                 ) && 
                 (
                     this.InitialPaymentTransaction == input.InitialPaymentTransaction ||
@@ -285,6 +297,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.InitialExecutionDate != null)
+                    hashCode = hashCode * 59 + this.InitialExecutionDate.GetHashCode();
                 if (this.InitialPaymentTransaction != null)
                     hashCode = hashCode * 59 + this.InitialPaymentTransaction.GetHashCode();
                 if (this.InitialShopifyTransaction != null)

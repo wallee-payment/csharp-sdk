@@ -90,6 +90,12 @@ namespace Wallee.Model
         public bool? TwoFactorRequired { get; private set; }
 
         /// <summary>
+        /// Gets or Sets WebAppEnabled
+        /// </summary>
+        [DataMember(Name="webAppEnabled", EmitDefaultValue=true)]
+        public bool? WebAppEnabled { get; private set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -107,6 +113,7 @@ namespace Wallee.Model
             sb.Append("  PathToRoot: ").Append(PathToRoot).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("  TwoFactorRequired: ").Append(TwoFactorRequired).Append("\n");
+            sb.Append("  WebAppEnabled: ").Append(WebAppEnabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -144,6 +151,7 @@ namespace Wallee.Model
                 (
                     this.Description == input.Description ||
                     this.Description != null &&
+                    input.Description != null &&
                     this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
@@ -169,6 +177,7 @@ namespace Wallee.Model
                 (
                     this.Name == input.Name ||
                     this.Name != null &&
+                    input.Name != null &&
                     this.Name.SequenceEqual(input.Name)
                 ) && 
                 (
@@ -179,17 +188,24 @@ namespace Wallee.Model
                 (
                     this.PathToRoot == input.PathToRoot ||
                     this.PathToRoot != null &&
+                    input.PathToRoot != null &&
                     this.PathToRoot.SequenceEqual(input.PathToRoot)
                 ) && 
                 (
                     this.Title == input.Title ||
                     this.Title != null &&
+                    input.Title != null &&
                     this.Title.SequenceEqual(input.Title)
                 ) && 
                 (
                     this.TwoFactorRequired == input.TwoFactorRequired ||
                     (this.TwoFactorRequired != null &&
                     this.TwoFactorRequired.Equals(input.TwoFactorRequired))
+                ) && 
+                (
+                    this.WebAppEnabled == input.WebAppEnabled ||
+                    (this.WebAppEnabled != null &&
+                    this.WebAppEnabled.Equals(input.WebAppEnabled))
                 );
         }
 
@@ -222,6 +238,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Title.GetHashCode();
                 if (this.TwoFactorRequired != null)
                     hashCode = hashCode * 59 + this.TwoFactorRequired.GetHashCode();
+                if (this.WebAppEnabled != null)
+                    hashCode = hashCode * 59 + this.WebAppEnabled.GetHashCode();
                 return hashCode;
             }
         }

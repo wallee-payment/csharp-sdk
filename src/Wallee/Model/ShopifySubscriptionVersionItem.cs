@@ -128,6 +128,7 @@ namespace Wallee.Model
                 (
                     this.TaxLines == input.TaxLines ||
                     this.TaxLines != null &&
+                    input.TaxLines != null &&
                     this.TaxLines.SequenceEqual(input.TaxLines)
                 );
         }

@@ -186,6 +186,7 @@ namespace Wallee.Model
                 (
                     this.Conditions == input.Conditions ||
                     this.Conditions != null &&
+                    input.Conditions != null &&
                     this.Conditions.SequenceEqual(input.Conditions)
                 ) && 
                 (
@@ -196,11 +197,13 @@ namespace Wallee.Model
                 (
                     this.EnabledSalesChannels == input.EnabledSalesChannels ||
                     this.EnabledSalesChannels != null &&
+                    input.EnabledSalesChannels != null &&
                     this.EnabledSalesChannels.SequenceEqual(input.EnabledSalesChannels)
                 ) && 
                 (
                     this.EnabledSpaceViews == input.EnabledSpaceViews ||
                     this.EnabledSpaceViews != null &&
+                    input.EnabledSpaceViews != null &&
                     this.EnabledSpaceViews.SequenceEqual(input.EnabledSpaceViews)
                 ) && 
                 (

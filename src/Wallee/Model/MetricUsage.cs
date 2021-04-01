@@ -110,6 +110,7 @@ namespace Wallee.Model
                 (
                     this.MetricDescription == input.MetricDescription ||
                     this.MetricDescription != null &&
+                    input.MetricDescription != null &&
                     this.MetricDescription.SequenceEqual(input.MetricDescription)
                 ) && 
                 (
@@ -120,6 +121,7 @@ namespace Wallee.Model
                 (
                     this.MetricName == input.MetricName ||
                     this.MetricName != null &&
+                    input.MetricName != null &&
                     this.MetricName.SequenceEqual(input.MetricName)
                 );
         }

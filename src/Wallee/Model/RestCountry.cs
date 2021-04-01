@@ -146,6 +146,7 @@ namespace Wallee.Model
                 (
                     this.StateCodes == input.StateCodes ||
                     this.StateCodes != null &&
+                    input.StateCodes != null &&
                     this.StateCodes.SequenceEqual(input.StateCodes)
                 );
         }

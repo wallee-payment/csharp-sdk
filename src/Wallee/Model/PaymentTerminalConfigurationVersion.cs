@@ -59,6 +59,13 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
+        /// The currency is derived by default from the terminal location. By setting a specific currency the derived currency is overridden.
+        /// </summary>
+        /// <value>The currency is derived by default from the terminal location. By setting a specific currency the derived currency is overridden.</value>
+        [DataMember(Name="defaultCurrency", EmitDefaultValue=true)]
+        public string DefaultCurrency { get; private set; }
+
+        /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
@@ -123,6 +130,7 @@ namespace Wallee.Model
             sb.Append("  ConnectorConfigurations: ").Append(ConnectorConfigurations).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  DefaultCurrency: ").Append(DefaultCurrency).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  MaintenanceWindowDuration: ").Append(MaintenanceWindowDuration).Append("\n");
@@ -174,6 +182,7 @@ namespace Wallee.Model
                 (
                     this.ConnectorConfigurations == input.ConnectorConfigurations ||
                     this.ConnectorConfigurations != null &&
+                    input.ConnectorConfigurations != null &&
                     this.ConnectorConfigurations.SequenceEqual(input.ConnectorConfigurations)
                 ) && 
                 (
@@ -185,6 +194,11 @@ namespace Wallee.Model
                     this.CreatedOn == input.CreatedOn ||
                     (this.CreatedOn != null &&
                     this.CreatedOn.Equals(input.CreatedOn))
+                ) && 
+                (
+                    this.DefaultCurrency == input.DefaultCurrency ||
+                    (this.DefaultCurrency != null &&
+                    this.DefaultCurrency.Equals(input.DefaultCurrency))
                 ) && 
                 (
                     this.Id == input.Id ||
@@ -250,6 +264,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.CreatedBy.GetHashCode();
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
+                if (this.DefaultCurrency != null)
+                    hashCode = hashCode * 59 + this.DefaultCurrency.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.LinkedSpaceId != null)

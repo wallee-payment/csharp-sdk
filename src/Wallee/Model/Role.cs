@@ -151,6 +151,7 @@ namespace Wallee.Model
                 (
                     this.Permissions == input.Permissions ||
                     this.Permissions != null &&
+                    input.Permissions != null &&
                     this.Permissions.SequenceEqual(input.Permissions)
                 ) && 
                 (

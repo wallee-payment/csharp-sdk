@@ -83,6 +83,29 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the Shopify subscribers which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;ShopifySubscriber&gt;</returns>
         ApiResponse<List<ShopifySubscriber>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <remarks>
+        /// This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="query">The Shopify subscriber object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>ShopifySubscriber</returns>
+        ShopifySubscriber Update (long? spaceId, ShopifySubscriberActive query);
+
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <remarks>
+        /// This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="query">The Shopify subscriber object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>ApiResponse of ShopifySubscriber</returns>
+        ApiResponse<ShopifySubscriber> UpdateWithHttpInfo (long? spaceId, ShopifySubscriberActive query);
         #endregion Synchronous Operations
     }
 
@@ -370,6 +393,86 @@ namespace Wallee.Service
             return new ApiResponse<List<ShopifySubscriber>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<ShopifySubscriber>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ShopifySubscriber>)));
+        }
+        /// <summary>
+        /// Update This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="query">The Shopify subscriber object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>ShopifySubscriber</returns>
+        public ShopifySubscriber Update (long? spaceId, ShopifySubscriberActive query)
+        {
+             ApiResponse<ShopifySubscriber> localVarResponse = UpdateWithHttpInfo(spaceId, query);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Update This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="query">The Shopify subscriber object with all the properties which should be updated. The id and the version are required properties.</param>
+        /// <returns>ApiResponse of ShopifySubscriber</returns>
+        public ApiResponse< ShopifySubscriber > UpdateWithHttpInfo (long? spaceId, ShopifySubscriberActive query)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling ShopifySubscriberService->Update");
+            // verify the required parameter 'query' is set
+            if (query == null)
+                throw new ApiException(400, "Missing required parameter 'query' when calling ShopifySubscriberService->Update");
+
+            var localVarPath = "/shopify-subscriber/update";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (query != null && query.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(query); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = query; // byte array
+            }
+
+			
+			this.Configuration.ApiClient.ResetTimeout();
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("Update", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ShopifySubscriber>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (ShopifySubscriber) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ShopifySubscriber)));
         }
     }
 }

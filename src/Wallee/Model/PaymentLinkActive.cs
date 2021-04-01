@@ -80,13 +80,13 @@ namespace Wallee.Model
             sb.Append("  AppliedSpaceView: ").Append(AppliedSpaceView).Append("\n");
             sb.Append("  AvailableFrom: ").Append(AvailableFrom).Append("\n");
             sb.Append("  AvailableUntil: ").Append(AvailableUntil).Append("\n");
-            sb.Append("  BillingAddressRequired: ").Append(BillingAddressRequired).Append("\n");
+            sb.Append("  BillingAddressHandlingMode: ").Append(BillingAddressHandlingMode).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
             sb.Append("  MaximalNumberOfTransactions: ").Append(MaximalNumberOfTransactions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  ShippingAddressRequired: ").Append(ShippingAddressRequired).Append("\n");
+            sb.Append("  ShippingAddressHandlingMode: ").Append(ShippingAddressHandlingMode).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -135,6 +135,7 @@ namespace Wallee.Model
                 (
                     this.AllowedPaymentMethodConfigurations == input.AllowedPaymentMethodConfigurations ||
                     this.AllowedPaymentMethodConfigurations != null &&
+                    input.AllowedPaymentMethodConfigurations != null &&
                     this.AllowedPaymentMethodConfigurations.SequenceEqual(input.AllowedPaymentMethodConfigurations)
                 ) && base.Equals(input) && 
                 (
@@ -153,9 +154,9 @@ namespace Wallee.Model
                     this.AvailableUntil.Equals(input.AvailableUntil))
                 ) && base.Equals(input) && 
                 (
-                    this.BillingAddressRequired == input.BillingAddressRequired ||
-                    (this.BillingAddressRequired != null &&
-                    this.BillingAddressRequired.Equals(input.BillingAddressRequired))
+                    this.BillingAddressHandlingMode == input.BillingAddressHandlingMode ||
+                    (this.BillingAddressHandlingMode != null &&
+                    this.BillingAddressHandlingMode.Equals(input.BillingAddressHandlingMode))
                 ) && base.Equals(input) && 
                 (
                     this.Currency == input.Currency ||
@@ -170,6 +171,7 @@ namespace Wallee.Model
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
+                    input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
                 ) && base.Equals(input) && 
                 (
@@ -183,9 +185,9 @@ namespace Wallee.Model
                     this.Name.Equals(input.Name))
                 ) && base.Equals(input) && 
                 (
-                    this.ShippingAddressRequired == input.ShippingAddressRequired ||
-                    (this.ShippingAddressRequired != null &&
-                    this.ShippingAddressRequired.Equals(input.ShippingAddressRequired))
+                    this.ShippingAddressHandlingMode == input.ShippingAddressHandlingMode ||
+                    (this.ShippingAddressHandlingMode != null &&
+                    this.ShippingAddressHandlingMode.Equals(input.ShippingAddressHandlingMode))
                 ) && base.Equals(input) && 
                 (
                     this.State == input.State ||
@@ -215,8 +217,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.AvailableFrom.GetHashCode();
                 if (this.AvailableUntil != null)
                     hashCode = hashCode * 59 + this.AvailableUntil.GetHashCode();
-                if (this.BillingAddressRequired != null)
-                    hashCode = hashCode * 59 + this.BillingAddressRequired.GetHashCode();
+                if (this.BillingAddressHandlingMode != null)
+                    hashCode = hashCode * 59 + this.BillingAddressHandlingMode.GetHashCode();
                 if (this.Currency != null)
                     hashCode = hashCode * 59 + this.Currency.GetHashCode();
                 if (this.Language != null)
@@ -227,8 +229,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.MaximalNumberOfTransactions.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.ShippingAddressRequired != null)
-                    hashCode = hashCode * 59 + this.ShippingAddressRequired.GetHashCode();
+                if (this.ShippingAddressHandlingMode != null)
+                    hashCode = hashCode * 59 + this.ShippingAddressHandlingMode.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
                 return hashCode;

@@ -268,6 +268,7 @@ namespace Wallee.Model
                 (
                     this.LedgerEntries == input.LedgerEntries ||
                     this.LedgerEntries != null &&
+                    input.LedgerEntries != null &&
                     this.LedgerEntries.SequenceEqual(input.LedgerEntries)
                 ) && 
                 (

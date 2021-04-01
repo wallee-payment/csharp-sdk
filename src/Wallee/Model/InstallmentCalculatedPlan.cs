@@ -113,11 +113,13 @@ namespace Wallee.Model
                 (
                     this.PaymentMethodConfigurations == input.PaymentMethodConfigurations ||
                     this.PaymentMethodConfigurations != null &&
+                    input.PaymentMethodConfigurations != null &&
                     this.PaymentMethodConfigurations.SequenceEqual(input.PaymentMethodConfigurations)
                 ) && 
                 (
                     this.Slices == input.Slices ||
                     this.Slices != null &&
+                    input.Slices != null &&
                     this.Slices.SequenceEqual(input.Slices)
                 ) && 
                 (

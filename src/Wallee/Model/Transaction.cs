@@ -294,6 +294,12 @@ namespace Wallee.Model
         public string InvoiceMerchantReference { get; private set; }
 
         /// <summary>
+        /// Gets or Sets JavaEnabled
+        /// </summary>
+        [DataMember(Name="javaEnabled", EmitDefaultValue=true)]
+        public bool? JavaEnabled { get; private set; }
+
+        /// <summary>
         /// Gets or Sets Language
         /// </summary>
         [DataMember(Name="language", EmitDefaultValue=true)]
@@ -356,6 +362,24 @@ namespace Wallee.Model
         /// <value>The refunded amount is the total amount which has been refunded so far.</value>
         [DataMember(Name="refundedAmount", EmitDefaultValue=true)]
         public decimal? RefundedAmount { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets ScreenColorDepth
+        /// </summary>
+        [DataMember(Name="screenColorDepth", EmitDefaultValue=true)]
+        public string ScreenColorDepth { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets ScreenHeight
+        /// </summary>
+        [DataMember(Name="screenHeight", EmitDefaultValue=true)]
+        public string ScreenHeight { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets ScreenWidth
+        /// </summary>
+        [DataMember(Name="screenWidth", EmitDefaultValue=true)]
+        public string ScreenWidth { get; private set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
@@ -441,6 +465,18 @@ namespace Wallee.Model
         public int? Version { get; private set; }
 
         /// <summary>
+        /// Gets or Sets WindowHeight
+        /// </summary>
+        [DataMember(Name="windowHeight", EmitDefaultValue=true)]
+        public string WindowHeight { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets WindowWidth
+        /// </summary>
+        [DataMember(Name="windowWidth", EmitDefaultValue=true)]
+        public string WindowWidth { get; private set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -486,6 +522,7 @@ namespace Wallee.Model
             sb.Append("  InternetProtocolAddress: ").Append(InternetProtocolAddress).Append("\n");
             sb.Append("  InternetProtocolAddressCountry: ").Append(InternetProtocolAddressCountry).Append("\n");
             sb.Append("  InvoiceMerchantReference: ").Append(InvoiceMerchantReference).Append("\n");
+            sb.Append("  JavaEnabled: ").Append(JavaEnabled).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
@@ -496,6 +533,9 @@ namespace Wallee.Model
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  ProcessingOn: ").Append(ProcessingOn).Append("\n");
             sb.Append("  RefundedAmount: ").Append(RefundedAmount).Append("\n");
+            sb.Append("  ScreenColorDepth: ").Append(ScreenColorDepth).Append("\n");
+            sb.Append("  ScreenHeight: ").Append(ScreenHeight).Append("\n");
+            sb.Append("  ScreenWidth: ").Append(ScreenWidth).Append("\n");
             sb.Append("  ShippingAddress: ").Append(ShippingAddress).Append("\n");
             sb.Append("  ShippingMethod: ").Append(ShippingMethod).Append("\n");
             sb.Append("  SpaceViewId: ").Append(SpaceViewId).Append("\n");
@@ -511,6 +551,8 @@ namespace Wallee.Model
             sb.Append("  UserFailureMessage: ").Append(UserFailureMessage).Append("\n");
             sb.Append("  UserInterfaceType: ").Append(UserInterfaceType).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  WindowHeight: ").Append(WindowHeight).Append("\n");
+            sb.Append("  WindowWidth: ").Append(WindowWidth).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -558,11 +600,13 @@ namespace Wallee.Model
                 (
                     this.AllowedPaymentMethodBrands == input.AllowedPaymentMethodBrands ||
                     this.AllowedPaymentMethodBrands != null &&
+                    input.AllowedPaymentMethodBrands != null &&
                     this.AllowedPaymentMethodBrands.SequenceEqual(input.AllowedPaymentMethodBrands)
                 ) && 
                 (
                     this.AllowedPaymentMethodConfigurations == input.AllowedPaymentMethodConfigurations ||
                     this.AllowedPaymentMethodConfigurations != null &&
+                    input.AllowedPaymentMethodConfigurations != null &&
                     this.AllowedPaymentMethodConfigurations.SequenceEqual(input.AllowedPaymentMethodConfigurations)
                 ) && 
                 (
@@ -736,6 +780,11 @@ namespace Wallee.Model
                     this.InvoiceMerchantReference.Equals(input.InvoiceMerchantReference))
                 ) && 
                 (
+                    this.JavaEnabled == input.JavaEnabled ||
+                    (this.JavaEnabled != null &&
+                    this.JavaEnabled.Equals(input.JavaEnabled))
+                ) && 
+                (
                     this.Language == input.Language ||
                     (this.Language != null &&
                     this.Language.Equals(input.Language))
@@ -743,6 +792,7 @@ namespace Wallee.Model
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
+                    input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
                 ) && 
                 (
@@ -758,6 +808,7 @@ namespace Wallee.Model
                 (
                     this.MetaData == input.MetaData ||
                     this.MetaData != null &&
+                    input.MetaData != null &&
                     this.MetaData.SequenceEqual(input.MetaData)
                 ) && 
                 (
@@ -784,6 +835,21 @@ namespace Wallee.Model
                     this.RefundedAmount == input.RefundedAmount ||
                     (this.RefundedAmount != null &&
                     this.RefundedAmount.Equals(input.RefundedAmount))
+                ) && 
+                (
+                    this.ScreenColorDepth == input.ScreenColorDepth ||
+                    (this.ScreenColorDepth != null &&
+                    this.ScreenColorDepth.Equals(input.ScreenColorDepth))
+                ) && 
+                (
+                    this.ScreenHeight == input.ScreenHeight ||
+                    (this.ScreenHeight != null &&
+                    this.ScreenHeight.Equals(input.ScreenHeight))
+                ) && 
+                (
+                    this.ScreenWidth == input.ScreenWidth ||
+                    (this.ScreenWidth != null &&
+                    this.ScreenWidth.Equals(input.ScreenWidth))
                 ) && 
                 (
                     this.ShippingAddress == input.ShippingAddress ||
@@ -859,6 +925,16 @@ namespace Wallee.Model
                     this.Version == input.Version ||
                     (this.Version != null &&
                     this.Version.Equals(input.Version))
+                ) && 
+                (
+                    this.WindowHeight == input.WindowHeight ||
+                    (this.WindowHeight != null &&
+                    this.WindowHeight.Equals(input.WindowHeight))
+                ) && 
+                (
+                    this.WindowWidth == input.WindowWidth ||
+                    (this.WindowWidth != null &&
+                    this.WindowWidth.Equals(input.WindowWidth))
                 );
         }
 
@@ -947,6 +1023,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.InternetProtocolAddressCountry.GetHashCode();
                 if (this.InvoiceMerchantReference != null)
                     hashCode = hashCode * 59 + this.InvoiceMerchantReference.GetHashCode();
+                if (this.JavaEnabled != null)
+                    hashCode = hashCode * 59 + this.JavaEnabled.GetHashCode();
                 if (this.Language != null)
                     hashCode = hashCode * 59 + this.Language.GetHashCode();
                 if (this.LineItems != null)
@@ -967,6 +1045,12 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ProcessingOn.GetHashCode();
                 if (this.RefundedAmount != null)
                     hashCode = hashCode * 59 + this.RefundedAmount.GetHashCode();
+                if (this.ScreenColorDepth != null)
+                    hashCode = hashCode * 59 + this.ScreenColorDepth.GetHashCode();
+                if (this.ScreenHeight != null)
+                    hashCode = hashCode * 59 + this.ScreenHeight.GetHashCode();
+                if (this.ScreenWidth != null)
+                    hashCode = hashCode * 59 + this.ScreenWidth.GetHashCode();
                 if (this.ShippingAddress != null)
                     hashCode = hashCode * 59 + this.ShippingAddress.GetHashCode();
                 if (this.ShippingMethod != null)
@@ -997,6 +1081,10 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.UserInterfaceType.GetHashCode();
                 if (this.Version != null)
                     hashCode = hashCode * 59 + this.Version.GetHashCode();
+                if (this.WindowHeight != null)
+                    hashCode = hashCode * 59 + this.WindowHeight.GetHashCode();
+                if (this.WindowWidth != null)
+                    hashCode = hashCode * 59 + this.WindowWidth.GetHashCode();
                 return hashCode;
             }
         }

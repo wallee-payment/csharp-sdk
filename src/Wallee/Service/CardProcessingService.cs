@@ -26,7 +26,7 @@ namespace Wallee.Service
         /// <param name="paymentMethodConfigurationId">The payment method configuration ID which is applied to the transaction.</param>
         /// <param name="cardData">The card details as JSON in plain which should be used to authorize the payment.</param>
         /// <returns>Transaction</returns>
-        Transaction Process (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, UnencryptedCardDataCreate cardData);
+        Transaction Process (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, AuthenticatedCardDataCreate cardData);
 
         /// <summary>
         /// Process
@@ -40,7 +40,7 @@ namespace Wallee.Service
         /// <param name="paymentMethodConfigurationId">The payment method configuration ID which is applied to the transaction.</param>
         /// <param name="cardData">The card details as JSON in plain which should be used to authorize the payment.</param>
         /// <returns>ApiResponse of Transaction</returns>
-        ApiResponse<Transaction> ProcessWithHttpInfo (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, UnencryptedCardDataCreate cardData);
+        ApiResponse<Transaction> ProcessWithHttpInfo (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, AuthenticatedCardDataCreate cardData);
         /// <summary>
         /// Process With 3-D Secure
         /// </summary>
@@ -53,7 +53,7 @@ namespace Wallee.Service
         /// <param name="paymentMethodConfigurationId">The payment method configuration ID which is applied to the transaction.</param>
         /// <param name="cardData">The card details as JSON in plain which should be used to authorize the payment.</param>
         /// <returns>string</returns>
-        string ProcessWith3DSecure (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, UnencryptedCardDataCreate cardData);
+        string ProcessWith3DSecure (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, TokenizedCardDataCreate cardData);
 
         /// <summary>
         /// Process With 3-D Secure
@@ -67,7 +67,7 @@ namespace Wallee.Service
         /// <param name="paymentMethodConfigurationId">The payment method configuration ID which is applied to the transaction.</param>
         /// <param name="cardData">The card details as JSON in plain which should be used to authorize the payment.</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> ProcessWith3DSecureWithHttpInfo (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, UnencryptedCardDataCreate cardData);
+        ApiResponse<string> ProcessWith3DSecureWithHttpInfo (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, TokenizedCardDataCreate cardData);
         #endregion Synchronous Operations
     }
 
@@ -135,7 +135,7 @@ namespace Wallee.Service
         /// <param name="paymentMethodConfigurationId">The payment method configuration ID which is applied to the transaction.</param>
         /// <param name="cardData">The card details as JSON in plain which should be used to authorize the payment.</param>
         /// <returns>Transaction</returns>
-        public Transaction Process (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, UnencryptedCardDataCreate cardData)
+        public Transaction Process (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, AuthenticatedCardDataCreate cardData)
         {
              ApiResponse<Transaction> localVarResponse = ProcessWithHttpInfo(spaceId, transactionId, paymentMethodConfigurationId, cardData);
              return localVarResponse.Data;
@@ -150,7 +150,7 @@ namespace Wallee.Service
         /// <param name="paymentMethodConfigurationId">The payment method configuration ID which is applied to the transaction.</param>
         /// <param name="cardData">The card details as JSON in plain which should be used to authorize the payment.</param>
         /// <returns>ApiResponse of Transaction</returns>
-        public ApiResponse< Transaction > ProcessWithHttpInfo (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, UnencryptedCardDataCreate cardData)
+        public ApiResponse< Transaction > ProcessWithHttpInfo (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, AuthenticatedCardDataCreate cardData)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
@@ -227,7 +227,7 @@ namespace Wallee.Service
         /// <param name="paymentMethodConfigurationId">The payment method configuration ID which is applied to the transaction.</param>
         /// <param name="cardData">The card details as JSON in plain which should be used to authorize the payment.</param>
         /// <returns>string</returns>
-        public string ProcessWith3DSecure (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, UnencryptedCardDataCreate cardData)
+        public string ProcessWith3DSecure (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, TokenizedCardDataCreate cardData)
         {
              ApiResponse<string> localVarResponse = ProcessWith3DSecureWithHttpInfo(spaceId, transactionId, paymentMethodConfigurationId, cardData);
              return localVarResponse.Data;
@@ -242,7 +242,7 @@ namespace Wallee.Service
         /// <param name="paymentMethodConfigurationId">The payment method configuration ID which is applied to the transaction.</param>
         /// <param name="cardData">The card details as JSON in plain which should be used to authorize the payment.</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > ProcessWith3DSecureWithHttpInfo (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, UnencryptedCardDataCreate cardData)
+        public ApiResponse< string > ProcessWith3DSecureWithHttpInfo (long? spaceId, long? transactionId, long? paymentMethodConfigurationId, TokenizedCardDataCreate cardData)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)

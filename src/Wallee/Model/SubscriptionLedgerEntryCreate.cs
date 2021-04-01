@@ -175,6 +175,7 @@ namespace Wallee.Model
                 (
                     this.Taxes == input.Taxes ||
                     this.Taxes != null &&
+                    input.Taxes != null &&
                     this.Taxes.SequenceEqual(input.Taxes)
                 ) && 
                 (

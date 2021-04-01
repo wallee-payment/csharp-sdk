@@ -15,6 +15,29 @@ namespace Wallee.Service
     {
         #region Synchronous Operations
         /// <summary>
+        /// Check If Token Creation Is Possible
+        /// </summary>
+        /// <remarks>
+        /// This operation checks if the given transaction can be used to create a token out of it.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The id of the transaction for which we want to check if the token can be created or not.</param>
+        /// <returns>bool?</returns>
+        bool? CheckTokenCreationPossible (long? spaceId, long? transactionId);
+
+        /// <summary>
+        /// Check If Token Creation Is Possible
+        /// </summary>
+        /// <remarks>
+        /// This operation checks if the given transaction can be used to create a token out of it.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The id of the transaction for which we want to check if the token can be created or not.</param>
+        /// <returns>ApiResponse of bool?</returns>
+        ApiResponse<bool?> CheckTokenCreationPossibleWithHttpInfo (long? spaceId, long? transactionId);
+        /// <summary>
         /// Count
         /// </summary>
         /// <remarks>
@@ -60,6 +83,29 @@ namespace Wallee.Service
         /// <param name="entity">The token object with the properties which should be created.</param>
         /// <returns>ApiResponse of Token</returns>
         ApiResponse<Token> CreateWithHttpInfo (long? spaceId, TokenCreate entity);
+        /// <summary>
+        /// Create Token Based On Transaction
+        /// </summary>
+        /// <remarks>
+        /// This operation creates a token for the given transaction and fills it with the stored payment information of the transaction.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The id of the transaction for which we want to create the token.</param>
+        /// <returns>TokenVersion</returns>
+        TokenVersion CreateTokenBasedOnTransaction (long? spaceId, long? transactionId);
+
+        /// <summary>
+        /// Create Token Based On Transaction
+        /// </summary>
+        /// <remarks>
+        /// This operation creates a token for the given transaction and fills it with the stored payment information of the transaction.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The id of the transaction for which we want to create the token.</param>
+        /// <returns>ApiResponse of TokenVersion</returns>
+        ApiResponse<TokenVersion> CreateTokenBasedOnTransactionWithHttpInfo (long? spaceId, long? transactionId);
         /// <summary>
         /// Create Transaction for Token Update
         /// </summary>
@@ -234,6 +280,77 @@ namespace Wallee.Service
         }
 
         /// <summary>
+        /// Check If Token Creation Is Possible This operation checks if the given transaction can be used to create a token out of it.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The id of the transaction for which we want to check if the token can be created or not.</param>
+        /// <returns>bool?</returns>
+        public bool? CheckTokenCreationPossible (long? spaceId, long? transactionId)
+        {
+             ApiResponse<bool?> localVarResponse = CheckTokenCreationPossibleWithHttpInfo(spaceId, transactionId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Check If Token Creation Is Possible This operation checks if the given transaction can be used to create a token out of it.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The id of the transaction for which we want to check if the token can be created or not.</param>
+        /// <returns>ApiResponse of bool?</returns>
+        public ApiResponse< bool? > CheckTokenCreationPossibleWithHttpInfo (long? spaceId, long? transactionId)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->CheckTokenCreationPossible");
+            // verify the required parameter 'transactionId' is set
+            if (transactionId == null)
+                throw new ApiException(400, "Missing required parameter 'transactionId' when calling TokenService->CheckTokenCreationPossible");
+
+            var localVarPath = "/token/check-token-creation-possible";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (transactionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "transactionId", transactionId)); // query parameter
+
+			
+			this.Configuration.ApiClient.ResetTimeout();
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CheckTokenCreationPossible", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<bool?>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (bool?) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(bool?)));
+        }
+        /// <summary>
         /// Count Counts the number of items in the database as restricted by the given filter.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
@@ -389,6 +506,77 @@ namespace Wallee.Service
             return new ApiResponse<Token>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (Token) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Token)));
+        }
+        /// <summary>
+        /// Create Token Based On Transaction This operation creates a token for the given transaction and fills it with the stored payment information of the transaction.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The id of the transaction for which we want to create the token.</param>
+        /// <returns>TokenVersion</returns>
+        public TokenVersion CreateTokenBasedOnTransaction (long? spaceId, long? transactionId)
+        {
+             ApiResponse<TokenVersion> localVarResponse = CreateTokenBasedOnTransactionWithHttpInfo(spaceId, transactionId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Create Token Based On Transaction This operation creates a token for the given transaction and fills it with the stored payment information of the transaction.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The id of the transaction for which we want to create the token.</param>
+        /// <returns>ApiResponse of TokenVersion</returns>
+        public ApiResponse< TokenVersion > CreateTokenBasedOnTransactionWithHttpInfo (long? spaceId, long? transactionId)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->CreateTokenBasedOnTransaction");
+            // verify the required parameter 'transactionId' is set
+            if (transactionId == null)
+                throw new ApiException(400, "Missing required parameter 'transactionId' when calling TokenService->CreateTokenBasedOnTransaction");
+
+            var localVarPath = "/token/create-token-based-on-transaction";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (transactionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "transactionId", transactionId)); // query parameter
+
+			
+			this.Configuration.ApiClient.ResetTimeout();
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CreateTokenBasedOnTransaction", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<TokenVersion>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (TokenVersion) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TokenVersion)));
         }
         /// <summary>
         /// Create Transaction for Token Update This operation creates a transaction which allows the updating of the provided token.

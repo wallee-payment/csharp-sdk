@@ -18,23 +18,28 @@ namespace Wallee.Model
     /// This model holds the card data in plain.
     /// </summary>
     [DataContract]
-    public partial class UnencryptedCardDataCreate :  IEquatable<UnencryptedCardDataCreate>
+    public partial class TokenizedCardDataCreate :  IEquatable<TokenizedCardDataCreate>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnencryptedCardDataCreate" /> class.
+        /// Gets or Sets RecurringIndicator
+        /// </summary>
+        [DataMember(Name="recurringIndicator", EmitDefaultValue=true)]
+        public RecurringIndicator? RecurringIndicator { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TokenizedCardDataCreate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected UnencryptedCardDataCreate() { }
+        protected TokenizedCardDataCreate() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnencryptedCardDataCreate" /> class.
+        /// Initializes a new instance of the <see cref="TokenizedCardDataCreate" /> class.
         /// </summary>
         /// <param name="primaryAccountNumber">The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card. (required).</param>
-        public UnencryptedCardDataCreate(string primaryAccountNumber)
+        public TokenizedCardDataCreate(string primaryAccountNumber)
         {
             // to ensure "primaryAccountNumber" is required (not null)
             if (primaryAccountNumber == null)
             {
-                throw new InvalidDataException("primaryAccountNumber is a required property for UnencryptedCardDataCreate and cannot be null");
+                throw new InvalidDataException("primaryAccountNumber is a required property for TokenizedCardDataCreate and cannot be null");
             }
             this.PrimaryAccountNumber = primaryAccountNumber;
         }
@@ -54,6 +59,13 @@ namespace Wallee.Model
         public string CardVerificationCode { get; set; }
 
         /// <summary>
+        /// The additional authentication value used to secure the tokenized card transactions.
+        /// </summary>
+        /// <value>The additional authentication value used to secure the tokenized card transactions.</value>
+        [DataMember(Name="cryptogram", EmitDefaultValue=true)]
+        public CardCryptogramCreate Cryptogram { get; set; }
+
+        /// <summary>
         /// The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).
         /// </summary>
         /// <value>The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).</value>
@@ -67,6 +79,19 @@ namespace Wallee.Model
         [DataMember(Name="primaryAccountNumber", EmitDefaultValue=true)]
         public string PrimaryAccountNumber { get; set; }
 
+
+        /// <summary>
+        /// Gets or Sets SchemeTransactionReference
+        /// </summary>
+        [DataMember(Name="schemeTransactionReference", EmitDefaultValue=true)]
+        public string SchemeTransactionReference { get; set; }
+
+        /// <summary>
+        /// Gets or Sets TokenRequestorId
+        /// </summary>
+        [DataMember(Name="tokenRequestorId", EmitDefaultValue=true)]
+        public string TokenRequestorId { get; set; }
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -74,11 +99,15 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class UnencryptedCardDataCreate {\n");
+            sb.Append("class TokenizedCardDataCreate {\n");
             sb.Append("  CardHolderName: ").Append(CardHolderName).Append("\n");
             sb.Append("  CardVerificationCode: ").Append(CardVerificationCode).Append("\n");
+            sb.Append("  Cryptogram: ").Append(Cryptogram).Append("\n");
             sb.Append("  ExpiryDate: ").Append(ExpiryDate).Append("\n");
             sb.Append("  PrimaryAccountNumber: ").Append(PrimaryAccountNumber).Append("\n");
+            sb.Append("  RecurringIndicator: ").Append(RecurringIndicator).Append("\n");
+            sb.Append("  SchemeTransactionReference: ").Append(SchemeTransactionReference).Append("\n");
+            sb.Append("  TokenRequestorId: ").Append(TokenRequestorId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -99,15 +128,15 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as UnencryptedCardDataCreate);
+            return this.Equals(input as TokenizedCardDataCreate);
         }
 
         /// <summary>
-        /// Returns true if UnencryptedCardDataCreate instances are equal
+        /// Returns true if TokenizedCardDataCreate instances are equal
         /// </summary>
-        /// <param name="input">Instance of UnencryptedCardDataCreate to be compared</param>
+        /// <param name="input">Instance of TokenizedCardDataCreate to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(UnencryptedCardDataCreate input)
+        public bool Equals(TokenizedCardDataCreate input)
         {
             if (input == null)
                 return false;
@@ -124,6 +153,11 @@ namespace Wallee.Model
                     this.CardVerificationCode.Equals(input.CardVerificationCode))
                 ) && 
                 (
+                    this.Cryptogram == input.Cryptogram ||
+                    (this.Cryptogram != null &&
+                    this.Cryptogram.Equals(input.Cryptogram))
+                ) && 
+                (
                     this.ExpiryDate == input.ExpiryDate ||
                     (this.ExpiryDate != null &&
                     this.ExpiryDate.Equals(input.ExpiryDate))
@@ -132,6 +166,21 @@ namespace Wallee.Model
                     this.PrimaryAccountNumber == input.PrimaryAccountNumber ||
                     (this.PrimaryAccountNumber != null &&
                     this.PrimaryAccountNumber.Equals(input.PrimaryAccountNumber))
+                ) && 
+                (
+                    this.RecurringIndicator == input.RecurringIndicator ||
+                    (this.RecurringIndicator != null &&
+                    this.RecurringIndicator.Equals(input.RecurringIndicator))
+                ) && 
+                (
+                    this.SchemeTransactionReference == input.SchemeTransactionReference ||
+                    (this.SchemeTransactionReference != null &&
+                    this.SchemeTransactionReference.Equals(input.SchemeTransactionReference))
+                ) && 
+                (
+                    this.TokenRequestorId == input.TokenRequestorId ||
+                    (this.TokenRequestorId != null &&
+                    this.TokenRequestorId.Equals(input.TokenRequestorId))
                 );
         }
 
@@ -148,10 +197,18 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.CardHolderName.GetHashCode();
                 if (this.CardVerificationCode != null)
                     hashCode = hashCode * 59 + this.CardVerificationCode.GetHashCode();
+                if (this.Cryptogram != null)
+                    hashCode = hashCode * 59 + this.Cryptogram.GetHashCode();
                 if (this.ExpiryDate != null)
                     hashCode = hashCode * 59 + this.ExpiryDate.GetHashCode();
                 if (this.PrimaryAccountNumber != null)
                     hashCode = hashCode * 59 + this.PrimaryAccountNumber.GetHashCode();
+                if (this.RecurringIndicator != null)
+                    hashCode = hashCode * 59 + this.RecurringIndicator.GetHashCode();
+                if (this.SchemeTransactionReference != null)
+                    hashCode = hashCode * 59 + this.SchemeTransactionReference.GetHashCode();
+                if (this.TokenRequestorId != null)
+                    hashCode = hashCode * 59 + this.TokenRequestorId.GetHashCode();
                 return hashCode;
             }
         }

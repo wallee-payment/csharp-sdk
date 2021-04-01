@@ -10,4 +10,4 @@ script:
     - msbuild /t:restore Wallee.sln
     - msbuild Wallee.sln /t:build /p:Configuration=Release
     - mono testrunner/NUnit.ConsoleRunner.3.9.0/tools/nunit3-console.exe ./src/Wallee.Test/bin/Release/net452/Wallee.Test.dll --inprocess
-    - nuget push ./src/Wallee/bin/Release/Wallee.2.2.1.nupkg -Source nuget.org -ApiKey $NUGET_API_KEY_WALLEE  -Verbosity detailed -SkipDuplicate
+    - nuget push ./src/Wallee/bin/Release/Wallee.2.2.2.nupkg -Source nuget.org -ApiKey $NUGET_API_KEY_WALLEE  -Verbosity detailed -SkipDuplicate

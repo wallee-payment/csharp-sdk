@@ -251,6 +251,7 @@ namespace Wallee.Model
                 (
                     this.ResolvedDescription == input.ResolvedDescription ||
                     this.ResolvedDescription != null &&
+                    input.ResolvedDescription != null &&
                     this.ResolvedDescription.SequenceEqual(input.ResolvedDescription)
                 ) && 
                 (
@@ -261,6 +262,7 @@ namespace Wallee.Model
                 (
                     this.ResolvedTitle == input.ResolvedTitle ||
                     this.ResolvedTitle != null &&
+                    input.ResolvedTitle != null &&
                     this.ResolvedTitle.SequenceEqual(input.ResolvedTitle)
                 ) && 
                 (

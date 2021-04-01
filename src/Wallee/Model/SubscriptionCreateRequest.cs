@@ -134,6 +134,7 @@ namespace Wallee.Model
                 (
                     this.ComponentConfigurations == input.ComponentConfigurations ||
                     this.ComponentConfigurations != null &&
+                    input.ComponentConfigurations != null &&
                     this.ComponentConfigurations.SequenceEqual(input.ComponentConfigurations)
                 ) && 
                 (
@@ -149,6 +150,7 @@ namespace Wallee.Model
                 (
                     this.SelectedComponents == input.SelectedComponents ||
                     this.SelectedComponents != null &&
+                    input.SelectedComponents != null &&
                     this.SelectedComponents.SequenceEqual(input.SelectedComponents)
                 ) && 
                 (
