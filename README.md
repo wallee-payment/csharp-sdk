@@ -34,13 +34,13 @@ NOTE: RestSharp versions greater than 106.2.1 have a bug which causes file uploa
 ## Installation
 ```
 # Package Manager
-Install-Package Wallee -Version 2.2.2
+Install-Package Wallee -Version 3.0.0
 # .NET CLI
-dotnet add package Wallee --version 2.2.2
+dotnet add package Wallee --version 3.0.0
 # Paket CLI
-paket add Wallee --version 2.2.2
+paket add Wallee --version 3.0.0
 # PackageReference
-<PackageReference Include="Wallee" Version="2.2.2" />
+<PackageReference Include="Wallee" Version="3.0.0" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:

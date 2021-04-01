@@ -24,16 +24,16 @@ namespace Wallee.Model
     {
         
         /// <summary>
-        /// Enum INCLUDED for value: TAX_INCLUDED
+        /// Enum TAX_INCLUDED for value: TAX_INCLUDED
         /// </summary>
         [EnumMember(Value = "TAX_INCLUDED")]
-        INCLUDED,
+        TAX_INCLUDED,
         
         /// <summary>
-        /// Enum NOT_INCLUDED for value: TAX_NOT_INCLUDED
+        /// Enum TAX_NOT_INCLUDED for value: TAX_NOT_INCLUDED
         /// </summary>
         [EnumMember(Value = "TAX_NOT_INCLUDED")]
-        NOT_INCLUDED
+        TAX_NOT_INCLUDED
     }
 
 }
