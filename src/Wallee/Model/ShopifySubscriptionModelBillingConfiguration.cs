@@ -53,6 +53,13 @@ namespace Wallee.Model
         public int? BillingIntervalAmount { get; set; }
 
 
+        /// <summary>
+        /// This date will be used as basis to calculate the dates of recurring orders.
+        /// </summary>
+        /// <value>This date will be used as basis to calculate the dates of recurring orders.</value>
+        [DataMember(Name="billingReferenceDate", EmitDefaultValue=true)]
+        public DateTime? BillingReferenceDate { get; set; }
+
 
         /// <summary>
         /// Define the maximum number of orders the subscription will run for.
@@ -93,6 +100,7 @@ namespace Wallee.Model
             sb.Append("  BillingDayOfMonth: ").Append(BillingDayOfMonth).Append("\n");
             sb.Append("  BillingIntervalAmount: ").Append(BillingIntervalAmount).Append("\n");
             sb.Append("  BillingIntervalUnit: ").Append(BillingIntervalUnit).Append("\n");
+            sb.Append("  BillingReferenceDate: ").Append(BillingReferenceDate).Append("\n");
             sb.Append("  BillingWeekday: ").Append(BillingWeekday).Append("\n");
             sb.Append("  MaximalBillingCycles: ").Append(MaximalBillingCycles).Append("\n");
             sb.Append("  MaximalSuspendableCycles: ").Append(MaximalSuspendableCycles).Append("\n");
@@ -148,6 +156,11 @@ namespace Wallee.Model
                     this.BillingIntervalUnit.Equals(input.BillingIntervalUnit))
                 ) && 
                 (
+                    this.BillingReferenceDate == input.BillingReferenceDate ||
+                    (this.BillingReferenceDate != null &&
+                    this.BillingReferenceDate.Equals(input.BillingReferenceDate))
+                ) && 
+                (
                     this.BillingWeekday == input.BillingWeekday ||
                     (this.BillingWeekday != null &&
                     this.BillingWeekday.Equals(input.BillingWeekday))
@@ -189,6 +202,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.BillingIntervalAmount.GetHashCode();
                 if (this.BillingIntervalUnit != null)
                     hashCode = hashCode * 59 + this.BillingIntervalUnit.GetHashCode();
+                if (this.BillingReferenceDate != null)
+                    hashCode = hashCode * 59 + this.BillingReferenceDate.GetHashCode();
                 if (this.BillingWeekday != null)
                     hashCode = hashCode * 59 + this.BillingWeekday.GetHashCode();
                 if (this.MaximalBillingCycles != null)

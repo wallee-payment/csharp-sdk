@@ -40,12 +40,6 @@ namespace Wallee.Model
         public PaymentTerminalAddress ContactAddress { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DefaultConfiguration
-        /// </summary>
-        [DataMember(Name="defaultConfiguration", EmitDefaultValue=true)]
-        public PaymentTerminalConfiguration DefaultConfiguration { get; private set; }
-
-        /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
@@ -90,7 +84,6 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class PaymentTerminalLocation {\n");
             sb.Append("  ContactAddress: ").Append(ContactAddress).Append("\n");
-            sb.Append("  DefaultConfiguration: ").Append(DefaultConfiguration).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -137,11 +130,6 @@ namespace Wallee.Model
                     this.ContactAddress.Equals(input.ContactAddress))
                 ) && 
                 (
-                    this.DefaultConfiguration == input.DefaultConfiguration ||
-                    (this.DefaultConfiguration != null &&
-                    this.DefaultConfiguration.Equals(input.DefaultConfiguration))
-                ) && 
-                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -184,8 +172,6 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.ContactAddress != null)
                     hashCode = hashCode * 59 + this.ContactAddress.GetHashCode();
-                if (this.DefaultConfiguration != null)
-                    hashCode = hashCode * 59 + this.DefaultConfiguration.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.LinkedSpaceId != null)

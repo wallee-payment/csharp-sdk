@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=true)]
-        public CreationEntityState? State { get; set; }
+        public RoleState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Role" /> class.
         /// </summary>

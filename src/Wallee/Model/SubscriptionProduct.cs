@@ -76,6 +76,13 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
+        /// Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.
+        /// </summary>
+        /// <value>Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.</value>
+        [DataMember(Name="productLocked", EmitDefaultValue=true)]
+        public bool? ProductLocked { get; private set; }
+
+        /// <summary>
         /// The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.
         /// </summary>
         /// <value>The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.</value>
@@ -117,6 +124,7 @@ namespace Wallee.Model
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
+            sb.Append("  ProductLocked: ").Append(ProductLocked).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
@@ -188,6 +196,11 @@ namespace Wallee.Model
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
                 ) && 
                 (
+                    this.ProductLocked == input.ProductLocked ||
+                    (this.ProductLocked != null &&
+                    this.ProductLocked.Equals(input.ProductLocked))
+                ) && 
+                (
                     this.Reference == input.Reference ||
                     (this.Reference != null &&
                     this.Reference.Equals(input.Reference))
@@ -235,6 +248,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
+                if (this.ProductLocked != null)
+                    hashCode = hashCode * 59 + this.ProductLocked.GetHashCode();
                 if (this.Reference != null)
                     hashCode = hashCode * 59 + this.Reference.GetHashCode();
                 if (this.SortOrder != null)

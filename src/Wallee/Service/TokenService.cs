@@ -153,6 +153,29 @@ namespace Wallee.Service
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteWithHttpInfo (long? spaceId, long? id);
         /// <summary>
+        /// Process Transaction
+        /// </summary>
+        /// <remarks>
+        /// This operation processes the given transaction by using the token associated with the transaction.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The id of the transaction for which we want to check if the token can be created or not.</param>
+        /// <returns>Charge</returns>
+        Charge ProcessTransaction (long? spaceId, long? transactionId);
+
+        /// <summary>
+        /// Process Transaction
+        /// </summary>
+        /// <remarks>
+        /// This operation processes the given transaction by using the token associated with the transaction.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The id of the transaction for which we want to check if the token can be created or not.</param>
+        /// <returns>ApiResponse of Charge</returns>
+        ApiResponse<Charge> ProcessTransactionWithHttpInfo (long? spaceId, long? transactionId);
+        /// <summary>
         /// Read
         /// </summary>
         /// <remarks>
@@ -727,6 +750,77 @@ namespace Wallee.Service
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
+        }
+        /// <summary>
+        /// Process Transaction This operation processes the given transaction by using the token associated with the transaction.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The id of the transaction for which we want to check if the token can be created or not.</param>
+        /// <returns>Charge</returns>
+        public Charge ProcessTransaction (long? spaceId, long? transactionId)
+        {
+             ApiResponse<Charge> localVarResponse = ProcessTransactionWithHttpInfo(spaceId, transactionId);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Process Transaction This operation processes the given transaction by using the token associated with the transaction.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="transactionId">The id of the transaction for which we want to check if the token can be created or not.</param>
+        /// <returns>ApiResponse of Charge</returns>
+        public ApiResponse< Charge > ProcessTransactionWithHttpInfo (long? spaceId, long? transactionId)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TokenService->ProcessTransaction");
+            // verify the required parameter 'transactionId' is set
+            if (transactionId == null)
+                throw new ApiException(400, "Missing required parameter 'transactionId' when calling TokenService->ProcessTransaction");
+
+            var localVarPath = "/token/process-transaction";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (transactionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "transactionId", transactionId)); // query parameter
+
+			
+			this.Configuration.ApiClient.ResetTimeout();
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ProcessTransaction", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Charge>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Charge) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Charge)));
         }
         /// <summary>
         /// Read Reads the entity with the given &#39;id&#39; and returns it.

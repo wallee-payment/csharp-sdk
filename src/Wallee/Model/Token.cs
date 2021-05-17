@@ -62,9 +62,9 @@ namespace Wallee.Model
         public bool? EnabledForOneClickPayment { get; private set; }
 
         /// <summary>
-        /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
-        /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
+        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; private set; }
 

@@ -54,6 +54,13 @@ namespace Wallee.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.
+        /// </summary>
+        /// <value>Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.</value>
+        [DataMember(Name="productLocked", EmitDefaultValue=true)]
+        public bool? ProductLocked { get; set; }
+
+        /// <summary>
         /// The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.
         /// </summary>
         /// <value>The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.</value>
@@ -72,6 +79,7 @@ namespace Wallee.Model
             sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
             sb.Append("  FailedPaymentSuspensionPeriod: ").Append(FailedPaymentSuspensionPeriod).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ProductLocked: ").Append(ProductLocked).Append("\n");
             sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("}\n");
@@ -125,6 +133,11 @@ namespace Wallee.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.ProductLocked == input.ProductLocked ||
+                    (this.ProductLocked != null &&
+                    this.ProductLocked.Equals(input.ProductLocked))
+                ) && 
+                (
                     this.SortOrder == input.SortOrder ||
                     (this.SortOrder != null &&
                     this.SortOrder.Equals(input.SortOrder))
@@ -151,6 +164,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.FailedPaymentSuspensionPeriod.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.ProductLocked != null)
+                    hashCode = hashCode * 59 + this.ProductLocked.GetHashCode();
                 if (this.SortOrder != null)
                     hashCode = hashCode * 59 + this.SortOrder.GetHashCode();
                 if (this.State != null)

@@ -51,6 +51,7 @@ namespace Wallee.Model
 
 
 
+
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
@@ -77,6 +78,7 @@ namespace Wallee.Model
             sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
             sb.Append("  FailedPaymentSuspensionPeriod: ").Append(FailedPaymentSuspensionPeriod).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ProductLocked: ").Append(ProductLocked).Append("\n");
             sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
@@ -132,6 +134,11 @@ namespace Wallee.Model
                     this.Name.Equals(input.Name))
                 ) && base.Equals(input) && 
                 (
+                    this.ProductLocked == input.ProductLocked ||
+                    (this.ProductLocked != null &&
+                    this.ProductLocked.Equals(input.ProductLocked))
+                ) && base.Equals(input) && 
+                (
                     this.SortOrder == input.SortOrder ||
                     (this.SortOrder != null &&
                     this.SortOrder.Equals(input.SortOrder))
@@ -168,6 +175,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.FailedPaymentSuspensionPeriod.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.ProductLocked != null)
+                    hashCode = hashCode * 59 + this.ProductLocked.GetHashCode();
                 if (this.SortOrder != null)
                     hashCode = hashCode * 59 + this.SortOrder.GetHashCode();
                 if (this.State != null)

@@ -28,7 +28,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DebtCollectionCaseCreate" /> class.
         /// </summary>
-        /// <param name="externalId">The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity. (required).</param>
+        /// <param name="externalId">A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead. (required).</param>
         /// <param name="reference">The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case. (required).</param>
         public DebtCollectionCaseCreate(string externalId, string reference)
         {
@@ -62,9 +62,9 @@ namespace Wallee.Model
         public long? CollectorConfiguration { get; set; }
 
         /// <summary>
-        /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
-        /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
+        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
         [DataMember(Name="externalId", EmitDefaultValue=true)]
         public string ExternalId { get; set; }
 

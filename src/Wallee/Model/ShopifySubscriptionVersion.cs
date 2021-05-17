@@ -62,6 +62,12 @@ namespace Wallee.Model
         public int? BillingIntervalAmount { get; private set; }
 
 
+        /// <summary>
+        /// Gets or Sets BillingReferenceDate
+        /// </summary>
+        [DataMember(Name="billingReferenceDate", EmitDefaultValue=true)]
+        public DateTime? BillingReferenceDate { get; private set; }
+
 
         /// <summary>
         /// Gets or Sets CreatedBy
@@ -205,6 +211,7 @@ namespace Wallee.Model
             sb.Append("  BillingDayOfMonth: ").Append(BillingDayOfMonth).Append("\n");
             sb.Append("  BillingIntervalAmount: ").Append(BillingIntervalAmount).Append("\n");
             sb.Append("  BillingIntervalUnit: ").Append(BillingIntervalUnit).Append("\n");
+            sb.Append("  BillingReferenceDate: ").Append(BillingReferenceDate).Append("\n");
             sb.Append("  BillingWeekday: ").Append(BillingWeekday).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
@@ -281,6 +288,11 @@ namespace Wallee.Model
                     this.BillingIntervalUnit == input.BillingIntervalUnit ||
                     (this.BillingIntervalUnit != null &&
                     this.BillingIntervalUnit.Equals(input.BillingIntervalUnit))
+                ) && 
+                (
+                    this.BillingReferenceDate == input.BillingReferenceDate ||
+                    (this.BillingReferenceDate != null &&
+                    this.BillingReferenceDate.Equals(input.BillingReferenceDate))
                 ) && 
                 (
                     this.BillingWeekday == input.BillingWeekday ||
@@ -417,6 +429,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.BillingIntervalAmount.GetHashCode();
                 if (this.BillingIntervalUnit != null)
                     hashCode = hashCode * 59 + this.BillingIntervalUnit.GetHashCode();
+                if (this.BillingReferenceDate != null)
+                    hashCode = hashCode * 59 + this.BillingReferenceDate.GetHashCode();
                 if (this.BillingWeekday != null)
                     hashCode = hashCode * 59 + this.BillingWeekday.GetHashCode();
                 if (this.CreatedBy != null)

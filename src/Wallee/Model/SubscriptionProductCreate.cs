@@ -44,6 +44,7 @@ namespace Wallee.Model
 
 
 
+
         /// <summary>
         /// The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.
         /// </summary>
@@ -63,6 +64,7 @@ namespace Wallee.Model
             sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
             sb.Append("  FailedPaymentSuspensionPeriod: ").Append(FailedPaymentSuspensionPeriod).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ProductLocked: ").Append(ProductLocked).Append("\n");
             sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
@@ -117,6 +119,11 @@ namespace Wallee.Model
                     this.Name.Equals(input.Name))
                 ) && base.Equals(input) && 
                 (
+                    this.ProductLocked == input.ProductLocked ||
+                    (this.ProductLocked != null &&
+                    this.ProductLocked.Equals(input.ProductLocked))
+                ) && base.Equals(input) && 
+                (
                     this.SortOrder == input.SortOrder ||
                     (this.SortOrder != null &&
                     this.SortOrder.Equals(input.SortOrder))
@@ -148,6 +155,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.FailedPaymentSuspensionPeriod.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.ProductLocked != null)
+                    hashCode = hashCode * 59 + this.ProductLocked.GetHashCode();
                 if (this.SortOrder != null)
                     hashCode = hashCode * 59 + this.SortOrder.GetHashCode();
                 if (this.State != null)
