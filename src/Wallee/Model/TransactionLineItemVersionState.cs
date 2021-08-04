@@ -15,12 +15,12 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// Defines PaymentTerminalState
+    /// Defines TransactionLineItemVersionState
     /// </summary>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum PaymentTerminalState
+    public enum TransactionLineItemVersionState
     {
         
         /// <summary>
@@ -30,34 +30,28 @@ namespace Wallee.Model
         CREATE,
         
         /// <summary>
-        /// Enum PREPARING for value: PREPARING
+        /// Enum SCHEDULED for value: SCHEDULED
         /// </summary>
-        [EnumMember(Value = "PREPARING")]
-        PREPARING,
+        [EnumMember(Value = "SCHEDULED")]
+        SCHEDULED,
         
         /// <summary>
-        /// Enum ACTIVE for value: ACTIVE
+        /// Enum PENDING for value: PENDING
         /// </summary>
-        [EnumMember(Value = "ACTIVE")]
-        ACTIVE,
+        [EnumMember(Value = "PENDING")]
+        PENDING,
         
         /// <summary>
-        /// Enum INACTIVE for value: INACTIVE
+        /// Enum SUCCESSFUL for value: SUCCESSFUL
         /// </summary>
-        [EnumMember(Value = "INACTIVE")]
-        INACTIVE,
+        [EnumMember(Value = "SUCCESSFUL")]
+        SUCCESSFUL,
         
         /// <summary>
-        /// Enum DECOMMISSIONING for value: DECOMMISSIONING
+        /// Enum FAILED for value: FAILED
         /// </summary>
-        [EnumMember(Value = "DECOMMISSIONING")]
-        DECOMMISSIONING,
-        
-        /// <summary>
-        /// Enum DECOMMISSIONED for value: DECOMMISSIONED
-        /// </summary>
-        [EnumMember(Value = "DECOMMISSIONED")]
-        DECOMMISSIONED
+        [EnumMember(Value = "FAILED")]
+        FAILED
     }
 
 }

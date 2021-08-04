@@ -40,6 +40,12 @@ namespace Wallee.Model
         public PaymentTerminalAddress Address { get; private set; }
 
         /// <summary>
+        /// Gets or Sets ContactAddress
+        /// </summary>
+        [DataMember(Name="contactAddress", EmitDefaultValue=true)]
+        public PaymentTerminalAddress ContactAddress { get; private set; }
+
+        /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
         [DataMember(Name="createdBy", EmitDefaultValue=true)]
@@ -102,6 +108,7 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class PaymentTerminalLocationVersion {\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
+            sb.Append("  ContactAddress: ").Append(ContactAddress).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
@@ -149,6 +156,11 @@ namespace Wallee.Model
                     this.Address == input.Address ||
                     (this.Address != null &&
                     this.Address.Equals(input.Address))
+                ) && 
+                (
+                    this.ContactAddress == input.ContactAddress ||
+                    (this.ContactAddress != null &&
+                    this.ContactAddress.Equals(input.ContactAddress))
                 ) && 
                 (
                     this.CreatedBy == input.CreatedBy ||
@@ -208,6 +220,8 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.Address != null)
                     hashCode = hashCode * 59 + this.Address.GetHashCode();
+                if (this.ContactAddress != null)
+                    hashCode = hashCode * 59 + this.ContactAddress.GetHashCode();
                 if (this.CreatedBy != null)
                     hashCode = hashCode * 59 + this.CreatedBy.GetHashCode();
                 if (this.CreatedOn != null)

@@ -51,6 +51,31 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
+        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+        /// </summary>
+        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        public string ExternalId { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets FailedOn
+        /// </summary>
+        [DataMember(Name="failedOn", EmitDefaultValue=true)]
+        public DateTime? FailedOn { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets FailureReason
+        /// </summary>
+        [DataMember(Name="failureReason", EmitDefaultValue=true)]
+        public FailureReason FailureReason { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Labels
+        /// </summary>
+        [DataMember(Name="labels", EmitDefaultValue=true)]
+        public List<Label> Labels { get; private set; }
+
+        /// <summary>
         /// Gets or Sets Language
         /// </summary>
         [DataMember(Name="language", EmitDefaultValue=true)]
@@ -63,11 +88,23 @@ namespace Wallee.Model
         public List<LineItem> LineItems { get; private set; }
 
         /// <summary>
+        /// Gets or Sets NextUpdateOn
+        /// </summary>
+        [DataMember(Name="nextUpdateOn", EmitDefaultValue=true)]
+        public DateTime? NextUpdateOn { get; private set; }
+
+        /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
         public DateTime? PlannedPurgeDate { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets ProcessingOn
+        /// </summary>
+        [DataMember(Name="processingOn", EmitDefaultValue=true)]
+        public DateTime? ProcessingOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
@@ -76,10 +113,28 @@ namespace Wallee.Model
         public long? SpaceViewId { get; private set; }
 
         /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=true)]
+        public TransactionLineItemVersionState State { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets SucceededOn
+        /// </summary>
+        [DataMember(Name="succeededOn", EmitDefaultValue=true)]
+        public DateTime? SucceededOn { get; private set; }
+
+        /// <summary>
         /// Gets or Sets TaxAmount
         /// </summary>
         [DataMember(Name="taxAmount", EmitDefaultValue=true)]
         public decimal? TaxAmount { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets TimeoutOn
+        /// </summary>
+        [DataMember(Name="timeoutOn", EmitDefaultValue=true)]
+        public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Transaction
@@ -109,11 +164,20 @@ namespace Wallee.Model
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  FailedOn: ").Append(FailedOn).Append("\n");
+            sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
+            sb.Append("  Labels: ").Append(Labels).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
+            sb.Append("  NextUpdateOn: ").Append(NextUpdateOn).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
+            sb.Append("  ProcessingOn: ").Append(ProcessingOn).Append("\n");
             sb.Append("  SpaceViewId: ").Append(SpaceViewId).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  SucceededOn: ").Append(SucceededOn).Append("\n");
             sb.Append("  TaxAmount: ").Append(TaxAmount).Append("\n");
+            sb.Append("  TimeoutOn: ").Append(TimeoutOn).Append("\n");
             sb.Append("  Transaction: ").Append(Transaction).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
@@ -181,6 +245,27 @@ namespace Wallee.Model
                     this.CreatedOn.Equals(input.CreatedOn))
                 ) && base.Equals(input) && 
                 (
+                    this.ExternalId == input.ExternalId ||
+                    (this.ExternalId != null &&
+                    this.ExternalId.Equals(input.ExternalId))
+                ) && base.Equals(input) && 
+                (
+                    this.FailedOn == input.FailedOn ||
+                    (this.FailedOn != null &&
+                    this.FailedOn.Equals(input.FailedOn))
+                ) && base.Equals(input) && 
+                (
+                    this.FailureReason == input.FailureReason ||
+                    (this.FailureReason != null &&
+                    this.FailureReason.Equals(input.FailureReason))
+                ) && base.Equals(input) && 
+                (
+                    this.Labels == input.Labels ||
+                    this.Labels != null &&
+                    input.Labels != null &&
+                    this.Labels.SequenceEqual(input.Labels)
+                ) && base.Equals(input) && 
+                (
                     this.Language == input.Language ||
                     (this.Language != null &&
                     this.Language.Equals(input.Language))
@@ -192,9 +277,19 @@ namespace Wallee.Model
                     this.LineItems.SequenceEqual(input.LineItems)
                 ) && base.Equals(input) && 
                 (
+                    this.NextUpdateOn == input.NextUpdateOn ||
+                    (this.NextUpdateOn != null &&
+                    this.NextUpdateOn.Equals(input.NextUpdateOn))
+                ) && base.Equals(input) && 
+                (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||
                     (this.PlannedPurgeDate != null &&
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
+                ) && base.Equals(input) && 
+                (
+                    this.ProcessingOn == input.ProcessingOn ||
+                    (this.ProcessingOn != null &&
+                    this.ProcessingOn.Equals(input.ProcessingOn))
                 ) && base.Equals(input) && 
                 (
                     this.SpaceViewId == input.SpaceViewId ||
@@ -202,9 +297,24 @@ namespace Wallee.Model
                     this.SpaceViewId.Equals(input.SpaceViewId))
                 ) && base.Equals(input) && 
                 (
+                    this.State == input.State ||
+                    (this.State != null &&
+                    this.State.Equals(input.State))
+                ) && base.Equals(input) && 
+                (
+                    this.SucceededOn == input.SucceededOn ||
+                    (this.SucceededOn != null &&
+                    this.SucceededOn.Equals(input.SucceededOn))
+                ) && base.Equals(input) && 
+                (
                     this.TaxAmount == input.TaxAmount ||
                     (this.TaxAmount != null &&
                     this.TaxAmount.Equals(input.TaxAmount))
+                ) && base.Equals(input) && 
+                (
+                    this.TimeoutOn == input.TimeoutOn ||
+                    (this.TimeoutOn != null &&
+                    this.TimeoutOn.Equals(input.TimeoutOn))
                 ) && base.Equals(input) && 
                 (
                     this.Transaction == input.Transaction ||
@@ -239,16 +349,34 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.CreatedBy.GetHashCode();
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
+                if (this.ExternalId != null)
+                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
+                if (this.FailedOn != null)
+                    hashCode = hashCode * 59 + this.FailedOn.GetHashCode();
+                if (this.FailureReason != null)
+                    hashCode = hashCode * 59 + this.FailureReason.GetHashCode();
+                if (this.Labels != null)
+                    hashCode = hashCode * 59 + this.Labels.GetHashCode();
                 if (this.Language != null)
                     hashCode = hashCode * 59 + this.Language.GetHashCode();
                 if (this.LineItems != null)
                     hashCode = hashCode * 59 + this.LineItems.GetHashCode();
+                if (this.NextUpdateOn != null)
+                    hashCode = hashCode * 59 + this.NextUpdateOn.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
+                if (this.ProcessingOn != null)
+                    hashCode = hashCode * 59 + this.ProcessingOn.GetHashCode();
                 if (this.SpaceViewId != null)
                     hashCode = hashCode * 59 + this.SpaceViewId.GetHashCode();
+                if (this.State != null)
+                    hashCode = hashCode * 59 + this.State.GetHashCode();
+                if (this.SucceededOn != null)
+                    hashCode = hashCode * 59 + this.SucceededOn.GetHashCode();
                 if (this.TaxAmount != null)
                     hashCode = hashCode * 59 + this.TaxAmount.GetHashCode();
+                if (this.TimeoutOn != null)
+                    hashCode = hashCode * 59 + this.TimeoutOn.GetHashCode();
                 if (this.Transaction != null)
                     hashCode = hashCode * 59 + this.Transaction.GetHashCode();
                 if (this.Version != null)

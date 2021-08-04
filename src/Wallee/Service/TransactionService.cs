@@ -245,7 +245,7 @@ namespace Wallee.Service
         /// <returns>ApiResponse of RenderedDocument</returns>
         ApiResponse<RenderedDocument> GetInvoiceDocumentWithHttpInfo (long? spaceId, long? id);
         /// <summary>
-        /// getLatestTransactionLineItemVersion
+        /// getLatestSuccessfulTransactionLineItemVersion
         /// </summary>
         /// <remarks>
         /// 
@@ -257,7 +257,7 @@ namespace Wallee.Service
         TransactionLineItemVersion GetLatestTransactionLineItemVersion (long? spaceId, long? id);
 
         /// <summary>
-        /// getLatestTransactionLineItemVersion
+        /// getLatestSuccessfulTransactionLineItemVersion
         /// </summary>
         /// <remarks>
         /// 
@@ -426,29 +426,6 @@ namespace Wallee.Service
         /// <param name="entity">The transaction object with the properties which should be updated.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> UpdateWithHttpInfo (long? spaceId, TransactionPending entity);
-        /// <summary>
-        /// updateTransactionLineItems
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="updateRequest"></param>
-        /// <returns>TransactionLineItemVersion</returns>
-        TransactionLineItemVersion UpdateTransactionLineItems (long? spaceId, TransactionLineItemUpdateRequest updateRequest);
-
-        /// <summary>
-        /// updateTransactionLineItems
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="updateRequest"></param>
-        /// <returns>ApiResponse of TransactionLineItemVersion</returns>
-        ApiResponse<TransactionLineItemVersion> UpdateTransactionLineItemsWithHttpInfo (long? spaceId, TransactionLineItemUpdateRequest updateRequest);
         #endregion Synchronous Operations
     }
 
@@ -1255,7 +1232,7 @@ namespace Wallee.Service
                 (RenderedDocument) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RenderedDocument)));
         }
         /// <summary>
-        /// getLatestTransactionLineItemVersion 
+        /// getLatestSuccessfulTransactionLineItemVersion 
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1268,7 +1245,7 @@ namespace Wallee.Service
         }
 
         /// <summary>
-        /// getLatestTransactionLineItemVersion 
+        /// getLatestSuccessfulTransactionLineItemVersion 
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1840,86 +1817,6 @@ namespace Wallee.Service
             return new ApiResponse<Transaction>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
-        }
-        /// <summary>
-        /// updateTransactionLineItems 
-        /// </summary>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="updateRequest"></param>
-        /// <returns>TransactionLineItemVersion</returns>
-        public TransactionLineItemVersion UpdateTransactionLineItems (long? spaceId, TransactionLineItemUpdateRequest updateRequest)
-        {
-             ApiResponse<TransactionLineItemVersion> localVarResponse = UpdateTransactionLineItemsWithHttpInfo(spaceId, updateRequest);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// updateTransactionLineItems 
-        /// </summary>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="updateRequest"></param>
-        /// <returns>ApiResponse of TransactionLineItemVersion</returns>
-        public ApiResponse< TransactionLineItemVersion > UpdateTransactionLineItemsWithHttpInfo (long? spaceId, TransactionLineItemUpdateRequest updateRequest)
-        {
-            // verify the required parameter 'spaceId' is set
-            if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionService->UpdateTransactionLineItems");
-            // verify the required parameter 'updateRequest' is set
-            if (updateRequest == null)
-                throw new ApiException(400, "Missing required parameter 'updateRequest' when calling TransactionService->UpdateTransactionLineItems");
-
-            var localVarPath = "/transaction/updateTransactionLineItems";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
-            if (updateRequest != null && updateRequest.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(updateRequest); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = updateRequest; // byte array
-            }
-
-			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("UpdateTransactionLineItems", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<TransactionLineItemVersion>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (TransactionLineItemVersion) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransactionLineItemVersion)));
         }
     }
 }

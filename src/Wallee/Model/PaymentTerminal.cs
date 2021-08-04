@@ -46,6 +46,13 @@ namespace Wallee.Model
         public string DefaultCurrency { get; private set; }
 
         /// <summary>
+        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+        /// </summary>
+        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        public string ExternalId { get; private set; }
+
+        /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
@@ -110,6 +117,7 @@ namespace Wallee.Model
             sb.Append("class PaymentTerminal {\n");
             sb.Append("  ConfigurationVersion: ").Append(ConfigurationVersion).Append("\n");
             sb.Append("  DefaultCurrency: ").Append(DefaultCurrency).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Identifier: ").Append(Identifier).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
@@ -162,6 +170,11 @@ namespace Wallee.Model
                     this.DefaultCurrency == input.DefaultCurrency ||
                     (this.DefaultCurrency != null &&
                     this.DefaultCurrency.Equals(input.DefaultCurrency))
+                ) && 
+                (
+                    this.ExternalId == input.ExternalId ||
+                    (this.ExternalId != null &&
+                    this.ExternalId.Equals(input.ExternalId))
                 ) && 
                 (
                     this.Id == input.Id ||
@@ -223,6 +236,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ConfigurationVersion.GetHashCode();
                 if (this.DefaultCurrency != null)
                     hashCode = hashCode * 59 + this.DefaultCurrency.GetHashCode();
+                if (this.ExternalId != null)
+                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Identifier != null)

@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/wallee-payment/csharp-sdk.svg?branch=master)](https://travis-ci.org/wallee-payment/csharp-sdk)
-
 # wallee C# Library
 
 The wallee C# library wraps around the wallee API. This library facilitates your interaction with various services such as transactions, accounts, and subscriptions.
@@ -34,13 +32,13 @@ NOTE: RestSharp versions greater than 106.2.1 have a bug which causes file uploa
 ## Installation
 ```
 # Package Manager
-Install-Package Wallee -Version 3.0.1
+Install-Package Wallee -Version 3.0.3
 # .NET CLI
-dotnet add package Wallee --version 3.0.1
+dotnet add package Wallee --version 3.0.3
 # Paket CLI
-paket add Wallee --version 3.0.1
+paket add Wallee --version 3.0.3
 # PackageReference
-<PackageReference Include="Wallee" Version="3.0.1" />
+<PackageReference Include="Wallee" Version="3.0.3" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:

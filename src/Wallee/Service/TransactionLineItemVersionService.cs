@@ -11,7 +11,7 @@ namespace Wallee.Service
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IPaymentTerminalService : IApiAccessor
+    public interface ITransactionLineItemVersionService : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -38,30 +38,28 @@ namespace Wallee.Service
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
         /// <summary>
-        /// Link Device With Terminal
+        /// create
         /// </summary>
         /// <remarks>
-        /// Links the device with given serial number with terminal.
+        /// This operation applies a line item version on a particular transaction.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="terminalId"></param>
-        /// <param name="serialNumber"></param>
-        /// <returns></returns>
-        void Link (long? spaceId, long? terminalId, string serialNumber);
+        /// <param name="lineItemVersion">The line item version object which should be created.</param>
+        /// <returns>TransactionLineItemVersion</returns>
+        TransactionLineItemVersion Create (long? spaceId, TransactionLineItemVersionCreate lineItemVersion);
 
         /// <summary>
-        /// Link Device With Terminal
+        /// create
         /// </summary>
         /// <remarks>
-        /// Links the device with given serial number with terminal.
+        /// This operation applies a line item version on a particular transaction.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="terminalId"></param>
-        /// <param name="serialNumber"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> LinkWithHttpInfo (long? spaceId, long? terminalId, string serialNumber);
+        /// <param name="lineItemVersion">The line item version object which should be created.</param>
+        /// <returns>ApiResponse of TransactionLineItemVersion</returns>
+        ApiResponse<TransactionLineItemVersion> CreateWithHttpInfo (long? spaceId, TransactionLineItemVersionCreate lineItemVersion);
         /// <summary>
         /// Read
         /// </summary>
@@ -70,9 +68,9 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the payment terminal which should be returned.</param>
-        /// <returns>PaymentTerminal</returns>
-        PaymentTerminal Read (long? spaceId, long? id);
+        /// <param name="id">The ID of the line item version which should be returned.</param>
+        /// <returns>TransactionLineItemVersion</returns>
+        TransactionLineItemVersion Read (long? spaceId, long? id);
 
         /// <summary>
         /// Read
@@ -82,9 +80,9 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the payment terminal which should be returned.</param>
-        /// <returns>ApiResponse of PaymentTerminal</returns>
-        ApiResponse<PaymentTerminal> ReadWithHttpInfo (long? spaceId, long? id);
+        /// <param name="id">The ID of the line item version which should be returned.</param>
+        /// <returns>ApiResponse of TransactionLineItemVersion</returns>
+        ApiResponse<TransactionLineItemVersion> ReadWithHttpInfo (long? spaceId, long? id);
         /// <summary>
         /// Search
         /// </summary>
@@ -93,9 +91,9 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the payment terminals which are returned by the search.</param>
-        /// <returns>List&lt;PaymentTerminal&gt;</returns>
-        List<PaymentTerminal> Search (long? spaceId, EntityQuery query);
+        /// <param name="query">The query restricts line item versions which are returned by the search.</param>
+        /// <returns>List&lt;TransactionLineItemVersion&gt;</returns>
+        List<TransactionLineItemVersion> Search (long? spaceId, EntityQuery query);
 
         /// <summary>
         /// Search
@@ -105,49 +103,26 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the payment terminals which are returned by the search.</param>
-        /// <returns>ApiResponse of List&lt;PaymentTerminal&gt;</returns>
-        ApiResponse<List<PaymentTerminal>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
-        /// <summary>
-        /// Unlink Device With Terminal
-        /// </summary>
-        /// <remarks>
-        /// Unlinks the device from terminal.
-        /// </remarks>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="terminalId"></param>
-        /// <returns></returns>
-        void Unlink (long? spaceId, long? terminalId);
-
-        /// <summary>
-        /// Unlink Device With Terminal
-        /// </summary>
-        /// <remarks>
-        /// Unlinks the device from terminal.
-        /// </remarks>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="terminalId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UnlinkWithHttpInfo (long? spaceId, long? terminalId);
+        /// <param name="query">The query restricts line item versions which are returned by the search.</param>
+        /// <returns>ApiResponse of List&lt;TransactionLineItemVersion&gt;</returns>
+        ApiResponse<List<TransactionLineItemVersion>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
         #endregion Synchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class PaymentTerminalService : IPaymentTerminalService
+    public partial class TransactionLineItemVersionService : ITransactionLineItemVersionService
     {
         private Wallee.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PaymentTerminalService"/> class
+        /// Initializes a new instance of the <see cref="TransactionLineItemVersionService"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public PaymentTerminalService(Wallee.Client.Configuration configuration = null)
+        public TransactionLineItemVersionService(Wallee.Client.Configuration configuration = null)
         {
             if(configuration == null){
                 throw new ArgumentException("Parameter cannot be null", "configuration");
@@ -213,9 +188,9 @@ namespace Wallee.Service
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentTerminalService->Count");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionLineItemVersionService->Count");
 
-            var localVarPath = "/payment-terminal/count";
+            var localVarPath = "/transaction-line-item-version/count";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -267,39 +242,35 @@ namespace Wallee.Service
                 (long?) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(long?)));
         }
         /// <summary>
-        /// Link Device With Terminal Links the device with given serial number with terminal.
+        /// create This operation applies a line item version on a particular transaction.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="terminalId"></param>
-        /// <param name="serialNumber"></param>
-        /// <returns></returns>
-        public void Link (long? spaceId, long? terminalId, string serialNumber)
+        /// <param name="lineItemVersion">The line item version object which should be created.</param>
+        /// <returns>TransactionLineItemVersion</returns>
+        public TransactionLineItemVersion Create (long? spaceId, TransactionLineItemVersionCreate lineItemVersion)
         {
-             LinkWithHttpInfo(spaceId, terminalId, serialNumber);
+             ApiResponse<TransactionLineItemVersion> localVarResponse = CreateWithHttpInfo(spaceId, lineItemVersion);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Link Device With Terminal Links the device with given serial number with terminal.
+        /// create This operation applies a line item version on a particular transaction.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="terminalId"></param>
-        /// <param name="serialNumber"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> LinkWithHttpInfo (long? spaceId, long? terminalId, string serialNumber)
+        /// <param name="lineItemVersion">The line item version object which should be created.</param>
+        /// <returns>ApiResponse of TransactionLineItemVersion</returns>
+        public ApiResponse< TransactionLineItemVersion > CreateWithHttpInfo (long? spaceId, TransactionLineItemVersionCreate lineItemVersion)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentTerminalService->Link");
-            // verify the required parameter 'terminalId' is set
-            if (terminalId == null)
-                throw new ApiException(400, "Missing required parameter 'terminalId' when calling PaymentTerminalService->Link");
-            // verify the required parameter 'serialNumber' is set
-            if (serialNumber == null)
-                throw new ApiException(400, "Missing required parameter 'serialNumber' when calling PaymentTerminalService->Link");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionLineItemVersionService->Create");
+            // verify the required parameter 'lineItemVersion' is set
+            if (lineItemVersion == null)
+                throw new ApiException(400, "Missing required parameter 'lineItemVersion' when calling TransactionLineItemVersionService->Create");
 
-            var localVarPath = "/payment-terminal/link";
+            var localVarPath = "/transaction-line-item-version/create";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -309,19 +280,27 @@ namespace Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
-            if (terminalId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "terminalId", terminalId)); // query parameter
-            if (serialNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "serialNumber", serialNumber)); // query parameter
+            if (lineItemVersion != null && lineItemVersion.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(lineItemVersion); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = lineItemVersion; // byte array
+            }
 
 			
 			this.Configuration.ApiClient.ResetTimeout();
@@ -334,24 +313,24 @@ namespace Wallee.Service
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Link", localVarResponse);
+                Exception exception = ExceptionFactory("Create", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<TransactionLineItemVersion>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (TransactionLineItemVersion) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransactionLineItemVersion)));
         }
         /// <summary>
         /// Read Reads the entity with the given &#39;id&#39; and returns it.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the payment terminal which should be returned.</param>
-        /// <returns>PaymentTerminal</returns>
-        public PaymentTerminal Read (long? spaceId, long? id)
+        /// <param name="id">The ID of the line item version which should be returned.</param>
+        /// <returns>TransactionLineItemVersion</returns>
+        public TransactionLineItemVersion Read (long? spaceId, long? id)
         {
-             ApiResponse<PaymentTerminal> localVarResponse = ReadWithHttpInfo(spaceId, id);
+             ApiResponse<TransactionLineItemVersion> localVarResponse = ReadWithHttpInfo(spaceId, id);
              return localVarResponse.Data;
         }
 
@@ -360,18 +339,18 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The id of the payment terminal which should be returned.</param>
-        /// <returns>ApiResponse of PaymentTerminal</returns>
-        public ApiResponse< PaymentTerminal > ReadWithHttpInfo (long? spaceId, long? id)
+        /// <param name="id">The ID of the line item version which should be returned.</param>
+        /// <returns>ApiResponse of TransactionLineItemVersion</returns>
+        public ApiResponse< TransactionLineItemVersion > ReadWithHttpInfo (long? spaceId, long? id)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentTerminalService->Read");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionLineItemVersionService->Read");
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling PaymentTerminalService->Read");
+                throw new ApiException(400, "Missing required parameter 'id' when calling TransactionLineItemVersionService->Read");
 
-            var localVarPath = "/payment-terminal/read";
+            var localVarPath = "/transaction-line-item-version/read";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -411,20 +390,20 @@ namespace Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<PaymentTerminal>(localVarStatusCode,
+            return new ApiResponse<TransactionLineItemVersion>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (PaymentTerminal) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PaymentTerminal)));
+                (TransactionLineItemVersion) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransactionLineItemVersion)));
         }
         /// <summary>
         /// Search Searches for the entities as specified by the given query.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the payment terminals which are returned by the search.</param>
-        /// <returns>List&lt;PaymentTerminal&gt;</returns>
-        public List<PaymentTerminal> Search (long? spaceId, EntityQuery query)
+        /// <param name="query">The query restricts line item versions which are returned by the search.</param>
+        /// <returns>List&lt;TransactionLineItemVersion&gt;</returns>
+        public List<TransactionLineItemVersion> Search (long? spaceId, EntityQuery query)
         {
-             ApiResponse<List<PaymentTerminal>> localVarResponse = SearchWithHttpInfo(spaceId, query);
+             ApiResponse<List<TransactionLineItemVersion>> localVarResponse = SearchWithHttpInfo(spaceId, query);
              return localVarResponse.Data;
         }
 
@@ -433,18 +412,18 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the payment terminals which are returned by the search.</param>
-        /// <returns>ApiResponse of List&lt;PaymentTerminal&gt;</returns>
-        public ApiResponse< List<PaymentTerminal> > SearchWithHttpInfo (long? spaceId, EntityQuery query)
+        /// <param name="query">The query restricts line item versions which are returned by the search.</param>
+        /// <returns>ApiResponse of List&lt;TransactionLineItemVersion&gt;</returns>
+        public ApiResponse< List<TransactionLineItemVersion> > SearchWithHttpInfo (long? spaceId, EntityQuery query)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentTerminalService->Search");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling TransactionLineItemVersionService->Search");
             // verify the required parameter 'query' is set
             if (query == null)
-                throw new ApiException(400, "Missing required parameter 'query' when calling PaymentTerminalService->Search");
+                throw new ApiException(400, "Missing required parameter 'query' when calling TransactionLineItemVersionService->Search");
 
-            var localVarPath = "/payment-terminal/search";
+            var localVarPath = "/transaction-line-item-version/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -491,79 +470,9 @@ namespace Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<PaymentTerminal>>(localVarStatusCode,
+            return new ApiResponse<List<TransactionLineItemVersion>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<PaymentTerminal>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PaymentTerminal>)));
-        }
-        /// <summary>
-        /// Unlink Device With Terminal Unlinks the device from terminal.
-        /// </summary>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="terminalId"></param>
-        /// <returns></returns>
-        public void Unlink (long? spaceId, long? terminalId)
-        {
-             UnlinkWithHttpInfo(spaceId, terminalId);
-        }
-
-        /// <summary>
-        /// Unlink Device With Terminal Unlinks the device from terminal.
-        /// </summary>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="terminalId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> UnlinkWithHttpInfo (long? spaceId, long? terminalId)
-        {
-            // verify the required parameter 'spaceId' is set
-            if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentTerminalService->Unlink");
-            // verify the required parameter 'terminalId' is set
-            if (terminalId == null)
-                throw new ApiException(400, "Missing required parameter 'terminalId' when calling PaymentTerminalService->Unlink");
-
-            var localVarPath = "/payment-terminal/unlink";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
-            if (terminalId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "terminalId", terminalId)); // query parameter
-
-			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Unlink", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (List<TransactionLineItemVersion>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TransactionLineItemVersion>)));
         }
     }
 }

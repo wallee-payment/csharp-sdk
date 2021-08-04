@@ -34,10 +34,11 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets ContactAddress
+        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
-        [DataMember(Name="contactAddress", EmitDefaultValue=true)]
-        public PaymentTerminalAddress ContactAddress { get; private set; }
+        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
+        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        public string ExternalId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
@@ -83,7 +84,7 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class PaymentTerminalLocation {\n");
-            sb.Append("  ContactAddress: ").Append(ContactAddress).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -125,9 +126,9 @@ namespace Wallee.Model
 
             return 
                 (
-                    this.ContactAddress == input.ContactAddress ||
-                    (this.ContactAddress != null &&
-                    this.ContactAddress.Equals(input.ContactAddress))
+                    this.ExternalId == input.ExternalId ||
+                    (this.ExternalId != null &&
+                    this.ExternalId.Equals(input.ExternalId))
                 ) && 
                 (
                     this.Id == input.Id ||
@@ -170,8 +171,8 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ContactAddress != null)
-                    hashCode = hashCode * 59 + this.ContactAddress.GetHashCode();
+                if (this.ExternalId != null)
+                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.LinkedSpaceId != null)
