@@ -31,8 +31,8 @@ jobs:
       - name: Publish
         uses: brandedoutcast/publish-nuget@v2.5.2
         with:
-          PROJECT_FILE_PATH: ./src/{{ packageName }}/{{ packageName }}.csproj
+          PROJECT_FILE_PATH: ./src/Wallee/Wallee.csproj
           INCLUDE_SYMBOLS: true
-          {{=<% %>=}}
           NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
-          <%={{ }}=%>
+
+
