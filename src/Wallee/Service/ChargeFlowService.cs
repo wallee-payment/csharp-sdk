@@ -61,6 +61,29 @@ namespace Wallee.Service
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
         /// <summary>
+        /// Fetch Charge Flow Payment Page URL
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to fetch the payment page URL that is been applied on the charge flow linked with the provided transaction. The operation might return an empty result when no payment page is needed or can be invoked.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The transaction id of the transaction for which the URL of the charge flow should be fetched.</param>
+        /// <returns>string</returns>
+        string FetchChargeFlowPaymentPageUrl (long? spaceId, long? id);
+
+        /// <summary>
+        /// Fetch Charge Flow Payment Page URL
+        /// </summary>
+        /// <remarks>
+        /// This operation allows to fetch the payment page URL that is been applied on the charge flow linked with the provided transaction. The operation might return an empty result when no payment page is needed or can be invoked.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The transaction id of the transaction for which the URL of the charge flow should be fetched.</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> FetchChargeFlowPaymentPageUrlWithHttpInfo (long? spaceId, long? id);
+        /// <summary>
         /// Read
         /// </summary>
         /// <remarks>
@@ -339,6 +362,79 @@ namespace Wallee.Service
             return new ApiResponse<long?>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (long?) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(long?)));
+        }
+        /// <summary>
+        /// Fetch Charge Flow Payment Page URL This operation allows to fetch the payment page URL that is been applied on the charge flow linked with the provided transaction. The operation might return an empty result when no payment page is needed or can be invoked.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The transaction id of the transaction for which the URL of the charge flow should be fetched.</param>
+        /// <returns>string</returns>
+        public string FetchChargeFlowPaymentPageUrl (long? spaceId, long? id)
+        {
+             ApiResponse<string> localVarResponse = FetchChargeFlowPaymentPageUrlWithHttpInfo(spaceId, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Fetch Charge Flow Payment Page URL This operation allows to fetch the payment page URL that is been applied on the charge flow linked with the provided transaction. The operation might return an empty result when no payment page is needed or can be invoked.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The transaction id of the transaction for which the URL of the charge flow should be fetched.</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > FetchChargeFlowPaymentPageUrlWithHttpInfo (long? spaceId, long? id)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling ChargeFlowService->FetchChargeFlowPaymentPageUrl");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ChargeFlowService->FetchChargeFlowPaymentPageUrl");
+
+            var localVarPath = "/charge-flow/fetch-charge-flow-payment-page-url";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json",
+                "text/plain;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+
+			
+			this.Configuration.ApiClient.ResetTimeout();
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("FetchChargeFlowPaymentPageUrl", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
         /// <summary>
         /// Read Reads the entity with the given &#39;id&#39; and returns it.

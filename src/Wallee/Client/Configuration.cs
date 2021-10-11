@@ -19,7 +19,7 @@ namespace Wallee.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "3.0.5";
+        public const string Version = "3.0.6";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -90,8 +90,8 @@ namespace Wallee.Client
             }
             _authenticationKey =  authenticationKey;
             _applicationUserID = applicationUserID;
-            UserAgent = "Wallee/3.0.5/csharp";
-            BasePath = "https://app-wallee.com:443/api";
+            UserAgent = "Wallee/3.0.6/csharp";
+            BasePath = "http://192.168.1.182:8000/api";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
@@ -338,8 +338,8 @@ namespace Wallee.Client
             String report = "C# SDK (Wallee) Debug Report:\n";
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
-            report += "    Version of the API: 3.0.5\n";
-            report += "    SDK Package Version: 3.0.5\n";
+            report += "    Version of the API: 3.0.6\n";
+            report += "    SDK Package Version: 3.0.6\n";
 
             return report;
         }

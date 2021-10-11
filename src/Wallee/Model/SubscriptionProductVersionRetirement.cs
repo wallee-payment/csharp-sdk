@@ -62,8 +62,9 @@ namespace Wallee.Model
         public bool? RespectTerminiationPeriodsEnabled { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TargetProduct
+        /// When a target product is not chosen, all customers with the retired product will be terminated.
         /// </summary>
+        /// <value>When a target product is not chosen, all customers with the retired product will be terminated.</value>
         [DataMember(Name="targetProduct", EmitDefaultValue=true)]
         public SubscriptionProduct TargetProduct { get; private set; }
 
