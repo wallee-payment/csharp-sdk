@@ -38,6 +38,29 @@ namespace Wallee.Service
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> ApplyFlowWithHttpInfo (long? spaceId, long? id);
         /// <summary>
+        /// Cancel Charge Flow
+        /// </summary>
+        /// <remarks>
+        /// This operation cancels the charge flow that is linked with the transaction indicated by the given ID.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The ID of the transaction for which the charge flow should be canceled.</param>
+        /// <returns>Transaction</returns>
+        Transaction CancelChargeFlow (long? spaceId, long? id);
+
+        /// <summary>
+        /// Cancel Charge Flow
+        /// </summary>
+        /// <remarks>
+        /// This operation cancels the charge flow that is linked with the transaction indicated by the given ID.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The ID of the transaction for which the charge flow should be canceled.</param>
+        /// <returns>ApiResponse of Transaction</returns>
+        ApiResponse<Transaction> CancelChargeFlowWithHttpInfo (long? spaceId, long? id);
+        /// <summary>
         /// Count
         /// </summary>
         /// <remarks>
@@ -279,6 +302,78 @@ namespace Wallee.Service
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ApplyFlow", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Transaction>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+        }
+        /// <summary>
+        /// Cancel Charge Flow This operation cancels the charge flow that is linked with the transaction indicated by the given ID.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The ID of the transaction for which the charge flow should be canceled.</param>
+        /// <returns>Transaction</returns>
+        public Transaction CancelChargeFlow (long? spaceId, long? id)
+        {
+             ApiResponse<Transaction> localVarResponse = CancelChargeFlowWithHttpInfo(spaceId, id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Cancel Charge Flow This operation cancels the charge flow that is linked with the transaction indicated by the given ID.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="id">The ID of the transaction for which the charge flow should be canceled.</param>
+        /// <returns>ApiResponse of Transaction</returns>
+        public ApiResponse< Transaction > CancelChargeFlowWithHttpInfo (long? spaceId, long? id)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling ChargeFlowService->CancelChargeFlow");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling ChargeFlowService->CancelChargeFlow");
+
+            var localVarPath = "/charge-flow/cancel-charge-flow";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+
+			
+			this.Configuration.ApiClient.ResetTimeout();
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("CancelChargeFlow", localVarResponse);
                 if (exception != null) throw exception;
             }
 
