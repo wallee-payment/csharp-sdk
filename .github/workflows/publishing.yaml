@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
@@ -19,14 +19,32 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
+      - name: Test Nuget
+        run: |
+          nuget restore Wallee.sln
+          nuget install NUnit.Console -Version 3.11.1 -OutputDirectory testrunner
+          msbuild /t:restore Wallee.sln && msbuild Wallee.sln /t:build /p:Configuration=Release
+          mono testrunner/NUnit.ConsoleRunner.3.11.1/tools/nunit3-console.exe ./src/Wallee.Test/bin/Release/net452/Wallee.Test.dll --inprocess
+
+  publish:
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.101
+
+      - name: Install dependencies
+        run: dotnet restore
+      
       - name: Build
         run: dotnet build --configuration Release --no-restore
 
-      - name: Test
-        run: dotnet test --configuration Release --no-restore --verbosity normal
-
       - name: Pack
-        run: dotnet pack --configuration Release --no-build --output .
+        run: dotnet pack --configuration Release --output .
 
       - name: Publish
         uses: brandedoutcast/publish-nuget@v2.5.2

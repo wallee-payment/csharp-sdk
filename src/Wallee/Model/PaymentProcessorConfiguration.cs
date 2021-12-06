@@ -34,6 +34,13 @@ namespace Wallee.Model
         }
 
         /// <summary>
+        /// The configuration is managed by the application and cannot be changed via the user interface.
+        /// </summary>
+        /// <value>The configuration is managed by the application and cannot be changed via the user interface.</value>
+        [DataMember(Name="applicationManaged", EmitDefaultValue=true)]
+        public bool? ApplicationManaged { get; private set; }
+
+        /// <summary>
         /// The contract links the processor configuration with the contract that is used to process payments.
         /// </summary>
         /// <value>The contract links the processor configuration with the contract that is used to process payments.</value>
@@ -91,6 +98,7 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class PaymentProcessorConfiguration {\n");
+            sb.Append("  ApplicationManaged: ").Append(ApplicationManaged).Append("\n");
             sb.Append("  ContractId: ").Append(ContractId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
@@ -133,6 +141,11 @@ namespace Wallee.Model
                 return false;
 
             return 
+                (
+                    this.ApplicationManaged == input.ApplicationManaged ||
+                    (this.ApplicationManaged != null &&
+                    this.ApplicationManaged.Equals(input.ApplicationManaged))
+                ) && 
                 (
                     this.ContractId == input.ContractId ||
                     (this.ContractId != null &&
@@ -184,6 +197,8 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.ApplicationManaged != null)
+                    hashCode = hashCode * 59 + this.ApplicationManaged.GetHashCode();
                 if (this.ContractId != null)
                     hashCode = hashCode * 59 + this.ContractId.GetHashCode();
                 if (this.Id != null)

@@ -172,7 +172,7 @@ namespace Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
+                "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -254,7 +254,7 @@ namespace Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
+                "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
