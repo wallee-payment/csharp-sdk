@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// The target state defines the state into which the charge attempt should be switched into. Once the charge attempt changed the state it will not be possible to change it again.
         /// </summary>
         /// <value>The target state defines the state into which the charge attempt should be switched into. Once the charge attempt changed the state it will not be possible to change it again.</value>
-        [DataMember(Name="targetState", EmitDefaultValue=true)]
+        [DataMember(Name="targetState", EmitDefaultValue=false)]
         public PaymentAppChargeAttemptTargetState? TargetState { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentAppChargeAttemptUpdateRequest" /> class.
@@ -37,28 +37,28 @@ namespace Wallee.Model
         /// This is the ID of the charge attempt that should be updated.
         /// </summary>
         /// <value>This is the ID of the charge attempt that should be updated.</value>
-        [DataMember(Name="chargeAttemptId", EmitDefaultValue=true)]
+        [DataMember(Name="chargeAttemptId", EmitDefaultValue=false)]
         public long? ChargeAttemptId { get; set; }
 
         /// <summary>
         /// The end user failure message indicates to the end user (buyer) why the payment failed. The message has to be in the language of the end user. The language is provided within the payment page invocation URL.
         /// </summary>
         /// <value>The end user failure message indicates to the end user (buyer) why the payment failed. The message has to be in the language of the end user. The language is provided within the payment page invocation URL.</value>
-        [DataMember(Name="endUserFailureMessage", EmitDefaultValue=true)]
+        [DataMember(Name="endUserFailureMessage", EmitDefaultValue=false)]
         public string EndUserFailureMessage { get; set; }
 
         /// <summary>
         /// The failure reason indicates why the charge attempt failed. It is required when the target state is FAILED.
         /// </summary>
         /// <value>The failure reason indicates why the charge attempt failed. It is required when the target state is FAILED.</value>
-        [DataMember(Name="failureReasonId", EmitDefaultValue=true)]
+        [DataMember(Name="failureReasonId", EmitDefaultValue=false)]
         public long? FailureReasonId { get; set; }
 
         /// <summary>
         /// The reference identifies the charge attempt within the systems of the external service provider. It is required when the target state is SUCCESSFUL.
         /// </summary>
         /// <value>The reference identifies the charge attempt within the systems of the external service provider. It is required when the target state is SUCCESSFUL.</value>
-        [DataMember(Name="reference", EmitDefaultValue=true)]
+        [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
 
 

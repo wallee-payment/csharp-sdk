@@ -31,56 +31,56 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Beta
         /// </summary>
-        [DataMember(Name="beta", EmitDefaultValue=true)]
+        [DataMember(Name="beta", EmitDefaultValue=false)]
         public bool? Beta { get; private set; }
 
         /// <summary>
         /// Gets or Sets Category
         /// </summary>
-        [DataMember(Name="category", EmitDefaultValue=true)]
+        [DataMember(Name="category", EmitDefaultValue=false)]
         public FeatureCategory Category { get; private set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=true)]
+        [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets LogoPath
         /// </summary>
-        [DataMember(Name="logoPath", EmitDefaultValue=true)]
+        [DataMember(Name="logoPath", EmitDefaultValue=false)]
         public string LogoPath { get; private set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// Gets or Sets RequiredFeatures
         /// </summary>
-        [DataMember(Name="requiredFeatures", EmitDefaultValue=true)]
+        [DataMember(Name="requiredFeatures", EmitDefaultValue=false)]
         public List<long?> RequiredFeatures { get; private set; }
 
         /// <summary>
         /// Gets or Sets SortOrder
         /// </summary>
-        [DataMember(Name="sortOrder", EmitDefaultValue=true)]
+        [DataMember(Name="sortOrder", EmitDefaultValue=false)]
         public int? SortOrder { get; private set; }
 
         /// <summary>
         /// Gets or Sets Visible
         /// </summary>
-        [DataMember(Name="visible", EmitDefaultValue=true)]
+        [DataMember(Name="visible", EmitDefaultValue=false)]
         public bool? Visible { get; private set; }
 
         /// <summary>

@@ -30,21 +30,21 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets LastModifiedDate
         /// </summary>
-        [DataMember(Name="lastModifiedDate", EmitDefaultValue=true)]
+        [DataMember(Name="lastModifiedDate", EmitDefaultValue=false)]
         public DateTime? LastModifiedDate { get; set; }
 
         /// <summary>
         /// The name of the account identifies the account within the administrative interface.
         /// </summary>
         /// <value>The name of the account identifies the account within the administrative interface.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
         /// This property restricts the number of subaccounts which can be created within this account.
         /// </summary>
         /// <value>This property restricts the number of subaccounts which can be created within this account.</value>
-        [DataMember(Name="subaccountLimit", EmitDefaultValue=true)]
+        [DataMember(Name="subaccountLimit", EmitDefaultValue=false)]
         public long? SubaccountLimit { get; set; }
 
         /// <summary>

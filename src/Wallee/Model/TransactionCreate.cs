@@ -62,54 +62,54 @@ namespace Wallee.Model
         /// When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.
         /// </summary>
         /// <value>When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.</value>
-        [DataMember(Name="autoConfirmationEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="autoConfirmationEnabled", EmitDefaultValue=false)]
         public bool? AutoConfirmationEnabled { get; set; }
 
         /// <summary>
         /// When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.
         /// </summary>
         /// <value>When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.</value>
-        [DataMember(Name="chargeRetryEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="chargeRetryEnabled", EmitDefaultValue=false)]
         public bool? ChargeRetryEnabled { get; set; }
 
         /// <summary>
         /// The customer&#39;s presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.
         /// </summary>
         /// <value>The customer&#39;s presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.</value>
-        [DataMember(Name="customersPresence", EmitDefaultValue=true)]
+        [DataMember(Name="customersPresence", EmitDefaultValue=false)]
         public CustomersPresence CustomersPresence { get; set; }
 
         /// <summary>
         /// The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.
         /// </summary>
         /// <value>The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.</value>
-        [DataMember(Name="deviceSessionIdentifier", EmitDefaultValue=true)]
+        [DataMember(Name="deviceSessionIdentifier", EmitDefaultValue=false)]
         public string DeviceSessionIdentifier { get; set; }
 
         /// <summary>
         /// Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.
         /// </summary>
         /// <value>Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.</value>
-        [DataMember(Name="emailsDisabled", EmitDefaultValue=true)]
+        [DataMember(Name="emailsDisabled", EmitDefaultValue=false)]
         public bool? EmailsDisabled { get; set; }
 
         /// <summary>
         /// Gets or Sets Environment
         /// </summary>
-        [DataMember(Name="environment", EmitDefaultValue=true)]
+        [DataMember(Name="environment", EmitDefaultValue=false)]
         public Environment Environment { get; set; }
 
         /// <summary>
         /// The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
         /// </summary>
         /// <value>The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.</value>
-        [DataMember(Name="environmentSelectionStrategy", EmitDefaultValue=true)]
+        [DataMember(Name="environmentSelectionStrategy", EmitDefaultValue=false)]
         public TransactionEnvironmentSelectionStrategy EnvironmentSelectionStrategy { get; set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; set; }
 
         /// <summary>

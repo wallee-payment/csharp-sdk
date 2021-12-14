@@ -61,13 +61,13 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets PlannedEndDate
         /// </summary>
-        [DataMember(Name="plannedEndDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedEndDate", EmitDefaultValue=false)]
         public DateTime? PlannedEndDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Subscription
         /// </summary>
-        [DataMember(Name="subscription", EmitDefaultValue=true)]
+        [DataMember(Name="subscription", EmitDefaultValue=false)]
         public long? Subscription { get; set; }
 
 

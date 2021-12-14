@@ -31,86 +31,86 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets City
         /// </summary>
-        [DataMember(Name="city", EmitDefaultValue=true)]
+        [DataMember(Name="city", EmitDefaultValue=false)]
         public string City { get; private set; }
 
         /// <summary>
         /// Gets or Sets Country
         /// </summary>
-        [DataMember(Name="country", EmitDefaultValue=true)]
+        [DataMember(Name="country", EmitDefaultValue=false)]
         public string Country { get; private set; }
 
         /// <summary>
         /// Gets or Sets DependentLocality
         /// </summary>
-        [DataMember(Name="dependentLocality", EmitDefaultValue=true)]
+        [DataMember(Name="dependentLocality", EmitDefaultValue=false)]
         public string DependentLocality { get; private set; }
 
         /// <summary>
         /// Gets or Sets EmailAddress
         /// </summary>
-        [DataMember(Name="emailAddress", EmitDefaultValue=true)]
+        [DataMember(Name="emailAddress", EmitDefaultValue=false)]
         public string EmailAddress { get; private set; }
 
         /// <summary>
         /// Gets or Sets FamilyName
         /// </summary>
-        [DataMember(Name="familyName", EmitDefaultValue=true)]
+        [DataMember(Name="familyName", EmitDefaultValue=false)]
         public string FamilyName { get; private set; }
 
         /// <summary>
         /// Gets or Sets GivenName
         /// </summary>
-        [DataMember(Name="givenName", EmitDefaultValue=true)]
+        [DataMember(Name="givenName", EmitDefaultValue=false)]
         public string GivenName { get; private set; }
 
         /// <summary>
         /// Gets or Sets MobilePhoneNumber
         /// </summary>
-        [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=true)]
+        [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=false)]
         public string MobilePhoneNumber { get; private set; }
 
         /// <summary>
         /// Gets or Sets OrganizationName
         /// </summary>
-        [DataMember(Name="organizationName", EmitDefaultValue=true)]
+        [DataMember(Name="organizationName", EmitDefaultValue=false)]
         public string OrganizationName { get; private set; }
 
         /// <summary>
         /// Gets or Sets PhoneNumber
         /// </summary>
-        [DataMember(Name="phoneNumber", EmitDefaultValue=true)]
+        [DataMember(Name="phoneNumber", EmitDefaultValue=false)]
         public string PhoneNumber { get; private set; }
 
         /// <summary>
         /// Gets or Sets PostalState
         /// </summary>
-        [DataMember(Name="postalState", EmitDefaultValue=true)]
+        [DataMember(Name="postalState", EmitDefaultValue=false)]
         public string PostalState { get; private set; }
 
         /// <summary>
         /// Gets or Sets Postcode
         /// </summary>
-        [DataMember(Name="postcode", EmitDefaultValue=true)]
+        [DataMember(Name="postcode", EmitDefaultValue=false)]
         public string Postcode { get; private set; }
 
         /// <summary>
         /// Gets or Sets Salutation
         /// </summary>
-        [DataMember(Name="salutation", EmitDefaultValue=true)]
+        [DataMember(Name="salutation", EmitDefaultValue=false)]
         public string Salutation { get; private set; }
 
         /// <summary>
         /// The sorting code identifies the post office at which the post box is located in.
         /// </summary>
         /// <value>The sorting code identifies the post office at which the post box is located in.</value>
-        [DataMember(Name="sortingCode", EmitDefaultValue=true)]
+        [DataMember(Name="sortingCode", EmitDefaultValue=false)]
         public string SortingCode { get; private set; }
 
         /// <summary>
         /// Gets or Sets Street
         /// </summary>
-        [DataMember(Name="street", EmitDefaultValue=true)]
+        [DataMember(Name="street", EmitDefaultValue=false)]
         public string Street { get; private set; }
 
         /// <summary>

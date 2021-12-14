@@ -24,24 +24,24 @@ namespace Wallee.Model
         /// The billing address handling mode controls if the address is collected or not and how it is collected.
         /// </summary>
         /// <value>The billing address handling mode controls if the address is collected or not and how it is collected.</value>
-        [DataMember(Name="billingAddressHandlingMode", EmitDefaultValue=true)]
+        [DataMember(Name="billingAddressHandlingMode", EmitDefaultValue=false)]
         public PaymentLinkAddressHandlingMode? BillingAddressHandlingMode { get; set; }
         /// <summary>
         /// The protection mode determines if the payment link is protected against tampering and in what way.
         /// </summary>
         /// <value>The protection mode determines if the payment link is protected against tampering and in what way.</value>
-        [DataMember(Name="protectionMode", EmitDefaultValue=true)]
+        [DataMember(Name="protectionMode", EmitDefaultValue=false)]
         public PaymentLinkProtectionMode? ProtectionMode { get; set; }
         /// <summary>
         /// The shipping address handling mode controls if the address is collected or not and how it is collected.
         /// </summary>
         /// <value>The shipping address handling mode controls if the address is collected or not and how it is collected.</value>
-        [DataMember(Name="shippingAddressHandlingMode", EmitDefaultValue=true)]
+        [DataMember(Name="shippingAddressHandlingMode", EmitDefaultValue=false)]
         public PaymentLinkAddressHandlingMode? ShippingAddressHandlingMode { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentLink" /> class.
@@ -55,28 +55,28 @@ namespace Wallee.Model
         /// The allowed payment method configurations restrict the payment methods which can be used with this payment link.
         /// </summary>
         /// <value>The allowed payment method configurations restrict the payment methods which can be used with this payment link.</value>
-        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=true)]
+        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<PaymentMethodConfiguration> AllowedPaymentMethodConfigurations { get; private set; }
 
         /// <summary>
         /// The payment link can be conducted in a specific space view. The space view may apply a specific design to the payment page.
         /// </summary>
         /// <value>The payment link can be conducted in a specific space view. The space view may apply a specific design to the payment page.</value>
-        [DataMember(Name="appliedSpaceView", EmitDefaultValue=true)]
+        [DataMember(Name="appliedSpaceView", EmitDefaultValue=false)]
         public long? AppliedSpaceView { get; private set; }
 
         /// <summary>
         /// The available from date defines the earliest date on which the payment link can be used. When no date is specified there will be no restriction.
         /// </summary>
         /// <value>The available from date defines the earliest date on which the payment link can be used. When no date is specified there will be no restriction.</value>
-        [DataMember(Name="availableFrom", EmitDefaultValue=true)]
+        [DataMember(Name="availableFrom", EmitDefaultValue=false)]
         public DateTime? AvailableFrom { get; private set; }
 
         /// <summary>
         /// The available from date defines the latest date on which the payment link can be used to initialize a transaction. When no date is specified there will be no restriction.
         /// </summary>
         /// <value>The available from date defines the latest date on which the payment link can be used to initialize a transaction. When no date is specified there will be no restriction.</value>
-        [DataMember(Name="availableUntil", EmitDefaultValue=true)]
+        [DataMember(Name="availableUntil", EmitDefaultValue=false)]
         public DateTime? AvailableUntil { get; private set; }
 
 
@@ -84,63 +84,63 @@ namespace Wallee.Model
         /// The currency defines in which currency the payment is executed in. If no currency is defined it has to be specified within the request parameter &#39;currency&#39;.
         /// </summary>
         /// <value>The currency defines in which currency the payment is executed in. If no currency is defined it has to be specified within the request parameter &#39;currency&#39;.</value>
-        [DataMember(Name="currency", EmitDefaultValue=true)]
+        [DataMember(Name="currency", EmitDefaultValue=false)]
         public string Currency { get; private set; }
 
         /// <summary>
         /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
         /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The language defines the language of the payment page. If no language is provided it can be provided through the request parameter.
         /// </summary>
         /// <value>The language defines the language of the payment page. If no language is provided it can be provided through the request parameter.</value>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters.
         /// </summary>
         /// <value>The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters.</value>
-        [DataMember(Name="lineItems", EmitDefaultValue=true)]
+        [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItem> LineItems { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The maximal number of transactions limits the number of transactions which can be created with this payment link.
         /// </summary>
         /// <value>The maximal number of transactions limits the number of transactions which can be created with this payment link.</value>
-        [DataMember(Name="maximalNumberOfTransactions", EmitDefaultValue=true)]
+        [DataMember(Name="maximalNumberOfTransactions", EmitDefaultValue=false)]
         public int? MaximalNumberOfTransactions { get; private set; }
 
         /// <summary>
         /// The payment link name is used internally to identify the payment link. For example the name is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The payment link name is used internally to identify the payment link. For example the name is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
 
@@ -150,14 +150,14 @@ namespace Wallee.Model
         /// The URL defines the URL to which the user has to be forwarded to initialize the payment.
         /// </summary>
         /// <value>The URL defines the URL to which the user has to be forwarded to initialize the payment.</value>
-        [DataMember(Name="url", EmitDefaultValue=true)]
+        [DataMember(Name="url", EmitDefaultValue=false)]
         public string Url { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

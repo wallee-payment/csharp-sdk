@@ -34,45 +34,45 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets BankTransaction
         /// </summary>
-        [DataMember(Name="bankTransaction", EmitDefaultValue=true)]
+        [DataMember(Name="bankTransaction", EmitDefaultValue=false)]
         public BankTransaction BankTransaction { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
         /// Gets or Sets Refund
         /// </summary>
-        [DataMember(Name="refund", EmitDefaultValue=true)]
+        [DataMember(Name="refund", EmitDefaultValue=false)]
         public Refund Refund { get; private set; }
 
         /// <summary>
         /// Specify the posting amount in the refund&#39;s currency.
         /// </summary>
         /// <value>Specify the posting amount in the refund&#39;s currency.</value>
-        [DataMember(Name="refundCurrencyAmount", EmitDefaultValue=true)]
+        [DataMember(Name="refundCurrencyAmount", EmitDefaultValue=false)]
         public decimal? RefundCurrencyAmount { get; private set; }
 
         /// <summary>
         /// Gets or Sets RefundCurrencyValueAmount
         /// </summary>
-        [DataMember(Name="refundCurrencyValueAmount", EmitDefaultValue=true)]
+        [DataMember(Name="refundCurrencyValueAmount", EmitDefaultValue=false)]
         public decimal? RefundCurrencyValueAmount { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

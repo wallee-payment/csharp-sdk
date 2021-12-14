@@ -31,50 +31,50 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets CompanyName
         /// </summary>
-        [DataMember(Name="companyName", EmitDefaultValue=true)]
+        [DataMember(Name="companyName", EmitDefaultValue=false)]
         public Dictionary<string, string> CompanyName { get; private set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=true)]
+        [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// Gets or Sets Feature
         /// </summary>
-        [DataMember(Name="feature", EmitDefaultValue=true)]
+        [DataMember(Name="feature", EmitDefaultValue=false)]
         public long? Feature { get; private set; }
 
         /// <summary>
         /// Gets or Sets HeadquartersLocation
         /// </summary>
-        [DataMember(Name="headquartersLocation", EmitDefaultValue=true)]
+        [DataMember(Name="headquartersLocation", EmitDefaultValue=false)]
         public Dictionary<string, string> HeadquartersLocation { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets LogoPath
         /// </summary>
-        [DataMember(Name="logoPath", EmitDefaultValue=true)]
+        [DataMember(Name="logoPath", EmitDefaultValue=false)]
         public string LogoPath { get; private set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProductName
         /// </summary>
-        [DataMember(Name="productName", EmitDefaultValue=true)]
+        [DataMember(Name="productName", EmitDefaultValue=false)]
         public Dictionary<string, string> ProductName { get; private set; }
 
         /// <summary>

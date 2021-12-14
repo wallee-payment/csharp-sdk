@@ -31,21 +31,21 @@ namespace Wallee.Model
         /// This flag indicates whether the connector supports multiple refunds for a single transaction or not.
         /// </summary>
         /// <value>This flag indicates whether the connector supports multiple refunds for a single transaction or not.</value>
-        [DataMember(Name="multipleRefundsSupported", EmitDefaultValue=true)]
+        [DataMember(Name="multipleRefundsSupported", EmitDefaultValue=false)]
         public bool? MultipleRefundsSupported { get; set; }
 
         /// <summary>
         /// The refund endpoint is invoked to request the payment service provider to execute a refund.
         /// </summary>
         /// <value>The refund endpoint is invoked to request the payment service provider to execute a refund.</value>
-        [DataMember(Name="refundEndpoint", EmitDefaultValue=true)]
+        [DataMember(Name="refundEndpoint", EmitDefaultValue=false)]
         public string RefundEndpoint { get; set; }
 
         /// <summary>
         /// When the refund is triggered we expect a feedback about the state of it. This timeout defines after how long we consider the refund as failed without receiving a final state update.
         /// </summary>
         /// <value>When the refund is triggered we expect a feedback about the state of it. This timeout defines after how long we consider the refund as failed without receiving a final state update.</value>
-        [DataMember(Name="refundTimeoutInMinutes", EmitDefaultValue=true)]
+        [DataMember(Name="refundTimeoutInMinutes", EmitDefaultValue=false)]
         public int? RefundTimeoutInMinutes { get; set; }
 
         /// <summary>

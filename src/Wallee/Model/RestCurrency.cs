@@ -32,21 +32,21 @@ namespace Wallee.Model
         /// The currency code identifies the currency with the three char long ISO 4217 code (e.g. USD, CHF, EUR).
         /// </summary>
         /// <value>The currency code identifies the currency with the three char long ISO 4217 code (e.g. USD, CHF, EUR).</value>
-        [DataMember(Name="currencyCode", EmitDefaultValue=true)]
+        [DataMember(Name="currencyCode", EmitDefaultValue=false)]
         public string CurrencyCode { get; private set; }
 
         /// <summary>
         /// The fraction digits indicates how many places the currency has. This also indicates with which precision we calculate internally when we do calculations with this currency.
         /// </summary>
         /// <value>The fraction digits indicates how many places the currency has. This also indicates with which precision we calculate internally when we do calculations with this currency.</value>
-        [DataMember(Name="fractionDigits", EmitDefaultValue=true)]
+        [DataMember(Name="fractionDigits", EmitDefaultValue=false)]
         public int? FractionDigits { get; private set; }
 
         /// <summary>
         /// The numeric code identifies the currency with the three digit long ISO 4217 code (e.g. 978, 756, 840).
         /// </summary>
         /// <value>The numeric code identifies the currency with the three digit long ISO 4217 code (e.g. 978, 756, 840).</value>
-        [DataMember(Name="numericCode", EmitDefaultValue=true)]
+        [DataMember(Name="numericCode", EmitDefaultValue=false)]
         public int? NumericCode { get; private set; }
 
         /// <summary>

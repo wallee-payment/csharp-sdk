@@ -42,20 +42,20 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets EmailAddress
         /// </summary>
-        [DataMember(Name="emailAddress", EmitDefaultValue=true)]
+        [DataMember(Name="emailAddress", EmitDefaultValue=false)]
         public string EmailAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets PhoneNumber
         /// </summary>
-        [DataMember(Name="phoneNumber", EmitDefaultValue=true)]
+        [DataMember(Name="phoneNumber", EmitDefaultValue=false)]
         public string PhoneNumber { get; set; }
 
         /// <summary>
         /// The customer ID has to correspond to the ID assigned to the customer by Shopify. When the subscriber already exists no new subscriber will be created.
         /// </summary>
         /// <value>The customer ID has to correspond to the ID assigned to the customer by Shopify. When the subscriber already exists no new subscriber will be created.</value>
-        [DataMember(Name="shopifyCustomerId", EmitDefaultValue=true)]
+        [DataMember(Name="shopifyCustomerId", EmitDefaultValue=false)]
         public string ShopifyCustomerId { get; set; }
 
         /// <summary>

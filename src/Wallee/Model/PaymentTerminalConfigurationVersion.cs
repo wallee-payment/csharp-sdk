@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public PaymentTerminalConfigurationVersionState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentTerminalConfigurationVersion" /> class.
@@ -36,86 +36,86 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Configuration
         /// </summary>
-        [DataMember(Name="configuration", EmitDefaultValue=true)]
+        [DataMember(Name="configuration", EmitDefaultValue=false)]
         public PaymentTerminalConfiguration Configuration { get; private set; }
 
         /// <summary>
         /// Gets or Sets ConnectorConfigurations
         /// </summary>
-        [DataMember(Name="connectorConfigurations", EmitDefaultValue=true)]
+        [DataMember(Name="connectorConfigurations", EmitDefaultValue=false)]
         public List<long?> ConnectorConfigurations { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=true)]
+        [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The currency is derived by default from the terminal location. By setting a specific currency the derived currency is overridden.
         /// </summary>
         /// <value>The currency is derived by default from the terminal location. By setting a specific currency the derived currency is overridden.</value>
-        [DataMember(Name="defaultCurrency", EmitDefaultValue=true)]
+        [DataMember(Name="defaultCurrency", EmitDefaultValue=false)]
         public string DefaultCurrency { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets MaintenanceWindowDuration
         /// </summary>
-        [DataMember(Name="maintenanceWindowDuration", EmitDefaultValue=true)]
+        [DataMember(Name="maintenanceWindowDuration", EmitDefaultValue=false)]
         public string MaintenanceWindowDuration { get; private set; }
 
         /// <summary>
         /// Gets or Sets MaintenanceWindowStart
         /// </summary>
-        [DataMember(Name="maintenanceWindowStart", EmitDefaultValue=true)]
+        [DataMember(Name="maintenanceWindowStart", EmitDefaultValue=false)]
         public string MaintenanceWindowStart { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets TimeZone
         /// </summary>
-        [DataMember(Name="timeZone", EmitDefaultValue=true)]
+        [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>
         /// Gets or Sets VersionAppliedImmediately
         /// </summary>
-        [DataMember(Name="versionAppliedImmediately", EmitDefaultValue=true)]
+        [DataMember(Name="versionAppliedImmediately", EmitDefaultValue=false)]
         public bool? VersionAppliedImmediately { get; private set; }
 
         /// <summary>

@@ -78,56 +78,56 @@ namespace Wallee.Model
         /// When the transaction is not authorized within this timeout the transaction is considered as failed.
         /// </summary>
         /// <value>When the transaction is not authorized within this timeout the transaction is considered as failed.</value>
-        [DataMember(Name="authorizationTimeoutInMinutes", EmitDefaultValue=true)]
+        [DataMember(Name="authorizationTimeoutInMinutes", EmitDefaultValue=false)]
         public int? AuthorizationTimeoutInMinutes { get; set; }
 
         /// <summary>
         /// The completion configuration allows the connector to support deferred completions on a transaction. If it is not provided the connector will not process transactions in deferred mode.
         /// </summary>
         /// <value>The completion configuration allows the connector to support deferred completions on a transaction. If it is not provided the connector will not process transactions in deferred mode.</value>
-        [DataMember(Name="completionConfiguration", EmitDefaultValue=true)]
+        [DataMember(Name="completionConfiguration", EmitDefaultValue=false)]
         public PaymentAppCompletionConfigurationCreate CompletionConfiguration { get; set; }
 
         /// <summary>
         /// The ID of the connector identifies which connector that should be linked with this web app connector. The connector defines the payment method.
         /// </summary>
         /// <value>The ID of the connector identifies which connector that should be linked with this web app connector. The connector defines the payment method.</value>
-        [DataMember(Name="connector", EmitDefaultValue=true)]
+        [DataMember(Name="connector", EmitDefaultValue=false)]
         public long? Connector { get; set; }
 
         /// <summary>
         /// The external ID identifies the connector within the external system. It has to be unique per processor external ID and for any subsequent update the same ID must be sent.
         /// </summary>
         /// <value>The external ID identifies the connector within the external system. It has to be unique per processor external ID and for any subsequent update the same ID must be sent.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
         /// <summary>
         /// The name of the connector will be displayed within the user interfaces that the merchant is interacting with.
         /// </summary>
         /// <value>The name of the connector will be displayed within the user interfaces that the merchant is interacting with.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The payment page endpoint URL will be invoked by the buyer to carry out the authorization of the payment.
         /// </summary>
         /// <value>The payment page endpoint URL will be invoked by the buyer to carry out the authorization of the payment.</value>
-        [DataMember(Name="paymentPageEndpoint", EmitDefaultValue=true)]
+        [DataMember(Name="paymentPageEndpoint", EmitDefaultValue=false)]
         public string PaymentPageEndpoint { get; set; }
 
         /// <summary>
         /// The external ID of the processor identifies the processor to which this connector belongs to. The processor cannot be changed once it has been set on a connector.
         /// </summary>
         /// <value>The external ID of the processor identifies the processor to which this connector belongs to. The processor cannot be changed once it has been set on a connector.</value>
-        [DataMember(Name="processorExternalId", EmitDefaultValue=true)]
+        [DataMember(Name="processorExternalId", EmitDefaultValue=false)]
         public string ProcessorExternalId { get; set; }
 
         /// <summary>
         /// The refund configuration allows the connector to support refunds on transactions. In case no refund configuration is provided the connector will not support refunds.
         /// </summary>
         /// <value>The refund configuration allows the connector to support refunds on transactions. In case no refund configuration is provided the connector will not support refunds.</value>
-        [DataMember(Name="refundConfiguration", EmitDefaultValue=true)]
+        [DataMember(Name="refundConfiguration", EmitDefaultValue=false)]
         public PaymentAppRefundConfigurationCreate RefundConfiguration { get; set; }
 
         /// <summary>

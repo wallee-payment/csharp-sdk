@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=true)]
+        [DataMember(Name="type", EmitDefaultValue=false)]
         public ProductFeeType? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductPeriodFee" /> class.
@@ -36,56 +36,56 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Component
         /// </summary>
-        [DataMember(Name="component", EmitDefaultValue=true)]
+        [DataMember(Name="component", EmitDefaultValue=false)]
         public SubscriptionProductComponent Component { get; private set; }
 
         /// <summary>
         /// The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
         /// </summary>
         /// <value>The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.</value>
-        [DataMember(Name="description", EmitDefaultValue=true)]
+        [DataMember(Name="description", EmitDefaultValue=false)]
         public DatabaseTranslatedString Description { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The ledger entry title will be used for the title in the ledger entry and in the invoice.
         /// </summary>
         /// <value>The ledger entry title will be used for the title in the ledger entry and in the invoice.</value>
-        [DataMember(Name="ledgerEntryTitle", EmitDefaultValue=true)]
+        [DataMember(Name="ledgerEntryTitle", EmitDefaultValue=false)]
         public DatabaseTranslatedString LedgerEntryTitle { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The name of the fee should describe for the subscriber in few words for what the fee is for.
         /// </summary>
         /// <value>The name of the fee should describe for the subscriber in few words for what the fee is for.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public DatabaseTranslatedString Name { get; private set; }
 
         /// <summary>
         /// The number of free trial periods specify how many periods are free of charge at the begining of the subscription.
         /// </summary>
         /// <value>The number of free trial periods specify how many periods are free of charge at the begining of the subscription.</value>
-        [DataMember(Name="numberOfFreeTrialPeriods", EmitDefaultValue=true)]
+        [DataMember(Name="numberOfFreeTrialPeriods", EmitDefaultValue=false)]
         public int? NumberOfFreeTrialPeriods { get; private set; }
 
         /// <summary>
         /// The period fee is charged for every period of the subscription except for those periods which are trial periods.
         /// </summary>
         /// <value>The period fee is charged for every period of the subscription except for those periods which are trial periods.</value>
-        [DataMember(Name="periodFee", EmitDefaultValue=true)]
+        [DataMember(Name="periodFee", EmitDefaultValue=false)]
         public List<PersistableCurrencyAmount> PeriodFee { get; private set; }
 
 
@@ -93,7 +93,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

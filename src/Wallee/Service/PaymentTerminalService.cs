@@ -109,6 +109,29 @@ namespace Wallee.Service
         /// <returns>ApiResponse of List&lt;PaymentTerminal&gt;</returns>
         ApiResponse<List<PaymentTerminal>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
         /// <summary>
+        /// Remotely Trigger Final Balance
+        /// </summary>
+        /// <remarks>
+        /// Remotely triggers the final balance receipt on the terminal.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="terminalId"></param>
+        /// <returns></returns>
+        void TriggerFinalBalance (long? spaceId, long? terminalId);
+
+        /// <summary>
+        /// Remotely Trigger Final Balance
+        /// </summary>
+        /// <remarks>
+        /// Remotely triggers the final balance receipt on the terminal.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="terminalId"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> TriggerFinalBalanceWithHttpInfo (long? spaceId, long? terminalId);
+        /// <summary>
         /// Unlink Device With Terminal
         /// </summary>
         /// <remarks>
@@ -494,6 +517,76 @@ namespace Wallee.Service
             return new ApiResponse<List<PaymentTerminal>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 (List<PaymentTerminal>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PaymentTerminal>)));
+        }
+        /// <summary>
+        /// Remotely Trigger Final Balance Remotely triggers the final balance receipt on the terminal.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="terminalId"></param>
+        /// <returns></returns>
+        public void TriggerFinalBalance (long? spaceId, long? terminalId)
+        {
+             TriggerFinalBalanceWithHttpInfo(spaceId, terminalId);
+        }
+
+        /// <summary>
+        /// Remotely Trigger Final Balance Remotely triggers the final balance receipt on the terminal.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="spaceId"></param>
+        /// <param name="terminalId"></param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> TriggerFinalBalanceWithHttpInfo (long? spaceId, long? terminalId)
+        {
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling PaymentTerminalService->TriggerFinalBalance");
+            // verify the required parameter 'terminalId' is set
+            if (terminalId == null)
+                throw new ApiException(400, "Missing required parameter 'terminalId' when calling PaymentTerminalService->TriggerFinalBalance");
+
+            var localVarPath = "/payment-terminal/trigger-final-balance";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
+            if (terminalId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "terminalId", terminalId)); // query parameter
+
+			
+			this.Configuration.ApiClient.ResetTimeout();
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("TriggerFinalBalance", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<Object>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                null);
         }
         /// <summary>
         /// Unlink Device With Terminal Unlinks the device from terminal.

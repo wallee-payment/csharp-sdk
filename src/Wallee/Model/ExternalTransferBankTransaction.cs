@@ -31,46 +31,46 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets BankTransaction
         /// </summary>
-        [DataMember(Name="bankTransaction", EmitDefaultValue=true)]
+        [DataMember(Name="bankTransaction", EmitDefaultValue=false)]
         public BankTransaction BankTransaction { get; private set; }
 
         /// <summary>
         /// Gets or Sets ExternalAccountIdentifier
         /// </summary>
-        [DataMember(Name="externalAccountIdentifier", EmitDefaultValue=true)]
+        [DataMember(Name="externalAccountIdentifier", EmitDefaultValue=false)]
         public string ExternalAccountIdentifier { get; private set; }
 
         /// <summary>
         /// Gets or Sets ExternalAccountType
         /// </summary>
-        [DataMember(Name="externalAccountType", EmitDefaultValue=true)]
+        [DataMember(Name="externalAccountType", EmitDefaultValue=false)]
         public string ExternalAccountType { get; private set; }
 
         /// <summary>
         /// Gets or Sets ExternalBankName
         /// </summary>
-        [DataMember(Name="externalBankName", EmitDefaultValue=true)]
+        [DataMember(Name="externalBankName", EmitDefaultValue=false)]
         public string ExternalBankName { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

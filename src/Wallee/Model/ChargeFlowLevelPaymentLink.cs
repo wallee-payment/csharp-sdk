@@ -34,13 +34,13 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ChargeFlowLevel
         /// </summary>
-        [DataMember(Name="chargeFlowLevel", EmitDefaultValue=true)]
+        [DataMember(Name="chargeFlowLevel", EmitDefaultValue=false)]
         public ChargeFlowLevel ChargeFlowLevel { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentLink
         /// </summary>
-        [DataMember(Name="paymentLink", EmitDefaultValue=true)]
+        [DataMember(Name="paymentLink", EmitDefaultValue=false)]
         public string PaymentLink { get; private set; }
 
         /// <summary>

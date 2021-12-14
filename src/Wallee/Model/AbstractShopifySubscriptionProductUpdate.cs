@@ -24,18 +24,18 @@ namespace Wallee.Model
         /// Define how frequently recurring orders should be created.
         /// </summary>
         /// <value>Define how frequently recurring orders should be created.</value>
-        [DataMember(Name="billingIntervalUnit", EmitDefaultValue=true)]
+        [DataMember(Name="billingIntervalUnit", EmitDefaultValue=false)]
         public ShopifySubscriptionBillingIntervalUnit? BillingIntervalUnit { get; set; }
         /// <summary>
         /// Define the weekday on which the recurring orders should be created.
         /// </summary>
         /// <value>Define the weekday on which the recurring orders should be created.</value>
-        [DataMember(Name="billingWeekday", EmitDefaultValue=true)]
+        [DataMember(Name="billingWeekday", EmitDefaultValue=false)]
         public ShopifySubscriptionWeekday? BillingWeekday { get; set; }
         /// <summary>
         /// Gets or Sets PricingOption
         /// </summary>
-        [DataMember(Name="pricingOption", EmitDefaultValue=true)]
+        [DataMember(Name="pricingOption", EmitDefaultValue=false)]
         public ShopifySubscriptionProductPricingOption? PricingOption { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractShopifySubscriptionProductUpdate" /> class.
@@ -47,20 +47,20 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AbsolutePriceAdjustment
         /// </summary>
-        [DataMember(Name="absolutePriceAdjustment", EmitDefaultValue=true)]
+        [DataMember(Name="absolutePriceAdjustment", EmitDefaultValue=false)]
         public decimal? AbsolutePriceAdjustment { get; set; }
 
         /// <summary>
         /// Define the day of the month on which the recurring orders should be created.
         /// </summary>
         /// <value>Define the day of the month on which the recurring orders should be created.</value>
-        [DataMember(Name="billingDayOfMonth", EmitDefaultValue=true)]
+        [DataMember(Name="billingDayOfMonth", EmitDefaultValue=false)]
         public int? BillingDayOfMonth { get; set; }
 
         /// <summary>
         /// Gets or Sets BillingIntervalAmount
         /// </summary>
-        [DataMember(Name="billingIntervalAmount", EmitDefaultValue=true)]
+        [DataMember(Name="billingIntervalAmount", EmitDefaultValue=false)]
         public int? BillingIntervalAmount { get; set; }
 
 
@@ -68,56 +68,56 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets FixedPrice
         /// </summary>
-        [DataMember(Name="fixedPrice", EmitDefaultValue=true)]
+        [DataMember(Name="fixedPrice", EmitDefaultValue=false)]
         public decimal? FixedPrice { get; set; }
 
         /// <summary>
         /// Define the maximum number of orders the subscription will run for.
         /// </summary>
         /// <value>Define the maximum number of orders the subscription will run for.</value>
-        [DataMember(Name="maximalBillingCycles", EmitDefaultValue=true)]
+        [DataMember(Name="maximalBillingCycles", EmitDefaultValue=false)]
         public int? MaximalBillingCycles { get; set; }
 
         /// <summary>
         /// Define the maximum number of orders the subscription can be suspended for at a time.
         /// </summary>
         /// <value>Define the maximum number of orders the subscription can be suspended for at a time.</value>
-        [DataMember(Name="maximalSuspendableCycles", EmitDefaultValue=true)]
+        [DataMember(Name="maximalSuspendableCycles", EmitDefaultValue=false)]
         public int? MaximalSuspendableCycles { get; set; }
 
         /// <summary>
         /// Define the minimal number of orders the subscription will run for.
         /// </summary>
         /// <value>Define the minimal number of orders the subscription will run for.</value>
-        [DataMember(Name="minimalBillingCycles", EmitDefaultValue=true)]
+        [DataMember(Name="minimalBillingCycles", EmitDefaultValue=false)]
         public int? MinimalBillingCycles { get; set; }
 
 
         /// <summary>
         /// Gets or Sets RelativePriceAdjustment
         /// </summary>
-        [DataMember(Name="relativePriceAdjustment", EmitDefaultValue=true)]
+        [DataMember(Name="relativePriceAdjustment", EmitDefaultValue=false)]
         public decimal? RelativePriceAdjustment { get; set; }
 
         /// <summary>
         /// Define whether the order confirmation email of the Shopify shop is sent to the customer for recurring orders.
         /// </summary>
         /// <value>Define whether the order confirmation email of the Shopify shop is sent to the customer for recurring orders.</value>
-        [DataMember(Name="storeOrderConfirmationEmailEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="storeOrderConfirmationEmailEnabled", EmitDefaultValue=false)]
         public bool? StoreOrderConfirmationEmailEnabled { get; set; }
 
         /// <summary>
         /// Define whether the customer is allowed to suspend subscriptions.
         /// </summary>
         /// <value>Define whether the customer is allowed to suspend subscriptions.</value>
-        [DataMember(Name="subscriberSuspensionAllowed", EmitDefaultValue=true)]
+        [DataMember(Name="subscriberSuspensionAllowed", EmitDefaultValue=false)]
         public bool? SubscriberSuspensionAllowed { get; set; }
 
         /// <summary>
         /// Define the number of orders the subscription will keep running for after its termination has been requested.
         /// </summary>
         /// <value>Define the number of orders the subscription will keep running for after its termination has been requested.</value>
-        [DataMember(Name="terminationBillingCycles", EmitDefaultValue=true)]
+        [DataMember(Name="terminationBillingCycles", EmitDefaultValue=false)]
         public int? TerminationBillingCycles { get; set; }
 
         /// <summary>

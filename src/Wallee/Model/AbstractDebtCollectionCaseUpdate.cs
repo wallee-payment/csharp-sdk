@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.
         /// </summary>
         /// <value>The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.</value>
-        [DataMember(Name="environment", EmitDefaultValue=true)]
+        [DataMember(Name="environment", EmitDefaultValue=false)]
         public DebtCollectionEnvironment? Environment { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractDebtCollectionCaseUpdate" /> class.
@@ -37,28 +37,28 @@ namespace Wallee.Model
         /// The billing address of the case identifies the debtor.
         /// </summary>
         /// <value>The billing address of the case identifies the debtor.</value>
-        [DataMember(Name="billingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public AddressCreate BillingAddress { get; set; }
 
         /// <summary>
         /// The contract date is the date on which the contract with the debtor was signed on.
         /// </summary>
         /// <value>The contract date is the date on which the contract with the debtor was signed on.</value>
-        [DataMember(Name="contractDate", EmitDefaultValue=true)]
+        [DataMember(Name="contractDate", EmitDefaultValue=false)]
         public DateTime? ContractDate { get; set; }
 
         /// <summary>
         /// The currency defines the billing currency of the debt collection case.
         /// </summary>
         /// <value>The currency defines the billing currency of the debt collection case.</value>
-        [DataMember(Name="currency", EmitDefaultValue=true)]
+        [DataMember(Name="currency", EmitDefaultValue=false)]
         public string Currency { get; set; }
 
         /// <summary>
         /// The due date indicates the date on which the amount receivable was due. This date has to be always in the past.
         /// </summary>
         /// <value>The due date indicates the date on which the amount receivable was due. This date has to be always in the past.</value>
-        [DataMember(Name="dueDate", EmitDefaultValue=true)]
+        [DataMember(Name="dueDate", EmitDefaultValue=false)]
         public DateTime? DueDate { get; set; }
 
 
@@ -66,20 +66,20 @@ namespace Wallee.Model
         /// The language indicates the language to be used in the communication with the debtor.
         /// </summary>
         /// <value>The language indicates the language to be used in the communication with the debtor.</value>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; set; }
 
         /// <summary>
         /// The line items of the debt collection case will be shown on documents sent to the debtor and the total of them makes up total amount to collect.
         /// </summary>
         /// <value>The line items of the debt collection case will be shown on documents sent to the debtor and the total of them makes up total amount to collect.</value>
-        [DataMember(Name="lineItems", EmitDefaultValue=true)]
+        [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItemCreate> LineItems { get; set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; set; }
 
         /// <summary>

@@ -64,35 +64,35 @@ namespace Wallee.Model
         /// The documentation URL has to point to a description of how to configure and use the processor.
         /// </summary>
         /// <value>The documentation URL has to point to a description of how to configure and use the processor.</value>
-        [DataMember(Name="documentationUrl", EmitDefaultValue=true)]
+        [DataMember(Name="documentationUrl", EmitDefaultValue=false)]
         public string DocumentationUrl { get; set; }
 
         /// <summary>
         /// The external ID identifies the processor within the external system. It has to be unique per space and for any subsequent update the same ID must be sent.
         /// </summary>
         /// <value>The external ID identifies the processor within the external system. It has to be unique per space and for any subsequent update the same ID must be sent.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
         /// <summary>
         /// The name of the processor will be displayed within the user interfaces that the merchant is interacting with.
         /// </summary>
         /// <value>The name of the processor will be displayed within the user interfaces that the merchant is interacting with.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
         /// The production mode URL has to point to a site on which the merchant can set up the production mode for the processor.
         /// </summary>
         /// <value>The production mode URL has to point to a site on which the merchant can set up the production mode for the processor.</value>
-        [DataMember(Name="productionModeUrl", EmitDefaultValue=true)]
+        [DataMember(Name="productionModeUrl", EmitDefaultValue=false)]
         public string ProductionModeUrl { get; set; }
 
         /// <summary>
         /// The SVG icon will be displayed to the user to represent this processor.
         /// </summary>
         /// <value>The SVG icon will be displayed to the user to represent this processor.</value>
-        [DataMember(Name="svgIcon", EmitDefaultValue=true)]
+        [DataMember(Name="svgIcon", EmitDefaultValue=false)]
         public string SvgIcon { get; set; }
 
         /// <summary>

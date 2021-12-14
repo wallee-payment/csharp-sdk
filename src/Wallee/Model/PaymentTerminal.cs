@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public PaymentTerminalState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentTerminal" /> class.
@@ -36,75 +36,75 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ConfigurationVersion
         /// </summary>
-        [DataMember(Name="configurationVersion", EmitDefaultValue=true)]
+        [DataMember(Name="configurationVersion", EmitDefaultValue=false)]
         public PaymentTerminalConfigurationVersion ConfigurationVersion { get; private set; }
 
         /// <summary>
         /// Gets or Sets DefaultCurrency
         /// </summary>
-        [DataMember(Name="defaultCurrency", EmitDefaultValue=true)]
+        [DataMember(Name="defaultCurrency", EmitDefaultValue=false)]
         public string DefaultCurrency { get; private set; }
 
         /// <summary>
         /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
         /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The identifier uniquely identifies the terminal. Normally it is visible on the device or in the display of the device.
         /// </summary>
         /// <value>The identifier uniquely identifies the terminal. Normally it is visible on the device or in the display of the device.</value>
-        [DataMember(Name="identifier", EmitDefaultValue=true)]
+        [DataMember(Name="identifier", EmitDefaultValue=false)]
         public string Identifier { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets LocationVersion
         /// </summary>
-        [DataMember(Name="locationVersion", EmitDefaultValue=true)]
+        [DataMember(Name="locationVersion", EmitDefaultValue=false)]
         public PaymentTerminalLocationVersion LocationVersion { get; private set; }
 
         /// <summary>
         /// The terminal name is used internally to identify the terminal in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The terminal name is used internally to identify the terminal in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=true)]
+        [DataMember(Name="type", EmitDefaultValue=false)]
         public PaymentTerminalType Type { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

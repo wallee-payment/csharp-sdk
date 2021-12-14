@@ -42,13 +42,13 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets NewLineItems
         /// </summary>
-        [DataMember(Name="newLineItems", EmitDefaultValue=true)]
+        [DataMember(Name="newLineItems", EmitDefaultValue=false)]
         public List<LineItemCreate> NewLineItems { get; set; }
 
         /// <summary>
         /// Gets or Sets TransactionId
         /// </summary>
-        [DataMember(Name="transactionId", EmitDefaultValue=true)]
+        [DataMember(Name="transactionId", EmitDefaultValue=false)]
         public long? TransactionId { get; set; }
 
         /// <summary>

@@ -62,41 +62,41 @@ namespace Wallee.Model
         /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
         /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
         /// <summary>
         /// The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
         /// </summary>
         /// <value>The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.</value>
-        [DataMember(Name="failedUrl", EmitDefaultValue=true)]
+        [DataMember(Name="failedUrl", EmitDefaultValue=false)]
         public string FailedUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets PlannedExecutionDate
         /// </summary>
-        [DataMember(Name="plannedExecutionDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedExecutionDate", EmitDefaultValue=false)]
         public DateTime? PlannedExecutionDate { get; set; }
 
 
         /// <summary>
         /// Gets or Sets Reference
         /// </summary>
-        [DataMember(Name="reference", EmitDefaultValue=true)]
+        [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// The field subscription indicates the subscription to which the charge belongs to.
         /// </summary>
         /// <value>The field subscription indicates the subscription to which the charge belongs to.</value>
-        [DataMember(Name="subscription", EmitDefaultValue=true)]
+        [DataMember(Name="subscription", EmitDefaultValue=false)]
         public long? Subscription { get; set; }
 
         /// <summary>
         /// The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
         /// </summary>
         /// <value>The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.</value>
-        [DataMember(Name="successUrl", EmitDefaultValue=true)]
+        [DataMember(Name="successUrl", EmitDefaultValue=false)]
         public string SuccessUrl { get; set; }
 
         /// <summary>

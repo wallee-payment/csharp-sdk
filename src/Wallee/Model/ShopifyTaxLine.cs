@@ -31,33 +31,33 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets FractionRate
         /// </summary>
-        [DataMember(Name="fractionRate", EmitDefaultValue=true)]
+        [DataMember(Name="fractionRate", EmitDefaultValue=false)]
         public decimal? FractionRate { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Rate
         /// </summary>
-        [DataMember(Name="rate", EmitDefaultValue=true)]
+        [DataMember(Name="rate", EmitDefaultValue=false)]
         public decimal? Rate { get; private set; }
 
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name="title", EmitDefaultValue=true)]
+        [DataMember(Name="title", EmitDefaultValue=false)]
         public string Title { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

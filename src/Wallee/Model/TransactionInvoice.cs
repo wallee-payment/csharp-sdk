@@ -34,130 +34,130 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Amount
         /// </summary>
-        [DataMember(Name="amount", EmitDefaultValue=true)]
+        [DataMember(Name="amount", EmitDefaultValue=false)]
         public decimal? Amount { get; private set; }
 
         /// <summary>
         /// Gets or Sets BillingAddress
         /// </summary>
-        [DataMember(Name="billingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public Address BillingAddress { get; private set; }
 
         /// <summary>
         /// Gets or Sets Completion
         /// </summary>
-        [DataMember(Name="completion", EmitDefaultValue=true)]
+        [DataMember(Name="completion", EmitDefaultValue=false)]
         public TransactionCompletion Completion { get; private set; }
 
         /// <summary>
         /// The date on which the invoice is created on.
         /// </summary>
         /// <value>The date on which the invoice is created on.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The id of the user which marked the invoice as derecognized.
         /// </summary>
         /// <value>The id of the user which marked the invoice as derecognized.</value>
-        [DataMember(Name="derecognizedBy", EmitDefaultValue=true)]
+        [DataMember(Name="derecognizedBy", EmitDefaultValue=false)]
         public long? DerecognizedBy { get; private set; }
 
         /// <summary>
         /// The date on which the invoice is marked as derecognized.
         /// </summary>
         /// <value>The date on which the invoice is marked as derecognized.</value>
-        [DataMember(Name="derecognizedOn", EmitDefaultValue=true)]
+        [DataMember(Name="derecognizedOn", EmitDefaultValue=false)]
         public DateTime? DerecognizedOn { get; private set; }
 
         /// <summary>
         /// The date on which the invoice should be paid on.
         /// </summary>
         /// <value>The date on which the invoice should be paid on.</value>
-        [DataMember(Name="dueOn", EmitDefaultValue=true)]
+        [DataMember(Name="dueOn", EmitDefaultValue=false)]
         public DateTime? DueOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Environment
         /// </summary>
-        [DataMember(Name="environment", EmitDefaultValue=true)]
+        [DataMember(Name="environment", EmitDefaultValue=false)]
         public Environment Environment { get; private set; }
 
         /// <summary>
         /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
         /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
         /// Gets or Sets LineItems
         /// </summary>
-        [DataMember(Name="lineItems", EmitDefaultValue=true)]
+        [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItem> LineItems { get; private set; }
 
         /// <summary>
         /// Gets or Sets MerchantReference
         /// </summary>
-        [DataMember(Name="merchantReference", EmitDefaultValue=true)]
+        [DataMember(Name="merchantReference", EmitDefaultValue=false)]
         public string MerchantReference { get; private set; }
 
         /// <summary>
         /// The outstanding amount indicates how much the buyer owes the merchant. A negative amount indicates that the invoice is overpaid.
         /// </summary>
         /// <value>The outstanding amount indicates how much the buyer owes the merchant. A negative amount indicates that the invoice is overpaid.</value>
-        [DataMember(Name="outstandingAmount", EmitDefaultValue=true)]
+        [DataMember(Name="outstandingAmount", EmitDefaultValue=false)]
         public decimal? OutstandingAmount { get; private set; }
 
         /// <summary>
         /// The date on which the invoice is marked as paid. Eventually this date lags behind of the actual paid date.
         /// </summary>
         /// <value>The date on which the invoice is marked as paid. Eventually this date lags behind of the actual paid date.</value>
-        [DataMember(Name="paidOn", EmitDefaultValue=true)]
+        [DataMember(Name="paidOn", EmitDefaultValue=false)]
         public DateTime? PaidOn { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public TransactionInvoiceState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets TaxAmount
         /// </summary>
-        [DataMember(Name="taxAmount", EmitDefaultValue=true)]
+        [DataMember(Name="taxAmount", EmitDefaultValue=false)]
         public decimal? TaxAmount { get; private set; }
 
         /// <summary>
         /// Gets or Sets TimeZone
         /// </summary>
-        [DataMember(Name="timeZone", EmitDefaultValue=true)]
+        [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

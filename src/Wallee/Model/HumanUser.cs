@@ -32,82 +32,82 @@ namespace Wallee.Model
         /// The email address of the user.
         /// </summary>
         /// <value>The email address of the user.</value>
-        [DataMember(Name="emailAddress", EmitDefaultValue=true)]
+        [DataMember(Name="emailAddress", EmitDefaultValue=false)]
         public string EmailAddress { get; private set; }
 
         /// <summary>
         /// Defines whether a user is verified or not.
         /// </summary>
         /// <value>Defines whether a user is verified or not.</value>
-        [DataMember(Name="emailAddressVerified", EmitDefaultValue=true)]
+        [DataMember(Name="emailAddressVerified", EmitDefaultValue=false)]
         public bool? EmailAddressVerified { get; private set; }
 
         /// <summary>
         /// The first name of the user.
         /// </summary>
         /// <value>The first name of the user.</value>
-        [DataMember(Name="firstname", EmitDefaultValue=true)]
+        [DataMember(Name="firstname", EmitDefaultValue=false)]
         public string Firstname { get; private set; }
 
         /// <summary>
         /// The preferred language of the user.
         /// </summary>
         /// <value>The preferred language of the user.</value>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The last name of the user.
         /// </summary>
         /// <value>The last name of the user.</value>
-        [DataMember(Name="lastname", EmitDefaultValue=true)]
+        [DataMember(Name="lastname", EmitDefaultValue=false)]
         public string Lastname { get; private set; }
 
         /// <summary>
         /// Gets or Sets MobilePhoneNumber
         /// </summary>
-        [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=true)]
+        [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=false)]
         public string MobilePhoneNumber { get; private set; }
 
         /// <summary>
         /// Defines whether a users mobile phone number is verified or not.
         /// </summary>
         /// <value>Defines whether a users mobile phone number is verified or not.</value>
-        [DataMember(Name="mobilePhoneVerified", EmitDefaultValue=true)]
+        [DataMember(Name="mobilePhoneVerified", EmitDefaultValue=false)]
         public bool? MobilePhoneVerified { get; private set; }
 
         /// <summary>
         /// The primary account links the user to a specific account.
         /// </summary>
         /// <value>The primary account links the user to a specific account.</value>
-        [DataMember(Name="primaryAccount", EmitDefaultValue=true)]
+        [DataMember(Name="primaryAccount", EmitDefaultValue=false)]
         public Account PrimaryAccount { get; private set; }
 
         /// <summary>
         /// The scope to which the user belongs to.
         /// </summary>
         /// <value>The scope to which the user belongs to.</value>
-        [DataMember(Name="scope", EmitDefaultValue=true)]
+        [DataMember(Name="scope", EmitDefaultValue=false)]
         public Scope Scope { get; private set; }
 
         /// <summary>
         /// The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.
         /// </summary>
         /// <value>The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.</value>
-        [DataMember(Name="timeZone", EmitDefaultValue=true)]
+        [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; private set; }
 
         /// <summary>
         /// Defines whether two-factor authentication is enabled for this user.
         /// </summary>
         /// <value>Defines whether two-factor authentication is enabled for this user.</value>
-        [DataMember(Name="twoFactorEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="twoFactorEnabled", EmitDefaultValue=false)]
         public bool? TwoFactorEnabled { get; private set; }
 
         /// <summary>
         /// Gets or Sets TwoFactorType
         /// </summary>
-        [DataMember(Name="twoFactorType", EmitDefaultValue=true)]
+        [DataMember(Name="twoFactorType", EmitDefaultValue=false)]
         public TwoFactorAuthenticationType TwoFactorType { get; private set; }
 
         /// <summary>

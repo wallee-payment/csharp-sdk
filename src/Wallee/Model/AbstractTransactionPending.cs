@@ -24,13 +24,13 @@ namespace Wallee.Model
         /// The completion behavior controls when the transaction is completed.
         /// </summary>
         /// <value>The completion behavior controls when the transaction is completed.</value>
-        [DataMember(Name="completionBehavior", EmitDefaultValue=true)]
+        [DataMember(Name="completionBehavior", EmitDefaultValue=false)]
         public TransactionCompletionBehavior? CompletionBehavior { get; set; }
         /// <summary>
         /// The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
         /// </summary>
         /// <value>The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.</value>
-        [DataMember(Name="tokenizationMode", EmitDefaultValue=true)]
+        [DataMember(Name="tokenizationMode", EmitDefaultValue=false)]
         public TokenizationMode? TokenizationMode { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractTransactionPending" /> class.
@@ -42,109 +42,109 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AllowedPaymentMethodBrands
         /// </summary>
-        [DataMember(Name="allowedPaymentMethodBrands", EmitDefaultValue=true)]
+        [DataMember(Name="allowedPaymentMethodBrands", EmitDefaultValue=false)]
         public List<PaymentMethodBrand> AllowedPaymentMethodBrands { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedPaymentMethodConfigurations
         /// </summary>
-        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=true)]
+        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<long?> AllowedPaymentMethodConfigurations { get; set; }
 
         /// <summary>
         /// Gets or Sets BillingAddress
         /// </summary>
-        [DataMember(Name="billingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public AddressCreate BillingAddress { get; set; }
 
 
         /// <summary>
         /// Gets or Sets Currency
         /// </summary>
-        [DataMember(Name="currency", EmitDefaultValue=true)]
+        [DataMember(Name="currency", EmitDefaultValue=false)]
         public string Currency { get; set; }
 
         /// <summary>
         /// The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.
         /// </summary>
         /// <value>The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.</value>
-        [DataMember(Name="customerEmailAddress", EmitDefaultValue=true)]
+        [DataMember(Name="customerEmailAddress", EmitDefaultValue=false)]
         public string CustomerEmailAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets CustomerId
         /// </summary>
-        [DataMember(Name="customerId", EmitDefaultValue=true)]
+        [DataMember(Name="customerId", EmitDefaultValue=false)]
         public string CustomerId { get; set; }
 
         /// <summary>
         /// The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
         /// </summary>
         /// <value>The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.</value>
-        [DataMember(Name="failedUrl", EmitDefaultValue=true)]
+        [DataMember(Name="failedUrl", EmitDefaultValue=false)]
         public string FailedUrl { get; set; }
 
         /// <summary>
         /// Gets or Sets InvoiceMerchantReference
         /// </summary>
-        [DataMember(Name="invoiceMerchantReference", EmitDefaultValue=true)]
+        [DataMember(Name="invoiceMerchantReference", EmitDefaultValue=false)]
         public string InvoiceMerchantReference { get; set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; set; }
 
         /// <summary>
         /// Gets or Sets LineItems
         /// </summary>
-        [DataMember(Name="lineItems", EmitDefaultValue=true)]
+        [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItemCreate> LineItems { get; set; }
 
         /// <summary>
         /// Gets or Sets MerchantReference
         /// </summary>
-        [DataMember(Name="merchantReference", EmitDefaultValue=true)]
+        [DataMember(Name="merchantReference", EmitDefaultValue=false)]
         public string MerchantReference { get; set; }
 
         /// <summary>
         /// Meta data allow to store additional data along the object.
         /// </summary>
         /// <value>Meta data allow to store additional data along the object.</value>
-        [DataMember(Name="metaData", EmitDefaultValue=true)]
+        [DataMember(Name="metaData", EmitDefaultValue=false)]
         public Dictionary<string, string> MetaData { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
         /// </summary>
-        [DataMember(Name="shippingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
         public AddressCreate ShippingAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingMethod
         /// </summary>
-        [DataMember(Name="shippingMethod", EmitDefaultValue=true)]
+        [DataMember(Name="shippingMethod", EmitDefaultValue=false)]
         public string ShippingMethod { get; set; }
 
         /// <summary>
         /// The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
         /// </summary>
         /// <value>The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.</value>
-        [DataMember(Name="successUrl", EmitDefaultValue=true)]
+        [DataMember(Name="successUrl", EmitDefaultValue=false)]
         public string SuccessUrl { get; set; }
 
         /// <summary>
         /// The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
         /// </summary>
         /// <value>The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.</value>
-        [DataMember(Name="timeZone", EmitDefaultValue=true)]
+        [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; set; }
 
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
-        [DataMember(Name="token", EmitDefaultValue=true)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public long? Token { get; set; }
 
 

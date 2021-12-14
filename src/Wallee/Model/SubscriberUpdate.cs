@@ -50,75 +50,75 @@ namespace Wallee.Model
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public long? Version { get; set; }
 
         /// <summary>
         /// Those payment methods which are allowed additionally will be available even when the product does not allow those methods.
         /// </summary>
         /// <value>Those payment methods which are allowed additionally will be available even when the product does not allow those methods.</value>
-        [DataMember(Name="additionalAllowedPaymentMethodConfigurations", EmitDefaultValue=true)]
+        [DataMember(Name="additionalAllowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<long?> AdditionalAllowedPaymentMethodConfigurations { get; set; }
 
         /// <summary>
         /// Gets or Sets BillingAddress
         /// </summary>
-        [DataMember(Name="billingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public AddressCreate BillingAddress { get; set; }
 
         /// <summary>
         /// The subscriber description can be used to add a description to the subscriber. This is used in the back office to identify the subscriber.
         /// </summary>
         /// <value>The subscriber description can be used to add a description to the subscriber. This is used in the back office to identify the subscriber.</value>
-        [DataMember(Name="description", EmitDefaultValue=true)]
+        [DataMember(Name="description", EmitDefaultValue=false)]
         public string Description { get; set; }
 
         /// <summary>
         /// Those payment methods which are disallowed will not be available to the subscriber even if the product allows those methods.
         /// </summary>
         /// <value>Those payment methods which are disallowed will not be available to the subscriber even if the product allows those methods.</value>
-        [DataMember(Name="disallowedPaymentMethodConfigurations", EmitDefaultValue=true)]
+        [DataMember(Name="disallowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<long?> DisallowedPaymentMethodConfigurations { get; set; }
 
         /// <summary>
         /// The email address is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.
         /// </summary>
         /// <value>The email address is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.</value>
-        [DataMember(Name="emailAddress", EmitDefaultValue=true)]
+        [DataMember(Name="emailAddress", EmitDefaultValue=false)]
         public string EmailAddress { get; set; }
 
         /// <summary>
         /// The subscriber language determines the language which is used to communicate with the subscriber in emails and documents (e.g. invoices).
         /// </summary>
         /// <value>The subscriber language determines the language which is used to communicate with the subscriber in emails and documents (e.g. invoices).</value>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; set; }
 
         /// <summary>
         /// Meta data allow to store additional data along the object.
         /// </summary>
         /// <value>Meta data allow to store additional data along the object.</value>
-        [DataMember(Name="metaData", EmitDefaultValue=true)]
+        [DataMember(Name="metaData", EmitDefaultValue=false)]
         public Dictionary<string, string> MetaData { get; set; }
 
         /// <summary>
         /// The subscriber reference identifies the subscriber in administrative interfaces (e.g. customer id).
         /// </summary>
         /// <value>The subscriber reference identifies the subscriber in administrative interfaces (e.g. customer id).</value>
-        [DataMember(Name="reference", EmitDefaultValue=true)]
+        [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
         /// </summary>
-        [DataMember(Name="shippingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
         public AddressCreate ShippingAddress { get; set; }
 
         /// <summary>

@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Subscriber" /> class.
@@ -37,89 +37,89 @@ namespace Wallee.Model
         /// Those payment methods which are allowed additionally will be available even when the product does not allow those methods.
         /// </summary>
         /// <value>Those payment methods which are allowed additionally will be available even when the product does not allow those methods.</value>
-        [DataMember(Name="additionalAllowedPaymentMethodConfigurations", EmitDefaultValue=true)]
+        [DataMember(Name="additionalAllowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<long?> AdditionalAllowedPaymentMethodConfigurations { get; private set; }
 
         /// <summary>
         /// Gets or Sets BillingAddress
         /// </summary>
-        [DataMember(Name="billingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public Address BillingAddress { get; private set; }
 
         /// <summary>
         /// The subscriber description can be used to add a description to the subscriber. This is used in the back office to identify the subscriber.
         /// </summary>
         /// <value>The subscriber description can be used to add a description to the subscriber. This is used in the back office to identify the subscriber.</value>
-        [DataMember(Name="description", EmitDefaultValue=true)]
+        [DataMember(Name="description", EmitDefaultValue=false)]
         public string Description { get; private set; }
 
         /// <summary>
         /// Those payment methods which are disallowed will not be available to the subscriber even if the product allows those methods.
         /// </summary>
         /// <value>Those payment methods which are disallowed will not be available to the subscriber even if the product allows those methods.</value>
-        [DataMember(Name="disallowedPaymentMethodConfigurations", EmitDefaultValue=true)]
+        [DataMember(Name="disallowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<long?> DisallowedPaymentMethodConfigurations { get; private set; }
 
         /// <summary>
         /// The email address is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.
         /// </summary>
         /// <value>The email address is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.</value>
-        [DataMember(Name="emailAddress", EmitDefaultValue=true)]
+        [DataMember(Name="emailAddress", EmitDefaultValue=false)]
         public string EmailAddress { get; private set; }
 
         /// <summary>
         /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
         /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The subscriber language determines the language which is used to communicate with the subscriber in emails and documents (e.g. invoices).
         /// </summary>
         /// <value>The subscriber language determines the language which is used to communicate with the subscriber in emails and documents (e.g. invoices).</value>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Meta data allow to store additional data along the object.
         /// </summary>
         /// <value>Meta data allow to store additional data along the object.</value>
-        [DataMember(Name="metaData", EmitDefaultValue=true)]
+        [DataMember(Name="metaData", EmitDefaultValue=false)]
         public Dictionary<string, string> MetaData { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// The subscriber reference identifies the subscriber in administrative interfaces (e.g. customer id).
         /// </summary>
         /// <value>The subscriber reference identifies the subscriber in administrative interfaces (e.g. customer id).</value>
-        [DataMember(Name="reference", EmitDefaultValue=true)]
+        [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; private set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
         /// </summary>
-        [DataMember(Name="shippingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
         public Address ShippingAddress { get; private set; }
 
 
@@ -127,7 +127,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

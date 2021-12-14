@@ -23,13 +23,13 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public SubscriptionProductVersionState? State { get; set; }
         /// <summary>
         /// Strategy that is used for tax calculation in fees.
         /// </summary>
         /// <value>Strategy that is used for tax calculation in fees.</value>
-        [DataMember(Name="taxCalculation", EmitDefaultValue=true)]
+        [DataMember(Name="taxCalculation", EmitDefaultValue=false)]
         public TaxCalculation? TaxCalculation { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionProductVersion" /> class.
@@ -42,122 +42,122 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ActivatedOn
         /// </summary>
-        [DataMember(Name="activatedOn", EmitDefaultValue=true)]
+        [DataMember(Name="activatedOn", EmitDefaultValue=false)]
         public DateTime? ActivatedOn { get; private set; }
 
         /// <summary>
         /// The billing cycle determines the rhythm with which the subscriber is billed. The charging may have different rhythm.
         /// </summary>
         /// <value>The billing cycle determines the rhythm with which the subscriber is billed. The charging may have different rhythm.</value>
-        [DataMember(Name="billingCycle", EmitDefaultValue=true)]
+        [DataMember(Name="billingCycle", EmitDefaultValue=false)]
         public string BillingCycle { get; private set; }
 
         /// <summary>
         /// The comment allows to provide a internal comment for the version. It helps to document why a product was changed. The comment is not disclosed to the subscriber.
         /// </summary>
         /// <value>The comment allows to provide a internal comment for the version. It helps to document why a product was changed. The comment is not disclosed to the subscriber.</value>
-        [DataMember(Name="comment", EmitDefaultValue=true)]
+        [DataMember(Name="comment", EmitDefaultValue=false)]
         public string Comment { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedOn
         /// </summary>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The default currency has to be used in all fees.
         /// </summary>
         /// <value>The default currency has to be used in all fees.</value>
-        [DataMember(Name="defaultCurrency", EmitDefaultValue=true)]
+        [DataMember(Name="defaultCurrency", EmitDefaultValue=false)]
         public string DefaultCurrency { get; private set; }
 
         /// <summary>
         /// The currencies which are enabled can be selected to define component fees. Currencies which are not enabled cannot be used to define fees.
         /// </summary>
         /// <value>The currencies which are enabled can be selected to define component fees. Currencies which are not enabled cannot be used to define fees.</value>
-        [DataMember(Name="enabledCurrencies", EmitDefaultValue=true)]
+        [DataMember(Name="enabledCurrencies", EmitDefaultValue=false)]
         public List<string> EnabledCurrencies { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The increment number represents the version number incremented whenever a new version is activated.
         /// </summary>
         /// <value>The increment number represents the version number incremented whenever a new version is activated.</value>
-        [DataMember(Name="incrementNumber", EmitDefaultValue=true)]
+        [DataMember(Name="incrementNumber", EmitDefaultValue=false)]
         public int? IncrementNumber { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The minimal number of periods determines how long the subscription has to run before the subscription can be terminated.
         /// </summary>
         /// <value>The minimal number of periods determines how long the subscription has to run before the subscription can be terminated.</value>
-        [DataMember(Name="minimalNumberOfPeriods", EmitDefaultValue=true)]
+        [DataMember(Name="minimalNumberOfPeriods", EmitDefaultValue=false)]
         public int? MinimalNumberOfPeriods { get; private set; }
 
         /// <summary>
         /// The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.
         /// </summary>
         /// <value>The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public DatabaseTranslatedString Name { get; private set; }
 
         /// <summary>
         /// The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.
         /// </summary>
         /// <value>The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.</value>
-        [DataMember(Name="numberOfNoticePeriods", EmitDefaultValue=true)]
+        [DataMember(Name="numberOfNoticePeriods", EmitDefaultValue=false)]
         public int? NumberOfNoticePeriods { get; private set; }
 
         /// <summary>
         /// Gets or Sets ObsoletedOn
         /// </summary>
-        [DataMember(Name="obsoletedOn", EmitDefaultValue=true)]
+        [DataMember(Name="obsoletedOn", EmitDefaultValue=false)]
         public DateTime? ObsoletedOn { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Each product version is linked to a product.
         /// </summary>
         /// <value>Each product version is linked to a product.</value>
-        [DataMember(Name="product", EmitDefaultValue=true)]
+        [DataMember(Name="product", EmitDefaultValue=false)]
         public SubscriptionProduct Product { get; private set; }
 
         /// <summary>
         /// The product version reference helps to identify the version. The reference is generated out of the product reference.
         /// </summary>
         /// <value>The product version reference helps to identify the version. The reference is generated out of the product reference.</value>
-        [DataMember(Name="reference", EmitDefaultValue=true)]
+        [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; private set; }
 
         /// <summary>
         /// Gets or Sets RetiringFinishedOn
         /// </summary>
-        [DataMember(Name="retiringFinishedOn", EmitDefaultValue=true)]
+        [DataMember(Name="retiringFinishedOn", EmitDefaultValue=false)]
         public DateTime? RetiringFinishedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets RetiringStartedOn
         /// </summary>
-        [DataMember(Name="retiringStartedOn", EmitDefaultValue=true)]
+        [DataMember(Name="retiringStartedOn", EmitDefaultValue=false)]
         public DateTime? RetiringStartedOn { get; private set; }
 
 
@@ -166,7 +166,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

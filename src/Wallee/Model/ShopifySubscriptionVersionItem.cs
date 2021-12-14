@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets PriceStrategy
         /// </summary>
-        [DataMember(Name="priceStrategy", EmitDefaultValue=true)]
+        [DataMember(Name="priceStrategy", EmitDefaultValue=false)]
         public ShopifySubscriptionVersionItemPriceStrategy? PriceStrategy { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscriptionVersionItem" /> class.
@@ -36,26 +36,26 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets PriceIncludingTax
         /// </summary>
-        [DataMember(Name="priceIncludingTax", EmitDefaultValue=true)]
+        [DataMember(Name="priceIncludingTax", EmitDefaultValue=false)]
         public decimal? PriceIncludingTax { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets Product
         /// </summary>
-        [DataMember(Name="product", EmitDefaultValue=true)]
+        [DataMember(Name="product", EmitDefaultValue=false)]
         public long? Product { get; private set; }
 
         /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
-        [DataMember(Name="quantity", EmitDefaultValue=true)]
+        [DataMember(Name="quantity", EmitDefaultValue=false)]
         public decimal? Quantity { get; private set; }
 
         /// <summary>
         /// Gets or Sets TaxLines
         /// </summary>
-        [DataMember(Name="taxLines", EmitDefaultValue=true)]
+        [DataMember(Name="taxLines", EmitDefaultValue=false)]
         public List<ShopifyTaxLine> TaxLines { get; private set; }
 
         /// <summary>

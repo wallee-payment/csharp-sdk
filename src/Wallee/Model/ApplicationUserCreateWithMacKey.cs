@@ -40,7 +40,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets MacKey
         /// </summary>
-        [DataMember(Name="macKey", EmitDefaultValue=true)]
+        [DataMember(Name="macKey", EmitDefaultValue=false)]
         public string MacKey { get; private set; }
 
         /// <summary>

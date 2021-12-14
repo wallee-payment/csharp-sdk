@@ -75,49 +75,49 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AmountIncludingTax
         /// </summary>
-        [DataMember(Name="amountIncludingTax", EmitDefaultValue=true)]
+        [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
         public decimal? AmountIncludingTax { get; set; }
 
         /// <summary>
         /// Gets or Sets Attributes
         /// </summary>
-        [DataMember(Name="attributes", EmitDefaultValue=true)]
+        [DataMember(Name="attributes", EmitDefaultValue=false)]
         public Dictionary<string, LineItemAttributeCreate> Attributes { get; set; }
 
         /// <summary>
         /// Gets or Sets DiscountIncludingTax
         /// </summary>
-        [DataMember(Name="discountIncludingTax", EmitDefaultValue=true)]
+        [DataMember(Name="discountIncludingTax", EmitDefaultValue=false)]
         public decimal? DiscountIncludingTax { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
-        [DataMember(Name="quantity", EmitDefaultValue=true)]
+        [DataMember(Name="quantity", EmitDefaultValue=false)]
         public decimal? Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingRequired
         /// </summary>
-        [DataMember(Name="shippingRequired", EmitDefaultValue=true)]
+        [DataMember(Name="shippingRequired", EmitDefaultValue=false)]
         public bool? ShippingRequired { get; set; }
 
         /// <summary>
         /// Gets or Sets Sku
         /// </summary>
-        [DataMember(Name="sku", EmitDefaultValue=true)]
+        [DataMember(Name="sku", EmitDefaultValue=false)]
         public string Sku { get; set; }
 
         /// <summary>
         /// Gets or Sets Taxes
         /// </summary>
-        [DataMember(Name="taxes", EmitDefaultValue=true)]
+        [DataMember(Name="taxes", EmitDefaultValue=false)]
         public List<TaxCreate> Taxes { get; set; }
 
 
@@ -125,7 +125,7 @@ namespace Wallee.Model
         /// The unique id identifies the line item within the set of line items associated with the transaction.
         /// </summary>
         /// <value>The unique id identifies the line item within the set of line items associated with the transaction.</value>
-        [DataMember(Name="uniqueId", EmitDefaultValue=true)]
+        [DataMember(Name="uniqueId", EmitDefaultValue=false)]
         public string UniqueId { get; set; }
 
         /// <summary>

@@ -43,7 +43,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Refund
         /// </summary>
-        [DataMember(Name="refund", EmitDefaultValue=true)]
+        [DataMember(Name="refund", EmitDefaultValue=false)]
         public long? Refund { get; set; }
 
         /// <summary>

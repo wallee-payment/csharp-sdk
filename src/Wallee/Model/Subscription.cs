@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public SubscriptionState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Subscription" /> class.
@@ -36,120 +36,120 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ActivatedOn
         /// </summary>
-        [DataMember(Name="activatedOn", EmitDefaultValue=true)]
+        [DataMember(Name="activatedOn", EmitDefaultValue=false)]
         public DateTime? ActivatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Affiliate
         /// </summary>
-        [DataMember(Name="affiliate", EmitDefaultValue=true)]
+        [DataMember(Name="affiliate", EmitDefaultValue=false)]
         public SubscriptionAffiliate Affiliate { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedOn
         /// </summary>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets CurrentProductVersion
         /// </summary>
-        [DataMember(Name="currentProductVersion", EmitDefaultValue=true)]
+        [DataMember(Name="currentProductVersion", EmitDefaultValue=false)]
         public SubscriptionProductVersion CurrentProductVersion { get; private set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=true)]
+        [DataMember(Name="description", EmitDefaultValue=false)]
         public string Description { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets InitializedOn
         /// </summary>
-        [DataMember(Name="initializedOn", EmitDefaultValue=true)]
+        [DataMember(Name="initializedOn", EmitDefaultValue=false)]
         public DateTime? InitializedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets PlannedTerminationDate
         /// </summary>
-        [DataMember(Name="plannedTerminationDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedTerminationDate", EmitDefaultValue=false)]
         public DateTime? PlannedTerminationDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets Reference
         /// </summary>
-        [DataMember(Name="reference", EmitDefaultValue=true)]
+        [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets Subscriber
         /// </summary>
-        [DataMember(Name="subscriber", EmitDefaultValue=true)]
+        [DataMember(Name="subscriber", EmitDefaultValue=false)]
         public Subscriber Subscriber { get; private set; }
 
         /// <summary>
         /// Gets or Sets TerminatedBy
         /// </summary>
-        [DataMember(Name="terminatedBy", EmitDefaultValue=true)]
+        [DataMember(Name="terminatedBy", EmitDefaultValue=false)]
         public long? TerminatedBy { get; private set; }
 
         /// <summary>
         /// Gets or Sets TerminatedOn
         /// </summary>
-        [DataMember(Name="terminatedOn", EmitDefaultValue=true)]
+        [DataMember(Name="terminatedOn", EmitDefaultValue=false)]
         public DateTime? TerminatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets TerminatingOn
         /// </summary>
-        [DataMember(Name="terminatingOn", EmitDefaultValue=true)]
+        [DataMember(Name="terminatingOn", EmitDefaultValue=false)]
         public DateTime? TerminatingOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets TerminationScheduledOn
         /// </summary>
-        [DataMember(Name="terminationScheduledOn", EmitDefaultValue=true)]
+        [DataMember(Name="terminationScheduledOn", EmitDefaultValue=false)]
         public DateTime? TerminationScheduledOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
-        [DataMember(Name="token", EmitDefaultValue=true)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public Token Token { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

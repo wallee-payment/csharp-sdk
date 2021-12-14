@@ -24,13 +24,13 @@ namespace Wallee.Model
         /// Define how frequently recurring orders should be created.
         /// </summary>
         /// <value>Define how frequently recurring orders should be created.</value>
-        [DataMember(Name="billingIntervalUnit", EmitDefaultValue=true)]
+        [DataMember(Name="billingIntervalUnit", EmitDefaultValue=false)]
         public ShopifySubscriptionBillingIntervalUnit? BillingIntervalUnit { get; set; }
         /// <summary>
         /// Define the weekday on which the recurring orders should be created.
         /// </summary>
         /// <value>Define the weekday on which the recurring orders should be created.</value>
-        [DataMember(Name="billingWeekday", EmitDefaultValue=true)]
+        [DataMember(Name="billingWeekday", EmitDefaultValue=false)]
         public ShopifySubscriptionWeekday? BillingWeekday { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscriptionModelBillingConfiguration" /> class.
@@ -43,13 +43,13 @@ namespace Wallee.Model
         /// Define the day of the month on which the recurring orders should be created.
         /// </summary>
         /// <value>Define the day of the month on which the recurring orders should be created.</value>
-        [DataMember(Name="billingDayOfMonth", EmitDefaultValue=true)]
+        [DataMember(Name="billingDayOfMonth", EmitDefaultValue=false)]
         public int? BillingDayOfMonth { get; set; }
 
         /// <summary>
         /// Gets or Sets BillingIntervalAmount
         /// </summary>
-        [DataMember(Name="billingIntervalAmount", EmitDefaultValue=true)]
+        [DataMember(Name="billingIntervalAmount", EmitDefaultValue=false)]
         public int? BillingIntervalAmount { get; set; }
 
 
@@ -57,7 +57,7 @@ namespace Wallee.Model
         /// This date will be used as basis to calculate the dates of recurring orders.
         /// </summary>
         /// <value>This date will be used as basis to calculate the dates of recurring orders.</value>
-        [DataMember(Name="billingReferenceDate", EmitDefaultValue=true)]
+        [DataMember(Name="billingReferenceDate", EmitDefaultValue=false)]
         public DateTime? BillingReferenceDate { get; set; }
 
 
@@ -65,28 +65,28 @@ namespace Wallee.Model
         /// Define the maximum number of orders the subscription will run for.
         /// </summary>
         /// <value>Define the maximum number of orders the subscription will run for.</value>
-        [DataMember(Name="maximalBillingCycles", EmitDefaultValue=true)]
+        [DataMember(Name="maximalBillingCycles", EmitDefaultValue=false)]
         public int? MaximalBillingCycles { get; set; }
 
         /// <summary>
         /// Define the maximum number of orders the subscription can be suspended for at a time.
         /// </summary>
         /// <value>Define the maximum number of orders the subscription can be suspended for at a time.</value>
-        [DataMember(Name="maximalSuspendableCycles", EmitDefaultValue=true)]
+        [DataMember(Name="maximalSuspendableCycles", EmitDefaultValue=false)]
         public int? MaximalSuspendableCycles { get; set; }
 
         /// <summary>
         /// Define the minimal number of orders the subscription will run for.
         /// </summary>
         /// <value>Define the minimal number of orders the subscription will run for.</value>
-        [DataMember(Name="minimalBillingCycles", EmitDefaultValue=true)]
+        [DataMember(Name="minimalBillingCycles", EmitDefaultValue=false)]
         public int? MinimalBillingCycles { get; set; }
 
         /// <summary>
         /// Define the number of orders the subscription will keep running for after its termination has been requested.
         /// </summary>
         /// <value>Define the number of orders the subscription will keep running for after its termination has been requested.</value>
-        [DataMember(Name="terminationBillingCycles", EmitDefaultValue=true)]
+        [DataMember(Name="terminationBillingCycles", EmitDefaultValue=false)]
         public int? TerminationBillingCycles { get; set; }
 
         /// <summary>

@@ -60,7 +60,7 @@ namespace Wallee.Model
         /// The authentication identifier as assigned by authentication system (e.g. XID or DSTransactionID).
         /// </summary>
         /// <value>The authentication identifier as assigned by authentication system (e.g. XID or DSTransactionID).</value>
-        [DataMember(Name="authenticationIdentifier", EmitDefaultValue=true)]
+        [DataMember(Name="authenticationIdentifier", EmitDefaultValue=false)]
         public string AuthenticationIdentifier { get; set; }
 
 
@@ -68,14 +68,14 @@ namespace Wallee.Model
         /// The cardholder authentication value. Also known as Cardholder Authentication Verification Value (CAVV).
         /// </summary>
         /// <value>The cardholder authentication value. Also known as Cardholder Authentication Verification Value (CAVV).</value>
-        [DataMember(Name="authenticationValue", EmitDefaultValue=true)]
+        [DataMember(Name="authenticationValue", EmitDefaultValue=false)]
         public string AuthenticationValue { get; set; }
 
         /// <summary>
         /// The Electronic Commerce Indicator (ECI) value. The ECI is returned by authentication system and indicates the outcome/status of authentication.
         /// </summary>
         /// <value>The Electronic Commerce Indicator (ECI) value. The ECI is returned by authentication system and indicates the outcome/status of authentication.</value>
-        [DataMember(Name="electronicCommerceIndicator", EmitDefaultValue=true)]
+        [DataMember(Name="electronicCommerceIndicator", EmitDefaultValue=false)]
         public string ElectronicCommerceIndicator { get; set; }
 
 

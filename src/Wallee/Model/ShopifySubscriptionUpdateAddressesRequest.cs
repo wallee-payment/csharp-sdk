@@ -30,19 +30,19 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets BillingAddress
         /// </summary>
-        [DataMember(Name="billingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public ShopifySubscriptionAddressCreate BillingAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
         /// </summary>
-        [DataMember(Name="shippingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
         public ShopifySubscriptionAddressCreate ShippingAddress { get; set; }
 
         /// <summary>

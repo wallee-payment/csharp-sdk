@@ -32,42 +32,42 @@ namespace Wallee.Model
         /// The country code represents the region of the language as a 2 letter ISO code.
         /// </summary>
         /// <value>The country code represents the region of the language as a 2 letter ISO code.</value>
-        [DataMember(Name="countryCode", EmitDefaultValue=true)]
+        [DataMember(Name="countryCode", EmitDefaultValue=false)]
         public string CountryCode { get; private set; }
 
         /// <summary>
         /// The IETF code represents the language as the two letter ISO code including the region (e.g. en-US).
         /// </summary>
         /// <value>The IETF code represents the language as the two letter ISO code including the region (e.g. en-US).</value>
-        [DataMember(Name="ietfCode", EmitDefaultValue=true)]
+        [DataMember(Name="ietfCode", EmitDefaultValue=false)]
         public string IetfCode { get; private set; }
 
         /// <summary>
         /// The ISO 2 letter code represents the language with two letters.
         /// </summary>
         /// <value>The ISO 2 letter code represents the language with two letters.</value>
-        [DataMember(Name="iso2Code", EmitDefaultValue=true)]
+        [DataMember(Name="iso2Code", EmitDefaultValue=false)]
         public string Iso2Code { get; private set; }
 
         /// <summary>
         /// The ISO 3 letter code represents the language with three letters.
         /// </summary>
         /// <value>The ISO 3 letter code represents the language with three letters.</value>
-        [DataMember(Name="iso3Code", EmitDefaultValue=true)]
+        [DataMember(Name="iso3Code", EmitDefaultValue=false)]
         public string Iso3Code { get; private set; }
 
         /// <summary>
         /// The plural expression defines how to map a plural into the language index. This expression is used to determine the plural form for the translations.
         /// </summary>
         /// <value>The plural expression defines how to map a plural into the language index. This expression is used to determine the plural form for the translations.</value>
-        [DataMember(Name="pluralExpression", EmitDefaultValue=true)]
+        [DataMember(Name="pluralExpression", EmitDefaultValue=false)]
         public string PluralExpression { get; private set; }
 
         /// <summary>
         /// The primary language of a group indicates whether a language is the primary language of a group of languages. The group is determine by the ISO 2 letter code.
         /// </summary>
         /// <value>The primary language of a group indicates whether a language is the primary language of a group of languages. The group is determine by the ISO 2 letter code.</value>
-        [DataMember(Name="primaryOfGroup", EmitDefaultValue=true)]
+        [DataMember(Name="primaryOfGroup", EmitDefaultValue=false)]
         public bool? PrimaryOfGroup { get; private set; }
 
         /// <summary>

@@ -34,51 +34,51 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets BankTransaction
         /// </summary>
-        [DataMember(Name="bankTransaction", EmitDefaultValue=true)]
+        [DataMember(Name="bankTransaction", EmitDefaultValue=false)]
         public BankTransaction BankTransaction { get; private set; }
 
         /// <summary>
         /// Gets or Sets Completion
         /// </summary>
-        [DataMember(Name="completion", EmitDefaultValue=true)]
+        [DataMember(Name="completion", EmitDefaultValue=false)]
         public long? Completion { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=true)]
+        [DataMember(Name="transaction", EmitDefaultValue=false)]
         public Transaction Transaction { get; private set; }
 
         /// <summary>
         /// Specify the posting amount in the transaction&#39;s currency.
         /// </summary>
         /// <value>Specify the posting amount in the transaction&#39;s currency.</value>
-        [DataMember(Name="transactionCurrencyAmount", EmitDefaultValue=true)]
+        [DataMember(Name="transactionCurrencyAmount", EmitDefaultValue=false)]
         public decimal? TransactionCurrencyAmount { get; private set; }
 
         /// <summary>
         /// Gets or Sets TransactionCurrencyValueAmount
         /// </summary>
-        [DataMember(Name="transactionCurrencyValueAmount", EmitDefaultValue=true)]
+        [DataMember(Name="transactionCurrencyValueAmount", EmitDefaultValue=false)]
         public decimal? TransactionCurrencyValueAmount { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

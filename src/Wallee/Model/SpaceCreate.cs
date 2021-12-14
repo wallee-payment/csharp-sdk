@@ -51,7 +51,7 @@ namespace Wallee.Model
         /// The account to which the space belongs to.
         /// </summary>
         /// <value>The account to which the space belongs to.</value>
-        [DataMember(Name="account", EmitDefaultValue=true)]
+        [DataMember(Name="account", EmitDefaultValue=false)]
         public long? Account { get; set; }
 
         /// <summary>

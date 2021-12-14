@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public SubscriptionProductState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionProduct" /> class.
@@ -37,69 +37,69 @@ namespace Wallee.Model
         /// The allowed payment method configurations control which payment methods can be used with this product. When none is selected all methods will be allowed.
         /// </summary>
         /// <value>The allowed payment method configurations control which payment methods can be used with this product. When none is selected all methods will be allowed.</value>
-        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=true)]
+        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<long?> AllowedPaymentMethodConfigurations { get; private set; }
 
         /// <summary>
         /// When a payment fails, the subscription to which the payment belongs to will be suspended. When the suspension is not removed within the specified period the subscription will be terminated. A payment is considered as failed when the subscriber issues a refund or when a subscription charge fails.
         /// </summary>
         /// <value>When a payment fails, the subscription to which the payment belongs to will be suspended. When the suspension is not removed within the specified period the subscription will be terminated. A payment is considered as failed when the subscriber issues a refund or when a subscription charge fails.</value>
-        [DataMember(Name="failedPaymentSuspensionPeriod", EmitDefaultValue=true)]
+        [DataMember(Name="failedPaymentSuspensionPeriod", EmitDefaultValue=false)]
         public string FailedPaymentSuspensionPeriod { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The product name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The product name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.
         /// </summary>
         /// <value>Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.</value>
-        [DataMember(Name="productLocked", EmitDefaultValue=true)]
+        [DataMember(Name="productLocked", EmitDefaultValue=false)]
         public bool? ProductLocked { get; private set; }
 
         /// <summary>
         /// The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.
         /// </summary>
         /// <value>The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.</value>
-        [DataMember(Name="reference", EmitDefaultValue=true)]
+        [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; private set; }
 
         /// <summary>
         /// The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.
         /// </summary>
         /// <value>The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.</value>
-        [DataMember(Name="sortOrder", EmitDefaultValue=true)]
+        [DataMember(Name="sortOrder", EmitDefaultValue=false)]
         public int? SortOrder { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceId
         /// </summary>
-        [DataMember(Name="spaceId", EmitDefaultValue=true)]
+        [DataMember(Name="spaceId", EmitDefaultValue=false)]
         public long? SpaceId { get; private set; }
 
 
@@ -107,7 +107,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

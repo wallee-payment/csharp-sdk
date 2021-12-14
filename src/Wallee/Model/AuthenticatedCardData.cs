@@ -35,7 +35,7 @@ namespace Wallee.Model
         /// The cardholder authentication information. The authentication is optional and can be provided if the cardholder has been already authenticated (e.g. in 3-D Secure system).
         /// </summary>
         /// <value>The cardholder authentication information. The authentication is optional and can be provided if the cardholder has been already authenticated (e.g. in 3-D Secure system).</value>
-        [DataMember(Name="cardholderAuthentication", EmitDefaultValue=true)]
+        [DataMember(Name="cardholderAuthentication", EmitDefaultValue=false)]
         public CardholderAuthentication CardholderAuthentication { get; private set; }
 
         /// <summary>

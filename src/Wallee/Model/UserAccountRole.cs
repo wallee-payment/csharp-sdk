@@ -31,39 +31,39 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Account
         /// </summary>
-        [DataMember(Name="account", EmitDefaultValue=true)]
+        [DataMember(Name="account", EmitDefaultValue=false)]
         public long? Account { get; private set; }
 
         /// <summary>
         /// Gets or Sets AppliesOnSubAccount
         /// </summary>
-        [DataMember(Name="appliesOnSubAccount", EmitDefaultValue=true)]
+        [DataMember(Name="appliesOnSubAccount", EmitDefaultValue=false)]
         public bool? AppliesOnSubAccount { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Role
         /// </summary>
-        [DataMember(Name="role", EmitDefaultValue=true)]
+        [DataMember(Name="role", EmitDefaultValue=false)]
         public long? Role { get; private set; }
 
         /// <summary>
         /// Gets or Sets User
         /// </summary>
-        [DataMember(Name="user", EmitDefaultValue=true)]
+        [DataMember(Name="user", EmitDefaultValue=false)]
         public long? User { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

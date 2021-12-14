@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// The target state defines the state into which the completion should be switched into. Once the completion changed the state it will not be possible to change it again.
         /// </summary>
         /// <value>The target state defines the state into which the completion should be switched into. Once the completion changed the state it will not be possible to change it again.</value>
-        [DataMember(Name="targetState", EmitDefaultValue=true)]
+        [DataMember(Name="targetState", EmitDefaultValue=false)]
         public PaymentAppCompletionTargetState? TargetState { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentAppCompletionUpdateRequest" /> class.
@@ -37,21 +37,21 @@ namespace Wallee.Model
         /// This is the ID of the completion that should be updated.
         /// </summary>
         /// <value>This is the ID of the completion that should be updated.</value>
-        [DataMember(Name="completionId", EmitDefaultValue=true)]
+        [DataMember(Name="completionId", EmitDefaultValue=false)]
         public long? CompletionId { get; set; }
 
         /// <summary>
         /// The failure reason indicates why the completion failed. It is required when the target state is FAILED.
         /// </summary>
         /// <value>The failure reason indicates why the completion failed. It is required when the target state is FAILED.</value>
-        [DataMember(Name="failureReasonId", EmitDefaultValue=true)]
+        [DataMember(Name="failureReasonId", EmitDefaultValue=false)]
         public long? FailureReasonId { get; set; }
 
         /// <summary>
         /// The reference identifies the completion within the systems of the external service provider. It is required when the target state is SUCCESSFUL.
         /// </summary>
         /// <value>The reference identifies the completion within the systems of the external service provider. It is required when the target state is SUCCESSFUL.</value>
-        [DataMember(Name="reference", EmitDefaultValue=true)]
+        [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
 
 

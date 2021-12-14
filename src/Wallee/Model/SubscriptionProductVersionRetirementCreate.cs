@@ -42,20 +42,20 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ProductVersion
         /// </summary>
-        [DataMember(Name="productVersion", EmitDefaultValue=true)]
+        [DataMember(Name="productVersion", EmitDefaultValue=false)]
         public long? ProductVersion { get; set; }
 
         /// <summary>
         /// Gets or Sets RespectTerminiationPeriodsEnabled
         /// </summary>
-        [DataMember(Name="respectTerminiationPeriodsEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="respectTerminiationPeriodsEnabled", EmitDefaultValue=false)]
         public bool? RespectTerminiationPeriodsEnabled { get; set; }
 
         /// <summary>
         /// When a target product is not chosen, all customers with the retired product will be terminated.
         /// </summary>
         /// <value>When a target product is not chosen, all customers with the retired product will be terminated.</value>
-        [DataMember(Name="targetProduct", EmitDefaultValue=true)]
+        [DataMember(Name="targetProduct", EmitDefaultValue=false)]
         public long? TargetProduct { get; set; }
 
         /// <summary>

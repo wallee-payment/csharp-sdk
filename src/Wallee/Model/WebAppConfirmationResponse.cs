@@ -32,35 +32,35 @@ namespace Wallee.Model
         /// The access code grants permissions to the web service API according to the OAuth standard.
         /// </summary>
         /// <value>The access code grants permissions to the web service API according to the OAuth standard.</value>
-        [DataMember(Name="access_token", EmitDefaultValue=true)]
+        [DataMember(Name="access_token", EmitDefaultValue=false)]
         public string AccessToken { get; private set; }
 
         /// <summary>
         /// The scope contains the permissions granted to the web app within the space.
         /// </summary>
         /// <value>The scope contains the permissions granted to the web app within the space.</value>
-        [DataMember(Name="scope", EmitDefaultValue=true)]
+        [DataMember(Name="scope", EmitDefaultValue=false)]
         public string Scope { get; private set; }
 
         /// <summary>
         /// This is the space into which the web app is installed into.
         /// </summary>
         /// <value>This is the space into which the web app is installed into.</value>
-        [DataMember(Name="space", EmitDefaultValue=true)]
+        [DataMember(Name="space", EmitDefaultValue=false)]
         public Space Space { get; private set; }
 
         /// <summary>
         /// The state contains the state parameter content provided when initiating the app installation.
         /// </summary>
         /// <value>The state contains the state parameter content provided when initiating the app installation.</value>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public string State { get; private set; }
 
         /// <summary>
         /// The token type indicates the type of the access token. The type determines the authentication mechanism to use for accessing the web service API.
         /// </summary>
         /// <value>The token type indicates the type of the access token. The type determines the authentication mechanism to use for accessing the web service API.</value>
-        [DataMember(Name="token_type", EmitDefaultValue=true)]
+        [DataMember(Name="token_type", EmitDefaultValue=false)]
         public string TokenType { get; private set; }
 
         /// <summary>

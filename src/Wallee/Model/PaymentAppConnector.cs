@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public PaymentAppConnectorState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentAppConnector" /> class.
@@ -36,77 +36,77 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AuthorizationTimeout
         /// </summary>
-        [DataMember(Name="authorizationTimeout", EmitDefaultValue=true)]
+        [DataMember(Name="authorizationTimeout", EmitDefaultValue=false)]
         public string AuthorizationTimeout { get; private set; }
 
         /// <summary>
         /// The completion configuration defines how the deferred completion is processed. If it is not present it means that deferred completion is not supported by this connector.
         /// </summary>
         /// <value>The completion configuration defines how the deferred completion is processed. If it is not present it means that deferred completion is not supported by this connector.</value>
-        [DataMember(Name="completionConfiguration", EmitDefaultValue=true)]
+        [DataMember(Name="completionConfiguration", EmitDefaultValue=false)]
         public PaymentAppCompletionConfiguration CompletionConfiguration { get; private set; }
 
         /// <summary>
         /// The connector configuration references the configuration that was created as part of this connector within the space. The connector configuration is referenced within transactions created with this connector.
         /// </summary>
         /// <value>The connector configuration references the configuration that was created as part of this connector within the space. The connector configuration is referenced within transactions created with this connector.</value>
-        [DataMember(Name="connectorConfiguration", EmitDefaultValue=true)]
+        [DataMember(Name="connectorConfiguration", EmitDefaultValue=false)]
         public PaymentConnectorConfiguration ConnectorConfiguration { get; private set; }
 
         /// <summary>
         /// The created on date indicates when the connector was added.
         /// </summary>
         /// <value>The created on date indicates when the connector was added.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The external ID corresponds to the ID provided during inserting of the processor.
         /// </summary>
         /// <value>The external ID corresponds to the ID provided during inserting of the processor.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The name of the connector will be displayed within the user interfaces that the merchant is interacting with.
         /// </summary>
         /// <value>The name of the connector will be displayed within the user interfaces that the merchant is interacting with.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
         /// The payment page endpoint is invoked to process the transaction. The endpoint is defined by the external service provider.
         /// </summary>
         /// <value>The payment page endpoint is invoked to process the transaction. The endpoint is defined by the external service provider.</value>
-        [DataMember(Name="paymentPageEndpoint", EmitDefaultValue=true)]
+        [DataMember(Name="paymentPageEndpoint", EmitDefaultValue=false)]
         public string PaymentPageEndpoint { get; private set; }
 
         /// <summary>
         /// The processor references the app processor to which this connector belongs to. The relationship is established during the creation of the connector.
         /// </summary>
         /// <value>The processor references the app processor to which this connector belongs to. The relationship is established during the creation of the connector.</value>
-        [DataMember(Name="processor", EmitDefaultValue=true)]
+        [DataMember(Name="processor", EmitDefaultValue=false)]
         public PaymentAppProcessor Processor { get; private set; }
 
         /// <summary>
         /// The refund configuration defines how refunds are processed. If it is not present it means that refunds are not supported by this connector.
         /// </summary>
         /// <value>The refund configuration defines how refunds are processed. If it is not present it means that refunds are not supported by this connector.</value>
-        [DataMember(Name="refundConfiguration", EmitDefaultValue=true)]
+        [DataMember(Name="refundConfiguration", EmitDefaultValue=false)]
         public PaymentAppRefundConfiguration RefundConfiguration { get; private set; }
 
 
@@ -114,14 +114,14 @@ namespace Wallee.Model
         /// The updated on date indicates when the last time the connector was updated on.
         /// </summary>
         /// <value>The updated on date indicates when the last time the connector was updated on.</value>
-        [DataMember(Name="updatedOn", EmitDefaultValue=true)]
+        [DataMember(Name="updatedOn", EmitDefaultValue=false)]
         public DateTime? UpdatedOn { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

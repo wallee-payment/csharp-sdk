@@ -31,33 +31,33 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AmountExcludingTax
         /// </summary>
-        [DataMember(Name="amountExcludingTax", EmitDefaultValue=true)]
+        [DataMember(Name="amountExcludingTax", EmitDefaultValue=false)]
         public decimal? AmountExcludingTax { get; private set; }
 
         /// <summary>
         /// The total amount of this adjustment including taxes.
         /// </summary>
         /// <value>The total amount of this adjustment including taxes.</value>
-        [DataMember(Name="amountIncludingTax", EmitDefaultValue=true)]
+        [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
         public decimal? AmountIncludingTax { get; private set; }
 
         /// <summary>
         /// The rate in percentage is the rate on which the adjustment amount was calculated with.
         /// </summary>
         /// <value>The rate in percentage is the rate on which the adjustment amount was calculated with.</value>
-        [DataMember(Name="rateInPercentage", EmitDefaultValue=true)]
+        [DataMember(Name="rateInPercentage", EmitDefaultValue=false)]
         public decimal? RateInPercentage { get; private set; }
 
         /// <summary>
         /// Gets or Sets Tax
         /// </summary>
-        [DataMember(Name="tax", EmitDefaultValue=true)]
+        [DataMember(Name="tax", EmitDefaultValue=false)]
         public Tax Tax { get; private set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=true)]
+        [DataMember(Name="type", EmitDefaultValue=false)]
         public long? Type { get; private set; }
 
         /// <summary>

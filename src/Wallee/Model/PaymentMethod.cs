@@ -31,44 +31,44 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets DataCollectionTypes
         /// </summary>
-        [DataMember(Name="dataCollectionTypes", EmitDefaultValue=true)]
+        [DataMember(Name="dataCollectionTypes", EmitDefaultValue=false)]
         public List<DataCollectionType> DataCollectionTypes { get; private set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=true)]
+        [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets ImagePath
         /// </summary>
-        [DataMember(Name="imagePath", EmitDefaultValue=true)]
+        [DataMember(Name="imagePath", EmitDefaultValue=false)]
         public string ImagePath { get; private set; }
 
         /// <summary>
         /// Gets or Sets MerchantDescription
         /// </summary>
-        [DataMember(Name="merchantDescription", EmitDefaultValue=true)]
+        [DataMember(Name="merchantDescription", EmitDefaultValue=false)]
         public Dictionary<string, string> MerchantDescription { get; private set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// Gets or Sets SupportedCurrencies
         /// </summary>
-        [DataMember(Name="supportedCurrencies", EmitDefaultValue=true)]
+        [DataMember(Name="supportedCurrencies", EmitDefaultValue=false)]
         public List<string> SupportedCurrencies { get; private set; }
 
         /// <summary>

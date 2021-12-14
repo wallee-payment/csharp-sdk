@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets RecurringIndicator
         /// </summary>
-        [DataMember(Name="recurringIndicator", EmitDefaultValue=true)]
+        [DataMember(Name="recurringIndicator", EmitDefaultValue=false)]
         public RecurringIndicator? RecurringIndicator { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenizedCardDataCreate" /> class.
@@ -48,48 +48,48 @@ namespace Wallee.Model
         /// The card holder name is the name printed onto the card. It identifies the person who owns the card.
         /// </summary>
         /// <value>The card holder name is the name printed onto the card. It identifies the person who owns the card.</value>
-        [DataMember(Name="cardHolderName", EmitDefaultValue=true)]
+        [DataMember(Name="cardHolderName", EmitDefaultValue=false)]
         public string CardHolderName { get; set; }
 
         /// <summary>
         /// The card verification code (CVC) is a 3 to 4 digit code typically printed on the back of the card. It helps to ensure that the card holder is authorizing the transaction. For card not-present transactions this field is optional.
         /// </summary>
         /// <value>The card verification code (CVC) is a 3 to 4 digit code typically printed on the back of the card. It helps to ensure that the card holder is authorizing the transaction. For card not-present transactions this field is optional.</value>
-        [DataMember(Name="cardVerificationCode", EmitDefaultValue=true)]
+        [DataMember(Name="cardVerificationCode", EmitDefaultValue=false)]
         public string CardVerificationCode { get; set; }
 
         /// <summary>
         /// The additional authentication value used to secure the tokenized card transactions.
         /// </summary>
         /// <value>The additional authentication value used to secure the tokenized card transactions.</value>
-        [DataMember(Name="cryptogram", EmitDefaultValue=true)]
+        [DataMember(Name="cryptogram", EmitDefaultValue=false)]
         public CardCryptogramCreate Cryptogram { get; set; }
 
         /// <summary>
         /// The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).
         /// </summary>
         /// <value>The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).</value>
-        [DataMember(Name="expiryDate", EmitDefaultValue=true)]
+        [DataMember(Name="expiryDate", EmitDefaultValue=false)]
         public string ExpiryDate { get; set; }
 
         /// <summary>
         /// The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card.
         /// </summary>
         /// <value>The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card.</value>
-        [DataMember(Name="primaryAccountNumber", EmitDefaultValue=true)]
+        [DataMember(Name="primaryAccountNumber", EmitDefaultValue=false)]
         public string PrimaryAccountNumber { get; set; }
 
 
         /// <summary>
         /// Gets or Sets SchemeTransactionReference
         /// </summary>
-        [DataMember(Name="schemeTransactionReference", EmitDefaultValue=true)]
+        [DataMember(Name="schemeTransactionReference", EmitDefaultValue=false)]
         public string SchemeTransactionReference { get; set; }
 
         /// <summary>
         /// Gets or Sets TokenRequestorId
         /// </summary>
-        [DataMember(Name="tokenRequestorId", EmitDefaultValue=true)]
+        [DataMember(Name="tokenRequestorId", EmitDefaultValue=false)]
         public string TokenRequestorId { get; set; }
 
         /// <summary>

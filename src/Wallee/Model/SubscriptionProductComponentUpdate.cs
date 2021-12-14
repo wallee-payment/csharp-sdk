@@ -50,90 +50,90 @@ namespace Wallee.Model
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public long? Version { get; set; }
 
         /// <summary>
         /// If a product component changes from one with a lower product component tier (e.g. 1) to one with a higher product component tier (e.g. 3), it is considered an upgrade and a one-time fee could be applied.
         /// </summary>
         /// <value>If a product component changes from one with a lower product component tier (e.g. 1) to one with a higher product component tier (e.g. 3), it is considered an upgrade and a one-time fee could be applied.</value>
-        [DataMember(Name="componentChangeWeight", EmitDefaultValue=true)]
+        [DataMember(Name="componentChangeWeight", EmitDefaultValue=false)]
         public int? ComponentChangeWeight { get; set; }
 
         /// <summary>
         /// Gets or Sets ComponentGroup
         /// </summary>
-        [DataMember(Name="componentGroup", EmitDefaultValue=true)]
+        [DataMember(Name="componentGroup", EmitDefaultValue=false)]
         public long? ComponentGroup { get; set; }
 
         /// <summary>
         /// When a component is marked as a &#39;default&#39; component it is used as the default component in its group and will be preselected in the product configuration.
         /// </summary>
         /// <value>When a component is marked as a &#39;default&#39; component it is used as the default component in its group and will be preselected in the product configuration.</value>
-        [DataMember(Name="defaultComponent", EmitDefaultValue=true)]
+        [DataMember(Name="defaultComponent", EmitDefaultValue=false)]
         public bool? DefaultComponent { get; set; }
 
         /// <summary>
         /// The component description may contain a longer description which gives the subscriber a better understanding of what the component contains.
         /// </summary>
         /// <value>The component description may contain a longer description which gives the subscriber a better understanding of what the component contains.</value>
-        [DataMember(Name="description", EmitDefaultValue=true)]
+        [DataMember(Name="description", EmitDefaultValue=false)]
         public DatabaseTranslatedStringCreate Description { get; set; }
 
         /// <summary>
         /// The maximum quantity defines the maximum value which must be entered for the quantity.
         /// </summary>
         /// <value>The maximum quantity defines the maximum value which must be entered for the quantity.</value>
-        [DataMember(Name="maximalQuantity", EmitDefaultValue=true)]
+        [DataMember(Name="maximalQuantity", EmitDefaultValue=false)]
         public decimal? MaximalQuantity { get; set; }
 
         /// <summary>
         /// The minimal quantity defines the minimum value which must be entered for the quantity.
         /// </summary>
         /// <value>The minimal quantity defines the minimum value which must be entered for the quantity.</value>
-        [DataMember(Name="minimalQuantity", EmitDefaultValue=true)]
+        [DataMember(Name="minimalQuantity", EmitDefaultValue=false)]
         public decimal? MinimalQuantity { get; set; }
 
         /// <summary>
         /// The component name is shown to the subscriber. It should describe in few words what the component does contain.
         /// </summary>
         /// <value>The component name is shown to the subscriber. It should describe in few words what the component does contain.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public DatabaseTranslatedStringCreate Name { get; set; }
 
         /// <summary>
         /// The quantity step defines at which interval the quantity can be increased.
         /// </summary>
         /// <value>The quantity step defines at which interval the quantity can be increased.</value>
-        [DataMember(Name="quantityStep", EmitDefaultValue=true)]
+        [DataMember(Name="quantityStep", EmitDefaultValue=false)]
         public decimal? QuantityStep { get; set; }
 
         /// <summary>
         /// The component reference is used to identify the component by external systems and it marks components to represent the same component within different product versions.
         /// </summary>
         /// <value>The component reference is used to identify the component by external systems and it marks components to represent the same component within different product versions.</value>
-        [DataMember(Name="reference", EmitDefaultValue=true)]
+        [DataMember(Name="reference", EmitDefaultValue=false)]
         public long? Reference { get; set; }
 
         /// <summary>
         /// The sort order controls in which order the component is listed. The sort order is used to order the components in ascending order.
         /// </summary>
         /// <value>The sort order controls in which order the component is listed. The sort order is used to order the components in ascending order.</value>
-        [DataMember(Name="sortOrder", EmitDefaultValue=true)]
+        [DataMember(Name="sortOrder", EmitDefaultValue=false)]
         public int? SortOrder { get; set; }
 
         /// <summary>
         /// The tax class of the component determines the taxes which are applicable on all fees linked with the component.
         /// </summary>
         /// <value>The tax class of the component determines the taxes which are applicable on all fees linked with the component.</value>
-        [DataMember(Name="taxClass", EmitDefaultValue=true)]
+        [DataMember(Name="taxClass", EmitDefaultValue=false)]
         public long? TaxClass { get; set; }
 
         /// <summary>

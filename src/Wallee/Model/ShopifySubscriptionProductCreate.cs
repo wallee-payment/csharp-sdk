@@ -71,19 +71,19 @@ namespace Wallee.Model
         /// The ID of the Shopify product that is enabled to be ordered as subscription.
         /// </summary>
         /// <value>The ID of the Shopify product that is enabled to be ordered as subscription.</value>
-        [DataMember(Name="productId", EmitDefaultValue=true)]
+        [DataMember(Name="productId", EmitDefaultValue=false)]
         public string ProductId { get; set; }
 
         /// <summary>
         /// Gets or Sets ProductVariantId
         /// </summary>
-        [DataMember(Name="productVariantId", EmitDefaultValue=true)]
+        [DataMember(Name="productVariantId", EmitDefaultValue=false)]
         public string ProductVariantId { get; set; }
 
         /// <summary>
         /// Gets or Sets Shop
         /// </summary>
-        [DataMember(Name="shop", EmitDefaultValue=true)]
+        [DataMember(Name="shop", EmitDefaultValue=false)]
         public long? Shop { get; set; }
 
         /// <summary>

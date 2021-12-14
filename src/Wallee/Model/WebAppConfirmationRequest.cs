@@ -31,7 +31,7 @@ namespace Wallee.Model
         /// The user returns to the web app after granting the permission. The HTTP request contains the code. Provide it here to confirm the web app installation.
         /// </summary>
         /// <value>The user returns to the web app after granting the permission. The HTTP request contains the code. Provide it here to confirm the web app installation.</value>
-        [DataMember(Name="code", EmitDefaultValue=true)]
+        [DataMember(Name="code", EmitDefaultValue=false)]
         public string Code { get; set; }
 
         /// <summary>

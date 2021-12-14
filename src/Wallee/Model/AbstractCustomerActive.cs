@@ -30,44 +30,44 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets CustomerId
         /// </summary>
-        [DataMember(Name="customerId", EmitDefaultValue=true)]
+        [DataMember(Name="customerId", EmitDefaultValue=false)]
         public string CustomerId { get; set; }
 
         /// <summary>
         /// Gets or Sets EmailAddress
         /// </summary>
-        [DataMember(Name="emailAddress", EmitDefaultValue=true)]
+        [DataMember(Name="emailAddress", EmitDefaultValue=false)]
         public string EmailAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets FamilyName
         /// </summary>
-        [DataMember(Name="familyName", EmitDefaultValue=true)]
+        [DataMember(Name="familyName", EmitDefaultValue=false)]
         public string FamilyName { get; set; }
 
         /// <summary>
         /// Gets or Sets GivenName
         /// </summary>
-        [DataMember(Name="givenName", EmitDefaultValue=true)]
+        [DataMember(Name="givenName", EmitDefaultValue=false)]
         public string GivenName { get; set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; set; }
 
         /// <summary>
         /// Meta data allow to store additional data along the object.
         /// </summary>
         /// <value>Meta data allow to store additional data along the object.</value>
-        [DataMember(Name="metaData", EmitDefaultValue=true)]
+        [DataMember(Name="metaData", EmitDefaultValue=false)]
         public Dictionary<string, string> MetaData { get; set; }
 
         /// <summary>
         /// Gets or Sets PreferredCurrency
         /// </summary>
-        [DataMember(Name="preferredCurrency", EmitDefaultValue=true)]
+        [DataMember(Name="preferredCurrency", EmitDefaultValue=false)]
         public string PreferredCurrency { get; set; }
 
         /// <summary>

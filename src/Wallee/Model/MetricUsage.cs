@@ -32,28 +32,28 @@ namespace Wallee.Model
         /// The consumed units provide the value of how much has been consumed of the particular metric.
         /// </summary>
         /// <value>The consumed units provide the value of how much has been consumed of the particular metric.</value>
-        [DataMember(Name="consumedUnits", EmitDefaultValue=true)]
+        [DataMember(Name="consumedUnits", EmitDefaultValue=false)]
         public decimal? ConsumedUnits { get; private set; }
 
         /// <summary>
         /// The metric description describes the metric.
         /// </summary>
         /// <value>The metric description describes the metric.</value>
-        [DataMember(Name="metricDescription", EmitDefaultValue=true)]
+        [DataMember(Name="metricDescription", EmitDefaultValue=false)]
         public Dictionary<string, string> MetricDescription { get; private set; }
 
         /// <summary>
         /// The metric ID identifies the metric for consumed units.
         /// </summary>
         /// <value>The metric ID identifies the metric for consumed units.</value>
-        [DataMember(Name="metricId", EmitDefaultValue=true)]
+        [DataMember(Name="metricId", EmitDefaultValue=false)]
         public long? MetricId { get; private set; }
 
         /// <summary>
         /// The metric name defines the name of the consumed units.
         /// </summary>
         /// <value>The metric name defines the name of the consumed units.</value>
-        [DataMember(Name="metricName", EmitDefaultValue=true)]
+        [DataMember(Name="metricName", EmitDefaultValue=false)]
         public Dictionary<string, string> MetricName { get; private set; }
 
         /// <summary>

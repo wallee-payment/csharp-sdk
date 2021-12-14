@@ -31,32 +31,32 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=true)]
+        [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// Gets or Sets Feature
         /// </summary>
-        [DataMember(Name="feature", EmitDefaultValue=true)]
+        [DataMember(Name="feature", EmitDefaultValue=false)]
         public long? Feature { get; private set; }
 
         /// <summary>
         /// Gets or Sets Icon
         /// </summary>
-        [DataMember(Name="icon", EmitDefaultValue=true)]
+        [DataMember(Name="icon", EmitDefaultValue=false)]
         public string Icon { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>

@@ -30,13 +30,13 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ProductComponentReferenceId
         /// </summary>
-        [DataMember(Name="productComponentReferenceId", EmitDefaultValue=true)]
+        [DataMember(Name="productComponentReferenceId", EmitDefaultValue=false)]
         public long? ProductComponentReferenceId { get; set; }
 
         /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
-        [DataMember(Name="quantity", EmitDefaultValue=true)]
+        [DataMember(Name="quantity", EmitDefaultValue=false)]
         public decimal? Quantity { get; set; }
 
         /// <summary>

@@ -30,28 +30,28 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name="data", EmitDefaultValue=true)]
+        [DataMember(Name="data", EmitDefaultValue=false)]
         public byte[] Data { get; set; }
 
         /// <summary>
         /// The mime type indicates the format of the receipt document. The mime type depends on the requested receipt format.
         /// </summary>
         /// <value>The mime type indicates the format of the receipt document. The mime type depends on the requested receipt format.</value>
-        [DataMember(Name="mimeType", EmitDefaultValue=true)]
+        [DataMember(Name="mimeType", EmitDefaultValue=false)]
         public string MimeType { get; private set; }
 
         /// <summary>
         /// The terminal might or might not print the receipt. This property is set to true when the configuration of the terminal forces the printing and the device supports the receipt printing.
         /// </summary>
         /// <value>The terminal might or might not print the receipt. This property is set to true when the configuration of the terminal forces the printing and the device supports the receipt printing.</value>
-        [DataMember(Name="printed", EmitDefaultValue=true)]
+        [DataMember(Name="printed", EmitDefaultValue=false)]
         public bool? Printed { get; private set; }
 
         /// <summary>
         /// Each receipt has a different usage. The receipt type indicates for what resp. for whom the document is for.
         /// </summary>
         /// <value>Each receipt has a different usage. The receipt type indicates for what resp. for whom the document is for.</value>
-        [DataMember(Name="receiptType", EmitDefaultValue=true)]
+        [DataMember(Name="receiptType", EmitDefaultValue=false)]
         public PaymentTerminalReceiptType ReceiptType { get; private set; }
 
         /// <summary>

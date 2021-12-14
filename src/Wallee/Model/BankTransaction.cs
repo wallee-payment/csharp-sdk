@@ -23,12 +23,12 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets FlowDirection
         /// </summary>
-        [DataMember(Name="flowDirection", EmitDefaultValue=true)]
+        [DataMember(Name="flowDirection", EmitDefaultValue=false)]
         public BankTransactionFlowDirection? FlowDirection { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public BankTransactionState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankTransaction" /> class.
@@ -42,34 +42,34 @@ namespace Wallee.Model
         /// The adjustments applied on this bank transaction.
         /// </summary>
         /// <value>The adjustments applied on this bank transaction.</value>
-        [DataMember(Name="adjustments", EmitDefaultValue=true)]
+        [DataMember(Name="adjustments", EmitDefaultValue=false)]
         public List<PaymentAdjustment> Adjustments { get; private set; }
 
         /// <summary>
         /// The created by indicates the user which has created the bank transaction.
         /// </summary>
         /// <value>The created by indicates the user which has created the bank transaction.</value>
-        [DataMember(Name="createdBy", EmitDefaultValue=true)]
+        [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The currency bank account which is used to handle money flow.
         /// </summary>
         /// <value>The currency bank account which is used to handle money flow.</value>
-        [DataMember(Name="currencyBankAccount", EmitDefaultValue=true)]
+        [DataMember(Name="currencyBankAccount", EmitDefaultValue=false)]
         public CurrencyBankAccount CurrencyBankAccount { get; private set; }
 
         /// <summary>
         /// Gets or Sets ExternalId
         /// </summary>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
 
@@ -77,73 +77,73 @@ namespace Wallee.Model
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// The posting amount indicates the amount including adjustments.
         /// </summary>
         /// <value>The posting amount indicates the amount including adjustments.</value>
-        [DataMember(Name="postingAmount", EmitDefaultValue=true)]
+        [DataMember(Name="postingAmount", EmitDefaultValue=false)]
         public decimal? PostingAmount { get; private set; }
 
         /// <summary>
         /// Gets or Sets Reference
         /// </summary>
-        [DataMember(Name="reference", EmitDefaultValue=true)]
+        [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; private set; }
 
         /// <summary>
         /// Gets or Sets Source
         /// </summary>
-        [DataMember(Name="source", EmitDefaultValue=true)]
+        [DataMember(Name="source", EmitDefaultValue=false)]
         public long? Source { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets TotalAdjustmentAmountIncludingTax
         /// </summary>
-        [DataMember(Name="totalAdjustmentAmountIncludingTax", EmitDefaultValue=true)]
+        [DataMember(Name="totalAdjustmentAmountIncludingTax", EmitDefaultValue=false)]
         public decimal? TotalAdjustmentAmountIncludingTax { get; private set; }
 
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=true)]
+        [DataMember(Name="type", EmitDefaultValue=false)]
         public long? Type { get; private set; }
 
         /// <summary>
         /// Gets or Sets ValueAmount
         /// </summary>
-        [DataMember(Name="valueAmount", EmitDefaultValue=true)]
+        [DataMember(Name="valueAmount", EmitDefaultValue=false)]
         public decimal? ValueAmount { get; private set; }
 
         /// <summary>
         /// The value date describes the date the amount is effective on the account.
         /// </summary>
         /// <value>The value date describes the date the amount is effective on the account.</value>
-        [DataMember(Name="valueDate", EmitDefaultValue=true)]
+        [DataMember(Name="valueDate", EmitDefaultValue=false)]
         public DateTime? ValueDate { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

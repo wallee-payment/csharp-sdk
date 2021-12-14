@@ -32,42 +32,42 @@ namespace Wallee.Model
         /// The ISO code 2 letter identifies the country by two chars as defined in ISO 3166-1 (e.g. US, DE, CH).
         /// </summary>
         /// <value>The ISO code 2 letter identifies the country by two chars as defined in ISO 3166-1 (e.g. US, DE, CH).</value>
-        [DataMember(Name="ISOCode2Letter", EmitDefaultValue=true)]
+        [DataMember(Name="ISOCode2Letter", EmitDefaultValue=false)]
         public string ISOCode2Letter { get; private set; }
 
         /// <summary>
         /// The ISO code 3 letter identifies the country by three chars as defined in ISO 3166-1 (e.g. CHE, USA, GBR).
         /// </summary>
         /// <value>The ISO code 3 letter identifies the country by three chars as defined in ISO 3166-1 (e.g. CHE, USA, GBR).</value>
-        [DataMember(Name="ISOCode3Letter", EmitDefaultValue=true)]
+        [DataMember(Name="ISOCode3Letter", EmitDefaultValue=false)]
         public string ISOCode3Letter { get; private set; }
 
         /// <summary>
         /// The address format of the country indicates how an address has to look like for the country.
         /// </summary>
         /// <value>The address format of the country indicates how an address has to look like for the country.</value>
-        [DataMember(Name="addressFormat", EmitDefaultValue=true)]
+        [DataMember(Name="addressFormat", EmitDefaultValue=false)]
         public RestAddressFormat AddressFormat { get; private set; }
 
         /// <summary>
         /// The name labels the country by a name in English.
         /// </summary>
         /// <value>The name labels the country by a name in English.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
         /// The numeric code identifies the country by a three digit number as defined in ISO 3166-1 (e.g. 840, 826, 756).
         /// </summary>
         /// <value>The numeric code identifies the country by a three digit number as defined in ISO 3166-1 (e.g. 840, 826, 756).</value>
-        [DataMember(Name="numericCode", EmitDefaultValue=true)]
+        [DataMember(Name="numericCode", EmitDefaultValue=false)]
         public string NumericCode { get; private set; }
 
         /// <summary>
         /// The state codes field is a list of all states associated with this country. The list contains the identifiers of the states. The identifiers corresponds to the ISO 3166-2 subdivision identifier.
         /// </summary>
         /// <value>The state codes field is a list of all states associated with this country. The list contains the identifiers of the states. The identifiers corresponds to the ISO 3166-2 subdivision identifier.</value>
-        [DataMember(Name="stateCodes", EmitDefaultValue=true)]
+        [DataMember(Name="stateCodes", EmitDefaultValue=false)]
         public List<string> StateCodes { get; private set; }
 
         /// <summary>

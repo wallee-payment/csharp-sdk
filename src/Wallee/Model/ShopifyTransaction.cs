@@ -34,58 +34,58 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets CheckoutId
         /// </summary>
-        [DataMember(Name="checkoutId", EmitDefaultValue=true)]
+        [DataMember(Name="checkoutId", EmitDefaultValue=false)]
         public string CheckoutId { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Integration
         /// </summary>
-        [DataMember(Name="integration", EmitDefaultValue=true)]
+        [DataMember(Name="integration", EmitDefaultValue=false)]
         public ShopifyIntegration Integration { get; private set; }
 
         /// <summary>
         /// Gets or Sets OrderId
         /// </summary>
-        [DataMember(Name="orderId", EmitDefaultValue=true)]
+        [DataMember(Name="orderId", EmitDefaultValue=false)]
         public string OrderId { get; private set; }
 
         /// <summary>
         /// Gets or Sets OrderName
         /// </summary>
-        [DataMember(Name="orderName", EmitDefaultValue=true)]
+        [DataMember(Name="orderName", EmitDefaultValue=false)]
         public string OrderName { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public ShopifyTransactionState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=true)]
+        [DataMember(Name="transaction", EmitDefaultValue=false)]
         public Transaction Transaction { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

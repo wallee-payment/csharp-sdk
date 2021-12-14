@@ -23,12 +23,12 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ConfiguredEnvironment
         /// </summary>
-        [DataMember(Name="configuredEnvironment", EmitDefaultValue=true)]
+        [DataMember(Name="configuredEnvironment", EmitDefaultValue=false)]
         public ChargeAttemptEnvironment? ConfiguredEnvironment { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public PaymentAppProcessorState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentAppProcessor" /> class.
@@ -43,97 +43,97 @@ namespace Wallee.Model
         /// The created on date is the date when this processor has been added.
         /// </summary>
         /// <value>The created on date is the date when this processor has been added.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The documentation URL points to a web site that describes how to configure and use the processor.
         /// </summary>
         /// <value>The documentation URL points to a web site that describes how to configure and use the processor.</value>
-        [DataMember(Name="documentationUrl", EmitDefaultValue=true)]
+        [DataMember(Name="documentationUrl", EmitDefaultValue=false)]
         public string DocumentationUrl { get; private set; }
 
         /// <summary>
         /// The external ID corresponds to the ID that was provided during creation of the processor.
         /// </summary>
         /// <value>The external ID corresponds to the ID that was provided during creation of the processor.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The installation ID identifies the Web App installation.
         /// </summary>
         /// <value>The installation ID identifies the Web App installation.</value>
-        [DataMember(Name="installationId", EmitDefaultValue=true)]
+        [DataMember(Name="installationId", EmitDefaultValue=false)]
         public long? InstallationId { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The name of the processor will be displayed within the user interfaces that the merchant is interacting with.
         /// </summary>
         /// <value>The name of the processor will be displayed within the user interfaces that the merchant is interacting with.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
         /// This processor configuration is created as part of the app processor. Any transaction created with the processor is linked with this processor configuration.
         /// </summary>
         /// <value>This processor configuration is created as part of the app processor. Any transaction created with the processor is linked with this processor configuration.</value>
-        [DataMember(Name="processorConfiguration", EmitDefaultValue=true)]
+        [DataMember(Name="processorConfiguration", EmitDefaultValue=false)]
         public PaymentProcessorConfiguration ProcessorConfiguration { get; private set; }
 
         /// <summary>
         /// When the user sets the processor into the production mode the user will be forwarded to this URL to configure the production environment. When no URL is provided no redirection will happen.
         /// </summary>
         /// <value>When the user sets the processor into the production mode the user will be forwarded to this URL to configure the production environment. When no URL is provided no redirection will happen.</value>
-        [DataMember(Name="productionModeUrl", EmitDefaultValue=true)]
+        [DataMember(Name="productionModeUrl", EmitDefaultValue=false)]
         public string ProductionModeUrl { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets SvgIcon
         /// </summary>
-        [DataMember(Name="svgIcon", EmitDefaultValue=true)]
+        [DataMember(Name="svgIcon", EmitDefaultValue=false)]
         public string SvgIcon { get; private set; }
 
         /// <summary>
         /// The updated on date indicates when the last update on the processor occurred.
         /// </summary>
         /// <value>The updated on date indicates when the last update on the processor occurred.</value>
-        [DataMember(Name="updatedOn", EmitDefaultValue=true)]
+        [DataMember(Name="updatedOn", EmitDefaultValue=false)]
         public DateTime? UpdatedOn { get; private set; }
 
         /// <summary>
         /// When the processor is ready to be used for transactions in the production environment this flag is set to true.
         /// </summary>
         /// <value>When the processor is ready to be used for transactions in the production environment this flag is set to true.</value>
-        [DataMember(Name="usableInProduction", EmitDefaultValue=true)]
+        [DataMember(Name="usableInProduction", EmitDefaultValue=false)]
         public bool? UsableInProduction { get; private set; }
 
         /// <summary>
         /// Gets or Sets UsableInProductionSince
         /// </summary>
-        [DataMember(Name="usableInProductionSince", EmitDefaultValue=true)]
+        [DataMember(Name="usableInProductionSince", EmitDefaultValue=false)]
         public DateTime? UsableInProductionSince { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// The target state defines the state into which the void should be switched into. Once the void changed the state it will not be possible to change it again.
         /// </summary>
         /// <value>The target state defines the state into which the void should be switched into. Once the void changed the state it will not be possible to change it again.</value>
-        [DataMember(Name="targetState", EmitDefaultValue=true)]
+        [DataMember(Name="targetState", EmitDefaultValue=false)]
         public PaymentAppVoidTargetState? TargetState { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentAppVoidUpdateRequest" /> class.
@@ -37,14 +37,14 @@ namespace Wallee.Model
         /// The failure reason indicates why the void failed. It is required when the target state is FAILED.
         /// </summary>
         /// <value>The failure reason indicates why the void failed. It is required when the target state is FAILED.</value>
-        [DataMember(Name="failureReasonId", EmitDefaultValue=true)]
+        [DataMember(Name="failureReasonId", EmitDefaultValue=false)]
         public long? FailureReasonId { get; set; }
 
         /// <summary>
         /// The reference identifies the void within the systems of the external service provider. It is required when the target state is SUCCESSFUL.
         /// </summary>
         /// <value>The reference identifies the void within the systems of the external service provider. It is required when the target state is SUCCESSFUL.</value>
-        [DataMember(Name="reference", EmitDefaultValue=true)]
+        [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
 
 
@@ -52,7 +52,7 @@ namespace Wallee.Model
         /// This is the ID of the void that should be updated.
         /// </summary>
         /// <value>This is the ID of the void that should be updated.</value>
-        [DataMember(Name="voidId", EmitDefaultValue=true)]
+        [DataMember(Name="voidId", EmitDefaultValue=false)]
         public long? VoidId { get; set; }
 
         /// <summary>

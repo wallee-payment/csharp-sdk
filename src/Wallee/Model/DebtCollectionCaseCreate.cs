@@ -58,21 +58,21 @@ namespace Wallee.Model
         /// The collector configuration determines how the debt collection case is processed.
         /// </summary>
         /// <value>The collector configuration determines how the debt collection case is processed.</value>
-        [DataMember(Name="collectorConfiguration", EmitDefaultValue=true)]
+        [DataMember(Name="collectorConfiguration", EmitDefaultValue=false)]
         public long? CollectorConfiguration { get; set; }
 
         /// <summary>
         /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
         /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
         /// <summary>
         /// The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case.
         /// </summary>
         /// <value>The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case.</value>
-        [DataMember(Name="reference", EmitDefaultValue=true)]
+        [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
 
         /// <summary>

@@ -31,33 +31,33 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Content
         /// </summary>
-        [DataMember(Name="content", EmitDefaultValue=true)]
+        [DataMember(Name="content", EmitDefaultValue=false)]
         public Object Content { get; private set; }
 
         /// <summary>
         /// Gets or Sets ContentAsString
         /// </summary>
-        [DataMember(Name="contentAsString", EmitDefaultValue=true)]
+        [DataMember(Name="contentAsString", EmitDefaultValue=false)]
         public string ContentAsString { get; private set; }
 
         /// <summary>
         /// Gets or Sets Descriptor
         /// </summary>
-        [DataMember(Name="descriptor", EmitDefaultValue=true)]
+        [DataMember(Name="descriptor", EmitDefaultValue=false)]
         public LabelDescriptor Descriptor { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

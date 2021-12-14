@@ -42,19 +42,19 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Product
         /// </summary>
-        [DataMember(Name="product", EmitDefaultValue=true)]
+        [DataMember(Name="product", EmitDefaultValue=false)]
         public long? Product { get; set; }
 
         /// <summary>
         /// Gets or Sets RespectTerminiationPeriodsEnabled
         /// </summary>
-        [DataMember(Name="respectTerminiationPeriodsEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="respectTerminiationPeriodsEnabled", EmitDefaultValue=false)]
         public bool? RespectTerminiationPeriodsEnabled { get; set; }
 
         /// <summary>
         /// Gets or Sets TargetProduct
         /// </summary>
-        [DataMember(Name="targetProduct", EmitDefaultValue=true)]
+        [DataMember(Name="targetProduct", EmitDefaultValue=false)]
         public long? TargetProduct { get; set; }
 
         /// <summary>

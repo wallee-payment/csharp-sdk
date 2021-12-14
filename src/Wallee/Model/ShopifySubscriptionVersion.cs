@@ -23,17 +23,17 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets BillingIntervalUnit
         /// </summary>
-        [DataMember(Name="billingIntervalUnit", EmitDefaultValue=true)]
+        [DataMember(Name="billingIntervalUnit", EmitDefaultValue=false)]
         public ShopifySubscriptionBillingIntervalUnit? BillingIntervalUnit { get; set; }
         /// <summary>
         /// Gets or Sets BillingWeekday
         /// </summary>
-        [DataMember(Name="billingWeekday", EmitDefaultValue=true)]
+        [DataMember(Name="billingWeekday", EmitDefaultValue=false)]
         public ShopifySubscriptionWeekday? BillingWeekday { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public ShopifySubscriptionVersionState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscriptionVersion" /> class.
@@ -46,157 +46,157 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets BillingAddress
         /// </summary>
-        [DataMember(Name="billingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public ShopifySubscriptionAddress BillingAddress { get; private set; }
 
         /// <summary>
         /// Gets or Sets BillingDayOfMonth
         /// </summary>
-        [DataMember(Name="billingDayOfMonth", EmitDefaultValue=true)]
+        [DataMember(Name="billingDayOfMonth", EmitDefaultValue=false)]
         public int? BillingDayOfMonth { get; private set; }
 
         /// <summary>
         /// Gets or Sets BillingIntervalAmount
         /// </summary>
-        [DataMember(Name="billingIntervalAmount", EmitDefaultValue=true)]
+        [DataMember(Name="billingIntervalAmount", EmitDefaultValue=false)]
         public int? BillingIntervalAmount { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets BillingReferenceDate
         /// </summary>
-        [DataMember(Name="billingReferenceDate", EmitDefaultValue=true)]
+        [DataMember(Name="billingReferenceDate", EmitDefaultValue=false)]
         public DateTime? BillingReferenceDate { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=true)]
+        [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedOn
         /// </summary>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Currency
         /// </summary>
-        [DataMember(Name="currency", EmitDefaultValue=true)]
+        [DataMember(Name="currency", EmitDefaultValue=false)]
         public string Currency { get; private set; }
 
         /// <summary>
         /// Gets or Sets DischargedBy
         /// </summary>
-        [DataMember(Name="dischargedBy", EmitDefaultValue=true)]
+        [DataMember(Name="dischargedBy", EmitDefaultValue=false)]
         public long? DischargedBy { get; private set; }
 
         /// <summary>
         /// Gets or Sets DischargedOn
         /// </summary>
-        [DataMember(Name="dischargedOn", EmitDefaultValue=true)]
+        [DataMember(Name="dischargedOn", EmitDefaultValue=false)]
         public DateTime? DischargedOn { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Items
         /// </summary>
-        [DataMember(Name="items", EmitDefaultValue=true)]
+        [DataMember(Name="items", EmitDefaultValue=false)]
         public List<ShopifySubscriptionVersionItem> Items { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets MaximalBillingCycles
         /// </summary>
-        [DataMember(Name="maximalBillingCycles", EmitDefaultValue=true)]
+        [DataMember(Name="maximalBillingCycles", EmitDefaultValue=false)]
         public int? MaximalBillingCycles { get; private set; }
 
         /// <summary>
         /// Gets or Sets MaximalSuspendableCycles
         /// </summary>
-        [DataMember(Name="maximalSuspendableCycles", EmitDefaultValue=true)]
+        [DataMember(Name="maximalSuspendableCycles", EmitDefaultValue=false)]
         public int? MaximalSuspendableCycles { get; private set; }
 
         /// <summary>
         /// Gets or Sets MinimalBillingCycles
         /// </summary>
-        [DataMember(Name="minimalBillingCycles", EmitDefaultValue=true)]
+        [DataMember(Name="minimalBillingCycles", EmitDefaultValue=false)]
         public int? MinimalBillingCycles { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentGateway
         /// </summary>
-        [DataMember(Name="paymentGateway", EmitDefaultValue=true)]
+        [DataMember(Name="paymentGateway", EmitDefaultValue=false)]
         public string PaymentGateway { get; private set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
         /// </summary>
-        [DataMember(Name="shippingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
         public ShopifySubscriptionAddress ShippingAddress { get; private set; }
 
         /// <summary>
         /// Gets or Sets ShippingRate
         /// </summary>
-        [DataMember(Name="shippingRate", EmitDefaultValue=true)]
+        [DataMember(Name="shippingRate", EmitDefaultValue=false)]
         public string ShippingRate { get; private set; }
 
         /// <summary>
         /// Gets or Sets Shop
         /// </summary>
-        [DataMember(Name="shop", EmitDefaultValue=true)]
+        [DataMember(Name="shop", EmitDefaultValue=false)]
         public long? Shop { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets StoreOrderConfirmationEmailEnabled
         /// </summary>
-        [DataMember(Name="storeOrderConfirmationEmailEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="storeOrderConfirmationEmailEnabled", EmitDefaultValue=false)]
         public bool? StoreOrderConfirmationEmailEnabled { get; private set; }
 
         /// <summary>
         /// Gets or Sets SubscriberSuspensionAllowed
         /// </summary>
-        [DataMember(Name="subscriberSuspensionAllowed", EmitDefaultValue=true)]
+        [DataMember(Name="subscriberSuspensionAllowed", EmitDefaultValue=false)]
         public bool? SubscriberSuspensionAllowed { get; private set; }
 
         /// <summary>
         /// Gets or Sets Subscription
         /// </summary>
-        [DataMember(Name="subscription", EmitDefaultValue=true)]
+        [DataMember(Name="subscription", EmitDefaultValue=false)]
         public ShopifySubscription Subscription { get; private set; }
 
         /// <summary>
         /// Gets or Sets TerminationBillingCycles
         /// </summary>
-        [DataMember(Name="terminationBillingCycles", EmitDefaultValue=true)]
+        [DataMember(Name="terminationBillingCycles", EmitDefaultValue=false)]
         public int? TerminationBillingCycles { get; private set; }
 
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
-        [DataMember(Name="token", EmitDefaultValue=true)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public long? Token { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

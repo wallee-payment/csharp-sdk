@@ -57,34 +57,34 @@ namespace Wallee.Model
         /// The external ID helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
         /// <value>The external ID helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
         /// <summary>
         /// Gets or Sets InvoiceMerchantReference
         /// </summary>
-        [DataMember(Name="invoiceMerchantReference", EmitDefaultValue=true)]
+        [DataMember(Name="invoiceMerchantReference", EmitDefaultValue=false)]
         public string InvoiceMerchantReference { get; set; }
 
         /// <summary>
         /// The last completion flag indicates if this is the last completion. After the last completion is created no further completions can be issued.
         /// </summary>
         /// <value>The last completion flag indicates if this is the last completion. After the last completion is created no further completions can be issued.</value>
-        [DataMember(Name="lastCompletion", EmitDefaultValue=true)]
+        [DataMember(Name="lastCompletion", EmitDefaultValue=false)]
         public bool? LastCompletion { get; set; }
 
         /// <summary>
         /// The line items which will be used to complete the transaction.
         /// </summary>
         /// <value>The line items which will be used to complete the transaction.</value>
-        [DataMember(Name="lineItems", EmitDefaultValue=true)]
+        [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<CompletionLineItemCreate> LineItems { get; set; }
 
         /// <summary>
         /// The ID of the transaction which should be completed.
         /// </summary>
         /// <value>The ID of the transaction which should be completed.</value>
-        [DataMember(Name="transactionId", EmitDefaultValue=true)]
+        [DataMember(Name="transactionId", EmitDefaultValue=false)]
         public long? TransactionId { get; set; }
 
         /// <summary>

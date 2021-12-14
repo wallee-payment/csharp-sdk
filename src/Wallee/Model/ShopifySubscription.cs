@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public ShopifySubscriptionState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscription" /> class.
@@ -36,102 +36,102 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=true)]
+        [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedOn
         /// </summary>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
         /// </summary>
         /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets InitialExecutionDate
         /// </summary>
-        [DataMember(Name="initialExecutionDate", EmitDefaultValue=true)]
+        [DataMember(Name="initialExecutionDate", EmitDefaultValue=false)]
         public DateTime? InitialExecutionDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets InitialPaymentTransaction
         /// </summary>
-        [DataMember(Name="initialPaymentTransaction", EmitDefaultValue=true)]
+        [DataMember(Name="initialPaymentTransaction", EmitDefaultValue=false)]
         public long? InitialPaymentTransaction { get; private set; }
 
         /// <summary>
         /// Gets or Sets InitialShopifyTransaction
         /// </summary>
-        [DataMember(Name="initialShopifyTransaction", EmitDefaultValue=true)]
+        [DataMember(Name="initialShopifyTransaction", EmitDefaultValue=false)]
         public long? InitialShopifyTransaction { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets OrderRecurrenceNumber
         /// </summary>
-        [DataMember(Name="orderRecurrenceNumber", EmitDefaultValue=true)]
+        [DataMember(Name="orderRecurrenceNumber", EmitDefaultValue=false)]
         public int? OrderRecurrenceNumber { get; private set; }
 
         /// <summary>
         /// Gets or Sets Shop
         /// </summary>
-        [DataMember(Name="shop", EmitDefaultValue=true)]
+        [DataMember(Name="shop", EmitDefaultValue=false)]
         public long? Shop { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets Subscriber
         /// </summary>
-        [DataMember(Name="subscriber", EmitDefaultValue=true)]
+        [DataMember(Name="subscriber", EmitDefaultValue=false)]
         public ShopifySubscriber Subscriber { get; private set; }
 
         /// <summary>
         /// Gets or Sets TerminatedBy
         /// </summary>
-        [DataMember(Name="terminatedBy", EmitDefaultValue=true)]
+        [DataMember(Name="terminatedBy", EmitDefaultValue=false)]
         public long? TerminatedBy { get; private set; }
 
         /// <summary>
         /// Gets or Sets TerminatedOn
         /// </summary>
-        [DataMember(Name="terminatedOn", EmitDefaultValue=true)]
+        [DataMember(Name="terminatedOn", EmitDefaultValue=false)]
         public DateTime? TerminatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets TerminationRequestDate
         /// </summary>
-        [DataMember(Name="terminationRequestDate", EmitDefaultValue=true)]
+        [DataMember(Name="terminationRequestDate", EmitDefaultValue=false)]
         public DateTime? TerminationRequestDate { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

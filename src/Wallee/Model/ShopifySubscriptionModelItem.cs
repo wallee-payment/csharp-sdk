@@ -30,31 +30,31 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets PriceIncludingTax
         /// </summary>
-        [DataMember(Name="priceIncludingTax", EmitDefaultValue=true)]
+        [DataMember(Name="priceIncludingTax", EmitDefaultValue=false)]
         public decimal? PriceIncludingTax { get; set; }
 
         /// <summary>
         /// Gets or Sets ProductId
         /// </summary>
-        [DataMember(Name="productId", EmitDefaultValue=true)]
+        [DataMember(Name="productId", EmitDefaultValue=false)]
         public long? ProductId { get; set; }
 
         /// <summary>
         /// Gets or Sets Quantity
         /// </summary>
-        [DataMember(Name="quantity", EmitDefaultValue=true)]
+        [DataMember(Name="quantity", EmitDefaultValue=false)]
         public decimal? Quantity { get; set; }
 
         /// <summary>
         /// Gets or Sets RecalculatePrice
         /// </summary>
-        [DataMember(Name="recalculatePrice", EmitDefaultValue=true)]
+        [DataMember(Name="recalculatePrice", EmitDefaultValue=false)]
         public bool? RecalculatePrice { get; set; }
 
         /// <summary>
         /// Gets or Sets TaxLines
         /// </summary>
-        [DataMember(Name="taxLines", EmitDefaultValue=true)]
+        [DataMember(Name="taxLines", EmitDefaultValue=false)]
         public List<ShopifySubscriptionModelTaxLine> TaxLines { get; set; }
 
         /// <summary>

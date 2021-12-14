@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=true)]
+        [DataMember(Name="type", EmitDefaultValue=false)]
         public CardCryptogramType? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CardCryptogram" /> class.
@@ -37,7 +37,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Value
         /// </summary>
-        [DataMember(Name="value", EmitDefaultValue=true)]
+        [DataMember(Name="value", EmitDefaultValue=false)]
         public string Value { get; private set; }
 
         /// <summary>

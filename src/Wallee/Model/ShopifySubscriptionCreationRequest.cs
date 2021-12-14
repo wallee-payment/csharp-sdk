@@ -91,86 +91,86 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets BillingAddress
         /// </summary>
-        [DataMember(Name="billingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public ShopifySubscriptionAddressCreate BillingAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets BillingConfiguration
         /// </summary>
-        [DataMember(Name="billingConfiguration", EmitDefaultValue=true)]
+        [DataMember(Name="billingConfiguration", EmitDefaultValue=false)]
         public ShopifySubscriptionModelBillingConfiguration BillingConfiguration { get; set; }
 
         /// <summary>
         /// Gets or Sets Currency
         /// </summary>
-        [DataMember(Name="currency", EmitDefaultValue=true)]
+        [DataMember(Name="currency", EmitDefaultValue=false)]
         public string Currency { get; set; }
 
         /// <summary>
         /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
         /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
         /// <summary>
         /// Gets or Sets InitialExecutionDate
         /// </summary>
-        [DataMember(Name="initialExecutionDate", EmitDefaultValue=true)]
+        [DataMember(Name="initialExecutionDate", EmitDefaultValue=false)]
         public DateTime? InitialExecutionDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Integration
         /// </summary>
-        [DataMember(Name="integration", EmitDefaultValue=true)]
+        [DataMember(Name="integration", EmitDefaultValue=false)]
         public long? Integration { get; set; }
 
         /// <summary>
         /// Gets or Sets Items
         /// </summary>
-        [DataMember(Name="items", EmitDefaultValue=true)]
+        [DataMember(Name="items", EmitDefaultValue=false)]
         public List<ShopifySubscriptionModelItem> Items { get; set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
         /// </summary>
-        [DataMember(Name="shippingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
         public ShopifySubscriptionAddressCreate ShippingAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingMethodName
         /// </summary>
-        [DataMember(Name="shippingMethodName", EmitDefaultValue=true)]
+        [DataMember(Name="shippingMethodName", EmitDefaultValue=false)]
         public string ShippingMethodName { get; set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; set; }
 
         /// <summary>
         /// Gets or Sets StoreOrderConfirmationEmailEnabled
         /// </summary>
-        [DataMember(Name="storeOrderConfirmationEmailEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="storeOrderConfirmationEmailEnabled", EmitDefaultValue=false)]
         public bool? StoreOrderConfirmationEmailEnabled { get; set; }
 
         /// <summary>
         /// Gets or Sets Subscriber
         /// </summary>
-        [DataMember(Name="subscriber", EmitDefaultValue=true)]
+        [DataMember(Name="subscriber", EmitDefaultValue=false)]
         public ShopifySubscriberCreation Subscriber { get; set; }
 
         /// <summary>
         /// Gets or Sets SubscriberSuspensionAllowed
         /// </summary>
-        [DataMember(Name="subscriberSuspensionAllowed", EmitDefaultValue=true)]
+        [DataMember(Name="subscriberSuspensionAllowed", EmitDefaultValue=false)]
         public bool? SubscriberSuspensionAllowed { get; set; }
 
         /// <summary>

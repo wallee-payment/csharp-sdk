@@ -30,31 +30,31 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets BillingConfiguration
         /// </summary>
-        [DataMember(Name="billingConfiguration", EmitDefaultValue=true)]
+        [DataMember(Name="billingConfiguration", EmitDefaultValue=false)]
         public ShopifySubscriptionModelBillingConfiguration BillingConfiguration { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
         /// </summary>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; set; }
 
         /// <summary>
         /// Gets or Sets Items
         /// </summary>
-        [DataMember(Name="items", EmitDefaultValue=true)]
+        [DataMember(Name="items", EmitDefaultValue=false)]
         public List<ShopifySubscriptionModelItem> Items { get; set; }
 
         /// <summary>
         /// Gets or Sets StoreOrderConfirmationEmailEnabled
         /// </summary>
-        [DataMember(Name="storeOrderConfirmationEmailEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="storeOrderConfirmationEmailEnabled", EmitDefaultValue=false)]
         public bool? StoreOrderConfirmationEmailEnabled { get; set; }
 
         /// <summary>
         /// Gets or Sets SubscriberSuspensionAllowed
         /// </summary>
-        [DataMember(Name="subscriberSuspensionAllowed", EmitDefaultValue=true)]
+        [DataMember(Name="subscriberSuspensionAllowed", EmitDefaultValue=false)]
         public bool? SubscriberSuspensionAllowed { get; set; }
 
         /// <summary>

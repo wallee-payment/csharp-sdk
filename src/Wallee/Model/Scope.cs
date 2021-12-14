@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Scope" /> class.
@@ -37,54 +37,54 @@ namespace Wallee.Model
         /// The domain name to which this scope is mapped to.
         /// </summary>
         /// <value>The domain name to which this scope is mapped to.</value>
-        [DataMember(Name="domainName", EmitDefaultValue=true)]
+        [DataMember(Name="domainName", EmitDefaultValue=false)]
         public string DomainName { get; private set; }
 
         /// <summary>
         /// Gets or Sets Features
         /// </summary>
-        [DataMember(Name="features", EmitDefaultValue=true)]
+        [DataMember(Name="features", EmitDefaultValue=false)]
         public List<Feature> Features { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets MachineName
         /// </summary>
-        [DataMember(Name="machineName", EmitDefaultValue=true)]
+        [DataMember(Name="machineName", EmitDefaultValue=false)]
         public string MachineName { get; private set; }
 
         /// <summary>
         /// The name of the scope is shown to the user where the user should select a scope.
         /// </summary>
         /// <value>The name of the scope is shown to the user where the user should select a scope.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// The port number to which this scope is mapped to.
         /// </summary>
         /// <value>The port number to which this scope is mapped to.</value>
-        [DataMember(Name="port", EmitDefaultValue=true)]
+        [DataMember(Name="port", EmitDefaultValue=false)]
         public int? Port { get; private set; }
 
         /// <summary>
         /// Define whether the scope supports SSL.
         /// </summary>
         /// <value>Define whether the scope supports SSL.</value>
-        [DataMember(Name="sslActive", EmitDefaultValue=true)]
+        [DataMember(Name="sslActive", EmitDefaultValue=false)]
         public bool? SslActive { get; private set; }
 
 
@@ -92,20 +92,20 @@ namespace Wallee.Model
         /// The themes determines how the application layout, look and feel is. By providing multiple themes you can fallback to other themes.
         /// </summary>
         /// <value>The themes determines how the application layout, look and feel is. By providing multiple themes you can fallback to other themes.</value>
-        [DataMember(Name="themes", EmitDefaultValue=true)]
+        [DataMember(Name="themes", EmitDefaultValue=false)]
         public List<string> Themes { get; private set; }
 
         /// <summary>
         /// Gets or Sets Url
         /// </summary>
-        [DataMember(Name="url", EmitDefaultValue=true)]
+        [DataMember(Name="url", EmitDefaultValue=false)]
         public string Url { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

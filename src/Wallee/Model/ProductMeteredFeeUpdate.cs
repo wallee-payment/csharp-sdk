@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.
         /// </summary>
         /// <value>The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.</value>
-        [DataMember(Name="tierPricing", EmitDefaultValue=true)]
+        [DataMember(Name="tierPricing", EmitDefaultValue=false)]
         public ProductMeteredTierPricing? TierPricing { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductMeteredFeeUpdate" /> class.
@@ -56,40 +56,40 @@ namespace Wallee.Model
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public long? Version { get; set; }
 
         /// <summary>
         /// Gets or Sets Component
         /// </summary>
-        [DataMember(Name="component", EmitDefaultValue=true)]
+        [DataMember(Name="component", EmitDefaultValue=false)]
         public long? Component { get; set; }
 
         /// <summary>
         /// The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
         /// </summary>
         /// <value>The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.</value>
-        [DataMember(Name="description", EmitDefaultValue=true)]
+        [DataMember(Name="description", EmitDefaultValue=false)]
         public DatabaseTranslatedStringCreate Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Metric
         /// </summary>
-        [DataMember(Name="metric", EmitDefaultValue=true)]
+        [DataMember(Name="metric", EmitDefaultValue=false)]
         public long? Metric { get; set; }
 
         /// <summary>
         /// The name of the fee should describe for the subscriber in few words for what the fee is for.
         /// </summary>
         /// <value>The name of the fee should describe for the subscriber in few words for what the fee is for.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public DatabaseTranslatedStringCreate Name { get; set; }
 
 

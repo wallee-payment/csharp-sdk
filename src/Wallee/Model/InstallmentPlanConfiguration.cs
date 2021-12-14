@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="InstallmentPlanConfiguration" /> class.
@@ -37,83 +37,83 @@ namespace Wallee.Model
         /// The base currency in which the installment fee and minimal amount are defined.
         /// </summary>
         /// <value>The base currency in which the installment fee and minimal amount are defined.</value>
-        [DataMember(Name="baseCurrency", EmitDefaultValue=true)]
+        [DataMember(Name="baseCurrency", EmitDefaultValue=false)]
         public string BaseCurrency { get; private set; }
 
         /// <summary>
         /// If a transaction meets all selected conditions the installment plan will be available to the customer to be selected.
         /// </summary>
         /// <value>If a transaction meets all selected conditions the installment plan will be available to the customer to be selected.</value>
-        [DataMember(Name="conditions", EmitDefaultValue=true)]
+        [DataMember(Name="conditions", EmitDefaultValue=false)]
         public List<long?> Conditions { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The installment fee is a fixed amount that is charged additionally when applying this installment plan.
         /// </summary>
         /// <value>The installment fee is a fixed amount that is charged additionally when applying this installment plan.</value>
-        [DataMember(Name="installmentFee", EmitDefaultValue=true)]
+        [DataMember(Name="installmentFee", EmitDefaultValue=false)]
         public decimal? InstallmentFee { get; private set; }
 
         /// <summary>
         /// The interest rate is a percentage of the total amount that is charged additionally when applying this installment plan.
         /// </summary>
         /// <value>The interest rate is a percentage of the total amount that is charged additionally when applying this installment plan.</value>
-        [DataMember(Name="interestRate", EmitDefaultValue=true)]
+        [DataMember(Name="interestRate", EmitDefaultValue=false)]
         public decimal? InterestRate { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The installment plan can only be applied if the orders total is at least the defined minimal amount.
         /// </summary>
         /// <value>The installment plan can only be applied if the orders total is at least the defined minimal amount.</value>
-        [DataMember(Name="minimalAmount", EmitDefaultValue=true)]
+        [DataMember(Name="minimalAmount", EmitDefaultValue=false)]
         public decimal? MinimalAmount { get; private set; }
 
         /// <summary>
         /// The installment plan name is used internally to identify the plan in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The installment plan name is used internally to identify the plan in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
         /// A installment plan can be enabled only for specific payment method configurations. Other payment methods will not be selectable by the buyer.
         /// </summary>
         /// <value>A installment plan can be enabled only for specific payment method configurations. Other payment methods will not be selectable by the buyer.</value>
-        [DataMember(Name="paymentMethodConfigurations", EmitDefaultValue=true)]
+        [DataMember(Name="paymentMethodConfigurations", EmitDefaultValue=false)]
         public List<long?> PaymentMethodConfigurations { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// The sort order controls in which order the installation plans are listed. The sort order is used to order the plans in ascending order.
         /// </summary>
         /// <value>The sort order controls in which order the installation plans are listed. The sort order is used to order the plans in ascending order.</value>
-        [DataMember(Name="sortOrder", EmitDefaultValue=true)]
+        [DataMember(Name="sortOrder", EmitDefaultValue=false)]
         public int? SortOrder { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceReference
         /// </summary>
-        [DataMember(Name="spaceReference", EmitDefaultValue=true)]
+        [DataMember(Name="spaceReference", EmitDefaultValue=false)]
         public SpaceReference SpaceReference { get; private set; }
 
 
@@ -121,28 +121,28 @@ namespace Wallee.Model
         /// The tax class determines the taxes which are applicable on all fees linked to the installment plan.
         /// </summary>
         /// <value>The tax class determines the taxes which are applicable on all fees linked to the installment plan.</value>
-        [DataMember(Name="taxClass", EmitDefaultValue=true)]
+        [DataMember(Name="taxClass", EmitDefaultValue=false)]
         public TaxClass TaxClass { get; private set; }
 
         /// <summary>
         /// The terms and conditions will be displayed to the customer when he or she selects this installment plan.
         /// </summary>
         /// <value>The terms and conditions will be displayed to the customer when he or she selects this installment plan.</value>
-        [DataMember(Name="termsAndConditions", EmitDefaultValue=true)]
+        [DataMember(Name="termsAndConditions", EmitDefaultValue=false)]
         public ResourcePath TermsAndConditions { get; private set; }
 
         /// <summary>
         /// The title of the installment plan is used within the payment process. The title is visible to the buyer.
         /// </summary>
         /// <value>The title of the installment plan is used within the payment process. The title is visible to the buyer.</value>
-        [DataMember(Name="title", EmitDefaultValue=true)]
+        [DataMember(Name="title", EmitDefaultValue=false)]
         public DatabaseTranslatedString Title { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

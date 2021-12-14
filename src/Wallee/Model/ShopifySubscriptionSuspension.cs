@@ -23,17 +23,17 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Initiator
         /// </summary>
-        [DataMember(Name="initiator", EmitDefaultValue=true)]
+        [DataMember(Name="initiator", EmitDefaultValue=false)]
         public ShopifySubscriptionSuspensionInitiator? Initiator { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public ShopifySubscriptionSuspensionState? State { get; set; }
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=true)]
+        [DataMember(Name="type", EmitDefaultValue=false)]
         public ShopifySubscriptionSuspensionType? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscriptionSuspension" /> class.
@@ -46,32 +46,32 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=true)]
+        [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedOn
         /// </summary>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets EndedBy
         /// </summary>
-        [DataMember(Name="endedBy", EmitDefaultValue=true)]
+        [DataMember(Name="endedBy", EmitDefaultValue=false)]
         public long? EndedBy { get; private set; }
 
         /// <summary>
         /// Gets or Sets EndedOn
         /// </summary>
-        [DataMember(Name="endedOn", EmitDefaultValue=true)]
+        [DataMember(Name="endedOn", EmitDefaultValue=false)]
         public DateTime? EndedOn { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
 
@@ -79,26 +79,26 @@ namespace Wallee.Model
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets PlannedEndDate
         /// </summary>
-        [DataMember(Name="plannedEndDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedEndDate", EmitDefaultValue=false)]
         public DateTime? PlannedEndDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets Shop
         /// </summary>
-        [DataMember(Name="shop", EmitDefaultValue=true)]
+        [DataMember(Name="shop", EmitDefaultValue=false)]
         public long? Shop { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets Subscription
         /// </summary>
-        [DataMember(Name="subscription", EmitDefaultValue=true)]
+        [DataMember(Name="subscription", EmitDefaultValue=false)]
         public ShopifySubscription Subscription { get; private set; }
 
 
@@ -106,7 +106,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

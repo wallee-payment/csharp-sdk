@@ -30,13 +30,13 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ExecutionDate
         /// </summary>
-        [DataMember(Name="executionDate", EmitDefaultValue=true)]
+        [DataMember(Name="executionDate", EmitDefaultValue=false)]
         public DateTime? ExecutionDate { get; set; }
 
         /// <summary>
         /// Gets or Sets RecurringOrderId
         /// </summary>
-        [DataMember(Name="recurringOrderId", EmitDefaultValue=true)]
+        [DataMember(Name="recurringOrderId", EmitDefaultValue=false)]
         public long? RecurringOrderId { get; set; }
 
         /// <summary>

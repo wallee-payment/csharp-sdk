@@ -31,31 +31,31 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Configuration
         /// </summary>
-        [DataMember(Name="configuration", EmitDefaultValue=true)]
+        [DataMember(Name="configuration", EmitDefaultValue=false)]
         public InstallmentPlanConfiguration Configuration { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentMethodConfigurations
         /// </summary>
-        [DataMember(Name="paymentMethodConfigurations", EmitDefaultValue=true)]
+        [DataMember(Name="paymentMethodConfigurations", EmitDefaultValue=false)]
         public List<PaymentMethodConfiguration> PaymentMethodConfigurations { get; private set; }
 
         /// <summary>
         /// Gets or Sets Slices
         /// </summary>
-        [DataMember(Name="slices", EmitDefaultValue=true)]
+        [DataMember(Name="slices", EmitDefaultValue=false)]
         public List<InstallmentCalculatedSlice> Slices { get; private set; }
 
         /// <summary>
         /// Gets or Sets TotalAmount
         /// </summary>
-        [DataMember(Name="totalAmount", EmitDefaultValue=true)]
+        [DataMember(Name="totalAmount", EmitDefaultValue=false)]
         public decimal? TotalAmount { get; private set; }
 
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=true)]
+        [DataMember(Name="transaction", EmitDefaultValue=false)]
         public Transaction Transaction { get; private set; }
 
         /// <summary>

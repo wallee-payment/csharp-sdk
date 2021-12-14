@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// The type of the client error.
         /// </summary>
         /// <value>The type of the client error.</value>
-        [DataMember(Name="type", EmitDefaultValue=true)]
+        [DataMember(Name="type", EmitDefaultValue=false)]
         public ClientErrorType? Type { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ClientError" /> class.
@@ -38,28 +38,28 @@ namespace Wallee.Model
         /// Date when an error has occurred.
         /// </summary>
         /// <value>Date when an error has occurred.</value>
-        [DataMember(Name="date", EmitDefaultValue=true)]
+        [DataMember(Name="date", EmitDefaultValue=false)]
         public string Date { get; private set; }
 
         /// <summary>
         /// The error message which is translated into the default language (i.e. English).
         /// </summary>
         /// <value>The error message which is translated into the default language (i.e. English).</value>
-        [DataMember(Name="defaultMessage", EmitDefaultValue=true)]
+        [DataMember(Name="defaultMessage", EmitDefaultValue=false)]
         public string DefaultMessage { get; private set; }
 
         /// <summary>
         /// Unique identifier of an error.
         /// </summary>
         /// <value>Unique identifier of an error.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public string Id { get; private set; }
 
         /// <summary>
         /// The error message which is translated in into the language of the client.
         /// </summary>
         /// <value>The error message which is translated in into the language of the client.</value>
-        [DataMember(Name="message", EmitDefaultValue=true)]
+        [DataMember(Name="message", EmitDefaultValue=false)]
         public string Message { get; private set; }
 
 

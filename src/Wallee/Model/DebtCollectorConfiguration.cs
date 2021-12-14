@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="DebtCollectorConfiguration" /> class.
@@ -37,63 +37,63 @@ namespace Wallee.Model
         /// The collector handles the debt collection case based on the settings of this configuration.
         /// </summary>
         /// <value>The collector handles the debt collection case based on the settings of this configuration.</value>
-        [DataMember(Name="collector", EmitDefaultValue=true)]
+        [DataMember(Name="collector", EmitDefaultValue=false)]
         public long? Collector { get; private set; }
 
         /// <summary>
         /// The conditions applied to the collector configuration restricts the application of this configuration onto a particular debt collection case.
         /// </summary>
         /// <value>The conditions applied to the collector configuration restricts the application of this configuration onto a particular debt collection case.</value>
-        [DataMember(Name="conditions", EmitDefaultValue=true)]
+        [DataMember(Name="conditions", EmitDefaultValue=false)]
         public List<long?> Conditions { get; private set; }
 
         /// <summary>
         /// The collector configuration is only enabled for the selected space views. In case the set is empty the collector configuration is enabled for all space views.
         /// </summary>
         /// <value>The collector configuration is only enabled for the selected space views. In case the set is empty the collector configuration is enabled for all space views.</value>
-        [DataMember(Name="enabledSpaceViews", EmitDefaultValue=true)]
+        [DataMember(Name="enabledSpaceViews", EmitDefaultValue=false)]
         public List<long?> EnabledSpaceViews { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The collector configuration name is used internally to identify a specific collector configuration. For example the name is used within search fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The collector configuration name is used internally to identify a specific collector configuration. For example the name is used within search fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// The priority defines the order in which the collector configuration is tried to be applied onto a debt collection case. The higher the value the less likely the configuration is applied on a case.
         /// </summary>
         /// <value>The priority defines the order in which the collector configuration is tried to be applied onto a debt collection case. The higher the value the less likely the configuration is applied on a case.</value>
-        [DataMember(Name="priority", EmitDefaultValue=true)]
+        [DataMember(Name="priority", EmitDefaultValue=false)]
         public int? Priority { get; private set; }
 
         /// <summary>
         /// When the review is skipped there will be no review for cases which use this configuration.
         /// </summary>
         /// <value>When the review is skipped there will be no review for cases which use this configuration.</value>
-        [DataMember(Name="skipReviewEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="skipReviewEnabled", EmitDefaultValue=false)]
         public bool? SkipReviewEnabled { get; private set; }
 
 
@@ -101,7 +101,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

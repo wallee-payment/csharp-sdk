@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="InstallmentPlanSliceConfiguration" /> class.
@@ -37,56 +37,56 @@ namespace Wallee.Model
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The title of this slices line items. The title is visible to the buyer.
         /// </summary>
         /// <value>The title of this slices line items. The title is visible to the buyer.</value>
-        [DataMember(Name="lineItemTitle", EmitDefaultValue=true)]
+        [DataMember(Name="lineItemTitle", EmitDefaultValue=false)]
         public DatabaseTranslatedString LineItemTitle { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The period defines how much time passes between the last slice and this slice. The charge is triggered at the end of the period. When the slice should be charged immediately the period needs to be zero.
         /// </summary>
         /// <value>The period defines how much time passes between the last slice and this slice. The charge is triggered at the end of the period. When the slice should be charged immediately the period needs to be zero.</value>
-        [DataMember(Name="period", EmitDefaultValue=true)]
+        [DataMember(Name="period", EmitDefaultValue=false)]
         public string Period { get; private set; }
 
         /// <summary>
         /// The installment plan this slice belongs to.
         /// </summary>
         /// <value>The installment plan this slice belongs to.</value>
-        [DataMember(Name="plan", EmitDefaultValue=true)]
+        [DataMember(Name="plan", EmitDefaultValue=false)]
         public InstallmentPlanConfiguration Plan { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// The priority controls in which order the slices are applied. The lower the value the higher the precedence.
         /// </summary>
         /// <value>The priority controls in which order the slices are applied. The lower the value the higher the precedence.</value>
-        [DataMember(Name="priority", EmitDefaultValue=true)]
+        [DataMember(Name="priority", EmitDefaultValue=false)]
         public int? Priority { get; private set; }
 
         /// <summary>
         /// The proportion defines how much of the total installment payment has to be paid in this slice. The value is summed up with the other slices and the ratio of all proportions compared to proportion of this slice determines how much the buyer has to pay in this slice.
         /// </summary>
         /// <value>The proportion defines how much of the total installment payment has to be paid in this slice. The value is summed up with the other slices and the ratio of all proportions compared to proportion of this slice determines how much the buyer has to pay in this slice.</value>
-        [DataMember(Name="proportion", EmitDefaultValue=true)]
+        [DataMember(Name="proportion", EmitDefaultValue=false)]
         public decimal? Proportion { get; private set; }
 
 
@@ -94,7 +94,7 @@ namespace Wallee.Model
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

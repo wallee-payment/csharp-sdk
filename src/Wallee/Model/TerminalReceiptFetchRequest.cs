@@ -57,14 +57,14 @@ namespace Wallee.Model
         /// Provide here the ID of the transaction for which the receipts should be fetched.
         /// </summary>
         /// <value>Provide here the ID of the transaction for which the receipts should be fetched.</value>
-        [DataMember(Name="transaction", EmitDefaultValue=true)]
+        [DataMember(Name="transaction", EmitDefaultValue=false)]
         public long? Transaction { get; set; }
 
         /// <summary>
         /// The width controls how width the document will be rendered. In case of the PDF format the width is in mm. In case of the text format the width is in the number of chars per line.
         /// </summary>
         /// <value>The width controls how width the document will be rendered. In case of the PDF format the width is in mm. In case of the text format the width is in the number of chars per line.</value>
-        [DataMember(Name="width", EmitDefaultValue=true)]
+        [DataMember(Name="width", EmitDefaultValue=false)]
         public int? Width { get; set; }
 
         /// <summary>

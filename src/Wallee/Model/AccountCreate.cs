@@ -46,14 +46,14 @@ namespace Wallee.Model
         /// The account which is responsible for administering the account.
         /// </summary>
         /// <value>The account which is responsible for administering the account.</value>
-        [DataMember(Name="parentAccount", EmitDefaultValue=true)]
+        [DataMember(Name="parentAccount", EmitDefaultValue=false)]
         public long? ParentAccount { get; set; }
 
         /// <summary>
         /// This is the scope to which the account belongs to.
         /// </summary>
         /// <value>This is the scope to which the account belongs to.</value>
-        [DataMember(Name="scope", EmitDefaultValue=true)]
+        [DataMember(Name="scope", EmitDefaultValue=false)]
         public long? Scope { get; set; }
 
         /// <summary>

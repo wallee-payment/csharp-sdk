@@ -64,20 +64,20 @@ namespace Wallee.Model
         /// The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.
         /// </summary>
         /// <value>The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.</value>
-        [DataMember(Name="note", EmitDefaultValue=true)]
+        [DataMember(Name="note", EmitDefaultValue=false)]
         public string Note { get; set; }
 
         /// <summary>
         /// The planned end date of the suspension identifies the date on which the suspension will be ended automatically.
         /// </summary>
         /// <value>The planned end date of the suspension identifies the date on which the suspension will be ended automatically.</value>
-        [DataMember(Name="plannedEndDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedEndDate", EmitDefaultValue=false)]
         public DateTime? PlannedEndDate { get; set; }
 
         /// <summary>
         /// Gets or Sets Subscription
         /// </summary>
-        [DataMember(Name="subscription", EmitDefaultValue=true)]
+        [DataMember(Name="subscription", EmitDefaultValue=false)]
         public long? Subscription { get; set; }
 
         /// <summary>

@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AddressType
         /// </summary>
-        [DataMember(Name="addressType", EmitDefaultValue=true)]
+        [DataMember(Name="addressType", EmitDefaultValue=false)]
         public CustomerAddressType? AddressType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomerAddress" /> class.
@@ -36,7 +36,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Address
         /// </summary>
-        [DataMember(Name="address", EmitDefaultValue=true)]
+        [DataMember(Name="address", EmitDefaultValue=false)]
         public CustomerPostalAddress Address { get; private set; }
 
 
@@ -44,40 +44,40 @@ namespace Wallee.Model
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets Customer
         /// </summary>
-        [DataMember(Name="customer", EmitDefaultValue=true)]
+        [DataMember(Name="customer", EmitDefaultValue=false)]
         public Customer Customer { get; private set; }
 
         /// <summary>
         /// Gets or Sets DefaultAddress
         /// </summary>
-        [DataMember(Name="defaultAddress", EmitDefaultValue=true)]
+        [DataMember(Name="defaultAddress", EmitDefaultValue=false)]
         public bool? DefaultAddress { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

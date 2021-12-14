@@ -24,23 +24,23 @@ namespace Wallee.Model
         /// Define how frequently recurring orders should be created.
         /// </summary>
         /// <value>Define how frequently recurring orders should be created.</value>
-        [DataMember(Name="billingIntervalUnit", EmitDefaultValue=true)]
+        [DataMember(Name="billingIntervalUnit", EmitDefaultValue=false)]
         public ShopifySubscriptionBillingIntervalUnit? BillingIntervalUnit { get; set; }
         /// <summary>
         /// Define the weekday on which the recurring orders should be created.
         /// </summary>
         /// <value>Define the weekday on which the recurring orders should be created.</value>
-        [DataMember(Name="billingWeekday", EmitDefaultValue=true)]
+        [DataMember(Name="billingWeekday", EmitDefaultValue=false)]
         public ShopifySubscriptionWeekday? BillingWeekday { get; set; }
         /// <summary>
         /// Gets or Sets PricingOption
         /// </summary>
-        [DataMember(Name="pricingOption", EmitDefaultValue=true)]
+        [DataMember(Name="pricingOption", EmitDefaultValue=false)]
         public ShopifySubscriptionProductPricingOption? PricingOption { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public ShopifySubscriptionProductState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscriptionProduct" /> class.
@@ -53,20 +53,20 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AbsolutePriceAdjustment
         /// </summary>
-        [DataMember(Name="absolutePriceAdjustment", EmitDefaultValue=true)]
+        [DataMember(Name="absolutePriceAdjustment", EmitDefaultValue=false)]
         public decimal? AbsolutePriceAdjustment { get; private set; }
 
         /// <summary>
         /// Define the day of the month on which the recurring orders should be created.
         /// </summary>
         /// <value>Define the day of the month on which the recurring orders should be created.</value>
-        [DataMember(Name="billingDayOfMonth", EmitDefaultValue=true)]
+        [DataMember(Name="billingDayOfMonth", EmitDefaultValue=false)]
         public int? BillingDayOfMonth { get; private set; }
 
         /// <summary>
         /// Gets or Sets BillingIntervalAmount
         /// </summary>
-        [DataMember(Name="billingIntervalAmount", EmitDefaultValue=true)]
+        [DataMember(Name="billingIntervalAmount", EmitDefaultValue=false)]
         public int? BillingIntervalAmount { get; private set; }
 
 
@@ -74,49 +74,49 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets FixedPrice
         /// </summary>
-        [DataMember(Name="fixedPrice", EmitDefaultValue=true)]
+        [DataMember(Name="fixedPrice", EmitDefaultValue=false)]
         public decimal? FixedPrice { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Define the maximum number of orders the subscription will run for.
         /// </summary>
         /// <value>Define the maximum number of orders the subscription will run for.</value>
-        [DataMember(Name="maximalBillingCycles", EmitDefaultValue=true)]
+        [DataMember(Name="maximalBillingCycles", EmitDefaultValue=false)]
         public int? MaximalBillingCycles { get; private set; }
 
         /// <summary>
         /// Define the maximum number of orders the subscription can be suspended for at a time.
         /// </summary>
         /// <value>Define the maximum number of orders the subscription can be suspended for at a time.</value>
-        [DataMember(Name="maximalSuspendableCycles", EmitDefaultValue=true)]
+        [DataMember(Name="maximalSuspendableCycles", EmitDefaultValue=false)]
         public int? MaximalSuspendableCycles { get; private set; }
 
         /// <summary>
         /// Define the minimal number of orders the subscription will run for.
         /// </summary>
         /// <value>Define the minimal number of orders the subscription will run for.</value>
-        [DataMember(Name="minimalBillingCycles", EmitDefaultValue=true)]
+        [DataMember(Name="minimalBillingCycles", EmitDefaultValue=false)]
         public int? MinimalBillingCycles { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
 
@@ -124,96 +124,96 @@ namespace Wallee.Model
         /// The ID of the Shopify product that is enabled to be ordered as subscription.
         /// </summary>
         /// <value>The ID of the Shopify product that is enabled to be ordered as subscription.</value>
-        [DataMember(Name="productId", EmitDefaultValue=true)]
+        [DataMember(Name="productId", EmitDefaultValue=false)]
         public string ProductId { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProductName
         /// </summary>
-        [DataMember(Name="productName", EmitDefaultValue=true)]
+        [DataMember(Name="productName", EmitDefaultValue=false)]
         public string ProductName { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProductPrice
         /// </summary>
-        [DataMember(Name="productPrice", EmitDefaultValue=true)]
+        [DataMember(Name="productPrice", EmitDefaultValue=false)]
         public decimal? ProductPrice { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProductSku
         /// </summary>
-        [DataMember(Name="productSku", EmitDefaultValue=true)]
+        [DataMember(Name="productSku", EmitDefaultValue=false)]
         public string ProductSku { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProductVariantId
         /// </summary>
-        [DataMember(Name="productVariantId", EmitDefaultValue=true)]
+        [DataMember(Name="productVariantId", EmitDefaultValue=false)]
         public string ProductVariantId { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProductVariantName
         /// </summary>
-        [DataMember(Name="productVariantName", EmitDefaultValue=true)]
+        [DataMember(Name="productVariantName", EmitDefaultValue=false)]
         public string ProductVariantName { get; private set; }
 
         /// <summary>
         /// Gets or Sets RelativePriceAdjustment
         /// </summary>
-        [DataMember(Name="relativePriceAdjustment", EmitDefaultValue=true)]
+        [DataMember(Name="relativePriceAdjustment", EmitDefaultValue=false)]
         public decimal? RelativePriceAdjustment { get; private set; }
 
         /// <summary>
         /// Gets or Sets ShippingRequired
         /// </summary>
-        [DataMember(Name="shippingRequired", EmitDefaultValue=true)]
+        [DataMember(Name="shippingRequired", EmitDefaultValue=false)]
         public bool? ShippingRequired { get; private set; }
 
         /// <summary>
         /// Gets or Sets Shop
         /// </summary>
-        [DataMember(Name="shop", EmitDefaultValue=true)]
+        [DataMember(Name="shop", EmitDefaultValue=false)]
         public long? Shop { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets StockCheckRequired
         /// </summary>
-        [DataMember(Name="stockCheckRequired", EmitDefaultValue=true)]
+        [DataMember(Name="stockCheckRequired", EmitDefaultValue=false)]
         public bool? StockCheckRequired { get; private set; }
 
         /// <summary>
         /// Define whether the order confirmation email of the Shopify shop is sent to the customer for recurring orders.
         /// </summary>
         /// <value>Define whether the order confirmation email of the Shopify shop is sent to the customer for recurring orders.</value>
-        [DataMember(Name="storeOrderConfirmationEmailEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="storeOrderConfirmationEmailEnabled", EmitDefaultValue=false)]
         public bool? StoreOrderConfirmationEmailEnabled { get; private set; }
 
         /// <summary>
         /// Define whether the customer is allowed to suspend subscriptions.
         /// </summary>
         /// <value>Define whether the customer is allowed to suspend subscriptions.</value>
-        [DataMember(Name="subscriberSuspensionAllowed", EmitDefaultValue=true)]
+        [DataMember(Name="subscriberSuspensionAllowed", EmitDefaultValue=false)]
         public bool? SubscriberSuspensionAllowed { get; private set; }
 
         /// <summary>
         /// Define the number of orders the subscription will keep running for after its termination has been requested.
         /// </summary>
         /// <value>Define the number of orders the subscription will keep running for after its termination has been requested.</value>
-        [DataMember(Name="terminationBillingCycles", EmitDefaultValue=true)]
+        [DataMember(Name="terminationBillingCycles", EmitDefaultValue=false)]
         public int? TerminationBillingCycles { get; private set; }
 
         /// <summary>
         /// Gets or Sets UpdatedAt
         /// </summary>
-        [DataMember(Name="updatedAt", EmitDefaultValue=true)]
+        [DataMember(Name="updatedAt", EmitDefaultValue=false)]
         public DateTime? UpdatedAt { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

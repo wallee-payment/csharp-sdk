@@ -49,13 +49,13 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Rate
         /// </summary>
-        [DataMember(Name="rate", EmitDefaultValue=true)]
+        [DataMember(Name="rate", EmitDefaultValue=false)]
         public decimal? Rate { get; set; }
 
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name="title", EmitDefaultValue=true)]
+        [DataMember(Name="title", EmitDefaultValue=false)]
         public string Title { get; set; }
 
         /// <summary>

@@ -31,35 +31,35 @@ namespace Wallee.Model
         /// The completion endpoint is invoked to request the payment service provider to execute a completion.
         /// </summary>
         /// <value>The completion endpoint is invoked to request the payment service provider to execute a completion.</value>
-        [DataMember(Name="completionEndpoint", EmitDefaultValue=true)]
+        [DataMember(Name="completionEndpoint", EmitDefaultValue=false)]
         public string CompletionEndpoint { get; set; }
 
         /// <summary>
         /// When the completion or the void is triggered we expect a feedback about the state of it. This timeout defines after how long we consider the void resp. completion as failed without receiving a final state update.
         /// </summary>
         /// <value>When the completion or the void is triggered we expect a feedback about the state of it. This timeout defines after how long we consider the void resp. completion as failed without receiving a final state update.</value>
-        [DataMember(Name="completionTimeoutInMinutes", EmitDefaultValue=true)]
+        [DataMember(Name="completionTimeoutInMinutes", EmitDefaultValue=false)]
         public int? CompletionTimeoutInMinutes { get; set; }
 
         /// <summary>
         /// The completion resp. the void can be triggered a while after the authorization of the transaction has been executed. This delay defines how many days after the authorization the void resp. completion must be triggered at the latest.
         /// </summary>
         /// <value>The completion resp. the void can be triggered a while after the authorization of the transaction has been executed. This delay defines how many days after the authorization the void resp. completion must be triggered at the latest.</value>
-        [DataMember(Name="maximalCompletionDelayInDays", EmitDefaultValue=true)]
+        [DataMember(Name="maximalCompletionDelayInDays", EmitDefaultValue=false)]
         public int? MaximalCompletionDelayInDays { get; set; }
 
         /// <summary>
         /// This flag indicates whether the connector supports multiple completions for a single transaction or not.
         /// </summary>
         /// <value>This flag indicates whether the connector supports multiple completions for a single transaction or not.</value>
-        [DataMember(Name="multipleCompletionsSupported", EmitDefaultValue=true)]
+        [DataMember(Name="multipleCompletionsSupported", EmitDefaultValue=false)]
         public bool? MultipleCompletionsSupported { get; set; }
 
         /// <summary>
         /// The void endpoint is invoked to request the payment service provider to execute a void.
         /// </summary>
         /// <value>The void endpoint is invoked to request the payment service provider to execute a void.</value>
-        [DataMember(Name="voidEndpoint", EmitDefaultValue=true)]
+        [DataMember(Name="voidEndpoint", EmitDefaultValue=false)]
         public string VoidEndpoint { get; set; }
 
         /// <summary>

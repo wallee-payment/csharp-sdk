@@ -23,17 +23,17 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets PaymentAppVersion
         /// </summary>
-        [DataMember(Name="paymentAppVersion", EmitDefaultValue=true)]
+        [DataMember(Name="paymentAppVersion", EmitDefaultValue=false)]
         public ShopifyIntegrationPaymentAppVersion? PaymentAppVersion { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Gets or Sets SubscriptionAppVersion
         /// </summary>
-        [DataMember(Name="subscriptionAppVersion", EmitDefaultValue=true)]
+        [DataMember(Name="subscriptionAppVersion", EmitDefaultValue=false)]
         public ShopifyIntegrationSubscriptionAppVersion? SubscriptionAppVersion { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifyIntegration" /> class.
@@ -46,118 +46,118 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets AdditionalLineItemData
         /// </summary>
-        [DataMember(Name="additionalLineItemData", EmitDefaultValue=true)]
+        [DataMember(Name="additionalLineItemData", EmitDefaultValue=false)]
         public List<ShopifyAdditionalLineItemData> AdditionalLineItemData { get; private set; }
 
         /// <summary>
         /// Gets or Sets AllowInvoiceDownload
         /// </summary>
-        [DataMember(Name="allowInvoiceDownload", EmitDefaultValue=true)]
+        [DataMember(Name="allowInvoiceDownload", EmitDefaultValue=false)]
         public bool? AllowInvoiceDownload { get; private set; }
 
         /// <summary>
         /// Gets or Sets AllowedPaymentMethodConfigurations
         /// </summary>
-        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=true)]
+        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<PaymentMethodConfiguration> AllowedPaymentMethodConfigurations { get; private set; }
 
         /// <summary>
         /// Gets or Sets Currency
         /// </summary>
-        [DataMember(Name="currency", EmitDefaultValue=true)]
+        [DataMember(Name="currency", EmitDefaultValue=false)]
         public string Currency { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Enabling the integrated payment form will embed the payment form in the Shopify shop. The app needs to be installed for this to be possible.
         /// </summary>
         /// <value>Enabling the integrated payment form will embed the payment form in the Shopify shop. The app needs to be installed for this to be possible.</value>
-        [DataMember(Name="integratedPaymentFormEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="integratedPaymentFormEnabled", EmitDefaultValue=false)]
         public bool? IntegratedPaymentFormEnabled { get; private set; }
 
         /// <summary>
         /// The checkout language forces a specific language in the checkout. Without a checkout language the browser setting of the buyer is used to determine the language.
         /// </summary>
         /// <value>The checkout language forces a specific language in the checkout. Without a checkout language the browser setting of the buyer is used to determine the language.</value>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The login name is used to link a specific Shopify payment gateway to this integration.This login name is to be filled into the appropriate field in the shops payment gateway configuration.
         /// </summary>
         /// <value>The login name is used to link a specific Shopify payment gateway to this integration.This login name is to be filled into the appropriate field in the shops payment gateway configuration.</value>
-        [DataMember(Name="loginName", EmitDefaultValue=true)]
+        [DataMember(Name="loginName", EmitDefaultValue=false)]
         public string LoginName { get; private set; }
 
         /// <summary>
         /// The integration name is used internally to identify a specific integration.For example the name is used withinsearch fields and hence it should be distinct and descriptive.
         /// </summary>
         /// <value>The integration name is used internally to identify a specific integration.For example the name is used withinsearch fields and hence it should be distinct and descriptive.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets PaymentInstalled
         /// </summary>
-        [DataMember(Name="paymentInstalled", EmitDefaultValue=true)]
+        [DataMember(Name="paymentInstalled", EmitDefaultValue=false)]
         public bool? PaymentInstalled { get; private set; }
 
         /// <summary>
         /// Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
         /// </summary>
         /// <value>Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.</value>
-        [DataMember(Name="paymentProxyPath", EmitDefaultValue=true)]
+        [DataMember(Name="paymentProxyPath", EmitDefaultValue=false)]
         public string PaymentProxyPath { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets ReplacePaymentMethodImage
         /// </summary>
-        [DataMember(Name="replacePaymentMethodImage", EmitDefaultValue=true)]
+        [DataMember(Name="replacePaymentMethodImage", EmitDefaultValue=false)]
         public bool? ReplacePaymentMethodImage { get; private set; }
 
         /// <summary>
         /// The store address is used to link a specific Shopify shop to this integration. This is the name used in the Shopifys admin URL: [storeAddress].myshopify.com
         /// </summary>
         /// <value>The store address is used to link a specific Shopify shop to this integration. This is the name used in the Shopifys admin URL: [storeAddress].myshopify.com</value>
-        [DataMember(Name="shopName", EmitDefaultValue=true)]
+        [DataMember(Name="shopName", EmitDefaultValue=false)]
         public string ShopName { get; private set; }
 
         /// <summary>
         /// Gets or Sets ShowPaymentInformation
         /// </summary>
-        [DataMember(Name="showPaymentInformation", EmitDefaultValue=true)]
+        [DataMember(Name="showPaymentInformation", EmitDefaultValue=false)]
         public bool? ShowPaymentInformation { get; private set; }
 
         /// <summary>
         /// Gets or Sets ShowSubscriptionInformation
         /// </summary>
-        [DataMember(Name="showSubscriptionInformation", EmitDefaultValue=true)]
+        [DataMember(Name="showSubscriptionInformation", EmitDefaultValue=false)]
         public bool? ShowSubscriptionInformation { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceId
         /// </summary>
-        [DataMember(Name="spaceId", EmitDefaultValue=true)]
+        [DataMember(Name="spaceId", EmitDefaultValue=false)]
         public long? SpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId
         /// </summary>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=true)]
+        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 
 
@@ -165,21 +165,21 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets SubscriptionInstalled
         /// </summary>
-        [DataMember(Name="subscriptionInstalled", EmitDefaultValue=true)]
+        [DataMember(Name="subscriptionInstalled", EmitDefaultValue=false)]
         public bool? SubscriptionInstalled { get; private set; }
 
         /// <summary>
         /// Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
         /// </summary>
         /// <value>Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.</value>
-        [DataMember(Name="subscriptionProxyPath", EmitDefaultValue=true)]
+        [DataMember(Name="subscriptionProxyPath", EmitDefaultValue=false)]
         public string SubscriptionProxyPath { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

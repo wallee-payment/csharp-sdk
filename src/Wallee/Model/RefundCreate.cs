@@ -54,38 +54,38 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Amount
         /// </summary>
-        [DataMember(Name="amount", EmitDefaultValue=true)]
+        [DataMember(Name="amount", EmitDefaultValue=false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
         /// Gets or Sets Completion
         /// </summary>
-        [DataMember(Name="completion", EmitDefaultValue=true)]
+        [DataMember(Name="completion", EmitDefaultValue=false)]
         public long? Completion { get; set; }
 
         /// <summary>
         /// The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.
         /// </summary>
         /// <value>The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=true)]
+        [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
         /// <summary>
         /// Gets or Sets MerchantReference
         /// </summary>
-        [DataMember(Name="merchantReference", EmitDefaultValue=true)]
+        [DataMember(Name="merchantReference", EmitDefaultValue=false)]
         public string MerchantReference { get; set; }
 
         /// <summary>
         /// Gets or Sets Reductions
         /// </summary>
-        [DataMember(Name="reductions", EmitDefaultValue=true)]
+        [DataMember(Name="reductions", EmitDefaultValue=false)]
         public List<LineItemReductionCreate> Reductions { get; set; }
 
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=true)]
+        [DataMember(Name="transaction", EmitDefaultValue=false)]
         public long? Transaction { get; set; }
 
 

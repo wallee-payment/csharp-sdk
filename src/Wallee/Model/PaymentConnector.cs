@@ -23,12 +23,12 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets DataCollectionType
         /// </summary>
-        [DataMember(Name="dataCollectionType", EmitDefaultValue=true)]
+        [DataMember(Name="dataCollectionType", EmitDefaultValue=false)]
         public DataCollectionType? DataCollectionType { get; set; }
         /// <summary>
         /// Gets or Sets PrimaryRiskTaker
         /// </summary>
-        [DataMember(Name="primaryRiskTaker", EmitDefaultValue=true)]
+        [DataMember(Name="primaryRiskTaker", EmitDefaultValue=false)]
         public PaymentPrimaryRiskTaker? PrimaryRiskTaker { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentConnector" /> class.
@@ -42,69 +42,69 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Deprecated
         /// </summary>
-        [DataMember(Name="deprecated", EmitDefaultValue=true)]
+        [DataMember(Name="deprecated", EmitDefaultValue=false)]
         public bool? Deprecated { get; private set; }
 
         /// <summary>
         /// Gets or Sets DeprecationReason
         /// </summary>
-        [DataMember(Name="deprecationReason", EmitDefaultValue=true)]
+        [DataMember(Name="deprecationReason", EmitDefaultValue=false)]
         public Dictionary<string, string> DeprecationReason { get; private set; }
 
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=true)]
+        [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// Gets or Sets Feature
         /// </summary>
-        [DataMember(Name="feature", EmitDefaultValue=true)]
+        [DataMember(Name="feature", EmitDefaultValue=false)]
         public Feature Feature { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentMethod
         /// </summary>
-        [DataMember(Name="paymentMethod", EmitDefaultValue=true)]
+        [DataMember(Name="paymentMethod", EmitDefaultValue=false)]
         public long? PaymentMethod { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentMethodBrand
         /// </summary>
-        [DataMember(Name="paymentMethodBrand", EmitDefaultValue=true)]
+        [DataMember(Name="paymentMethodBrand", EmitDefaultValue=false)]
         public PaymentMethodBrand PaymentMethodBrand { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets Processor
         /// </summary>
-        [DataMember(Name="processor", EmitDefaultValue=true)]
+        [DataMember(Name="processor", EmitDefaultValue=false)]
         public long? Processor { get; private set; }
 
         /// <summary>
         /// Gets or Sets SupportedCustomersPresences
         /// </summary>
-        [DataMember(Name="supportedCustomersPresences", EmitDefaultValue=true)]
+        [DataMember(Name="supportedCustomersPresences", EmitDefaultValue=false)]
         public List<CustomersPresence> SupportedCustomersPresences { get; private set; }
 
         /// <summary>
         /// Gets or Sets SupportedFeatures
         /// </summary>
-        [DataMember(Name="supportedFeatures", EmitDefaultValue=true)]
+        [DataMember(Name="supportedFeatures", EmitDefaultValue=false)]
         public List<long?> SupportedFeatures { get; private set; }
 
         /// <summary>

@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public RoleState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Role" /> class.
@@ -37,35 +37,35 @@ namespace Wallee.Model
         /// The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.
         /// </summary>
         /// <value>The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.</value>
-        [DataMember(Name="account", EmitDefaultValue=true)]
+        [DataMember(Name="account", EmitDefaultValue=false)]
         public Account Account { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The name of this role is used to identify the role within administrative interfaces.
         /// </summary>
         /// <value>The name of this role is used to identify the role within administrative interfaces.</value>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public DatabaseTranslatedString Name { get; private set; }
 
         /// <summary>
         /// Set of permissions that are granted to this role.
         /// </summary>
         /// <value>Set of permissions that are granted to this role.</value>
-        [DataMember(Name="permissions", EmitDefaultValue=true)]
+        [DataMember(Name="permissions", EmitDefaultValue=false)]
         public List<Permission> Permissions { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
 
@@ -73,14 +73,14 @@ namespace Wallee.Model
         /// Defines whether having been granted this role will force a user to use two-factor authentication.
         /// </summary>
         /// <value>Defines whether having been granted this role will force a user to use two-factor authentication.</value>
-        [DataMember(Name="twoFactorRequired", EmitDefaultValue=true)]
+        [DataMember(Name="twoFactorRequired", EmitDefaultValue=false)]
         public bool? TwoFactorRequired { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

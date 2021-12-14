@@ -23,7 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets RecurringIndicator
         /// </summary>
-        [DataMember(Name="recurringIndicator", EmitDefaultValue=true)]
+        [DataMember(Name="recurringIndicator", EmitDefaultValue=false)]
         public RecurringIndicator? RecurringIndicator { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenizedCardData" /> class.
@@ -37,14 +37,14 @@ namespace Wallee.Model
         /// The additional authentication value used to secure the tokenized card transactions.
         /// </summary>
         /// <value>The additional authentication value used to secure the tokenized card transactions.</value>
-        [DataMember(Name="cryptogram", EmitDefaultValue=true)]
+        [DataMember(Name="cryptogram", EmitDefaultValue=false)]
         public CardCryptogram Cryptogram { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets TokenRequestorId
         /// </summary>
-        [DataMember(Name="tokenRequestorId", EmitDefaultValue=true)]
+        [DataMember(Name="tokenRequestorId", EmitDefaultValue=false)]
         public string TokenRequestorId { get; private set; }
 
         /// <summary>

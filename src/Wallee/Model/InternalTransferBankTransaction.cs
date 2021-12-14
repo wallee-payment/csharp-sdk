@@ -32,33 +32,33 @@ namespace Wallee.Model
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets SourceBankTransaction
         /// </summary>
-        [DataMember(Name="sourceBankTransaction", EmitDefaultValue=true)]
+        [DataMember(Name="sourceBankTransaction", EmitDefaultValue=false)]
         public BankTransaction SourceBankTransaction { get; private set; }
 
         /// <summary>
         /// Gets or Sets TargetBankTransaction
         /// </summary>
-        [DataMember(Name="targetBankTransaction", EmitDefaultValue=true)]
+        [DataMember(Name="targetBankTransaction", EmitDefaultValue=false)]
         public BankTransaction TargetBankTransaction { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

@@ -31,41 +31,41 @@ namespace Wallee.Model
         /// The customer email address is the email address of the customer.
         /// </summary>
         /// <value>The customer email address is the email address of the customer.</value>
-        [DataMember(Name="customerEmailAddress", EmitDefaultValue=true)]
+        [DataMember(Name="customerEmailAddress", EmitDefaultValue=false)]
         public string CustomerEmailAddress { get; set; }
 
         /// <summary>
         /// The customer ID identifies the customer in the merchant system. In case the customer ID has been provided it has to correspond with the customer ID provided on the transaction. The customer ID will not be changed automatically. The merchant system has to provide it.
         /// </summary>
         /// <value>The customer ID identifies the customer in the merchant system. In case the customer ID has been provided it has to correspond with the customer ID provided on the transaction. The customer ID will not be changed automatically. The merchant system has to provide it.</value>
-        [DataMember(Name="customerId", EmitDefaultValue=true)]
+        [DataMember(Name="customerId", EmitDefaultValue=false)]
         public string CustomerId { get; set; }
 
         /// <summary>
         /// When a token is enabled for one-click payments the buyer will be able to select the token within the iFrame or on the payment page to pay with the token. The usage of the token will reduce the number of steps the buyer has to go through. The buyer is linked via the customer ID on the transaction with the token. Means the token will be visible for buyers with the same customer ID. Additionally the payment method has to be configured to allow the one-click payments.
         /// </summary>
         /// <value>When a token is enabled for one-click payments the buyer will be able to select the token within the iFrame or on the payment page to pay with the token. The usage of the token will reduce the number of steps the buyer has to go through. The buyer is linked via the customer ID on the transaction with the token. Means the token will be visible for buyers with the same customer ID. Additionally the payment method has to be configured to allow the one-click payments.</value>
-        [DataMember(Name="enabledForOneClickPayment", EmitDefaultValue=true)]
+        [DataMember(Name="enabledForOneClickPayment", EmitDefaultValue=false)]
         public bool? EnabledForOneClickPayment { get; set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; set; }
 
         /// <summary>
         /// The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
         /// </summary>
         /// <value>The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.</value>
-        [DataMember(Name="timeZone", EmitDefaultValue=true)]
+        [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; set; }
 
         /// <summary>
         /// Use something that it is easy to identify and may help you find the token (e.g. customer id, email address).
         /// </summary>
         /// <value>Use something that it is easy to identify and may help you find the token (e.g. customer id, email address).</value>
-        [DataMember(Name="tokenReference", EmitDefaultValue=true)]
+        [DataMember(Name="tokenReference", EmitDefaultValue=false)]
         public string TokenReference { get; set; }
 
         /// <summary>

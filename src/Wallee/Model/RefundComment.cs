@@ -31,66 +31,66 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Content
         /// </summary>
-        [DataMember(Name="content", EmitDefaultValue=true)]
+        [DataMember(Name="content", EmitDefaultValue=false)]
         public string Content { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedBy
         /// </summary>
-        [DataMember(Name="createdBy", EmitDefaultValue=true)]
+        [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets EditedBy
         /// </summary>
-        [DataMember(Name="editedBy", EmitDefaultValue=true)]
+        [DataMember(Name="editedBy", EmitDefaultValue=false)]
         public long? EditedBy { get; private set; }
 
         /// <summary>
         /// The date on which the comment was last edited.
         /// </summary>
         /// <value>The date on which the comment was last edited.</value>
-        [DataMember(Name="editedOn", EmitDefaultValue=true)]
+        [DataMember(Name="editedOn", EmitDefaultValue=false)]
         public DateTime? EditedOn { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets Pinned
         /// </summary>
-        [DataMember(Name="pinned", EmitDefaultValue=true)]
+        [DataMember(Name="pinned", EmitDefaultValue=false)]
         public bool? Pinned { get; private set; }
 
         /// <summary>
         /// Gets or Sets Refund
         /// </summary>
-        [DataMember(Name="refund", EmitDefaultValue=true)]
+        [DataMember(Name="refund", EmitDefaultValue=false)]
         public long? Refund { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>

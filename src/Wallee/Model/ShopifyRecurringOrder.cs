@@ -34,86 +34,86 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets BilledOn
         /// </summary>
-        [DataMember(Name="billedOn", EmitDefaultValue=true)]
+        [DataMember(Name="billedOn", EmitDefaultValue=false)]
         public DateTime? BilledOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets CheckoutToken
         /// </summary>
-        [DataMember(Name="checkoutToken", EmitDefaultValue=true)]
+        [DataMember(Name="checkoutToken", EmitDefaultValue=false)]
         public string CheckoutToken { get; private set; }
 
         /// <summary>
         /// Gets or Sets CreatedOn
         /// </summary>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets FailureReason
         /// </summary>
-        [DataMember(Name="failureReason", EmitDefaultValue=true)]
+        [DataMember(Name="failureReason", EmitDefaultValue=false)]
         public FailureReason FailureReason { get; private set; }
 
         /// <summary>
         /// Gets or Sets OrderId
         /// </summary>
-        [DataMember(Name="orderId", EmitDefaultValue=true)]
+        [DataMember(Name="orderId", EmitDefaultValue=false)]
         public string OrderId { get; private set; }
 
         /// <summary>
         /// Gets or Sets OrderName
         /// </summary>
-        [DataMember(Name="orderName", EmitDefaultValue=true)]
+        [DataMember(Name="orderName", EmitDefaultValue=false)]
         public string OrderName { get; private set; }
 
         /// <summary>
         /// Gets or Sets PlannedExecutionDate
         /// </summary>
-        [DataMember(Name="plannedExecutionDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedExecutionDate", EmitDefaultValue=false)]
         public DateTime? PlannedExecutionDate { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets RecurrenceNumber
         /// </summary>
-        [DataMember(Name="recurrenceNumber", EmitDefaultValue=true)]
+        [DataMember(Name="recurrenceNumber", EmitDefaultValue=false)]
         public int? RecurrenceNumber { get; private set; }
 
         /// <summary>
         /// Gets or Sets Shop
         /// </summary>
-        [DataMember(Name="shop", EmitDefaultValue=true)]
+        [DataMember(Name="shop", EmitDefaultValue=false)]
         public long? Shop { get; private set; }
 
         /// <summary>
         /// Gets or Sets StartedProcessingOn
         /// </summary>
-        [DataMember(Name="startedProcessingOn", EmitDefaultValue=true)]
+        [DataMember(Name="startedProcessingOn", EmitDefaultValue=false)]
         public DateTime? StartedProcessingOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public ShopifyRecurringOrderState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets SubscriptionVersion
         /// </summary>
-        [DataMember(Name="subscriptionVersion", EmitDefaultValue=true)]
+        [DataMember(Name="subscriptionVersion", EmitDefaultValue=false)]
         public ShopifySubscriptionVersion SubscriptionVersion { get; private set; }
 
         /// <summary>
         /// Gets or Sets Transaction
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=true)]
+        [DataMember(Name="transaction", EmitDefaultValue=false)]
         public ShopifyTransaction Transaction { get; private set; }
 
         /// <summary>

@@ -50,34 +50,34 @@ namespace Wallee.Model
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public long? Version { get; set; }
 
         /// <summary>
         /// The fee determines the amount which is charged. The consumed metric is multiplied by the defined fee. The resulting amount is charged at the end of the period.
         /// </summary>
         /// <value>The fee determines the amount which is charged. The consumed metric is multiplied by the defined fee. The resulting amount is charged at the end of the period.</value>
-        [DataMember(Name="fee", EmitDefaultValue=true)]
+        [DataMember(Name="fee", EmitDefaultValue=false)]
         public List<PersistableCurrencyAmountUpdate> Fee { get; set; }
 
         /// <summary>
         /// Gets or Sets MeteredFee
         /// </summary>
-        [DataMember(Name="meteredFee", EmitDefaultValue=true)]
+        [DataMember(Name="meteredFee", EmitDefaultValue=false)]
         public long? MeteredFee { get; set; }
 
         /// <summary>
         /// The start range defines the metered consumption of the metric from which on the defined fee gets applied. This means when a subscription consumes a value of 10 or more and the start range is set to 10 the fee defined on the tier will be applied.
         /// </summary>
         /// <value>The start range defines the metered consumption of the metric from which on the defined fee gets applied. This means when a subscription consumes a value of 10 or more and the start range is set to 10 the fee defined on the tier will be applied.</value>
-        [DataMember(Name="startRange", EmitDefaultValue=true)]
+        [DataMember(Name="startRange", EmitDefaultValue=false)]
         public decimal? StartRange { get; set; }
 
         /// <summary>

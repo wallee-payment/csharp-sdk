@@ -31,68 +31,68 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Description
         /// </summary>
-        [DataMember(Name="description", EmitDefaultValue=true)]
+        [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// Gets or Sets Feature
         /// </summary>
-        [DataMember(Name="feature", EmitDefaultValue=true)]
+        [DataMember(Name="feature", EmitDefaultValue=false)]
         public long? Feature { get; private set; }
 
         /// <summary>
         /// Gets or Sets Group
         /// </summary>
-        [DataMember(Name="group", EmitDefaultValue=true)]
+        [DataMember(Name="group", EmitDefaultValue=false)]
         public bool? Group { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Leaf
         /// </summary>
-        [DataMember(Name="leaf", EmitDefaultValue=true)]
+        [DataMember(Name="leaf", EmitDefaultValue=false)]
         public bool? Leaf { get; private set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// Gets or Sets Parent
         /// </summary>
-        [DataMember(Name="parent", EmitDefaultValue=true)]
+        [DataMember(Name="parent", EmitDefaultValue=false)]
         public long? Parent { get; private set; }
 
         /// <summary>
         /// Gets or Sets PathToRoot
         /// </summary>
-        [DataMember(Name="pathToRoot", EmitDefaultValue=true)]
+        [DataMember(Name="pathToRoot", EmitDefaultValue=false)]
         public List<long?> PathToRoot { get; private set; }
 
         /// <summary>
         /// Gets or Sets Title
         /// </summary>
-        [DataMember(Name="title", EmitDefaultValue=true)]
+        [DataMember(Name="title", EmitDefaultValue=false)]
         public Dictionary<string, string> Title { get; private set; }
 
         /// <summary>
         /// Gets or Sets TwoFactorRequired
         /// </summary>
-        [DataMember(Name="twoFactorRequired", EmitDefaultValue=true)]
+        [DataMember(Name="twoFactorRequired", EmitDefaultValue=false)]
         public bool? TwoFactorRequired { get; private set; }
 
         /// <summary>
         /// Gets or Sets WebAppEnabled
         /// </summary>
-        [DataMember(Name="webAppEnabled", EmitDefaultValue=true)]
+        [DataMember(Name="webAppEnabled", EmitDefaultValue=false)]
         public bool? WebAppEnabled { get; private set; }
 
         /// <summary>

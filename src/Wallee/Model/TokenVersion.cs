@@ -23,12 +23,12 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets Environment
         /// </summary>
-        [DataMember(Name="environment", EmitDefaultValue=true)]
+        [DataMember(Name="environment", EmitDefaultValue=false)]
         public ChargeAttemptEnvironment? Environment { get; set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=true)]
+        [DataMember(Name="state", EmitDefaultValue=false)]
         public TokenVersionState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenVersion" /> class.
@@ -41,20 +41,20 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets ActivatedOn
         /// </summary>
-        [DataMember(Name="activatedOn", EmitDefaultValue=true)]
+        [DataMember(Name="activatedOn", EmitDefaultValue=false)]
         public DateTime? ActivatedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets BillingAddress
         /// </summary>
-        [DataMember(Name="billingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public Address BillingAddress { get; private set; }
 
         /// <summary>
         /// The created on date indicates the date on which the entity was stored into the database.
         /// </summary>
         /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=true)]
+        [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
 
@@ -62,116 +62,116 @@ namespace Wallee.Model
         /// The expires on date indicates when token version expires. Once this date is reached the token version is marked as obsolete.
         /// </summary>
         /// <value>The expires on date indicates when token version expires. Once this date is reached the token version is marked as obsolete.</value>
-        [DataMember(Name="expiresOn", EmitDefaultValue=true)]
+        [DataMember(Name="expiresOn", EmitDefaultValue=false)]
         public DateTime? ExpiresOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets IconUrl
         /// </summary>
-        [DataMember(Name="iconUrl", EmitDefaultValue=true)]
+        [DataMember(Name="iconUrl", EmitDefaultValue=false)]
         public string IconUrl { get; private set; }
 
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=true)]
+        [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
         /// Gets or Sets Labels
         /// </summary>
-        [DataMember(Name="labels", EmitDefaultValue=true)]
+        [DataMember(Name="labels", EmitDefaultValue=false)]
         public List<Label> Labels { get; private set; }
 
         /// <summary>
         /// Gets or Sets Language
         /// </summary>
-        [DataMember(Name="language", EmitDefaultValue=true)]
+        [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
         /// The linked space id holds the ID of the space to which the entity belongs to.
         /// </summary>
         /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=true)]
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
-        [DataMember(Name="name", EmitDefaultValue=true)]
+        [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
         /// Gets or Sets ObsoletedOn
         /// </summary>
-        [DataMember(Name="obsoletedOn", EmitDefaultValue=true)]
+        [DataMember(Name="obsoletedOn", EmitDefaultValue=false)]
         public DateTime? ObsoletedOn { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentConnectorConfiguration
         /// </summary>
-        [DataMember(Name="paymentConnectorConfiguration", EmitDefaultValue=true)]
+        [DataMember(Name="paymentConnectorConfiguration", EmitDefaultValue=false)]
         public PaymentConnectorConfiguration PaymentConnectorConfiguration { get; private set; }
 
         /// <summary>
         /// The payment information hash set contains hashes of the payment information represented by this token version.
         /// </summary>
         /// <value>The payment information hash set contains hashes of the payment information represented by this token version.</value>
-        [DataMember(Name="paymentInformationHashes", EmitDefaultValue=true)]
+        [DataMember(Name="paymentInformationHashes", EmitDefaultValue=false)]
         public List<PaymentInformationHash> PaymentInformationHashes { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentMethod
         /// </summary>
-        [DataMember(Name="paymentMethod", EmitDefaultValue=true)]
+        [DataMember(Name="paymentMethod", EmitDefaultValue=false)]
         public long? PaymentMethod { get; private set; }
 
         /// <summary>
         /// Gets or Sets PaymentMethodBrand
         /// </summary>
-        [DataMember(Name="paymentMethodBrand", EmitDefaultValue=true)]
+        [DataMember(Name="paymentMethodBrand", EmitDefaultValue=false)]
         public long? PaymentMethodBrand { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
         /// </summary>
         /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=true)]
+        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProcessorToken
         /// </summary>
-        [DataMember(Name="processorToken", EmitDefaultValue=true)]
+        [DataMember(Name="processorToken", EmitDefaultValue=false)]
         public string ProcessorToken { get; private set; }
 
         /// <summary>
         /// Gets or Sets ShippingAddress
         /// </summary>
-        [DataMember(Name="shippingAddress", EmitDefaultValue=true)]
+        [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
         public Address ShippingAddress { get; private set; }
 
 
         /// <summary>
         /// Gets or Sets Token
         /// </summary>
-        [DataMember(Name="token", EmitDefaultValue=true)]
+        [DataMember(Name="token", EmitDefaultValue=false)]
         public Token Token { get; private set; }
 
         /// <summary>
         /// The token version type determines what kind of token it is and by which payment connector the token can be processed by.
         /// </summary>
         /// <value>The token version type determines what kind of token it is and by which payment connector the token can be processed by.</value>
-        [DataMember(Name="type", EmitDefaultValue=true)]
+        [DataMember(Name="type", EmitDefaultValue=false)]
         public TokenVersionType Type { get; private set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=true)]
+        [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
         /// <summary>
