@@ -477,6 +477,13 @@ namespace Wallee.Model
         public string WindowWidth { get; private set; }
 
         /// <summary>
+        /// The number of years the transaction will be stored after it has been authorized.
+        /// </summary>
+        /// <value>The number of years the transaction will be stored after it has been authorized.</value>
+        [DataMember(Name="yearsToKeep", EmitDefaultValue=false)]
+        public int? YearsToKeep { get; private set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -553,6 +560,7 @@ namespace Wallee.Model
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("  WindowHeight: ").Append(WindowHeight).Append("\n");
             sb.Append("  WindowWidth: ").Append(WindowWidth).Append("\n");
+            sb.Append("  YearsToKeep: ").Append(YearsToKeep).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -935,6 +943,11 @@ namespace Wallee.Model
                     this.WindowWidth == input.WindowWidth ||
                     (this.WindowWidth != null &&
                     this.WindowWidth.Equals(input.WindowWidth))
+                ) && 
+                (
+                    this.YearsToKeep == input.YearsToKeep ||
+                    (this.YearsToKeep != null &&
+                    this.YearsToKeep.Equals(input.YearsToKeep))
                 );
         }
 
@@ -1085,6 +1098,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.WindowHeight.GetHashCode();
                 if (this.WindowWidth != null)
                     hashCode = hashCode * 59 + this.WindowWidth.GetHashCode();
+                if (this.YearsToKeep != null)
+                    hashCode = hashCode * 59 + this.YearsToKeep.GetHashCode();
                 return hashCode;
             }
         }
