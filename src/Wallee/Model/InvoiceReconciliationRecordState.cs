@@ -15,43 +15,43 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// Defines LineItemType
+    /// Defines InvoiceReconciliationRecordState
     /// </summary>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum LineItemType
+    public enum InvoiceReconciliationRecordState
     {
         
         /// <summary>
-        /// Enum SHIPPING for value: SHIPPING
+        /// Enum CREATE for value: CREATE
         /// </summary>
-        [EnumMember(Value = "SHIPPING")]
-        SHIPPING,
+        [EnumMember(Value = "CREATE")]
+        CREATE,
         
         /// <summary>
-        /// Enum DISCOUNT for value: DISCOUNT
+        /// Enum PENDING for value: PENDING
         /// </summary>
-        [EnumMember(Value = "DISCOUNT")]
-        DISCOUNT,
+        [EnumMember(Value = "PENDING")]
+        PENDING,
         
         /// <summary>
-        /// Enum FEE for value: FEE
+        /// Enum UNRESOLVED for value: UNRESOLVED
         /// </summary>
-        [EnumMember(Value = "FEE")]
-        FEE,
+        [EnumMember(Value = "UNRESOLVED")]
+        UNRESOLVED,
         
         /// <summary>
-        /// Enum PRODUCT for value: PRODUCT
+        /// Enum RESOLVED for value: RESOLVED
         /// </summary>
-        [EnumMember(Value = "PRODUCT")]
-        PRODUCT,
+        [EnumMember(Value = "RESOLVED")]
+        RESOLVED,
         
         /// <summary>
-        /// Enum TIP for value: TIP
+        /// Enum DISCARDED for value: DISCARDED
         /// </summary>
-        [EnumMember(Value = "TIP")]
-        TIP
+        [EnumMember(Value = "DISCARDED")]
+        DISCARDED
     }
 
 }
