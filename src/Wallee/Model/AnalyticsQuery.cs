@@ -54,9 +54,9 @@ namespace Wallee.Model
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The maximal age in seconds of cached query executions to return. If an equivalent query execution with the same Query String, Account ID and Spaces parameters not older than the specified age is already available that execution will be returned instead of a newly started execution. Set to 0 (and set a unique, previously unused External ID) to force a new query execution irrespective of previous executions. Either the External ID or a Cache Duration greater than 0 must be specified. If both are specified, the External ID will be preferred (and the Maximal Cache Age ignored).
+        /// The maximal age in minutes of cached query executions to return. If an equivalent query execution with the same Query String, Account ID and Spaces parameters not older than the specified age is already available that execution will be returned instead of a newly started execution. Set to 0 or null (and set a unique, previously unused External ID) to force a new query execution irrespective of previous executions. Either the External ID or a Cache Duration greater than 0 must be specified. If both are specified, the External ID will be preferred (and the Maximal Cache Age ignored).
         /// </summary>
-        /// <value>The maximal age in seconds of cached query executions to return. If an equivalent query execution with the same Query String, Account ID and Spaces parameters not older than the specified age is already available that execution will be returned instead of a newly started execution. Set to 0 (and set a unique, previously unused External ID) to force a new query execution irrespective of previous executions. Either the External ID or a Cache Duration greater than 0 must be specified. If both are specified, the External ID will be preferred (and the Maximal Cache Age ignored).</value>
+        /// <value>The maximal age in minutes of cached query executions to return. If an equivalent query execution with the same Query String, Account ID and Spaces parameters not older than the specified age is already available that execution will be returned instead of a newly started execution. Set to 0 or null (and set a unique, previously unused External ID) to force a new query execution irrespective of previous executions. Either the External ID or a Cache Duration greater than 0 must be specified. If both are specified, the External ID will be preferred (and the Maximal Cache Age ignored).</value>
         [DataMember(Name="maxCacheAge", EmitDefaultValue=false)]
         public int? MaxCacheAge { get; set; }
 
@@ -66,6 +66,13 @@ namespace Wallee.Model
         /// <value>The SQL statement which is being submitted for execution. Must be a valid PrestoDB/Athena SQL statement.</value>
         [DataMember(Name="queryString", EmitDefaultValue=false)]
         public string QueryString { get; set; }
+
+        /// <summary>
+        /// The maximal amount of scanned data that this query is allowed to scan. After this limit is reached query will be canceled by the system. 
+        /// </summary>
+        /// <value>The maximal amount of scanned data that this query is allowed to scan. After this limit is reached query will be canceled by the system. </value>
+        [DataMember(Name="scannedDataLimit", EmitDefaultValue=false)]
+        public decimal? ScannedDataLimit { get; set; }
 
         /// <summary>
         /// The IDs of the spaces in which the query shall be executed. At most 5 space IDs may be specified. All specified spaces must be owned by the account specified by the accountId property. The spaces property may be missing or empty to query all spaces of the specified account.
@@ -86,6 +93,7 @@ namespace Wallee.Model
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  MaxCacheAge: ").Append(MaxCacheAge).Append("\n");
             sb.Append("  QueryString: ").Append(QueryString).Append("\n");
+            sb.Append("  ScannedDataLimit: ").Append(ScannedDataLimit).Append("\n");
             sb.Append("  SpaceIds: ").Append(SpaceIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -142,6 +150,11 @@ namespace Wallee.Model
                     this.QueryString.Equals(input.QueryString))
                 ) && 
                 (
+                    this.ScannedDataLimit == input.ScannedDataLimit ||
+                    (this.ScannedDataLimit != null &&
+                    this.ScannedDataLimit.Equals(input.ScannedDataLimit))
+                ) && 
+                (
                     this.SpaceIds == input.SpaceIds ||
                     this.SpaceIds != null &&
                     input.SpaceIds != null &&
@@ -166,6 +179,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.MaxCacheAge.GetHashCode();
                 if (this.QueryString != null)
                     hashCode = hashCode * 59 + this.QueryString.GetHashCode();
+                if (this.ScannedDataLimit != null)
+                    hashCode = hashCode * 59 + this.ScannedDataLimit.GetHashCode();
                 if (this.SpaceIds != null)
                     hashCode = hashCode * 59 + this.SpaceIds.GetHashCode();
                 return hashCode;

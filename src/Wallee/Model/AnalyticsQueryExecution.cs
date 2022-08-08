@@ -91,6 +91,13 @@ namespace Wallee.Model
         public decimal? ScannedDataInGb { get; private set; }
 
         /// <summary>
+        /// The maximal amount of scanned data that this query is allowed to scan. After this limit is reached query will be canceled by the system. 
+        /// </summary>
+        /// <value>The maximal amount of scanned data that this query is allowed to scan. After this limit is reached query will be canceled by the system. </value>
+        [DataMember(Name="scannedDataLimit", EmitDefaultValue=false)]
+        public decimal? ScannedDataLimit { get; private set; }
+
+        /// <summary>
         /// The spaces in which the query has been executed. May be empty if all spaces of the specified account have been queried.
         /// </summary>
         /// <value>The spaces in which the query has been executed. May be empty if all spaces of the specified account have been queried.</value>
@@ -114,6 +121,7 @@ namespace Wallee.Model
             sb.Append("  ProcessingStartTime: ").Append(ProcessingStartTime).Append("\n");
             sb.Append("  QueryString: ").Append(QueryString).Append("\n");
             sb.Append("  ScannedDataInGb: ").Append(ScannedDataInGb).Append("\n");
+            sb.Append("  ScannedDataLimit: ").Append(ScannedDataLimit).Append("\n");
             sb.Append("  Spaces: ").Append(Spaces).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("}\n");
@@ -191,6 +199,11 @@ namespace Wallee.Model
                     this.ScannedDataInGb.Equals(input.ScannedDataInGb))
                 ) && 
                 (
+                    this.ScannedDataLimit == input.ScannedDataLimit ||
+                    (this.ScannedDataLimit != null &&
+                    this.ScannedDataLimit.Equals(input.ScannedDataLimit))
+                ) && 
+                (
                     this.Spaces == input.Spaces ||
                     this.Spaces != null &&
                     input.Spaces != null &&
@@ -228,6 +241,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.QueryString.GetHashCode();
                 if (this.ScannedDataInGb != null)
                     hashCode = hashCode * 59 + this.ScannedDataInGb.GetHashCode();
+                if (this.ScannedDataLimit != null)
+                    hashCode = hashCode * 59 + this.ScannedDataLimit.GetHashCode();
                 if (this.Spaces != null)
                     hashCode = hashCode * 59 + this.Spaces.GetHashCode();
                 if (this.State != null)

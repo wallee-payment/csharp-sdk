@@ -82,6 +82,12 @@ namespace Wallee.Model
         public DateTime? DiscardedOn { get; private set; }
 
         /// <summary>
+        /// Gets or Sets Environment
+        /// </summary>
+        [DataMember(Name="environment", EmitDefaultValue=false)]
+        public ChargeAttemptEnvironment Environment { get; private set; }
+
+        /// <summary>
         /// Gets or Sets FamilyName
         /// </summary>
         [DataMember(Name="familyName", EmitDefaultValue=false)]
@@ -122,6 +128,12 @@ namespace Wallee.Model
         /// </summary>
         [DataMember(Name="paymentFeeCurrency", EmitDefaultValue=false)]
         public string PaymentFeeCurrency { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets PaymentReason
+        /// </summary>
+        [DataMember(Name="paymentReason", EmitDefaultValue=false)]
+        public string PaymentReason { get; private set; }
 
         /// <summary>
         /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
@@ -180,10 +192,10 @@ namespace Wallee.Model
         public string Street { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Transaction
+        /// Gets or Sets Type
         /// </summary>
-        [DataMember(Name="transaction", EmitDefaultValue=false)]
-        public Transaction Transaction { get; private set; }
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public InvoiceReconciliationRecordType Type { get; private set; }
 
         /// <summary>
         /// Gets or Sets UniqueId
@@ -224,6 +236,7 @@ namespace Wallee.Model
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  DiscardedBy: ").Append(DiscardedBy).Append("\n");
             sb.Append("  DiscardedOn: ").Append(DiscardedOn).Append("\n");
+            sb.Append("  Environment: ").Append(Environment).Append("\n");
             sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");
             sb.Append("  GivenName: ").Append(GivenName).Append("\n");
             sb.Append("  Iban: ").Append(Iban).Append("\n");
@@ -231,6 +244,7 @@ namespace Wallee.Model
             sb.Append("  ParticipantNumber: ").Append(ParticipantNumber).Append("\n");
             sb.Append("  PaymentFeeAmount: ").Append(PaymentFeeAmount).Append("\n");
             sb.Append("  PaymentFeeCurrency: ").Append(PaymentFeeCurrency).Append("\n");
+            sb.Append("  PaymentReason: ").Append(PaymentReason).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  PostCode: ").Append(PostCode).Append("\n");
             sb.Append("  ReferenceNumber: ").Append(ReferenceNumber).Append("\n");
@@ -240,7 +254,7 @@ namespace Wallee.Model
             sb.Append("  SenderBankAccount: ").Append(SenderBankAccount).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Street: ").Append(Street).Append("\n");
-            sb.Append("  Transaction: ").Append(Transaction).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  UniqueId: ").Append(UniqueId).Append("\n");
             sb.Append("  ValueDate: ").Append(ValueDate).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
@@ -334,6 +348,11 @@ namespace Wallee.Model
                     this.DiscardedOn.Equals(input.DiscardedOn))
                 ) && base.Equals(input) && 
                 (
+                    this.Environment == input.Environment ||
+                    (this.Environment != null &&
+                    this.Environment.Equals(input.Environment))
+                ) && base.Equals(input) && 
+                (
                     this.FamilyName == input.FamilyName ||
                     (this.FamilyName != null &&
                     this.FamilyName.Equals(input.FamilyName))
@@ -367,6 +386,11 @@ namespace Wallee.Model
                     this.PaymentFeeCurrency == input.PaymentFeeCurrency ||
                     (this.PaymentFeeCurrency != null &&
                     this.PaymentFeeCurrency.Equals(input.PaymentFeeCurrency))
+                ) && base.Equals(input) && 
+                (
+                    this.PaymentReason == input.PaymentReason ||
+                    (this.PaymentReason != null &&
+                    this.PaymentReason.Equals(input.PaymentReason))
                 ) && base.Equals(input) && 
                 (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||
@@ -414,9 +438,9 @@ namespace Wallee.Model
                     this.Street.Equals(input.Street))
                 ) && base.Equals(input) && 
                 (
-                    this.Transaction == input.Transaction ||
-                    (this.Transaction != null &&
-                    this.Transaction.Equals(input.Transaction))
+                    this.Type == input.Type ||
+                    (this.Type != null &&
+                    this.Type.Equals(input.Type))
                 ) && base.Equals(input) && 
                 (
                     this.UniqueId == input.UniqueId ||
@@ -466,6 +490,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.DiscardedBy.GetHashCode();
                 if (this.DiscardedOn != null)
                     hashCode = hashCode * 59 + this.DiscardedOn.GetHashCode();
+                if (this.Environment != null)
+                    hashCode = hashCode * 59 + this.Environment.GetHashCode();
                 if (this.FamilyName != null)
                     hashCode = hashCode * 59 + this.FamilyName.GetHashCode();
                 if (this.GivenName != null)
@@ -480,6 +506,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.PaymentFeeAmount.GetHashCode();
                 if (this.PaymentFeeCurrency != null)
                     hashCode = hashCode * 59 + this.PaymentFeeCurrency.GetHashCode();
+                if (this.PaymentReason != null)
+                    hashCode = hashCode * 59 + this.PaymentReason.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
                 if (this.PostCode != null)
@@ -498,8 +526,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.Street != null)
                     hashCode = hashCode * 59 + this.Street.GetHashCode();
-                if (this.Transaction != null)
-                    hashCode = hashCode * 59 + this.Transaction.GetHashCode();
+                if (this.Type != null)
+                    hashCode = hashCode * 59 + this.Type.GetHashCode();
                 if (this.UniqueId != null)
                     hashCode = hashCode * 59 + this.UniqueId.GetHashCode();
                 if (this.ValueDate != null)

@@ -43,7 +43,7 @@ namespace Wallee.Model
         /// Gets or Sets AllowedPaymentMethodBrands
         /// </summary>
         [DataMember(Name="allowedPaymentMethodBrands", EmitDefaultValue=false)]
-        public List<PaymentMethodBrand> AllowedPaymentMethodBrands { get; set; }
+        public List<long?> AllowedPaymentMethodBrands { get; set; }
 
         /// <summary>
         /// Gets or Sets AllowedPaymentMethodConfigurations

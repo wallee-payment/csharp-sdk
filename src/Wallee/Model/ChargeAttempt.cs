@@ -57,6 +57,13 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
+        /// The customers presence indicates which kind of customer interaction was used during the charge attempt.
+        /// </summary>
+        /// <value>The customers presence indicates which kind of customer interaction was used during the charge attempt.</value>
+        [DataMember(Name="customersPresence", EmitDefaultValue=false)]
+        public CustomersPresence CustomersPresence { get; private set; }
+
+        /// <summary>
         /// Gets or Sets Environment
         /// </summary>
         [DataMember(Name="environment", EmitDefaultValue=false)]
@@ -195,6 +202,7 @@ namespace Wallee.Model
             sb.Append("  CompletionBehavior: ").Append(CompletionBehavior).Append("\n");
             sb.Append("  ConnectorConfiguration: ").Append(ConnectorConfiguration).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  CustomersPresence: ").Append(CustomersPresence).Append("\n");
             sb.Append("  Environment: ").Append(Environment).Append("\n");
             sb.Append("  FailedOn: ").Append(FailedOn).Append("\n");
             sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
@@ -283,6 +291,11 @@ namespace Wallee.Model
                     this.CreatedOn == input.CreatedOn ||
                     (this.CreatedOn != null &&
                     this.CreatedOn.Equals(input.CreatedOn))
+                ) && base.Equals(input) && 
+                (
+                    this.CustomersPresence == input.CustomersPresence ||
+                    (this.CustomersPresence != null &&
+                    this.CustomersPresence.Equals(input.CustomersPresence))
                 ) && base.Equals(input) && 
                 (
                     this.Environment == input.Environment ||
@@ -410,6 +423,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ConnectorConfiguration.GetHashCode();
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
+                if (this.CustomersPresence != null)
+                    hashCode = hashCode * 59 + this.CustomersPresence.GetHashCode();
                 if (this.Environment != null)
                     hashCode = hashCode * 59 + this.Environment.GetHashCode();
                 if (this.FailedOn != null)

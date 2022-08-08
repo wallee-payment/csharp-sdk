@@ -66,10 +66,22 @@ namespace Wallee.Model
         public string GivenName { get; private set; }
 
         /// <summary>
+        /// Gets or Sets MobilePhoneNumber
+        /// </summary>
+        [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=false)]
+        public string MobilePhoneNumber { get; private set; }
+
+        /// <summary>
         /// Gets or Sets OrganizationName
         /// </summary>
         [DataMember(Name="organizationName", EmitDefaultValue=false)]
         public string OrganizationName { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets PhoneNumber
+        /// </summary>
+        [DataMember(Name="phoneNumber", EmitDefaultValue=false)]
+        public string PhoneNumber { get; private set; }
 
         /// <summary>
         /// Gets or Sets PostalState
@@ -122,7 +134,9 @@ namespace Wallee.Model
             sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
             sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");
             sb.Append("  GivenName: ").Append(GivenName).Append("\n");
+            sb.Append("  MobilePhoneNumber: ").Append(MobilePhoneNumber).Append("\n");
             sb.Append("  OrganizationName: ").Append(OrganizationName).Append("\n");
+            sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
             sb.Append("  PostalState: ").Append(PostalState).Append("\n");
             sb.Append("  Postcode: ").Append(Postcode).Append("\n");
             sb.Append("  SalesTaxNumber: ").Append(SalesTaxNumber).Append("\n");
@@ -194,9 +208,19 @@ namespace Wallee.Model
                     this.GivenName.Equals(input.GivenName))
                 ) && 
                 (
+                    this.MobilePhoneNumber == input.MobilePhoneNumber ||
+                    (this.MobilePhoneNumber != null &&
+                    this.MobilePhoneNumber.Equals(input.MobilePhoneNumber))
+                ) && 
+                (
                     this.OrganizationName == input.OrganizationName ||
                     (this.OrganizationName != null &&
                     this.OrganizationName.Equals(input.OrganizationName))
+                ) && 
+                (
+                    this.PhoneNumber == input.PhoneNumber ||
+                    (this.PhoneNumber != null &&
+                    this.PhoneNumber.Equals(input.PhoneNumber))
                 ) && 
                 (
                     this.PostalState == input.PostalState ||
@@ -251,8 +275,12 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.FamilyName.GetHashCode();
                 if (this.GivenName != null)
                     hashCode = hashCode * 59 + this.GivenName.GetHashCode();
+                if (this.MobilePhoneNumber != null)
+                    hashCode = hashCode * 59 + this.MobilePhoneNumber.GetHashCode();
                 if (this.OrganizationName != null)
                     hashCode = hashCode * 59 + this.OrganizationName.GetHashCode();
+                if (this.PhoneNumber != null)
+                    hashCode = hashCode * 59 + this.PhoneNumber.GetHashCode();
                 if (this.PostalState != null)
                     hashCode = hashCode * 59 + this.PostalState.GetHashCode();
                 if (this.Postcode != null)

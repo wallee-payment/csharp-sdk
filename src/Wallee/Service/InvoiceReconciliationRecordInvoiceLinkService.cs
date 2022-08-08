@@ -11,7 +11,7 @@ namespace Wallee.Service
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IInvoiceReconciliationRecordService : IApiAccessor
+    public interface IInvoiceReconciliationRecordInvoiceLinkService : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
@@ -38,28 +38,32 @@ namespace Wallee.Service
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
         /// <summary>
-        /// Discard
+        /// Link Invoice
         /// </summary>
         /// <remarks>
-        /// Discards the invoice reconciliation record.
+        /// Links the invoice reconciliation record with the provided invoice.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The ID of the invoice reconciliation record which should be discarded.</param>
-        /// <returns></returns>
-        void Discard (long? spaceId, long? id);
+        /// <param name="recordId">The ID of the invoice reconciliation record which should be linked.</param>
+        /// <param name="completionId">The ID of the completion which should be linked.</param>
+        /// <param name="amount">The amount of the invoice reconciliation record linked completion which should be changed. (optional)</param>
+        /// <returns>InvoiceReconciliationRecordInvoiceLink</returns>
+        InvoiceReconciliationRecordInvoiceLink Link (long? spaceId, long? recordId, long? completionId, decimal? amount = null);
 
         /// <summary>
-        /// Discard
+        /// Link Invoice
         /// </summary>
         /// <remarks>
-        /// Discards the invoice reconciliation record.
+        /// Links the invoice reconciliation record with the provided invoice.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The ID of the invoice reconciliation record which should be discarded.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DiscardWithHttpInfo (long? spaceId, long? id);
+        /// <param name="recordId">The ID of the invoice reconciliation record which should be linked.</param>
+        /// <param name="completionId">The ID of the completion which should be linked.</param>
+        /// <param name="amount">The amount of the invoice reconciliation record linked completion which should be changed. (optional)</param>
+        /// <returns>ApiResponse of InvoiceReconciliationRecordInvoiceLink</returns>
+        ApiResponse<InvoiceReconciliationRecordInvoiceLink> LinkWithHttpInfo (long? spaceId, long? recordId, long? completionId, decimal? amount = null);
         /// <summary>
         /// Read
         /// </summary>
@@ -68,9 +72,9 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The ID of the invoice reconciliation record which should be returned.</param>
-        /// <returns>InvoiceReconciliationRecord</returns>
-        InvoiceReconciliationRecord Read (long? spaceId, long? id);
+        /// <param name="id">The ID of the invoice reconciliation record invoice link which should be returned.</param>
+        /// <returns>InvoiceReconciliationRecordInvoiceLink</returns>
+        InvoiceReconciliationRecordInvoiceLink Read (long? spaceId, long? id);
 
         /// <summary>
         /// Read
@@ -80,32 +84,9 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The ID of the invoice reconciliation record which should be returned.</param>
-        /// <returns>ApiResponse of InvoiceReconciliationRecord</returns>
-        ApiResponse<InvoiceReconciliationRecord> ReadWithHttpInfo (long? spaceId, long? id);
-        /// <summary>
-        /// Resolve
-        /// </summary>
-        /// <remarks>
-        /// Resolves the invoice reconciliation record.
-        /// </remarks>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="id">The ID of the invoice reconciliation record which should be resolved.</param>
-        /// <returns></returns>
-        void Resolve (long? spaceId, long? id);
-
-        /// <summary>
-        /// Resolve
-        /// </summary>
-        /// <remarks>
-        /// Resolves the invoice reconciliation record.
-        /// </remarks>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="id">The ID of the invoice reconciliation record which should be resolved.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ResolveWithHttpInfo (long? spaceId, long? id);
+        /// <param name="id">The ID of the invoice reconciliation record invoice link which should be returned.</param>
+        /// <returns>ApiResponse of InvoiceReconciliationRecordInvoiceLink</returns>
+        ApiResponse<InvoiceReconciliationRecordInvoiceLink> ReadWithHttpInfo (long? spaceId, long? id);
         /// <summary>
         /// Search
         /// </summary>
@@ -114,9 +95,9 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the invoice reconciliation records which are returned by the search.</param>
-        /// <returns>List&lt;InvoiceReconciliationRecord&gt;</returns>
-        List<InvoiceReconciliationRecord> Search (long? spaceId, EntityQuery query);
+        /// <param name="query">The query restricts the invoice reconciliation record invoice link which are returned by the search.</param>
+        /// <returns>List&lt;InvoiceReconciliationRecordInvoiceLink&gt;</returns>
+        List<InvoiceReconciliationRecordInvoiceLink> Search (long? spaceId, EntityQuery query);
 
         /// <summary>
         /// Search
@@ -126,49 +107,51 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the invoice reconciliation records which are returned by the search.</param>
-        /// <returns>ApiResponse of List&lt;InvoiceReconciliationRecord&gt;</returns>
-        ApiResponse<List<InvoiceReconciliationRecord>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+        /// <param name="query">The query restricts the invoice reconciliation record invoice link which are returned by the search.</param>
+        /// <returns>ApiResponse of List&lt;InvoiceReconciliationRecordInvoiceLink&gt;</returns>
+        ApiResponse<List<InvoiceReconciliationRecordInvoiceLink>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
         /// <summary>
-        /// Search for matchable invoices by query
+        /// Unlink Invoice
         /// </summary>
         /// <remarks>
-        /// Searches for transaction invoices by given query.
+        /// Unlinks the invoice reconciliation record from the provided invoice.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the invoices which are returned by the search.</param>
-        /// <returns>List&lt;TransactionInvoice&gt;</returns>
-        List<TransactionInvoice> SearchForInvoicesByQuery (long? spaceId, EntityQuery query);
+        /// <param name="recordId">The ID of the invoice reconciliation record which should be unlinked.</param>
+        /// <param name="completionId">The ID of the completion which should be unlinked.</param>
+        /// <returns></returns>
+        void UnlinkTransaction (long? spaceId, long? recordId, long? completionId);
 
         /// <summary>
-        /// Search for matchable invoices by query
+        /// Unlink Invoice
         /// </summary>
         /// <remarks>
-        /// Searches for transaction invoices by given query.
+        /// Unlinks the invoice reconciliation record from the provided invoice.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the invoices which are returned by the search.</param>
-        /// <returns>ApiResponse of List&lt;TransactionInvoice&gt;</returns>
-        ApiResponse<List<TransactionInvoice>> SearchForInvoicesByQueryWithHttpInfo (long? spaceId, EntityQuery query);
+        /// <param name="recordId">The ID of the invoice reconciliation record which should be unlinked.</param>
+        /// <param name="completionId">The ID of the completion which should be unlinked.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> UnlinkTransactionWithHttpInfo (long? spaceId, long? recordId, long? completionId);
         #endregion Synchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class InvoiceReconciliationRecordService : IInvoiceReconciliationRecordService
+    public partial class InvoiceReconciliationRecordInvoiceLinkService : IInvoiceReconciliationRecordInvoiceLinkService
     {
         private Wallee.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="InvoiceReconciliationRecordService"/> class
+        /// Initializes a new instance of the <see cref="InvoiceReconciliationRecordInvoiceLinkService"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public InvoiceReconciliationRecordService(Wallee.Client.Configuration configuration = null)
+        public InvoiceReconciliationRecordInvoiceLinkService(Wallee.Client.Configuration configuration = null)
         {
             if(configuration == null){
                 throw new ArgumentException("Parameter cannot be null", "configuration");
@@ -234,9 +217,9 @@ namespace Wallee.Service
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling InvoiceReconciliationRecordService->Count");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling InvoiceReconciliationRecordInvoiceLinkService->Count");
 
-            var localVarPath = "/invoice-reconciliation-record-service/count";
+            var localVarPath = "/invoice-reconciliation-record-invoice-link-service/count";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -288,34 +271,42 @@ namespace Wallee.Service
                 (long?) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(long?)));
         }
         /// <summary>
-        /// Discard Discards the invoice reconciliation record.
+        /// Link Invoice Links the invoice reconciliation record with the provided invoice.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The ID of the invoice reconciliation record which should be discarded.</param>
-        /// <returns></returns>
-        public void Discard (long? spaceId, long? id)
+        /// <param name="recordId">The ID of the invoice reconciliation record which should be linked.</param>
+        /// <param name="completionId">The ID of the completion which should be linked.</param>
+        /// <param name="amount">The amount of the invoice reconciliation record linked completion which should be changed. (optional)</param>
+        /// <returns>InvoiceReconciliationRecordInvoiceLink</returns>
+        public InvoiceReconciliationRecordInvoiceLink Link (long? spaceId, long? recordId, long? completionId, decimal? amount = null)
         {
-             DiscardWithHttpInfo(spaceId, id);
+             ApiResponse<InvoiceReconciliationRecordInvoiceLink> localVarResponse = LinkWithHttpInfo(spaceId, recordId, completionId, amount);
+             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Discard Discards the invoice reconciliation record.
+        /// Link Invoice Links the invoice reconciliation record with the provided invoice.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The ID of the invoice reconciliation record which should be discarded.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DiscardWithHttpInfo (long? spaceId, long? id)
+        /// <param name="recordId">The ID of the invoice reconciliation record which should be linked.</param>
+        /// <param name="completionId">The ID of the completion which should be linked.</param>
+        /// <param name="amount">The amount of the invoice reconciliation record linked completion which should be changed. (optional)</param>
+        /// <returns>ApiResponse of InvoiceReconciliationRecordInvoiceLink</returns>
+        public ApiResponse< InvoiceReconciliationRecordInvoiceLink > LinkWithHttpInfo (long? spaceId, long? recordId, long? completionId, decimal? amount = null)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling InvoiceReconciliationRecordService->Discard");
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling InvoiceReconciliationRecordService->Discard");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling InvoiceReconciliationRecordInvoiceLinkService->Link");
+            // verify the required parameter 'recordId' is set
+            if (recordId == null)
+                throw new ApiException(400, "Missing required parameter 'recordId' when calling InvoiceReconciliationRecordInvoiceLinkService->Link");
+            // verify the required parameter 'completionId' is set
+            if (completionId == null)
+                throw new ApiException(400, "Missing required parameter 'completionId' when calling InvoiceReconciliationRecordInvoiceLinkService->Link");
 
-            var localVarPath = "/invoice-reconciliation-record-service/discard";
+            var localVarPath = "/invoice-reconciliation-record-invoice-link-service/link";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -336,7 +327,9 @@ namespace Wallee.Service
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (recordId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "recordId", recordId)); // query parameter
+            if (completionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "completionId", completionId)); // query parameter
+            if (amount != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "amount", amount)); // query parameter
 
 			
 			this.Configuration.ApiClient.ResetTimeout();
@@ -349,24 +342,24 @@ namespace Wallee.Service
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Discard", localVarResponse);
+                Exception exception = ExceptionFactory("Link", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<InvoiceReconciliationRecordInvoiceLink>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (InvoiceReconciliationRecordInvoiceLink) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InvoiceReconciliationRecordInvoiceLink)));
         }
         /// <summary>
         /// Read Reads the entity with the given &#39;id&#39; and returns it.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The ID of the invoice reconciliation record which should be returned.</param>
-        /// <returns>InvoiceReconciliationRecord</returns>
-        public InvoiceReconciliationRecord Read (long? spaceId, long? id)
+        /// <param name="id">The ID of the invoice reconciliation record invoice link which should be returned.</param>
+        /// <returns>InvoiceReconciliationRecordInvoiceLink</returns>
+        public InvoiceReconciliationRecordInvoiceLink Read (long? spaceId, long? id)
         {
-             ApiResponse<InvoiceReconciliationRecord> localVarResponse = ReadWithHttpInfo(spaceId, id);
+             ApiResponse<InvoiceReconciliationRecordInvoiceLink> localVarResponse = ReadWithHttpInfo(spaceId, id);
              return localVarResponse.Data;
         }
 
@@ -375,18 +368,18 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id">The ID of the invoice reconciliation record which should be returned.</param>
-        /// <returns>ApiResponse of InvoiceReconciliationRecord</returns>
-        public ApiResponse< InvoiceReconciliationRecord > ReadWithHttpInfo (long? spaceId, long? id)
+        /// <param name="id">The ID of the invoice reconciliation record invoice link which should be returned.</param>
+        /// <returns>ApiResponse of InvoiceReconciliationRecordInvoiceLink</returns>
+        public ApiResponse< InvoiceReconciliationRecordInvoiceLink > ReadWithHttpInfo (long? spaceId, long? id)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling InvoiceReconciliationRecordService->Read");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling InvoiceReconciliationRecordInvoiceLinkService->Read");
             // verify the required parameter 'id' is set
             if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling InvoiceReconciliationRecordService->Read");
+                throw new ApiException(400, "Missing required parameter 'id' when calling InvoiceReconciliationRecordInvoiceLinkService->Read");
 
-            var localVarPath = "/invoice-reconciliation-record-service/read";
+            var localVarPath = "/invoice-reconciliation-record-invoice-link-service/read";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -426,90 +419,20 @@ namespace Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<InvoiceReconciliationRecord>(localVarStatusCode,
+            return new ApiResponse<InvoiceReconciliationRecordInvoiceLink>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (InvoiceReconciliationRecord) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InvoiceReconciliationRecord)));
-        }
-        /// <summary>
-        /// Resolve Resolves the invoice reconciliation record.
-        /// </summary>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="id">The ID of the invoice reconciliation record which should be resolved.</param>
-        /// <returns></returns>
-        public void Resolve (long? spaceId, long? id)
-        {
-             ResolveWithHttpInfo(spaceId, id);
-        }
-
-        /// <summary>
-        /// Resolve Resolves the invoice reconciliation record.
-        /// </summary>
-        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="id">The ID of the invoice reconciliation record which should be resolved.</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> ResolveWithHttpInfo (long? spaceId, long? id)
-        {
-            // verify the required parameter 'spaceId' is set
-            if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling InvoiceReconciliationRecordService->Resolve");
-            // verify the required parameter 'id' is set
-            if (id == null)
-                throw new ApiException(400, "Missing required parameter 'id' when calling InvoiceReconciliationRecordService->Resolve");
-
-            var localVarPath = "/invoice-reconciliation-record-service/resolve";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
-
-			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("Resolve", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                null);
+                (InvoiceReconciliationRecordInvoiceLink) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InvoiceReconciliationRecordInvoiceLink)));
         }
         /// <summary>
         /// Search Searches for the entities as specified by the given query.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the invoice reconciliation records which are returned by the search.</param>
-        /// <returns>List&lt;InvoiceReconciliationRecord&gt;</returns>
-        public List<InvoiceReconciliationRecord> Search (long? spaceId, EntityQuery query)
+        /// <param name="query">The query restricts the invoice reconciliation record invoice link which are returned by the search.</param>
+        /// <returns>List&lt;InvoiceReconciliationRecordInvoiceLink&gt;</returns>
+        public List<InvoiceReconciliationRecordInvoiceLink> Search (long? spaceId, EntityQuery query)
         {
-             ApiResponse<List<InvoiceReconciliationRecord>> localVarResponse = SearchWithHttpInfo(spaceId, query);
+             ApiResponse<List<InvoiceReconciliationRecordInvoiceLink>> localVarResponse = SearchWithHttpInfo(spaceId, query);
              return localVarResponse.Data;
         }
 
@@ -518,18 +441,18 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the invoice reconciliation records which are returned by the search.</param>
-        /// <returns>ApiResponse of List&lt;InvoiceReconciliationRecord&gt;</returns>
-        public ApiResponse< List<InvoiceReconciliationRecord> > SearchWithHttpInfo (long? spaceId, EntityQuery query)
+        /// <param name="query">The query restricts the invoice reconciliation record invoice link which are returned by the search.</param>
+        /// <returns>ApiResponse of List&lt;InvoiceReconciliationRecordInvoiceLink&gt;</returns>
+        public ApiResponse< List<InvoiceReconciliationRecordInvoiceLink> > SearchWithHttpInfo (long? spaceId, EntityQuery query)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling InvoiceReconciliationRecordService->Search");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling InvoiceReconciliationRecordInvoiceLinkService->Search");
             // verify the required parameter 'query' is set
             if (query == null)
-                throw new ApiException(400, "Missing required parameter 'query' when calling InvoiceReconciliationRecordService->Search");
+                throw new ApiException(400, "Missing required parameter 'query' when calling InvoiceReconciliationRecordInvoiceLinkService->Search");
 
-            var localVarPath = "/invoice-reconciliation-record-service/search";
+            var localVarPath = "/invoice-reconciliation-record-invoice-link-service/search";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -576,40 +499,44 @@ namespace Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<InvoiceReconciliationRecord>>(localVarStatusCode,
+            return new ApiResponse<List<InvoiceReconciliationRecordInvoiceLink>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<InvoiceReconciliationRecord>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InvoiceReconciliationRecord>)));
+                (List<InvoiceReconciliationRecordInvoiceLink>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InvoiceReconciliationRecordInvoiceLink>)));
         }
         /// <summary>
-        /// Search for matchable invoices by query Searches for transaction invoices by given query.
+        /// Unlink Invoice Unlinks the invoice reconciliation record from the provided invoice.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the invoices which are returned by the search.</param>
-        /// <returns>List&lt;TransactionInvoice&gt;</returns>
-        public List<TransactionInvoice> SearchForInvoicesByQuery (long? spaceId, EntityQuery query)
+        /// <param name="recordId">The ID of the invoice reconciliation record which should be unlinked.</param>
+        /// <param name="completionId">The ID of the completion which should be unlinked.</param>
+        /// <returns></returns>
+        public void UnlinkTransaction (long? spaceId, long? recordId, long? completionId)
         {
-             ApiResponse<List<TransactionInvoice>> localVarResponse = SearchForInvoicesByQueryWithHttpInfo(spaceId, query);
-             return localVarResponse.Data;
+             UnlinkTransactionWithHttpInfo(spaceId, recordId, completionId);
         }
 
         /// <summary>
-        /// Search for matchable invoices by query Searches for transaction invoices by given query.
+        /// Unlink Invoice Unlinks the invoice reconciliation record from the provided invoice.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="query">The query restricts the invoices which are returned by the search.</param>
-        /// <returns>ApiResponse of List&lt;TransactionInvoice&gt;</returns>
-        public ApiResponse< List<TransactionInvoice> > SearchForInvoicesByQueryWithHttpInfo (long? spaceId, EntityQuery query)
+        /// <param name="recordId">The ID of the invoice reconciliation record which should be unlinked.</param>
+        /// <param name="completionId">The ID of the completion which should be unlinked.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public ApiResponse<Object> UnlinkTransactionWithHttpInfo (long? spaceId, long? recordId, long? completionId)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling InvoiceReconciliationRecordService->SearchForInvoicesByQuery");
-            // verify the required parameter 'query' is set
-            if (query == null)
-                throw new ApiException(400, "Missing required parameter 'query' when calling InvoiceReconciliationRecordService->SearchForInvoicesByQuery");
+                throw new ApiException(400, "Missing required parameter 'spaceId' when calling InvoiceReconciliationRecordInvoiceLinkService->UnlinkTransaction");
+            // verify the required parameter 'recordId' is set
+            if (recordId == null)
+                throw new ApiException(400, "Missing required parameter 'recordId' when calling InvoiceReconciliationRecordInvoiceLinkService->UnlinkTransaction");
+            // verify the required parameter 'completionId' is set
+            if (completionId == null)
+                throw new ApiException(400, "Missing required parameter 'completionId' when calling InvoiceReconciliationRecordInvoiceLinkService->UnlinkTransaction");
 
-            var localVarPath = "/invoice-reconciliation-record-service/search-for-invoices-by-query";
+            var localVarPath = "/invoice-reconciliation-record-invoice-link-service/unlink-transaction";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -619,27 +546,19 @@ namespace Wallee.Service
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
-                "application/json;charset=utf-8"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
-            if (query != null && query.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(query); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = query; // byte array
-            }
+            if (recordId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "recordId", recordId)); // query parameter
+            if (completionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "completionId", completionId)); // query parameter
 
 			
 			this.Configuration.ApiClient.ResetTimeout();
@@ -652,13 +571,13 @@ namespace Wallee.Service
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("SearchForInvoicesByQuery", localVarResponse);
+                Exception exception = ExceptionFactory("UnlinkTransaction", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<TransactionInvoice>>(localVarStatusCode,
+            return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<TransactionInvoice>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TransactionInvoice>)));
+                null);
         }
     }
 }

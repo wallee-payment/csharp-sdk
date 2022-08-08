@@ -33,9 +33,9 @@ namespace Wallee.Model
         [DataMember(Name="completionBehavior", EmitDefaultValue=false)]
         public TransactionCompletionBehavior? CompletionBehavior { get; set; }
         /// <summary>
-        /// The customer&#39;s presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.
+        /// The customer&#39;s presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.
         /// </summary>
-        /// <value>The customer&#39;s presence indicates what kind of authentication methods can be used during the authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.</value>
+        /// <value>The customer&#39;s presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.</value>
         [DataMember(Name="customersPresence", EmitDefaultValue=false)]
         public CustomersPresence? CustomersPresence { get; set; }
         /// <summary>
@@ -91,7 +91,7 @@ namespace Wallee.Model
         /// Gets or Sets AllowedPaymentMethodBrands
         /// </summary>
         [DataMember(Name="allowedPaymentMethodBrands", EmitDefaultValue=false)]
-        public List<PaymentMethodBrand> AllowedPaymentMethodBrands { get; private set; }
+        public List<long?> AllowedPaymentMethodBrands { get; private set; }
 
         /// <summary>
         /// Gets or Sets AllowedPaymentMethodConfigurations
