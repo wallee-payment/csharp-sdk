@@ -90,7 +90,7 @@ namespace Wallee.Client
         // Creates and sets up a RestRequest prior to a call.
         private RestRequest PrepareRequest(
             String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
-            Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
+            Dictionary<String, String> headerParams, Dictionary<String, String> defaultHeaderParams, Dictionary<String, String> formParams,
             Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
             String contentType)
         {
@@ -102,6 +102,10 @@ namespace Wallee.Client
 
             // add header parameter, if any
             foreach(var param in headerParams)
+                request.AddHeader(param.Key, param.Value);
+
+            // add default header parameters
+            foreach(var param in defaultHeaderParams)
                 request.AddHeader(param.Key, param.Value);
 
             // add authentication headers
@@ -149,8 +153,16 @@ namespace Wallee.Client
             Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
             String contentType)
         {
+
+            Dictionary<String, String> defaultHeaderParams = new Dictionary<String, String>() {
+                {"x-meta-sdk-version", "4.1.2"},
+                {"x-meta-sdk-language", "csharp"},
+                {"x-meta-sdk-provider", "wallee"},
+                {"x-meta-sdk-language-version", Environment.Version.ToString()}
+            };
+
             var request = PrepareRequest(
-                path, method, queryParams, postBody, headerParams, formParams, fileParams,
+                path, method, queryParams, postBody, headerParams, defaultHeaderParams, formParams, fileParams,
                 pathParams, contentType);
 
             // set user agent
