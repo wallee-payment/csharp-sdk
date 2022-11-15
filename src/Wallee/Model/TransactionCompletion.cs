@@ -171,6 +171,13 @@ namespace Wallee.Model
         public TransactionCompletionState State { get; private set; }
 
         /// <summary>
+        /// The statement descriptor explain charges or payments on bank statements.
+        /// </summary>
+        /// <value>The statement descriptor explain charges or payments on bank statements.</value>
+        [DataMember(Name="statementDescriptor", EmitDefaultValue=false)]
+        public string StatementDescriptor { get; private set; }
+
+        /// <summary>
         /// Gets or Sets SucceededOn
         /// </summary>
         [DataMember(Name="succeededOn", EmitDefaultValue=false)]
@@ -236,6 +243,7 @@ namespace Wallee.Model
             sb.Append("  RemainingLineItems: ").Append(RemainingLineItems).Append("\n");
             sb.Append("  SpaceViewId: ").Append(SpaceViewId).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  StatementDescriptor: ").Append(StatementDescriptor).Append("\n");
             sb.Append("  SucceededOn: ").Append(SucceededOn).Append("\n");
             sb.Append("  TaxAmount: ").Append(TaxAmount).Append("\n");
             sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
@@ -405,6 +413,11 @@ namespace Wallee.Model
                     this.State.Equals(input.State))
                 ) && base.Equals(input) && 
                 (
+                    this.StatementDescriptor == input.StatementDescriptor ||
+                    (this.StatementDescriptor != null &&
+                    this.StatementDescriptor.Equals(input.StatementDescriptor))
+                ) && base.Equals(input) && 
+                (
                     this.SucceededOn == input.SucceededOn ||
                     (this.SucceededOn != null &&
                     this.SucceededOn.Equals(input.SucceededOn))
@@ -490,6 +503,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.SpaceViewId.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
+                if (this.StatementDescriptor != null)
+                    hashCode = hashCode * 59 + this.StatementDescriptor.GetHashCode();
                 if (this.SucceededOn != null)
                     hashCode = hashCode * 59 + this.SucceededOn.GetHashCode();
                 if (this.TaxAmount != null)

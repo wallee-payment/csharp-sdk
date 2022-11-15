@@ -20,12 +20,12 @@
         <PackageId>Wallee</PackageId>
         <PackageLicense>https://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicense>
         <PackageProjectUrl>https://github.com/wallee-payment/csharp-sdk</PackageProjectUrl>
-        <PackageVersion>4.2.0</PackageVersion>
-        <Version>4.2.0</Version>
+        <PackageVersion>4.3.0</PackageVersion>
+        <Version>4.3.0</Version>
         <PackageTags>Wallee;payment;sdk;Payment Integration</PackageTags>
         <OutputType>Library</OutputType>
         <Owners>customweb</Owners>
-        <ReleaseVersion>4.2.0</ReleaseVersion>
+        <ReleaseVersion>4.3.0</ReleaseVersion>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
         <RootNamespace>Wallee</RootNamespace>
@@ -35,7 +35,7 @@
     </PropertyGroup>
     <ItemGroup>
             <PackageReference Include="RestSharp" Version="[106.2.1, 107)"/>
-        <PackageReference Include="Newtonsoft.Json" Version="12.0.2"/>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
         <PackageReference Include="JsonSubTypes" Version="1.6.0"/>
         <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
     </ItemGroup>

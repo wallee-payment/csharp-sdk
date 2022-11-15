@@ -24,10 +24,22 @@ namespace Wallee.Model
     {
         
         /// <summary>
-        /// Enum PENDING for value: PENDING
+        /// Enum CREATED for value: CREATED
         /// </summary>
-        [EnumMember(Value = "PENDING")]
-        PENDING,
+        [EnumMember(Value = "CREATED")]
+        CREATED,
+        
+        /// <summary>
+        /// Enum UPLOADED for value: UPLOADED
+        /// </summary>
+        [EnumMember(Value = "UPLOADED")]
+        UPLOADED,
+        
+        /// <summary>
+        /// Enum DOWNLOADED for value: DOWNLOADED
+        /// </summary>
+        [EnumMember(Value = "DOWNLOADED")]
+        DOWNLOADED,
         
         /// <summary>
         /// Enum PROCESSED for value: PROCESSED

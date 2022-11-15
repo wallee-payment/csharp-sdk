@@ -81,6 +81,13 @@ namespace Wallee.Model
         public List<CompletionLineItemCreate> LineItems { get; set; }
 
         /// <summary>
+        /// The statement descriptor explain charges or payments on bank statements.
+        /// </summary>
+        /// <value>The statement descriptor explain charges or payments on bank statements.</value>
+        [DataMember(Name="statementDescriptor", EmitDefaultValue=false)]
+        public string StatementDescriptor { get; set; }
+
+        /// <summary>
         /// The ID of the transaction which should be completed.
         /// </summary>
         /// <value>The ID of the transaction which should be completed.</value>
@@ -99,6 +106,7 @@ namespace Wallee.Model
             sb.Append("  InvoiceMerchantReference: ").Append(InvoiceMerchantReference).Append("\n");
             sb.Append("  LastCompletion: ").Append(LastCompletion).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
+            sb.Append("  StatementDescriptor: ").Append(StatementDescriptor).Append("\n");
             sb.Append("  TransactionId: ").Append(TransactionId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -156,6 +164,11 @@ namespace Wallee.Model
                     this.LineItems.SequenceEqual(input.LineItems)
                 ) && 
                 (
+                    this.StatementDescriptor == input.StatementDescriptor ||
+                    (this.StatementDescriptor != null &&
+                    this.StatementDescriptor.Equals(input.StatementDescriptor))
+                ) && 
+                (
                     this.TransactionId == input.TransactionId ||
                     (this.TransactionId != null &&
                     this.TransactionId.Equals(input.TransactionId))
@@ -179,6 +192,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.LastCompletion.GetHashCode();
                 if (this.LineItems != null)
                     hashCode = hashCode * 59 + this.LineItems.GetHashCode();
+                if (this.StatementDescriptor != null)
+                    hashCode = hashCode * 59 + this.StatementDescriptor.GetHashCode();
                 if (this.TransactionId != null)
                     hashCode = hashCode * 59 + this.TransactionId.GetHashCode();
                 return hashCode;

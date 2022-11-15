@@ -187,6 +187,12 @@ namespace Wallee.Model
         public int? Version { get; private set; }
 
         /// <summary>
+        /// Gets or Sets WalletType
+        /// </summary>
+        [DataMember(Name="walletType", EmitDefaultValue=false)]
+        public WalletType WalletType { get; private set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -223,6 +229,7 @@ namespace Wallee.Model
             sb.Append("  TokenVersion: ").Append(TokenVersion).Append("\n");
             sb.Append("  UserFailureMessage: ").Append(UserFailureMessage).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  WalletType: ").Append(WalletType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -397,6 +404,11 @@ namespace Wallee.Model
                     this.Version == input.Version ||
                     (this.Version != null &&
                     this.Version.Equals(input.Version))
+                ) && base.Equals(input) && 
+                (
+                    this.WalletType == input.WalletType ||
+                    (this.WalletType != null &&
+                    this.WalletType.Equals(input.WalletType))
                 );
         }
 
@@ -465,6 +477,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.UserFailureMessage.GetHashCode();
                 if (this.Version != null)
                     hashCode = hashCode * 59 + this.Version.GetHashCode();
+                if (this.WalletType != null)
+                    hashCode = hashCode * 59 + this.WalletType.GetHashCode();
                 return hashCode;
             }
         }

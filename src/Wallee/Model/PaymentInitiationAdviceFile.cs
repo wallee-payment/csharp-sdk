@@ -72,6 +72,12 @@ namespace Wallee.Model
         [DataMember(Name="processedOn", EmitDefaultValue=false)]
         public DateTime? ProcessedOn { get; private set; }
 
+        /// <summary>
+        /// Gets or Sets Processor
+        /// </summary>
+        [DataMember(Name="processor", EmitDefaultValue=false)]
+        public PaymentProcessor Processor { get; private set; }
+
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -87,6 +93,7 @@ namespace Wallee.Model
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProcessedOn: ").Append(ProcessedOn).Append("\n");
+            sb.Append("  Processor: ").Append(Processor).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -153,6 +160,11 @@ namespace Wallee.Model
                     this.ProcessedOn.Equals(input.ProcessedOn))
                 ) && 
                 (
+                    this.Processor == input.Processor ||
+                    (this.Processor != null &&
+                    this.Processor.Equals(input.Processor))
+                ) && 
+                (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
@@ -180,6 +192,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.ProcessedOn != null)
                     hashCode = hashCode * 59 + this.ProcessedOn.GetHashCode();
+                if (this.Processor != null)
+                    hashCode = hashCode * 59 + this.Processor.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
                 return hashCode;
