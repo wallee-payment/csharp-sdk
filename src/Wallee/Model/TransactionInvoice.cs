@@ -21,6 +21,16 @@ namespace Wallee.Model
     public partial class TransactionInvoice : TransactionAwareEntity,  IEquatable<TransactionInvoice>
     {
         /// <summary>
+        /// Gets or Sets Environment
+        /// </summary>
+        [DataMember(Name="environment", EmitDefaultValue=false)]
+        public Environment? Environment { get; set; }
+        /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public TransactionInvoiceState? State { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="TransactionInvoice" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -77,11 +87,6 @@ namespace Wallee.Model
         [DataMember(Name="dueOn", EmitDefaultValue=false)]
         public DateTime? DueOn { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets Environment
-        /// </summary>
-        [DataMember(Name="environment", EmitDefaultValue=false)]
-        public Environment Environment { get; private set; }
 
         /// <summary>
         /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
@@ -135,11 +140,6 @@ namespace Wallee.Model
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public TransactionInvoiceState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets TaxAmount

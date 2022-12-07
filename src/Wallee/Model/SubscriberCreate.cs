@@ -21,6 +21,11 @@ namespace Wallee.Model
     public partial class SubscriberCreate : AbstractSubscriberUpdate,  IEquatable<SubscriberCreate>
     {
         /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public CreationEntityState? State { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="SubscriberCreate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -48,11 +53,6 @@ namespace Wallee.Model
 
 
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState State { get; set; }
 
         /// <summary>
         /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.

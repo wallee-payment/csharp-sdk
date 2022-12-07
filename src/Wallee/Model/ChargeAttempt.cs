@@ -21,6 +21,32 @@ namespace Wallee.Model
     public partial class ChargeAttempt : TransactionAwareEntity,  IEquatable<ChargeAttempt>
     {
         /// <summary>
+        /// Gets or Sets CompletionBehavior
+        /// </summary>
+        [DataMember(Name="completionBehavior", EmitDefaultValue=false)]
+        public TransactionCompletionBehavior? CompletionBehavior { get; set; }
+        /// <summary>
+        /// The customers presence indicates which kind of customer interaction was used during the charge attempt.
+        /// </summary>
+        /// <value>The customers presence indicates which kind of customer interaction was used during the charge attempt.</value>
+        [DataMember(Name="customersPresence", EmitDefaultValue=false)]
+        public CustomersPresence? CustomersPresence { get; set; }
+        /// <summary>
+        /// Gets or Sets Environment
+        /// </summary>
+        [DataMember(Name="environment", EmitDefaultValue=false)]
+        public ChargeAttemptEnvironment? Environment { get; set; }
+        /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public ChargeAttemptState? State { get; set; }
+        /// <summary>
+        /// Gets or Sets WalletType
+        /// </summary>
+        [DataMember(Name="walletType", EmitDefaultValue=false)]
+        public WalletType? WalletType { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="ChargeAttempt" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -37,11 +63,6 @@ namespace Wallee.Model
         [DataMember(Name="charge", EmitDefaultValue=false)]
         public Charge Charge { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets CompletionBehavior
-        /// </summary>
-        [DataMember(Name="completionBehavior", EmitDefaultValue=false)]
-        public TransactionCompletionBehavior CompletionBehavior { get; private set; }
 
         /// <summary>
         /// Gets or Sets ConnectorConfiguration
@@ -56,18 +77,7 @@ namespace Wallee.Model
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
-        /// <summary>
-        /// The customers presence indicates which kind of customer interaction was used during the charge attempt.
-        /// </summary>
-        /// <value>The customers presence indicates which kind of customer interaction was used during the charge attempt.</value>
-        [DataMember(Name="customersPresence", EmitDefaultValue=false)]
-        public CustomersPresence CustomersPresence { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets Environment
-        /// </summary>
-        [DataMember(Name="environment", EmitDefaultValue=false)]
-        public ChargeAttemptEnvironment Environment { get; private set; }
 
         /// <summary>
         /// Gets or Sets FailedOn
@@ -136,11 +146,6 @@ namespace Wallee.Model
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public ChargeAttemptState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets SucceededOn
@@ -186,11 +191,6 @@ namespace Wallee.Model
         [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets WalletType
-        /// </summary>
-        [DataMember(Name="walletType", EmitDefaultValue=false)]
-        public WalletType WalletType { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object

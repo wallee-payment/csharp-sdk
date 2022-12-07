@@ -21,6 +21,16 @@ namespace Wallee.Model
     public partial class TransactionCompletion : TransactionAwareEntity,  IEquatable<TransactionCompletion>
     {
         /// <summary>
+        /// Gets or Sets Mode
+        /// </summary>
+        [DataMember(Name="mode", EmitDefaultValue=false)]
+        public TransactionCompletionMode? Mode { get; set; }
+        /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public TransactionCompletionState? State { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="TransactionCompletion" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -115,11 +125,6 @@ namespace Wallee.Model
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItem> LineItems { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets Mode
-        /// </summary>
-        [DataMember(Name="mode", EmitDefaultValue=false)]
-        public TransactionCompletionMode Mode { get; private set; }
 
         /// <summary>
         /// Gets or Sets NextUpdateOn
@@ -164,11 +169,6 @@ namespace Wallee.Model
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public TransactionCompletionState State { get; private set; }
 
         /// <summary>
         /// The statement descriptor explain charges or payments on bank statements.

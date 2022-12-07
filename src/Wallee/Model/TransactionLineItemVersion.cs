@@ -21,6 +21,11 @@ namespace Wallee.Model
     public partial class TransactionLineItemVersion : TransactionAwareEntity,  IEquatable<TransactionLineItemVersion>
     {
         /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public TransactionLineItemVersionState? State { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="TransactionLineItemVersion" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -112,11 +117,6 @@ namespace Wallee.Model
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public TransactionLineItemVersionState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets SucceededOn

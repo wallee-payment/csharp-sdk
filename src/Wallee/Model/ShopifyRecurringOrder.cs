@@ -21,6 +21,11 @@ namespace Wallee.Model
     public partial class ShopifyRecurringOrder : TransactionAwareEntity,  IEquatable<ShopifyRecurringOrder>
     {
         /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public ShopifyRecurringOrderState? State { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="ShopifyRecurringOrder" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -98,11 +103,6 @@ namespace Wallee.Model
         [DataMember(Name="startedProcessingOn", EmitDefaultValue=false)]
         public DateTime? StartedProcessingOn { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public ShopifyRecurringOrderState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets SubscriptionVersion

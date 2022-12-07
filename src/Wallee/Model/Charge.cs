@@ -21,6 +21,16 @@ namespace Wallee.Model
     public partial class Charge : TransactionAwareEntity,  IEquatable<Charge>
     {
         /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public ChargeState? State { get; set; }
+        /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name="type", EmitDefaultValue=false)]
+        public ChargeType? Type { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="Charge" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -63,11 +73,6 @@ namespace Wallee.Model
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public ChargeState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets TimeZone
@@ -87,11 +92,6 @@ namespace Wallee.Model
         [DataMember(Name="transaction", EmitDefaultValue=false)]
         public Transaction Transaction { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public ChargeType Type { get; private set; }
 
         /// <summary>
         /// The failure message describes for an end user why the charge is failed in the language of the user. This is only provided when the charge is marked as failed.

@@ -21,6 +21,11 @@ namespace Wallee.Model
     public partial class DeliveryIndication : TransactionAwareEntity,  IEquatable<DeliveryIndication>
     {
         /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public DeliveryIndicationState? State { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="DeliveryIndication" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -81,11 +86,6 @@ namespace Wallee.Model
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public DeliveryIndicationState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets TimeoutOn

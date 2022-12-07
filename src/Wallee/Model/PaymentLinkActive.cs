@@ -21,6 +21,11 @@ namespace Wallee.Model
     public partial class PaymentLinkActive : PaymentLinkUpdate,  IEquatable<PaymentLinkActive>
     {
         /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public CreationEntityState? State { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="PaymentLinkActive" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -59,11 +64,6 @@ namespace Wallee.Model
 
 
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState State { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

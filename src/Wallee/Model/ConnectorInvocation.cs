@@ -21,6 +21,11 @@ namespace Wallee.Model
     public partial class ConnectorInvocation : TransactionAwareEntity,  IEquatable<ConnectorInvocation>
     {
         /// <summary>
+        /// Gets or Sets Stage
+        /// </summary>
+        [DataMember(Name="stage", EmitDefaultValue=false)]
+        public ConnectorInvocationStage? Stage { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="ConnectorInvocation" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -45,11 +50,6 @@ namespace Wallee.Model
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets Stage
-        /// </summary>
-        [DataMember(Name="stage", EmitDefaultValue=false)]
-        public ConnectorInvocationStage Stage { get; private set; }
 
         /// <summary>
         /// Gets or Sets TimeTookInMilliseconds

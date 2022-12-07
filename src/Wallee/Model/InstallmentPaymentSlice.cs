@@ -21,6 +21,11 @@ namespace Wallee.Model
     public partial class InstallmentPaymentSlice : TransactionAwareEntity,  IEquatable<InstallmentPaymentSlice>
     {
         /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public InstallmentPaymentSliceState? State { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="InstallmentPaymentSlice" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -63,11 +68,6 @@ namespace Wallee.Model
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public InstallmentPaymentSliceState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets Transaction

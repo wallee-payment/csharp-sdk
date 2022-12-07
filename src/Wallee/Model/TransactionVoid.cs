@@ -21,6 +21,16 @@ namespace Wallee.Model
     public partial class TransactionVoid : TransactionAwareEntity,  IEquatable<TransactionVoid>
     {
         /// <summary>
+        /// Gets or Sets Mode
+        /// </summary>
+        [DataMember(Name="mode", EmitDefaultValue=false)]
+        public TransactionVoidMode? Mode { get; set; }
+        /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public TransactionVoidState? State { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="TransactionVoid" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -68,11 +78,6 @@ namespace Wallee.Model
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets Mode
-        /// </summary>
-        [DataMember(Name="mode", EmitDefaultValue=false)]
-        public TransactionVoidMode Mode { get; private set; }
 
         /// <summary>
         /// Gets or Sets NextUpdateOn
@@ -99,11 +104,6 @@ namespace Wallee.Model
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public TransactionVoidState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets SucceededOn

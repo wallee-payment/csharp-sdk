@@ -21,6 +21,11 @@ namespace Wallee.Model
     public partial class TokenCreate : AbstractTokenUpdate,  IEquatable<TokenCreate>
     {
         /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public CreationEntityState? State { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="TokenCreate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -52,11 +57,6 @@ namespace Wallee.Model
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState State { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

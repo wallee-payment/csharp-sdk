@@ -21,6 +21,21 @@ namespace Wallee.Model
     public partial class InvoiceReconciliationRecord : TransactionAwareEntity,  IEquatable<InvoiceReconciliationRecord>
     {
         /// <summary>
+        /// Gets or Sets Environment
+        /// </summary>
+        [DataMember(Name="environment", EmitDefaultValue=false)]
+        public ChargeAttemptEnvironment? Environment { get; set; }
+        /// <summary>
+        /// Gets or Sets RejectionStatus
+        /// </summary>
+        [DataMember(Name="rejectionStatus", EmitDefaultValue=false)]
+        public InvoiceReconciliationRecordRejectionStatus? RejectionStatus { get; set; }
+        /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [DataMember(Name="state", EmitDefaultValue=false)]
+        public InvoiceReconciliationRecordState? State { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="InvoiceReconciliationRecord" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -81,11 +96,6 @@ namespace Wallee.Model
         [DataMember(Name="discardedOn", EmitDefaultValue=false)]
         public DateTime? DiscardedOn { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets Environment
-        /// </summary>
-        [DataMember(Name="environment", EmitDefaultValue=false)]
-        public ChargeAttemptEnvironment Environment { get; private set; }
 
         /// <summary>
         /// Gets or Sets FamilyName
@@ -154,11 +164,6 @@ namespace Wallee.Model
         [DataMember(Name="referenceNumber", EmitDefaultValue=false)]
         public string ReferenceNumber { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets RejectionStatus
-        /// </summary>
-        [DataMember(Name="rejectionStatus", EmitDefaultValue=false)]
-        public InvoiceReconciliationRecordRejectionStatus RejectionStatus { get; private set; }
 
         /// <summary>
         /// Gets or Sets ResolvedBy
@@ -179,11 +184,6 @@ namespace Wallee.Model
         [DataMember(Name="senderBankAccount", EmitDefaultValue=false)]
         public string SenderBankAccount { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets State
-        /// </summary>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public InvoiceReconciliationRecordState State { get; private set; }
 
         /// <summary>
         /// Gets or Sets Street

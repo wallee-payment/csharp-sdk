@@ -21,6 +21,23 @@ namespace Wallee.Model
     public partial class TransactionCreate : AbstractTransactionPending,  IEquatable<TransactionCreate>
     {
         /// <summary>
+        /// The customer&#39;s presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.
+        /// </summary>
+        /// <value>The customer&#39;s presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.</value>
+        [DataMember(Name="customersPresence", EmitDefaultValue=false)]
+        public CustomersPresence? CustomersPresence { get; set; }
+        /// <summary>
+        /// Gets or Sets Environment
+        /// </summary>
+        [DataMember(Name="environment", EmitDefaultValue=false)]
+        public Environment? Environment { get; set; }
+        /// <summary>
+        /// The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
+        /// </summary>
+        /// <value>The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.</value>
+        [DataMember(Name="environmentSelectionStrategy", EmitDefaultValue=false)]
+        public TransactionEnvironmentSelectionStrategy? EnvironmentSelectionStrategy { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="TransactionCreate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -72,12 +89,6 @@ namespace Wallee.Model
         [DataMember(Name="chargeRetryEnabled", EmitDefaultValue=false)]
         public bool? ChargeRetryEnabled { get; set; }
 
-        /// <summary>
-        /// The customer&#39;s presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.
-        /// </summary>
-        /// <value>The customer&#39;s presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.</value>
-        [DataMember(Name="customersPresence", EmitDefaultValue=false)]
-        public CustomersPresence CustomersPresence { get; set; }
 
         /// <summary>
         /// The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.
@@ -93,18 +104,7 @@ namespace Wallee.Model
         [DataMember(Name="emailsDisabled", EmitDefaultValue=false)]
         public bool? EmailsDisabled { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Environment
-        /// </summary>
-        [DataMember(Name="environment", EmitDefaultValue=false)]
-        public Environment Environment { get; set; }
 
-        /// <summary>
-        /// The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
-        /// </summary>
-        /// <value>The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.</value>
-        [DataMember(Name="environmentSelectionStrategy", EmitDefaultValue=false)]
-        public TransactionEnvironmentSelectionStrategy EnvironmentSelectionStrategy { get; set; }
 
         /// <summary>
         /// Gets or Sets SpaceViewId

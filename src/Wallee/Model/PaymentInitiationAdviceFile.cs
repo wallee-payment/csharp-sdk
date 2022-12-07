@@ -41,6 +41,12 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
+        /// Gets or Sets FailureMessage
+        /// </summary>
+        [DataMember(Name="failureMessage", EmitDefaultValue=false)]
+        public string FailureMessage { get; private set; }
+
+        /// <summary>
         /// Gets or Sets FileGeneratedOn
         /// </summary>
         [DataMember(Name="fileGeneratedOn", EmitDefaultValue=false)]
@@ -88,6 +94,7 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class PaymentInitiationAdviceFile {\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  FailureMessage: ").Append(FailureMessage).Append("\n");
             sb.Append("  FileGeneratedOn: ").Append(FileGeneratedOn).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
@@ -133,6 +140,11 @@ namespace Wallee.Model
                     this.CreatedOn == input.CreatedOn ||
                     (this.CreatedOn != null &&
                     this.CreatedOn.Equals(input.CreatedOn))
+                ) && 
+                (
+                    this.FailureMessage == input.FailureMessage ||
+                    (this.FailureMessage != null &&
+                    this.FailureMessage.Equals(input.FailureMessage))
                 ) && 
                 (
                     this.FileGeneratedOn == input.FileGeneratedOn ||
@@ -182,6 +194,8 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
+                if (this.FailureMessage != null)
+                    hashCode = hashCode * 59 + this.FailureMessage.GetHashCode();
                 if (this.FileGeneratedOn != null)
                     hashCode = hashCode * 59 + this.FileGeneratedOn.GetHashCode();
                 if (this.Id != null)
