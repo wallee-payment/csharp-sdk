@@ -24,13 +24,13 @@ namespace Wallee.Model
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public SubscriptionProductVersionState? State { get; set; }
+        public SubscriptionProductVersionState? State { get; private set; }
         /// <summary>
         /// Strategy that is used for tax calculation in fees.
         /// </summary>
         /// <value>Strategy that is used for tax calculation in fees.</value>
         [DataMember(Name="taxCalculation", EmitDefaultValue=false)]
-        public TaxCalculation? TaxCalculation { get; set; }
+        public TaxCalculation? TaxCalculation { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionProductVersion" /> class.
         /// </summary>

@@ -24,13 +24,13 @@ namespace Wallee.Model
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public AccountState? State { get; set; }
+        public AccountState? State { get; private set; }
         /// <summary>
         /// The account type defines which role and capabilities it has.
         /// </summary>
         /// <value>The account type defines which role and capabilities it has.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public AccountType? Type { get; set; }
+        public AccountType? Type { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Account" /> class.
         /// </summary>

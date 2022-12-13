@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets PriceStrategy
         /// </summary>
         [DataMember(Name="priceStrategy", EmitDefaultValue=false)]
-        public ShopifySubscriptionVersionItemPriceStrategy? PriceStrategy { get; set; }
+        public ShopifySubscriptionVersionItemPriceStrategy? PriceStrategy { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscriptionVersionItem" /> class.
         /// </summary>

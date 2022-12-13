@@ -25,7 +25,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The current state of the query execution.</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public AnalyticsQueryExecutionState? State { get; set; }
+        public AnalyticsQueryExecutionState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AnalyticsQueryExecution" /> class.
         /// </summary>

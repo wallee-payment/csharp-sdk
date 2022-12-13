@@ -27,14 +27,14 @@ namespace Wallee.Client
         /// Allows for extending request processing for <see cref="ApiClient"/> generated code.
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
-        partial void InterceptRequest(IRestRequest request);
+        partial void InterceptRequest(RestRequest request);
 
         /// <summary>
         /// Allows for extending response processing for <see cref="ApiClient"/> generated code.
         /// </summary>
         /// <param name="request">The RestSharp request object</param>
         /// <param name="response">The RestSharp response object</param>
-        partial void InterceptResponse(IRestRequest request, IRestResponse response);
+        partial void InterceptResponse(RestRequest request, RestResponse response);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
@@ -123,12 +123,12 @@ namespace Wallee.Client
             // add file parameter, if any
             foreach(var param in fileParams)
             {
-                request.AddFile(param.Value.Name, param.Value.Writer, param.Value.FileName, param.Value.ContentLength, param.Value.ContentType);
+                request.AddFile(param.Value.Name, param.Value.FileName, param.Value.ContentType);
             }
 
             if (postBody != null) // http body (model or byte[]) parameter
             {
-                request.AddParameter(contentType, postBody, ParameterType.RequestBody);
+                request.AddBody(postBody, contentType);
             }
 
             return request;
@@ -155,7 +155,7 @@ namespace Wallee.Client
         {
 
             Dictionary<String, String> defaultHeaderParams = new Dictionary<String, String>() {
-                {"x-meta-sdk-version", "4.3.11"},
+                {"x-meta-sdk-version", "5.0.0"},
                 {"x-meta-sdk-language", "csharp"},
                 {"x-meta-sdk-provider", "wallee"},
                 {"x-meta-sdk-language-version", Environment.Version.ToString()}
@@ -166,7 +166,7 @@ namespace Wallee.Client
                 pathParams, contentType);
 
             // set user agent
-            RestClient.UserAgent = Configuration.UserAgent;
+            RestClient.Options.UserAgent = Configuration.UserAgent;
 
             InterceptRequest(request);
             var response = RestClient.Execute(request);
@@ -241,9 +241,9 @@ namespace Wallee.Client
         /// <param name="response">The HTTP response.</param>
         /// <param name="type">Object type.</param>
         /// <returns>Object representation of the JSON string.</returns>
-        public object Deserialize(IRestResponse response, Type type)
+        public object Deserialize(RestResponse response, Type type)
         {
-            IList<Parameter> headers = response.Headers;
+            IReadOnlyCollection<HeaderParameter> headers = response.Headers;
             if (type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;
@@ -342,9 +342,16 @@ namespace Wallee.Client
             foreach (var contentType in contentTypes)
             {
                 if (IsJsonMime(contentType.ToLower()))
-                    return contentType;
+                {
+                    String jsonContentType = contentType;
+                    int index = jsonContentType.IndexOf(";");
+                    if (index >= 0)
+                    {
+                        jsonContentType = jsonContentType.Substring(0, index);
+                    }
+                    return jsonContentType;
+                }
             }
-
             return contentTypes[0]; // use the first content type specified in 'consumes'
         }
 
@@ -503,11 +510,11 @@ namespace Wallee.Client
         public IEnumerable<KeyValuePair<string, string>> AuthenticationHeaders(Method method, string path, List<KeyValuePair<string, string>> queryParams)
         {
             var headers = new List<KeyValuePair<string, string>>();
-            var pathWithQueryString = RestClient.BaseUrl.AbsolutePath + path + ToQueryString(queryParams);
+            var pathWithQueryString = RestClient.Options.BaseUrl.AbsolutePath + path + ToQueryString(queryParams);
             var version = "1";
             var userID = Configuration.ApplicationUserID;
             var timestamp = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
-            var signature = version + "|" + userID + "|" + timestamp + "|" + method + "|" + pathWithQueryString;
+            var signature = version + "|" + userID + "|" + timestamp + "|" + method.ToString().ToUpper() + "|" + pathWithQueryString;
             headers.Add(new KeyValuePair<string, string>("x-mac-version", version));
             headers.Add(new KeyValuePair<string, string>("x-mac-userid", userID));
             headers.Add(new KeyValuePair<string, string>("x-mac-timestamp", timestamp.ToString()));
@@ -550,7 +557,7 @@ namespace Wallee.Client
 		/// https://docs.microsoft.com/en-us/dotnet/api/system.net.httpwebrequest.timeout?view=netcore-3.1
 		/// </summary>
 		public void ResetTimeout(){
-			RestClient.Timeout = 100 * 1000;
+			RestClient.Options.MaxTimeout = 100 * 1000;
 		}
 
     }

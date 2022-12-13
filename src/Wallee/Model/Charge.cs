@@ -24,12 +24,12 @@ namespace Wallee.Model
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public ChargeState? State { get; set; }
+        public ChargeState? State { get; private set; }
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public ChargeType? Type { get; set; }
+        public ChargeType? Type { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Charge" /> class.
         /// </summary>

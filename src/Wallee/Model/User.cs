@@ -24,12 +24,12 @@ namespace Wallee.Model
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState? State { get; set; }
+        public CreationEntityState? State { get; private set; }
         /// <summary>
         /// Gets or Sets UserType
         /// </summary>
         [DataMember(Name="userType", EmitDefaultValue=false)]
-        public UserType? UserType { get; set; }
+        public UserType? UserType { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="User" /> class.
         /// </summary>

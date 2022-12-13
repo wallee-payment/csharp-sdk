@@ -24,12 +24,12 @@ namespace Wallee.Model
         /// Gets or Sets DataCollectionType
         /// </summary>
         [DataMember(Name="dataCollectionType", EmitDefaultValue=false)]
-        public DataCollectionType? DataCollectionType { get; set; }
+        public DataCollectionType? DataCollectionType { get; private set; }
         /// <summary>
         /// Gets or Sets PrimaryRiskTaker
         /// </summary>
         [DataMember(Name="primaryRiskTaker", EmitDefaultValue=false)]
-        public PaymentPrimaryRiskTaker? PrimaryRiskTaker { get; set; }
+        public PaymentPrimaryRiskTaker? PrimaryRiskTaker { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentConnector" /> class.
         /// </summary>

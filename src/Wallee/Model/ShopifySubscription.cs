@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public ShopifySubscriptionState? State { get; set; }
+        public ShopifySubscriptionState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscription" /> class.
         /// </summary>

@@ -24,12 +24,12 @@ namespace Wallee.Model
         /// Gets or Sets AuthenticationResponse
         /// </summary>
         [DataMember(Name="authenticationResponse", EmitDefaultValue=false)]
-        public CardAuthenticationResponse? AuthenticationResponse { get; set; }
+        public CardAuthenticationResponse? AuthenticationResponse { get; private set; }
         /// <summary>
         /// Gets or Sets Version
         /// </summary>
         [DataMember(Name="version", EmitDefaultValue=false)]
-        public CardAuthenticationVersion? Version { get; set; }
+        public CardAuthenticationVersion? Version { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CardholderAuthentication" /> class.
         /// </summary>

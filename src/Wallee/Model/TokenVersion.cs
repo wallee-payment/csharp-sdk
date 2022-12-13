@@ -24,12 +24,12 @@ namespace Wallee.Model
         /// Gets or Sets Environment
         /// </summary>
         [DataMember(Name="environment", EmitDefaultValue=false)]
-        public ChargeAttemptEnvironment? Environment { get; set; }
+        public ChargeAttemptEnvironment? Environment { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public TokenVersionState? State { get; set; }
+        public TokenVersionState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenVersion" /> class.
         /// </summary>

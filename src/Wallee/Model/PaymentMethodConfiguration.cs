@@ -25,18 +25,18 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The data collection type determines who is collecting the payment information. This can be done either by the processor (offsite) or by our application (onsite).</value>
         [DataMember(Name="dataCollectionType", EmitDefaultValue=false)]
-        public DataCollectionType? DataCollectionType { get; set; }
+        public DataCollectionType? DataCollectionType { get; private set; }
         /// <summary>
         /// When the buyer is present on the payment page or within the iFrame the payment details can be stored automatically. The buyer will be able to use the stored payment details for subsequent transactions. When the transaction already contains a token one-click payments are disabled anyway
         /// </summary>
         /// <value>When the buyer is present on the payment page or within the iFrame the payment details can be stored automatically. The buyer will be able to use the stored payment details for subsequent transactions. When the transaction already contains a token one-click payments are disabled anyway</value>
         [DataMember(Name="oneClickPaymentMode", EmitDefaultValue=false)]
-        public OneClickPaymentMode? OneClickPaymentMode { get; set; }
+        public OneClickPaymentMode? OneClickPaymentMode { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState? State { get; set; }
+        public CreationEntityState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentMethodConfiguration" /> class.
         /// </summary>

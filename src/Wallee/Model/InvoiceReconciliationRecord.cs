@@ -24,17 +24,17 @@ namespace Wallee.Model
         /// Gets or Sets Environment
         /// </summary>
         [DataMember(Name="environment", EmitDefaultValue=false)]
-        public ChargeAttemptEnvironment? Environment { get; set; }
+        public ChargeAttemptEnvironment? Environment { get; private set; }
         /// <summary>
         /// Gets or Sets RejectionStatus
         /// </summary>
         [DataMember(Name="rejectionStatus", EmitDefaultValue=false)]
-        public InvoiceReconciliationRecordRejectionStatus? RejectionStatus { get; set; }
+        public InvoiceReconciliationRecordRejectionStatus? RejectionStatus { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public InvoiceReconciliationRecordState? State { get; set; }
+        public InvoiceReconciliationRecordState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="InvoiceReconciliationRecord" /> class.
         /// </summary>

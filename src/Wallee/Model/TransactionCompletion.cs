@@ -24,12 +24,12 @@ namespace Wallee.Model
         /// Gets or Sets Mode
         /// </summary>
         [DataMember(Name="mode", EmitDefaultValue=false)]
-        public TransactionCompletionMode? Mode { get; set; }
+        public TransactionCompletionMode? Mode { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public TransactionCompletionState? State { get; set; }
+        public TransactionCompletionState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionCompletion" /> class.
         /// </summary>

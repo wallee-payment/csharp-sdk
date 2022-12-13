@@ -458,7 +458,7 @@ namespace Wallee.Service
         /// <value>The base path</value>
         public String GetBasePath()
         {
-            return this.Configuration.ApiClient.RestClient.BaseUrl.ToString();
+            return this.Configuration.ApiClient.RestClient.Options.BaseUrl.ToString();
         }
 
 
@@ -521,19 +521,11 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
                 "application/json;charset=utf-8"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (transactionModel != null && transactionModel.GetType() != typeof(byte[]))
@@ -548,8 +540,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -561,8 +553,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<Transaction>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
         }
         /// <summary>
         /// Count Counts the number of items in the database as restricted by the given filter.
@@ -598,19 +592,11 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
                 "application/json;charset=utf-8"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (filter != null && filter.GetType() != typeof(byte[]))
@@ -625,8 +611,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -638,8 +624,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<long?>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (long?) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(long?)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (long?) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(long?)));
         }
         /// <summary>
         /// Create Creates the entity with the given properties.
@@ -678,19 +666,11 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
                 "application/json;charset=utf-8"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (transaction != null && transaction.GetType() != typeof(byte[]))
@@ -705,8 +685,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -718,8 +698,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<Transaction>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
         }
         /// <summary>
         /// Create Transaction Credentials This operation allows to create transaction credentials to delegate temporarily the access to the web service API for this particular transaction.
@@ -758,17 +740,10 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
@@ -776,8 +751,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -789,8 +764,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<string>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
         /// <summary>
         /// Delete One-Click Token with Credentials This operation removes the given token.
@@ -828,17 +805,10 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (credentials != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "credentials", credentials)); // query parameter
             if (tokenId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "tokenId", tokenId)); // query parameter
@@ -846,8 +816,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -859,7 +829,9 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers
+                    .GroupBy(x => x.Name, x => x.Value.ToString())
+                    .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
                 null);
         }
         /// <summary>
@@ -899,20 +871,11 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
                 "application/json;charset=utf-8"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8",
-                "text/csv"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (request != null && request.GetType() != typeof(byte[]))
@@ -927,8 +890,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -940,8 +903,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<byte[]>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (byte[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(byte[])));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (byte[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(byte[])));
         }
         /// <summary>
         /// Fetch One Click Tokens with Credentials This operation returns the token version objects which references the tokens usable as one-click payment tokens for the provided transaction.
@@ -975,25 +940,18 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (credentials != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "credentials", credentials)); // query parameter
 
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -1005,8 +963,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<List<TokenVersion>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<TokenVersion>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TokenVersion>)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (List<TokenVersion>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<TokenVersion>)));
         }
         /// <summary>
         /// Fetch Possible Payment Methods This operation allows to get the payment method configurations which can be used with the provided transaction.
@@ -1050,18 +1010,10 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
@@ -1070,8 +1022,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -1083,8 +1035,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<List<PaymentMethodConfiguration>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<PaymentMethodConfiguration>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PaymentMethodConfiguration>)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (List<PaymentMethodConfiguration>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PaymentMethodConfiguration>)));
         }
         /// <summary>
         /// Fetch Possible Payment Methods with Credentials This operation allows to get the payment method configurations which can be used with the provided transaction.
@@ -1123,18 +1077,10 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (credentials != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "credentials", credentials)); // query parameter
             if (integrationMode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "integrationMode", integrationMode)); // query parameter
@@ -1142,8 +1088,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -1155,8 +1101,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<List<PaymentMethodConfiguration>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<PaymentMethodConfiguration>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PaymentMethodConfiguration>)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (List<PaymentMethodConfiguration>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<PaymentMethodConfiguration>)));
         }
         /// <summary>
         /// getInvoiceDocument Returns the PDF document for the transaction invoice with given id.
@@ -1195,19 +1143,11 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
                 "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
@@ -1215,8 +1155,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -1228,8 +1168,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<RenderedDocument>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (RenderedDocument) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RenderedDocument)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (RenderedDocument) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RenderedDocument)));
         }
         /// <summary>
         /// getLatestSuccessfulTransactionLineItemVersion 
@@ -1268,18 +1210,10 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
@@ -1287,8 +1221,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -1300,8 +1234,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<TransactionLineItemVersion>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (TransactionLineItemVersion) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransactionLineItemVersion)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (TransactionLineItemVersion) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(TransactionLineItemVersion)));
         }
         /// <summary>
         /// getPackingSlip Returns the packing slip for the transaction with given id.
@@ -1340,19 +1276,11 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
                 "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
@@ -1360,8 +1288,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -1373,8 +1301,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<RenderedDocument>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (RenderedDocument) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RenderedDocument)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (RenderedDocument) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(RenderedDocument)));
         }
         /// <summary>
         /// Process One-Click Token with Credentials This operation assigns the given token to the transaction and process it. This method will return an URL where the customer has to be redirect to complete the transaction.
@@ -1413,17 +1343,10 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (credentials != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "credentials", credentials)); // query parameter
             if (tokenId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "tokenId", tokenId)); // query parameter
@@ -1431,8 +1354,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -1444,8 +1367,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<string>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
         }
         /// <summary>
         /// Process Without User Interaction This operation processes the transaction without requiring that the customer is present. Means this operation applies strategies to process the transaction without a direct interaction with the buyer. This operation is suitable for recurring transactions.
@@ -1484,17 +1409,10 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
@@ -1502,8 +1420,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -1515,8 +1433,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<Transaction>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
         }
         /// <summary>
         /// Read Reads the entity with the given &#39;id&#39; and returns it.
@@ -1555,19 +1475,11 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
                 "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
@@ -1575,8 +1487,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -1588,8 +1500,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<Transaction>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
         }
         /// <summary>
         /// Read With Credentials Reads the transaction with the given &#39;id&#39; and returns it. This method uses the credentials to authenticate and identify the transaction.
@@ -1623,27 +1537,19 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
                 "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (credentials != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "credentials", credentials)); // query parameter
 
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -1655,8 +1561,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<Transaction>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
         }
         /// <summary>
         /// Search Searches for the entities as specified by the given query.
@@ -1695,19 +1603,11 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
                 "application/json;charset=utf-8"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (query != null && query.GetType() != typeof(byte[]))
@@ -1722,8 +1622,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -1735,8 +1635,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<List<Transaction>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Transaction>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Transaction>)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (List<Transaction>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Transaction>)));
         }
         /// <summary>
         /// Update This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
@@ -1775,19 +1677,11 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content-Type header
+            // to determine the Content type
             String[] localVarHttpContentTypes = new String[] {
                 "application/json;charset=utf-8"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json;charset=utf-8"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (entity != null && entity.GetType() != typeof(byte[]))
@@ -1802,8 +1696,8 @@ namespace Wallee.Service
 			
 			this.Configuration.ApiClient.ResetTimeout();
             // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -1815,8 +1709,10 @@ namespace Wallee.Service
             }
 
             return new ApiResponse<Transaction>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (Transaction) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Transaction)));
         }
     }
 }

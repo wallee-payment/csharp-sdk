@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets Gender
         /// </summary>
         [DataMember(Name="gender", EmitDefaultValue=false)]
-        public Gender? Gender { get; set; }
+        public Gender? Gender { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomerPostalAddress" /> class.
         /// </summary>

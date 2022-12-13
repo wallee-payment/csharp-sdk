@@ -24,17 +24,17 @@ namespace Wallee.Model
         /// Gets or Sets Environment
         /// </summary>
         [DataMember(Name="environment", EmitDefaultValue=false)]
-        public Environment? Environment { get; set; }
+        public Environment? Environment { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public RefundState? State { get; set; }
+        public RefundState? State { get; private set; }
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public RefundType? Type { get; set; }
+        public RefundType? Type { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Refund" /> class.
         /// </summary>

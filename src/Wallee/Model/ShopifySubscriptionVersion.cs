@@ -24,17 +24,17 @@ namespace Wallee.Model
         /// Gets or Sets BillingIntervalUnit
         /// </summary>
         [DataMember(Name="billingIntervalUnit", EmitDefaultValue=false)]
-        public ShopifySubscriptionBillingIntervalUnit? BillingIntervalUnit { get; set; }
+        public ShopifySubscriptionBillingIntervalUnit? BillingIntervalUnit { get; private set; }
         /// <summary>
         /// Gets or Sets BillingWeekday
         /// </summary>
         [DataMember(Name="billingWeekday", EmitDefaultValue=false)]
-        public ShopifySubscriptionWeekday? BillingWeekday { get; set; }
+        public ShopifySubscriptionWeekday? BillingWeekday { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public ShopifySubscriptionVersionState? State { get; set; }
+        public ShopifySubscriptionVersionState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscriptionVersion" /> class.
         /// </summary>

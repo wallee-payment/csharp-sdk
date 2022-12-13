@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets RecurringIndicator
         /// </summary>
         [DataMember(Name="recurringIndicator", EmitDefaultValue=false)]
-        public RecurringIndicator? RecurringIndicator { get; set; }
+        public RecurringIndicator? RecurringIndicator { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenizedCardData" /> class.
         /// </summary>

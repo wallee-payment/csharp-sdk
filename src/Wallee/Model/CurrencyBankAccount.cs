@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets Environment
         /// </summary>
         [DataMember(Name="environment", EmitDefaultValue=false)]
-        public BankAccountEnvironment? Environment { get; set; }
+        public BankAccountEnvironment? Environment { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CurrencyBankAccount" /> class.
         /// </summary>

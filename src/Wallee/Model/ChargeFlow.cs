@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState? State { get; set; }
+        public CreationEntityState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ChargeFlow" /> class.
         /// </summary>

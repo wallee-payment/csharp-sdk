@@ -24,12 +24,12 @@ namespace Wallee.Model
         /// Gets or Sets FlowDirection
         /// </summary>
         [DataMember(Name="flowDirection", EmitDefaultValue=false)]
-        public BankTransactionFlowDirection? FlowDirection { get; set; }
+        public BankTransactionFlowDirection? FlowDirection { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public BankTransactionState? State { get; set; }
+        public BankTransactionState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankTransaction" /> class.
         /// </summary>

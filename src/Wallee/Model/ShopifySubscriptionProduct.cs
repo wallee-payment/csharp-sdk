@@ -25,23 +25,23 @@ namespace Wallee.Model
         /// </summary>
         /// <value>Define how frequently recurring orders should be created.</value>
         [DataMember(Name="billingIntervalUnit", EmitDefaultValue=false)]
-        public ShopifySubscriptionBillingIntervalUnit? BillingIntervalUnit { get; set; }
+        public ShopifySubscriptionBillingIntervalUnit? BillingIntervalUnit { get; private set; }
         /// <summary>
         /// Define the weekday on which the recurring orders should be created.
         /// </summary>
         /// <value>Define the weekday on which the recurring orders should be created.</value>
         [DataMember(Name="billingWeekday", EmitDefaultValue=false)]
-        public ShopifySubscriptionWeekday? BillingWeekday { get; set; }
+        public ShopifySubscriptionWeekday? BillingWeekday { get; private set; }
         /// <summary>
         /// Gets or Sets PricingOption
         /// </summary>
         [DataMember(Name="pricingOption", EmitDefaultValue=false)]
-        public ShopifySubscriptionProductPricingOption? PricingOption { get; set; }
+        public ShopifySubscriptionProductPricingOption? PricingOption { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public ShopifySubscriptionProductState? State { get; set; }
+        public ShopifySubscriptionProductState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscriptionProduct" /> class.
         /// </summary>

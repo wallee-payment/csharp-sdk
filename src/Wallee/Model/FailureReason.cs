@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets Category
         /// </summary>
         [DataMember(Name="category", EmitDefaultValue=false)]
-        public FailureCategory? Category { get; set; }
+        public FailureCategory? Category { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="FailureReason" /> class.
         /// </summary>

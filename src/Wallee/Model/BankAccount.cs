@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public BankAccountState? State { get; set; }
+        public BankAccountState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankAccount" /> class.
         /// </summary>

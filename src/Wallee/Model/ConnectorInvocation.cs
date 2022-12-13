@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets Stage
         /// </summary>
         [DataMember(Name="stage", EmitDefaultValue=false)]
-        public ConnectorInvocationStage? Stage { get; set; }
+        public ConnectorInvocationStage? Stage { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ConnectorInvocation" /> class.
         /// </summary>

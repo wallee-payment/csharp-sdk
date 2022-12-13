@@ -24,12 +24,12 @@ namespace Wallee.Model
         /// Gets or Sets Mode
         /// </summary>
         [DataMember(Name="mode", EmitDefaultValue=false)]
-        public TransactionVoidMode? Mode { get; set; }
+        public TransactionVoidMode? Mode { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public TransactionVoidState? State { get; set; }
+        public TransactionVoidState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionVoid" /> class.
         /// </summary>

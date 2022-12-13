@@ -24,12 +24,12 @@ namespace Wallee.Model
         /// Gets or Sets Environment
         /// </summary>
         [DataMember(Name="environment", EmitDefaultValue=false)]
-        public Environment? Environment { get; set; }
+        public Environment? Environment { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public TransactionInvoiceState? State { get; set; }
+        public TransactionInvoiceState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionInvoice" /> class.
         /// </summary>

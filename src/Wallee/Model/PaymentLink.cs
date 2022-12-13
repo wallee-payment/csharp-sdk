@@ -25,24 +25,24 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The billing address handling mode controls if the address is collected or not and how it is collected.</value>
         [DataMember(Name="billingAddressHandlingMode", EmitDefaultValue=false)]
-        public PaymentLinkAddressHandlingMode? BillingAddressHandlingMode { get; set; }
+        public PaymentLinkAddressHandlingMode? BillingAddressHandlingMode { get; private set; }
         /// <summary>
         /// The protection mode determines if the payment link is protected against tampering and in what way.
         /// </summary>
         /// <value>The protection mode determines if the payment link is protected against tampering and in what way.</value>
         [DataMember(Name="protectionMode", EmitDefaultValue=false)]
-        public PaymentLinkProtectionMode? ProtectionMode { get; set; }
+        public PaymentLinkProtectionMode? ProtectionMode { get; private set; }
         /// <summary>
         /// The shipping address handling mode controls if the address is collected or not and how it is collected.
         /// </summary>
         /// <value>The shipping address handling mode controls if the address is collected or not and how it is collected.</value>
         [DataMember(Name="shippingAddressHandlingMode", EmitDefaultValue=false)]
-        public PaymentLinkAddressHandlingMode? ShippingAddressHandlingMode { get; set; }
+        public PaymentLinkAddressHandlingMode? ShippingAddressHandlingMode { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState? State { get; set; }
+        public CreationEntityState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentLink" /> class.
         /// </summary>

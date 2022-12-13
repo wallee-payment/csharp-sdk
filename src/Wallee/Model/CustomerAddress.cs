@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets AddressType
         /// </summary>
         [DataMember(Name="addressType", EmitDefaultValue=false)]
-        public CustomerAddressType? AddressType { get; set; }
+        public CustomerAddressType? AddressType { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomerAddress" /> class.
         /// </summary>

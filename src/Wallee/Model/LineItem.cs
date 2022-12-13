@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public LineItemType? Type { get; set; }
+        public LineItemType? Type { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="LineItem" /> class.
         /// </summary>

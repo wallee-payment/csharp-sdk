@@ -24,17 +24,17 @@ namespace Wallee.Model
         /// Gets or Sets PaymentAppVersion
         /// </summary>
         [DataMember(Name="paymentAppVersion", EmitDefaultValue=false)]
-        public ShopifyIntegrationPaymentAppVersion? PaymentAppVersion { get; set; }
+        public ShopifyIntegrationPaymentAppVersion? PaymentAppVersion { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public CreationEntityState? State { get; set; }
+        public CreationEntityState? State { get; private set; }
         /// <summary>
         /// Gets or Sets SubscriptionAppVersion
         /// </summary>
         [DataMember(Name="subscriptionAppVersion", EmitDefaultValue=false)]
-        public ShopifyIntegrationSubscriptionAppVersion? SubscriptionAppVersion { get; set; }
+        public ShopifyIntegrationSubscriptionAppVersion? SubscriptionAppVersion { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifyIntegration" /> class.
         /// </summary>

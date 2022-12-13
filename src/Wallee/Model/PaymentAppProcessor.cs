@@ -24,12 +24,12 @@ namespace Wallee.Model
         /// Gets or Sets ConfiguredEnvironment
         /// </summary>
         [DataMember(Name="configuredEnvironment", EmitDefaultValue=false)]
-        public ChargeAttemptEnvironment? ConfiguredEnvironment { get; set; }
+        public ChargeAttemptEnvironment? ConfiguredEnvironment { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public PaymentAppProcessorState? State { get; set; }
+        public PaymentAppProcessorState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentAppProcessor" /> class.
         /// </summary>

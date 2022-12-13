@@ -25,12 +25,12 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.</value>
         [DataMember(Name="tierPricing", EmitDefaultValue=false)]
-        public ProductMeteredTierPricing? TierPricing { get; set; }
+        public ProductMeteredTierPricing? TierPricing { get; private set; }
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public ProductFeeType? Type { get; set; }
+        public ProductFeeType? Type { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductMeteredFee" /> class.
         /// </summary>

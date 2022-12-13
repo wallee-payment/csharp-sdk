@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public SubscriptionPeriodBillState? State { get; set; }
+        public SubscriptionPeriodBillState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionPeriodBill" /> class.
         /// </summary>

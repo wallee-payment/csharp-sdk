@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets Style
         /// </summary>
         [DataMember(Name="style", EmitDefaultValue=false)]
-        public ManualTaskActionStyle? Style { get; set; }
+        public ManualTaskActionStyle? Style { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ManualTaskAction" /> class.
         /// </summary>

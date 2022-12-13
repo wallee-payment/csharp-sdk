@@ -25,47 +25,47 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The environment in which this transaction was successfully authorized.</value>
         [DataMember(Name="authorizationEnvironment", EmitDefaultValue=false)]
-        public ChargeAttemptEnvironment? AuthorizationEnvironment { get; set; }
+        public ChargeAttemptEnvironment? AuthorizationEnvironment { get; private set; }
         /// <summary>
         /// The completion behavior controls when the transaction is completed.
         /// </summary>
         /// <value>The completion behavior controls when the transaction is completed.</value>
         [DataMember(Name="completionBehavior", EmitDefaultValue=false)]
-        public TransactionCompletionBehavior? CompletionBehavior { get; set; }
+        public TransactionCompletionBehavior? CompletionBehavior { get; private set; }
         /// <summary>
         /// The customer&#39;s presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.
         /// </summary>
         /// <value>The customer&#39;s presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.</value>
         [DataMember(Name="customersPresence", EmitDefaultValue=false)]
-        public CustomersPresence? CustomersPresence { get; set; }
+        public CustomersPresence? CustomersPresence { get; private set; }
         /// <summary>
         /// Gets or Sets Environment
         /// </summary>
         [DataMember(Name="environment", EmitDefaultValue=false)]
-        public Environment? Environment { get; set; }
+        public Environment? Environment { get; private set; }
         /// <summary>
         /// The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
         /// </summary>
         /// <value>The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.</value>
         [DataMember(Name="environmentSelectionStrategy", EmitDefaultValue=false)]
-        public TransactionEnvironmentSelectionStrategy? EnvironmentSelectionStrategy { get; set; }
+        public TransactionEnvironmentSelectionStrategy? EnvironmentSelectionStrategy { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public TransactionState? State { get; set; }
+        public TransactionState? State { get; private set; }
         /// <summary>
         /// The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
         /// </summary>
         /// <value>The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.</value>
         [DataMember(Name="tokenizationMode", EmitDefaultValue=false)]
-        public TokenizationMode? TokenizationMode { get; set; }
+        public TokenizationMode? TokenizationMode { get; private set; }
         /// <summary>
         /// The user interface type defines through which user interface the transaction has been processed resp. created.
         /// </summary>
         /// <value>The user interface type defines through which user interface the transaction has been processed resp. created.</value>
         [DataMember(Name="userInterfaceType", EmitDefaultValue=false)]
-        public TransactionUserInterfaceType? UserInterfaceType { get; set; }
+        public TransactionUserInterfaceType? UserInterfaceType { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Transaction" /> class.
         /// </summary>

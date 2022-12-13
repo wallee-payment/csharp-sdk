@@ -24,7 +24,7 @@ namespace Wallee.Model
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public PaymentInitiationAdviceFileState? State { get; set; }
+        public PaymentInitiationAdviceFileState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentInitiationAdviceFile" /> class.
         /// </summary>

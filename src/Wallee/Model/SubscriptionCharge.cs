@@ -24,17 +24,17 @@ namespace Wallee.Model
         /// Gets or Sets ProcessingType
         /// </summary>
         [DataMember(Name="processingType", EmitDefaultValue=false)]
-        public SubscriptionChargeProcessingType? ProcessingType { get; set; }
+        public SubscriptionChargeProcessingType? ProcessingType { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public SubscriptionChargeState? State { get; set; }
+        public SubscriptionChargeState? State { get; private set; }
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public SubscriptionChargeType? Type { get; set; }
+        public SubscriptionChargeType? Type { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionCharge" /> class.
         /// </summary>

@@ -24,17 +24,17 @@ namespace Wallee.Model
         /// Gets or Sets Initiator
         /// </summary>
         [DataMember(Name="initiator", EmitDefaultValue=false)]
-        public ShopifySubscriptionSuspensionInitiator? Initiator { get; set; }
+        public ShopifySubscriptionSuspensionInitiator? Initiator { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public ShopifySubscriptionSuspensionState? State { get; set; }
+        public ShopifySubscriptionSuspensionState? State { get; private set; }
         /// <summary>
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public ShopifySubscriptionSuspensionType? Type { get; set; }
+        public ShopifySubscriptionSuspensionType? Type { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscriptionSuspension" /> class.
         /// </summary>

@@ -24,28 +24,28 @@ namespace Wallee.Model
         /// Gets or Sets CompletionBehavior
         /// </summary>
         [DataMember(Name="completionBehavior", EmitDefaultValue=false)]
-        public TransactionCompletionBehavior? CompletionBehavior { get; set; }
+        public TransactionCompletionBehavior? CompletionBehavior { get; private set; }
         /// <summary>
         /// The customers presence indicates which kind of customer interaction was used during the charge attempt.
         /// </summary>
         /// <value>The customers presence indicates which kind of customer interaction was used during the charge attempt.</value>
         [DataMember(Name="customersPresence", EmitDefaultValue=false)]
-        public CustomersPresence? CustomersPresence { get; set; }
+        public CustomersPresence? CustomersPresence { get; private set; }
         /// <summary>
         /// Gets or Sets Environment
         /// </summary>
         [DataMember(Name="environment", EmitDefaultValue=false)]
-        public ChargeAttemptEnvironment? Environment { get; set; }
+        public ChargeAttemptEnvironment? Environment { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public ChargeAttemptState? State { get; set; }
+        public ChargeAttemptState? State { get; private set; }
         /// <summary>
         /// Gets or Sets WalletType
         /// </summary>
         [DataMember(Name="walletType", EmitDefaultValue=false)]
-        public WalletType? WalletType { get; set; }
+        public WalletType? WalletType { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ChargeAttempt" /> class.
         /// </summary>

@@ -25,12 +25,12 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.</value>
         [DataMember(Name="environment", EmitDefaultValue=false)]
-        public DebtCollectionEnvironment? Environment { get; set; }
+        public DebtCollectionEnvironment? Environment { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public DebtCollectionCaseState? State { get; set; }
+        public DebtCollectionCaseState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="DebtCollectionCase" /> class.
         /// </summary>

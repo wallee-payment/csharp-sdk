@@ -25,18 +25,18 @@ namespace Wallee.Model
         /// </summary>
         /// <value>When the suspension reaches the planned end date the end action will be carried out. This action is only executed when the suspension is ended automatically based on the end date.</value>
         [DataMember(Name="endAction", EmitDefaultValue=false)]
-        public SubscriptionSuspensionAction? EndAction { get; set; }
+        public SubscriptionSuspensionAction? EndAction { get; private set; }
         /// <summary>
         /// The suspension reason indicates why a suspension has been created.
         /// </summary>
         /// <value>The suspension reason indicates why a suspension has been created.</value>
         [DataMember(Name="reason", EmitDefaultValue=false)]
-        public SubscriptionSuspensionReason? Reason { get; set; }
+        public SubscriptionSuspensionReason? Reason { get; private set; }
         /// <summary>
         /// Gets or Sets State
         /// </summary>
         [DataMember(Name="state", EmitDefaultValue=false)]
-        public SubscriptionSuspensionState? State { get; set; }
+        public SubscriptionSuspensionState? State { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionSuspension" /> class.
         /// </summary>

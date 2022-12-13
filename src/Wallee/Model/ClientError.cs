@@ -25,7 +25,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The type of the client error.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public ClientErrorType? Type { get; set; }
+        public ClientErrorType? Type { get; private set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ClientError" /> class.
         /// </summary>
