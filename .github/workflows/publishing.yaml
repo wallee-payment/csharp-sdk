@@ -14,17 +14,13 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.101
+          dotnet-version: 5.0.408
 
       - name: Install dependencies
         run: dotnet restore
 
       - name: Test Nuget
-        run: |
-          nuget restore Wallee.sln
-          nuget install NUnit.Console -Version 3.11.1 -OutputDirectory testrunner
-          msbuild /t:restore Wallee.sln && msbuild Wallee.sln /t:build /p:Configuration=Release
-          mono testrunner/NUnit.ConsoleRunner.3.11.1/tools/nunit3-console.exe ./src/Wallee.Test/bin/Release/net5.0/Wallee.Test.dll --inprocess
+        run: dotnet test --configuration Release
 
   publish:
     needs: build
@@ -35,7 +31,7 @@ jobs:
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 3.1.101
+          dotnet-version: 5.0.408
 
       - name: Install dependencies
         run: dotnet restore
