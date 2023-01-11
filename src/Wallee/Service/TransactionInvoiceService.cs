@@ -298,6 +298,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Count Counts the number of items in the database as restricted by the given filter.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -334,11 +335,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -369,6 +371,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// getInvoiceDocument Returns the PDF document for the transaction invoice with given id.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -401,11 +404,12 @@ namespace Wallee.Service
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -437,6 +441,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// getInvoiceDocumentWithTargetMediaType Returns the PDF document for the transaction invoice with given id and target media type id.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -474,11 +479,12 @@ namespace Wallee.Service
             if (targetMediaTypeId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "targetMediaTypeId", targetMediaTypeId)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -509,6 +515,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// isReplacementPossible Returns whether the transaction invoice with the given id can be replaced.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -541,11 +548,12 @@ namespace Wallee.Service
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -576,6 +584,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Mark as Derecognized Marks the transaction invoice with the given id as derecognized.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -608,11 +617,12 @@ namespace Wallee.Service
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -643,6 +653,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Mark as Paid Marks the transaction invoice with the given id as paid.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -675,11 +686,12 @@ namespace Wallee.Service
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -710,6 +722,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Read Reads the entity with the given &#39;id&#39; and returns it.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -742,11 +755,12 @@ namespace Wallee.Service
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -778,6 +792,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// replace Replaces the transaction invoice with given id with the replacement and returns the new transaction invoice.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -822,11 +837,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -857,6 +873,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Search Searches for the entities as specified by the given query.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -896,11 +913,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 

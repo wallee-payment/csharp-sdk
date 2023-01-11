@@ -110,6 +110,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Calculate Plans This operation allows to calculate all plans for the given transaction. The transaction will not be changed in any way.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -141,11 +142,12 @@ namespace Wallee.Service
             if (transactionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "transactionId", transactionId)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 

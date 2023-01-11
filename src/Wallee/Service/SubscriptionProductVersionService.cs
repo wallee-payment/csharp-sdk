@@ -225,6 +225,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// activate This operation activates a new product version.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -257,11 +258,12 @@ namespace Wallee.Service
             if (productVersionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "productVersionId", productVersionId)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -292,6 +294,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Count Counts the number of items in the database as restricted by the given filter.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -328,11 +331,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -363,6 +367,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Create Creates the entity with the given properties.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -402,11 +407,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -437,6 +443,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Read Reads the entity with the given &#39;id&#39; and returns it.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -469,11 +476,12 @@ namespace Wallee.Service
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -504,6 +512,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Search Searches for the entities as specified by the given query.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -543,11 +552,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -578,6 +588,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Update This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -617,11 +628,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 

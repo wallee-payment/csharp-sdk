@@ -294,6 +294,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Activate Processor for Production This operation marks the processor to be usable within the production environment.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId">The space ID identifies the space in which the processor is installed in.</param>
@@ -326,11 +327,12 @@ namespace Wallee.Service
             if (externalId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "externalId", externalId)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -360,6 +362,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Delete Connector This operation removes the web app payment connector from the given space.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId">The space ID identifies the space in which the connector is installed in.</param>
@@ -391,11 +394,12 @@ namespace Wallee.Service
             if (externalId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "externalId", externalId)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -425,6 +429,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Delete Processor This operation removes the web app payment processor and its connectors from the given space.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId">The space ID identifies the space in which the processor is installed in.</param>
@@ -456,11 +461,12 @@ namespace Wallee.Service
             if (externalId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "externalId", externalId)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -491,6 +497,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Insert or Update Connector This operation inserts or updates a web app payment connector.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId">The space ID identifies the space into which the connector should be inserted into.</param>
@@ -529,11 +536,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -564,6 +572,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Insert or Update Processor This operation inserts or updates a web app payment processor.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId">The space ID identifies the space into which the processor should be inserted into.</param>
@@ -602,11 +611,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -637,6 +647,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Update Charge Attempt This operation updates the state of the charge attempt. This method can be invoked for transactions originally created with a processor associated with the web app that invokes this operation. The returned charge attempt corresponds to the charge attempt indicated in the request.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId">This is the ID of the space in which the charge attempt is located in.</param>
@@ -675,11 +686,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -710,6 +722,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Update Completion This operation updates the state of the transaction completion. This method can be invoked for transactions originally created with a processor associated with the web app that invokes this operation. The returned completion corresponds to the completion indicated in the request.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId">This is the ID of the space in which the completion is located in.</param>
@@ -748,11 +761,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -783,6 +797,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Update Refund This operation updates the state of the refund. This method can be invoked for transactions originally created with a processor associated with the web app that invokes this operation. The returned refund corresponds to the refund indicated in the request.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId">This is the ID of the space in which the refund is located in.</param>
@@ -821,11 +836,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -856,6 +872,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Update Void This operation updates the state of the transaction void. This method can be invoked for transactions originally created with a processor associated with the web app that invokes this operation. The returned void corresponds to the void indicated in the request.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId">This is the ID of the space in which the void is located in.</param>
@@ -894,11 +911,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 

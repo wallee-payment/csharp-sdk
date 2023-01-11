@@ -31,13 +31,13 @@ Install-Package JsonSubTypes
 ## Installation
 ```
 # Package Manager
-Install-Package Wallee -Version 5.0.1
+Install-Package Wallee -Version 5.1.0
 # .NET CLI
-dotnet add package Wallee --version 5.0.1
+dotnet add package Wallee --version 5.1.0
 # Paket CLI
-paket add Wallee --version 5.0.1
+paket add Wallee --version 5.1.0
 # PackageReference
-<PackageReference Include="Wallee" Version="5.0.1" />
+<PackageReference Include="Wallee" Version="5.1.0" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
@@ -148,7 +148,9 @@ namespace Wallee.Test
         /// </summary>
         [Test]
         public void TestPaymentPageUrl() {
-            TransactionPaymentPageService transactionPaymentPageService = new TransactionPaymentPageService(this.configuration);
+        // If needed configure configure a custom timeout. (Default is 25 seconds)
+        this.configuration.Timeout = 30;
+        TransactionPaymentPageService transactionPaymentPageService = new TransactionPaymentPageService(this.configuration);
             String paymentPageUrl     = null;
             try {
                 paymentPageUrl = transactionPaymentPageService.PaymentPageUrl(this.spaceId, this.transaction.Data.Id);

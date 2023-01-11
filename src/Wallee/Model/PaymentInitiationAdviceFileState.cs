@@ -42,6 +42,12 @@ namespace Wallee.Model
         CREATED,
         
         /// <summary>
+        /// Enum OVERDUE for value: OVERDUE
+        /// </summary>
+        [EnumMember(Value = "OVERDUE")]
+        OVERDUE,
+        
+        /// <summary>
         /// Enum UPLOADED for value: UPLOADED
         /// </summary>
         [EnumMember(Value = "UPLOADED")]

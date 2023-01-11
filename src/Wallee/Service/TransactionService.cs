@@ -499,6 +499,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Confirm The confirm operation marks the transaction as confirmed. Once the transaction is confirmed no more changes can be applied.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -538,11 +539,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -573,6 +575,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Count Counts the number of items in the database as restricted by the given filter.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -609,11 +612,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -644,6 +648,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Create Creates the entity with the given properties.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -683,11 +688,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -718,6 +724,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Create Transaction Credentials This operation allows to create transaction credentials to delegate temporarily the access to the web service API for this particular transaction.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -749,11 +756,12 @@ namespace Wallee.Service
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -783,6 +791,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Delete One-Click Token with Credentials This operation removes the given token.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
@@ -814,11 +823,12 @@ namespace Wallee.Service
             if (tokenId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "tokenId", tokenId)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -849,6 +859,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Export Exports the transactions into a CSV file. The file will contain the properties defined in the request.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -888,11 +899,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -922,6 +934,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Fetch One Click Tokens with Credentials This operation returns the token version objects which references the tokens usable as one-click payment tokens for the provided transaction.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
@@ -948,11 +961,12 @@ namespace Wallee.Service
             if (credentials != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "credentials", credentials)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -984,6 +998,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Fetch Possible Payment Methods This operation allows to get the payment method configurations which can be used with the provided transaction.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1020,11 +1035,12 @@ namespace Wallee.Service
             if (integrationMode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "integrationMode", integrationMode)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1055,6 +1071,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Fetch Possible Payment Methods with Credentials This operation allows to get the payment method configurations which can be used with the provided transaction.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
@@ -1086,11 +1103,12 @@ namespace Wallee.Service
             if (integrationMode != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "integrationMode", integrationMode)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1121,6 +1139,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// getInvoiceDocument Returns the PDF document for the transaction invoice with given id.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1153,11 +1172,12 @@ namespace Wallee.Service
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1188,6 +1208,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// getLatestSuccessfulTransactionLineItemVersion 
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1219,11 +1240,12 @@ namespace Wallee.Service
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1254,6 +1276,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// getPackingSlip Returns the packing slip for the transaction with given id.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1286,11 +1309,12 @@ namespace Wallee.Service
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1321,6 +1345,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Process One-Click Token with Credentials This operation assigns the given token to the transaction and process it. This method will return an URL where the customer has to be redirect to complete the transaction.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
@@ -1352,11 +1377,12 @@ namespace Wallee.Service
             if (tokenId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "tokenId", tokenId)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1387,6 +1413,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Process Without User Interaction This operation processes the transaction without requiring that the customer is present. Means this operation applies strategies to process the transaction without a direct interaction with the buyer. This operation is suitable for recurring transactions.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1418,11 +1445,12 @@ namespace Wallee.Service
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1453,6 +1481,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Read Reads the entity with the given &#39;id&#39; and returns it.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1485,11 +1514,12 @@ namespace Wallee.Service
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1519,6 +1549,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Read With Credentials Reads the transaction with the given &#39;id&#39; and returns it. This method uses the credentials to authenticate and identify the transaction.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
@@ -1546,11 +1577,12 @@ namespace Wallee.Service
             if (credentials != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "credentials", credentials)); // query parameter
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1581,6 +1613,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Search Searches for the entities as specified by the given query.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1620,11 +1653,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -1655,6 +1689,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Update This updates the entity with the given properties. Only those properties which should be updated can be provided. The &#39;id&#39; and &#39;version&#39; are required to identify the entity.
+        
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -1694,11 +1729,12 @@ namespace Wallee.Service
             }
 
 			
-			this.Configuration.ApiClient.ResetTimeout();
-            // make the HTTP request
+            int requestTimeout = this.Configuration.Timeout * 1000;
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 

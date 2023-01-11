@@ -67,7 +67,11 @@ namespace Wallee.Client
            if (String.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
 
-            RestClient = new RestClient(basePath);
+            var options = new RestClientOptions(basePath)
+            {
+                MaxTimeout = 600000
+            };
+            RestClient = new RestClient(options);
         }
 
         /// <summary>
@@ -151,11 +155,11 @@ namespace Wallee.Client
             String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
             Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
             Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
-            String contentType)
+            String contentType, int timeout)
         {
 
             Dictionary<String, String> defaultHeaderParams = new Dictionary<String, String>() {
-                {"x-meta-sdk-version", "5.0.1"},
+                {"x-meta-sdk-version", "5.1.0"},
                 {"x-meta-sdk-language", "csharp"},
                 {"x-meta-sdk-provider", "wallee"},
                 {"x-meta-sdk-language-version", Environment.Version.ToString()}
@@ -164,6 +168,9 @@ namespace Wallee.Client
             var request = PrepareRequest(
                 path, method, queryParams, postBody, headerParams, defaultHeaderParams, formParams, fileParams,
                 pathParams, contentType);
+
+            //set timeout for request
+            request.Timeout = timeout;
 
             // set user agent
             RestClient.Options.UserAgent = Configuration.UserAgent;

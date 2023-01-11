@@ -40,13 +40,8 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Pack
-        run: dotnet pack --configuration Release --output .
+        run: dotnet pack --include-symbols -p:SymbolPackageFormat=snupkg --configuration Release --output .
 
       - name: Publish
-        uses: brandedoutcast/publish-nuget@v2.5.2
-        with:
-          PROJECT_FILE_PATH: ./src/Wallee/Wallee.csproj
-          INCLUDE_SYMBOLS: true
-          NUGET_KEY: ${{ secrets.NUGET_API_KEY }}
-
+        run: dotnet nuget push Wallee.*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
 

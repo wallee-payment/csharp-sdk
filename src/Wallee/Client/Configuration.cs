@@ -19,7 +19,7 @@ namespace Wallee.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "5.0.1";
+        public const string Version = "5.1.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -90,14 +90,13 @@ namespace Wallee.Client
             }
             _authenticationKey =  authenticationKey;
             _applicationUserID = applicationUserID;
-            UserAgent = "Wallee/5.0.1/csharp";
+            UserAgent = "Wallee/5.1.0/csharp";
             BasePath = "https://app-wallee.com:443/api";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
             ApiKeyPrefix = new ConcurrentDictionary<string, string>();
 
-            // Setting Timeout has side effects (forces ApiClient creation).
-            Timeout = 100000;
+            Timeout = 25;
         }
 
         #endregion Constructors
@@ -164,11 +163,7 @@ namespace Wallee.Client
         /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 100000 milliseconds.
         /// </summary>
         public virtual int Timeout
-        {
-            
-            get { return ApiClient.RestClient.Options.MaxTimeout; }
-            set { ApiClient.RestClient.Options.MaxTimeout = value; }
-        }
+        { get; set;}
 
         /// <summary>
         /// Gets or sets the HTTP user agent.
@@ -338,8 +333,8 @@ namespace Wallee.Client
             String report = "C# SDK (Wallee) Debug Report:\n";
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
-            report += "    Version of the API: 5.0.1\n";
-            report += "    SDK Package Version: 5.0.1\n";
+            report += "    Version of the API: 5.1.0\n";
+            report += "    SDK Package Version: 5.1.0\n";
 
             return report;
         }

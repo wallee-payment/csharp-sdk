@@ -143,6 +143,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Perform Payment Terminal Transaction Starts a payment terminal transaction and waits for its completion. If the call returns with a long polling timeout status, you may try again. The processing of the transaction will be picked up where it was left off.
+        /// Timeout for this request is: 90 seconds.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -181,12 +182,13 @@ namespace Wallee.Service
             if (terminalId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "terminalId", terminalId)); // query parameter
             if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
 
-			this.Configuration.ApiClient.RestClient.Options.MaxTimeout = 90 * 1000;
-			
-            // make the HTTP request
+			int requestTimeout = 90 * 1000;
+            
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
@@ -219,6 +221,7 @@ namespace Wallee.Service
 
         /// <summary>
         /// Perform Payment Terminal Transaction (using TID) Starts a payment terminal transaction and waits for its completion. If the call returns with a long polling timeout status, you may try again. The processing of the transaction will be picked up where it was left off.
+        /// Timeout for this request is: 90 seconds.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
@@ -257,12 +260,13 @@ namespace Wallee.Service
             if (terminalIdentifier != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "terminalIdentifier", terminalIdentifier)); // query parameter
             if (language != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "language", language)); // query parameter
 
-			this.Configuration.ApiClient.RestClient.Options.MaxTimeout = 90 * 1000;
-			
-            // make the HTTP request
+			int requestTimeout = 90 * 1000;
+            
+
+                // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
+                localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 

@@ -53,6 +53,13 @@ namespace Wallee.Model
         public DateTime? FileGeneratedOn { get; private set; }
 
         /// <summary>
+        /// The shipping date indicates the date on which the pain file was transferred to an external processing system.
+        /// </summary>
+        /// <value>The shipping date indicates the date on which the pain file was transferred to an external processing system.</value>
+        [DataMember(Name="forwardedOn", EmitDefaultValue=false)]
+        public DateTime? ForwardedOn { get; private set; }
+
+        /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
         /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
@@ -96,6 +103,7 @@ namespace Wallee.Model
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  FailureMessage: ").Append(FailureMessage).Append("\n");
             sb.Append("  FileGeneratedOn: ").Append(FileGeneratedOn).Append("\n");
+            sb.Append("  ForwardedOn: ").Append(ForwardedOn).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -152,6 +160,11 @@ namespace Wallee.Model
                     this.FileGeneratedOn.Equals(input.FileGeneratedOn))
                 ) && 
                 (
+                    this.ForwardedOn == input.ForwardedOn ||
+                    (this.ForwardedOn != null &&
+                    this.ForwardedOn.Equals(input.ForwardedOn))
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -198,6 +211,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.FailureMessage.GetHashCode();
                 if (this.FileGeneratedOn != null)
                     hashCode = hashCode * 59 + this.FileGeneratedOn.GetHashCode();
+                if (this.ForwardedOn != null)
+                    hashCode = hashCode * 59 + this.ForwardedOn.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.LinkedSpaceId != null)
