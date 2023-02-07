@@ -49,8 +49,9 @@ namespace Wallee.Model
         public bool? EnabledForOneClickPayment { get; set; }
 
         /// <summary>
-        /// Gets or Sets Language
+        /// The language that is linked to the object.
         /// </summary>
+        /// <value>The language that is linked to the object.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; set; }
 

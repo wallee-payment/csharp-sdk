@@ -29,16 +29,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
+        /// A unique identifier for the object.
         /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
+        /// <value>A unique identifier for the object.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The linked space id holds the ID of the space to which the entity belongs to.
+        /// The ID of the space this object belongs to.
         /// </summary>
-        /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
+        /// <value>The ID of the space this object belongs to.</value>
         [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 

@@ -37,8 +37,9 @@ namespace Wallee.Model
         [DataMember(Name="environment", EmitDefaultValue=false)]
         public ChargeAttemptEnvironment? Environment { get; private set; }
         /// <summary>
-        /// Gets or Sets State
+        /// The object&#39;s current state.
         /// </summary>
+        /// <value>The object&#39;s current state.</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
         public ChargeAttemptState? State { get; private set; }
         /// <summary>
@@ -71,9 +72,9 @@ namespace Wallee.Model
         public PaymentConnectorConfiguration ConnectorConfiguration { get; private set; }
 
         /// <summary>
-        /// The created on date indicates the date on which the entity was stored into the database.
+        /// The date and time when the object was created.
         /// </summary>
-        /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
+        /// <value>The date and time when the object was created.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
@@ -110,8 +111,9 @@ namespace Wallee.Model
         public List<Label> Labels { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Language
+        /// The language that is linked to the object.
         /// </summary>
+        /// <value>The language that is linked to the object.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
@@ -122,9 +124,9 @@ namespace Wallee.Model
         public DateTime? NextUpdateOn { get; private set; }
 
         /// <summary>
-        /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+        /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
         /// </summary>
-        /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
+        /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
@@ -185,9 +187,9 @@ namespace Wallee.Model
         public string UserFailureMessage { get; private set; }
 
         /// <summary>
-        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// The version is used for optimistic locking and incremented whenever the object is updated.
         /// </summary>
-        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 

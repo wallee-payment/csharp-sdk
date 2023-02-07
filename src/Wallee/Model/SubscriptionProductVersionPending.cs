@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class SubscriptionProductVersionPending :  IEquatable<SubscriptionProductVersionPending>
     {
         /// <summary>
-        /// Gets or Sets State
+        /// The object&#39;s current state.
         /// </summary>
+        /// <value>The object&#39;s current state.</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
         public SubscriptionProductVersionState? State { get; set; }
         /// <summary>

@@ -29,8 +29,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// The description of the object translated into different languages.
         /// </summary>
+        /// <value>The description of the object translated into different languages.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
@@ -41,9 +42,9 @@ namespace Wallee.Model
         public string GrayImagePath { get; private set; }
 
         /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
+        /// A unique identifier for the object.
         /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
+        /// <value>A unique identifier for the object.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
@@ -54,8 +55,9 @@ namespace Wallee.Model
         public string ImagePath { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The name of the object translated into different languages.
         /// </summary>
+        /// <value>The name of the object translated into different languages.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 

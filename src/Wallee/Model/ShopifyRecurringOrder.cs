@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class ShopifyRecurringOrder : TransactionAwareEntity,  IEquatable<ShopifyRecurringOrder>
     {
         /// <summary>
-        /// Gets or Sets State
+        /// The object&#39;s current state.
         /// </summary>
+        /// <value>The object&#39;s current state.</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
         public ShopifyRecurringOrderState? State { get; private set; }
         /// <summary>
@@ -79,9 +80,9 @@ namespace Wallee.Model
         public DateTime? PlannedExecutionDate { get; private set; }
 
         /// <summary>
-        /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+        /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
         /// </summary>
-        /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
+        /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 

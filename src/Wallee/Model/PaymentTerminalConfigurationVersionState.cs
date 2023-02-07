@@ -42,12 +42,6 @@ namespace Wallee.Model
         ACTIVE,
         
         /// <summary>
-        /// Enum OBSOLETE for value: OBSOLETE
-        /// </summary>
-        [EnumMember(Value = "OBSOLETE")]
-        OBSOLETE,
-        
-        /// <summary>
         /// Enum DELETING for value: DELETING
         /// </summary>
         [EnumMember(Value = "DELETING")]

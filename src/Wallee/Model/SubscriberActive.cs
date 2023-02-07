@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class SubscriberActive : SubscriberUpdate,  IEquatable<SubscriberActive>
     {
         /// <summary>
-        /// Gets or Sets State
+        /// The object&#39;s current state.
         /// </summary>
+        /// <value>The object&#39;s current state.</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; set; }
         /// <summary>

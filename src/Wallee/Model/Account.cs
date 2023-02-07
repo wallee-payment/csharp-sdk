@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class Account :  IEquatable<Account>
     {
         /// <summary>
-        /// Gets or Sets State
+        /// The object&#39;s current state.
         /// </summary>
+        /// <value>The object&#39;s current state.</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
         public AccountState? State { get; private set; }
         /// <summary>
@@ -82,15 +83,16 @@ namespace Wallee.Model
         public DateTime? DeletedOn { get; private set; }
 
         /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
+        /// A unique identifier for the object.
         /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
+        /// <value>A unique identifier for the object.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets LastModifiedDate
+        /// The date and time when the object was last modified.
         /// </summary>
+        /// <value>The date and time when the object was last modified.</value>
         [DataMember(Name="lastModifiedDate", EmitDefaultValue=false)]
         public DateTime? LastModifiedDate { get; private set; }
 
@@ -109,9 +111,9 @@ namespace Wallee.Model
         public Account ParentAccount { get; private set; }
 
         /// <summary>
-        /// The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.
+        /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
         /// </summary>
-        /// <value>The planned purge date indicates when the entity is permanently removed. When the date is null the entity is not planned to be removed.</value>
+        /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
@@ -139,9 +141,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// The version is used for optimistic locking and incremented whenever the object is updated.
         /// </summary>
-        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 

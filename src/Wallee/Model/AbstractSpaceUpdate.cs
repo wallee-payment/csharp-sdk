@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class AbstractSpaceUpdate :  IEquatable<AbstractSpaceUpdate>
     {
         /// <summary>
-        /// Gets or Sets State
+        /// The object&#39;s current state.
         /// </summary>
+        /// <value>The object&#39;s current state.</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; set; }
         /// <summary>
@@ -33,8 +34,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets LastModifiedDate
+        /// The date and time when the object was last modified.
         /// </summary>
+        /// <value>The date and time when the object was last modified.</value>
         [DataMember(Name="lastModifiedDate", EmitDefaultValue=false)]
         public DateTime? LastModifiedDate { get; set; }
 

@@ -38,8 +38,9 @@ namespace Wallee.Model
         public BankTransaction BankTransaction { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Language
+        /// The language that is linked to the object.
         /// </summary>
+        /// <value>The language that is linked to the object.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
@@ -69,9 +70,9 @@ namespace Wallee.Model
         public long? SpaceViewId { get; private set; }
 
         /// <summary>
-        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// The version is used for optimistic locking and incremented whenever the object is updated.
         /// </summary>
-        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 

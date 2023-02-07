@@ -28,8 +28,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets LastModifiedDate
+        /// The date and time when the object was last modified.
         /// </summary>
+        /// <value>The date and time when the object was last modified.</value>
         [DataMember(Name="lastModifiedDate", EmitDefaultValue=false)]
         public DateTime? LastModifiedDate { get; set; }
 

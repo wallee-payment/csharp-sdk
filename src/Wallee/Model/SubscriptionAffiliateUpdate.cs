@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class SubscriptionAffiliateUpdate :  IEquatable<SubscriptionAffiliateUpdate>
     {
         /// <summary>
-        /// Gets or Sets State
+        /// The object&#39;s current state.
         /// </summary>
+        /// <value>The object&#39;s current state.</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; set; }
         /// <summary>
@@ -66,8 +67,9 @@ namespace Wallee.Model
         public long? Version { get; set; }
 
         /// <summary>
-        /// Gets or Sets Language
+        /// The language that is linked to the object.
         /// </summary>
+        /// <value>The language that is linked to the object.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; set; }
 

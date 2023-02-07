@@ -41,9 +41,9 @@ namespace Wallee.Model
         public bool? AppliesOnSubAccount { get; private set; }
 
         /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
+        /// A unique identifier for the object.
         /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
+        /// <value>A unique identifier for the object.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
@@ -60,9 +60,9 @@ namespace Wallee.Model
         public long? User { get; private set; }
 
         /// <summary>
-        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// The version is used for optimistic locking and incremented whenever the object is updated.
         /// </summary>
-        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 

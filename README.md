@@ -31,13 +31,13 @@ Install-Package JsonSubTypes
 ## Installation
 ```
 # Package Manager
-Install-Package Wallee -Version 5.1.0
+Install-Package Wallee -Version 5.2.0
 # .NET CLI
-dotnet add package Wallee --version 5.1.0
+dotnet add package Wallee --version 5.2.0
 # Paket CLI
-paket add Wallee --version 5.1.0
+paket add Wallee --version 5.2.0
 # PackageReference
-<PackageReference Include="Wallee" Version="5.1.0" />
+<PackageReference Include="Wallee" Version="5.2.0" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
@@ -49,6 +49,19 @@ using Wallee.Model;
 
 <a name="getting-started"></a>
 ## Getting Started
+Instantiate a configuration like so:
+```csharp
+new Configuration(this.applicationUserID, this.authenticationKey)
+```
+Or if you want to customize the RestSharp client that's being used underneath (e.g set the proxy), use the overloaded constructor:
+```csharp
+new Configuration(this.applicationUserID, this.authenticationKey, new RestClientOptions()
+{
+    Proxy = new WebProxy("http://example.com")
+});
+```
+
+Timeout is customizable separately via the ```Configuration.TimeOut``` property.
 
 ```csharp
 using System;

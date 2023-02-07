@@ -54,23 +54,12 @@ namespace Wallee.Client
         {
             Configuration = config;
 
-            RestClient = new RestClient(Configuration.BasePath);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default configuration.
-        /// </summary>
-        /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath = "https://app-wallee.com:443/api")
-        {
-           if (String.IsNullOrEmpty(basePath))
+            if (String.IsNullOrEmpty(Configuration.BasePath))
                 throw new ArgumentException("basePath cannot be empty");
 
-            var options = new RestClientOptions(basePath)
-            {
-                MaxTimeout = 600000
-            };
+            var options = Configuration.RestClientOptions;
+            options.BaseUrl = new Uri(Configuration.BasePath);
+            options.MaxTimeout = 600000;
             RestClient = new RestClient(options);
         }
 
@@ -159,7 +148,7 @@ namespace Wallee.Client
         {
 
             Dictionary<String, String> defaultHeaderParams = new Dictionary<String, String>() {
-                {"x-meta-sdk-version", "5.1.0"},
+                {"x-meta-sdk-version", "5.2.0"},
                 {"x-meta-sdk-language", "csharp"},
                 {"x-meta-sdk-provider", "wallee"},
                 {"x-meta-sdk-language-version", Environment.Version.ToString()}
@@ -564,7 +553,7 @@ namespace Wallee.Client
 		/// https://docs.microsoft.com/en-us/dotnet/api/system.net.httpwebrequest.timeout?view=netcore-3.1
 		/// </summary>
 		public void ResetTimeout(){
-			RestClient.Options.MaxTimeout = 100 * 1000;
+			Configuration.Timeout = 25;
 		}
 
     }

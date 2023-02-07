@@ -35,16 +35,16 @@ namespace Wallee.Model
         public decimal? Amount { get; private set; }
 
         /// <summary>
-        /// The created on date indicates the date on which the entity was stored into the database.
+        /// The date and time when the object was created.
         /// </summary>
-        /// <value>The created on date indicates the date on which the entity was stored into the database.</value>
+        /// <value>The date and time when the object was created.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
+        /// A unique identifier for the object.
         /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
+        /// <value>A unique identifier for the object.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
@@ -55,9 +55,9 @@ namespace Wallee.Model
         public TransactionInvoice Invoice { get; private set; }
 
         /// <summary>
-        /// The linked space id holds the ID of the space to which the entity belongs to.
+        /// The ID of the space this object belongs to.
         /// </summary>
-        /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
+        /// <value>The ID of the space this object belongs to.</value>
         [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 

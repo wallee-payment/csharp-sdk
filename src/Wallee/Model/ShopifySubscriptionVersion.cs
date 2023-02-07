@@ -31,8 +31,9 @@ namespace Wallee.Model
         [DataMember(Name="billingWeekday", EmitDefaultValue=false)]
         public ShopifySubscriptionWeekday? BillingWeekday { get; private set; }
         /// <summary>
-        /// Gets or Sets State
+        /// The object&#39;s current state.
         /// </summary>
+        /// <value>The object&#39;s current state.</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
         public ShopifySubscriptionVersionState? State { get; private set; }
         /// <summary>
@@ -100,9 +101,9 @@ namespace Wallee.Model
         public DateTime? DischargedOn { get; private set; }
 
         /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
+        /// A unique identifier for the object.
         /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
+        /// <value>A unique identifier for the object.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public long? Id { get; private set; }
 
@@ -113,9 +114,9 @@ namespace Wallee.Model
         public List<ShopifySubscriptionVersionItem> Items { get; private set; }
 
         /// <summary>
-        /// The linked space id holds the ID of the space to which the entity belongs to.
+        /// The ID of the space this object belongs to.
         /// </summary>
-        /// <value>The linked space id holds the ID of the space to which the entity belongs to.</value>
+        /// <value>The ID of the space this object belongs to.</value>
         [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
         public long? LinkedSpaceId { get; private set; }
 
@@ -193,9 +194,9 @@ namespace Wallee.Model
         public long? Token { get; private set; }
 
         /// <summary>
-        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// The version is used for optimistic locking and incremented whenever the object is updated.
         /// </summary>
-        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
         [DataMember(Name="version", EmitDefaultValue=false)]
         public int? Version { get; private set; }
 
