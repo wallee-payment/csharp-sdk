@@ -34,23 +34,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The target state identifies the state into which entities need to move into to trigger the webhook listener.
+        /// The entity&#39;s target states that are to be monitored.
         /// </summary>
-        /// <value>The target state identifies the state into which entities need to move into to trigger the webhook listener.</value>
+        /// <value>The entity&#39;s target states that are to be monitored.</value>
         [DataMember(Name="entityStates", EmitDefaultValue=false)]
         public List<string> EntityStates { get; set; }
 
         /// <summary>
-        /// The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the webhook listener.
         /// </summary>
-        /// <value>The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the webhook listener.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.
+        /// Whether every update of the entity or only state changes are to be monitored.
         /// </summary>
-        /// <value>Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.</value>
+        /// <value>Whether every update of the entity or only state changes are to be monitored.</value>
         [DataMember(Name="notifyEveryChange", EmitDefaultValue=false)]
         public bool? NotifyEveryChange { get; set; }
 

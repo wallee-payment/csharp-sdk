@@ -38,7 +38,7 @@ namespace Wallee.Model
         /// Gets or Sets Description
         /// </summary>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public DatabaseTranslatedString Description { get; private set; }
+        public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// A unique identifier for the object.
@@ -58,7 +58,7 @@ namespace Wallee.Model
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public DatabaseTranslatedString Name { get; private set; }
+        public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
@@ -133,8 +133,9 @@ namespace Wallee.Model
             return 
                 (
                     this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.Description != null &&
+                    input.Description != null &&
+                    this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
                     this.Id == input.Id ||
@@ -148,8 +149,9 @@ namespace Wallee.Model
                 ) && 
                 (
                     this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.Name != null &&
+                    input.Name != null &&
+                    this.Name.SequenceEqual(input.Name)
                 ) && 
                 (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||

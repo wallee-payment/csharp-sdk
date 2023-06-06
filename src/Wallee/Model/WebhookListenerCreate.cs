@@ -28,22 +28,22 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="WebhookListenerCreate" /> class.
         /// </summary>
-        /// <param name="entity">The listener listens on state changes of the entity linked with the listener. (required).</param>
-        /// <param name="url">The URL which is invoked by the listener to notify the application about the event. (required).</param>
-        public WebhookListenerCreate(long? entity, long? url)
+        /// <param name="url">The URL where notifications about entity changes are sent to. (required).</param>
+        /// <param name="entity">The entity that is to be monitored. (required).</param>
+        public WebhookListenerCreate(long? url, long? entity)
         {
-            // to ensure "entity" is required (not null)
-            if (entity == null)
-            {
-                throw new InvalidDataException("entity is a required property for WebhookListenerCreate and cannot be null");
-            }
-            this.Entity = entity;
             // to ensure "url" is required (not null)
             if (url == null)
             {
                 throw new InvalidDataException("url is a required property for WebhookListenerCreate and cannot be null");
             }
             this.Url = url;
+            // to ensure "entity" is required (not null)
+            if (entity == null)
+            {
+                throw new InvalidDataException("entity is a required property for WebhookListenerCreate and cannot be null");
+            }
+            this.Entity = entity;
         }
 
 
@@ -51,23 +51,23 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The listener listens on state changes of the entity linked with the listener.
+        /// The entity that is to be monitored.
         /// </summary>
-        /// <value>The listener listens on state changes of the entity linked with the listener.</value>
+        /// <value>The entity that is to be monitored.</value>
         [DataMember(Name="entity", EmitDefaultValue=false)]
         public long? Entity { get; set; }
 
         /// <summary>
-        /// The identity which will be used to sign messages sent by this listener.
+        /// The identity used to sign messages.
         /// </summary>
-        /// <value>The identity which will be used to sign messages sent by this listener.</value>
+        /// <value>The identity used to sign messages.</value>
         [DataMember(Name="identity", EmitDefaultValue=false)]
         public long? Identity { get; set; }
 
         /// <summary>
-        /// The URL which is invoked by the listener to notify the application about the event.
+        /// The URL where notifications about entity changes are sent to.
         /// </summary>
-        /// <value>The URL which is invoked by the listener to notify the application about the event.</value>
+        /// <value>The URL where notifications about entity changes are sent to.</value>
         [DataMember(Name="url", EmitDefaultValue=false)]
         public long? Url { get; set; }
 

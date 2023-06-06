@@ -36,9 +36,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The primary account links the user to a specific account.
+        /// The primary account that the user belongs to.
         /// </summary>
-        /// <value>The primary account links the user to a specific account.</value>
+        /// <value>The primary account that the user belongs to.</value>
         [DataMember(Name="primaryAccount", EmitDefaultValue=false)]
         public long? PrimaryAccount { get; set; }
 

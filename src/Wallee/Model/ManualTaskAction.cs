@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class ManualTaskAction :  IEquatable<ManualTaskAction>
     {
         /// <summary>
-        /// Gets or Sets Style
+        /// The action&#39;s style.
         /// </summary>
+        /// <value>The action&#39;s style.</value>
         [DataMember(Name="style", EmitDefaultValue=false)]
         public ManualTaskActionStyle? Style { get; private set; }
         /// <summary>
@@ -41,15 +42,17 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Label
+        /// The action&#39;s label.
         /// </summary>
+        /// <value>The action&#39;s label.</value>
         [DataMember(Name="label", EmitDefaultValue=false)]
         public Dictionary<string, string> Label { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets TaskType
+        /// The type of manual tasks this action belongs to.
         /// </summary>
+        /// <value>The type of manual tasks this action belongs to.</value>
         [DataMember(Name="taskType", EmitDefaultValue=false)]
         public long? TaskType { get; private set; }
 

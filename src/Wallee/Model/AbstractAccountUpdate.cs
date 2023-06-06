@@ -35,16 +35,16 @@ namespace Wallee.Model
         public DateTime? LastModifiedDate { get; set; }
 
         /// <summary>
-        /// The name of the account identifies the account within the administrative interface.
+        /// The name used to identify the account.
         /// </summary>
-        /// <value>The name of the account identifies the account within the administrative interface.</value>
+        /// <value>The name used to identify the account.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// This property restricts the number of subaccounts which can be created within this account.
+        /// The number of sub-accounts that can be created within this account.
         /// </summary>
-        /// <value>This property restricts the number of subaccounts which can be created within this account.</value>
+        /// <value>The number of sub-accounts that can be created within this account.</value>
         [DataMember(Name="subaccountLimit", EmitDefaultValue=false)]
         public long? SubaccountLimit { get; set; }
 

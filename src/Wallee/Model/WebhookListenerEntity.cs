@@ -36,14 +36,16 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The name used to identify the webhook listener entity.
         /// </summary>
+        /// <value>The name used to identify the webhook listener entity.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TechnicalName
+        /// The name used to programmatically identify the webhook listener entity.
         /// </summary>
+        /// <value>The name used to programmatically identify the webhook listener entity.</value>
         [DataMember(Name="technicalName", EmitDefaultValue=false)]
         public string TechnicalName { get; private set; }
 

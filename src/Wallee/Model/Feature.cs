@@ -29,21 +29,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Beta
+        /// Whether the feature is in beta stage and there may still be some issues.
         /// </summary>
+        /// <value>Whether the feature is in beta stage and there may still be some issues.</value>
         [DataMember(Name="beta", EmitDefaultValue=false)]
         public bool? Beta { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Category
+        /// The category that the feature belongs to.
         /// </summary>
+        /// <value>The category that the feature belongs to.</value>
         [DataMember(Name="category", EmitDefaultValue=false)]
         public FeatureCategory Category { get; private set; }
 
         /// <summary>
-        /// The description of the object translated into different languages.
+        /// The localized description of the object.
         /// </summary>
-        /// <value>The description of the object translated into different languages.</value>
+        /// <value>The localized description of the object.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
@@ -55,27 +57,30 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets LogoPath
+        /// The path to the feature&#39;s logo image.
         /// </summary>
+        /// <value>The path to the feature&#39;s logo image.</value>
         [DataMember(Name="logoPath", EmitDefaultValue=false)]
         public string LogoPath { get; private set; }
 
         /// <summary>
-        /// The name of the object translated into different languages.
+        /// The localized name of the object.
         /// </summary>
-        /// <value>The name of the object translated into different languages.</value>
+        /// <value>The localized name of the object.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets RequiredFeatures
+        /// The features that must be enabled for this feature to work properly.
         /// </summary>
+        /// <value>The features that must be enabled for this feature to work properly.</value>
         [DataMember(Name="requiredFeatures", EmitDefaultValue=false)]
         public List<long?> RequiredFeatures { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SortOrder
+        /// When listing features, they can be sorted by this number.
         /// </summary>
+        /// <value>When listing features, they can be sorted by this number.</value>
         [DataMember(Name="sortOrder", EmitDefaultValue=false)]
         public int? SortOrder { get; private set; }
 

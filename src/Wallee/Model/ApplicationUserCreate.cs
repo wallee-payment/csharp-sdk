@@ -28,7 +28,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ApplicationUserCreate" /> class.
         /// </summary>
-        /// <param name="primaryAccount">The account that this user is associated with. The account owner will be able to manage this user. (required).</param>
+        /// <param name="primaryAccount">The primary account that the user belongs to. (required).</param>
         public ApplicationUserCreate(long? primaryAccount)
         {
             // to ensure "primaryAccount" is required (not null)
@@ -43,9 +43,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The account that this user is associated with. The account owner will be able to manage this user.
+        /// The primary account that the user belongs to.
         /// </summary>
-        /// <value>The account that this user is associated with. The account owner will be able to manage this user.</value>
+        /// <value>The primary account that the user belongs to.</value>
         [DataMember(Name="primaryAccount", EmitDefaultValue=false)]
         public long? PrimaryAccount { get; set; }
 

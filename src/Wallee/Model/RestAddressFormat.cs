@@ -29,30 +29,30 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The example post codes allow the user to understand what we expect here.
+        /// A list of sample post codes.
         /// </summary>
-        /// <value>The example post codes allow the user to understand what we expect here.</value>
+        /// <value>A list of sample post codes.</value>
         [DataMember(Name="postCodeExamples", EmitDefaultValue=false)]
         public List<string> PostCodeExamples { get; private set; }
 
         /// <summary>
-        /// The post code regex is a regular expression which can validates the input of the post code.
+        /// The regular expression to validate post codes.
         /// </summary>
-        /// <value>The post code regex is a regular expression which can validates the input of the post code.</value>
+        /// <value>The regular expression to validate post codes.</value>
         [DataMember(Name="postCodeRegex", EmitDefaultValue=false)]
         public string PostCodeRegex { get; private set; }
 
         /// <summary>
-        /// The required fields indicate what fields are required within an address to comply with the address format.
+        /// The fields that are required in the address format.
         /// </summary>
-        /// <value>The required fields indicate what fields are required within an address to comply with the address format.</value>
+        /// <value>The fields that are required in the address format.</value>
         [DataMember(Name="requiredFields", EmitDefaultValue=false)]
         public List<RestAddressFormatField> RequiredFields { get; private set; }
 
         /// <summary>
-        /// The used fields indicate what fields are used within this address format.
+        /// The fields that are used in the address format.
         /// </summary>
-        /// <value>The used fields indicate what fields are used within this address format.</value>
+        /// <value>The fields that are used in the address format.</value>
         [DataMember(Name="usedFields", EmitDefaultValue=false)]
         public List<RestAddressFormatField> UsedFields { get; private set; }
 

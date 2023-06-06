@@ -29,84 +29,86 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The email address of the user.
+        /// The user&#39;s email address.
         /// </summary>
-        /// <value>The email address of the user.</value>
+        /// <value>The user&#39;s email address.</value>
         [DataMember(Name="emailAddress", EmitDefaultValue=false)]
         public string EmailAddress { get; private set; }
 
         /// <summary>
-        /// Defines whether a user is verified or not.
+        /// Whether the user&#39;s email address has been verified.
         /// </summary>
-        /// <value>Defines whether a user is verified or not.</value>
+        /// <value>Whether the user&#39;s email address has been verified.</value>
         [DataMember(Name="emailAddressVerified", EmitDefaultValue=false)]
         public bool? EmailAddressVerified { get; private set; }
 
         /// <summary>
-        /// The first name of the user.
+        /// The user&#39;s first name.
         /// </summary>
-        /// <value>The first name of the user.</value>
+        /// <value>The user&#39;s first name.</value>
         [DataMember(Name="firstname", EmitDefaultValue=false)]
         public string Firstname { get; private set; }
 
         /// <summary>
-        /// The preferred language of the user.
+        /// The user&#39;s preferred language.
         /// </summary>
-        /// <value>The preferred language of the user.</value>
+        /// <value>The user&#39;s preferred language.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
-        /// The last name of the user.
+        /// The user&#39;s last name.
         /// </summary>
-        /// <value>The last name of the user.</value>
+        /// <value>The user&#39;s last name.</value>
         [DataMember(Name="lastname", EmitDefaultValue=false)]
         public string Lastname { get; private set; }
 
         /// <summary>
-        /// Gets or Sets MobilePhoneNumber
+        /// The user&#39;s mobile phone number.
         /// </summary>
+        /// <value>The user&#39;s mobile phone number.</value>
         [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=false)]
         public string MobilePhoneNumber { get; private set; }
 
         /// <summary>
-        /// Defines whether a users mobile phone number is verified or not.
+        /// Whether the user&#39;s mobile phone number has been verified.
         /// </summary>
-        /// <value>Defines whether a users mobile phone number is verified or not.</value>
+        /// <value>Whether the user&#39;s mobile phone number has been verified.</value>
         [DataMember(Name="mobilePhoneVerified", EmitDefaultValue=false)]
         public bool? MobilePhoneVerified { get; private set; }
 
         /// <summary>
-        /// The primary account links the user to a specific account.
+        /// The primary account that the user belongs to.
         /// </summary>
-        /// <value>The primary account links the user to a specific account.</value>
+        /// <value>The primary account that the user belongs to.</value>
         [DataMember(Name="primaryAccount", EmitDefaultValue=false)]
-        public Account PrimaryAccount { get; private set; }
+        public long? PrimaryAccount { get; private set; }
 
         /// <summary>
-        /// The scope to which the user belongs to.
+        /// The scope that the user belongs to.
         /// </summary>
-        /// <value>The scope to which the user belongs to.</value>
+        /// <value>The scope that the user belongs to.</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
-        public Scope Scope { get; private set; }
+        public long? Scope { get; private set; }
 
         /// <summary>
-        /// The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.
+        /// The user&#39;s time zone. If none is specified, the one provided by the browser will be used.
         /// </summary>
-        /// <value>The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.</value>
+        /// <value>The user&#39;s time zone. If none is specified, the one provided by the browser will be used.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; private set; }
 
         /// <summary>
-        /// Defines whether two-factor authentication is enabled for this user.
+        /// Whether two-factor authentication is enabled for this user.
         /// </summary>
-        /// <value>Defines whether two-factor authentication is enabled for this user.</value>
+        /// <value>Whether two-factor authentication is enabled for this user.</value>
         [DataMember(Name="twoFactorEnabled", EmitDefaultValue=false)]
         public bool? TwoFactorEnabled { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TwoFactorType
+        /// The type of two-factor authentication that is enabled for the user.
         /// </summary>
+        /// <value>The type of two-factor authentication that is enabled for the user.</value>
         [DataMember(Name="twoFactorType", EmitDefaultValue=false)]
         public TwoFactorAuthenticationType TwoFactorType { get; private set; }
 

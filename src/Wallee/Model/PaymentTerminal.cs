@@ -47,6 +47,12 @@ namespace Wallee.Model
         public string DefaultCurrency { get; private set; }
 
         /// <summary>
+        /// Gets or Sets DeviceSerialNumber
+        /// </summary>
+        [DataMember(Name="deviceSerialNumber", EmitDefaultValue=false)]
+        public string DeviceSerialNumber { get; private set; }
+
+        /// <summary>
         /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
         /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
@@ -118,6 +124,7 @@ namespace Wallee.Model
             sb.Append("class PaymentTerminal {\n");
             sb.Append("  ConfigurationVersion: ").Append(ConfigurationVersion).Append("\n");
             sb.Append("  DefaultCurrency: ").Append(DefaultCurrency).Append("\n");
+            sb.Append("  DeviceSerialNumber: ").Append(DeviceSerialNumber).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Identifier: ").Append(Identifier).Append("\n");
@@ -171,6 +178,11 @@ namespace Wallee.Model
                     this.DefaultCurrency == input.DefaultCurrency ||
                     (this.DefaultCurrency != null &&
                     this.DefaultCurrency.Equals(input.DefaultCurrency))
+                ) && 
+                (
+                    this.DeviceSerialNumber == input.DeviceSerialNumber ||
+                    (this.DeviceSerialNumber != null &&
+                    this.DeviceSerialNumber.Equals(input.DeviceSerialNumber))
                 ) && 
                 (
                     this.ExternalId == input.ExternalId ||
@@ -237,6 +249,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ConfigurationVersion.GetHashCode();
                 if (this.DefaultCurrency != null)
                     hashCode = hashCode * 59 + this.DefaultCurrency.GetHashCode();
+                if (this.DeviceSerialNumber != null)
+                    hashCode = hashCode * 59 + this.DeviceSerialNumber.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.Id != null)

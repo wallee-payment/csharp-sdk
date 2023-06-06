@@ -50,7 +50,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public DatabaseTranslatedString Description { get; private set; }
+        public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// A unique identifier for the object.
@@ -77,7 +77,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The name of the fee should describe for the subscriber in few words for what the fee is for.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public DatabaseTranslatedString Name { get; private set; }
+        public Dictionary<string, string> Name { get; private set; }
 
 
 
@@ -146,8 +146,9 @@ namespace Wallee.Model
                 ) && 
                 (
                     this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.Description != null &&
+                    input.Description != null &&
+                    this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
                     this.Id == input.Id ||
@@ -166,8 +167,9 @@ namespace Wallee.Model
                 ) && 
                 (
                     this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.Name != null &&
+                    input.Name != null &&
+                    this.Name.SequenceEqual(input.Name)
                 ) && 
                 (
                     this.TierPricing == input.TierPricing ||

@@ -28,7 +28,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomerAddressCreate" /> class.
         /// </summary>
-        /// <param name="customer">customer (required).</param>
+        /// <param name="customer">The customer that the object belongs to. (required).</param>
         public CustomerAddressCreate(long? customer)
         {
             // to ensure "customer" is required (not null)
@@ -42,8 +42,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets Customer
+        /// The customer that the object belongs to.
         /// </summary>
+        /// <value>The customer that the object belongs to.</value>
         [DataMember(Name="customer", EmitDefaultValue=false)]
         public long? Customer { get; set; }
 

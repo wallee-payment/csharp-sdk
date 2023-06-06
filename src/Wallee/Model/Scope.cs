@@ -35,15 +35,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The domain name to which this scope is mapped to.
+        /// The domain name that belongs to the scope.
         /// </summary>
-        /// <value>The domain name to which this scope is mapped to.</value>
+        /// <value>The domain name that belongs to the scope.</value>
         [DataMember(Name="domainName", EmitDefaultValue=false)]
         public string DomainName { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Features
+        /// The list of features that are active in the scope.
         /// </summary>
+        /// <value>The list of features that are active in the scope.</value>
         [DataMember(Name="features", EmitDefaultValue=false)]
         public List<Feature> Features { get; private set; }
 
@@ -55,15 +56,16 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets MachineName
+        /// The name identifying the scope in e.g. URLs.
         /// </summary>
+        /// <value>The name identifying the scope in e.g. URLs.</value>
         [DataMember(Name="machineName", EmitDefaultValue=false)]
         public string MachineName { get; private set; }
 
         /// <summary>
-        /// The name of the scope is shown to the user where the user should select a scope.
+        /// The name used to identify the scope.
         /// </summary>
-        /// <value>The name of the scope is shown to the user where the user should select a scope.</value>
+        /// <value>The name used to identify the scope.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -75,30 +77,31 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// The port number to which this scope is mapped to.
+        /// The port where the scope can be accessed.
         /// </summary>
-        /// <value>The port number to which this scope is mapped to.</value>
+        /// <value>The port where the scope can be accessed.</value>
         [DataMember(Name="port", EmitDefaultValue=false)]
         public int? Port { get; private set; }
 
         /// <summary>
-        /// Define whether the scope supports SSL.
+        /// Whether the scope supports SSL.
         /// </summary>
-        /// <value>Define whether the scope supports SSL.</value>
+        /// <value>Whether the scope supports SSL.</value>
         [DataMember(Name="sslActive", EmitDefaultValue=false)]
         public bool? SslActive { get; private set; }
 
 
         /// <summary>
-        /// The themes determines how the application layout, look and feel is. By providing multiple themes you can fallback to other themes.
+        /// The themes that determine the look and feel of the scope&#39;s user interface. A fall-through strategy is applied when building the actual theme.
         /// </summary>
-        /// <value>The themes determines how the application layout, look and feel is. By providing multiple themes you can fallback to other themes.</value>
+        /// <value>The themes that determine the look and feel of the scope&#39;s user interface. A fall-through strategy is applied when building the actual theme.</value>
         [DataMember(Name="themes", EmitDefaultValue=false)]
         public List<string> Themes { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Url
+        /// The URL where the scope can be accessed.
         /// </summary>
+        /// <value>The URL where the scope can be accessed.</value>
         [DataMember(Name="url", EmitDefaultValue=false)]
         public string Url { get; private set; }
 

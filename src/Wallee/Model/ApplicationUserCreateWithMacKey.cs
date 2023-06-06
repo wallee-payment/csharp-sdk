@@ -38,8 +38,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets MacKey
+        /// The user&#39;s authentication key securing requests. Only displayed a single time after the user has been created.
         /// </summary>
+        /// <value>The user&#39;s authentication key securing requests. Only displayed a single time after the user has been created.</value>
         [DataMember(Name="macKey", EmitDefaultValue=false)]
         public string MacKey { get; private set; }
 

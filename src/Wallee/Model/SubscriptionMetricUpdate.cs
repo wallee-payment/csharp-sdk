@@ -64,13 +64,13 @@ namespace Wallee.Model
         /// Gets or Sets Description
         /// </summary>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public DatabaseTranslatedStringCreate Description { get; set; }
+        public Dictionary<string, string> Description { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
         /// </summary>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public DatabaseTranslatedStringCreate Name { get; set; }
+        public Dictionary<string, string> Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -130,13 +130,15 @@ namespace Wallee.Model
                 ) && 
                 (
                     this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.Description != null &&
+                    input.Description != null &&
+                    this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
                     this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.Name != null &&
+                    input.Name != null &&
+                    this.Name.SequenceEqual(input.Name)
                 );
         }
 

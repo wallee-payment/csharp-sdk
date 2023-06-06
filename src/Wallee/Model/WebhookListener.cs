@@ -35,16 +35,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The listener listens on state changes of the entity linked with the listener.
+        /// The entity that is to be monitored.
         /// </summary>
-        /// <value>The listener listens on state changes of the entity linked with the listener.</value>
+        /// <value>The entity that is to be monitored.</value>
         [DataMember(Name="entity", EmitDefaultValue=false)]
         public long? Entity { get; private set; }
 
         /// <summary>
-        /// The target state identifies the state into which entities need to move into to trigger the webhook listener.
+        /// The entity&#39;s target states that are to be monitored.
         /// </summary>
-        /// <value>The target state identifies the state into which entities need to move into to trigger the webhook listener.</value>
+        /// <value>The entity&#39;s target states that are to be monitored.</value>
         [DataMember(Name="entityStates", EmitDefaultValue=false)]
         public List<string> EntityStates { get; private set; }
 
@@ -56,9 +56,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The identity which will be used to sign messages sent by this listener.
+        /// The identity used to sign messages.
         /// </summary>
-        /// <value>The identity which will be used to sign messages sent by this listener.</value>
+        /// <value>The identity used to sign messages.</value>
         [DataMember(Name="identity", EmitDefaultValue=false)]
         public WebhookIdentity Identity { get; private set; }
 
@@ -70,16 +70,16 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the webhook listener.
         /// </summary>
-        /// <value>The webhook listener name is used internally to identify the webhook listener in administrative interfaces.For example it is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the webhook listener.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.
+        /// Whether every update of the entity or only state changes are to be monitored.
         /// </summary>
-        /// <value>Defines whether the webhook listener is to be informed about every change made to the entity in contrast to state transitions only.</value>
+        /// <value>Whether every update of the entity or only state changes are to be monitored.</value>
         [DataMember(Name="notifyEveryChange", EmitDefaultValue=false)]
         public bool? NotifyEveryChange { get; private set; }
 
@@ -92,9 +92,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The URL which is invoked by the listener to notify the application about the event.
+        /// The URL where notifications about entity changes are sent to.
         /// </summary>
-        /// <value>The URL which is invoked by the listener to notify the application about the event.</value>
+        /// <value>The URL where notifications about entity changes are sent to.</value>
         [DataMember(Name="url", EmitDefaultValue=false)]
         public WebhookUrl Url { get; private set; }
 

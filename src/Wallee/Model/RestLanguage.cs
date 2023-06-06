@@ -29,44 +29,51 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The country code represents the region of the language as a 2 letter ISO code.
+        /// The two-letter code of the language&#39;s region (ISO 3166-1 alpha-2 format).
         /// </summary>
-        /// <value>The country code represents the region of the language as a 2 letter ISO code.</value>
+        /// <value>The two-letter code of the language&#39;s region (ISO 3166-1 alpha-2 format).</value>
         [DataMember(Name="countryCode", EmitDefaultValue=false)]
         public string CountryCode { get; private set; }
 
         /// <summary>
-        /// The IETF code represents the language as the two letter ISO code including the region (e.g. en-US).
+        /// The language&#39;s IETF tag consisting of the two-letter ISO code and region e.g. en-US, de-CH.
         /// </summary>
-        /// <value>The IETF code represents the language as the two letter ISO code including the region (e.g. en-US).</value>
+        /// <value>The language&#39;s IETF tag consisting of the two-letter ISO code and region e.g. en-US, de-CH.</value>
         [DataMember(Name="ietfCode", EmitDefaultValue=false)]
         public string IetfCode { get; private set; }
 
         /// <summary>
-        /// The ISO 2 letter code represents the language with two letters.
+        /// The language&#39;s two-letter code (ISO 639-1 format).
         /// </summary>
-        /// <value>The ISO 2 letter code represents the language with two letters.</value>
+        /// <value>The language&#39;s two-letter code (ISO 639-1 format).</value>
         [DataMember(Name="iso2Code", EmitDefaultValue=false)]
         public string Iso2Code { get; private set; }
 
         /// <summary>
-        /// The ISO 3 letter code represents the language with three letters.
+        /// The language&#39;s three-letter code (ISO 639-2/T format).
         /// </summary>
-        /// <value>The ISO 3 letter code represents the language with three letters.</value>
+        /// <value>The language&#39;s three-letter code (ISO 639-2/T format).</value>
         [DataMember(Name="iso3Code", EmitDefaultValue=false)]
         public string Iso3Code { get; private set; }
 
         /// <summary>
-        /// The plural expression defines how to map a plural into the language index. This expression is used to determine the plural form for the translations.
+        /// The name of the language.
         /// </summary>
-        /// <value>The plural expression defines how to map a plural into the language index. This expression is used to determine the plural form for the translations.</value>
+        /// <value>The name of the language.</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// The expression to determine the plural index for a given number of items used to find the proper plural form for translations.
+        /// </summary>
+        /// <value>The expression to determine the plural index for a given number of items used to find the proper plural form for translations.</value>
         [DataMember(Name="pluralExpression", EmitDefaultValue=false)]
         public string PluralExpression { get; private set; }
 
         /// <summary>
-        /// The primary language of a group indicates whether a language is the primary language of a group of languages. The group is determine by the ISO 2 letter code.
+        /// Whether this is the primary language in a group of languages.
         /// </summary>
-        /// <value>The primary language of a group indicates whether a language is the primary language of a group of languages. The group is determine by the ISO 2 letter code.</value>
+        /// <value>Whether this is the primary language in a group of languages.</value>
         [DataMember(Name="primaryOfGroup", EmitDefaultValue=false)]
         public bool? PrimaryOfGroup { get; private set; }
 
@@ -82,6 +89,7 @@ namespace Wallee.Model
             sb.Append("  IetfCode: ").Append(IetfCode).Append("\n");
             sb.Append("  Iso2Code: ").Append(Iso2Code).Append("\n");
             sb.Append("  Iso3Code: ").Append(Iso3Code).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PluralExpression: ").Append(PluralExpression).Append("\n");
             sb.Append("  PrimaryOfGroup: ").Append(PrimaryOfGroup).Append("\n");
             sb.Append("}\n");
@@ -139,6 +147,11 @@ namespace Wallee.Model
                     this.Iso3Code.Equals(input.Iso3Code))
                 ) && 
                 (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
                     this.PluralExpression == input.PluralExpression ||
                     (this.PluralExpression != null &&
                     this.PluralExpression.Equals(input.PluralExpression))
@@ -167,6 +180,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Iso2Code.GetHashCode();
                 if (this.Iso3Code != null)
                     hashCode = hashCode * 59 + this.Iso3Code.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.PluralExpression != null)
                     hashCode = hashCode * 59 + this.PluralExpression.GetHashCode();
                 if (this.PrimaryOfGroup != null)

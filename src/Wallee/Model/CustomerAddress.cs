@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class CustomerAddress :  IEquatable<CustomerAddress>
     {
         /// <summary>
-        /// Gets or Sets AddressType
+        /// Whether the address is for billing or shipping or both.
         /// </summary>
+        /// <value>Whether the address is for billing or shipping or both.</value>
         [DataMember(Name="addressType", EmitDefaultValue=false)]
         public CustomerAddressType? AddressType { get; private set; }
         /// <summary>
@@ -34,8 +35,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Address
+        /// The actual postal address.
         /// </summary>
+        /// <value>The actual postal address.</value>
         [DataMember(Name="address", EmitDefaultValue=false)]
         public CustomerPostalAddress Address { get; private set; }
 
@@ -48,14 +50,16 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Customer
+        /// The customer that the object belongs to.
         /// </summary>
+        /// <value>The customer that the object belongs to.</value>
         [DataMember(Name="customer", EmitDefaultValue=false)]
         public Customer Customer { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DefaultAddress
+        /// Whether this is the customer&#39;s default address.
         /// </summary>
+        /// <value>Whether this is the customer&#39;s default address.</value>
         [DataMember(Name="defaultAddress", EmitDefaultValue=false)]
         public bool? DefaultAddress { get; private set; }
 

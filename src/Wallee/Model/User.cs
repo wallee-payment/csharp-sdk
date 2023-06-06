@@ -27,8 +27,9 @@ namespace Wallee.Model
         [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; private set; }
         /// <summary>
-        /// Gets or Sets UserType
+        /// The user&#39;s type which defines its role and capabilities.
         /// </summary>
+        /// <value>The user&#39;s type which defines its role and capabilities.</value>
         [DataMember(Name="userType", EmitDefaultValue=false)]
         public UserType? UserType { get; private set; }
         /// <summary>
@@ -54,10 +55,11 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Scope
+        /// The scope that the user belongs to.
         /// </summary>
+        /// <value>The scope that the user belongs to.</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
-        public Scope Scope { get; private set; }
+        public long? Scope { get; private set; }
 
 
 

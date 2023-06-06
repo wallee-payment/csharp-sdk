@@ -29,20 +29,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets DisplayName
+        /// The term&#39;s language.
         /// </summary>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
-        public string DisplayName { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Language
-        /// </summary>
+        /// <value>The term&#39;s language.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
-        /// Gets or Sets String
+        /// The localized term.
         /// </summary>
+        /// <value>The localized term.</value>
         [DataMember(Name="string", EmitDefaultValue=false)]
         public string String { get; private set; }
 
@@ -54,7 +50,6 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class LocalizedString {\n");
-            sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  String: ").Append(String).Append("\n");
             sb.Append("}\n");
@@ -92,11 +87,6 @@ namespace Wallee.Model
 
             return 
                 (
-                    this.DisplayName == input.DisplayName ||
-                    (this.DisplayName != null &&
-                    this.DisplayName.Equals(input.DisplayName))
-                ) && 
-                (
                     this.Language == input.Language ||
                     (this.Language != null &&
                     this.Language.Equals(input.Language))
@@ -117,8 +107,6 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.DisplayName != null)
-                    hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
                 if (this.Language != null)
                     hashCode = hashCode * 59 + this.Language.GetHashCode();
                 if (this.String != null)

@@ -65,7 +65,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The component group name will be shown when the components are selected. This can be visible to the subscriber.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public DatabaseTranslatedStringCreate Name { get; set; }
+        public Dictionary<string, string> Name { get; set; }
 
         /// <summary>
         /// The component group can be optional. This means no component has to be selected by the subscriber.
@@ -147,8 +147,9 @@ namespace Wallee.Model
                 ) && 
                 (
                     this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.Name != null &&
+                    input.Name != null &&
+                    this.Name.SequenceEqual(input.Name)
                 ) && 
                 (
                     this.Optional == input.Optional ||

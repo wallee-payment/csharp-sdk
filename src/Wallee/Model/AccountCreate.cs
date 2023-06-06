@@ -28,7 +28,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountCreate" /> class.
         /// </summary>
-        /// <param name="scope">This is the scope to which the account belongs to. (required).</param>
+        /// <param name="scope">The scope that the account belongs to. (required).</param>
         public AccountCreate(long? scope)
         {
             // to ensure "scope" is required (not null)
@@ -43,16 +43,16 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The account which is responsible for administering the account.
+        /// The parent account responsible for administering this account.
         /// </summary>
-        /// <value>The account which is responsible for administering the account.</value>
+        /// <value>The parent account responsible for administering this account.</value>
         [DataMember(Name="parentAccount", EmitDefaultValue=false)]
         public long? ParentAccount { get; set; }
 
         /// <summary>
-        /// This is the scope to which the account belongs to.
+        /// The scope that the account belongs to.
         /// </summary>
-        /// <value>This is the scope to which the account belongs to.</value>
+        /// <value>The scope that the account belongs to.</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
         public long? Scope { get; set; }
 

@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class LabelDescriptor :  IEquatable<LabelDescriptor>
     {
         /// <summary>
-        /// Gets or Sets Category
+        /// The label&#39;s category.
         /// </summary>
+        /// <value>The label&#39;s category.</value>
         [DataMember(Name="category", EmitDefaultValue=false)]
         public LabelDescriptorCategory? Category { get; private set; }
         /// <summary>
@@ -35,21 +36,23 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The description of the object translated into different languages.
+        /// The localized description of the object.
         /// </summary>
-        /// <value>The description of the object translated into different languages.</value>
+        /// <value>The localized description of the object.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Features
+        /// The features that this label belongs to.
         /// </summary>
+        /// <value>The features that this label belongs to.</value>
         [DataMember(Name="features", EmitDefaultValue=false)]
         public List<long?> Features { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Group
+        /// The group that this label belongs to.
         /// </summary>
+        /// <value>The group that this label belongs to.</value>
         [DataMember(Name="group", EmitDefaultValue=false)]
         public long? Group { get; private set; }
 
@@ -61,21 +64,23 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The name of the object translated into different languages.
+        /// The localized name of the object.
         /// </summary>
-        /// <value>The name of the object translated into different languages.</value>
+        /// <value>The localized name of the object.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// The type of the label&#39;s value.
         /// </summary>
+        /// <value>The type of the label&#39;s value.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public long? Type { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Weight
+        /// When listing labels, they can be sorted by this number.
         /// </summary>
+        /// <value>When listing labels, they can be sorted by this number.</value>
         [DataMember(Name="weight", EmitDefaultValue=false)]
         public int? Weight { get; private set; }
 

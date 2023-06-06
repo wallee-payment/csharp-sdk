@@ -29,23 +29,30 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The currency code identifies the currency with the three char long ISO 4217 code (e.g. USD, CHF, EUR).
+        /// The currency&#39;s three-letter code (ISO 4217 format).
         /// </summary>
-        /// <value>The currency code identifies the currency with the three char long ISO 4217 code (e.g. USD, CHF, EUR).</value>
+        /// <value>The currency&#39;s three-letter code (ISO 4217 format).</value>
         [DataMember(Name="currencyCode", EmitDefaultValue=false)]
         public string CurrencyCode { get; private set; }
 
         /// <summary>
-        /// The fraction digits indicates how many places the currency has. This also indicates with which precision we calculate internally when we do calculations with this currency.
+        /// The currency&#39;s number of decimals. When calculating amounts in this currency, the fraction digits determine the accuracy.
         /// </summary>
-        /// <value>The fraction digits indicates how many places the currency has. This also indicates with which precision we calculate internally when we do calculations with this currency.</value>
+        /// <value>The currency&#39;s number of decimals. When calculating amounts in this currency, the fraction digits determine the accuracy.</value>
         [DataMember(Name="fractionDigits", EmitDefaultValue=false)]
         public int? FractionDigits { get; private set; }
 
         /// <summary>
-        /// The numeric code identifies the currency with the three digit long ISO 4217 code (e.g. 978, 756, 840).
+        /// The name of the currency.
         /// </summary>
-        /// <value>The numeric code identifies the currency with the three digit long ISO 4217 code (e.g. 978, 756, 840).</value>
+        /// <value>The name of the currency.</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// The currency&#39;s three-digit code (ISO 4217 format).
+        /// </summary>
+        /// <value>The currency&#39;s three-digit code (ISO 4217 format).</value>
         [DataMember(Name="numericCode", EmitDefaultValue=false)]
         public int? NumericCode { get; private set; }
 
@@ -59,6 +66,7 @@ namespace Wallee.Model
             sb.Append("class RestCurrency {\n");
             sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  FractionDigits: ").Append(FractionDigits).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NumericCode: ").Append(NumericCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -105,6 +113,11 @@ namespace Wallee.Model
                     this.FractionDigits.Equals(input.FractionDigits))
                 ) && 
                 (
+                    this.Name == input.Name ||
+                    (this.Name != null &&
+                    this.Name.Equals(input.Name))
+                ) && 
+                (
                     this.NumericCode == input.NumericCode ||
                     (this.NumericCode != null &&
                     this.NumericCode.Equals(input.NumericCode))
@@ -124,6 +137,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.CurrencyCode.GetHashCode();
                 if (this.FractionDigits != null)
                     hashCode = hashCode * 59 + this.FractionDigits.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NumericCode != null)
                     hashCode = hashCode * 59 + this.NumericCode.GetHashCode();
                 return hashCode;

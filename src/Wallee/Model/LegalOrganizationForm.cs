@@ -29,20 +29,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Country
+        /// The two-letter code of the country the legal organization form is used in (ISO 3166-1 alpha-2 format).
         /// </summary>
+        /// <value>The two-letter code of the country the legal organization form is used in (ISO 3166-1 alpha-2 format).</value>
         [DataMember(Name="country", EmitDefaultValue=false)]
         public string Country { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// The localized descriptions of the legal organization form.
         /// </summary>
+        /// <value>The localized descriptions of the legal organization form.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public List<LocalizedString> Description { get; private set; }
 
         /// <summary>
-        /// Gets or Sets EnglishDescription
+        /// The English name of the legal organization form.
         /// </summary>
+        /// <value>The English name of the legal organization form.</value>
         [DataMember(Name="englishDescription", EmitDefaultValue=false)]
         public string EnglishDescription { get; private set; }
 
@@ -54,8 +57,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Shortcut
+        /// The localized shortcuts of the legal organization form.
         /// </summary>
+        /// <value>The localized shortcuts of the legal organization form.</value>
         [DataMember(Name="shortcut", EmitDefaultValue=false)]
         public List<LocalizedString> Shortcut { get; private set; }
 

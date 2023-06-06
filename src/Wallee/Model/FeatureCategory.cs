@@ -29,9 +29,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The description of the object translated into different languages.
+        /// The localized description of the object.
         /// </summary>
-        /// <value>The description of the object translated into different languages.</value>
+        /// <value>The localized description of the object.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
@@ -43,15 +43,16 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The name of the object translated into different languages.
+        /// The localized name of the object.
         /// </summary>
-        /// <value>The name of the object translated into different languages.</value>
+        /// <value>The localized name of the object.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets OrderWeight
+        /// When listing feature categories, they can be sorted by this number.
         /// </summary>
+        /// <value>When listing feature categories, they can be sorted by this number.</value>
         [DataMember(Name="orderWeight", EmitDefaultValue=false)]
         public int? OrderWeight { get; private set; }
 

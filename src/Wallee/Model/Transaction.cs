@@ -327,9 +327,9 @@ namespace Wallee.Model
         public string MerchantReference { get; private set; }
 
         /// <summary>
-        /// Meta data allow to store additional data along the object.
+        /// Allow to store additional information about the object.
         /// </summary>
-        /// <value>Meta data allow to store additional data along the object.</value>
+        /// <value>Allow to store additional information about the object.</value>
         [DataMember(Name="metaData", EmitDefaultValue=false)]
         public Dictionary<string, string> MetaData { get; private set; }
 

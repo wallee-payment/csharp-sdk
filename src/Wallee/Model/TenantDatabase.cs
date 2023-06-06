@@ -36,9 +36,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The name of the database.
+        /// The name used to identify the database.
         /// </summary>
-        /// <value>The name of the database.</value>
+        /// <value>The name used to identify the database.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 

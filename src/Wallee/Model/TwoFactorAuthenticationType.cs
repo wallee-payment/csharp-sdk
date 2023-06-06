@@ -29,21 +29,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The description of the object translated into different languages.
+        /// The localized description of the object.
         /// </summary>
-        /// <value>The description of the object translated into different languages.</value>
+        /// <value>The localized description of the object.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Feature
+        /// The feature that this type belongs to.
         /// </summary>
+        /// <value>The feature that this type belongs to.</value>
         [DataMember(Name="feature", EmitDefaultValue=false)]
         public long? Feature { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Icon
+        /// The identifier of the icon representing this type.
         /// </summary>
+        /// <value>The identifier of the icon representing this type.</value>
         [DataMember(Name="icon", EmitDefaultValue=false)]
         public string Icon { get; private set; }
 
@@ -55,9 +57,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The name of the object translated into different languages.
+        /// The localized name of the object.
         /// </summary>
-        /// <value>The name of the object translated into different languages.</value>
+        /// <value>The localized name of the object.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 

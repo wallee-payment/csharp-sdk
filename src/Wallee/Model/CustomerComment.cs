@@ -29,14 +29,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Content
+        /// The comment&#39;s actual content.
         /// </summary>
+        /// <value>The comment&#39;s actual content.</value>
         [DataMember(Name="content", EmitDefaultValue=false)]
         public string Content { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CreatedBy
+        /// The ID of the user the comment was created by.
         /// </summary>
+        /// <value>The ID of the user the comment was created by.</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
@@ -48,21 +50,23 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Customer
+        /// The customer that the object belongs to.
         /// </summary>
+        /// <value>The customer that the object belongs to.</value>
         [DataMember(Name="customer", EmitDefaultValue=false)]
         public long? Customer { get; private set; }
 
         /// <summary>
-        /// Gets or Sets EditedBy
+        /// The ID of the user the comment was last updated by.
         /// </summary>
+        /// <value>The ID of the user the comment was last updated by.</value>
         [DataMember(Name="editedBy", EmitDefaultValue=false)]
         public long? EditedBy { get; private set; }
 
         /// <summary>
-        /// The date on which the comment was last edited.
+        /// The date and time when the comment was last updated.
         /// </summary>
-        /// <value>The date on which the comment was last edited.</value>
+        /// <value>The date and time when the comment was last updated.</value>
         [DataMember(Name="editedOn", EmitDefaultValue=false)]
         public DateTime? EditedOn { get; private set; }
 
@@ -81,8 +85,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Pinned
+        /// Whether the comment is pinned to the top.
         /// </summary>
+        /// <value>Whether the comment is pinned to the top.</value>
         [DataMember(Name="pinned", EmitDefaultValue=false)]
         public bool? Pinned { get; private set; }
 

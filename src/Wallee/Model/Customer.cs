@@ -36,26 +36,30 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CustomerId
+        /// The customer&#39;s ID in the merchant&#39;s system.
         /// </summary>
+        /// <value>The customer&#39;s ID in the merchant&#39;s system.</value>
         [DataMember(Name="customerId", EmitDefaultValue=false)]
         public string CustomerId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets EmailAddress
+        /// The customer&#39;s email address.
         /// </summary>
+        /// <value>The customer&#39;s email address.</value>
         [DataMember(Name="emailAddress", EmitDefaultValue=false)]
         public string EmailAddress { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FamilyName
+        /// The customer&#39;s family or last name.
         /// </summary>
+        /// <value>The customer&#39;s family or last name.</value>
         [DataMember(Name="familyName", EmitDefaultValue=false)]
         public string FamilyName { get; private set; }
 
         /// <summary>
-        /// Gets or Sets GivenName
+        /// The customer&#39;s given or first name.
         /// </summary>
+        /// <value>The customer&#39;s given or first name.</value>
         [DataMember(Name="givenName", EmitDefaultValue=false)]
         public string GivenName { get; private set; }
 
@@ -81,15 +85,16 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Meta data allow to store additional data along the object.
+        /// Allow to store additional information about the object.
         /// </summary>
-        /// <value>Meta data allow to store additional data along the object.</value>
+        /// <value>Allow to store additional information about the object.</value>
         [DataMember(Name="metaData", EmitDefaultValue=false)]
         public Dictionary<string, string> MetaData { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PreferredCurrency
+        /// The customer&#39;s preferred currency.
         /// </summary>
+        /// <value>The customer&#39;s preferred currency.</value>
         [DataMember(Name="preferredCurrency", EmitDefaultValue=false)]
         public string PreferredCurrency { get; private set; }
 

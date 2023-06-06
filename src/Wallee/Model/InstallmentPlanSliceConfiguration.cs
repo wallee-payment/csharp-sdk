@@ -46,7 +46,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The title of this slices line items. The title is visible to the buyer.</value>
         [DataMember(Name="lineItemTitle", EmitDefaultValue=false)]
-        public DatabaseTranslatedString LineItemTitle { get; private set; }
+        public Dictionary<string, string> LineItemTitle { get; private set; }
 
         /// <summary>
         /// The ID of the space this object belongs to.
@@ -157,8 +157,9 @@ namespace Wallee.Model
                 ) && 
                 (
                     this.LineItemTitle == input.LineItemTitle ||
-                    (this.LineItemTitle != null &&
-                    this.LineItemTitle.Equals(input.LineItemTitle))
+                    this.LineItemTitle != null &&
+                    input.LineItemTitle != null &&
+                    this.LineItemTitle.SequenceEqual(input.LineItemTitle)
                 ) && 
                 (
                     this.LinkedSpaceId == input.LinkedSpaceId ||

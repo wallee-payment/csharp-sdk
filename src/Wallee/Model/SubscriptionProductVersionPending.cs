@@ -112,7 +112,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public DatabaseTranslatedStringCreate Name { get; set; }
+        public Dictionary<string, string> Name { get; set; }
 
         /// <summary>
         /// The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.
@@ -222,8 +222,9 @@ namespace Wallee.Model
                 ) && 
                 (
                     this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.Name != null &&
+                    input.Name != null &&
+                    this.Name.SequenceEqual(input.Name)
                 ) && 
                 (
                     this.NumberOfNoticePeriods == input.NumberOfNoticePeriods ||

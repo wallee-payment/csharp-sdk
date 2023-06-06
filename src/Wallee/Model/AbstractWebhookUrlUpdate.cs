@@ -34,17 +34,17 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the webhook URL.
         /// </summary>
-        /// <value>The URL name is used internally to identify the URL in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the webhook URL.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
 
         /// <summary>
-        /// The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter&#x3D;value.
+        /// The actual URL where notifications about entity changes are sent to.
         /// </summary>
-        /// <value>The URL to which the HTTP requests are sent to. An example URL could look like https://www.example.com/some/path?some-query-parameter&#x3D;value.</value>
+        /// <value>The actual URL where notifications about entity changes are sent to.</value>
         [DataMember(Name="url", EmitDefaultValue=false)]
         public string Url { get; set; }
 

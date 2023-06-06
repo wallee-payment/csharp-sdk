@@ -34,51 +34,52 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The email address of the user.
+        /// The user&#39;s email address.
         /// </summary>
-        /// <value>The email address of the user.</value>
+        /// <value>The user&#39;s email address.</value>
         [DataMember(Name="emailAddress", EmitDefaultValue=false)]
         public string EmailAddress { get; set; }
 
         /// <summary>
-        /// The first name of the user.
+        /// The user&#39;s first name.
         /// </summary>
-        /// <value>The first name of the user.</value>
+        /// <value>The user&#39;s first name.</value>
         [DataMember(Name="firstname", EmitDefaultValue=false)]
         public string Firstname { get; set; }
 
         /// <summary>
-        /// The preferred language of the user.
+        /// The user&#39;s preferred language.
         /// </summary>
-        /// <value>The preferred language of the user.</value>
+        /// <value>The user&#39;s preferred language.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; set; }
 
         /// <summary>
-        /// The last name of the user.
+        /// The user&#39;s last name.
         /// </summary>
-        /// <value>The last name of the user.</value>
+        /// <value>The user&#39;s last name.</value>
         [DataMember(Name="lastname", EmitDefaultValue=false)]
         public string Lastname { get; set; }
 
         /// <summary>
-        /// Gets or Sets MobilePhoneNumber
+        /// The user&#39;s mobile phone number.
         /// </summary>
+        /// <value>The user&#39;s mobile phone number.</value>
         [DataMember(Name="mobilePhoneNumber", EmitDefaultValue=false)]
         public string MobilePhoneNumber { get; set; }
 
 
         /// <summary>
-        /// The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.
+        /// The user&#39;s time zone. If none is specified, the one provided by the browser will be used.
         /// </summary>
-        /// <value>The time zone which is applied for the user. If no timezone is specified the browser is used to determine an appropriate time zone.</value>
+        /// <value>The user&#39;s time zone. If none is specified, the one provided by the browser will be used.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; set; }
 
         /// <summary>
-        /// Defines whether two-factor authentication is enabled for this user.
+        /// Whether two-factor authentication is enabled for this user.
         /// </summary>
-        /// <value>Defines whether two-factor authentication is enabled for this user.</value>
+        /// <value>Whether two-factor authentication is enabled for this user.</value>
         [DataMember(Name="twoFactorEnabled", EmitDefaultValue=false)]
         public bool? TwoFactorEnabled { get; set; }
 

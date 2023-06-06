@@ -52,7 +52,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The payment method configuration description can be used to show a text during the payment process. Choose an appropriate description as it will be displayed to your customer.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public DatabaseTranslatedString Description { get; private set; }
+        public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// A unique identifier for the object.
@@ -136,7 +136,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The title of the payment method configuration is used within the payment process. The title is visible to the customer.</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
-        public DatabaseTranslatedString Title { get; private set; }
+        public Dictionary<string, string> Title { get; private set; }
 
         /// <summary>
         /// The version is used for optimistic locking and incremented whenever the object is updated.
@@ -211,8 +211,9 @@ namespace Wallee.Model
                 ) && 
                 (
                     this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.Description != null &&
+                    input.Description != null &&
+                    this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
                     this.Id == input.Id ||
@@ -283,8 +284,9 @@ namespace Wallee.Model
                 ) && 
                 (
                     this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
+                    this.Title != null &&
+                    input.Title != null &&
+                    this.Title.SequenceEqual(input.Title)
                 ) && 
                 (
                     this.Version == input.Version ||

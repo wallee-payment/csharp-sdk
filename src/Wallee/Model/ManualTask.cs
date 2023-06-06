@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// A manual task requires a manual intervention by a human.
+    /// A manual task requires the manual intervention of a human.
     /// </summary>
     [DataContract]
     public partial class ManualTask :  IEquatable<ManualTask>
@@ -35,15 +35,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Actions
+        /// The actions that can be triggered to handle the manual task.
         /// </summary>
+        /// <value>The actions that can be triggered to handle the manual task.</value>
         [DataMember(Name="actions", EmitDefaultValue=false)]
         public List<long?> Actions { get; private set; }
 
         /// <summary>
-        /// The context entity ID links the manual task to the entity which caused its creation.
+        /// The ID of the entity the manual task is linked to.
         /// </summary>
-        /// <value>The context entity ID links the manual task to the entity which caused its creation.</value>
+        /// <value>The ID of the entity the manual task is linked to.</value>
         [DataMember(Name="contextEntityId", EmitDefaultValue=false)]
         public long? ContextEntityId { get; private set; }
 
@@ -55,9 +56,9 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The expiry date indicates until when the manual task has to be executed.
+        /// The date and time until when the manual task has to be handled.
         /// </summary>
-        /// <value>The expiry date indicates until when the manual task has to be executed.</value>
+        /// <value>The date and time until when the manual task has to be handled.</value>
         [DataMember(Name="expiresOn", EmitDefaultValue=false)]
         public DateTime? ExpiresOn { get; private set; }
 
@@ -82,17 +83,11 @@ namespace Wallee.Model
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets SpaceId
-        /// </summary>
-        [DataMember(Name="spaceId", EmitDefaultValue=false)]
-        public long? SpaceId { get; private set; }
-
 
         /// <summary>
-        /// The type categorizes the manual task.
+        /// The manual task&#39;s type.
         /// </summary>
-        /// <value>The type categorizes the manual task.</value>
+        /// <value>The manual task&#39;s type.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public long? Type { get; private set; }
 
@@ -111,7 +106,6 @@ namespace Wallee.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
@@ -185,11 +179,6 @@ namespace Wallee.Model
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
                 ) && 
                 (
-                    this.SpaceId == input.SpaceId ||
-                    (this.SpaceId != null &&
-                    this.SpaceId.Equals(input.SpaceId))
-                ) && 
-                (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
@@ -224,8 +213,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.SpaceId != null)
-                    hashCode = hashCode * 59 + this.SpaceId.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.Type != null)

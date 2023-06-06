@@ -27,7 +27,19 @@ namespace Wallee.Model
         /// Enum APPLE_PAY for value: APPLE_PAY
         /// </summary>
         [EnumMember(Value = "APPLE_PAY")]
-        APPLE_PAY
+        APPLE_PAY,
+        
+        /// <summary>
+        /// Enum CLICK_TO_PAY for value: CLICK_TO_PAY
+        /// </summary>
+        [EnumMember(Value = "CLICK_TO_PAY")]
+        CLICK_TO_PAY,
+        
+        /// <summary>
+        /// Enum NONE for value: NONE
+        /// </summary>
+        [EnumMember(Value = "NONE")]
+        NONE
     }
 
 }

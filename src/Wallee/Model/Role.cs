@@ -35,9 +35,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.
+        /// The account the role belongs to. The role can only be assigned within this account.
         /// </summary>
-        /// <value>The account to which this role belongs to. This role can only be assigned within the assigned account and the sub accounts of the assigned account.</value>
+        /// <value>The account the role belongs to. The role can only be assigned within this account.</value>
         [DataMember(Name="account", EmitDefaultValue=false)]
         public Account Account { get; private set; }
 
@@ -49,16 +49,16 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The name of this role is used to identify the role within administrative interfaces.
+        /// The name used to identify the role.
         /// </summary>
-        /// <value>The name of this role is used to identify the role within administrative interfaces.</value>
+        /// <value>The name used to identify the role.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public DatabaseTranslatedString Name { get; private set; }
+        public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// Set of permissions that are granted to this role.
+        /// The permissions granted to users with this role.
         /// </summary>
-        /// <value>Set of permissions that are granted to this role.</value>
+        /// <value>The permissions granted to users with this role.</value>
         [DataMember(Name="permissions", EmitDefaultValue=false)]
         public List<Permission> Permissions { get; private set; }
 
@@ -71,9 +71,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Defines whether having been granted this role will force a user to use two-factor authentication.
+        /// Whether users with this role are required to use two-factor authentication.
         /// </summary>
-        /// <value>Defines whether having been granted this role will force a user to use two-factor authentication.</value>
+        /// <value>Whether users with this role are required to use two-factor authentication.</value>
         [DataMember(Name="twoFactorRequired", EmitDefaultValue=false)]
         public bool? TwoFactorRequired { get; private set; }
 
@@ -146,8 +146,9 @@ namespace Wallee.Model
                 ) && 
                 (
                     this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.Name != null &&
+                    input.Name != null &&
+                    this.Name.SequenceEqual(input.Name)
                 ) && 
                 (
                     this.Permissions == input.Permissions ||

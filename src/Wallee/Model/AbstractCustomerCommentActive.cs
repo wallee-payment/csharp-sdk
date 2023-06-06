@@ -28,8 +28,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Content
+        /// The comment&#39;s actual content.
         /// </summary>
+        /// <value>The comment&#39;s actual content.</value>
         [DataMember(Name="content", EmitDefaultValue=false)]
         public string Content { get; set; }
 

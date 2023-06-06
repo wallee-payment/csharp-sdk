@@ -137,7 +137,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The title of the installment plan is used within the payment process. The title is visible to the buyer.</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
-        public DatabaseTranslatedString Title { get; private set; }
+        public Dictionary<string, string> Title { get; private set; }
 
         /// <summary>
         /// The version is used for optimistic locking and incremented whenever the object is updated.
@@ -284,8 +284,9 @@ namespace Wallee.Model
                 ) && 
                 (
                     this.Title == input.Title ||
-                    (this.Title != null &&
-                    this.Title.Equals(input.Title))
+                    this.Title != null &&
+                    input.Title != null &&
+                    this.Title.SequenceEqual(input.Title)
                 ) && 
                 (
                     this.Version == input.Version ||

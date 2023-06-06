@@ -28,7 +28,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SpaceCreate" /> class.
         /// </summary>
-        /// <param name="account">The account to which the space belongs to. (required).</param>
+        /// <param name="account">The account that the space belongs to. (required).</param>
         public SpaceCreate(long? account)
         {
             // to ensure "account" is required (not null)
@@ -48,9 +48,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The account to which the space belongs to.
+        /// The account that the space belongs to.
         /// </summary>
-        /// <value>The account to which the space belongs to.</value>
+        /// <value>The account that the space belongs to.</value>
         [DataMember(Name="account", EmitDefaultValue=false)]
         public long? Account { get; set; }
 

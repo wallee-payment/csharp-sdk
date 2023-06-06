@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class AbstractCustomerAddressActive :  IEquatable<AbstractCustomerAddressActive>
     {
         /// <summary>
-        /// Gets or Sets AddressType
+        /// Whether the address is for billing or shipping or both.
         /// </summary>
+        /// <value>Whether the address is for billing or shipping or both.</value>
         [DataMember(Name="addressType", EmitDefaultValue=false)]
         public CustomerAddressType? AddressType { get; set; }
         /// <summary>
@@ -33,8 +34,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Address
+        /// The actual postal address.
         /// </summary>
+        /// <value>The actual postal address.</value>
         [DataMember(Name="address", EmitDefaultValue=false)]
         public CustomerPostalAddressCreate Address { get; set; }
 

@@ -35,58 +35,58 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The account to which the space belongs to.
+        /// The account that the space belongs to.
         /// </summary>
-        /// <value>The account to which the space belongs to.</value>
+        /// <value>The account that the space belongs to.</value>
         [DataMember(Name="account", EmitDefaultValue=false)]
         public Account Account { get; private set; }
 
         /// <summary>
-        /// Active means that this account and all accounts in the hierarchy are active.
+        /// Whether this space and all its parent accounts are active.
         /// </summary>
-        /// <value>Active means that this account and all accounts in the hierarchy are active.</value>
+        /// <value>Whether this space and all its parent accounts are active.</value>
         [DataMember(Name="active", EmitDefaultValue=false)]
         public bool? Active { get; private set; }
 
         /// <summary>
-        /// This property is true when all accounts in the hierarchy are active or restricted active.
+        /// Whether this space and all its parent accounts are active or restricted active.
         /// </summary>
-        /// <value>This property is true when all accounts in the hierarchy are active or restricted active.</value>
+        /// <value>Whether this space and all its parent accounts are active or restricted active.</value>
         [DataMember(Name="activeOrRestrictedActive", EmitDefaultValue=false)]
         public bool? ActiveOrRestrictedActive { get; private set; }
 
         /// <summary>
-        /// The ID of the user who created this entity.
+        /// The ID of the user the space was created by.
         /// </summary>
-        /// <value>The ID of the user who created this entity.</value>
+        /// <value>The ID of the user the space was created by.</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
         /// <summary>
-        /// The date and time when this entity was created.
+        /// The date and time when the space was created.
         /// </summary>
-        /// <value>The date and time when this entity was created.</value>
+        /// <value>The date and time when the space was created.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The database in which the space&#39;s data are stored in.
+        /// The database the space is connected to and that holds the space&#39;s data.
         /// </summary>
-        /// <value>The database in which the space&#39;s data are stored in.</value>
+        /// <value>The database the space is connected to and that holds the space&#39;s data.</value>
         [DataMember(Name="database", EmitDefaultValue=false)]
         public TenantDatabase Database { get; private set; }
 
         /// <summary>
-        /// The ID of a user that deleted this entity.
+        /// The ID of the user the space was deleted by.
         /// </summary>
-        /// <value>The ID of a user that deleted this entity.</value>
+        /// <value>The ID of the user the space was deleted by.</value>
         [DataMember(Name="deletedBy", EmitDefaultValue=false)]
         public long? DeletedBy { get; private set; }
 
         /// <summary>
-        /// The date and time when this entity was deleted.
+        /// The date and time when the space was deleted.
         /// </summary>
-        /// <value>The date and time when this entity was deleted.</value>
+        /// <value>The date and time when the space was deleted.</value>
         [DataMember(Name="deletedOn", EmitDefaultValue=false)]
         public DateTime? DeletedOn { get; private set; }
 
@@ -105,9 +105,9 @@ namespace Wallee.Model
         public DateTime? LastModifiedDate { get; private set; }
 
         /// <summary>
-        /// The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the space.
         /// </summary>
-        /// <value>The space name is used internally to identify the space in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the space.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -119,45 +119,45 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// The address to use in communication with clients for example in email, documents etc.
+        /// The address that is used in communication with clients for example in emails, documents, etc.
         /// </summary>
-        /// <value>The address to use in communication with clients for example in email, documents etc.</value>
+        /// <value>The address that is used in communication with clients for example in emails, documents, etc.</value>
         [DataMember(Name="postalAddress", EmitDefaultValue=false)]
         public SpaceAddress PostalAddress { get; private set; }
 
         /// <summary>
-        /// This is the currency that is used to display aggregated amounts in the space.
+        /// The currency that is used to display aggregated amounts in the space.
         /// </summary>
-        /// <value>This is the currency that is used to display aggregated amounts in the space.</value>
+        /// <value>The currency that is used to display aggregated amounts in the space.</value>
         [DataMember(Name="primaryCurrency", EmitDefaultValue=false)]
         public string PrimaryCurrency { get; private set; }
 
         /// <summary>
-        /// The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.
+        /// The maximum number of API requests that are accepted within two minutes. This limit can only be changed with special privileges.
         /// </summary>
-        /// <value>The request limit defines the maximum number of API request accepted within 2 minutes for this space. This limit can only be changed with special privileges.</value>
+        /// <value>The maximum number of API requests that are accepted within two minutes. This limit can only be changed with special privileges.</value>
         [DataMember(Name="requestLimit", EmitDefaultValue=false)]
         public long? RequestLimit { get; private set; }
 
         /// <summary>
-        /// Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.
+        /// Whether this space and all its parent accounts are active or restricted active. There is least one parent account that is restricted active.
         /// </summary>
-        /// <value>Restricted active means that at least one account in the hierarchy is only restricted active, but all are either restricted active or active.</value>
+        /// <value>Whether this space and all its parent accounts are active or restricted active. There is least one parent account that is restricted active.</value>
         [DataMember(Name="restrictedActive", EmitDefaultValue=false)]
         public bool? RestrictedActive { get; private set; }
 
 
         /// <summary>
-        /// The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.
+        /// The email address that will receive messages about technical issues and errors that occur in the space.
         /// </summary>
-        /// <value>The email address provided as contact addresses will be informed about technical issues or errors triggered by the space.</value>
+        /// <value>The email address that will receive messages about technical issues and errors that occur in the space.</value>
         [DataMember(Name="technicalContactAddresses", EmitDefaultValue=false)]
         public List<string> TechnicalContactAddresses { get; private set; }
 
         /// <summary>
-        /// The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.
+        /// The time zone that is used to schedule and run background processes. This does not affect the formatting of dates in the user interface.
         /// </summary>
-        /// <value>The time zone assigned to the space determines the time offset for calculating dates within the space. This is typically used for background processed which needs to be triggered on a specific hour within the day. Changing the space time zone will not change the display of dates.</value>
+        /// <value>The time zone that is used to schedule and run background processes. This does not affect the formatting of dates in the user interface.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; private set; }
 

@@ -71,21 +71,21 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public DatabaseTranslatedStringCreate Description { get; set; }
+        public Dictionary<string, string> Description { get; set; }
 
         /// <summary>
         /// The ledger entry title will be used for the title in the ledger entry and in the invoice.
         /// </summary>
         /// <value>The ledger entry title will be used for the title in the ledger entry and in the invoice.</value>
         [DataMember(Name="ledgerEntryTitle", EmitDefaultValue=false)]
-        public DatabaseTranslatedStringCreate LedgerEntryTitle { get; set; }
+        public Dictionary<string, string> LedgerEntryTitle { get; set; }
 
         /// <summary>
         /// The name of the fee should describe for the subscriber in few words for what the fee is for.
         /// </summary>
         /// <value>The name of the fee should describe for the subscriber in few words for what the fee is for.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
-        public DatabaseTranslatedStringCreate Name { get; set; }
+        public Dictionary<string, string> Name { get; set; }
 
         /// <summary>
         /// The number of free trial periods specify how many periods are free of charge at the begining of the subscription.
@@ -168,18 +168,21 @@ namespace Wallee.Model
                 ) && 
                 (
                     this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.Description != null &&
+                    input.Description != null &&
+                    this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
                     this.LedgerEntryTitle == input.LedgerEntryTitle ||
-                    (this.LedgerEntryTitle != null &&
-                    this.LedgerEntryTitle.Equals(input.LedgerEntryTitle))
+                    this.LedgerEntryTitle != null &&
+                    input.LedgerEntryTitle != null &&
+                    this.LedgerEntryTitle.SequenceEqual(input.LedgerEntryTitle)
                 ) && 
                 (
                     this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.Name != null &&
+                    input.Name != null &&
+                    this.Name.SequenceEqual(input.Name)
                 ) && 
                 (
                     this.NumberOfFreeTrialPeriods == input.NumberOfFreeTrialPeriods ||

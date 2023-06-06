@@ -30,7 +30,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="type">type (required).</param>
         /// <param name="name">name (required).</param>
-        public SubscriptionMetricCreate(long? type, DatabaseTranslatedStringCreate name)
+        public SubscriptionMetricCreate(long? type, Dictionary<string, string> name)
         {
             // to ensure "type" is required (not null)
             if (type == null)
@@ -102,13 +102,15 @@ namespace Wallee.Model
             return base.Equals(input) && 
                 (
                     this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    this.Description != null &&
+                    input.Description != null &&
+                    this.Description.SequenceEqual(input.Description)
                 ) && base.Equals(input) && 
                 (
                     this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    this.Name != null &&
+                    input.Name != null &&
+                    this.Name.SequenceEqual(input.Name)
                 ) && base.Equals(input) && 
                 (
                     this.Type == input.Type ||

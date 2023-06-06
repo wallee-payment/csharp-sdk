@@ -29,21 +29,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The description of the object translated into different languages.
+        /// The localized description of the object.
         /// </summary>
-        /// <value>The description of the object translated into different languages.</value>
+        /// <value>The localized description of the object.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Feature
+        /// The feature that this permission belongs to.
         /// </summary>
+        /// <value>The feature that this permission belongs to.</value>
         [DataMember(Name="feature", EmitDefaultValue=false)]
         public long? Feature { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Group
+        /// Whether this is a permission group.
         /// </summary>
+        /// <value>Whether this is a permission group.</value>
         [DataMember(Name="group", EmitDefaultValue=false)]
         public bool? Group { get; private set; }
 
@@ -55,39 +57,44 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Leaf
+        /// Whether this is a leaf in the tree of permissions, and not a group.
         /// </summary>
+        /// <value>Whether this is a leaf in the tree of permissions, and not a group.</value>
         [DataMember(Name="leaf", EmitDefaultValue=false)]
         public bool? Leaf { get; private set; }
 
         /// <summary>
-        /// The name of the object translated into different languages.
+        /// The localized name of the object.
         /// </summary>
-        /// <value>The name of the object translated into different languages.</value>
+        /// <value>The localized name of the object.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Parent
+        /// The group that this permission belongs to.
         /// </summary>
+        /// <value>The group that this permission belongs to.</value>
         [DataMember(Name="parent", EmitDefaultValue=false)]
         public long? Parent { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PathToRoot
+        /// All parents of this permission up to the root of the permission tree.
         /// </summary>
+        /// <value>All parents of this permission up to the root of the permission tree.</value>
         [DataMember(Name="pathToRoot", EmitDefaultValue=false)]
         public List<long?> PathToRoot { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Title
+        /// The localized name of the object.
         /// </summary>
+        /// <value>The localized name of the object.</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
         public Dictionary<string, string> Title { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TwoFactorRequired
+        /// Whether users with this permission are required to enable two-factor authentication.
         /// </summary>
+        /// <value>Whether users with this permission are required to enable two-factor authentication.</value>
         [DataMember(Name="twoFactorRequired", EmitDefaultValue=false)]
         public bool? TwoFactorRequired { get; private set; }
 

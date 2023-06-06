@@ -34,16 +34,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The user name is used to identify the application user in administrative interfaces.
+        /// The name used to identify the application user.
         /// </summary>
-        /// <value>The user name is used to identify the application user in administrative interfaces.</value>
+        /// <value>The name used to identify the application user.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.
+        /// The maximum number of API requests that are accepted every 2 minutes.
         /// </summary>
-        /// <value>The request limit defines the maximum number of API request accepted within 2 minutes. This limit can only be changed with special privileges.</value>
+        /// <value>The maximum number of API requests that are accepted every 2 minutes.</value>
         [DataMember(Name="requestLimit", EmitDefaultValue=false)]
         public long? RequestLimit { get; set; }
 

@@ -29,30 +29,36 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The code of the state identifies the state. The code is typically used within addresses. Some countries may not provide a code. For those the field is null.
+        /// The state&#39;s code used within addresses.
         /// </summary>
-        /// <value>The code of the state identifies the state. The code is typically used within addresses. Some countries may not provide a code. For those the field is null.</value>
+        /// <value>The state&#39;s code used within addresses.</value>
         [DataMember(Name="code", EmitDefaultValue=false)]
         public string Code { get; private set; }
 
         /// <summary>
-        /// The country code in ISO two letter format (e.g. UK, DE, CH, US).
+        /// Gets or Sets Country
         /// </summary>
-        /// <value>The country code in ISO two letter format (e.g. UK, DE, CH, US).</value>
+        [DataMember(Name="country", EmitDefaultValue=false)]
+        public string Country { get; private set; }
+
+        /// <summary>
+        /// The two-letter code of the state&#39;s country (ISO 3166-1 alpha-2 format).
+        /// </summary>
+        /// <value>The two-letter code of the state&#39;s country (ISO 3166-1 alpha-2 format).</value>
         [DataMember(Name="countryCode", EmitDefaultValue=false)]
         public string CountryCode { get; private set; }
 
         /// <summary>
-        /// The ID of the state corresponds to the subdivision identifier defined in ISO 3166-2. The format consists of the country code followed by a dash and a subdivision identifier.
+        /// The state&#39;s code in ISO 3166-2 format.
         /// </summary>
-        /// <value>The ID of the state corresponds to the subdivision identifier defined in ISO 3166-2. The format consists of the country code followed by a dash and a subdivision identifier.</value>
+        /// <value>The state&#39;s code in ISO 3166-2 format.</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
         public string Id { get; private set; }
 
         /// <summary>
-        /// The name is a human readable label of the state in the language of the region.
+        /// The name of the state.
         /// </summary>
-        /// <value>The name is a human readable label of the state in the language of the region.</value>
+        /// <value>The name of the state.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -65,6 +71,7 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class RestCountryState {\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -108,6 +115,11 @@ namespace Wallee.Model
                     this.Code.Equals(input.Code))
                 ) && 
                 (
+                    this.Country == input.Country ||
+                    (this.Country != null &&
+                    this.Country.Equals(input.Country))
+                ) && 
+                (
                     this.CountryCode == input.CountryCode ||
                     (this.CountryCode != null &&
                     this.CountryCode.Equals(input.CountryCode))
@@ -135,6 +147,8 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.Code != null)
                     hashCode = hashCode * 59 + this.Code.GetHashCode();
+                if (this.Country != null)
+                    hashCode = hashCode * 59 + this.Country.GetHashCode();
                 if (this.CountryCode != null)
                     hashCode = hashCode * 59 + this.CountryCode.GetHashCode();
                 if (this.Id != null)

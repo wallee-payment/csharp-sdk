@@ -42,6 +42,13 @@ namespace Wallee.Model
         public long? Account { get; private set; }
 
         /// <summary>
+        /// The error message if and only if the query has failed, otherwise null.
+        /// </summary>
+        /// <value>The error message if and only if the query has failed, otherwise null.</value>
+        [DataMember(Name="errorMessage", EmitDefaultValue=false)]
+        public string ErrorMessage { get; private set; }
+
+        /// <summary>
         /// The External ID of the query if one had been specified; otherwise null.
         /// </summary>
         /// <value>The External ID of the query if one had been specified; otherwise null.</value>
@@ -114,6 +121,7 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class AnalyticsQueryExecution {\n");
             sb.Append("  Account: ").Append(Account).Append("\n");
+            sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
@@ -162,6 +170,11 @@ namespace Wallee.Model
                     this.Account == input.Account ||
                     (this.Account != null &&
                     this.Account.Equals(input.Account))
+                ) && 
+                (
+                    this.ErrorMessage == input.ErrorMessage ||
+                    (this.ErrorMessage != null &&
+                    this.ErrorMessage.Equals(input.ErrorMessage))
                 ) && 
                 (
                     this.ExternalId == input.ExternalId ||
@@ -227,6 +240,8 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.Account != null)
                     hashCode = hashCode * 59 + this.Account.GetHashCode();
+                if (this.ErrorMessage != null)
+                    hashCode = hashCode * 59 + this.ErrorMessage.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.FailureReason != null)
