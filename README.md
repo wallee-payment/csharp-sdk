@@ -31,13 +31,13 @@ Install-Package JsonSubTypes
 ## Installation
 ```
 # Package Manager
-Install-Package Wallee -Version 6.0.0
+Install-Package Wallee -Version 7.0.0
 # .NET CLI
-dotnet add package Wallee --version 6.0.0
+dotnet add package Wallee --version 7.0.0
 # Paket CLI
-paket add Wallee --version 6.0.0
+paket add Wallee --version 7.0.0
 # PackageReference
-<PackageReference Include="Wallee" Version="6.0.0" />
+<PackageReference Include="Wallee" Version="7.0.0" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:

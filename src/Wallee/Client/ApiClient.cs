@@ -148,7 +148,7 @@ namespace Wallee.Client
         {
 
             Dictionary<String, String> defaultHeaderParams = new Dictionary<String, String>() {
-                {"x-meta-sdk-version", "6.0.0"},
+                {"x-meta-sdk-version", "7.0.0"},
                 {"x-meta-sdk-language", "csharp"},
                 {"x-meta-sdk-provider", "wallee"},
                 {"x-meta-sdk-language-version", Environment.Version.ToString()}
