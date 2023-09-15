@@ -86,6 +86,13 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
+        /// The date and time when the object was last modified.
+        /// </summary>
+        /// <value>The date and time when the object was last modified.</value>
+        [DataMember(Name="lastModifiedDate", EmitDefaultValue=false)]
+        public DateTime? LastModifiedDate { get; private set; }
+
+        /// <summary>
         /// Gets or Sets RejectedOn
         /// </summary>
         [DataMember(Name="rejectedOn", EmitDefaultValue=false)]
@@ -139,6 +146,7 @@ namespace Wallee.Model
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  LastModifiedDate: ").Append(LastModifiedDate).Append("\n");
             sb.Append("  RejectedOn: ").Append(RejectedOn).Append("\n");
             sb.Append("  RejectionReason: ").Append(RejectionReason).Append("\n");
             sb.Append("  StartTerminatingOn: ").Append(StartTerminatingOn).Append("\n");
@@ -221,6 +229,11 @@ namespace Wallee.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.LastModifiedDate == input.LastModifiedDate ||
+                    (this.LastModifiedDate != null &&
+                    this.LastModifiedDate.Equals(input.LastModifiedDate))
+                ) && 
+                (
                     this.RejectedOn == input.RejectedOn ||
                     (this.RejectedOn != null &&
                     this.RejectedOn.Equals(input.RejectedOn))
@@ -282,6 +295,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.LastModifiedDate != null)
+                    hashCode = hashCode * 59 + this.LastModifiedDate.GetHashCode();
                 if (this.RejectedOn != null)
                     hashCode = hashCode * 59 + this.RejectedOn.GetHashCode();
                 if (this.RejectionReason != null)

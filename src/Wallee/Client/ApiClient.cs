@@ -124,6 +124,11 @@ namespace Wallee.Client
                 request.AddBody(postBody, contentType);
             }
 
+            if (contentType != null)
+            {
+                request.AddHeader("Content-Type", contentType);
+            }
+
             return request;
         }
 
@@ -148,7 +153,7 @@ namespace Wallee.Client
         {
 
             Dictionary<String, String> defaultHeaderParams = new Dictionary<String, String>() {
-                {"x-meta-sdk-version", "7.0.0"},
+                {"x-meta-sdk-version", "7.0.1"},
                 {"x-meta-sdk-language", "csharp"},
                 {"x-meta-sdk-provider", "wallee"},
                 {"x-meta-sdk-language-version", Environment.Version.ToString()}
@@ -540,7 +545,7 @@ namespace Wallee.Client
             List<String> query = new List<String>();
             foreach (var param in queryParams)
             {
-                query.Add(param.Key + "=" + param.Value);
+                query.Add(param.Key + "=" + HttpUtility.UrlEncode(param.Value));
             }
             return "?" + string.Join("&", query.ToArray());
         }

@@ -24,22 +24,10 @@ namespace Wallee.Model
     {
         
         /// <summary>
-        /// Enum ENROLLMENT_VERIFICATION_ERROR for value: ENROLLMENT_VERIFICATION_ERROR
+        /// Enum FULLY_AUTHENTICATED for value: FULLY_AUTHENTICATED
         /// </summary>
-        [EnumMember(Value = "ENROLLMENT_VERIFICATION_ERROR")]
-        ENROLLMENT_VERIFICATION_ERROR,
-        
-        /// <summary>
-        /// Enum NOT_ENROLLED for value: NOT_ENROLLED
-        /// </summary>
-        [EnumMember(Value = "NOT_ENROLLED")]
-        NOT_ENROLLED,
-        
-        /// <summary>
-        /// Enum AUTHENTICATION_ERROR for value: AUTHENTICATION_ERROR
-        /// </summary>
-        [EnumMember(Value = "AUTHENTICATION_ERROR")]
-        AUTHENTICATION_ERROR,
+        [EnumMember(Value = "FULLY_AUTHENTICATED")]
+        FULLY_AUTHENTICATED,
         
         /// <summary>
         /// Enum AUTHENTICATION_NOT_REQUIRED for value: AUTHENTICATION_NOT_REQUIRED
@@ -48,10 +36,22 @@ namespace Wallee.Model
         AUTHENTICATION_NOT_REQUIRED,
         
         /// <summary>
-        /// Enum FULLY_AUTHENTICATED for value: FULLY_AUTHENTICATED
+        /// Enum NOT_ENROLLED for value: NOT_ENROLLED
         /// </summary>
-        [EnumMember(Value = "FULLY_AUTHENTICATED")]
-        FULLY_AUTHENTICATED
+        [EnumMember(Value = "NOT_ENROLLED")]
+        NOT_ENROLLED,
+        
+        /// <summary>
+        /// Enum ENROLLMENT_ERROR for value: ENROLLMENT_ERROR
+        /// </summary>
+        [EnumMember(Value = "ENROLLMENT_ERROR")]
+        ENROLLMENT_ERROR,
+        
+        /// <summary>
+        /// Enum AUTHENTICATION_ERROR for value: AUTHENTICATION_ERROR
+        /// </summary>
+        [EnumMember(Value = "AUTHENTICATION_ERROR")]
+        AUTHENTICATION_ERROR
     }
 
 }

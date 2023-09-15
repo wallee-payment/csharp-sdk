@@ -110,9 +110,9 @@ namespace Wallee.Model
         public string Language { get; private set; }
 
         /// <summary>
-        /// The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters.
+        /// The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters. If no amount for the payment link is defined, the additional checkout page to enter the amount is shown to the consumer.
         /// </summary>
-        /// <value>The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters.</value>
+        /// <value>The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters. If no amount for the payment link is defined, the additional checkout page to enter the amount is shown to the consumer.</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItem> LineItems { get; private set; }
 
