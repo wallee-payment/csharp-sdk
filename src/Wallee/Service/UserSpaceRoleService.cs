@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -39,6 +41,9 @@ namespace Wallee.Service
         /// <param name="roleId">The role which is mapped to the user and space.</param>
         /// <returns>ApiResponse of UserSpaceRole</returns>
         ApiResponse<UserSpaceRole> AddRoleWithHttpInfo (long? userId, long? spaceId, long? roleId);
+
+
+
         /// <summary>
         /// List Roles
         /// </summary>
@@ -62,6 +67,9 @@ namespace Wallee.Service
         /// <param name="spaceId">The space to which the role is mapped.</param>
         /// <returns>ApiResponse of List&lt;UserSpaceRole&gt;</returns>
         ApiResponse<List<UserSpaceRole>> ListWithHttpInfo (long? userId, long? spaceId);
+
+
+
         /// <summary>
         /// Remove Role
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="id">The id of user space role which should be removed</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> RemoveRoleWithHttpInfo (long? id);
+
+
+
         #endregion Synchronous Operations
     }
 

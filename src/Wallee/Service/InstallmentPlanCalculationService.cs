@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="transactionId">The transaction for which the plans should be calculated for.</param>
         /// <returns>ApiResponse of List&lt;InstallmentCalculatedPlan&gt;</returns>
         ApiResponse<List<InstallmentCalculatedPlan>> CalculatePlansWithHttpInfo (long? spaceId, long? transactionId);
+
+
+
         #endregion Synchronous Operations
     }
 

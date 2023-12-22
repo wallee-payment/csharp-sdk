@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -41,6 +43,9 @@ namespace Wallee.Service
         /// <param name="externalId">The unique external id of this payment receipt.</param>
         /// <returns>ApiResponse of DebtCollectionReceipt</returns>
         ApiResponse<DebtCollectionReceipt> AddCollectedAmountWithHttpInfo (long? spaceId, long? id, decimal? collectedAmount, string externalId);
+
+
+
         /// <summary>
         /// Attach Document
         /// </summary>
@@ -68,6 +73,9 @@ namespace Wallee.Service
         /// <param name="contentBase64">The BASE64 encoded contents of the document.</param>
         /// <returns>ApiResponse of DebtCollectionCaseDocument</returns>
         ApiResponse<DebtCollectionCaseDocument> AttachDocumentWithHttpInfo (long? spaceId, long? id, string fileName, string contentBase64);
+
+
+
         /// <summary>
         /// Close
         /// </summary>
@@ -91,6 +99,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the debt collection case which should be closed.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
         ApiResponse<DebtCollectionCase> CloseWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Count
         /// </summary>
@@ -114,6 +125,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Create
         /// </summary>
@@ -137,6 +151,9 @@ namespace Wallee.Service
         /// <param name="entity">The debt collection case object with the properties which should be created.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
         ApiResponse<DebtCollectionCase> CreateWithHttpInfo (long? spaceId, DebtCollectionCaseCreate entity);
+
+
+
         /// <summary>
         /// Delete
         /// </summary>
@@ -160,6 +177,9 @@ namespace Wallee.Service
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Documents
         /// </summary>
@@ -183,6 +203,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the debt collection case for which the attached documents are returned.</param>
         /// <returns>ApiResponse of List&lt;DebtCollectionCaseDocument&gt;</returns>
         ApiResponse<List<DebtCollectionCaseDocument>> DocumentsWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Mark Case As Prepared
         /// </summary>
@@ -206,6 +229,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the debt collection case which should be marked as prepared.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
         ApiResponse<DebtCollectionCase> MarkAsPreparedWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Mark Case As Reviewed
         /// </summary>
@@ -229,6 +255,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the debt collection case which should be reviewed.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
         ApiResponse<DebtCollectionCase> MarkAsReviewedWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -252,6 +281,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the debt collection case which should be returned.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
         ApiResponse<DebtCollectionCase> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -275,6 +307,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the cases which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;DebtCollectionCase&gt;</returns>
         ApiResponse<List<DebtCollectionCase>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         /// <summary>
         /// Update
         /// </summary>
@@ -298,6 +333,9 @@ namespace Wallee.Service
         /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
         ApiResponse<DebtCollectionCase> UpdateWithHttpInfo (long? spaceId, DebtCollectionCaseUpdate entity);
+
+
+
         #endregion Synchronous Operations
     }
 

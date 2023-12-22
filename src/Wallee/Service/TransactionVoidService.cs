@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction voids which should be returned.</param>
         /// <returns>ApiResponse of TransactionVoid</returns>
         ApiResponse<TransactionVoid> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the transaction voids which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;TransactionVoid&gt;</returns>
         ApiResponse<List<TransactionVoid>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         /// <summary>
         /// voidOffline
         /// </summary>
@@ -106,6 +117,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction which should be voided.</param>
         /// <returns>ApiResponse of TransactionVoid</returns>
         ApiResponse<TransactionVoid> VoidOfflineWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// voidOnline
         /// </summary>
@@ -129,6 +143,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction which should be voided.</param>
         /// <returns>ApiResponse of TransactionVoid</returns>
         ApiResponse<TransactionVoid> VoidOnlineWithHttpInfo (long? spaceId, long? id);
+
+
+
         #endregion Synchronous Operations
     }
 

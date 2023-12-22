@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Create
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="suspension"></param>
         /// <returns>ApiResponse of SubscriptionSuspension</returns>
         ApiResponse<SubscriptionSuspension> CreateWithHttpInfo (long? spaceId, SubscriptionSuspensionCreate suspension);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the suspension which should be returned.</param>
         /// <returns>ApiResponse of SubscriptionSuspension</returns>
         ApiResponse<SubscriptionSuspension> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -106,6 +117,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the subscription suspensions which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;SubscriptionSuspension&gt;</returns>
         ApiResponse<List<SubscriptionSuspension>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         /// <summary>
         /// terminate
         /// </summary>
@@ -129,6 +143,9 @@ namespace Wallee.Service
         /// <param name="suspensionId"></param>
         /// <returns>ApiResponse of SubscriptionSuspension</returns>
         ApiResponse<SubscriptionSuspension> TerminateWithHttpInfo (long? spaceId, long? suspensionId);
+
+
+
         #endregion Synchronous Operations
     }
 

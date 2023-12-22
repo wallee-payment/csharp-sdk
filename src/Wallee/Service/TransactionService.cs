@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="transactionModel">The transaction JSON object to update and confirm.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> ConfirmWithHttpInfo (long? spaceId, TransactionPending transactionModel);
+
+
+
         /// <summary>
         /// Count
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Create
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="transaction">The transaction object which should be created.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> CreateWithHttpInfo (long? spaceId, TransactionCreate transaction);
+
+
+
         /// <summary>
         /// Create Transaction Credentials
         /// </summary>
@@ -106,6 +117,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction which should be returned.</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> CreateTransactionCredentialsWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Delete One-Click Token with Credentials
         /// </summary>
@@ -129,6 +143,9 @@ namespace Wallee.Service
         /// <param name="tokenId">The token ID will be used to find the token which should be removed.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteOneClickTokenWithCredentialsWithHttpInfo (string credentials, long? tokenId);
+
+
+
         /// <summary>
         /// Export
         /// </summary>
@@ -152,6 +169,9 @@ namespace Wallee.Service
         /// <param name="request">The request controls the entries which are exported.</param>
         /// <returns>ApiResponse of byte[]</returns>
         ApiResponse<byte[]> ExportWithHttpInfo (long? spaceId, EntityExportRequest request);
+
+
+
         /// <summary>
         /// Fetch One Click Tokens with Credentials
         /// </summary>
@@ -173,6 +193,9 @@ namespace Wallee.Service
         /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
         /// <returns>ApiResponse of List&lt;TokenVersion&gt;</returns>
         ApiResponse<List<TokenVersion>> FetchOneClickTokensWithCredentialsWithHttpInfo (string credentials);
+
+
+
         /// <summary>
         /// Fetch Possible Payment Methods
         /// </summary>
@@ -198,6 +221,9 @@ namespace Wallee.Service
         /// <param name="integrationMode">The integration mode defines the type of integration that is applied on the transaction.</param>
         /// <returns>ApiResponse of List&lt;PaymentMethodConfiguration&gt;</returns>
         ApiResponse<List<PaymentMethodConfiguration>> FetchPaymentMethodsWithHttpInfo (long? spaceId, long? id, string integrationMode);
+
+
+
         /// <summary>
         /// Fetch Possible Payment Methods with Credentials
         /// </summary>
@@ -221,6 +247,9 @@ namespace Wallee.Service
         /// <param name="integrationMode">The integration mode defines the type of integration that is applied on the transaction.</param>
         /// <returns>ApiResponse of List&lt;PaymentMethodConfiguration&gt;</returns>
         ApiResponse<List<PaymentMethodConfiguration>> FetchPaymentMethodsWithCredentialsWithHttpInfo (string credentials, string integrationMode);
+
+
+
         /// <summary>
         /// getInvoiceDocument
         /// </summary>
@@ -244,6 +273,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction to get the invoice document for.</param>
         /// <returns>ApiResponse of RenderedDocument</returns>
         ApiResponse<RenderedDocument> GetInvoiceDocumentWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// getLatestSuccessfulTransactionLineItemVersion
         /// </summary>
@@ -267,6 +299,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction to get the latest line item version for.</param>
         /// <returns>ApiResponse of TransactionLineItemVersion</returns>
         ApiResponse<TransactionLineItemVersion> GetLatestTransactionLineItemVersionWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// getPackingSlip
         /// </summary>
@@ -290,6 +325,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction to get the packing slip for.</param>
         /// <returns>ApiResponse of RenderedDocument</returns>
         ApiResponse<RenderedDocument> GetPackingSlipWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Process One-Click Token with Credentials
         /// </summary>
@@ -313,6 +351,9 @@ namespace Wallee.Service
         /// <param name="tokenId">The token ID is used to load the corresponding token and to process the transaction with it.</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> ProcessOneClickTokenAndRedirectWithCredentialsWithHttpInfo (string credentials, long? tokenId);
+
+
+
         /// <summary>
         /// Process Without User Interaction
         /// </summary>
@@ -336,6 +377,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction which should be processed.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> ProcessWithoutUserInteractionWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -359,6 +403,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction which should be returned.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Read With Credentials
         /// </summary>
@@ -380,6 +427,9 @@ namespace Wallee.Service
         /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> ReadWithCredentialsWithHttpInfo (string credentials);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -403,6 +453,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the transactions which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;Transaction&gt;</returns>
         ApiResponse<List<Transaction>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         /// <summary>
         /// Update
         /// </summary>
@@ -426,6 +479,9 @@ namespace Wallee.Service
         /// <param name="entity">The transaction object with the properties which should be updated.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> UpdateWithHttpInfo (long? spaceId, TransactionPending entity);
+
+
+
         #endregion Synchronous Operations
     }
 

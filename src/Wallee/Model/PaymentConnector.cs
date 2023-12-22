@@ -98,6 +98,12 @@ namespace Wallee.Model
         public long? Processor { get; private set; }
 
         /// <summary>
+        /// Gets or Sets SupportedCurrencies
+        /// </summary>
+        [DataMember(Name="supportedCurrencies", EmitDefaultValue=false)]
+        public List<string> SupportedCurrencies { get; private set; }
+
+        /// <summary>
         /// Gets or Sets SupportedCustomersPresences
         /// </summary>
         [DataMember(Name="supportedCustomersPresences", EmitDefaultValue=false)]
@@ -128,6 +134,7 @@ namespace Wallee.Model
             sb.Append("  PaymentMethodBrand: ").Append(PaymentMethodBrand).Append("\n");
             sb.Append("  PrimaryRiskTaker: ").Append(PrimaryRiskTaker).Append("\n");
             sb.Append("  Processor: ").Append(Processor).Append("\n");
+            sb.Append("  SupportedCurrencies: ").Append(SupportedCurrencies).Append("\n");
             sb.Append("  SupportedCustomersPresences: ").Append(SupportedCustomersPresences).Append("\n");
             sb.Append("  SupportedFeatures: ").Append(SupportedFeatures).Append("\n");
             sb.Append("}\n");
@@ -223,6 +230,12 @@ namespace Wallee.Model
                     this.Processor.Equals(input.Processor))
                 ) && 
                 (
+                    this.SupportedCurrencies == input.SupportedCurrencies ||
+                    this.SupportedCurrencies != null &&
+                    input.SupportedCurrencies != null &&
+                    this.SupportedCurrencies.SequenceEqual(input.SupportedCurrencies)
+                ) && 
+                (
                     this.SupportedCustomersPresences == input.SupportedCustomersPresences ||
                     this.SupportedCustomersPresences != null &&
                     input.SupportedCustomersPresences != null &&
@@ -267,6 +280,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.PrimaryRiskTaker.GetHashCode();
                 if (this.Processor != null)
                     hashCode = hashCode * 59 + this.Processor.GetHashCode();
+                if (this.SupportedCurrencies != null)
+                    hashCode = hashCode * 59 + this.SupportedCurrencies.GetHashCode();
                 if (this.SupportedCustomersPresences != null)
                     hashCode = hashCode * 59 + this.SupportedCustomersPresences.GetHashCode();
                 if (this.SupportedFeatures != null)

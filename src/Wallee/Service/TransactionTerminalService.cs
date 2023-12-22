@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="request"></param>
         /// <returns>ApiResponse of List&lt;RenderedTerminalReceipt&gt;</returns>
         ApiResponse<List<RenderedTerminalReceipt>> FetchReceiptsWithHttpInfo (long? spaceId, TerminalReceiptFetchRequest request);
+
+
+
         /// <summary>
         /// Create Till Connection Credentials
         /// </summary>
@@ -64,6 +69,9 @@ namespace Wallee.Service
         /// <param name="language">The language in which the messages should be rendered in. (optional)</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> TillConnectionCredentialsWithHttpInfo (long? spaceId, long? transactionId, long? terminalId, string language = null);
+
+
+
         #endregion Synchronous Operations
     }
 

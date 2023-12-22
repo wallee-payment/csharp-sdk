@@ -13,35 +13,39 @@ namespace Wallee.Service
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IMerticUsageService : IApiAccessor
+    public interface IWebhookEncryptionService : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Calculate
+        /// Read
         /// </summary>
         /// <remarks>
-        /// Calculates the consumed resources for the given space and time range.
+        /// Reads the entity with the given &#39;id&#39; and returns it.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="start">The start date from which on the consumed units should be returned from.</param>
-        /// <param name="end">The end date to which the consumed units should be returned to. The end date is not included in the result.</param>
-        /// <returns>List&lt;MetricUsage&gt;</returns>
-        List<MetricUsage> Calculate (long? spaceId, DateTime? start, DateTime? end);
+        /// <param name="id">The ID of the key version.</param>
+        /// <returns>WebhookEncryptionPublicKey</returns>
+        WebhookEncryptionPublicKey Read (string id);
 
         /// <summary>
-        /// Calculate
+        /// Read
         /// </summary>
         /// <remarks>
-        /// Calculates the consumed resources for the given space and time range.
+        /// Reads the entity with the given &#39;id&#39; and returns it.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="start">The start date from which on the consumed units should be returned from.</param>
-        /// <param name="end">The end date to which the consumed units should be returned to. The end date is not included in the result.</param>
-        /// <returns>ApiResponse of List&lt;MetricUsage&gt;</returns>
-        ApiResponse<List<MetricUsage>> CalculateWithHttpInfo (long? spaceId, DateTime? start, DateTime? end);
+        /// <param name="id">The ID of the key version.</param>
+        /// <returns>ApiResponse of WebhookEncryptionPublicKey</returns>
+        ApiResponse<WebhookEncryptionPublicKey> ReadWithHttpInfo (string id);
 
+        /// <summary>
+        /// Verify content of a webhook.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when when private key can not be found</exception>
+        /// <param name="signatureHeader">The content of the X-Signature header.</param>
+        /// <param name="content">The content body.</param>
+        /// <returns>true if the content body conforms with the signature header</returns>
+        bool IsContentValid(string signatureHeader, string content);
 
 
         #endregion Synchronous Operations
@@ -50,17 +54,17 @@ namespace Wallee.Service
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class MerticUsageService : IMerticUsageService
+    public partial class WebhookEncryptionService : IWebhookEncryptionService
     {
         private Wallee.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MerticUsageService"/> class
+        /// Initializes a new instance of the <see cref="WebhookEncryptionService"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public MerticUsageService(Wallee.Client.Configuration configuration = null)
+        public WebhookEncryptionService(Wallee.Client.Configuration configuration = null)
         {
             if(configuration == null){
                 throw new ArgumentException("Parameter cannot be null", "configuration");
@@ -103,41 +107,31 @@ namespace Wallee.Service
         }
 
         /// <summary>
-        /// Calculate Calculates the consumed resources for the given space and time range.
+        /// Read Reads the entity with the given &#39;id&#39; and returns it.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="start">The start date from which on the consumed units should be returned from.</param>
-        /// <param name="end">The end date to which the consumed units should be returned to. The end date is not included in the result.</param>
-        /// <returns>List&lt;MetricUsage&gt;</returns>
-        public List<MetricUsage> Calculate (long? spaceId, DateTime? start, DateTime? end)
+        /// <param name="id">The ID of the key version.</param>
+        /// <returns>WebhookEncryptionPublicKey</returns>
+        public WebhookEncryptionPublicKey Read (string id)
         {
-             ApiResponse<List<MetricUsage>> localVarResponse = CalculateWithHttpInfo(spaceId, start, end);
+             ApiResponse<WebhookEncryptionPublicKey> localVarResponse = ReadWithHttpInfo(id);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Calculate Calculates the consumed resources for the given space and time range.
+        /// Read Reads the entity with the given &#39;id&#39; and returns it.
         
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
-        /// <param name="start">The start date from which on the consumed units should be returned from.</param>
-        /// <param name="end">The end date to which the consumed units should be returned to. The end date is not included in the result.</param>
-        /// <returns>ApiResponse of List&lt;MetricUsage&gt;</returns>
-        public ApiResponse< List<MetricUsage> > CalculateWithHttpInfo (long? spaceId, DateTime? start, DateTime? end)
+        /// <param name="id">The ID of the key version.</param>
+        /// <returns>ApiResponse of WebhookEncryptionPublicKey</returns>
+        public ApiResponse< WebhookEncryptionPublicKey > ReadWithHttpInfo (string id)
         {
-            // verify the required parameter 'spaceId' is set
-            if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling MerticUsageService->Calculate");
-            // verify the required parameter 'start' is set
-            if (start == null)
-                throw new ApiException(400, "Missing required parameter 'start' when calling MerticUsageService->Calculate");
-            // verify the required parameter 'end' is set
-            if (end == null)
-                throw new ApiException(400, "Missing required parameter 'end' when calling MerticUsageService->Calculate");
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling WebhookEncryptionService->Read");
 
-            var localVarPath = "/mertic-usage/calculate";
+            var localVarPath = "/webhook-encryption/read";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -151,31 +145,57 @@ namespace Wallee.Service
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
-            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
-            if (start != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "start", start)); // query parameter
-            if (end != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "end", end)); // query parameter
+            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
 			
             int requestTimeout = this.Configuration.Timeout * 1000;
 
                 // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("Calculate", localVarResponse);
+                Exception exception = ExceptionFactory("Read", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<MetricUsage>>(localVarStatusCode,
+            return new ApiResponse<WebhookEncryptionPublicKey>(localVarStatusCode,
                     localVarResponse.Headers
                         .GroupBy(x => x.Name, x => x.Value.ToString())
                         .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
-                    (List<MetricUsage>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<MetricUsage>)));
+                    (WebhookEncryptionPublicKey) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WebhookEncryptionPublicKey)));
+        }
+        /// <summary>
+        /// Verify content of a webhook.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when when private key can not be found</exception>
+        /// <param name="signatureHeader">The content of the X-Signature header.</param>
+        /// <param name="content">The content body.</param>
+        /// <returns>true if the content body conforms with the signature header</returns>
+        public bool IsContentValid(string signatureHeader, string content)
+        {
+            string regex = "^algorithm=([a-zA-Z0-9]+),\\skeyId=([a-z0-9\\-]+),\\s{1}signature=([a-zA-Z0-9+\\/=]+)$";
+            Regex pattern = new Regex(regex);
+            Match matcher = pattern.Match(signatureHeader);
+            if (matcher.Success)
+            {
+                string signatureAlgorithm = matcher.Groups[1].Value;
+                string publicKeyId = matcher.Groups[2].Value;
+                string contentSignature = matcher.Groups[3].Value;
+
+                WebhookEncryptionPublicKey publicKey = Read(publicKeyId);
+                if (publicKey == null)
+                {
+                    throw new ApiException(404, "WebhookEncryptionKey not found");
+                }
+
+                return EncryptionUtil.IsContentValid(content, contentSignature, publicKey, signatureAlgorithm);
+            }
+            throw new ArgumentException("Invalid signature header. Expected format: 'algorithm=<algorithm>, keyId=<keyId>, signature=<signature>'", "signatureHeader");
         }
     }
 }

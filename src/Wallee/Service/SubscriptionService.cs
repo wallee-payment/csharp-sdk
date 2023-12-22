@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="request"></param>
         /// <returns>ApiResponse of SubscriptionVersion</returns>
         ApiResponse<SubscriptionVersion> ApplyChangesWithHttpInfo (long? spaceId, SubscriptionChangeRequest request);
+
+
+
         /// <summary>
         /// Count
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Create
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="createRequest"></param>
         /// <returns>ApiResponse of SubscriptionVersion</returns>
         ApiResponse<SubscriptionVersion> CreateWithHttpInfo (long? spaceId, SubscriptionCreateRequest createRequest);
+
+
+
         /// <summary>
         /// initialize
         /// </summary>
@@ -106,6 +117,9 @@ namespace Wallee.Service
         /// <param name="subscriptionId">The provided subscription id will be used to lookup the subscription which should be initialized.</param>
         /// <returns>ApiResponse of SubscriptionCharge</returns>
         ApiResponse<SubscriptionCharge> InitializeWithHttpInfo (long? spaceId, long? subscriptionId);
+
+
+
         /// <summary>
         /// initializeSubscriberPresent
         /// </summary>
@@ -133,6 +147,9 @@ namespace Wallee.Service
         /// <param name="failedUrl">The subscriber will be redirected to the fail URL when the transaction fails. (optional)</param>
         /// <returns>ApiResponse of SubscriptionCharge</returns>
         ApiResponse<SubscriptionCharge> InitializeSubscriberPresentWithHttpInfo (long? spaceId, long? subscriptionId, string successUrl = null, string failedUrl = null);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -156,6 +173,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the subscription which should be returned.</param>
         /// <returns>ApiResponse of Subscription</returns>
         ApiResponse<Subscription> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -179,6 +199,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the subscriptions which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;Subscription&gt;</returns>
         ApiResponse<List<Subscription>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         /// <summary>
         /// Search Subscription Invoices
         /// </summary>
@@ -204,6 +227,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the invoices which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;TransactionInvoice&gt;</returns>
         ApiResponse<List<TransactionInvoice>> SearchSubscriptionInvoicesWithHttpInfo (long? spaceId, long? subscriptionId, EntityQuery query);
+
+
+
         /// <summary>
         /// terminate
         /// </summary>
@@ -229,6 +255,9 @@ namespace Wallee.Service
         /// <param name="respectTerminationPeriod">The respect termination period controls whether the termination period configured on the product version should be respected or if the operation should take effect immediately.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> TerminateWithHttpInfo (long? spaceId, long? subscriptionId, bool? respectTerminationPeriod);
+
+
+
         /// <summary>
         /// update
         /// </summary>
@@ -254,6 +283,9 @@ namespace Wallee.Service
         /// <param name="request"></param>
         /// <returns>ApiResponse of Subscription</returns>
         ApiResponse<Subscription> UpdateWithHttpInfo (long? spaceId, long? subscriptionId, SubscriptionUpdateRequest request);
+
+
+
         /// <summary>
         /// update product version
         /// </summary>
@@ -279,6 +311,9 @@ namespace Wallee.Service
         /// <param name="respectTerminationPeriod">The subscription version may be retired. The respect termination period controls whether the termination period configured on the product version should be respected or if the operation should take effect immediately.</param>
         /// <returns>ApiResponse of SubscriptionVersion</returns>
         ApiResponse<SubscriptionVersion> UpdateProductVersionWithHttpInfo (long? spaceId, long? subscriptionId, bool? respectTerminationPeriod);
+
+
+
         #endregion Synchronous Operations
     }
 

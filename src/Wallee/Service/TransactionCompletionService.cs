@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction which should be completed.</param>
         /// <returns>ApiResponse of TransactionCompletion</returns>
         ApiResponse<TransactionCompletion> CompleteOfflineWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// completeOnline
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction which should be completed.</param>
         /// <returns>ApiResponse of TransactionCompletion</returns>
         ApiResponse<TransactionCompletion> CompleteOnlineWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// completePartiallyOffline
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="completion"></param>
         /// <returns>ApiResponse of TransactionCompletion</returns>
         ApiResponse<TransactionCompletion> CompletePartiallyOfflineWithHttpInfo (long? spaceId, TransactionCompletionRequest completion);
+
+
+
         /// <summary>
         /// completePartiallyOnline
         /// </summary>
@@ -106,6 +117,9 @@ namespace Wallee.Service
         /// <param name="completion"></param>
         /// <returns>ApiResponse of TransactionCompletion</returns>
         ApiResponse<TransactionCompletion> CompletePartiallyOnlineWithHttpInfo (long? spaceId, TransactionCompletionRequest completion);
+
+
+
         /// <summary>
         /// Count
         /// </summary>
@@ -129,6 +143,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -152,6 +169,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction completions which should be returned.</param>
         /// <returns>ApiResponse of TransactionCompletion</returns>
         ApiResponse<TransactionCompletion> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -175,6 +195,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the transaction completions which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;TransactionCompletion&gt;</returns>
         ApiResponse<List<TransactionCompletion>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         #endregion Synchronous Operations
     }
 

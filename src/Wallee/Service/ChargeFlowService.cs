@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="id">The transaction id of the transaction which should be process asynchronously.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> ApplyFlowWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Cancel Charge Flow
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="id">The ID of the transaction for which the charge flow should be canceled.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> CancelChargeFlowWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Count
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Fetch Charge Flow Payment Page URL
         /// </summary>
@@ -106,6 +117,9 @@ namespace Wallee.Service
         /// <param name="id">The transaction id of the transaction for which the URL of the charge flow should be fetched.</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> FetchChargeFlowPaymentPageUrlWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -129,6 +143,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the charge flow which should be returned.</param>
         /// <returns>ApiResponse of ChargeFlow</returns>
         ApiResponse<ChargeFlow> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -152,6 +169,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the charge flows which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;ChargeFlow&gt;</returns>
         ApiResponse<List<ChargeFlow>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         /// <summary>
         /// updateRecipient
         /// </summary>
@@ -179,6 +199,9 @@ namespace Wallee.Service
         /// <param name="recipient">The recipient address that should be used to send the payment URL.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateRecipientWithHttpInfo (long? spaceId, long? transactionId, long? type, string recipient);
+
+
+
         #endregion Synchronous Operations
     }
 

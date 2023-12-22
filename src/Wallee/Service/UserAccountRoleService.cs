@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -41,6 +43,9 @@ namespace Wallee.Service
         /// <param name="appliesOnSubaccount">Whether the role applies only on subaccount. (optional)</param>
         /// <returns>ApiResponse of UserAccountRole</returns>
         ApiResponse<UserAccountRole> AddRoleWithHttpInfo (long? userId, long? accountId, long? roleId, bool? appliesOnSubaccount = null);
+
+
+
         /// <summary>
         /// List Roles
         /// </summary>
@@ -64,6 +69,9 @@ namespace Wallee.Service
         /// <param name="accountId">The account to which the role is mapped.</param>
         /// <returns>ApiResponse of List&lt;UserAccountRole&gt;</returns>
         ApiResponse<List<UserAccountRole>> ListWithHttpInfo (long? userId, long? accountId);
+
+
+
         /// <summary>
         /// Remove Role
         /// </summary>
@@ -85,6 +93,9 @@ namespace Wallee.Service
         /// <param name="id">The id of user account role which should be removed</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> RemoveRoleWithHttpInfo (long? id);
+
+
+
         #endregion Synchronous Operations
     }
 

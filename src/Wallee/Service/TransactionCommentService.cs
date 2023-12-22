@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="transactionId"></param>
         /// <returns>ApiResponse of List&lt;TransactionComment&gt;</returns>
         ApiResponse<List<TransactionComment>> AllWithHttpInfo (long? spaceId, long? transactionId);
+
+
+
         /// <summary>
         /// Create
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="entity"></param>
         /// <returns>ApiResponse of TransactionComment</returns>
         ApiResponse<TransactionComment> CreateWithHttpInfo (long? spaceId, TransactionCommentCreate entity);
+
+
+
         /// <summary>
         /// Delete
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Pin
         /// </summary>
@@ -106,6 +117,9 @@ namespace Wallee.Service
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PinWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -129,6 +143,9 @@ namespace Wallee.Service
         /// <param name="id"></param>
         /// <returns>ApiResponse of TransactionComment</returns>
         ApiResponse<TransactionComment> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Unpin
         /// </summary>
@@ -152,6 +169,9 @@ namespace Wallee.Service
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UnpinWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Update
         /// </summary>
@@ -175,6 +195,9 @@ namespace Wallee.Service
         /// <param name="entity"></param>
         /// <returns>ApiResponse of TransactionComment</returns>
         ApiResponse<TransactionComment> UpdateWithHttpInfo (long? spaceId, TransactionCommentActive entity);
+
+
+
         #endregion Synchronous Operations
     }
 

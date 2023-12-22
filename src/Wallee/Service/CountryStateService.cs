@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -33,6 +35,9 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;RestCountryState&gt;</returns>
         ApiResponse<List<RestCountryState>> AllWithHttpInfo ();
+
+
+
         /// <summary>
         /// Find by Country
         /// </summary>
@@ -54,6 +59,9 @@ namespace Wallee.Service
         /// <param name="code">The country code in ISO code two letter format for which all states should be returned.</param>
         /// <returns>ApiResponse of List&lt;RestCountryState&gt;</returns>
         ApiResponse<List<RestCountryState>> CountryWithHttpInfo (string code);
+
+
+
         #endregion Synchronous Operations
     }
 

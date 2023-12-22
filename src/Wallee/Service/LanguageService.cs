@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -33,6 +35,9 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;RestLanguage&gt;</returns>
         ApiResponse<List<RestLanguage>> AllWithHttpInfo ();
+
+
+
         #endregion Synchronous Operations
     }
 

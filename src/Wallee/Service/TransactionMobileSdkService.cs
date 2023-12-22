@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -35,6 +37,9 @@ namespace Wallee.Service
         /// <param name="credentials">The credentials identifies the transaction and contains the security details which grants the access this operation.</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> PaymentFormUrlWithHttpInfo (string credentials);
+
+
+
         #endregion Synchronous Operations
     }
 

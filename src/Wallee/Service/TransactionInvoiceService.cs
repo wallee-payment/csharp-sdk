@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// getInvoiceDocument
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction invoice to get the document for.</param>
         /// <returns>ApiResponse of RenderedDocument</returns>
         ApiResponse<RenderedDocument> GetInvoiceDocumentWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// getInvoiceDocumentWithTargetMediaType
         /// </summary>
@@ -85,6 +93,9 @@ namespace Wallee.Service
         /// <param name="targetMediaTypeId">The id of the target media type for which the invoice should be generated for.</param>
         /// <returns>ApiResponse of RenderedDocument</returns>
         ApiResponse<RenderedDocument> GetInvoiceDocumentWithTargetMediaTypeWithHttpInfo (long? spaceId, long? id, long? targetMediaTypeId);
+
+
+
         /// <summary>
         /// isReplacementPossible
         /// </summary>
@@ -108,6 +119,9 @@ namespace Wallee.Service
         /// <param name="id">The invoice which should be checked if a replacement is possible.</param>
         /// <returns>ApiResponse of bool?</returns>
         ApiResponse<bool?> IsReplacementPossibleWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Mark as Derecognized
         /// </summary>
@@ -131,6 +145,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction invoice which should be marked as derecognized.</param>
         /// <returns>ApiResponse of TransactionInvoice</returns>
         ApiResponse<TransactionInvoice> MarkAsDerecognizedWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Mark as Paid
         /// </summary>
@@ -154,6 +171,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction invoice which should be marked as paid.</param>
         /// <returns>ApiResponse of TransactionInvoice</returns>
         ApiResponse<TransactionInvoice> MarkAsPaidWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -177,6 +197,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction invoices which should be returned.</param>
         /// <returns>ApiResponse of TransactionInvoice</returns>
         ApiResponse<TransactionInvoice> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// replace
         /// </summary>
@@ -202,6 +225,9 @@ namespace Wallee.Service
         /// <param name="replacement"></param>
         /// <returns>ApiResponse of TransactionInvoice</returns>
         ApiResponse<TransactionInvoice> ReplaceWithHttpInfo (long? spaceId, long? id, TransactionInvoiceReplacement replacement);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -225,6 +251,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the transaction invoices which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;TransactionInvoice&gt;</returns>
         ApiResponse<List<TransactionInvoice>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         #endregion Synchronous Operations
     }
 

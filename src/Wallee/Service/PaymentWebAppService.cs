@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="externalId">The external ID identifies the processor. The external ID corresponds to the ID provided during inserting of the processor.</param>
         /// <returns>ApiResponse of PaymentAppProcessor</returns>
         ApiResponse<PaymentAppProcessor> ActivateProcessorForProductionWithHttpInfo (long? spaceId, string externalId);
+
+
+
         /// <summary>
         /// Delete Connector
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="externalId">The external ID identifies the connector. The external ID corresponds to the ID provided during inserting of the connector.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteConnectorWithHttpInfo (long? spaceId, string externalId);
+
+
+
         /// <summary>
         /// Delete Processor
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="externalId">The external ID identifies the processor. The external ID corresponds to the ID provided during inserting of the processor.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteProcessorWithHttpInfo (long? spaceId, string externalId);
+
+
+
         /// <summary>
         /// Insert or Update Connector
         /// </summary>
@@ -106,6 +117,9 @@ namespace Wallee.Service
         /// <param name="request">The connector object contains all the details required to create or update a web app connector.</param>
         /// <returns>ApiResponse of PaymentAppConnector</returns>
         ApiResponse<PaymentAppConnector> InsertOrUpdateConnectorWithHttpInfo (long? spaceId, PaymentAppConnectorCreationRequest request);
+
+
+
         /// <summary>
         /// Insert or Update Processor
         /// </summary>
@@ -129,6 +143,9 @@ namespace Wallee.Service
         /// <param name="request">The processor object contains all the details required to create or update a web app processor.</param>
         /// <returns>ApiResponse of PaymentAppProcessor</returns>
         ApiResponse<PaymentAppProcessor> InsertOrUpdateProcessorWithHttpInfo (long? spaceId, PaymentAppProcessorCreationRequest request);
+
+
+
         /// <summary>
         /// Update Charge Attempt
         /// </summary>
@@ -152,6 +169,9 @@ namespace Wallee.Service
         /// <param name="request">The charge attempt update request allows to update the state of a charge attempt.</param>
         /// <returns>ApiResponse of ChargeAttempt</returns>
         ApiResponse<ChargeAttempt> UpdateChargeAttemptWithHttpInfo (long? spaceId, PaymentAppChargeAttemptUpdateRequest request);
+
+
+
         /// <summary>
         /// Update Completion
         /// </summary>
@@ -175,6 +195,9 @@ namespace Wallee.Service
         /// <param name="request">The completion update request allows to update the state of a completion.</param>
         /// <returns>ApiResponse of TransactionCompletion</returns>
         ApiResponse<TransactionCompletion> UpdateCompletionWithHttpInfo (long? spaceId, PaymentAppCompletionUpdateRequest request);
+
+
+
         /// <summary>
         /// Update Refund
         /// </summary>
@@ -198,6 +221,9 @@ namespace Wallee.Service
         /// <param name="request">The refund update request allows to update the state of a refund.</param>
         /// <returns>ApiResponse of Refund</returns>
         ApiResponse<Refund> UpdateRefundWithHttpInfo (long? spaceId, PaymentAppRefundUpdateRequest request);
+
+
+
         /// <summary>
         /// Update Void
         /// </summary>
@@ -221,6 +247,9 @@ namespace Wallee.Service
         /// <param name="request">The void update request allows to update the state of a void.</param>
         /// <returns>ApiResponse of TransactionVoid</returns>
         ApiResponse<TransactionVoid> UpdateVoidWithHttpInfo (long? spaceId, PaymentAppVoidUpdateRequest request);
+
+
+
         #endregion Synchronous Operations
     }
 

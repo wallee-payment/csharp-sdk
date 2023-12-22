@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Link Device With Terminal
         /// </summary>
@@ -62,6 +67,9 @@ namespace Wallee.Service
         /// <param name="serialNumber"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> LinkWithHttpInfo (long? spaceId, long? terminalId, string serialNumber);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -85,6 +93,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the payment terminal which should be returned.</param>
         /// <returns>ApiResponse of PaymentTerminal</returns>
         ApiResponse<PaymentTerminal> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -108,6 +119,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the payment terminals which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;PaymentTerminal&gt;</returns>
         ApiResponse<List<PaymentTerminal>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         /// <summary>
         /// Remotely Trigger Final Balance
         /// </summary>
@@ -131,6 +145,9 @@ namespace Wallee.Service
         /// <param name="terminalId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> TriggerFinalBalanceWithHttpInfo (long? spaceId, long? terminalId);
+
+
+
         /// <summary>
         /// Remotely Trigger Final Balance By Identifier
         /// </summary>
@@ -154,6 +171,9 @@ namespace Wallee.Service
         /// <param name="terminalIdentifier"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> TriggerFinalBalanceByIdentifierWithHttpInfo (long? spaceId, string terminalIdentifier);
+
+
+
         /// <summary>
         /// Unlink Device With Terminal
         /// </summary>
@@ -177,6 +197,9 @@ namespace Wallee.Service
         /// <param name="terminalId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UnlinkWithHttpInfo (long? spaceId, long? terminalId);
+
+
+
         #endregion Synchronous Operations
     }
 

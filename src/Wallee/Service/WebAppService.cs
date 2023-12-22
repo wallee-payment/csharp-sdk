@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -35,6 +37,9 @@ namespace Wallee.Service
         /// <param name="spaceId">This parameter identifies the space which should be checked if the web app is installed.</param>
         /// <returns>ApiResponse of bool?</returns>
         ApiResponse<bool?> CheckInstallationWithHttpInfo (long? spaceId);
+
+
+
         /// <summary>
         /// Confirm
         /// </summary>
@@ -56,6 +61,9 @@ namespace Wallee.Service
         /// <param name="request"></param>
         /// <returns>ApiResponse of WebAppConfirmationResponse</returns>
         ApiResponse<WebAppConfirmationResponse> ConfirmWithHttpInfo (WebAppConfirmationRequest request);
+
+
+
         /// <summary>
         /// Uninstall
         /// </summary>
@@ -77,6 +85,9 @@ namespace Wallee.Service
         /// <param name="spaceId">This parameter identifies the space within which the web app should be uninstalled.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UninstallWithHttpInfo (long? spaceId);
+
+
+
         #endregion Synchronous Operations
     }
 

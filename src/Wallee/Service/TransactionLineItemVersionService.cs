@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// create
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="lineItemVersion">The line item version object which should be created.</param>
         /// <returns>ApiResponse of TransactionLineItemVersion</returns>
         ApiResponse<TransactionLineItemVersion> CreateWithHttpInfo (long? spaceId, TransactionLineItemVersionCreate lineItemVersion);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="id">The ID of the line item version which should be returned.</param>
         /// <returns>ApiResponse of TransactionLineItemVersion</returns>
         ApiResponse<TransactionLineItemVersion> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -106,6 +117,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts line item versions which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;TransactionLineItemVersion&gt;</returns>
         ApiResponse<List<TransactionLineItemVersion>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         #endregion Synchronous Operations
     }
 

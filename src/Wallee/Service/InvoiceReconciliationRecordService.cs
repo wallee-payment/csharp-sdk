@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Discard
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="id">The ID of the invoice reconciliation record which should be discarded.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DiscardWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="id">The ID of the invoice reconciliation record which should be returned.</param>
         /// <returns>ApiResponse of InvoiceReconciliationRecord</returns>
         ApiResponse<InvoiceReconciliationRecord> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Resolve
         /// </summary>
@@ -106,6 +117,9 @@ namespace Wallee.Service
         /// <param name="id">The ID of the invoice reconciliation record which should be resolved.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> ResolveWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -129,6 +143,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the invoice reconciliation records which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;InvoiceReconciliationRecord&gt;</returns>
         ApiResponse<List<InvoiceReconciliationRecord>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         /// <summary>
         /// Search for matchable invoices by query
         /// </summary>
@@ -152,6 +169,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the invoices which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;TransactionInvoice&gt;</returns>
         ApiResponse<List<TransactionInvoice>> SearchForInvoicesByQueryWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         #endregion Synchronous Operations
     }
 

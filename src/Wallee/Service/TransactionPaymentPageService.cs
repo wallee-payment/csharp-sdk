@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the transaction which should be returned.</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> PaymentPageUrlWithHttpInfo (long? spaceId, long? id);
+
+
+
         #endregion Synchronous Operations
     }
 

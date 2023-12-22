@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Create
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="entity">The payment link object with the properties which should be created.</param>
         /// <returns>ApiResponse of PaymentLink</returns>
         ApiResponse<PaymentLink> CreateWithHttpInfo (long? spaceId, PaymentLinkCreate entity);
+
+
+
         /// <summary>
         /// Delete
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -106,6 +117,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the payment links which should be returned.</param>
         /// <returns>ApiResponse of PaymentLink</returns>
         ApiResponse<PaymentLink> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -129,6 +143,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the payment links which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;PaymentLink&gt;</returns>
         ApiResponse<List<PaymentLink>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         /// <summary>
         /// Update
         /// </summary>
@@ -152,6 +169,9 @@ namespace Wallee.Service
         /// <param name="entity">The object with all the properties which should be updated. The id and the version are required properties.</param>
         /// <returns>ApiResponse of PaymentLink</returns>
         ApiResponse<PaymentLink> UpdateWithHttpInfo (long? spaceId, PaymentLinkUpdate entity);
+
+
+
         #endregion Synchronous Operations
     }
 

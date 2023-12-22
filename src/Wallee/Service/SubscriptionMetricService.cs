@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Create
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="entity">The metric object with the properties which should be created.</param>
         /// <returns>ApiResponse of SubscriptionMetric</returns>
         ApiResponse<SubscriptionMetric> CreateWithHttpInfo (long? spaceId, SubscriptionMetricCreate entity);
+
+
+
         /// <summary>
         /// Delete
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the metric which should be deleted.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -106,6 +117,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the metric which should be returned.</param>
         /// <returns>ApiResponse of SubscriptionMetric</returns>
         ApiResponse<SubscriptionMetric> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -129,6 +143,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the metric which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;SubscriptionMetric&gt;</returns>
         ApiResponse<List<SubscriptionMetric>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         /// <summary>
         /// Update
         /// </summary>
@@ -152,6 +169,9 @@ namespace Wallee.Service
         /// <param name="entity">The products metric with all the properties which should be updated. The id and the version are required properties.</param>
         /// <returns>ApiResponse of SubscriptionMetric</returns>
         ApiResponse<SubscriptionMetric> UpdateWithHttpInfo (long? spaceId, SubscriptionMetricActive entity);
+
+
+
         #endregion Synchronous Operations
     }
 

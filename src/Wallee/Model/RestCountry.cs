@@ -29,25 +29,25 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The country&#39;s two-letter code (ISO 3166-1 alpha-2 format).
-        /// </summary>
-        /// <value>The country&#39;s two-letter code (ISO 3166-1 alpha-2 format).</value>
-        [DataMember(Name="ISOCode2Letter", EmitDefaultValue=false)]
-        public string ISOCode2Letter { get; private set; }
-
-        /// <summary>
-        /// The country&#39;s three-letter code (ISO 3166-1 alpha-3 format).
-        /// </summary>
-        /// <value>The country&#39;s three-letter code (ISO 3166-1 alpha-3 format).</value>
-        [DataMember(Name="ISOCode3Letter", EmitDefaultValue=false)]
-        public string ISOCode3Letter { get; private set; }
-
-        /// <summary>
         /// Specifies the country&#39;s way of formatting addresses.
         /// </summary>
         /// <value>Specifies the country&#39;s way of formatting addresses.</value>
         [DataMember(Name="addressFormat", EmitDefaultValue=false)]
         public RestAddressFormat AddressFormat { get; private set; }
+
+        /// <summary>
+        /// The country&#39;s two-letter code (ISO 3166-1 alpha-2 format).
+        /// </summary>
+        /// <value>The country&#39;s two-letter code (ISO 3166-1 alpha-2 format).</value>
+        [DataMember(Name="isoCode2", EmitDefaultValue=false)]
+        public string IsoCode2 { get; private set; }
+
+        /// <summary>
+        /// The country&#39;s three-letter code (ISO 3166-1 alpha-3 format).
+        /// </summary>
+        /// <value>The country&#39;s three-letter code (ISO 3166-1 alpha-3 format).</value>
+        [DataMember(Name="isoCode3", EmitDefaultValue=false)]
+        public string IsoCode3 { get; private set; }
 
         /// <summary>
         /// The name of the country.
@@ -78,9 +78,9 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class RestCountry {\n");
-            sb.Append("  ISOCode2Letter: ").Append(ISOCode2Letter).Append("\n");
-            sb.Append("  ISOCode3Letter: ").Append(ISOCode3Letter).Append("\n");
             sb.Append("  AddressFormat: ").Append(AddressFormat).Append("\n");
+            sb.Append("  IsoCode2: ").Append(IsoCode2).Append("\n");
+            sb.Append("  IsoCode3: ").Append(IsoCode3).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NumericCode: ").Append(NumericCode).Append("\n");
             sb.Append("  StateCodes: ").Append(StateCodes).Append("\n");
@@ -119,19 +119,19 @@ namespace Wallee.Model
 
             return 
                 (
-                    this.ISOCode2Letter == input.ISOCode2Letter ||
-                    (this.ISOCode2Letter != null &&
-                    this.ISOCode2Letter.Equals(input.ISOCode2Letter))
-                ) && 
-                (
-                    this.ISOCode3Letter == input.ISOCode3Letter ||
-                    (this.ISOCode3Letter != null &&
-                    this.ISOCode3Letter.Equals(input.ISOCode3Letter))
-                ) && 
-                (
                     this.AddressFormat == input.AddressFormat ||
                     (this.AddressFormat != null &&
                     this.AddressFormat.Equals(input.AddressFormat))
+                ) && 
+                (
+                    this.IsoCode2 == input.IsoCode2 ||
+                    (this.IsoCode2 != null &&
+                    this.IsoCode2.Equals(input.IsoCode2))
+                ) && 
+                (
+                    this.IsoCode3 == input.IsoCode3 ||
+                    (this.IsoCode3 != null &&
+                    this.IsoCode3.Equals(input.IsoCode3))
                 ) && 
                 (
                     this.Name == input.Name ||
@@ -160,12 +160,12 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ISOCode2Letter != null)
-                    hashCode = hashCode * 59 + this.ISOCode2Letter.GetHashCode();
-                if (this.ISOCode3Letter != null)
-                    hashCode = hashCode * 59 + this.ISOCode3Letter.GetHashCode();
                 if (this.AddressFormat != null)
                     hashCode = hashCode * 59 + this.AddressFormat.GetHashCode();
+                if (this.IsoCode2 != null)
+                    hashCode = hashCode * 59 + this.IsoCode2.GetHashCode();
+                if (this.IsoCode3 != null)
+                    hashCode = hashCode * 59 + this.IsoCode3.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.NumericCode != null)

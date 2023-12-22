@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -37,6 +39,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (long? spaceId, EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -60,6 +65,9 @@ namespace Wallee.Service
         /// <param name="id">The ID of the invoice reimbursement which should be returned.</param>
         /// <returns>ApiResponse of InvoiceReimbursement</returns>
         ApiResponse<InvoiceReimbursement> ReadWithHttpInfo (long? spaceId, long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -83,6 +91,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the invoice reimbursements which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;InvoiceReimbursementWithRefundReference&gt;</returns>
         ApiResponse<List<InvoiceReimbursementWithRefundReference>> SearchWithHttpInfo (long? spaceId, EntityQuery query);
+
+
+
         /// <summary>
         /// Update payment connector configuration
         /// </summary>
@@ -108,6 +119,9 @@ namespace Wallee.Service
         /// <param name="paymentConnectorConfigurationId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateConnectorWithHttpInfo (long? spaceId, long? id, long? paymentConnectorConfigurationId);
+
+
+
         /// <summary>
         /// Update IBAN
         /// </summary>
@@ -135,6 +149,9 @@ namespace Wallee.Service
         /// <param name="senderIban"> (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UpdateIbanWithHttpInfo (long? spaceId, long? id, string recipientIban = null, string senderIban = null);
+
+
+
         #endregion Synchronous Operations
     }
 

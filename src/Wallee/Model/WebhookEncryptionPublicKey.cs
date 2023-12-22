@@ -15,39 +15,32 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// WalletType
+    /// The webhook encryption public key is used to verify the webhook content signature.
     /// </summary>
     [DataContract]
-    public partial class WalletType :  IEquatable<WalletType>
+    public partial class WebhookEncryptionPublicKey :  IEquatable<WebhookEncryptionPublicKey>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="WalletType" /> class.
+        /// Initializes a new instance of the <see cref="WebhookEncryptionPublicKey" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public WalletType()
+        public WebhookEncryptionPublicKey()
         {
         }
 
         /// <summary>
-        /// The localized description of the object.
+        /// The ID of encryption key
         /// </summary>
-        /// <value>The localized description of the object.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; private set; }
-
-        /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
+        /// <value>The ID of encryption key</value>
         [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
+        public string Id { get; private set; }
 
         /// <summary>
-        /// The localized name of the object.
+        /// The BASE64 encoded public key
         /// </summary>
-        /// <value>The localized name of the object.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; private set; }
+        /// <value>The BASE64 encoded public key</value>
+        [DataMember(Name="publicKey", EmitDefaultValue=false)]
+        public string PublicKey { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -56,10 +49,9 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class WalletType {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("class WebhookEncryptionPublicKey {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PublicKey: ").Append(PublicKey).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -80,36 +72,29 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as WalletType);
+            return this.Equals(input as WebhookEncryptionPublicKey);
         }
 
         /// <summary>
-        /// Returns true if WalletType instances are equal
+        /// Returns true if WebhookEncryptionPublicKey instances are equal
         /// </summary>
-        /// <param name="input">Instance of WalletType to be compared</param>
+        /// <param name="input">Instance of WebhookEncryptionPublicKey to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(WalletType input)
+        public bool Equals(WebhookEncryptionPublicKey input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Description == input.Description ||
-                    this.Description != null &&
-                    input.Description != null &&
-                    this.Description.SequenceEqual(input.Description)
-                ) && 
-                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    this.Name != null &&
-                    input.Name != null &&
-                    this.Name.SequenceEqual(input.Name)
+                    this.PublicKey == input.PublicKey ||
+                    (this.PublicKey != null &&
+                    this.PublicKey.Equals(input.PublicKey))
                 );
         }
 
@@ -122,12 +107,10 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.PublicKey != null)
+                    hashCode = hashCode * 59 + this.PublicKey.GetHashCode();
                 return hashCode;
             }
         }

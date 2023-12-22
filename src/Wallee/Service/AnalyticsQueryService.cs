@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -35,6 +37,9 @@ namespace Wallee.Service
         /// <param name="id">The ID of the query execution to cancel.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> CancelExecutionWithHttpInfo (long? id);
+
+
+
         /// <summary>
         /// Fetch Result
         /// </summary>
@@ -62,6 +67,9 @@ namespace Wallee.Service
         /// <param name="nextToken">The next-token of the preceding batch to get the next result batch or null to get the first result batch. (optional)</param>
         /// <returns>ApiResponse of AnalyticsQueryResultBatch</returns>
         ApiResponse<AnalyticsQueryResultBatch> FetchResultWithHttpInfo (long? id, int? timeout = null, int? maxRows = null, string nextToken = null);
+
+
+
         /// <summary>
         /// Generate Download URL
         /// </summary>
@@ -85,6 +93,9 @@ namespace Wallee.Service
         /// <param name="timeout">The maximal time in seconds to wait for the result if it is not yet available. Use 0 (the default) to return immediately without waiting. (optional)</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> GenerateDownloadUrlWithHttpInfo (long? id, int? timeout = null);
+
+
+
         /// <summary>
         /// Get Schemas
         /// </summary>
@@ -104,6 +115,9 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;AnalyticsSchemaTable&gt;</returns>
         ApiResponse<List<AnalyticsSchemaTable>> SchemaWithHttpInfo ();
+
+
+
         /// <summary>
         /// Execution Status
         /// </summary>
@@ -125,6 +139,9 @@ namespace Wallee.Service
         /// <param name="id">The ID of the query execution for which to get the status.</param>
         /// <returns>ApiResponse of AnalyticsQueryExecution</returns>
         ApiResponse<AnalyticsQueryExecution> StatusWithHttpInfo (long? id);
+
+
+
         /// <summary>
         /// Submit Query
         /// </summary>
@@ -146,6 +163,9 @@ namespace Wallee.Service
         /// <param name="query">The query to submit.</param>
         /// <returns>ApiResponse of AnalyticsQueryExecution</returns>
         ApiResponse<AnalyticsQueryExecution> SubmitQueryWithHttpInfo (AnalyticsQuery query);
+
+
+
         #endregion Synchronous Operations
     }
 

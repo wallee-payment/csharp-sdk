@@ -124,7 +124,7 @@ namespace Wallee.Client
                 request.AddBody(postBody, contentType);
             }
 
-            if (contentType != null)
+            if (contentType != null && postBody != null)
             {
                 request.AddHeader("Content-Type", contentType);
             }
@@ -153,7 +153,7 @@ namespace Wallee.Client
         {
 
             Dictionary<String, String> defaultHeaderParams = new Dictionary<String, String>() {
-                {"x-meta-sdk-version", "7.0.1"},
+                {"x-meta-sdk-version", "7.0.2"},
                 {"x-meta-sdk-language", "csharp"},
                 {"x-meta-sdk-provider", "wallee"},
                 {"x-meta-sdk-language-version", Environment.Version.ToString()}

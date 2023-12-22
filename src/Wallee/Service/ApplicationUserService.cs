@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RestSharp;
 using Wallee.Client;
 using Wallee.Model;
+using Wallee.Util;
 
 namespace Wallee.Service
 {
@@ -35,6 +37,9 @@ namespace Wallee.Service
         /// <param name="filter">The filter which restricts the entities which are used to calculate the count. (optional)</param>
         /// <returns>ApiResponse of long?</returns>
         ApiResponse<long?> CountWithHttpInfo (EntityQueryFilter filter = null);
+
+
+
         /// <summary>
         /// Create
         /// </summary>
@@ -56,6 +61,9 @@ namespace Wallee.Service
         /// <param name="entity">The user object with the properties which should be created.</param>
         /// <returns>ApiResponse of ApplicationUserCreateWithMacKey</returns>
         ApiResponse<ApplicationUserCreateWithMacKey> CreateWithHttpInfo (ApplicationUserCreate entity);
+
+
+
         /// <summary>
         /// Delete
         /// </summary>
@@ -77,6 +85,9 @@ namespace Wallee.Service
         /// <param name="id"></param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteWithHttpInfo (long? id);
+
+
+
         /// <summary>
         /// Read
         /// </summary>
@@ -98,6 +109,9 @@ namespace Wallee.Service
         /// <param name="id">The id of the application user which should be returned.</param>
         /// <returns>ApiResponse of ApplicationUser</returns>
         ApiResponse<ApplicationUser> ReadWithHttpInfo (long? id);
+
+
+
         /// <summary>
         /// Search
         /// </summary>
@@ -119,6 +133,9 @@ namespace Wallee.Service
         /// <param name="query">The query restricts the application users which are returned by the search.</param>
         /// <returns>ApiResponse of List&lt;ApplicationUser&gt;</returns>
         ApiResponse<List<ApplicationUser>> SearchWithHttpInfo (EntityQuery query);
+
+
+
         /// <summary>
         /// Update
         /// </summary>
@@ -140,6 +157,9 @@ namespace Wallee.Service
         /// <param name="entity">The application user entity with all the properties which should be updated. The id and the version are required properties.</param>
         /// <returns>ApiResponse of ApplicationUser</returns>
         ApiResponse<ApplicationUser> UpdateWithHttpInfo (ApplicationUserUpdate entity);
+
+
+
         #endregion Synchronous Operations
     }
 
