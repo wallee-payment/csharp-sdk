@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -56,6 +57,9 @@ namespace Wallee.Service
     /// </summary>
     public partial class WebhookEncryptionService : IWebhookEncryptionService
     {
+        private static readonly ConcurrentDictionary<string, WebhookEncryptionPublicKey> cache =
+                new ConcurrentDictionary<string, WebhookEncryptionPublicKey>();
+
         private Wallee.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
@@ -187,10 +191,14 @@ namespace Wallee.Service
                 string publicKeyId = matcher.Groups[2].Value;
                 string contentSignature = matcher.Groups[3].Value;
 
-                WebhookEncryptionPublicKey publicKey = Read(publicKeyId);
-                if (publicKey == null)
+                if (!cache.TryGetValue(publicKeyId, out WebhookEncryptionPublicKey publicKey))
                 {
-                    throw new ApiException(404, "WebhookEncryptionKey not found");
+                    publicKey = Read(publicKeyId);
+                    if (publicKey == null)
+                    {
+                        throw new ApiException(404, "WebhookEncryptionKey not found");
+                    }
+                    cache.TryAdd(publicKey.Id, publicKey);
                 }
 
                 return EncryptionUtil.IsContentValid(content, contentSignature, publicKey, signatureAlgorithm);

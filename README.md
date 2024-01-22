@@ -33,13 +33,13 @@ Install-Package BouncyCastle.Cryptography
 ## Installation
 ```
 # Package Manager
-Install-Package Wallee -Version 7.0.2
+Install-Package Wallee -Version 7.0.3
 # .NET CLI
-dotnet add package Wallee --version 7.0.2
+dotnet add package Wallee --version 7.0.3
 # Paket CLI
-paket add Wallee --version 7.0.2
+paket add Wallee --version 7.0.3
 # PackageReference
-<PackageReference Include="Wallee" Version="7.0.2" />
+<PackageReference Include="Wallee" Version="7.0.3" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
@@ -178,6 +178,48 @@ namespace Wallee.Test
     }
 }
 ```
+### Integrating Webhook Payload Signing Mechanism into webhook callback handler
+
+The HTTP request which is sent for a state change of an entity now includes an additional field `state`, which provides information about the update of the monitored entity's state. This enhancement is a result of the implementation of our webhook encryption mechanism.
+
+Payload field `state` provides direct information about the state update of the entity, making additional API calls to retrieve the entity state redundant.
+
+#### ⚠️ Warning: Generic Pseudocode
+
+> **The provided pseudocode is intentionally generic and serves to illustrate the process of enhancing your API to leverage webhook payload signing. It is not a complete implementation.**
+>
+> Please ensure that you adapt and extend this code to meet the specific needs of your application, including appropriate security measures and error handling.
+For a detailed webhook payload signing mechanism understanding we highly recommend referring to our comprehensive
+[Webhook Payload Signing Documentation](https://app-wallee.com/doc/webhooks#_webhook_payload_signing_mechanism).
+
+```csharp
+...
+    [HttpPost("callback")]
+    public IActionResult HandleWebhook([FromBody] string requestPayload)
+    {
+        var signature = Request.Headers["x-signature"];
+
+        if (string.IsNullOrEmpty(signature))
+        {
+            // Make additional API call to retrieve the entity state
+            // ...
+        }
+        else
+        {
+            if (webhookEncryptionService().isContentValid(signature, requestPayload))
+            {
+                // Parse requestPayload to extract 'state' value
+                // Process entity's state change
+                // ...
+            }
+        }
+
+        // Process the received webhook data
+        // ...
+    }
+...
+```
+
 
 ## License
 
