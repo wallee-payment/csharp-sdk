@@ -20,18 +20,21 @@
         <PackageId>Wallee</PackageId>
         <PackageLicense>https://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicense>
         <PackageProjectUrl>https://github.com/wallee-payment/csharp-sdk</PackageProjectUrl>
-        <PackageVersion>7.0.3</PackageVersion>
-        <Version>7.0.3</Version>
+        <PackageVersion>7.0.4</PackageVersion>
+        <Version>7.0.4</Version>
         <PackageTags>Wallee;payment;sdk;Payment Integration</PackageTags>
         <OutputType>Library</OutputType>
         <Owners>customweb</Owners>
-        <ReleaseVersion>7.0.3</ReleaseVersion>
+        <ReleaseVersion>7.0.4</ReleaseVersion>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
         <RootNamespace>Wallee</RootNamespace>
         <Summary>wallee SDK for C#</Summary>
         <SynchReleaseVersion>false</SynchReleaseVersion>
         <Title>Wallee</Title>
+    </PropertyGroup>
+    <PropertyGroup>
+        <NoWarn>CS0472</NoWarn>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="RestSharp" Version="110.2.0"/>

@@ -76,6 +76,12 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
+        /// Gets or Sets ImagePath
+        /// </summary>
+        [DataMember(Name="imagePath", EmitDefaultValue=false)]
+        public string ImagePath { get; private set; }
+
+        /// <summary>
         /// The ID of the space this object belongs to.
         /// </summary>
         /// <value>The ID of the space this object belongs to.</value>
@@ -137,6 +143,7 @@ namespace Wallee.Model
             sb.Append("  EnabledSalesChannels: ").Append(EnabledSalesChannels).Append("\n");
             sb.Append("  EnabledSpaceViews: ").Append(EnabledSpaceViews).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  ImagePath: ").Append(ImagePath).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PaymentMethodConfiguration: ").Append(PaymentMethodConfiguration).Append("\n");
@@ -213,6 +220,11 @@ namespace Wallee.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
+                    this.ImagePath == input.ImagePath ||
+                    (this.ImagePath != null &&
+                    this.ImagePath.Equals(input.ImagePath))
+                ) && 
+                (
                     this.LinkedSpaceId == input.LinkedSpaceId ||
                     (this.LinkedSpaceId != null &&
                     this.LinkedSpaceId.Equals(input.LinkedSpaceId))
@@ -275,6 +287,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.EnabledSpaceViews.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.ImagePath != null)
+                    hashCode = hashCode * 59 + this.ImagePath.GetHashCode();
                 if (this.LinkedSpaceId != null)
                     hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
                 if (this.Name != null)

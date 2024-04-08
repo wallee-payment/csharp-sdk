@@ -50,7 +50,7 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity"></param>
+        /// <param name="entity">The comment object which should be created.</param>
         /// <returns>TransactionInvoiceComment</returns>
         TransactionInvoiceComment Create (long? spaceId, TransactionInvoiceCommentCreate entity);
 
@@ -62,7 +62,7 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity"></param>
+        /// <param name="entity">The comment object which should be created.</param>
         /// <returns>ApiResponse of TransactionInvoiceComment</returns>
         ApiResponse<TransactionInvoiceComment> CreateWithHttpInfo (long? spaceId, TransactionInvoiceCommentCreate entity);
 
@@ -102,7 +102,7 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the comment to pin to the top.</param>
         /// <returns></returns>
         void Pin (long? spaceId, long? id);
 
@@ -114,7 +114,7 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the comment to pin to the top.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PinWithHttpInfo (long? spaceId, long? id);
 
@@ -128,7 +128,7 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the comment which should be returned.</param>
         /// <returns>TransactionInvoiceComment</returns>
         TransactionInvoiceComment Read (long? spaceId, long? id);
 
@@ -140,7 +140,7 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the comment which should be returned.</param>
         /// <returns>ApiResponse of TransactionInvoiceComment</returns>
         ApiResponse<TransactionInvoiceComment> ReadWithHttpInfo (long? spaceId, long? id);
 
@@ -154,7 +154,7 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the comment to unpin.</param>
         /// <returns></returns>
         void Unpin (long? spaceId, long? id);
 
@@ -166,7 +166,7 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the comment to unpin.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> UnpinWithHttpInfo (long? spaceId, long? id);
 
@@ -180,7 +180,7 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity"></param>
+        /// <param name="entity">The comment object with the properties which should be updated.</param>
         /// <returns>TransactionInvoiceComment</returns>
         TransactionInvoiceComment Update (long? spaceId, TransactionInvoiceCommentActive entity);
 
@@ -192,7 +192,7 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity"></param>
+        /// <param name="entity">The comment object with the properties which should be updated.</param>
         /// <returns>ApiResponse of TransactionInvoiceComment</returns>
         ApiResponse<TransactionInvoiceComment> UpdateWithHttpInfo (long? spaceId, TransactionInvoiceCommentActive entity);
 
@@ -330,7 +330,7 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity"></param>
+        /// <param name="entity">The comment object which should be created.</param>
         /// <returns>TransactionInvoiceComment</returns>
         public TransactionInvoiceComment Create (long? spaceId, TransactionInvoiceCommentCreate entity)
         {
@@ -344,7 +344,7 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity"></param>
+        /// <param name="entity">The comment object which should be created.</param>
         /// <returns>ApiResponse of TransactionInvoiceComment</returns>
         public ApiResponse< TransactionInvoiceComment > CreateWithHttpInfo (long? spaceId, TransactionInvoiceCommentCreate entity)
         {
@@ -445,7 +445,14 @@ namespace Wallee.Service
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
-            if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
+            if (id != null && id.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(id); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = id; // byte array
+            }
 
 			
             int requestTimeout = this.Configuration.Timeout * 1000;
@@ -474,7 +481,7 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the comment to pin to the top.</param>
         /// <returns></returns>
         public void Pin (long? spaceId, long? id)
         {
@@ -487,7 +494,7 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the comment to pin to the top.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         public ApiResponse<Object> PinWithHttpInfo (long? spaceId, long? id)
         {
@@ -542,7 +549,7 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the comment which should be returned.</param>
         /// <returns>TransactionInvoiceComment</returns>
         public TransactionInvoiceComment Read (long? spaceId, long? id)
         {
@@ -556,7 +563,7 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the comment which should be returned.</param>
         /// <returns>ApiResponse of TransactionInvoiceComment</returns>
         public ApiResponse< TransactionInvoiceComment > ReadWithHttpInfo (long? spaceId, long? id)
         {
@@ -611,7 +618,7 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the comment to unpin.</param>
         /// <returns></returns>
         public void Unpin (long? spaceId, long? id)
         {
@@ -624,7 +631,7 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="id"></param>
+        /// <param name="id">The id of the comment to unpin.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         public ApiResponse<Object> UnpinWithHttpInfo (long? spaceId, long? id)
         {
@@ -679,7 +686,7 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity"></param>
+        /// <param name="entity">The comment object with the properties which should be updated.</param>
         /// <returns>TransactionInvoiceComment</returns>
         public TransactionInvoiceComment Update (long? spaceId, TransactionInvoiceCommentActive entity)
         {
@@ -693,7 +700,7 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
-        /// <param name="entity"></param>
+        /// <param name="entity">The comment object with the properties which should be updated.</param>
         /// <returns>ApiResponse of TransactionInvoiceComment</returns>
         public ApiResponse< TransactionInvoiceComment > UpdateWithHttpInfo (long? spaceId, TransactionInvoiceCommentActive entity)
         {

@@ -16,6 +16,9 @@
         <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
         <RootNamespace>Wallee.Test</RootNamespace>
     </PropertyGroup>
+    <PropertyGroup>
+        <NoWarn>CS0472</NoWarn>
+    </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="NUnit" Version="3.13.3" />

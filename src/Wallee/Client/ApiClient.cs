@@ -124,8 +124,11 @@ namespace Wallee.Client
                 request.AddBody(postBody, contentType);
             }
 
-            if (contentType != null && postBody != null)
-            {
+            var isPostMethod = (method == RestSharp.Method.Post);
+            // NB: Our server wants even empty POST to have a Content-Type header. Don't provide Content-Type for GET requests.
+            if (contentType != null 
+                && (postBody != null || isPostMethod)
+            ) {
                 request.AddHeader("Content-Type", contentType);
             }
 
@@ -153,7 +156,7 @@ namespace Wallee.Client
         {
 
             Dictionary<String, String> defaultHeaderParams = new Dictionary<String, String>() {
-                {"x-meta-sdk-version", "7.0.3"},
+                {"x-meta-sdk-version", "7.0.4"},
                 {"x-meta-sdk-language", "csharp"},
                 {"x-meta-sdk-provider", "wallee"},
                 {"x-meta-sdk-language-version", Environment.Version.ToString()}

@@ -50,6 +50,7 @@ namespace Wallee.Model
 
 
 
+
         /// <summary>
         /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
         /// </summary>
@@ -73,6 +74,7 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class WebhookListenerUpdate {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
+            sb.Append("  EnablePayloadSignatureAndState: ").Append(EnablePayloadSignatureAndState).Append("\n");
             sb.Append("  EntityStates: ").Append(EntityStates).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NotifyEveryChange: ").Append(NotifyEveryChange).Append("\n");
@@ -113,6 +115,11 @@ namespace Wallee.Model
                 return false;
 
             return base.Equals(input) && 
+                (
+                    this.EnablePayloadSignatureAndState == input.EnablePayloadSignatureAndState ||
+                    (this.EnablePayloadSignatureAndState != null &&
+                    this.EnablePayloadSignatureAndState.Equals(input.EnablePayloadSignatureAndState))
+                ) && base.Equals(input) && 
                 (
                     this.EntityStates == input.EntityStates ||
                     this.EntityStates != null &&
@@ -155,6 +162,8 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = base.GetHashCode();
+                if (this.EnablePayloadSignatureAndState != null)
+                    hashCode = hashCode * 59 + this.EnablePayloadSignatureAndState.GetHashCode();
                 if (this.EntityStates != null)
                     hashCode = hashCode * 59 + this.EntityStates.GetHashCode();
                 if (this.Name != null)

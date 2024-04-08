@@ -35,6 +35,13 @@ namespace Wallee.Model
         }
 
         /// <summary>
+        /// Whether signature header and state property are enabled in webhook payload.
+        /// </summary>
+        /// <value>Whether signature header and state property are enabled in webhook payload.</value>
+        [DataMember(Name="enablePayloadSignatureAndState", EmitDefaultValue=false)]
+        public bool? EnablePayloadSignatureAndState { get; private set; }
+
+        /// <summary>
         /// The entity that is to be monitored.
         /// </summary>
         /// <value>The entity that is to be monitored.</value>
@@ -113,6 +120,7 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class WebhookListener {\n");
+            sb.Append("  EnablePayloadSignatureAndState: ").Append(EnablePayloadSignatureAndState).Append("\n");
             sb.Append("  Entity: ").Append(Entity).Append("\n");
             sb.Append("  EntityStates: ").Append(EntityStates).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
@@ -158,6 +166,11 @@ namespace Wallee.Model
                 return false;
 
             return 
+                (
+                    this.EnablePayloadSignatureAndState == input.EnablePayloadSignatureAndState ||
+                    (this.EnablePayloadSignatureAndState != null &&
+                    this.EnablePayloadSignatureAndState.Equals(input.EnablePayloadSignatureAndState))
+                ) && 
                 (
                     this.Entity == input.Entity ||
                     (this.Entity != null &&
@@ -225,6 +238,8 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.EnablePayloadSignatureAndState != null)
+                    hashCode = hashCode * 59 + this.EnablePayloadSignatureAndState.GetHashCode();
                 if (this.Entity != null)
                     hashCode = hashCode * 59 + this.Entity.GetHashCode();
                 if (this.EntityStates != null)

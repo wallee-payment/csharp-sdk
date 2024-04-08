@@ -89,6 +89,13 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
+        /// The payment date describes the date when the transaction was made.
+        /// </summary>
+        /// <value>The payment date describes the date when the transaction was made.</value>
+        [DataMember(Name="paymentDate", EmitDefaultValue=false)]
+        public DateTime? PaymentDate { get; private set; }
+
+        /// <summary>
         /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
         /// </summary>
         /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
@@ -163,6 +170,7 @@ namespace Wallee.Model
             sb.Append("  FlowDirection: ").Append(FlowDirection).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  PaymentDate: ").Append(PaymentDate).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  PostingAmount: ").Append(PostingAmount).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
@@ -249,6 +257,11 @@ namespace Wallee.Model
                     this.LinkedSpaceId.Equals(input.LinkedSpaceId))
                 ) && 
                 (
+                    this.PaymentDate == input.PaymentDate ||
+                    (this.PaymentDate != null &&
+                    this.PaymentDate.Equals(input.PaymentDate))
+                ) && 
+                (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||
                     (this.PlannedPurgeDate != null &&
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
@@ -325,6 +338,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.LinkedSpaceId != null)
                     hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
+                if (this.PaymentDate != null)
+                    hashCode = hashCode * 59 + this.PaymentDate.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
                 if (this.PostingAmount != null)

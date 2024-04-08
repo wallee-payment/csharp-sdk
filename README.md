@@ -33,13 +33,13 @@ Install-Package BouncyCastle.Cryptography
 ## Installation
 ```
 # Package Manager
-Install-Package Wallee -Version 7.0.3
+Install-Package Wallee -Version 7.0.4
 # .NET CLI
-dotnet add package Wallee --version 7.0.3
+dotnet add package Wallee --version 7.0.4
 # Paket CLI
-paket add Wallee --version 7.0.3
+paket add Wallee --version 7.0.4
 # PackageReference
-<PackageReference Include="Wallee" Version="7.0.3" />
+<PackageReference Include="Wallee" Version="7.0.4" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
