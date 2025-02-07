@@ -21,6 +21,11 @@ namespace Wallee.Model
     public partial class AuthenticatedCardDataCreate :  IEquatable<AuthenticatedCardDataCreate>
     {
         /// <summary>
+        /// Gets or Sets PanType
+        /// </summary>
+        [DataMember(Name="panType", EmitDefaultValue=false)]
+        public PanType? PanType { get; set; }
+        /// <summary>
         /// Gets or Sets RecurringIndicator
         /// </summary>
         [DataMember(Name="recurringIndicator", EmitDefaultValue=false)]
@@ -79,6 +84,7 @@ namespace Wallee.Model
         [DataMember(Name="expiryDate", EmitDefaultValue=false)]
         public string ExpiryDate { get; set; }
 
+
         /// <summary>
         /// The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card.
         /// </summary>
@@ -112,6 +118,7 @@ namespace Wallee.Model
             sb.Append("  CardholderAuthentication: ").Append(CardholderAuthentication).Append("\n");
             sb.Append("  Cryptogram: ").Append(Cryptogram).Append("\n");
             sb.Append("  ExpiryDate: ").Append(ExpiryDate).Append("\n");
+            sb.Append("  PanType: ").Append(PanType).Append("\n");
             sb.Append("  PrimaryAccountNumber: ").Append(PrimaryAccountNumber).Append("\n");
             sb.Append("  RecurringIndicator: ").Append(RecurringIndicator).Append("\n");
             sb.Append("  SchemeTransactionReference: ").Append(SchemeTransactionReference).Append("\n");
@@ -176,6 +183,11 @@ namespace Wallee.Model
                     this.ExpiryDate.Equals(input.ExpiryDate))
                 ) && 
                 (
+                    this.PanType == input.PanType ||
+                    (this.PanType != null &&
+                    this.PanType.Equals(input.PanType))
+                ) && 
+                (
                     this.PrimaryAccountNumber == input.PrimaryAccountNumber ||
                     (this.PrimaryAccountNumber != null &&
                     this.PrimaryAccountNumber.Equals(input.PrimaryAccountNumber))
@@ -216,6 +228,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Cryptogram.GetHashCode();
                 if (this.ExpiryDate != null)
                     hashCode = hashCode * 59 + this.ExpiryDate.GetHashCode();
+                if (this.PanType != null)
+                    hashCode = hashCode * 59 + this.PanType.GetHashCode();
                 if (this.PrimaryAccountNumber != null)
                     hashCode = hashCode * 59 + this.PrimaryAccountNumber.GetHashCode();
                 if (this.RecurringIndicator != null)

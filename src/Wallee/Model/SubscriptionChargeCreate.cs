@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class SubscriptionChargeCreate :  IEquatable<SubscriptionChargeCreate>
     {
         /// <summary>
-        /// Gets or Sets ProcessingType
+        /// The processing type specifies how the charge is to be processed.
         /// </summary>
+        /// <value>The processing type specifies how the charge is to be processed.</value>
         [DataMember(Name="processingType", EmitDefaultValue=true)]
         public SubscriptionChargeProcessingType ProcessingType { get; set; }
         /// <summary>
@@ -34,8 +35,8 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="SubscriptionChargeCreate" /> class.
         /// </summary>
         /// <param name="externalId">A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead. (required).</param>
-        /// <param name="processingType">processingType (required).</param>
-        /// <param name="subscription">The field subscription indicates the subscription to which the charge belongs to. (required).</param>
+        /// <param name="processingType">The processing type specifies how the charge is to be processed. (required).</param>
+        /// <param name="subscription">The subscription that the charge belongs to. (required).</param>
         public SubscriptionChargeCreate(string externalId, SubscriptionChargeProcessingType processingType, long? subscription)
         {
             // to ensure "externalId" is required (not null)
@@ -66,36 +67,38 @@ namespace Wallee.Model
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
+        /// The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
         /// </summary>
-        /// <value>The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.</value>
+        /// <value>The URL to redirect the customer back to after they canceled or failed to authenticated their payment.</value>
         [DataMember(Name="failedUrl", EmitDefaultValue=false)]
         public string FailedUrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets PlannedExecutionDate
+        /// The date and time when the execution of the charge is planned.
         /// </summary>
+        /// <value>The date and time when the execution of the charge is planned.</value>
         [DataMember(Name="plannedExecutionDate", EmitDefaultValue=false)]
         public DateTime? PlannedExecutionDate { get; set; }
 
 
         /// <summary>
-        /// Gets or Sets Reference
+        /// The merchant&#39;s reference used to identify the charge.
         /// </summary>
+        /// <value>The merchant&#39;s reference used to identify the charge.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
 
         /// <summary>
-        /// The field subscription indicates the subscription to which the charge belongs to.
+        /// The subscription that the charge belongs to.
         /// </summary>
-        /// <value>The field subscription indicates the subscription to which the charge belongs to.</value>
+        /// <value>The subscription that the charge belongs to.</value>
         [DataMember(Name="subscription", EmitDefaultValue=false)]
         public long? Subscription { get; set; }
 
         /// <summary>
-        /// The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
+        /// The URL to redirect the customer back to after they successfully authenticated their payment.
         /// </summary>
-        /// <value>The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.</value>
+        /// <value>The URL to redirect the customer back to after they successfully authenticated their payment.</value>
         [DataMember(Name="successUrl", EmitDefaultValue=false)]
         public string SuccessUrl { get; set; }
 

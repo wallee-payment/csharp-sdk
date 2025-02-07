@@ -29,20 +29,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// The localized description of the document template type.
         /// </summary>
+        /// <value>The localized description of the document template type.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Feature
+        /// The feature that this document template type belongs to.
         /// </summary>
+        /// <value>The feature that this document template type belongs to.</value>
         [DataMember(Name="feature", EmitDefaultValue=false)]
         public long? Feature { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Group
+        /// The group that this document template type belongs to.
         /// </summary>
+        /// <value>The group that this document template type belongs to.</value>
         [DataMember(Name="group", EmitDefaultValue=false)]
         public DocumentTemplateTypeGroup Group { get; private set; }
 
@@ -54,8 +57,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Title
+        /// The localized title of the document template type.
         /// </summary>
+        /// <value>The localized title of the document template type.</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
         public Dictionary<string, string> Title { get; private set; }
 

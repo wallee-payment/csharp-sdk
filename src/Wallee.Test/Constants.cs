@@ -1,12 +1,10 @@
 using System.Collections.Generic;
-
-using Wallee.Model;
-using Wallee.Service;
 using Wallee.Client;
+using Wallee.Model;
 
 namespace Wallee.Test
 {
-    public class Constants
+    public static class Constants
     {
         private static readonly string ApplicationUserId = "512";
         private static readonly string AuthenticationKey = "FKrO76r5VwJtBrqZawBspljbBNOxp5veKQQkOnZxucQ=";
@@ -17,9 +15,11 @@ namespace Wallee.Test
         public static readonly long TestIsrInvoicePaymentMethodConfigurationId = 8656;
         public static readonly string TestCustomerId = "7311742";
 
-        public static readonly AuthenticatedCardDataCreate FakeCardData = new AuthenticatedCardDataCreate("4111111111111111"){
-            ExpiryDate = "2026-12"
-        };
+        public static readonly AuthenticatedCardDataCreate FakeCardData =
+            new AuthenticatedCardDataCreate("4111111111111111")
+            {
+                ExpiryDate = "2026-12"
+            };
 
         // <summary>
         // Get transaction payload
@@ -62,4 +62,3 @@ namespace Wallee.Test
         }
     }
 }
-

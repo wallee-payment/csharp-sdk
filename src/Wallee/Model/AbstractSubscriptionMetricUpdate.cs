@@ -28,14 +28,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// The localized description of the metric that is displayed to the customer.
         /// </summary>
+        /// <value>The localized description of the metric that is displayed to the customer.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The localized name of the metric that is displayed to the customer.
         /// </summary>
+        /// <value>The localized name of the metric that is displayed to the customer.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; set; }
 

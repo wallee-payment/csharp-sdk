@@ -95,8 +95,9 @@ namespace Wallee.Model
         public string InvoiceMerchantReference { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Labels
+        /// The labels providing additional information about the object.
         /// </summary>
+        /// <value>The labels providing additional information about the object.</value>
         [DataMember(Name="labels", EmitDefaultValue=false)]
         public List<Label> Labels { get; private set; }
 
@@ -166,8 +167,9 @@ namespace Wallee.Model
         public List<LineItem> RemainingLineItems { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SpaceViewId
+        /// The ID of the space view this object is linked to.
         /// </summary>
+        /// <value>The ID of the space view this object is linked to.</value>
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 

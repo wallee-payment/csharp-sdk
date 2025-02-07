@@ -40,6 +40,12 @@ namespace Wallee.Model
         [DataMember(Name="cryptogram", EmitDefaultValue=false)]
         public CardCryptogram Cryptogram { get; private set; }
 
+        /// <summary>
+        /// Gets or Sets InitialRecurringTransaction
+        /// </summary>
+        [DataMember(Name="initialRecurringTransaction", EmitDefaultValue=false)]
+        public bool? InitialRecurringTransaction { get; private set; }
+
 
         /// <summary>
         /// Gets or Sets TokenRequestorId
@@ -56,6 +62,7 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class TokenizedCardData {\n");
             sb.Append("  Cryptogram: ").Append(Cryptogram).Append("\n");
+            sb.Append("  InitialRecurringTransaction: ").Append(InitialRecurringTransaction).Append("\n");
             sb.Append("  RecurringIndicator: ").Append(RecurringIndicator).Append("\n");
             sb.Append("  TokenRequestorId: ").Append(TokenRequestorId).Append("\n");
             sb.Append("}\n");
@@ -98,6 +105,11 @@ namespace Wallee.Model
                     this.Cryptogram.Equals(input.Cryptogram))
                 ) && 
                 (
+                    this.InitialRecurringTransaction == input.InitialRecurringTransaction ||
+                    (this.InitialRecurringTransaction != null &&
+                    this.InitialRecurringTransaction.Equals(input.InitialRecurringTransaction))
+                ) && 
+                (
                     this.RecurringIndicator == input.RecurringIndicator ||
                     (this.RecurringIndicator != null &&
                     this.RecurringIndicator.Equals(input.RecurringIndicator))
@@ -120,6 +132,8 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.Cryptogram != null)
                     hashCode = hashCode * 59 + this.Cryptogram.GetHashCode();
+                if (this.InitialRecurringTransaction != null)
+                    hashCode = hashCode * 59 + this.InitialRecurringTransaction.GetHashCode();
                 if (this.RecurringIndicator != null)
                     hashCode = hashCode * 59 + this.RecurringIndicator.GetHashCode();
                 if (this.TokenRequestorId != null)

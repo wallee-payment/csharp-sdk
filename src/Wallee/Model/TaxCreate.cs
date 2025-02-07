@@ -28,8 +28,8 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TaxCreate" /> class.
         /// </summary>
-        /// <param name="rate">rate (required).</param>
-        /// <param name="title">title (required).</param>
+        /// <param name="rate">The tax rate to be applied. (required).</param>
+        /// <param name="title">The name of the tax. (required).</param>
         public TaxCreate(decimal? rate, string title)
         {
             // to ensure "rate" is required (not null)
@@ -47,14 +47,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Rate
+        /// The tax rate to be applied.
         /// </summary>
+        /// <value>The tax rate to be applied.</value>
         [DataMember(Name="rate", EmitDefaultValue=false)]
         public decimal? Rate { get; set; }
 
         /// <summary>
-        /// Gets or Sets Title
+        /// The name of the tax.
         /// </summary>
+        /// <value>The name of the tax.</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
         public string Title { get; set; }
 

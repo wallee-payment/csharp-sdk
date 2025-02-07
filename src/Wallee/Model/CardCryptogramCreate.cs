@@ -21,11 +21,6 @@ namespace Wallee.Model
     public partial class CardCryptogramCreate :  IEquatable<CardCryptogramCreate>
     {
         /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=true)]
-        public CardCryptogramType Type { get; set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="CardCryptogramCreate" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -33,16 +28,9 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CardCryptogramCreate" /> class.
         /// </summary>
-        /// <param name="type">type (required).</param>
         /// <param name="value">value (required).</param>
-        public CardCryptogramCreate(CardCryptogramType type, string value)
+        public CardCryptogramCreate(string value)
         {
-            // to ensure "type" is required (not null)
-            if (type == null)
-            {
-                throw new InvalidDataException("type is a required property for CardCryptogramCreate and cannot be null");
-            }
-            this.Type = type;
             // to ensure "value" is required (not null)
             if (value == null)
             {
@@ -51,6 +39,11 @@ namespace Wallee.Model
             this.Value = value;
         }
 
+        /// <summary>
+        /// Gets or Sets Eci
+        /// </summary>
+        [DataMember(Name="eci", EmitDefaultValue=false)]
+        public string Eci { get; set; }
 
         /// <summary>
         /// Gets or Sets Value
@@ -66,7 +59,7 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class CardCryptogramCreate {\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Eci: ").Append(Eci).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -103,9 +96,9 @@ namespace Wallee.Model
 
             return 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.Eci == input.Eci ||
+                    (this.Eci != null &&
+                    this.Eci.Equals(input.Eci))
                 ) && 
                 (
                     this.Value == input.Value ||
@@ -123,8 +116,8 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Eci != null)
+                    hashCode = hashCode * 59 + this.Eci.GetHashCode();
                 if (this.Value != null)
                     hashCode = hashCode * 59 + this.Value.GetHashCode();
                 return hashCode;

@@ -73,6 +73,12 @@ namespace Wallee.Model
         public string Receipt { get; private set; }
 
         /// <summary>
+        /// Gets or Sets Reference
+        /// </summary>
+        [DataMember(Name="reference", EmitDefaultValue=false)]
+        public long? Reference { get; private set; }
+
+        /// <summary>
         /// Gets or Sets StartedOn
         /// </summary>
         [DataMember(Name="startedOn", EmitDefaultValue=false)]
@@ -106,6 +112,7 @@ namespace Wallee.Model
             sb.Append("  NumberOfTransactions: ").Append(NumberOfTransactions).Append("\n");
             sb.Append("  PaymentTerminal: ").Append(PaymentTerminal).Append("\n");
             sb.Append("  Receipt: ").Append(Receipt).Append("\n");
+            sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  StartedOn: ").Append(StartedOn).Append("\n");
             sb.Append("  TransactionSums: ").Append(TransactionSums).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
@@ -180,6 +187,11 @@ namespace Wallee.Model
                     this.Receipt.Equals(input.Receipt))
                 ) && 
                 (
+                    this.Reference == input.Reference ||
+                    (this.Reference != null &&
+                    this.Reference.Equals(input.Reference))
+                ) && 
+                (
                     this.StartedOn == input.StartedOn ||
                     (this.StartedOn != null &&
                     this.StartedOn.Equals(input.StartedOn))
@@ -220,6 +232,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.PaymentTerminal.GetHashCode();
                 if (this.Receipt != null)
                     hashCode = hashCode * 59 + this.Receipt.GetHashCode();
+                if (this.Reference != null)
+                    hashCode = hashCode * 59 + this.Reference.GetHashCode();
                 if (this.StartedOn != null)
                     hashCode = hashCode * 59 + this.StartedOn.GetHashCode();
                 if (this.TransactionSums != null)

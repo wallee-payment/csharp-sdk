@@ -43,29 +43,30 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The component group name will be shown when the components are selected. This can be visible to the subscriber.
+        /// The localized name of the component group that is displayed to the customer.
         /// </summary>
-        /// <value>The component group name will be shown when the components are selected. This can be visible to the subscriber.</value>
+        /// <value>The localized name of the component group that is displayed to the customer.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// The component group can be optional. This means no component has to be selected by the subscriber.
+        /// Whether the component group is optional, i.e. the customer does not have to select any component.
         /// </summary>
-        /// <value>The component group can be optional. This means no component has to be selected by the subscriber.</value>
+        /// <value>Whether the component group is optional, i.e. the customer does not have to select any component.</value>
         [DataMember(Name="optional", EmitDefaultValue=false)]
         public bool? Optional { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ProductVersion
+        /// The product version that the component group belongs to.
         /// </summary>
+        /// <value>The product version that the component group belongs to.</value>
         [DataMember(Name="productVersion", EmitDefaultValue=false)]
         public SubscriptionProductVersion ProductVersion { get; private set; }
 
         /// <summary>
-        /// The sort order controls in which order the component group is listed. The sort order is used to order the component groups in ascending order.
+        /// When listing component groups, they can be sorted by this number.
         /// </summary>
-        /// <value>The sort order controls in which order the component group is listed. The sort order is used to order the component groups in ascending order.</value>
+        /// <value>When listing component groups, they can be sorted by this number.</value>
         [DataMember(Name="sortOrder", EmitDefaultValue=false)]
         public int? SortOrder { get; private set; }
 

@@ -29,16 +29,11 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets DisplayName
+        /// The name of the feature.
         /// </summary>
+        /// <value>The name of the feature.</value>
         [DataMember(Name="displayName", EmitDefaultValue=false)]
         public string DisplayName { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Feature
-        /// </summary>
-        [DataMember(Name="feature", EmitDefaultValue=false)]
-        public Feature Feature { get; private set; }
 
         /// <summary>
         /// A unique identifier for the object.
@@ -56,7 +51,6 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class PaymentConnectorFeature {\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
-            sb.Append("  Feature: ").Append(Feature).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -98,11 +92,6 @@ namespace Wallee.Model
                     this.DisplayName.Equals(input.DisplayName))
                 ) && 
                 (
-                    this.Feature == input.Feature ||
-                    (this.Feature != null &&
-                    this.Feature.Equals(input.Feature))
-                ) && 
-                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -120,8 +109,6 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.DisplayName != null)
                     hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
-                if (this.Feature != null)
-                    hashCode = hashCode * 59 + this.Feature.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 return hashCode;

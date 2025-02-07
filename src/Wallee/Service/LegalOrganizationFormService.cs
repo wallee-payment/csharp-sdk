@@ -104,7 +104,7 @@ namespace Wallee.Service
         /// <returns></returns>
         public LegalOrganizationFormService(Wallee.Client.Configuration configuration = null)
         {
-            if(configuration == null){
+            if (configuration == null) {
                 throw new ArgumentException("Parameter cannot be null", "configuration");
             }
             this.Configuration = configuration;
@@ -172,19 +172,27 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
                 "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+			int requestTimeout = this.Configuration.Timeout * 1000;
+
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -234,20 +242,28 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
                 "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
             if (code != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "code", code)); // query parameter
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
+			int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -297,20 +313,28 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
                 "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
+			int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;

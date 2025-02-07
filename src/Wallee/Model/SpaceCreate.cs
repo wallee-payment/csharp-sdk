@@ -55,6 +55,13 @@ namespace Wallee.Model
         public long? Account { get; set; }
 
         /// <summary>
+        /// The database the space is connected to and that holds the space&#39;s data.
+        /// </summary>
+        /// <value>The database the space is connected to and that holds the space&#39;s data.</value>
+        [DataMember(Name="database", EmitDefaultValue=false)]
+        public long? Database { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -72,6 +79,7 @@ namespace Wallee.Model
             sb.Append("  TechnicalContactAddresses: ").Append(TechnicalContactAddresses).Append("\n");
             sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
             sb.Append("  Account: ").Append(Account).Append("\n");
+            sb.Append("  Database: ").Append(Database).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -151,6 +159,11 @@ namespace Wallee.Model
                     this.Account == input.Account ||
                     (this.Account != null &&
                     this.Account.Equals(input.Account))
+                ) && base.Equals(input) && 
+                (
+                    this.Database == input.Database ||
+                    (this.Database != null &&
+                    this.Database.Equals(input.Database))
                 );
         }
 
@@ -181,6 +194,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.TimeZone.GetHashCode();
                 if (this.Account != null)
                     hashCode = hashCode * 59 + this.Account.GetHashCode();
+                if (this.Database != null)
+                    hashCode = hashCode * 59 + this.Database.GetHashCode();
                 return hashCode;
             }
         }

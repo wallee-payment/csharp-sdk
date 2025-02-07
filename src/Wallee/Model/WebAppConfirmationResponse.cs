@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The confirmation response provides the details about the installation of the web app.
+    /// The confirmation response provides details about the installation of the web app.
     /// </summary>
     [DataContract]
     public partial class WebAppConfirmationResponse :  IEquatable<WebAppConfirmationResponse>
@@ -29,37 +29,37 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The access code grants permissions to the web service API according to the OAuth standard.
+        /// The access code granting permissions to the web service API according to the OAuth standard.
         /// </summary>
-        /// <value>The access code grants permissions to the web service API according to the OAuth standard.</value>
+        /// <value>The access code granting permissions to the web service API according to the OAuth standard.</value>
         [DataMember(Name="access_token", EmitDefaultValue=false)]
         public string AccessToken { get; private set; }
 
         /// <summary>
-        /// The scope contains the permissions granted to the web app within the space.
+        /// The list of the permissions granted to the web app within the space.
         /// </summary>
-        /// <value>The scope contains the permissions granted to the web app within the space.</value>
+        /// <value>The list of the permissions granted to the web app within the space.</value>
         [DataMember(Name="scope", EmitDefaultValue=false)]
         public string Scope { get; private set; }
 
         /// <summary>
-        /// This is the space into which the web app is installed into.
+        /// The space that the web app was installed in.
         /// </summary>
-        /// <value>This is the space into which the web app is installed into.</value>
+        /// <value>The space that the web app was installed in.</value>
         [DataMember(Name="space", EmitDefaultValue=false)]
         public Space Space { get; private set; }
 
         /// <summary>
-        /// The state contains the state parameter content provided when initiating the app installation.
+        /// The state parameter that was provided in the authorization request.
         /// </summary>
-        /// <value>The state contains the state parameter content provided when initiating the app installation.</value>
+        /// <value>The state parameter that was provided in the authorization request.</value>
         [DataMember(Name="state", EmitDefaultValue=false)]
         public string State { get; private set; }
 
         /// <summary>
-        /// The token type indicates the type of the access token. The type determines the authentication mechanism to use for accessing the web service API.
+        /// The type of the access token that determines the authentication mechanism to use for accessing the web service API.
         /// </summary>
-        /// <value>The token type indicates the type of the access token. The type determines the authentication mechanism to use for accessing the web service API.</value>
+        /// <value>The type of the access token that determines the authentication mechanism to use for accessing the web service API.</value>
         [DataMember(Name="token_type", EmitDefaultValue=false)]
         public string TokenType { get; private set; }
 

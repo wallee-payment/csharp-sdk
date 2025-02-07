@@ -21,15 +21,15 @@ namespace Wallee.Model
     public partial class SubscriptionSuspension :  IEquatable<SubscriptionSuspension>
     {
         /// <summary>
-        /// When the suspension reaches the planned end date the end action will be carried out. This action is only executed when the suspension is ended automatically based on the end date.
+        /// Whether the subscription should be terminated or reactivated after the suspension has reached its end date.
         /// </summary>
-        /// <value>When the suspension reaches the planned end date the end action will be carried out. This action is only executed when the suspension is ended automatically based on the end date.</value>
+        /// <value>Whether the subscription should be terminated or reactivated after the suspension has reached its end date.</value>
         [DataMember(Name="endAction", EmitDefaultValue=false)]
         public SubscriptionSuspensionAction? EndAction { get; private set; }
         /// <summary>
-        /// The suspension reason indicates why a suspension has been created.
+        /// The reason why the subscription was suspended.
         /// </summary>
-        /// <value>The suspension reason indicates why a suspension has been created.</value>
+        /// <value>The reason why the subscription was suspended.</value>
         [DataMember(Name="reason", EmitDefaultValue=false)]
         public SubscriptionSuspensionReason? Reason { get; private set; }
         /// <summary>
@@ -54,8 +54,9 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets EffectiveEndDate
+        /// The date and time when the suspension ended.
         /// </summary>
+        /// <value>The date and time when the suspension ended.</value>
         [DataMember(Name="effectiveEndDate", EmitDefaultValue=false)]
         public DateTime? EffectiveEndDate { get; private set; }
 
@@ -82,22 +83,23 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.
+        /// A note that contains details about the suspension. It is not disclosed to the subscriber.
         /// </summary>
-        /// <value>The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.</value>
+        /// <value>A note that contains details about the suspension. It is not disclosed to the subscriber.</value>
         [DataMember(Name="note", EmitDefaultValue=false)]
         public string Note { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PeriodBill
+        /// The period bill that led to the suspension of the subscription.
         /// </summary>
+        /// <value>The period bill that led to the suspension of the subscription.</value>
         [DataMember(Name="periodBill", EmitDefaultValue=false)]
         public long? PeriodBill { get; private set; }
 
         /// <summary>
-        /// The planned end date of the suspension identifies the date on which the suspension will be ended automatically.
+        /// The date and time when the suspension is planned to end.
         /// </summary>
-        /// <value>The planned end date of the suspension identifies the date on which the suspension will be ended automatically.</value>
+        /// <value>The date and time when the suspension is planned to end.</value>
         [DataMember(Name="plannedEndDate", EmitDefaultValue=false)]
         public DateTime? PlannedEndDate { get; private set; }
 
@@ -111,8 +113,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets Subscription
+        /// The subscription that this suspension belongs to.
         /// </summary>
+        /// <value>The subscription that this suspension belongs to.</value>
         [DataMember(Name="subscription", EmitDefaultValue=false)]
         public long? Subscription { get; private set; }
 

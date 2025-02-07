@@ -69,9 +69,9 @@ namespace Wallee.Client
         string TempFolderPath { get; }
 
         /// <summary>
-        /// Gets the HTTP connection timeout (in milliseconds)
+        /// Gets the HTTP request timeout (in seconds)
         /// </summary>
-        /// <value>HTTP connection timeout.</value>
+        /// <value>HTTP request timeout.</value>
         int Timeout { get; }
 
         /// <summary>

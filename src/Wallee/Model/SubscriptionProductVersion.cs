@@ -27,9 +27,9 @@ namespace Wallee.Model
         [DataMember(Name="state", EmitDefaultValue=false)]
         public SubscriptionProductVersionState? State { get; private set; }
         /// <summary>
-        /// Strategy that is used for tax calculation in fees.
+        /// The way taxes are calculated for fees.
         /// </summary>
-        /// <value>Strategy that is used for tax calculation in fees.</value>
+        /// <value>The way taxes are calculated for fees.</value>
         [DataMember(Name="taxCalculation", EmitDefaultValue=false)]
         public TaxCalculation? TaxCalculation { get; private set; }
         /// <summary>
@@ -41,42 +41,50 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets ActivatedOn
+        /// The date and time when the product version was activated.
         /// </summary>
+        /// <value>The date and time when the product version was activated.</value>
         [DataMember(Name="activatedOn", EmitDefaultValue=false)]
         public DateTime? ActivatedOn { get; private set; }
 
         /// <summary>
-        /// The billing cycle determines the rhythm with which the subscriber is billed. The charging may have different rhythm.
+        /// The recurring period of time, typically monthly or annually, for which a subscriber is charged.
         /// </summary>
-        /// <value>The billing cycle determines the rhythm with which the subscriber is billed. The charging may have different rhythm.</value>
+        /// <value>The recurring period of time, typically monthly or annually, for which a subscriber is charged.</value>
         [DataMember(Name="billingCycle", EmitDefaultValue=false)]
         public string BillingCycle { get; private set; }
 
         /// <summary>
-        /// The comment allows to provide a internal comment for the version. It helps to document why a product was changed. The comment is not disclosed to the subscriber.
+        /// Gets or Sets BillingCycleModel
         /// </summary>
-        /// <value>The comment allows to provide a internal comment for the version. It helps to document why a product was changed. The comment is not disclosed to the subscriber.</value>
+        [DataMember(Name="billingCycleModel", EmitDefaultValue=false)]
+        public BillingCycleModel BillingCycleModel { get; private set; }
+
+        /// <summary>
+        /// A comment that describes the product version and why it was created. It is not disclosed to the subscriber.
+        /// </summary>
+        /// <value>A comment that describes the product version and why it was created. It is not disclosed to the subscriber.</value>
         [DataMember(Name="comment", EmitDefaultValue=false)]
         public string Comment { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CreatedOn
+        /// The date and time when the product version was created.
         /// </summary>
+        /// <value>The date and time when the product version was created.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The default currency has to be used in all fees.
+        /// The three-letter code (ISO 4217 format) of the product version&#39;s default currency.
         /// </summary>
-        /// <value>The default currency has to be used in all fees.</value>
+        /// <value>The three-letter code (ISO 4217 format) of the product version&#39;s default currency.</value>
         [DataMember(Name="defaultCurrency", EmitDefaultValue=false)]
         public string DefaultCurrency { get; private set; }
 
         /// <summary>
-        /// The currencies which are enabled can be selected to define component fees. Currencies which are not enabled cannot be used to define fees.
+        /// The three-letter codes (ISO 4217 format) of the currencies that the product version supports.
         /// </summary>
-        /// <value>The currencies which are enabled can be selected to define component fees. Currencies which are not enabled cannot be used to define fees.</value>
+        /// <value>The three-letter codes (ISO 4217 format) of the currencies that the product version supports.</value>
         [DataMember(Name="enabledCurrencies", EmitDefaultValue=false)]
         public List<string> EnabledCurrencies { get; private set; }
 
@@ -88,9 +96,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The increment number represents the version number incremented whenever a new version is activated.
+        /// Whenever a new version of a product is created, the number is increased and assigned.
         /// </summary>
-        /// <value>The increment number represents the version number incremented whenever a new version is activated.</value>
+        /// <value>Whenever a new version of a product is created, the number is increased and assigned.</value>
         [DataMember(Name="incrementNumber", EmitDefaultValue=false)]
         public int? IncrementNumber { get; private set; }
 
@@ -102,29 +110,30 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The minimal number of periods determines how long the subscription has to run before the subscription can be terminated.
+        /// The minimum number of periods the subscription will run before it can be terminated.
         /// </summary>
-        /// <value>The minimal number of periods determines how long the subscription has to run before the subscription can be terminated.</value>
+        /// <value>The minimum number of periods the subscription will run before it can be terminated.</value>
         [DataMember(Name="minimalNumberOfPeriods", EmitDefaultValue=false)]
         public int? MinimalNumberOfPeriods { get; private set; }
 
         /// <summary>
-        /// The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.
+        /// The localized name of the product that is displayed to the customer.
         /// </summary>
-        /// <value>The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.</value>
+        /// <value>The localized name of the product that is displayed to the customer.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.
+        /// The number of periods the subscription will keep running after its termination was requested.
         /// </summary>
-        /// <value>The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.</value>
+        /// <value>The number of periods the subscription will keep running after its termination was requested.</value>
         [DataMember(Name="numberOfNoticePeriods", EmitDefaultValue=false)]
         public int? NumberOfNoticePeriods { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ObsoletedOn
+        /// The date and time when the product version was made obsolete.
         /// </summary>
+        /// <value>The date and time when the product version was made obsolete.</value>
         [DataMember(Name="obsoletedOn", EmitDefaultValue=false)]
         public DateTime? ObsoletedOn { get; private set; }
 
@@ -136,28 +145,30 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Each product version is linked to a product.
+        /// The product that the version belongs to.
         /// </summary>
-        /// <value>Each product version is linked to a product.</value>
+        /// <value>The product that the version belongs to.</value>
         [DataMember(Name="product", EmitDefaultValue=false)]
         public SubscriptionProduct Product { get; private set; }
 
         /// <summary>
-        /// The product version reference helps to identify the version. The reference is generated out of the product reference.
+        /// The reference used to identify the product version.
         /// </summary>
-        /// <value>The product version reference helps to identify the version. The reference is generated out of the product reference.</value>
+        /// <value>The reference used to identify the product version.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; private set; }
 
         /// <summary>
-        /// Gets or Sets RetiringFinishedOn
+        /// The date and time when the product version was retired.
         /// </summary>
+        /// <value>The date and time when the product version was retired.</value>
         [DataMember(Name="retiringFinishedOn", EmitDefaultValue=false)]
         public DateTime? RetiringFinishedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets RetiringStartedOn
+        /// The date and time when the product version&#39;s retirement was started.
         /// </summary>
+        /// <value>The date and time when the product version&#39;s retirement was started.</value>
         [DataMember(Name="retiringStartedOn", EmitDefaultValue=false)]
         public DateTime? RetiringStartedOn { get; private set; }
 
@@ -180,6 +191,7 @@ namespace Wallee.Model
             sb.Append("class SubscriptionProductVersion {\n");
             sb.Append("  ActivatedOn: ").Append(ActivatedOn).Append("\n");
             sb.Append("  BillingCycle: ").Append(BillingCycle).Append("\n");
+            sb.Append("  BillingCycleModel: ").Append(BillingCycleModel).Append("\n");
             sb.Append("  Comment: ").Append(Comment).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  DefaultCurrency: ").Append(DefaultCurrency).Append("\n");
@@ -242,6 +254,11 @@ namespace Wallee.Model
                     this.BillingCycle == input.BillingCycle ||
                     (this.BillingCycle != null &&
                     this.BillingCycle.Equals(input.BillingCycle))
+                ) && 
+                (
+                    this.BillingCycleModel == input.BillingCycleModel ||
+                    (this.BillingCycleModel != null &&
+                    this.BillingCycleModel.Equals(input.BillingCycleModel))
                 ) && 
                 (
                     this.Comment == input.Comment ||
@@ -355,6 +372,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ActivatedOn.GetHashCode();
                 if (this.BillingCycle != null)
                     hashCode = hashCode * 59 + this.BillingCycle.GetHashCode();
+                if (this.BillingCycleModel != null)
+                    hashCode = hashCode * 59 + this.BillingCycleModel.GetHashCode();
                 if (this.Comment != null)
                     hashCode = hashCode * 59 + this.Comment.GetHashCode();
                 if (this.CreatedOn != null)

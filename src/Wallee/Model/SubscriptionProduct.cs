@@ -35,16 +35,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The allowed payment method configurations control which payment methods can be used with this product. When none is selected all methods will be allowed.
+        /// The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.
         /// </summary>
-        /// <value>The allowed payment method configurations control which payment methods can be used with this product. When none is selected all methods will be allowed.</value>
+        /// <value>The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.</value>
         [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<long?> AllowedPaymentMethodConfigurations { get; private set; }
 
         /// <summary>
-        /// When a payment fails, the subscription to which the payment belongs to will be suspended. When the suspension is not removed within the specified period the subscription will be terminated. A payment is considered as failed when the subscriber issues a refund or when a subscription charge fails.
+        /// The period after which a subscription that has been suspended due to a failed payment is terminated.
         /// </summary>
-        /// <value>When a payment fails, the subscription to which the payment belongs to will be suspended. When the suspension is not removed within the specified period the subscription will be terminated. A payment is considered as failed when the subscriber issues a refund or when a subscription charge fails.</value>
+        /// <value>The period after which a subscription that has been suspended due to a failed payment is terminated.</value>
         [DataMember(Name="failedPaymentSuspensionPeriod", EmitDefaultValue=false)]
         public string FailedPaymentSuspensionPeriod { get; private set; }
 
@@ -63,9 +63,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The product name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the product.
         /// </summary>
-        /// <value>The product name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the product.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -77,29 +77,30 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.
+        /// Whether subscriptions can be switched to or from this product, or whether they are locked in.
         /// </summary>
-        /// <value>Marks the product as locked. Meaning that customer can not change away from this product or change to this product later on.</value>
+        /// <value>Whether subscriptions can be switched to or from this product, or whether they are locked in.</value>
         [DataMember(Name="productLocked", EmitDefaultValue=false)]
         public bool? ProductLocked { get; private set; }
 
         /// <summary>
-        /// The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.
+        /// The merchant&#39;s reference used to identify the product, e.g. the SKU.
         /// </summary>
-        /// <value>The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.</value>
+        /// <value>The merchant&#39;s reference used to identify the product, e.g. the SKU.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; private set; }
 
         /// <summary>
-        /// The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.
+        /// When listing products, they can be sorted by this number.
         /// </summary>
-        /// <value>The sort order controls in which order the product is listed. The sort order is used to order the products in ascending order.</value>
+        /// <value>When listing products, they can be sorted by this number.</value>
         [DataMember(Name="sortOrder", EmitDefaultValue=false)]
         public int? SortOrder { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SpaceId
+        /// The ID of the space this object belongs to.
         /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
         [DataMember(Name="spaceId", EmitDefaultValue=false)]
         public long? SpaceId { get; private set; }
 

@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class LineItem :  IEquatable<LineItem>
     {
         /// <summary>
-        /// Gets or Sets Type
+        /// The type of the line item.
         /// </summary>
+        /// <value>The type of the line item.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public LineItemType? Type { get; private set; }
         /// <summary>
@@ -34,125 +35,143 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The aggregated tax rate is the sum of all tax rates of the line item.
+        /// The total tax rate applied to the item, calculated from the rates of all tax lines.
         /// </summary>
-        /// <value>The aggregated tax rate is the sum of all tax rates of the line item.</value>
+        /// <value>The total tax rate applied to the item, calculated from the rates of all tax lines.</value>
         [DataMember(Name="aggregatedTaxRate", EmitDefaultValue=false)]
         public decimal? AggregatedTaxRate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets AmountExcludingTax
+        /// The line item price with discounts applied, excluding taxes.
         /// </summary>
+        /// <value>The line item price with discounts applied, excluding taxes.</value>
         [DataMember(Name="amountExcludingTax", EmitDefaultValue=false)]
         public decimal? AmountExcludingTax { get; private set; }
 
         /// <summary>
-        /// Gets or Sets AmountIncludingTax
+        /// The line item price with discounts applied, including taxes.
         /// </summary>
+        /// <value>The line item price with discounts applied, including taxes.</value>
         [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
         public decimal? AmountIncludingTax { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Attributes
+        /// A map of custom information for the item.
         /// </summary>
+        /// <value>A map of custom information for the item.</value>
         [DataMember(Name="attributes", EmitDefaultValue=false)]
         public Dictionary<string, LineItemAttribute> Attributes { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DiscountExcludingTax
+        /// The discount allocated to the item, excluding taxes.
         /// </summary>
+        /// <value>The discount allocated to the item, excluding taxes.</value>
         [DataMember(Name="discountExcludingTax", EmitDefaultValue=false)]
         public decimal? DiscountExcludingTax { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DiscountIncludingTax
+        /// The discount allocated to the item, including taxes.
         /// </summary>
+        /// <value>The discount allocated to the item, including taxes.</value>
         [DataMember(Name="discountIncludingTax", EmitDefaultValue=false)]
         public decimal? DiscountIncludingTax { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The name of the product, ideally in the customer&#39;s language.
         /// </summary>
+        /// <value>The name of the product, ideally in the customer&#39;s language.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Quantity
+        /// The number of items that were purchased.
         /// </summary>
+        /// <value>The number of items that were purchased.</value>
         [DataMember(Name="quantity", EmitDefaultValue=false)]
         public decimal? Quantity { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ShippingRequired
+        /// Whether the item required shipping.
         /// </summary>
+        /// <value>Whether the item required shipping.</value>
         [DataMember(Name="shippingRequired", EmitDefaultValue=false)]
         public bool? ShippingRequired { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Sku
+        /// The SKU (stock-keeping unit) of the product.
         /// </summary>
+        /// <value>The SKU (stock-keeping unit) of the product.</value>
         [DataMember(Name="sku", EmitDefaultValue=false)]
         public string Sku { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TaxAmount
+        /// The sum of all taxes applied to the item.
         /// </summary>
+        /// <value>The sum of all taxes applied to the item.</value>
         [DataMember(Name="taxAmount", EmitDefaultValue=false)]
         public decimal? TaxAmount { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TaxAmountPerUnit
+        /// The calculated tax amount per unit.
         /// </summary>
+        /// <value>The calculated tax amount per unit.</value>
         [DataMember(Name="taxAmountPerUnit", EmitDefaultValue=false)]
         public decimal? TaxAmountPerUnit { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Taxes
+        /// A set of tax lines, each of which specifies a tax applied to the item.
         /// </summary>
+        /// <value>A set of tax lines, each of which specifies a tax applied to the item.</value>
         [DataMember(Name="taxes", EmitDefaultValue=false)]
         public List<Tax> Taxes { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets UndiscountedAmountExcludingTax
+        /// The line item price with discounts not applied, excluding taxes.
         /// </summary>
+        /// <value>The line item price with discounts not applied, excluding taxes.</value>
         [DataMember(Name="undiscountedAmountExcludingTax", EmitDefaultValue=false)]
         public decimal? UndiscountedAmountExcludingTax { get; private set; }
 
         /// <summary>
-        /// Gets or Sets UndiscountedAmountIncludingTax
+        /// The line item price with discounts not applied, including taxes.
         /// </summary>
+        /// <value>The line item price with discounts not applied, including taxes.</value>
         [DataMember(Name="undiscountedAmountIncludingTax", EmitDefaultValue=false)]
         public decimal? UndiscountedAmountIncludingTax { get; private set; }
 
         /// <summary>
-        /// Gets or Sets UndiscountedUnitPriceExcludingTax
+        /// The calculated price per unit with discounts not applied, excluding taxes.
         /// </summary>
+        /// <value>The calculated price per unit with discounts not applied, excluding taxes.</value>
         [DataMember(Name="undiscountedUnitPriceExcludingTax", EmitDefaultValue=false)]
         public decimal? UndiscountedUnitPriceExcludingTax { get; private set; }
 
         /// <summary>
-        /// Gets or Sets UndiscountedUnitPriceIncludingTax
+        /// The calculated price per unit with discounts not applied, including taxes.
         /// </summary>
+        /// <value>The calculated price per unit with discounts not applied, including taxes.</value>
         [DataMember(Name="undiscountedUnitPriceIncludingTax", EmitDefaultValue=false)]
         public decimal? UndiscountedUnitPriceIncludingTax { get; private set; }
 
         /// <summary>
-        /// The unique id identifies the line item within the set of line items associated with the transaction.
+        /// The unique identifier of the line item within the set of line items.
         /// </summary>
-        /// <value>The unique id identifies the line item within the set of line items associated with the transaction.</value>
+        /// <value>The unique identifier of the line item within the set of line items.</value>
         [DataMember(Name="uniqueId", EmitDefaultValue=false)]
         public string UniqueId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets UnitPriceExcludingTax
+        /// The calculated price per unit with discounts applied, excluding taxes.
         /// </summary>
+        /// <value>The calculated price per unit with discounts applied, excluding taxes.</value>
         [DataMember(Name="unitPriceExcludingTax", EmitDefaultValue=false)]
         public decimal? UnitPriceExcludingTax { get; private set; }
 
         /// <summary>
-        /// Gets or Sets UnitPriceIncludingTax
+        /// The calculated price per unit with discounts applied, including taxes.
         /// </summary>
+        /// <value>The calculated price per unit with discounts applied, including taxes.</value>
         [DataMember(Name="unitPriceIncludingTax", EmitDefaultValue=false)]
         public decimal? UnitPriceIncludingTax { get; private set; }
 

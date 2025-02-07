@@ -35,23 +35,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The collector handles the debt collection case based on the settings of this configuration.
+        /// The debt collector that the configuration is for.
         /// </summary>
-        /// <value>The collector handles the debt collection case based on the settings of this configuration.</value>
+        /// <value>The debt collector that the configuration is for.</value>
         [DataMember(Name="collector", EmitDefaultValue=false)]
         public long? Collector { get; private set; }
 
         /// <summary>
-        /// The conditions applied to the collector configuration restricts the application of this configuration onto a particular debt collection case.
+        /// Conditions allow to define criteria that a debt collection case must fulfill in order for the debt collector configuration to be considered for processing the case.
         /// </summary>
-        /// <value>The conditions applied to the collector configuration restricts the application of this configuration onto a particular debt collection case.</value>
+        /// <value>Conditions allow to define criteria that a debt collection case must fulfill in order for the debt collector configuration to be considered for processing the case.</value>
         [DataMember(Name="conditions", EmitDefaultValue=false)]
         public List<long?> Conditions { get; private set; }
 
         /// <summary>
-        /// The collector configuration is only enabled for the selected space views. In case the set is empty the collector configuration is enabled for all space views.
+        /// The space views for which the debt collector configuration is enabled. If empty, it is enabled for all space views.
         /// </summary>
-        /// <value>The collector configuration is only enabled for the selected space views. In case the set is empty the collector configuration is enabled for all space views.</value>
+        /// <value>The space views for which the debt collector configuration is enabled. If empty, it is enabled for all space views.</value>
         [DataMember(Name="enabledSpaceViews", EmitDefaultValue=false)]
         public List<long?> EnabledSpaceViews { get; private set; }
 
@@ -70,9 +70,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The collector configuration name is used internally to identify a specific collector configuration. For example the name is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the debt collector configuration.
         /// </summary>
-        /// <value>The collector configuration name is used internally to identify a specific collector configuration. For example the name is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the debt collector configuration.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -84,16 +84,16 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// The priority defines the order in which the collector configuration is tried to be applied onto a debt collection case. The higher the value the less likely the configuration is applied on a case.
+        /// The priority that determines the order in which debt collector configurations are taken into account when processing a case. Low values are considered first.
         /// </summary>
-        /// <value>The priority defines the order in which the collector configuration is tried to be applied onto a debt collection case. The higher the value the less likely the configuration is applied on a case.</value>
+        /// <value>The priority that determines the order in which debt collector configurations are taken into account when processing a case. Low values are considered first.</value>
         [DataMember(Name="priority", EmitDefaultValue=false)]
         public int? Priority { get; private set; }
 
         /// <summary>
-        /// When the review is skipped there will be no review for cases which use this configuration.
+        /// Whether the review of debt collection cases is skipped.
         /// </summary>
-        /// <value>When the review is skipped there will be no review for cases which use this configuration.</value>
+        /// <value>Whether the review of debt collection cases is skipped.</value>
         [DataMember(Name="skipReviewEnabled", EmitDefaultValue=false)]
         public bool? SkipReviewEnabled { get; private set; }
 

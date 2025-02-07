@@ -36,7 +36,7 @@ namespace Wallee.Model
         /// <param name="language">language (required).</param>
         /// <param name="shippingAddress">shippingAddress (required).</param>
         /// <param name="subscriber">subscriber (required).</param>
-        public ShopifySubscriptionCreationRequest(ShopifySubscriptionAddressCreate billingAddress, string currency, string externalId, long? integration, List<ShopifySubscriptionModelItem> items, string language, ShopifySubscriptionAddressCreate shippingAddress, ShopifySubscriberCreation subscriber)
+        public ShopifySubscriptionCreationRequest(ShopifySubscriptionAddressCreate billingAddress, string currency, string externalId, long? integration, List<Item> items, string language, ShopifySubscriptionAddressCreate shippingAddress, ShopifySubscriberCreation subscriber)
         {
             // to ensure "billingAddress" is required (not null)
             if (billingAddress == null)
@@ -98,7 +98,7 @@ namespace Wallee.Model
         /// Gets or Sets BillingConfiguration
         /// </summary>
         [DataMember(Name="billingConfiguration", EmitDefaultValue=false)]
-        public ShopifySubscriptionModelBillingConfiguration BillingConfiguration { get; set; }
+        public BillingConfiguration BillingConfiguration { get; set; }
 
         /// <summary>
         /// Gets or Sets Currency
@@ -129,7 +129,7 @@ namespace Wallee.Model
         /// Gets or Sets Items
         /// </summary>
         [DataMember(Name="items", EmitDefaultValue=false)]
-        public List<ShopifySubscriptionModelItem> Items { get; set; }
+        public List<Item> Items { get; set; }
 
         /// <summary>
         /// Gets or Sets Language

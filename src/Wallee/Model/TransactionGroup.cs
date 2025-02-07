@@ -35,20 +35,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets BeginDate
+        /// The date and time when the initial transaction in the group was created.
         /// </summary>
+        /// <value>The date and time when the initial transaction in the group was created.</value>
         [DataMember(Name="beginDate", EmitDefaultValue=false)]
         public DateTime? BeginDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CustomerId
+        /// The unique identifier of the customer in the external system.
         /// </summary>
+        /// <value>The unique identifier of the customer in the external system.</value>
         [DataMember(Name="customerId", EmitDefaultValue=false)]
         public string CustomerId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets EndDate
+        /// The date and time when the final transaction in the group was last updated.
         /// </summary>
+        /// <value>The date and time when the final transaction in the group was last updated.</value>
         [DataMember(Name="endDate", EmitDefaultValue=false)]
         public DateTime? EndDate { get; private set; }
 

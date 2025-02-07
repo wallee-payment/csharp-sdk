@@ -39,7 +39,7 @@ namespace Wallee.Model
         /// Gets or Sets Feature
         /// </summary>
         [DataMember(Name="feature", EmitDefaultValue=false)]
-        public Feature Feature { get; private set; }
+        public long? Feature { get; private set; }
 
         /// <summary>
         /// A unique identifier for the object.

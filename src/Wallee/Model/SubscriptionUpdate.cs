@@ -61,20 +61,23 @@ namespace Wallee.Model
         public long? Version { get; set; }
 
         /// <summary>
-        /// Gets or Sets Affiliate
+        /// The affiliate that led to the creation of the subscription.
         /// </summary>
+        /// <value>The affiliate that led to the creation of the subscription.</value>
         [DataMember(Name="affiliate", EmitDefaultValue=false)]
         public long? Affiliate { get; set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// A description used to identify the subscription.
         /// </summary>
+        /// <value>A description used to identify the subscription.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or Sets PlannedTerminationDate
+        /// The date and time when the subscription is planned to be terminated.
         /// </summary>
+        /// <value>The date and time when the subscription is planned to be terminated.</value>
         [DataMember(Name="plannedTerminationDate", EmitDefaultValue=false)]
         public DateTime? PlannedTerminationDate { get; set; }
 

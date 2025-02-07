@@ -28,7 +28,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionProductCreate" /> class.
         /// </summary>
-        /// <param name="reference">The product reference identifies the product for external systems. This field may contain the product&#39;s SKU. (required).</param>
+        /// <param name="reference">The merchant&#39;s reference used to identify the product, e.g. the SKU. (required).</param>
         public SubscriptionProductCreate(string reference)
         {
             // to ensure "reference" is required (not null)
@@ -46,9 +46,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.
+        /// The merchant&#39;s reference used to identify the product, e.g. the SKU.
         /// </summary>
-        /// <value>The product reference identifies the product for external systems. This field may contain the product&#39;s SKU.</value>
+        /// <value>The merchant&#39;s reference used to identify the product, e.g. the SKU.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
 

@@ -29,14 +29,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Rate
+        /// The tax rate to be applied.
         /// </summary>
+        /// <value>The tax rate to be applied.</value>
         [DataMember(Name="rate", EmitDefaultValue=false)]
         public decimal? Rate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Title
+        /// The name of the tax.
         /// </summary>
+        /// <value>The name of the tax.</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
         public string Title { get; private set; }
 

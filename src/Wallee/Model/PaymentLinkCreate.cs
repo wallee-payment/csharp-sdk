@@ -30,8 +30,8 @@ namespace Wallee.Model
         /// The protection mode determines if the payment link is protected against tampering and in what way.
         /// </summary>
         /// <value>The protection mode determines if the payment link is protected against tampering and in what way.</value>
-        [DataMember(Name="protectionMode", EmitDefaultValue=false)]
-        public PaymentLinkProtectionMode? ProtectionMode { get; set; }
+        [DataMember(Name="protectionMode", EmitDefaultValue=true)]
+        public PaymentLinkProtectionMode ProtectionMode { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentLinkCreate" /> class.
         /// </summary>
@@ -41,7 +41,8 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="PaymentLinkCreate" /> class.
         /// </summary>
         /// <param name="externalId">A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead. (required).</param>
-        public PaymentLinkCreate(string externalId)
+        /// <param name="protectionMode">The protection mode determines if the payment link is protected against tampering and in what way. (required).</param>
+        public PaymentLinkCreate(string externalId, PaymentLinkProtectionMode protectionMode)
         {
             // to ensure "externalId" is required (not null)
             if (externalId == null)
@@ -49,6 +50,12 @@ namespace Wallee.Model
                 throw new InvalidDataException("externalId is a required property for PaymentLinkCreate and cannot be null");
             }
             this.ExternalId = externalId;
+            // to ensure "protectionMode" is required (not null)
+            if (protectionMode == null)
+            {
+                throw new InvalidDataException("protectionMode is a required property for PaymentLinkCreate and cannot be null");
+            }
+            this.ProtectionMode = protectionMode;
         }
 
 

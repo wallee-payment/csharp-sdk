@@ -21,9 +21,9 @@ namespace Wallee.Model
     public partial class TransactionCreate : AbstractTransactionPending,  IEquatable<TransactionCreate>
     {
         /// <summary>
-        /// The customer&#39;s presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.
+        /// The customer&#39;s presence indicates whether and in what way the transaction&#39;s customer is present. Default is VIRTUAL_PRESENT.
         /// </summary>
-        /// <value>The customer&#39;s presence indicates what kind of authentication method was finally used during authorization of the transaction. If no value is provided, &#39;Virtually Present&#39; is used by default.</value>
+        /// <value>The customer&#39;s presence indicates whether and in what way the transaction&#39;s customer is present. Default is VIRTUAL_PRESENT.</value>
         [DataMember(Name="customersPresence", EmitDefaultValue=false)]
         public CustomersPresence? CustomersPresence { get; set; }
         /// <summary>
@@ -32,9 +32,9 @@ namespace Wallee.Model
         [DataMember(Name="environment", EmitDefaultValue=false)]
         public Environment? Environment { get; set; }
         /// <summary>
-        /// The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.
+        /// The strategy for determining whether the transaction is to be processed in the test or production environment.
         /// </summary>
-        /// <value>The environment selection strategy determines how the environment (test or production) for processing the transaction is selected.</value>
+        /// <value>The strategy for determining whether the transaction is to be processed in the test or production environment.</value>
         [DataMember(Name="environmentSelectionStrategy", EmitDefaultValue=false)]
         public TransactionEnvironmentSelectionStrategy? EnvironmentSelectionStrategy { get; set; }
         /// <summary>
@@ -45,7 +45,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionCreate" /> class.
         /// </summary>
-        /// <param name="lineItems">lineItems (required).</param>
+        /// <param name="lineItems">The line items purchased by the customer. (required).</param>
         public TransactionCreate(List<LineItemCreate> lineItems)
         {
             // to ensure "lineItems" is required (not null)
@@ -76,39 +76,40 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.
+        /// Whether the transaction can be confirmed automatically or whether this must be done explicitly via the API. Default is true.
         /// </summary>
-        /// <value>When auto confirmation is enabled the transaction can be confirmed by the user and does not require an explicit confirmation through the web service API.</value>
+        /// <value>Whether the transaction can be confirmed automatically or whether this must be done explicitly via the API. Default is true.</value>
         [DataMember(Name="autoConfirmationEnabled", EmitDefaultValue=false)]
         public bool? AutoConfirmationEnabled { get; set; }
 
         /// <summary>
-        /// When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.
+        /// Whether the customer can make further payment attempts if the first one has failed. Default is true.
         /// </summary>
-        /// <value>When the charging of the customer fails we can retry the charging. This implies that we redirect the user back to the payment page which allows the customer to retry. By default we will retry.</value>
+        /// <value>Whether the customer can make further payment attempts if the first one has failed. Default is true.</value>
         [DataMember(Name="chargeRetryEnabled", EmitDefaultValue=false)]
         public bool? ChargeRetryEnabled { get; set; }
 
 
         /// <summary>
-        /// The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.
+        /// Allows to link the transaction to the data collected from the customer&#39;s device.
         /// </summary>
-        /// <value>The device session identifier links the transaction with the session identifier provided in the URL of the device data JavaScript. This allows to link the transaction with the collected device data of the buyer.</value>
+        /// <value>Allows to link the transaction to the data collected from the customer&#39;s device.</value>
         [DataMember(Name="deviceSessionIdentifier", EmitDefaultValue=false)]
         public string DeviceSessionIdentifier { get; set; }
 
         /// <summary>
-        /// Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.
+        /// Whether email sending is deactivated for the transaction. Default is false.
         /// </summary>
-        /// <value>Flag indicating whether email sending is disabled for this particular transaction. Defaults to false.</value>
+        /// <value>Whether email sending is deactivated for the transaction. Default is false.</value>
         [DataMember(Name="emailsDisabled", EmitDefaultValue=false)]
         public bool? EmailsDisabled { get; set; }
 
 
 
         /// <summary>
-        /// Gets or Sets SpaceViewId
+        /// The ID of the space view this object is linked to.
         /// </summary>
+        /// <value>The ID of the space view this object is linked to.</value>
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; set; }
 

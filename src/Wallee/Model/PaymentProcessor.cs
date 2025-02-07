@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// PaymentProcessor
+    /// Payment processors handle the connection to third part companies (payment service providers) that technically manage payment transactions and therefore process payments.
     /// </summary>
     [DataContract]
     public partial class PaymentProcessor :  IEquatable<PaymentProcessor>
@@ -29,8 +29,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets CompanyName
+        /// The name of the company to which the processor belongs.
         /// </summary>
+        /// <value>The name of the company to which the processor belongs.</value>
         [DataMember(Name="companyName", EmitDefaultValue=false)]
         public Dictionary<string, string> CompanyName { get; private set; }
 
@@ -42,14 +43,9 @@ namespace Wallee.Model
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Feature
+        /// Where the processor&#39;s headquarters are located.
         /// </summary>
-        [DataMember(Name="feature", EmitDefaultValue=false)]
-        public long? Feature { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets HeadquartersLocation
-        /// </summary>
+        /// <value>Where the processor&#39;s headquarters are located.</value>
         [DataMember(Name="headquartersLocation", EmitDefaultValue=false)]
         public Dictionary<string, string> HeadquartersLocation { get; private set; }
 
@@ -61,8 +57,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets LogoPath
+        /// The path to the logo image of the processor.
         /// </summary>
+        /// <value>The path to the logo image of the processor.</value>
         [DataMember(Name="logoPath", EmitDefaultValue=false)]
         public string LogoPath { get; private set; }
 
@@ -74,8 +71,9 @@ namespace Wallee.Model
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ProductName
+        /// The name of the processor&#39;s product.
         /// </summary>
+        /// <value>The name of the processor&#39;s product.</value>
         [DataMember(Name="productName", EmitDefaultValue=false)]
         public Dictionary<string, string> ProductName { get; private set; }
 
@@ -89,7 +87,6 @@ namespace Wallee.Model
             sb.Append("class PaymentProcessor {\n");
             sb.Append("  CompanyName: ").Append(CompanyName).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Feature: ").Append(Feature).Append("\n");
             sb.Append("  HeadquartersLocation: ").Append(HeadquartersLocation).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LogoPath: ").Append(LogoPath).Append("\n");
@@ -142,11 +139,6 @@ namespace Wallee.Model
                     this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
-                    this.Feature == input.Feature ||
-                    (this.Feature != null &&
-                    this.Feature.Equals(input.Feature))
-                ) && 
-                (
                     this.HeadquartersLocation == input.HeadquartersLocation ||
                     this.HeadquartersLocation != null &&
                     input.HeadquartersLocation != null &&
@@ -189,8 +181,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.CompanyName.GetHashCode();
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.Feature != null)
-                    hashCode = hashCode * 59 + this.Feature.GetHashCode();
                 if (this.HeadquartersLocation != null)
                     hashCode = hashCode * 59 + this.HeadquartersLocation.GetHashCode();
                 if (this.Id != null)

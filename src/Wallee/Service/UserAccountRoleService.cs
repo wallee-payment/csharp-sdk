@@ -114,7 +114,7 @@ namespace Wallee.Service
         /// <returns></returns>
         public UserAccountRoleService(Wallee.Client.Configuration configuration = null)
         {
-            if(configuration == null){
+            if (configuration == null) {
                 throw new ArgumentException("Parameter cannot be null", "configuration");
             }
             this.Configuration = configuration;
@@ -199,22 +199,30 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (userId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "userId", userId)); // query parameter
             if (accountId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "accountId", accountId)); // query parameter
             if (roleId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "roleId", roleId)); // query parameter
             if (appliesOnSubaccount != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "appliesOnSubaccount", appliesOnSubaccount)); // query parameter
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
+			int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -269,20 +277,28 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
             if (userId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "userId", userId)); // query parameter
             if (accountId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "accountId", accountId)); // query parameter
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
+			int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -331,19 +347,27 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
+			int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;

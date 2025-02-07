@@ -27,9 +27,9 @@ namespace Wallee.Model
         [DataMember(Name="state", EmitDefaultValue=false)]
         public SubscriptionProductVersionState? State { get; set; }
         /// <summary>
-        /// Strategy that is used for tax calculation in fees.
+        /// The way taxes are calculated for fees.
         /// </summary>
-        /// <value>Strategy that is used for tax calculation in fees.</value>
+        /// <value>The way taxes are calculated for fees.</value>
         [DataMember(Name="taxCalculation", EmitDefaultValue=false)]
         public TaxCalculation? TaxCalculation { get; set; }
         /// <summary>
@@ -73,58 +73,58 @@ namespace Wallee.Model
         public long? Version { get; set; }
 
         /// <summary>
-        /// The billing cycle determines the rhythm with which the subscriber is billed. The charging may have different rhythm.
+        /// The recurring period of time, typically monthly or annually, for which a subscriber is charged.
         /// </summary>
-        /// <value>The billing cycle determines the rhythm with which the subscriber is billed. The charging may have different rhythm.</value>
+        /// <value>The recurring period of time, typically monthly or annually, for which a subscriber is charged.</value>
         [DataMember(Name="billingCycle", EmitDefaultValue=false)]
         public string BillingCycle { get; set; }
 
         /// <summary>
-        /// The comment allows to provide a internal comment for the version. It helps to document why a product was changed. The comment is not disclosed to the subscriber.
+        /// A comment that describes the product version and why it was created. It is not disclosed to the subscriber.
         /// </summary>
-        /// <value>The comment allows to provide a internal comment for the version. It helps to document why a product was changed. The comment is not disclosed to the subscriber.</value>
+        /// <value>A comment that describes the product version and why it was created. It is not disclosed to the subscriber.</value>
         [DataMember(Name="comment", EmitDefaultValue=false)]
         public string Comment { get; set; }
 
         /// <summary>
-        /// The default currency has to be used in all fees.
+        /// The three-letter code (ISO 4217 format) of the product version&#39;s default currency.
         /// </summary>
-        /// <value>The default currency has to be used in all fees.</value>
+        /// <value>The three-letter code (ISO 4217 format) of the product version&#39;s default currency.</value>
         [DataMember(Name="defaultCurrency", EmitDefaultValue=false)]
         public string DefaultCurrency { get; set; }
 
         /// <summary>
-        /// The currencies which are enabled can be selected to define component fees. Currencies which are not enabled cannot be used to define fees.
+        /// The three-letter codes (ISO 4217 format) of the currencies that the product version supports.
         /// </summary>
-        /// <value>The currencies which are enabled can be selected to define component fees. Currencies which are not enabled cannot be used to define fees.</value>
+        /// <value>The three-letter codes (ISO 4217 format) of the currencies that the product version supports.</value>
         [DataMember(Name="enabledCurrencies", EmitDefaultValue=false)]
         public List<string> EnabledCurrencies { get; set; }
 
         /// <summary>
-        /// The minimal number of periods determines how long the subscription has to run before the subscription can be terminated.
+        /// The minimum number of periods the subscription will run before it can be terminated.
         /// </summary>
-        /// <value>The minimal number of periods determines how long the subscription has to run before the subscription can be terminated.</value>
+        /// <value>The minimum number of periods the subscription will run before it can be terminated.</value>
         [DataMember(Name="minimalNumberOfPeriods", EmitDefaultValue=false)]
         public int? MinimalNumberOfPeriods { get; set; }
 
         /// <summary>
-        /// The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.
+        /// The localized name of the product that is displayed to the customer.
         /// </summary>
-        /// <value>The product version name is the name of the product which is shown to the user for the version. When the visible product name should be changed for a particular product a new version has to be created which contains the new name of the product.</value>
+        /// <value>The localized name of the product that is displayed to the customer.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; set; }
 
         /// <summary>
-        /// The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.
+        /// The number of periods the subscription will keep running after its termination was requested.
         /// </summary>
-        /// <value>The number of notice periods determines the number of periods which need to be paid between the request to terminate the subscription and the final period.</value>
+        /// <value>The number of periods the subscription will keep running after its termination was requested.</value>
         [DataMember(Name="numberOfNoticePeriods", EmitDefaultValue=false)]
         public int? NumberOfNoticePeriods { get; set; }
 
         /// <summary>
-        /// Each product version is linked to a product.
+        /// The product that the version belongs to.
         /// </summary>
-        /// <value>Each product version is linked to a product.</value>
+        /// <value>The product that the version belongs to.</value>
         [DataMember(Name="product", EmitDefaultValue=false)]
         public long? Product { get; set; }
 

@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class LineItemCreate :  IEquatable<LineItemCreate>
     {
         /// <summary>
-        /// Gets or Sets Type
+        /// The type of the line item.
         /// </summary>
+        /// <value>The type of the line item.</value>
         [DataMember(Name="type", EmitDefaultValue=true)]
         public LineItemType Type { get; set; }
         /// <summary>
@@ -33,11 +34,11 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LineItemCreate" /> class.
         /// </summary>
-        /// <param name="amountIncludingTax">amountIncludingTax (required).</param>
-        /// <param name="name">name (required).</param>
-        /// <param name="quantity">quantity (required).</param>
-        /// <param name="type">type (required).</param>
-        /// <param name="uniqueId">The unique id identifies the line item within the set of line items associated with the transaction. (required).</param>
+        /// <param name="amountIncludingTax">The line item price with discounts applied, including taxes. (required).</param>
+        /// <param name="name">The name of the product, ideally in the customer&#39;s language. (required).</param>
+        /// <param name="quantity">The number of items that were purchased. (required).</param>
+        /// <param name="type">The type of the line item. (required).</param>
+        /// <param name="uniqueId">The unique identifier of the line item within the set of line items. (required).</param>
         public LineItemCreate(decimal? amountIncludingTax, string name, decimal? quantity, LineItemType type, string uniqueId)
         {
             // to ensure "amountIncludingTax" is required (not null)
@@ -73,58 +74,66 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets AmountIncludingTax
+        /// The line item price with discounts applied, including taxes.
         /// </summary>
+        /// <value>The line item price with discounts applied, including taxes.</value>
         [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
         public decimal? AmountIncludingTax { get; set; }
 
         /// <summary>
-        /// Gets or Sets Attributes
+        /// A map of custom information for the item.
         /// </summary>
+        /// <value>A map of custom information for the item.</value>
         [DataMember(Name="attributes", EmitDefaultValue=false)]
         public Dictionary<string, LineItemAttributeCreate> Attributes { get; set; }
 
         /// <summary>
-        /// Gets or Sets DiscountIncludingTax
+        /// The discount allocated to the item, including taxes.
         /// </summary>
+        /// <value>The discount allocated to the item, including taxes.</value>
         [DataMember(Name="discountIncludingTax", EmitDefaultValue=false)]
         public decimal? DiscountIncludingTax { get; set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The name of the product, ideally in the customer&#39;s language.
         /// </summary>
+        /// <value>The name of the product, ideally in the customer&#39;s language.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or Sets Quantity
+        /// The number of items that were purchased.
         /// </summary>
+        /// <value>The number of items that were purchased.</value>
         [DataMember(Name="quantity", EmitDefaultValue=false)]
         public decimal? Quantity { get; set; }
 
         /// <summary>
-        /// Gets or Sets ShippingRequired
+        /// Whether the item required shipping.
         /// </summary>
+        /// <value>Whether the item required shipping.</value>
         [DataMember(Name="shippingRequired", EmitDefaultValue=false)]
         public bool? ShippingRequired { get; set; }
 
         /// <summary>
-        /// Gets or Sets Sku
+        /// The SKU (stock-keeping unit) of the product.
         /// </summary>
+        /// <value>The SKU (stock-keeping unit) of the product.</value>
         [DataMember(Name="sku", EmitDefaultValue=false)]
         public string Sku { get; set; }
 
         /// <summary>
-        /// Gets or Sets Taxes
+        /// A set of tax lines, each of which specifies a tax applied to the item.
         /// </summary>
+        /// <value>A set of tax lines, each of which specifies a tax applied to the item.</value>
         [DataMember(Name="taxes", EmitDefaultValue=false)]
         public List<TaxCreate> Taxes { get; set; }
 
 
         /// <summary>
-        /// The unique id identifies the line item within the set of line items associated with the transaction.
+        /// The unique identifier of the line item within the set of line items.
         /// </summary>
-        /// <value>The unique id identifies the line item within the set of line items associated with the transaction.</value>
+        /// <value>The unique identifier of the line item within the set of line items.</value>
         [DataMember(Name="uniqueId", EmitDefaultValue=false)]
         public string UniqueId { get; set; }
 

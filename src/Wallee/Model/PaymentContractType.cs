@@ -36,12 +36,6 @@ namespace Wallee.Model
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Feature
-        /// </summary>
-        [DataMember(Name="feature", EmitDefaultValue=false)]
-        public Feature Feature { get; private set; }
-
-        /// <summary>
         /// A unique identifier for the object.
         /// </summary>
         /// <value>A unique identifier for the object.</value>
@@ -64,7 +58,6 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class PaymentContractType {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Feature: ").Append(Feature).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
@@ -108,11 +101,6 @@ namespace Wallee.Model
                     this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
-                    this.Feature == input.Feature ||
-                    (this.Feature != null &&
-                    this.Feature.Equals(input.Feature))
-                ) && 
-                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -136,8 +124,6 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.Feature != null)
-                    hashCode = hashCode * 59 + this.Feature.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)

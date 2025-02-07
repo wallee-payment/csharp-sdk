@@ -1,15 +1,6 @@
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using RestSharp;
 using NUnit.Framework;
-
 using Wallee.Model;
 using Wallee.Service;
-using Wallee.Client;
 
 namespace Wallee.Test
 {
@@ -36,7 +27,8 @@ namespace Wallee.Test
         {
         }
 
-        private TransactionCreate GetDeferredTransactionCreate() {
+        private TransactionCreate GetDeferredTransactionCreate()
+        {
             var transactionCreate = Constants.GetTransactionCreate();
             transactionCreate.TokenizationMode = TokenizationMode.FORCE_CREATION;
             transactionCreate.CustomersPresence = CustomersPresence.NOT_PRESENT;
@@ -56,9 +48,11 @@ namespace Wallee.Test
 
             Assert.AreEqual(TransactionState.AUTHORIZED, transactionProcessed.State, "State must be AUTHORIZED");
 
-            var transactionCompletion = transactionCompletionService.CompleteOffline(Constants.SpaceId, transactionProcessed.Id);
+            var transactionCompletion =
+                transactionCompletionService.CompleteOffline(Constants.SpaceId, transactionProcessed.Id);
 
-            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transactionCompletion.State, "State must be SUCCESSFUL");
+            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transactionCompletion.State,
+                "State must be SUCCESSFUL");
         }
 
         /// <summary>
@@ -73,9 +67,11 @@ namespace Wallee.Test
 
             Assert.AreEqual(TransactionState.AUTHORIZED, transactionProcessed.State, "State must be AUTHORIZED");
 
-            var transactionCompletion = transactionCompletionService.CompleteOnline(Constants.SpaceId, transactionProcessed.Id);
+            var transactionCompletion =
+                transactionCompletionService.CompleteOnline(Constants.SpaceId, transactionProcessed.Id);
 
-            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transactionCompletion.State, "State must be SUCCESSFUL");
+            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transactionCompletion.State,
+                "State must be SUCCESSFUL");
         }
 
         /// <summary>
@@ -90,7 +86,8 @@ namespace Wallee.Test
 
             Assert.AreEqual(TransactionState.AUTHORIZED, transactionProcessed.State, "State must be AUTHORIZED");
 
-            var transactionCompletion = transactionCompletionService.CompleteOnline(Constants.SpaceId, transactionProcessed.Id);
+            var transactionCompletion =
+                transactionCompletionService.CompleteOnline(Constants.SpaceId, transactionProcessed.Id);
             var transactionRead = transactionCompletionService.Read(Constants.SpaceId, transactionCompletion.Id);
 
             Assert.AreEqual(transactionCompletion.Id, transactionRead.Id, "Transaction ids must match");
@@ -105,9 +102,11 @@ namespace Wallee.Test
             var transaction = transactionService.Create(Constants.SpaceId, GetDeferredTransactionCreate());
             var transactionProcessed = cardProcessingService.Process(Constants.SpaceId, transaction.Id,
                 Constants.TestCardPaymentMethodConfigurationId, Constants.FakeCardData);
-            var transactionCompletion = transactionCompletionService.CompleteOnline(Constants.SpaceId, transactionProcessed.Id);
+            var transactionCompletion =
+                transactionCompletionService.CompleteOnline(Constants.SpaceId, transactionProcessed.Id);
 
-            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF){
+            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF)
+            {
                 FieldName = "id",
                 Value = transactionCompletion.Id,
                 Operator = CriteriaOperator.EQUALS
@@ -126,23 +125,26 @@ namespace Wallee.Test
             var transaction = transactionService.Create(Constants.SpaceId, GetDeferredTransactionCreate());
             var transactionProcessed = cardProcessingService.Process(Constants.SpaceId, transaction.Id,
                 Constants.TestCardPaymentMethodConfigurationId, Constants.FakeCardData);
-            var transactionCompletion = transactionCompletionService.CompleteOnline(Constants.SpaceId, transactionProcessed.Id);
+            var transactionCompletion =
+                transactionCompletionService.CompleteOnline(Constants.SpaceId, transactionProcessed.Id);
 
 
-            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF){
+            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF)
+            {
                 FieldName = "id",
                 Value = transactionCompletion.Id,
                 Operator = CriteriaOperator.EQUALS
             };
-            var completionsFound = transactionCompletionService.Search(Constants.SpaceId, new EntityQuery(){
+            var completionsFound = transactionCompletionService.Search(Constants.SpaceId, new EntityQuery()
+            {
                 Filter = queryFilter
             });
 
             Assert.That(completionsFound.Count == 1, "Should find one completion");
-            completionsFound.ForEach(compl => {
+            completionsFound.ForEach(compl =>
+            {
                 Assert.AreEqual(transactionCompletion.Id, compl.Id, "Completion ids should match");
             });
         }
-
     }
 }

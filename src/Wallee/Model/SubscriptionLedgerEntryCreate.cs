@@ -28,11 +28,11 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionLedgerEntryCreate" /> class.
         /// </summary>
-        /// <param name="amountIncludingTax">amountIncludingTax (required).</param>
+        /// <param name="amountIncludingTax">The leger entry&#39;s amount with discounts applied, including taxes. (required).</param>
         /// <param name="externalId">A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead. (required).</param>
-        /// <param name="quantity">quantity (required).</param>
-        /// <param name="subscriptionVersion">subscriptionVersion (required).</param>
-        /// <param name="title">title (required).</param>
+        /// <param name="quantity">The number of items that were consumed. (required).</param>
+        /// <param name="subscriptionVersion">The subscription version that the ledger entry belongs to. (required).</param>
+        /// <param name="title">The title that indicates what the ledger entry is about. (required).</param>
         public SubscriptionLedgerEntryCreate(decimal? amountIncludingTax, string externalId, decimal? quantity, long? subscriptionVersion, string title)
         {
             // to ensure "amountIncludingTax" is required (not null)
@@ -68,10 +68,17 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets AmountIncludingTax
+        /// The leger entry&#39;s amount with discounts applied, including taxes.
         /// </summary>
+        /// <value>The leger entry&#39;s amount with discounts applied, including taxes.</value>
         [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
         public decimal? AmountIncludingTax { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ComponentReferenceName
+        /// </summary>
+        [DataMember(Name="componentReferenceName", EmitDefaultValue=false)]
+        public string ComponentReferenceName { get; set; }
 
         /// <summary>
         /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
@@ -81,26 +88,36 @@ namespace Wallee.Model
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Quantity
+        /// The number of items that were consumed.
         /// </summary>
+        /// <value>The number of items that were consumed.</value>
         [DataMember(Name="quantity", EmitDefaultValue=false)]
         public decimal? Quantity { get; set; }
 
         /// <summary>
-        /// Gets or Sets SubscriptionVersion
+        /// Gets or Sets SubscriptionMetricId
         /// </summary>
+        [DataMember(Name="subscriptionMetricId", EmitDefaultValue=false)]
+        public long? SubscriptionMetricId { get; set; }
+
+        /// <summary>
+        /// The subscription version that the ledger entry belongs to.
+        /// </summary>
+        /// <value>The subscription version that the ledger entry belongs to.</value>
         [DataMember(Name="subscriptionVersion", EmitDefaultValue=false)]
         public long? SubscriptionVersion { get; set; }
 
         /// <summary>
-        /// Gets or Sets Taxes
+        /// A set of tax lines, each of which specifies a tax applied to the ledger entry.
         /// </summary>
+        /// <value>A set of tax lines, each of which specifies a tax applied to the ledger entry.</value>
         [DataMember(Name="taxes", EmitDefaultValue=false)]
         public List<TaxCreate> Taxes { get; set; }
 
         /// <summary>
-        /// Gets or Sets Title
+        /// The title that indicates what the ledger entry is about.
         /// </summary>
+        /// <value>The title that indicates what the ledger entry is about.</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
         public string Title { get; set; }
 
@@ -113,8 +130,10 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class SubscriptionLedgerEntryCreate {\n");
             sb.Append("  AmountIncludingTax: ").Append(AmountIncludingTax).Append("\n");
+            sb.Append("  ComponentReferenceName: ").Append(ComponentReferenceName).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+            sb.Append("  SubscriptionMetricId: ").Append(SubscriptionMetricId).Append("\n");
             sb.Append("  SubscriptionVersion: ").Append(SubscriptionVersion).Append("\n");
             sb.Append("  Taxes: ").Append(Taxes).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
@@ -158,6 +177,11 @@ namespace Wallee.Model
                     this.AmountIncludingTax.Equals(input.AmountIncludingTax))
                 ) && 
                 (
+                    this.ComponentReferenceName == input.ComponentReferenceName ||
+                    (this.ComponentReferenceName != null &&
+                    this.ComponentReferenceName.Equals(input.ComponentReferenceName))
+                ) && 
+                (
                     this.ExternalId == input.ExternalId ||
                     (this.ExternalId != null &&
                     this.ExternalId.Equals(input.ExternalId))
@@ -166,6 +190,11 @@ namespace Wallee.Model
                     this.Quantity == input.Quantity ||
                     (this.Quantity != null &&
                     this.Quantity.Equals(input.Quantity))
+                ) && 
+                (
+                    this.SubscriptionMetricId == input.SubscriptionMetricId ||
+                    (this.SubscriptionMetricId != null &&
+                    this.SubscriptionMetricId.Equals(input.SubscriptionMetricId))
                 ) && 
                 (
                     this.SubscriptionVersion == input.SubscriptionVersion ||
@@ -196,10 +225,14 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.AmountIncludingTax != null)
                     hashCode = hashCode * 59 + this.AmountIncludingTax.GetHashCode();
+                if (this.ComponentReferenceName != null)
+                    hashCode = hashCode * 59 + this.ComponentReferenceName.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.Quantity != null)
                     hashCode = hashCode * 59 + this.Quantity.GetHashCode();
+                if (this.SubscriptionMetricId != null)
+                    hashCode = hashCode * 59 + this.SubscriptionMetricId.GetHashCode();
                 if (this.SubscriptionVersion != null)
                     hashCode = hashCode * 59 + this.SubscriptionVersion.GetHashCode();
                 if (this.Taxes != null)

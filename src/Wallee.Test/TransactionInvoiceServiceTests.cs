@@ -1,15 +1,8 @@
-using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
-using RestSharp;
 using NUnit.Framework;
-
 using Wallee.Model;
 using Wallee.Service;
-using Wallee.Client;
 
 namespace Wallee.Test
 {
@@ -55,20 +48,24 @@ namespace Wallee.Test
 
             Assert.AreEqual(TransactionState.FULFILL, transactionProcessed.State, "Transaction state must be FULFILL");
 
-             var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF){
+            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF)
+            {
                 // linkedTransaction does not work here as criteria
                 FieldName = "completion.lineItemVersion.transaction.id",
                 Value = transactionProcessed.Id,
                 Operator = CriteriaOperator.EQUALS
             };
 
-            var invoicesFound = transactionInvoiceService.Search(Constants.SpaceId, new EntityQuery(){
+            var invoicesFound = transactionInvoiceService.Search(Constants.SpaceId, new EntityQuery()
+            {
                 Filter = queryFilter
             });
 
             Assert.That(invoicesFound.Any(), "Should find invoice");
-            invoicesFound.ForEach(invoice => {
-                Assert.AreEqual(TransactionInvoiceState.NOT_APPLICABLE, invoice.State, "Invoice paid by card is expected to be of NOT_APPLICABLE state");
+            invoicesFound.ForEach(invoice =>
+            {
+                Assert.AreEqual(TransactionInvoiceState.NOT_APPLICABLE, invoice.State,
+                    "Invoice paid by card is expected to be of NOT_APPLICABLE state");
             });
         }
 
@@ -84,19 +81,24 @@ namespace Wallee.Test
             transactionCreate.CompletionBehavior = TransactionCompletionBehavior.COMPLETE_DEFERRED;
 
             // we want invoice in OPEN state (OPEN invoices can be derecognized), so we force payment by invoice
-            transactionCreate.AllowedPaymentMethodConfigurations = new List<long?> { Constants.TestIsrInvoicePaymentMethodConfigurationId };
+            transactionCreate.AllowedPaymentMethodConfigurations = new List<long?>
+                { Constants.TestIsrInvoicePaymentMethodConfigurationId };
             var transaction = transactionService.Create(Constants.SpaceId, transactionCreate);
 
-            var transactionProcessed = transactionService.ProcessWithoutUserInteraction(Constants.SpaceId, transaction.Id);
-            var transactionCompletion = transactionCompletionService.CompleteOnline(Constants.SpaceId, transactionProcessed.Id);
+            var transactionProcessed =
+                transactionService.ProcessWithoutUserInteraction(Constants.SpaceId, transaction.Id);
+            var transactionCompletion =
+                transactionCompletionService.CompleteOnline(Constants.SpaceId, transactionProcessed.Id);
 
-             var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF){
+            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF)
+            {
                 FieldName = "completion.lineItemVersion.transaction.id",
                 Value = transactionProcessed.Id,
                 Operator = CriteriaOperator.EQUALS
             };
 
-            var invoicesFound = transactionInvoiceService.Search(Constants.SpaceId, new EntityQuery(){
+            var invoicesFound = transactionInvoiceService.Search(Constants.SpaceId, new EntityQuery()
+            {
                 Filter = queryFilter
             });
 
@@ -104,12 +106,14 @@ namespace Wallee.Test
 
             var foundInvoice = invoicesFound[0];
 
-            Assert.AreEqual(TransactionInvoiceState.OPEN, foundInvoice.State, "Transaction paid by invoice should create invoice in OPEN state");
+            Assert.AreEqual(TransactionInvoiceState.OPEN, foundInvoice.State,
+                "Transaction paid by invoice should create invoice in OPEN state");
 
             // this is a POST call without a body
             var derecognizedInvoice = transactionInvoiceService.MarkAsDerecognized(Constants.SpaceId, foundInvoice.Id);
 
-            Assert.AreEqual(TransactionInvoiceState.DERECOGNIZED, derecognizedInvoice.State, "Expected DERECOGNIZED invoice state");
+            Assert.AreEqual(TransactionInvoiceState.DERECOGNIZED, derecognizedInvoice.State,
+                "Expected DERECOGNIZED invoice state");
         }
     }
 }

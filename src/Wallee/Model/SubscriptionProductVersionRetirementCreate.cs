@@ -28,7 +28,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionProductVersionRetirementCreate" /> class.
         /// </summary>
-        /// <param name="productVersion">productVersion (required).</param>
+        /// <param name="productVersion">The product version that is to be retired. (required).</param>
         public SubscriptionProductVersionRetirementCreate(long? productVersion)
         {
             // to ensure "productVersion" is required (not null)
@@ -40,21 +40,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets ProductVersion
+        /// The product version that is to be retired.
         /// </summary>
+        /// <value>The product version that is to be retired.</value>
         [DataMember(Name="productVersion", EmitDefaultValue=false)]
         public long? ProductVersion { get; set; }
 
         /// <summary>
-        /// Gets or Sets RespectTerminiationPeriodsEnabled
+        /// Whether the subscriptions&#39; termination periods should be respected.
         /// </summary>
-        [DataMember(Name="respectTerminiationPeriodsEnabled", EmitDefaultValue=false)]
-        public bool? RespectTerminiationPeriodsEnabled { get; set; }
+        /// <value>Whether the subscriptions&#39; termination periods should be respected.</value>
+        [DataMember(Name="respectTerminationPeriods", EmitDefaultValue=false)]
+        public bool? RespectTerminationPeriods { get; set; }
 
         /// <summary>
-        /// When a target product is not chosen, all customers with the retired product will be terminated.
+        /// The product to which the subscriptions with the retiring product version are to be migrated. If none is defined, the subscriptions are terminated.
         /// </summary>
-        /// <value>When a target product is not chosen, all customers with the retired product will be terminated.</value>
+        /// <value>The product to which the subscriptions with the retiring product version are to be migrated. If none is defined, the subscriptions are terminated.</value>
         [DataMember(Name="targetProduct", EmitDefaultValue=false)]
         public long? TargetProduct { get; set; }
 
@@ -67,7 +69,7 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class SubscriptionProductVersionRetirementCreate {\n");
             sb.Append("  ProductVersion: ").Append(ProductVersion).Append("\n");
-            sb.Append("  RespectTerminiationPeriodsEnabled: ").Append(RespectTerminiationPeriodsEnabled).Append("\n");
+            sb.Append("  RespectTerminationPeriods: ").Append(RespectTerminationPeriods).Append("\n");
             sb.Append("  TargetProduct: ").Append(TargetProduct).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -109,9 +111,9 @@ namespace Wallee.Model
                     this.ProductVersion.Equals(input.ProductVersion))
                 ) && 
                 (
-                    this.RespectTerminiationPeriodsEnabled == input.RespectTerminiationPeriodsEnabled ||
-                    (this.RespectTerminiationPeriodsEnabled != null &&
-                    this.RespectTerminiationPeriodsEnabled.Equals(input.RespectTerminiationPeriodsEnabled))
+                    this.RespectTerminationPeriods == input.RespectTerminationPeriods ||
+                    (this.RespectTerminationPeriods != null &&
+                    this.RespectTerminationPeriods.Equals(input.RespectTerminationPeriods))
                 ) && 
                 (
                     this.TargetProduct == input.TargetProduct ||
@@ -131,8 +133,8 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.ProductVersion != null)
                     hashCode = hashCode * 59 + this.ProductVersion.GetHashCode();
-                if (this.RespectTerminiationPeriodsEnabled != null)
-                    hashCode = hashCode * 59 + this.RespectTerminiationPeriodsEnabled.GetHashCode();
+                if (this.RespectTerminationPeriods != null)
+                    hashCode = hashCode * 59 + this.RespectTerminationPeriods.GetHashCode();
                 if (this.TargetProduct != null)
                     hashCode = hashCode * 59 + this.TargetProduct.GetHashCode();
                 return hashCode;

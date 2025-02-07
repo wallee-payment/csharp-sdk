@@ -28,8 +28,8 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="LineItemAttributeCreate" /> class.
         /// </summary>
-        /// <param name="label">label (required).</param>
-        /// <param name="value">value (required).</param>
+        /// <param name="label">The label describing the line item attribute. (required).</param>
+        /// <param name="value">The value of the line item attribute. (required).</param>
         public LineItemAttributeCreate(string label, string value)
         {
             // to ensure "label" is required (not null)
@@ -47,14 +47,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Label
+        /// The label describing the line item attribute.
         /// </summary>
+        /// <value>The label describing the line item attribute.</value>
         [DataMember(Name="label", EmitDefaultValue=false)]
         public string Label { get; set; }
 
         /// <summary>
-        /// Gets or Sets Value
+        /// The value of the line item attribute.
         /// </summary>
+        /// <value>The value of the line item attribute.</value>
         [DataMember(Name="value", EmitDefaultValue=false)]
         public string Value { get; set; }
 

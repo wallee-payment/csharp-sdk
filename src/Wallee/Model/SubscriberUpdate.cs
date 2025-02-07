@@ -61,43 +61,44 @@ namespace Wallee.Model
         public long? Version { get; set; }
 
         /// <summary>
-        /// Those payment methods which are allowed additionally will be available even when the product does not allow those methods.
+        /// Allow the subscriber to use these payment methods even if subscription products do not accept them.
         /// </summary>
-        /// <value>Those payment methods which are allowed additionally will be available even when the product does not allow those methods.</value>
+        /// <value>Allow the subscriber to use these payment methods even if subscription products do not accept them.</value>
         [DataMember(Name="additionalAllowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<long?> AdditionalAllowedPaymentMethodConfigurations { get; set; }
 
         /// <summary>
-        /// Gets or Sets BillingAddress
+        /// The address associated with the subscriber for invoicing and transaction processing purposes.
         /// </summary>
+        /// <value>The address associated with the subscriber for invoicing and transaction processing purposes.</value>
         [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public AddressCreate BillingAddress { get; set; }
 
         /// <summary>
-        /// The subscriber description can be used to add a description to the subscriber. This is used in the back office to identify the subscriber.
+        /// The description used to identify the subscriber.
         /// </summary>
-        /// <value>The subscriber description can be used to add a description to the subscriber. This is used in the back office to identify the subscriber.</value>
+        /// <value>The description used to identify the subscriber.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Those payment methods which are disallowed will not be available to the subscriber even if the product allows those methods.
+        /// Prevent the subscriber from using these payment methods even if subscription products do accept them.
         /// </summary>
-        /// <value>Those payment methods which are disallowed will not be available to the subscriber even if the product allows those methods.</value>
+        /// <value>Prevent the subscriber from using these payment methods even if subscription products do accept them.</value>
         [DataMember(Name="disallowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<long?> DisallowedPaymentMethodConfigurations { get; set; }
 
         /// <summary>
-        /// The email address is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.
+        /// The email address that is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.
         /// </summary>
-        /// <value>The email address is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.</value>
+        /// <value>The email address that is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.</value>
         [DataMember(Name="emailAddress", EmitDefaultValue=false)]
         public string EmailAddress { get; set; }
 
         /// <summary>
-        /// The subscriber language determines the language which is used to communicate with the subscriber in emails and documents (e.g. invoices).
+        /// The language that is used when communicating with the subscriber via emails and documents.
         /// </summary>
-        /// <value>The subscriber language determines the language which is used to communicate with the subscriber in emails and documents (e.g. invoices).</value>
+        /// <value>The language that is used when communicating with the subscriber via emails and documents.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; set; }
 
@@ -109,15 +110,16 @@ namespace Wallee.Model
         public Dictionary<string, string> MetaData { get; set; }
 
         /// <summary>
-        /// The subscriber reference identifies the subscriber in administrative interfaces (e.g. customer id).
+        /// The merchant&#39;s reference used to identify the subscriber.
         /// </summary>
-        /// <value>The subscriber reference identifies the subscriber in administrative interfaces (e.g. customer id).</value>
+        /// <value>The merchant&#39;s reference used to identify the subscriber.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
 
         /// <summary>
-        /// Gets or Sets ShippingAddress
+        /// The address to where orders will be shipped.
         /// </summary>
+        /// <value>The address to where orders will be shipped.</value>
         [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
         public AddressCreate ShippingAddress { get; set; }
 

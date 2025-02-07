@@ -36,20 +36,23 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Role
+        /// The role that is assigned to the user.
         /// </summary>
+        /// <value>The role that is assigned to the user.</value>
         [DataMember(Name="role", EmitDefaultValue=false)]
         public long? Role { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Space
+        /// The space in which the role is assigned to the user.
         /// </summary>
+        /// <value>The space in which the role is assigned to the user.</value>
         [DataMember(Name="space", EmitDefaultValue=false)]
         public long? Space { get; private set; }
 
         /// <summary>
-        /// Gets or Sets User
+        /// The user whose role this defines.
         /// </summary>
+        /// <value>The user whose role this defines.</value>
         [DataMember(Name="user", EmitDefaultValue=false)]
         public long? User { get; private set; }
 

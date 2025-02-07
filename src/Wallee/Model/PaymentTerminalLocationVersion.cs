@@ -35,20 +35,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Address
+        /// The postal address of the location where the payment terminals are used.
         /// </summary>
+        /// <value>The postal address of the location where the payment terminals are used.</value>
         [DataMember(Name="address", EmitDefaultValue=false)]
         public PaymentTerminalAddress Address { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ContactAddress
+        /// The contact details if the person responsible for the payment terminals at this location.
         /// </summary>
+        /// <value>The contact details if the person responsible for the payment terminals at this location.</value>
         [DataMember(Name="contactAddress", EmitDefaultValue=false)]
         public PaymentTerminalAddress ContactAddress { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CreatedBy
+        /// The ID of the user the payment terminal location version was created by.
         /// </summary>
+        /// <value>The ID of the user the payment terminal location version was created by.</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
@@ -74,8 +77,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Location
+        /// The payment terminal location that the version belongs to.
         /// </summary>
+        /// <value>The payment terminal location that the version belongs to.</value>
         [DataMember(Name="location", EmitDefaultValue=false)]
         public PaymentTerminalLocation Location { get; private set; }
 
@@ -95,8 +99,9 @@ namespace Wallee.Model
         public int? Version { get; private set; }
 
         /// <summary>
-        /// Gets or Sets VersionAppliedImmediately
+        /// Whether payment terminals are immediately updated to this configuration version. If not, it will be applied during the maintenance window.
         /// </summary>
+        /// <value>Whether payment terminals are immediately updated to this configuration version. If not, it will be applied during the maintenance window.</value>
         [DataMember(Name="versionAppliedImmediately", EmitDefaultValue=false)]
         public bool? VersionAppliedImmediately { get; private set; }
 

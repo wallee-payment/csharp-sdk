@@ -15,10 +15,10 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// ShopifySubscriptionModelBillingConfiguration
+    /// BillingConfiguration
     /// </summary>
     [DataContract]
-    public partial class ShopifySubscriptionModelBillingConfiguration :  IEquatable<ShopifySubscriptionModelBillingConfiguration>
+    public partial class BillingConfiguration :  IEquatable<BillingConfiguration>
     {
         /// <summary>
         /// Define how frequently recurring orders should be created.
@@ -33,9 +33,9 @@ namespace Wallee.Model
         [DataMember(Name="billingWeekday", EmitDefaultValue=false)]
         public ShopifySubscriptionWeekday? BillingWeekday { get; set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShopifySubscriptionModelBillingConfiguration" /> class.
+        /// Initializes a new instance of the <see cref="BillingConfiguration" /> class.
         /// </summary>
-        public ShopifySubscriptionModelBillingConfiguration()
+        public BillingConfiguration()
         {
         }
 
@@ -96,7 +96,7 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ShopifySubscriptionModelBillingConfiguration {\n");
+            sb.Append("class BillingConfiguration {\n");
             sb.Append("  BillingDayOfMonth: ").Append(BillingDayOfMonth).Append("\n");
             sb.Append("  BillingIntervalAmount: ").Append(BillingIntervalAmount).Append("\n");
             sb.Append("  BillingIntervalUnit: ").Append(BillingIntervalUnit).Append("\n");
@@ -126,15 +126,15 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ShopifySubscriptionModelBillingConfiguration);
+            return this.Equals(input as BillingConfiguration);
         }
 
         /// <summary>
-        /// Returns true if ShopifySubscriptionModelBillingConfiguration instances are equal
+        /// Returns true if BillingConfiguration instances are equal
         /// </summary>
-        /// <param name="input">Instance of ShopifySubscriptionModelBillingConfiguration to be compared</param>
+        /// <param name="input">Instance of BillingConfiguration to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ShopifySubscriptionModelBillingConfiguration input)
+        public bool Equals(BillingConfiguration input)
         {
             if (input == null)
                 return false;

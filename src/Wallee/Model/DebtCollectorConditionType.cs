@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The debt collection condition type controls how a condition is applied to a case.
+    /// DebtCollectorConditionType
     /// </summary>
     [DataContract]
     public partial class DebtCollectorConditionType :  IEquatable<DebtCollectorConditionType>

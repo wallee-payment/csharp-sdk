@@ -15,25 +15,18 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// SalesChannel
+    /// PaymentTerminalTransactionSummaryReference
     /// </summary>
     [DataContract]
-    public partial class SalesChannel :  IEquatable<SalesChannel>
+    public partial class PaymentTerminalTransactionSummaryReference :  IEquatable<PaymentTerminalTransactionSummaryReference>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SalesChannel" /> class.
+        /// Initializes a new instance of the <see cref="PaymentTerminalTransactionSummaryReference" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public SalesChannel()
+        public PaymentTerminalTransactionSummaryReference()
         {
         }
-
-        /// <summary>
-        /// The localized description of the object.
-        /// </summary>
-        /// <value>The localized description of the object.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// A unique identifier for the object.
@@ -43,18 +36,23 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The localized name of the object.
+        /// The ID of the space this object belongs to.
         /// </summary>
-        /// <value>The localized name of the object.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; private set; }
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// When listing sales channels, they can be sorted by this number.
+        /// Gets or Sets TerminalId
         /// </summary>
-        /// <value>When listing sales channels, they can be sorted by this number.</value>
-        [DataMember(Name="sortOrder", EmitDefaultValue=false)]
-        public int? SortOrder { get; private set; }
+        [DataMember(Name="terminalId", EmitDefaultValue=false)]
+        public long? TerminalId { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets TerminalIdentifier
+        /// </summary>
+        [DataMember(Name="terminalIdentifier", EmitDefaultValue=false)]
+        public string TerminalIdentifier { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,11 +61,11 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class SalesChannel {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("class PaymentTerminalTransactionSummaryReference {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  TerminalId: ").Append(TerminalId).Append("\n");
+            sb.Append("  TerminalIdentifier: ").Append(TerminalIdentifier).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,41 +86,39 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SalesChannel);
+            return this.Equals(input as PaymentTerminalTransactionSummaryReference);
         }
 
         /// <summary>
-        /// Returns true if SalesChannel instances are equal
+        /// Returns true if PaymentTerminalTransactionSummaryReference instances are equal
         /// </summary>
-        /// <param name="input">Instance of SalesChannel to be compared</param>
+        /// <param name="input">Instance of PaymentTerminalTransactionSummaryReference to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SalesChannel input)
+        public bool Equals(PaymentTerminalTransactionSummaryReference input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.Description == input.Description ||
-                    this.Description != null &&
-                    input.Description != null &&
-                    this.Description.SequenceEqual(input.Description)
-                ) && 
-                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    this.Name != null &&
-                    input.Name != null &&
-                    this.Name.SequenceEqual(input.Name)
+                    this.LinkedSpaceId == input.LinkedSpaceId ||
+                    (this.LinkedSpaceId != null &&
+                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
                 ) && 
                 (
-                    this.SortOrder == input.SortOrder ||
-                    (this.SortOrder != null &&
-                    this.SortOrder.Equals(input.SortOrder))
+                    this.TerminalId == input.TerminalId ||
+                    (this.TerminalId != null &&
+                    this.TerminalId.Equals(input.TerminalId))
+                ) && 
+                (
+                    this.TerminalIdentifier == input.TerminalIdentifier ||
+                    (this.TerminalIdentifier != null &&
+                    this.TerminalIdentifier.Equals(input.TerminalIdentifier))
                 );
         }
 
@@ -135,14 +131,14 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.SortOrder != null)
-                    hashCode = hashCode * 59 + this.SortOrder.GetHashCode();
+                if (this.LinkedSpaceId != null)
+                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
+                if (this.TerminalId != null)
+                    hashCode = hashCode * 59 + this.TerminalId.GetHashCode();
+                if (this.TerminalIdentifier != null)
+                    hashCode = hashCode * 59 + this.TerminalIdentifier.GetHashCode();
                 return hashCode;
             }
         }

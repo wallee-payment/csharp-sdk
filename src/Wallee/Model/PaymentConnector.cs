@@ -21,13 +21,15 @@ namespace Wallee.Model
     public partial class PaymentConnector :  IEquatable<PaymentConnector>
     {
         /// <summary>
-        /// Gets or Sets DataCollectionType
+        /// The data collection type specifies how the payment information is collected.
         /// </summary>
+        /// <value>The data collection type specifies how the payment information is collected.</value>
         [DataMember(Name="dataCollectionType", EmitDefaultValue=false)]
         public DataCollectionType? DataCollectionType { get; private set; }
         /// <summary>
-        /// Gets or Sets PrimaryRiskTaker
+        /// The entity that bears the main risk in the event that a contracting party fails to meet its obligations.
         /// </summary>
+        /// <value>The entity that bears the main risk in the event that a contracting party fails to meet its obligations.</value>
         [DataMember(Name="primaryRiskTaker", EmitDefaultValue=false)]
         public PaymentPrimaryRiskTaker? PrimaryRiskTaker { get; private set; }
         /// <summary>
@@ -40,14 +42,16 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets Deprecated
+        /// Whether the object was deprecated.
         /// </summary>
+        /// <value>Whether the object was deprecated.</value>
         [DataMember(Name="deprecated", EmitDefaultValue=false)]
         public bool? Deprecated { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DeprecationReason
+        /// The deprecation reason describes why the object was deprecated.
         /// </summary>
+        /// <value>The deprecation reason describes why the object was deprecated.</value>
         [DataMember(Name="deprecationReason", EmitDefaultValue=false)]
         public Dictionary<string, string> DeprecationReason { get; private set; }
 
@@ -57,12 +61,6 @@ namespace Wallee.Model
         /// <value>The localized description of the object.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Feature
-        /// </summary>
-        [DataMember(Name="feature", EmitDefaultValue=false)]
-        public Feature Feature { get; private set; }
 
         /// <summary>
         /// A unique identifier for the object.
@@ -79,39 +77,45 @@ namespace Wallee.Model
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PaymentMethod
+        /// The payment method that the connector supports.
         /// </summary>
+        /// <value>The payment method that the connector supports.</value>
         [DataMember(Name="paymentMethod", EmitDefaultValue=false)]
         public long? PaymentMethod { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PaymentMethodBrand
+        /// The specific brand that this payment connector supports.
         /// </summary>
+        /// <value>The specific brand that this payment connector supports.</value>
         [DataMember(Name="paymentMethodBrand", EmitDefaultValue=false)]
         public PaymentMethodBrand PaymentMethodBrand { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets Processor
+        /// The processor that the connector belongs to.
         /// </summary>
+        /// <value>The processor that the connector belongs to.</value>
         [DataMember(Name="processor", EmitDefaultValue=false)]
         public long? Processor { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SupportedCurrencies
+        /// The currencies that are supported by the connector.
         /// </summary>
+        /// <value>The currencies that are supported by the connector.</value>
         [DataMember(Name="supportedCurrencies", EmitDefaultValue=false)]
         public List<string> SupportedCurrencies { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SupportedCustomersPresences
+        /// The types of customer&#39;s presence that are supported by the connector.
         /// </summary>
+        /// <value>The types of customer&#39;s presence that are supported by the connector.</value>
         [DataMember(Name="supportedCustomersPresences", EmitDefaultValue=false)]
         public List<CustomersPresence> SupportedCustomersPresences { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SupportedFeatures
+        /// The features that are supported by the connector.
         /// </summary>
+        /// <value>The features that are supported by the connector.</value>
         [DataMember(Name="supportedFeatures", EmitDefaultValue=false)]
         public List<long?> SupportedFeatures { get; private set; }
 
@@ -127,7 +131,6 @@ namespace Wallee.Model
             sb.Append("  Deprecated: ").Append(Deprecated).Append("\n");
             sb.Append("  DeprecationReason: ").Append(DeprecationReason).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Feature: ").Append(Feature).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
@@ -192,11 +195,6 @@ namespace Wallee.Model
                     this.Description != null &&
                     input.Description != null &&
                     this.Description.SequenceEqual(input.Description)
-                ) && 
-                (
-                    this.Feature == input.Feature ||
-                    (this.Feature != null &&
-                    this.Feature.Equals(input.Feature))
                 ) && 
                 (
                     this.Id == input.Id ||
@@ -266,8 +264,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.DeprecationReason.GetHashCode();
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.Feature != null)
-                    hashCode = hashCode * 59 + this.Feature.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)

@@ -31,7 +31,7 @@ namespace Wallee.Model
         /// Gets or Sets BillingConfiguration
         /// </summary>
         [DataMember(Name="billingConfiguration", EmitDefaultValue=false)]
-        public ShopifySubscriptionModelBillingConfiguration BillingConfiguration { get; set; }
+        public BillingConfiguration BillingConfiguration { get; set; }
 
         /// <summary>
         /// Gets or Sets Id
@@ -43,7 +43,7 @@ namespace Wallee.Model
         /// Gets or Sets Items
         /// </summary>
         [DataMember(Name="items", EmitDefaultValue=false)]
-        public List<ShopifySubscriptionModelItem> Items { get; set; }
+        public List<Item> Items { get; set; }
 
         /// <summary>
         /// Gets or Sets StoreOrderConfirmationEmailEnabled

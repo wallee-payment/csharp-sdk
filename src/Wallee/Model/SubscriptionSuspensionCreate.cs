@@ -21,9 +21,9 @@ namespace Wallee.Model
     public partial class SubscriptionSuspensionCreate :  IEquatable<SubscriptionSuspensionCreate>
     {
         /// <summary>
-        /// When the suspension reaches the planned end date the end action will be carried out. This action is only executed when the suspension is ended automatically based on the end date.
+        /// Whether the subscription should be terminated or reactivated after the suspension has reached its end date.
         /// </summary>
-        /// <value>When the suspension reaches the planned end date the end action will be carried out. This action is only executed when the suspension is ended automatically based on the end date.</value>
+        /// <value>Whether the subscription should be terminated or reactivated after the suspension has reached its end date.</value>
         [DataMember(Name="endAction", EmitDefaultValue=true)]
         public SubscriptionSuspensionAction EndAction { get; set; }
         /// <summary>
@@ -34,9 +34,9 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionSuspensionCreate" /> class.
         /// </summary>
-        /// <param name="endAction">When the suspension reaches the planned end date the end action will be carried out. This action is only executed when the suspension is ended automatically based on the end date. (required).</param>
-        /// <param name="plannedEndDate">The planned end date of the suspension identifies the date on which the suspension will be ended automatically. (required).</param>
-        /// <param name="subscription">subscription (required).</param>
+        /// <param name="endAction">Whether the subscription should be terminated or reactivated after the suspension has reached its end date. (required).</param>
+        /// <param name="plannedEndDate">The date and time when the suspension is planned to end. (required).</param>
+        /// <param name="subscription">The subscription that this suspension belongs to. (required).</param>
         public SubscriptionSuspensionCreate(SubscriptionSuspensionAction endAction, DateTime? plannedEndDate, long? subscription)
         {
             // to ensure "endAction" is required (not null)
@@ -61,22 +61,23 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.
+        /// A note that contains details about the suspension. It is not disclosed to the subscriber.
         /// </summary>
-        /// <value>The note may contain some internal information for the suspension. The note will not be disclosed to the subscriber.</value>
+        /// <value>A note that contains details about the suspension. It is not disclosed to the subscriber.</value>
         [DataMember(Name="note", EmitDefaultValue=false)]
         public string Note { get; set; }
 
         /// <summary>
-        /// The planned end date of the suspension identifies the date on which the suspension will be ended automatically.
+        /// The date and time when the suspension is planned to end.
         /// </summary>
-        /// <value>The planned end date of the suspension identifies the date on which the suspension will be ended automatically.</value>
+        /// <value>The date and time when the suspension is planned to end.</value>
         [DataMember(Name="plannedEndDate", EmitDefaultValue=false)]
         public DateTime? PlannedEndDate { get; set; }
 
         /// <summary>
-        /// Gets or Sets Subscription
+        /// The subscription that this suspension belongs to.
         /// </summary>
+        /// <value>The subscription that this suspension belongs to.</value>
         [DataMember(Name="subscription", EmitDefaultValue=false)]
         public long? Subscription { get; set; }
 

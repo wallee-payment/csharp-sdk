@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The debt collection case source represents the origin of the case. It allows to understand from where the amount receivable is coming from.
+    /// The debt collection case source represents the origin of the case. It allows to understand where the amount receivable is coming from.
     /// </summary>
     [DataContract]
     public partial class DebtCollectionCaseSource :  IEquatable<DebtCollectionCaseSource>
@@ -36,8 +36,9 @@ namespace Wallee.Model
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ForcedPreparingState
+        /// Whether debt collection cases created from this source will skip review and directly enter preparing state.
         /// </summary>
+        /// <value>Whether debt collection cases created from this source will skip review and directly enter preparing state.</value>
         [DataMember(Name="forcedPreparingState", EmitDefaultValue=false)]
         public bool? ForcedPreparingState { get; private set; }
 

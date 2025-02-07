@@ -36,8 +36,9 @@ namespace Wallee.Model
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Features
+        /// The features that this static value belongs to.
         /// </summary>
+        /// <value>The features that this static value belongs to.</value>
         [DataMember(Name="features", EmitDefaultValue=false)]
         public List<long?> Features { get; private set; }
 

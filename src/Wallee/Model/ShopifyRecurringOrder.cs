@@ -56,6 +56,12 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
+        /// Gets or Sets DraftOrderId
+        /// </summary>
+        [DataMember(Name="draftOrderId", EmitDefaultValue=false)]
+        public string DraftOrderId { get; private set; }
+
+        /// <summary>
         /// Gets or Sets FailureReason
         /// </summary>
         [DataMember(Name="failureReason", EmitDefaultValue=false)]
@@ -66,6 +72,12 @@ namespace Wallee.Model
         /// </summary>
         [DataMember(Name="orderId", EmitDefaultValue=false)]
         public string OrderId { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets OrderLegacyId
+        /// </summary>
+        [DataMember(Name="orderLegacyId", EmitDefaultValue=false)]
+        public string OrderLegacyId { get; private set; }
 
         /// <summary>
         /// Gets or Sets OrderName
@@ -132,8 +144,10 @@ namespace Wallee.Model
             sb.Append("  BilledOn: ").Append(BilledOn).Append("\n");
             sb.Append("  CheckoutToken: ").Append(CheckoutToken).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  DraftOrderId: ").Append(DraftOrderId).Append("\n");
             sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
             sb.Append("  OrderId: ").Append(OrderId).Append("\n");
+            sb.Append("  OrderLegacyId: ").Append(OrderLegacyId).Append("\n");
             sb.Append("  OrderName: ").Append(OrderName).Append("\n");
             sb.Append("  PlannedExecutionDate: ").Append(PlannedExecutionDate).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
@@ -208,6 +222,11 @@ namespace Wallee.Model
                     this.CreatedOn.Equals(input.CreatedOn))
                 ) && base.Equals(input) && 
                 (
+                    this.DraftOrderId == input.DraftOrderId ||
+                    (this.DraftOrderId != null &&
+                    this.DraftOrderId.Equals(input.DraftOrderId))
+                ) && base.Equals(input) && 
+                (
                     this.FailureReason == input.FailureReason ||
                     (this.FailureReason != null &&
                     this.FailureReason.Equals(input.FailureReason))
@@ -216,6 +235,11 @@ namespace Wallee.Model
                     this.OrderId == input.OrderId ||
                     (this.OrderId != null &&
                     this.OrderId.Equals(input.OrderId))
+                ) && base.Equals(input) && 
+                (
+                    this.OrderLegacyId == input.OrderLegacyId ||
+                    (this.OrderLegacyId != null &&
+                    this.OrderLegacyId.Equals(input.OrderLegacyId))
                 ) && base.Equals(input) && 
                 (
                     this.OrderName == input.OrderName ||
@@ -285,10 +309,14 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.CheckoutToken.GetHashCode();
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
+                if (this.DraftOrderId != null)
+                    hashCode = hashCode * 59 + this.DraftOrderId.GetHashCode();
                 if (this.FailureReason != null)
                     hashCode = hashCode * 59 + this.FailureReason.GetHashCode();
                 if (this.OrderId != null)
                     hashCode = hashCode * 59 + this.OrderId.GetHashCode();
+                if (this.OrderLegacyId != null)
+                    hashCode = hashCode * 59 + this.OrderLegacyId.GetHashCode();
                 if (this.OrderName != null)
                     hashCode = hashCode * 59 + this.OrderName.GetHashCode();
                 if (this.PlannedExecutionDate != null)

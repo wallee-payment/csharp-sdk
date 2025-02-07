@@ -77,9 +77,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The installment plan can only be applied if the orders total is at least the defined minimal amount.
+        /// The installment plan can only be applied if the order&#39;s total is at least the defined minimal amount.
         /// </summary>
-        /// <value>The installment plan can only be applied if the orders total is at least the defined minimal amount.</value>
+        /// <value>The installment plan can only be applied if the order&#39;s total is at least the defined minimal amount.</value>
         [DataMember(Name="minimalAmount", EmitDefaultValue=false)]
         public decimal? MinimalAmount { get; private set; }
 

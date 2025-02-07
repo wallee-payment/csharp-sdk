@@ -36,8 +36,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Title
+        /// The localized title of the group.
         /// </summary>
+        /// <value>The localized title of the group.</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
         public Dictionary<string, string> Title { get; private set; }
 

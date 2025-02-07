@@ -134,6 +134,12 @@ namespace Wallee.Model
         public string RecipientIban { get; private set; }
 
         /// <summary>
+        /// Gets or Sets RecipientOrganizationName
+        /// </summary>
+        [DataMember(Name="recipientOrganizationName", EmitDefaultValue=false)]
+        public string RecipientOrganizationName { get; private set; }
+
+        /// <summary>
         /// Gets or Sets RecipientPostcode
         /// </summary>
         [DataMember(Name="recipientPostcode", EmitDefaultValue=false)]
@@ -183,6 +189,7 @@ namespace Wallee.Model
             sb.Append("  RecipientFamilyName: ").Append(RecipientFamilyName).Append("\n");
             sb.Append("  RecipientGivenName: ").Append(RecipientGivenName).Append("\n");
             sb.Append("  RecipientIban: ").Append(RecipientIban).Append("\n");
+            sb.Append("  RecipientOrganizationName: ").Append(RecipientOrganizationName).Append("\n");
             sb.Append("  RecipientPostcode: ").Append(RecipientPostcode).Append("\n");
             sb.Append("  RecipientStreet: ").Append(RecipientStreet).Append("\n");
             sb.Append("  SenderIban: ").Append(SenderIban).Append("\n");
@@ -303,6 +310,11 @@ namespace Wallee.Model
                     this.RecipientIban.Equals(input.RecipientIban))
                 ) && 
                 (
+                    this.RecipientOrganizationName == input.RecipientOrganizationName ||
+                    (this.RecipientOrganizationName != null &&
+                    this.RecipientOrganizationName.Equals(input.RecipientOrganizationName))
+                ) && 
+                (
                     this.RecipientPostcode == input.RecipientPostcode ||
                     (this.RecipientPostcode != null &&
                     this.RecipientPostcode.Equals(input.RecipientPostcode))
@@ -370,6 +382,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.RecipientGivenName.GetHashCode();
                 if (this.RecipientIban != null)
                     hashCode = hashCode * 59 + this.RecipientIban.GetHashCode();
+                if (this.RecipientOrganizationName != null)
+                    hashCode = hashCode * 59 + this.RecipientOrganizationName.GetHashCode();
                 if (this.RecipientPostcode != null)
                     hashCode = hashCode * 59 + this.RecipientPostcode.GetHashCode();
                 if (this.RecipientStreet != null)

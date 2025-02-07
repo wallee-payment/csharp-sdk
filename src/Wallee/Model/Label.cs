@@ -29,20 +29,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Content
+        /// The label&#39;s actual content.
         /// </summary>
+        /// <value>The label&#39;s actual content.</value>
         [DataMember(Name="content", EmitDefaultValue=false)]
         public Object Content { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ContentAsString
+        /// The label&#39;s content formatted as string.
         /// </summary>
+        /// <value>The label&#39;s content formatted as string.</value>
         [DataMember(Name="contentAsString", EmitDefaultValue=false)]
         public string ContentAsString { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Descriptor
+        /// The descriptor that describes what information the label provides.
         /// </summary>
+        /// <value>The descriptor that describes what information the label provides.</value>
         [DataMember(Name="descriptor", EmitDefaultValue=false)]
         public LabelDescriptor Descriptor { get; private set; }
 

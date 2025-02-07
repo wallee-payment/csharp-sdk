@@ -21,14 +21,15 @@ namespace Wallee.Model
     public partial class ProductMeteredFee :  IEquatable<ProductMeteredFee>
     {
         /// <summary>
-        /// The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.
+        /// The method used to calculate the tier price.
         /// </summary>
-        /// <value>The tier pricing determines the calculation method of the tiers. The prices of the different tiers can be applied in different ways. The tier pricing controls this calculation.</value>
+        /// <value>The method used to calculate the tier price.</value>
         [DataMember(Name="tierPricing", EmitDefaultValue=false)]
         public ProductMeteredTierPricing? TierPricing { get; private set; }
         /// <summary>
-        /// Gets or Sets Type
+        /// The type of the fee.
         /// </summary>
+        /// <value>The type of the fee.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public ProductFeeType? Type { get; private set; }
         /// <summary>
@@ -40,15 +41,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Component
+        /// The product component that the fee belongs to.
         /// </summary>
+        /// <value>The product component that the fee belongs to.</value>
         [DataMember(Name="component", EmitDefaultValue=false)]
         public SubscriptionProductComponent Component { get; private set; }
 
         /// <summary>
-        /// The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
+        /// The localized description of the fee that is displayed to the customer.
         /// </summary>
-        /// <value>The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.</value>
+        /// <value>The localized description of the fee that is displayed to the customer.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
@@ -67,15 +69,16 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Metric
+        /// The metric used to determine the resource consumption billed to the customer.
         /// </summary>
+        /// <value>The metric used to determine the resource consumption billed to the customer.</value>
         [DataMember(Name="metric", EmitDefaultValue=false)]
         public SubscriptionMetric Metric { get; private set; }
 
         /// <summary>
-        /// The name of the fee should describe for the subscriber in few words for what the fee is for.
+        /// The localized name of the fee that is displayed to the customer.
         /// </summary>
-        /// <value>The name of the fee should describe for the subscriber in few words for what the fee is for.</value>
+        /// <value>The localized name of the fee that is displayed to the customer.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 

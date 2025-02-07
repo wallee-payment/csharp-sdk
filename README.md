@@ -10,12 +10,11 @@ The wallee C# library wraps around the wallee API. This library facilitates your
 
 <a name="frameworks-supported"></a>
 ## Frameworks supported
-- .NET 6.0 or later
-- Windows Phone 7.1 (Mango)
+- .NET 8.0 or later
 
 <a name="dependencies"></a>
 ## Dependencies
-- [RestSharp](https://www.nuget.org/packages/RestSharp) - 110.2.0
+- [RestSharp](https://www.nuget.org/packages/RestSharp) - 112.1.0
 - [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 13.0.3
 - [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 2.0.1
 - [BouncyCastle.Cryptography](https://www.nuget.org/packages/BouncyCastle.Cryptography/) - 2.0.0
@@ -33,13 +32,13 @@ Install-Package BouncyCastle.Cryptography
 ## Installation
 ```
 # Package Manager
-Install-Package Wallee -Version 7.0.4
+Install-Package Wallee -Version 8.0.0
 # .NET CLI
-dotnet add package Wallee --version 7.0.4
+dotnet add package Wallee --version 8.0.0
 # Paket CLI
-paket add Wallee --version 7.0.4
+paket add Wallee --version 8.0.0
 # PackageReference
-<PackageReference Include="Wallee" Version="7.0.4" />
+<PackageReference Include="Wallee" Version="8.0.0" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
@@ -55,7 +54,7 @@ Instantiate a configuration like so:
 ```csharp
 new Configuration(this.applicationUserID, this.authenticationKey)
 ```
-Or if you want to customize the RestSharp client that's being used underneath (e.g set the proxy), use the overloaded constructor:
+Or if you want to customize the RestSharp client that's being used underneath (e.g. set the proxy), use the overloaded constructor:
 ```csharp
 new Configuration(this.applicationUserID, this.authenticationKey, new RestClientOptions()
 {
@@ -63,7 +62,7 @@ new Configuration(this.applicationUserID, this.authenticationKey, new RestClient
 });
 ```
 
-Timeout is customizable separately via the ```Configuration.TimeOut``` property.
+Request Timeout (in seconds) is customizable separately via the ```Configuration.TimeOut``` property.
 
 ```csharp
 using System;

@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class FailureReason :  IEquatable<FailureReason>
     {
         /// <summary>
-        /// Gets or Sets Category
+        /// The category that the failure reason belongs to.
         /// </summary>
+        /// <value>The category that the failure reason belongs to.</value>
         [DataMember(Name="category", EmitDefaultValue=false)]
         public FailureCategory? Category { get; private set; }
         /// <summary>
@@ -40,12 +41,6 @@ namespace Wallee.Model
         /// <value>The localized description of the object.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Features
-        /// </summary>
-        [DataMember(Name="features", EmitDefaultValue=false)]
-        public List<long?> Features { get; private set; }
 
         /// <summary>
         /// A unique identifier for the object.
@@ -71,7 +66,6 @@ namespace Wallee.Model
             sb.Append("class FailureReason {\n");
             sb.Append("  Category: ").Append(Category).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Features: ").Append(Features).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("}\n");
@@ -120,12 +114,6 @@ namespace Wallee.Model
                     this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
-                    this.Features == input.Features ||
-                    this.Features != null &&
-                    input.Features != null &&
-                    this.Features.SequenceEqual(input.Features)
-                ) && 
-                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -151,8 +139,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Category.GetHashCode();
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.Features != null)
-                    hashCode = hashCode * 59 + this.Features.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)

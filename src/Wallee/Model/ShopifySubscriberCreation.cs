@@ -52,6 +52,13 @@ namespace Wallee.Model
         public string PhoneNumber { get; set; }
 
         /// <summary>
+        /// The customer Global ID has to correspond to the Global ID assigned to the customer by Shopify. When the subscriber already exists no new subscriber will be created.
+        /// </summary>
+        /// <value>The customer Global ID has to correspond to the Global ID assigned to the customer by Shopify. When the subscriber already exists no new subscriber will be created.</value>
+        [DataMember(Name="shopifyCustomerGid", EmitDefaultValue=false)]
+        public string ShopifyCustomerGid { get; set; }
+
+        /// <summary>
         /// The customer ID has to correspond to the ID assigned to the customer by Shopify. When the subscriber already exists no new subscriber will be created.
         /// </summary>
         /// <value>The customer ID has to correspond to the ID assigned to the customer by Shopify. When the subscriber already exists no new subscriber will be created.</value>
@@ -68,6 +75,7 @@ namespace Wallee.Model
             sb.Append("class ShopifySubscriberCreation {\n");
             sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
             sb.Append("  PhoneNumber: ").Append(PhoneNumber).Append("\n");
+            sb.Append("  ShopifyCustomerGid: ").Append(ShopifyCustomerGid).Append("\n");
             sb.Append("  ShopifyCustomerId: ").Append(ShopifyCustomerId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -114,6 +122,11 @@ namespace Wallee.Model
                     this.PhoneNumber.Equals(input.PhoneNumber))
                 ) && 
                 (
+                    this.ShopifyCustomerGid == input.ShopifyCustomerGid ||
+                    (this.ShopifyCustomerGid != null &&
+                    this.ShopifyCustomerGid.Equals(input.ShopifyCustomerGid))
+                ) && 
+                (
                     this.ShopifyCustomerId == input.ShopifyCustomerId ||
                     (this.ShopifyCustomerId != null &&
                     this.ShopifyCustomerId.Equals(input.ShopifyCustomerId))
@@ -133,6 +146,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.EmailAddress.GetHashCode();
                 if (this.PhoneNumber != null)
                     hashCode = hashCode * 59 + this.PhoneNumber.GetHashCode();
+                if (this.ShopifyCustomerGid != null)
+                    hashCode = hashCode * 59 + this.ShopifyCustomerGid.GetHashCode();
                 if (this.ShopifyCustomerId != null)
                     hashCode = hashCode * 59 + this.ShopifyCustomerId.GetHashCode();
                 return hashCode;

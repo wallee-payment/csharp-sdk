@@ -15,20 +15,25 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// This model defines the card cryptogram types.
+    /// Defines BillingDayCustomization
     /// </summary>
-    /// <value>This model defines the card cryptogram types.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum CardCryptogramType
+    public enum BillingDayCustomization
     {
         
         /// <summary>
-        /// Enum SCHEME_TOKEN for value: SCHEME_TOKEN
+        /// Enum DEFAULT for value: DEFAULT
         /// </summary>
-        [EnumMember(Value = "SCHEME_TOKEN")]
-        SCHEME_TOKEN
+        [EnumMember(Value = "DEFAULT")]
+        DEFAULT,
+        
+        /// <summary>
+        /// Enum SPECIFIC for value: SPECIFIC
+        /// </summary>
+        [EnumMember(Value = "SPECIFIC")]
+        SPECIFIC
     }
 
 }

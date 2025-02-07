@@ -6,17 +6,21 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: Build and Test wallee
+    strategy:
+      matrix:
+        dotnet-version: [8.0]
+    runs-on: ubuntu-22.04
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
+      - name: Setup .NET SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.0.408
+          dotnet-version: ${{ matrix.dotnet-version }}
 
-      - name: Install dependencies
+      - name: Restore dependencies
         run: dotnet restore
 
       - name: Test Nuget
@@ -25,17 +29,20 @@ jobs:
   publish:
     needs: build
     runs-on: windows-latest
+    strategy:
+      matrix:
+        dotnet-version: [8.0]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
+      - name: Setup .NET SDK ${{ matrix.dotnet-version }} for release
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 6.0.408
+          dotnet-version: ${{ matrix.dotnet-version }}
 
-      - name: Install dependencies
+      - name: Restore dependencies
         run: dotnet restore
-      
+
       - name: Build
         run: dotnet build --configuration Release --no-restore
 
@@ -43,5 +50,4 @@ jobs:
         run: dotnet pack --include-symbols -p:SymbolPackageFormat=snupkg --configuration Release --output .
 
       - name: Publish
-        run: dotnet nuget push Wallee.*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
-
+        run: dotnet nuget push {{packageName}}.*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json

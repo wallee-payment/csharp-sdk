@@ -29,29 +29,30 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// If a product component changes from one with a lower product component tier (e.g. 1) to one with a higher product component tier (e.g. 3), it is considered an upgrade and a one-time fee could be applied.
+        /// If switching from a component with a lower tier to a component with a higher one, this is considered an upgrade and a fee may be applied.
         /// </summary>
-        /// <value>If a product component changes from one with a lower product component tier (e.g. 1) to one with a higher product component tier (e.g. 3), it is considered an upgrade and a one-time fee could be applied.</value>
+        /// <value>If switching from a component with a lower tier to a component with a higher one, this is considered an upgrade and a fee may be applied.</value>
         [DataMember(Name="componentChangeWeight", EmitDefaultValue=false)]
         public int? ComponentChangeWeight { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ComponentGroup
+        /// The group that the component belongs to.
         /// </summary>
+        /// <value>The group that the component belongs to.</value>
         [DataMember(Name="componentGroup", EmitDefaultValue=false)]
         public SubscriptionProductComponentGroup ComponentGroup { get; private set; }
 
         /// <summary>
-        /// When a component is marked as a &#39;default&#39; component it is used as the default component in its group and will be preselected in the product configuration.
+        /// Whether this is the default component in its group and preselected.
         /// </summary>
-        /// <value>When a component is marked as a &#39;default&#39; component it is used as the default component in its group and will be preselected in the product configuration.</value>
+        /// <value>Whether this is the default component in its group and preselected.</value>
         [DataMember(Name="defaultComponent", EmitDefaultValue=false)]
         public bool? DefaultComponent { get; private set; }
 
         /// <summary>
-        /// The component description may contain a longer description which gives the subscriber a better understanding of what the component contains.
+        /// The localized description of the component that is displayed to the customer.
         /// </summary>
-        /// <value>The component description may contain a longer description which gives the subscriber a better understanding of what the component contains.</value>
+        /// <value>The localized description of the component that is displayed to the customer.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
@@ -70,51 +71,51 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The maximum quantity defines the maximum value which must be entered for the quantity.
+        /// A maximum of the defined quantity can be selected for this component.
         /// </summary>
-        /// <value>The maximum quantity defines the maximum value which must be entered for the quantity.</value>
+        /// <value>A maximum of the defined quantity can be selected for this component.</value>
         [DataMember(Name="maximalQuantity", EmitDefaultValue=false)]
         public decimal? MaximalQuantity { get; private set; }
 
         /// <summary>
-        /// The minimal quantity defines the minimum value which must be entered for the quantity.
+        /// A minimum of the defined quantity must be selected for this component.
         /// </summary>
-        /// <value>The minimal quantity defines the minimum value which must be entered for the quantity.</value>
+        /// <value>A minimum of the defined quantity must be selected for this component.</value>
         [DataMember(Name="minimalQuantity", EmitDefaultValue=false)]
         public decimal? MinimalQuantity { get; private set; }
 
         /// <summary>
-        /// The component name is shown to the subscriber. It should describe in few words what the component does contain.
+        /// The localized name of the component that is displayed to the customer.
         /// </summary>
-        /// <value>The component name is shown to the subscriber. It should describe in few words what the component does contain.</value>
+        /// <value>The localized name of the component that is displayed to the customer.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// The quantity step defines at which interval the quantity can be increased.
+        /// The quantity step determines the interval in which the quantity can be increased.
         /// </summary>
-        /// <value>The quantity step defines at which interval the quantity can be increased.</value>
+        /// <value>The quantity step determines the interval in which the quantity can be increased.</value>
         [DataMember(Name="quantityStep", EmitDefaultValue=false)]
         public decimal? QuantityStep { get; private set; }
 
         /// <summary>
-        /// The component reference is used to identify the component by external systems and it marks components to represent the same component within different product versions.
+        /// The reference is used to link components across different product versions.
         /// </summary>
-        /// <value>The component reference is used to identify the component by external systems and it marks components to represent the same component within different product versions.</value>
+        /// <value>The reference is used to link components across different product versions.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public SubscriptionProductComponentReference Reference { get; private set; }
 
         /// <summary>
-        /// The sort order controls in which order the component is listed. The sort order is used to order the components in ascending order.
+        /// When listing components, they can be sorted by this number.
         /// </summary>
-        /// <value>The sort order controls in which order the component is listed. The sort order is used to order the components in ascending order.</value>
+        /// <value>When listing components, they can be sorted by this number.</value>
         [DataMember(Name="sortOrder", EmitDefaultValue=false)]
         public int? SortOrder { get; private set; }
 
         /// <summary>
-        /// The tax class of the component determines the taxes which are applicable on all fees linked with the component.
+        /// The tax class to be applied to fees.
         /// </summary>
-        /// <value>The tax class of the component determines the taxes which are applicable on all fees linked with the component.</value>
+        /// <value>The tax class to be applied to fees.</value>
         [DataMember(Name="taxClass", EmitDefaultValue=false)]
         public TaxClass TaxClass { get; private set; }
 

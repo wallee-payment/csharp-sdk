@@ -28,29 +28,29 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ShopifySubscriptionProductCreate" /> class.
         /// </summary>
+        /// <param name="productVariantLegacyId">productVariantLegacyId (required).</param>
         /// <param name="shop">shop (required).</param>
-        /// <param name="productVariantId">productVariantId (required).</param>
-        /// <param name="productId">The ID of the Shopify product that is enabled to be ordered as subscription. (required).</param>
-        public ShopifySubscriptionProductCreate(long? shop, string productVariantId, string productId)
+        /// <param name="productLegacyId">The legacy ID of the Shopify product that is enabled to be ordered as subscription. (required).</param>
+        public ShopifySubscriptionProductCreate(string productVariantLegacyId, long? shop, string productLegacyId)
         {
+            // to ensure "productVariantLegacyId" is required (not null)
+            if (productVariantLegacyId == null)
+            {
+                throw new InvalidDataException("productVariantLegacyId is a required property for ShopifySubscriptionProductCreate and cannot be null");
+            }
+            this.ProductVariantLegacyId = productVariantLegacyId;
             // to ensure "shop" is required (not null)
             if (shop == null)
             {
                 throw new InvalidDataException("shop is a required property for ShopifySubscriptionProductCreate and cannot be null");
             }
             this.Shop = shop;
-            // to ensure "productVariantId" is required (not null)
-            if (productVariantId == null)
+            // to ensure "productLegacyId" is required (not null)
+            if (productLegacyId == null)
             {
-                throw new InvalidDataException("productVariantId is a required property for ShopifySubscriptionProductCreate and cannot be null");
+                throw new InvalidDataException("productLegacyId is a required property for ShopifySubscriptionProductCreate and cannot be null");
             }
-            this.ProductVariantId = productVariantId;
-            // to ensure "productId" is required (not null)
-            if (productId == null)
-            {
-                throw new InvalidDataException("productId is a required property for ShopifySubscriptionProductCreate and cannot be null");
-            }
-            this.ProductId = productId;
+            this.ProductLegacyId = productLegacyId;
         }
 
 
@@ -75,10 +75,23 @@ namespace Wallee.Model
         public string ProductId { get; set; }
 
         /// <summary>
+        /// The legacy ID of the Shopify product that is enabled to be ordered as subscription.
+        /// </summary>
+        /// <value>The legacy ID of the Shopify product that is enabled to be ordered as subscription.</value>
+        [DataMember(Name="productLegacyId", EmitDefaultValue=false)]
+        public string ProductLegacyId { get; set; }
+
+        /// <summary>
         /// Gets or Sets ProductVariantId
         /// </summary>
         [DataMember(Name="productVariantId", EmitDefaultValue=false)]
         public string ProductVariantId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ProductVariantLegacyId
+        /// </summary>
+        [DataMember(Name="productVariantLegacyId", EmitDefaultValue=false)]
+        public string ProductVariantLegacyId { get; set; }
 
         /// <summary>
         /// Gets or Sets Shop
@@ -110,7 +123,9 @@ namespace Wallee.Model
             sb.Append("  SubscriberSuspensionAllowed: ").Append(SubscriberSuspensionAllowed).Append("\n");
             sb.Append("  TerminationBillingCycles: ").Append(TerminationBillingCycles).Append("\n");
             sb.Append("  ProductId: ").Append(ProductId).Append("\n");
+            sb.Append("  ProductLegacyId: ").Append(ProductLegacyId).Append("\n");
             sb.Append("  ProductVariantId: ").Append(ProductVariantId).Append("\n");
+            sb.Append("  ProductVariantLegacyId: ").Append(ProductVariantLegacyId).Append("\n");
             sb.Append("  Shop: ").Append(Shop).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -222,9 +237,19 @@ namespace Wallee.Model
                     this.ProductId.Equals(input.ProductId))
                 ) && base.Equals(input) && 
                 (
+                    this.ProductLegacyId == input.ProductLegacyId ||
+                    (this.ProductLegacyId != null &&
+                    this.ProductLegacyId.Equals(input.ProductLegacyId))
+                ) && base.Equals(input) && 
+                (
                     this.ProductVariantId == input.ProductVariantId ||
                     (this.ProductVariantId != null &&
                     this.ProductVariantId.Equals(input.ProductVariantId))
+                ) && base.Equals(input) && 
+                (
+                    this.ProductVariantLegacyId == input.ProductVariantLegacyId ||
+                    (this.ProductVariantLegacyId != null &&
+                    this.ProductVariantLegacyId.Equals(input.ProductVariantLegacyId))
                 ) && base.Equals(input) && 
                 (
                     this.Shop == input.Shop ||
@@ -272,8 +297,12 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.TerminationBillingCycles.GetHashCode();
                 if (this.ProductId != null)
                     hashCode = hashCode * 59 + this.ProductId.GetHashCode();
+                if (this.ProductLegacyId != null)
+                    hashCode = hashCode * 59 + this.ProductLegacyId.GetHashCode();
                 if (this.ProductVariantId != null)
                     hashCode = hashCode * 59 + this.ProductVariantId.GetHashCode();
+                if (this.ProductVariantLegacyId != null)
+                    hashCode = hashCode * 59 + this.ProductVariantLegacyId.GetHashCode();
                 if (this.Shop != null)
                     hashCode = hashCode * 59 + this.Shop.GetHashCode();
                 return hashCode;

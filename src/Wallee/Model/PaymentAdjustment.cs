@@ -42,6 +42,13 @@ namespace Wallee.Model
         public decimal? AmountIncludingTax { get; private set; }
 
         /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; private set; }
+
+        /// <summary>
         /// The rate in percentage is the rate on which the adjustment amount was calculated with.
         /// </summary>
         /// <value>The rate in percentage is the rate on which the adjustment amount was calculated with.</value>
@@ -70,6 +77,7 @@ namespace Wallee.Model
             sb.Append("class PaymentAdjustment {\n");
             sb.Append("  AmountExcludingTax: ").Append(AmountExcludingTax).Append("\n");
             sb.Append("  AmountIncludingTax: ").Append(AmountIncludingTax).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  RateInPercentage: ").Append(RateInPercentage).Append("\n");
             sb.Append("  Tax: ").Append(Tax).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
@@ -118,6 +126,11 @@ namespace Wallee.Model
                     this.AmountIncludingTax.Equals(input.AmountIncludingTax))
                 ) && 
                 (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
+                (
                     this.RateInPercentage == input.RateInPercentage ||
                     (this.RateInPercentage != null &&
                     this.RateInPercentage.Equals(input.RateInPercentage))
@@ -147,6 +160,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.AmountExcludingTax.GetHashCode();
                 if (this.AmountIncludingTax != null)
                     hashCode = hashCode * 59 + this.AmountIncludingTax.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.RateInPercentage != null)
                     hashCode = hashCode * 59 + this.RateInPercentage.GetHashCode();
                 if (this.Tax != null)

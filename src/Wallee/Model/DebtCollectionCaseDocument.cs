@@ -36,14 +36,16 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DebtCollectionCase
+        /// The debt collection case that this document belongs to.
         /// </summary>
+        /// <value>The debt collection case that this document belongs to.</value>
         [DataMember(Name="debtCollectionCase", EmitDefaultValue=false)]
         public long? DebtCollectionCase { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FileName
+        /// The file name of the document.
         /// </summary>
+        /// <value>The file name of the document.</value>
         [DataMember(Name="fileName", EmitDefaultValue=false)]
         public string FileName { get; private set; }
 
@@ -55,8 +57,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Labels
+        /// The labels providing additional information about the object.
         /// </summary>
+        /// <value>The labels providing additional information about the object.</value>
         [DataMember(Name="labels", EmitDefaultValue=false)]
         public List<Label> Labels { get; private set; }
 
@@ -68,8 +71,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets MimeType
+        /// The MIME type of the document&#39;s content.
         /// </summary>
+        /// <value>The MIME type of the document&#39;s content.</value>
         [DataMember(Name="mimeType", EmitDefaultValue=false)]
         public string MimeType { get; private set; }
 
@@ -81,14 +85,9 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets StorageId
+        /// A unique identifier of the document.
         /// </summary>
-        [DataMember(Name="storageId", EmitDefaultValue=false)]
-        public string StorageId { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets UniqueId
-        /// </summary>
+        /// <value>A unique identifier of the document.</value>
         [DataMember(Name="uniqueId", EmitDefaultValue=false)]
         public string UniqueId { get; private set; }
 
@@ -115,7 +114,6 @@ namespace Wallee.Model
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  MimeType: ").Append(MimeType).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  StorageId: ").Append(StorageId).Append("\n");
             sb.Append("  UniqueId: ").Append(UniqueId).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
@@ -194,11 +192,6 @@ namespace Wallee.Model
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
                 ) && 
                 (
-                    this.StorageId == input.StorageId ||
-                    (this.StorageId != null &&
-                    this.StorageId.Equals(input.StorageId))
-                ) && 
-                (
                     this.UniqueId == input.UniqueId ||
                     (this.UniqueId != null &&
                     this.UniqueId.Equals(input.UniqueId))
@@ -235,8 +228,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.MimeType.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.StorageId != null)
-                    hashCode = hashCode * 59 + this.StorageId.GetHashCode();
                 if (this.UniqueId != null)
                     hashCode = hashCode * 59 + this.UniqueId.GetHashCode();
                 if (this.Version != null)

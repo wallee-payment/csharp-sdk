@@ -29,14 +29,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Account
+        /// The account in which the role is assigned to the user.
         /// </summary>
+        /// <value>The account in which the role is assigned to the user.</value>
         [DataMember(Name="account", EmitDefaultValue=false)]
         public long? Account { get; private set; }
 
         /// <summary>
-        /// Gets or Sets AppliesOnSubAccount
+        /// Whether the role is assigned to the user in subaccounts only.
         /// </summary>
+        /// <value>Whether the role is assigned to the user in subaccounts only.</value>
         [DataMember(Name="appliesOnSubAccount", EmitDefaultValue=false)]
         public bool? AppliesOnSubAccount { get; private set; }
 
@@ -48,14 +50,16 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Role
+        /// The role that is assigned to the user.
         /// </summary>
+        /// <value>The role that is assigned to the user.</value>
         [DataMember(Name="role", EmitDefaultValue=false)]
         public long? Role { get; private set; }
 
         /// <summary>
-        /// Gets or Sets User
+        /// The user whose role this defines.
         /// </summary>
+        /// <value>The user whose role this defines.</value>
         [DataMember(Name="user", EmitDefaultValue=false)]
         public long? User { get; private set; }
 

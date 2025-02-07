@@ -35,16 +35,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The configuration is managed by the application and cannot be changed via the user interface.
+        /// Whether the processor configuration is managed by the application and therefore cannot be changed.
         /// </summary>
-        /// <value>The configuration is managed by the application and cannot be changed via the user interface.</value>
+        /// <value>Whether the processor configuration is managed by the application and therefore cannot be changed.</value>
         [DataMember(Name="applicationManaged", EmitDefaultValue=false)]
         public bool? ApplicationManaged { get; private set; }
 
         /// <summary>
-        /// The contract links the processor configuration with the contract that is used to process payments.
+        /// The ID of the payment contract the processor configuration is linked to.
         /// </summary>
-        /// <value>The contract links the processor configuration with the contract that is used to process payments.</value>
+        /// <value>The ID of the payment contract the processor configuration is linked to.</value>
         [DataMember(Name="contractId", EmitDefaultValue=false)]
         public long? ContractId { get; private set; }
 
@@ -63,9 +63,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The processor configuration name is used internally to identify a specific processor configuration. For example the name is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the payment method configuration.
         /// </summary>
-        /// <value>The processor configuration name is used internally to identify a specific processor configuration. For example the name is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the payment method configuration.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -77,9 +77,9 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// A processor handles the connection to a third part company (a Payment Service Provider) that technically manages the transaction and therefore processes the payment. For the same processor multiple processor configuration can be setup.
+        /// The payment processor that the configuration is for.
         /// </summary>
-        /// <value>A processor handles the connection to a third part company (a Payment Service Provider) that technically manages the transaction and therefore processes the payment. For the same processor multiple processor configuration can be setup.</value>
+        /// <value>The payment processor that the configuration is for.</value>
         [DataMember(Name="processor", EmitDefaultValue=false)]
         public long? Processor { get; private set; }
 

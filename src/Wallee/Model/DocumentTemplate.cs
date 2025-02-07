@@ -35,15 +35,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The default document template is used whenever no specific template is specified for a particular template type.
+        /// Whether this is the default document template which is used whenever no specific template is specified for the same template type.
         /// </summary>
-        /// <value>The default document template is used whenever no specific template is specified for a particular template type.</value>
+        /// <value>Whether this is the default document template which is used whenever no specific template is specified for the same template type.</value>
         [DataMember(Name="defaultTemplate", EmitDefaultValue=false)]
         public bool? DefaultTemplate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DeliveryEnabled
+        /// Whether documents of this template should be delivered.
         /// </summary>
+        /// <value>Whether documents of this template should be delivered.</value>
         [DataMember(Name="deliveryEnabled", EmitDefaultValue=false)]
         public bool? DeliveryEnabled { get; private set; }
 
@@ -62,8 +63,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The name used to identify the document template.
         /// </summary>
+        /// <value>The name used to identify the document template.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -75,21 +77,24 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SpaceId
+        /// The ID of the space this object belongs to.
         /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
         [DataMember(Name="spaceId", EmitDefaultValue=false)]
         public long? SpaceId { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets TemplateResource
+        /// The resource path to a custom template to be used to generate PDF documents.
         /// </summary>
+        /// <value>The resource path to a custom template to be used to generate PDF documents.</value>
         [DataMember(Name="templateResource", EmitDefaultValue=false)]
         public ResourcePath TemplateResource { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// The document template&#39;s type.
         /// </summary>
+        /// <value>The document template&#39;s type.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public long? Type { get; private set; }
 

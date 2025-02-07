@@ -29,8 +29,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Component
+        /// The component that is being configured.
         /// </summary>
+        /// <value>The component that is being configured.</value>
         [DataMember(Name="component", EmitDefaultValue=false)]
         public long? Component { get; private set; }
 
@@ -49,8 +50,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Quantity
+        /// The quantity that should be applied to the component.
         /// </summary>
+        /// <value>The quantity that should be applied to the component.</value>
         [DataMember(Name="quantity", EmitDefaultValue=false)]
         public decimal? Quantity { get; private set; }
 

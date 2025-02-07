@@ -29,15 +29,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Amount
+        /// The amount that was collected.
         /// </summary>
+        /// <value>The amount that was collected.</value>
         [DataMember(Name="amount", EmitDefaultValue=false)]
         public decimal? Amount { get; private set; }
 
         /// <summary>
-        /// The created by field indicates the user which has created the receipt.
+        /// The ID of the user the receipt was created by.
         /// </summary>
-        /// <value>The created by field indicates the user which has created the receipt.</value>
+        /// <value>The ID of the user the receipt was created by.</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
@@ -49,15 +50,16 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DebtCollectionCase
+        /// The debt collection case that this document belongs to.
         /// </summary>
+        /// <value>The debt collection case that this document belongs to.</value>
         [DataMember(Name="debtCollectionCase", EmitDefaultValue=false)]
         public long? DebtCollectionCase { get; private set; }
 
         /// <summary>
-        /// The external id is a unique identifier for the receipt. The external id has to be unique in combination with the debt collection case. When a receipt is sent with an existing external id the existing one is returned rather than a new one is created.
+        /// A client-generated nonce which uniquely identifies the receipt.Subsequent requests with the same external ID do not lead to the creation of another receipt, but return the original one.
         /// </summary>
-        /// <value>The external id is a unique identifier for the receipt. The external id has to be unique in combination with the debt collection case. When a receipt is sent with an existing external id the existing one is returned rather than a new one is created.</value>
+        /// <value>A client-generated nonce which uniquely identifies the receipt.Subsequent requests with the same external ID do not lead to the creation of another receipt, but return the original one.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
@@ -83,8 +85,9 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Source
+        /// The source stating where the receipt is coming from.
         /// </summary>
+        /// <value>The source stating where the receipt is coming from.</value>
         [DataMember(Name="source", EmitDefaultValue=false)]
         public long? Source { get; private set; }
 

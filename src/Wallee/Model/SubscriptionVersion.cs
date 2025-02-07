@@ -35,40 +35,50 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets ActivatedOn
+        /// The date and time when the subscription version was activated.
         /// </summary>
+        /// <value>The date and time when the subscription version was activated.</value>
         [DataMember(Name="activatedOn", EmitDefaultValue=false)]
         public DateTime? ActivatedOn { get; private set; }
 
         /// <summary>
-        /// The subscriber is charged in the billing currency. The billing currency has to be one of the enabled currencies on the subscription product.
+        /// The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.
         /// </summary>
-        /// <value>The subscriber is charged in the billing currency. The billing currency has to be one of the enabled currencies on the subscription product.</value>
+        /// <value>The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.</value>
         [DataMember(Name="billingCurrency", EmitDefaultValue=false)]
         public string BillingCurrency { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ComponentConfigurations
+        /// Gets or Sets BillingCycleModel
         /// </summary>
+        [DataMember(Name="billingCycleModel", EmitDefaultValue=false)]
+        public BillingCycleModel BillingCycleModel { get; private set; }
+
+        /// <summary>
+        /// The configurations of the subscription&#39;s components.
+        /// </summary>
+        /// <value>The configurations of the subscription&#39;s components.</value>
         [DataMember(Name="componentConfigurations", EmitDefaultValue=false)]
         public List<SubscriptionComponentConfiguration> ComponentConfigurations { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CreatedOn
+        /// The date and time when the subscription version was created.
         /// </summary>
+        /// <value>The date and time when the subscription version was created.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The expected last period end is the date on which the projected end date of the last period is. This is only a projection and as such the actual date may be different.
+        /// The date and time when the last period is expected to end.
         /// </summary>
-        /// <value>The expected last period end is the date on which the projected end date of the last period is. This is only a projection and as such the actual date may be different.</value>
+        /// <value>The date and time when the last period is expected to end.</value>
         [DataMember(Name="expectedLastPeriodEnd", EmitDefaultValue=false)]
         public DateTime? ExpectedLastPeriodEnd { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FailedOn
+        /// The date and time when the subscription version failed.
         /// </summary>
+        /// <value>The date and time when the subscription version failed.</value>
         [DataMember(Name="failedOn", EmitDefaultValue=false)]
         public DateTime? FailedOn { get; private set; }
 
@@ -101,45 +111,45 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PlannedTerminationDate
+        /// The date and time when the termination of the subscription version is planned.
         /// </summary>
+        /// <value>The date and time when the termination of the subscription version is planned.</value>
         [DataMember(Name="plannedTerminationDate", EmitDefaultValue=false)]
         public DateTime? PlannedTerminationDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ProductVersion
+        /// The product version that is subscribed to.
         /// </summary>
+        /// <value>The product version that is subscribed to.</value>
         [DataMember(Name="productVersion", EmitDefaultValue=false)]
         public SubscriptionProductVersion ProductVersion { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets SelectedComponents
-        /// </summary>
-        [DataMember(Name="selectedComponents", EmitDefaultValue=false)]
-        public List<SubscriptionProductComponent> SelectedComponents { get; private set; }
-
 
         /// <summary>
-        /// Gets or Sets Subscription
+        /// The subscription that this version belongs to.
         /// </summary>
+        /// <value>The subscription that this version belongs to.</value>
         [DataMember(Name="subscription", EmitDefaultValue=false)]
         public Subscription Subscription { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TerminatedOn
+        /// The date and time when the subscription version was terminated.
         /// </summary>
+        /// <value>The date and time when the subscription version was terminated.</value>
         [DataMember(Name="terminatedOn", EmitDefaultValue=false)]
         public DateTime? TerminatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TerminatingOn
+        /// The date and time when the termination of the subscription version started.
         /// </summary>
+        /// <value>The date and time when the termination of the subscription version started.</value>
         [DataMember(Name="terminatingOn", EmitDefaultValue=false)]
         public DateTime? TerminatingOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TerminationIssuedOn
+        /// The date and time when the termination of the subscription version was issued.
         /// </summary>
+        /// <value>The date and time when the termination of the subscription version was issued.</value>
         [DataMember(Name="terminationIssuedOn", EmitDefaultValue=false)]
         public DateTime? TerminationIssuedOn { get; private set; }
 
@@ -160,6 +170,7 @@ namespace Wallee.Model
             sb.Append("class SubscriptionVersion {\n");
             sb.Append("  ActivatedOn: ").Append(ActivatedOn).Append("\n");
             sb.Append("  BillingCurrency: ").Append(BillingCurrency).Append("\n");
+            sb.Append("  BillingCycleModel: ").Append(BillingCycleModel).Append("\n");
             sb.Append("  ComponentConfigurations: ").Append(ComponentConfigurations).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  ExpectedLastPeriodEnd: ").Append(ExpectedLastPeriodEnd).Append("\n");
@@ -170,7 +181,6 @@ namespace Wallee.Model
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  PlannedTerminationDate: ").Append(PlannedTerminationDate).Append("\n");
             sb.Append("  ProductVersion: ").Append(ProductVersion).Append("\n");
-            sb.Append("  SelectedComponents: ").Append(SelectedComponents).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Subscription: ").Append(Subscription).Append("\n");
             sb.Append("  TerminatedOn: ").Append(TerminatedOn).Append("\n");
@@ -220,6 +230,11 @@ namespace Wallee.Model
                     this.BillingCurrency == input.BillingCurrency ||
                     (this.BillingCurrency != null &&
                     this.BillingCurrency.Equals(input.BillingCurrency))
+                ) && 
+                (
+                    this.BillingCycleModel == input.BillingCycleModel ||
+                    (this.BillingCycleModel != null &&
+                    this.BillingCycleModel.Equals(input.BillingCycleModel))
                 ) && 
                 (
                     this.ComponentConfigurations == input.ComponentConfigurations ||
@@ -273,12 +288,6 @@ namespace Wallee.Model
                     this.ProductVersion.Equals(input.ProductVersion))
                 ) && 
                 (
-                    this.SelectedComponents == input.SelectedComponents ||
-                    this.SelectedComponents != null &&
-                    input.SelectedComponents != null &&
-                    this.SelectedComponents.SequenceEqual(input.SelectedComponents)
-                ) && 
-                (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
@@ -323,6 +332,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ActivatedOn.GetHashCode();
                 if (this.BillingCurrency != null)
                     hashCode = hashCode * 59 + this.BillingCurrency.GetHashCode();
+                if (this.BillingCycleModel != null)
+                    hashCode = hashCode * 59 + this.BillingCycleModel.GetHashCode();
                 if (this.ComponentConfigurations != null)
                     hashCode = hashCode * 59 + this.ComponentConfigurations.GetHashCode();
                 if (this.CreatedOn != null)
@@ -343,8 +354,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.PlannedTerminationDate.GetHashCode();
                 if (this.ProductVersion != null)
                     hashCode = hashCode * 59 + this.ProductVersion.GetHashCode();
-                if (this.SelectedComponents != null)
-                    hashCode = hashCode * 59 + this.SelectedComponents.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.Subscription != null)

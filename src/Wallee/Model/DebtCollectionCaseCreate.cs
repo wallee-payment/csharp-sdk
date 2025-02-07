@@ -29,7 +29,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="DebtCollectionCaseCreate" /> class.
         /// </summary>
         /// <param name="externalId">A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead. (required).</param>
-        /// <param name="reference">The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case. (required).</param>
+        /// <param name="reference">A unique reference to identify the debt collection case in communication with the debtor. (required).</param>
         public DebtCollectionCaseCreate(string externalId, string reference)
         {
             // to ensure "externalId" is required (not null)
@@ -55,9 +55,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The collector configuration determines how the debt collection case is processed.
+        /// The configuration that the case is processed with.
         /// </summary>
-        /// <value>The collector configuration determines how the debt collection case is processed.</value>
+        /// <value>The configuration that the case is processed with.</value>
         [DataMember(Name="collectorConfiguration", EmitDefaultValue=false)]
         public long? CollectorConfiguration { get; set; }
 
@@ -69,9 +69,9 @@ namespace Wallee.Model
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case.
+        /// A unique reference to identify the debt collection case in communication with the debtor.
         /// </summary>
-        /// <value>The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case.</value>
+        /// <value>A unique reference to identify the debt collection case in communication with the debtor.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
 

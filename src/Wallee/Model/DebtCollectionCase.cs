@@ -21,9 +21,9 @@ namespace Wallee.Model
     public partial class DebtCollectionCase :  IEquatable<DebtCollectionCase>
     {
         /// <summary>
-        /// The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.
+        /// The environment in which the case is processed.
         /// </summary>
-        /// <value>The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.</value>
+        /// <value>The environment in which the case is processed.</value>
         [DataMember(Name="environment", EmitDefaultValue=false)]
         public DebtCollectionEnvironment? Environment { get; private set; }
         /// <summary>
@@ -41,37 +41,37 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The amount is the total amount of the not paid items. The amount cannot be change once the case is reviewed.
+        /// The sum of all unpaid item prices in the case&#39;s currency. The amount can no longer be changed once the case has been reviewed.
         /// </summary>
-        /// <value>The amount is the total amount of the not paid items. The amount cannot be change once the case is reviewed.</value>
+        /// <value>The sum of all unpaid item prices in the case&#39;s currency. The amount can no longer be changed once the case has been reviewed.</value>
         [DataMember(Name="amount", EmitDefaultValue=false)]
         public decimal? Amount { get; private set; }
 
         /// <summary>
-        /// The billing address of the case identifies the debtor.
+        /// The billing address that identifies the debtor.
         /// </summary>
-        /// <value>The billing address of the case identifies the debtor.</value>
+        /// <value>The billing address that identifies the debtor.</value>
         [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public Address BillingAddress { get; private set; }
 
         /// <summary>
-        /// The closed on date indicates when the case is closed on.
+        /// The date and time when the case was closed.
         /// </summary>
-        /// <value>The closed on date indicates when the case is closed on.</value>
+        /// <value>The date and time when the case was closed.</value>
         [DataMember(Name="closedOn", EmitDefaultValue=false)]
         public DateTime? ClosedOn { get; private set; }
 
         /// <summary>
-        /// The collector configuration determines how the debt collection case is processed.
+        /// The configuration that the case is processed with.
         /// </summary>
-        /// <value>The collector configuration determines how the debt collection case is processed.</value>
+        /// <value>The configuration that the case is processed with.</value>
         [DataMember(Name="collectorConfiguration", EmitDefaultValue=false)]
         public DebtCollectorConfiguration CollectorConfiguration { get; private set; }
 
         /// <summary>
-        /// The contract date is the date on which the contract with the debtor was signed on.
+        /// The date and time when the contract with the debtor was signed.
         /// </summary>
-        /// <value>The contract date is the date on which the contract with the debtor was signed on.</value>
+        /// <value>The date and time when the contract with the debtor was signed.</value>
         [DataMember(Name="contractDate", EmitDefaultValue=false)]
         public DateTime? ContractDate { get; private set; }
 
@@ -83,23 +83,23 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The creator references the user which has created the debt collection case.
+        /// The ID of the user the case was created by.
         /// </summary>
-        /// <value>The creator references the user which has created the debt collection case.</value>
+        /// <value>The ID of the user the case was created by.</value>
         [DataMember(Name="creator", EmitDefaultValue=false)]
         public long? Creator { get; private set; }
 
         /// <summary>
-        /// The currency defines the billing currency of the debt collection case.
+        /// The three-letter code (ISO 4217 format) of the case&#39;s currency.
         /// </summary>
-        /// <value>The currency defines the billing currency of the debt collection case.</value>
+        /// <value>The three-letter code (ISO 4217 format) of the case&#39;s currency.</value>
         [DataMember(Name="currency", EmitDefaultValue=false)]
         public string Currency { get; private set; }
 
         /// <summary>
-        /// The due date indicates the date on which the amount receivable was due. This date has to be always in the past.
+        /// The date and time when the claim was due.
         /// </summary>
-        /// <value>The due date indicates the date on which the amount receivable was due. This date has to be always in the past.</value>
+        /// <value>The date and time when the claim was due.</value>
         [DataMember(Name="dueDate", EmitDefaultValue=false)]
         public DateTime? DueDate { get; private set; }
 
@@ -112,15 +112,16 @@ namespace Wallee.Model
         public string ExternalId { get; private set; }
 
         /// <summary>
-        /// The failed on date indicates when the case is failed on.
+        /// The date and time when the case failed.
         /// </summary>
-        /// <value>The failed on date indicates when the case is failed on.</value>
+        /// <value>The date and time when the case failed.</value>
         [DataMember(Name="failedOn", EmitDefaultValue=false)]
         public DateTime? FailedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FailureReason
+        /// The reason for the failure of the case.
         /// </summary>
+        /// <value>The reason for the failure of the case.</value>
         [DataMember(Name="failureReason", EmitDefaultValue=false)]
         public FailureReason FailureReason { get; private set; }
 
@@ -132,22 +133,23 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Labels
+        /// The labels providing additional information about the object.
         /// </summary>
+        /// <value>The labels providing additional information about the object.</value>
         [DataMember(Name="labels", EmitDefaultValue=false)]
         public List<Label> Labels { get; private set; }
 
         /// <summary>
-        /// The language indicates the language to be used in the communication with the debtor.
+        /// The language that is linked to the object.
         /// </summary>
-        /// <value>The language indicates the language to be used in the communication with the debtor.</value>
+        /// <value>The language that is linked to the object.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
-        /// The line items of the debt collection case will be shown on documents sent to the debtor and the total of them makes up total amount to collect.
+        /// The line items that are subject of this debt collection case.
         /// </summary>
-        /// <value>The line items of the debt collection case will be shown on documents sent to the debtor and the total of them makes up total amount to collect.</value>
+        /// <value>The line items that are subject of this debt collection case.</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItem> LineItems { get; private set; }
 
@@ -159,8 +161,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets NextAttemptOn
+        /// The date and time when the next attempt at processing the case will be made.
         /// </summary>
+        /// <value>The date and time when the next attempt at processing the case will be made.</value>
         [DataMember(Name="nextAttemptOn", EmitDefaultValue=false)]
         public DateTime? NextAttemptOn { get; private set; }
 
@@ -172,62 +175,65 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// The processing started on date indicates the date on which the processing of the case started on.
+        /// The date and time when the processing of the case was started.
         /// </summary>
-        /// <value>The processing started on date indicates the date on which the processing of the case started on.</value>
+        /// <value>The date and time when the processing of the case was started.</value>
         [DataMember(Name="processingStartedOn", EmitDefaultValue=false)]
         public DateTime? ProcessingStartedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ProcessingTimeoutOn
+        /// The date and time when the processing of the case times out.
         /// </summary>
+        /// <value>The date and time when the processing of the case times out.</value>
         [DataMember(Name="processingTimeoutOn", EmitDefaultValue=false)]
         public DateTime? ProcessingTimeoutOn { get; private set; }
 
         /// <summary>
-        /// The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case.
+        /// A unique reference to identify the debt collection case in communication with the debtor.
         /// </summary>
-        /// <value>The case reference is used in the communication with the debtor. It should be unique and it should be linkable with the source of the debt collection case.</value>
+        /// <value>A unique reference to identify the debt collection case in communication with the debtor.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ReviewStartedOn
+        /// The date and time when the review of the case was started.
         /// </summary>
+        /// <value>The date and time when the review of the case was started.</value>
         [DataMember(Name="reviewStartedOn", EmitDefaultValue=false)]
         public DateTime? ReviewStartedOn { get; private set; }
 
         /// <summary>
-        /// The reviewed on date indicates when the review of the case was conducted on.
+        /// The date and time when the case was reviewed.
         /// </summary>
-        /// <value>The reviewed on date indicates when the review of the case was conducted on.</value>
+        /// <value>The date and time when the case was reviewed.</value>
         [DataMember(Name="reviewedOn", EmitDefaultValue=false)]
         public DateTime? ReviewedOn { get; private set; }
 
         /// <summary>
-        /// The reviewer references the user which has reviewed the case.
+        /// The ID of the user the case was reviewed by.
         /// </summary>
-        /// <value>The reviewer references the user which has reviewed the case.</value>
+        /// <value>The ID of the user the case was reviewed by.</value>
         [DataMember(Name="reviewer", EmitDefaultValue=false)]
         public long? Reviewer { get; private set; }
 
         /// <summary>
-        /// The source of the debt collection case indicates the origin of the amount receivable.
+        /// The source of the case stating the origin of the claim.
         /// </summary>
-        /// <value>The source of the debt collection case indicates the origin of the amount receivable.</value>
+        /// <value>The source of the case stating the origin of the claim.</value>
         [DataMember(Name="source", EmitDefaultValue=false)]
         public DebtCollectionCaseSource Source { get; private set; }
 
         /// <summary>
-        /// The source entity ID points to the object which is the origin of the debt collection case. This ID is only set when the case was triggered by an internal process.
+        /// The ID of the object that is the source of the case. Only defined if the case was created by an internal process.
         /// </summary>
-        /// <value>The source entity ID points to the object which is the origin of the debt collection case. This ID is only set when the case was triggered by an internal process.</value>
+        /// <value>The ID of the object that is the source of the case. Only defined if the case was created by an internal process.</value>
         [DataMember(Name="sourceEntityId", EmitDefaultValue=false)]
         public long? SourceEntityId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SpaceViewId
+        /// The ID of the space view this object is linked to.
         /// </summary>
+        /// <value>The ID of the space view this object is linked to.</value>
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 

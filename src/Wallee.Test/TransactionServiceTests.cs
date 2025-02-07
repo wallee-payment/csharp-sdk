@@ -1,15 +1,8 @@
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
-using RestSharp;
 using NUnit.Framework;
-
+using Wallee.Client;
 using Wallee.Model;
 using Wallee.Service;
-using Wallee.Client;
 
 namespace Wallee.Test
 {
@@ -105,7 +98,8 @@ namespace Wallee.Test
         public void CountTest()
         {
             var transaction = transactionService.Create(Constants.SpaceId, Constants.GetTransactionCreate());
-            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF){
+            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF)
+            {
                 FieldName = "id",
                 Value = transaction.Id,
                 Operator = CriteriaOperator.EQUALS
@@ -124,7 +118,8 @@ namespace Wallee.Test
             var transaction = transactionService.Create(Constants.SpaceId, Constants.GetTransactionCreate());
             var creds = transactionService.CreateTransactionCredentials(Constants.SpaceId, transaction.Id);
 
-            StringAssert.StartsWith(Constants.SpaceId.ToString(), creds, "Transaction credentials token should have valid format");
+            StringAssert.StartsWith(Constants.SpaceId.ToString(), creds,
+                "Transaction credentials token should have valid format");
         }
 
         /// <summary>
@@ -134,7 +129,8 @@ namespace Wallee.Test
         public void FetchPaymentMethodsTest()
         {
             var transaction = transactionService.Create(Constants.SpaceId, Constants.GetTransactionCreate());
-            var methods = transactionService.FetchPaymentMethods(Constants.SpaceId, transaction.Id, "payment_page");
+            var methods =
+                transactionService.FetchPaymentMethods(Constants.SpaceId, transaction.Id, "payment_page");
 
             Assert.That(methods.Any(), "Payment methods should be configured for a given transaction in test space");
         }
@@ -158,10 +154,8 @@ namespace Wallee.Test
         [Test]
         public void ReadWithCredentialsForBadCredentialsTest()
         {
-            Assert.That(() => {
-                transactionService.ReadWithCredentials("invalid_token");
-                },
-                Throws.TypeOf<Wallee.Client.ApiException>()
+            Assert.That(() => { transactionService.ReadWithCredentials("invalid_token"); },
+                Throws.TypeOf<ApiException>()
                     .With.Message.StartsWith("Error calling ReadWithCredentials"));
         }
 
@@ -186,17 +180,20 @@ namespace Wallee.Test
         {
             var transaction = transactionService.Create(Constants.SpaceId, Constants.GetTransactionCreate());
 
-            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF){
+            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF)
+            {
                 FieldName = "id",
                 Value = transaction.Id,
                 Operator = CriteriaOperator.EQUALS
             };
-            var transactionsFound = transactionService.Search(Constants.SpaceId, new EntityQuery(){
+            var transactionsFound = transactionService.Search(Constants.SpaceId, new EntityQuery()
+            {
                 Filter = queryFilter
             });
 
             Assert.That(transactionsFound.Count == 1, "Should find one transaction");
-            transactionsFound.ForEach(tx => {
+            transactionsFound.ForEach(tx =>
+            {
                 Assert.AreEqual(transaction.Id, tx.Id, "Transaction ids should match");
             });
         }
@@ -208,7 +205,8 @@ namespace Wallee.Test
         public void UpdateTest()
         {
             var transaction = transactionService.Create(Constants.SpaceId, Constants.GetTransactionCreate());
-            var transactionPending = new TransactionPending(transaction.Version, transaction.Id){
+            var transactionPending = new TransactionPending(transaction.Version, transaction.Id)
+            {
                 Language = "en-US"
             };
 
@@ -224,7 +222,8 @@ namespace Wallee.Test
         public void ProcessWithoutUserInteractionTest()
         {
             var transaction = transactionService.Create(Constants.SpaceId, Constants.GetTransactionCreate());
-            var transactionProcessed = transactionService.ProcessWithoutUserInteraction(Constants.SpaceId, transaction.Id);
+            var transactionProcessed =
+                transactionService.ProcessWithoutUserInteraction(Constants.SpaceId, transaction.Id);
 
             Assert.AreEqual(transaction.Id, transactionProcessed.Id, "Transaction ids must match");
         }
@@ -250,56 +249,64 @@ namespace Wallee.Test
         {
             var transaction = transactionService.Create(Constants.SpaceId, Constants.GetTransactionCreate());
             var creds = transactionService.CreateTransactionCredentials(Constants.SpaceId, transaction.Id);
-            var methods = transactionService.FetchPaymentMethodsWithCredentials(creds, "payment_page");
+            var methods =
+                transactionService.FetchPaymentMethodsWithCredentials(creds, "payment_page");
 
             Assert.That(methods.Any(), "Should have some payment methods set up");
         }
 
         /// <summary>
-        /// ProcessOneClickTokenAndRedirectWithCredentials() should create URL that can be used to authorize 2nd transaction after we have created token for 1st authorized transaction
+        /// ProcessOneClickTokenAndRedirectWithCredentials()
+        /// should create URL that can be used to authorize 2nd transaction after we have created token for 1st authorized transaction
         /// </summary>
         [Test]
         public void ProcessOneClickTokenAndRedirectWithCredentialsTest()
         {
-            var transaction1create = Constants.GetTransactionCreate();
-            transaction1create.TokenizationMode = TokenizationMode.FORCE_CREATION_WITH_ONE_CLICK_PAYMENT;
-            transaction1create.CustomersPresence = CustomersPresence.NOT_PRESENT;
-            transaction1create.CompletionBehavior = TransactionCompletionBehavior.COMPLETE_DEFERRED;
-            transaction1create.CustomerId = Constants.TestCustomerId;
-            var transaction1 = transactionService.Create(Constants.SpaceId, transaction1create);
+            var transaction1Create = Constants.GetTransactionCreate();
+            transaction1Create.TokenizationMode = TokenizationMode.FORCE_CREATION_WITH_ONE_CLICK_PAYMENT;
+            transaction1Create.CustomersPresence = CustomersPresence.NOT_PRESENT;
+            transaction1Create.CompletionBehavior = TransactionCompletionBehavior.COMPLETE_DEFERRED;
+            transaction1Create.CustomerId = Constants.TestCustomerId;
+            var transaction1 = transactionService.Create(Constants.SpaceId, transaction1Create);
 
             var transaction1Processed = cardProcessingService.Process(Constants.SpaceId, transaction1.Id,
                 Constants.TestCardPaymentMethodConfigurationId, Constants.FakeCardData);
 
             var token = tokenService.CreateToken(Constants.SpaceId, transaction1Processed.Id);
-            var tokenForUpdate = new TokenUpdate(token.Version, token.Id){
+            var tokenForUpdate = new TokenUpdate(token.Version, token.Id)
+            {
                 EnabledForOneClickPayment = true
             };
             var updatedToken = tokenService.Update(Constants.SpaceId, tokenForUpdate);
 
-            var transaction2create = Constants.GetTransactionCreate();
-            transaction2create.TokenizationMode = TokenizationMode.FORCE_CREATION_WITH_ONE_CLICK_PAYMENT;
-            transaction2create.CustomersPresence = CustomersPresence.NOT_PRESENT;
-            transaction2create.CompletionBehavior = TransactionCompletionBehavior.COMPLETE_DEFERRED;
-            transaction2create.CustomerId = Constants.TestCustomerId;
+            var transaction2Create = Constants.GetTransactionCreate();
+            transaction2Create.TokenizationMode = TokenizationMode.FORCE_CREATION_WITH_ONE_CLICK_PAYMENT;
+            transaction2Create.CustomersPresence = CustomersPresence.NOT_PRESENT;
+            transaction2Create.CompletionBehavior = TransactionCompletionBehavior.COMPLETE_DEFERRED;
+            transaction2Create.CustomerId = Constants.TestCustomerId;
 
-            var transaction2 = transactionService.Create(Constants.SpaceId, transaction2create);
+            var transaction2 = transactionService.Create(Constants.SpaceId, transaction2Create);
             var creds2 = transactionService.CreateTransactionCredentials(Constants.SpaceId, transaction2.Id);
-            var paymentUrl2 = transactionService.ProcessOneClickTokenAndRedirectWithCredentials(creds2, updatedToken.Id);
+            var paymentUrl2 =
+                transactionService.ProcessOneClickTokenAndRedirectWithCredentials(creds2, updatedToken.Id);
 
             StringAssert.Contains("securityToken", paymentUrl2, "URL must be of a proper format");
 
-            var transaction2read = transactionService.Read(Constants.SpaceId, transaction2.Id);
+            var transaction2Read = transactionService.Read(Constants.SpaceId, transaction2.Id);
 
-            Assert.AreEqual(TransactionState.AUTHORIZED, transaction2read.State, "State must be AUTHORIZED");
+            Assert.AreEqual(TransactionState.AUTHORIZED, transaction2Read.State, "State must be AUTHORIZED");
 
             // cleanup - 2nd transaction
-            var transaction2completed = transactionCompletionService.CompleteOnline(Constants.SpaceId, transaction2.Id);
-            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transaction2completed.State, "State must be SUCCESSFUL");
+            var transaction2Completed =
+                transactionCompletionService.CompleteOnline(Constants.SpaceId, transaction2.Id);
+            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transaction2Completed.State,
+                "State must be SUCCESSFUL");
 
             // cleanup - 1st transaction
-            var transaction1completed = transactionCompletionService.CompleteOnline(Constants.SpaceId, transaction1.Id);
-            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transaction1completed.State, "State must be SUCCESSFUL");
+            var transaction1Completed =
+                transactionCompletionService.CompleteOnline(Constants.SpaceId, transaction1.Id);
+            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transaction1Completed.State,
+                "State must be SUCCESSFUL");
 
             tokenService.Delete(Constants.SpaceId, token.Id);
         }

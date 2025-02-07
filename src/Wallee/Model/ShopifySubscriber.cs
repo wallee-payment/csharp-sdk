@@ -47,6 +47,12 @@ namespace Wallee.Model
         public string EmailAddress { get; private set; }
 
         /// <summary>
+        /// Gets or Sets ExternalGid
+        /// </summary>
+        [DataMember(Name="externalGid", EmitDefaultValue=false)]
+        public string ExternalGid { get; private set; }
+
+        /// <summary>
         /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
         /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
@@ -104,6 +110,7 @@ namespace Wallee.Model
             sb.Append("class ShopifySubscriber {\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
+            sb.Append("  ExternalGid: ").Append(ExternalGid).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
@@ -155,6 +162,11 @@ namespace Wallee.Model
                     this.EmailAddress == input.EmailAddress ||
                     (this.EmailAddress != null &&
                     this.EmailAddress.Equals(input.EmailAddress))
+                ) && 
+                (
+                    this.ExternalGid == input.ExternalGid ||
+                    (this.ExternalGid != null &&
+                    this.ExternalGid.Equals(input.ExternalGid))
                 ) && 
                 (
                     this.ExternalId == input.ExternalId ||
@@ -211,6 +223,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
                 if (this.EmailAddress != null)
                     hashCode = hashCode * 59 + this.EmailAddress.GetHashCode();
+                if (this.ExternalGid != null)
+                    hashCode = hashCode * 59 + this.ExternalGid.GetHashCode();
                 if (this.ExternalId != null)
                     hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
                 if (this.Id != null)

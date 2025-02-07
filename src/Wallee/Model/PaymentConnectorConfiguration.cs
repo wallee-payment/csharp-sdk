@@ -35,36 +35,37 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// This property indicates if the connector is currently used for processing transactions. In case either the payment method configuration or the processor configuration is not active the connector will not be used even though the connector state is active.
+        /// Whether this connector configuration is enabled for processing payments, taking into account the state of the processor and payment method configurations.
         /// </summary>
-        /// <value>This property indicates if the connector is currently used for processing transactions. In case either the payment method configuration or the processor configuration is not active the connector will not be used even though the connector state is active.</value>
+        /// <value>Whether this connector configuration is enabled for processing payments, taking into account the state of the processor and payment method configurations.</value>
         [DataMember(Name="applicableForTransactionProcessing", EmitDefaultValue=false)]
         public bool? ApplicableForTransactionProcessing { get; private set; }
 
         /// <summary>
-        /// If a transaction meet all selected conditions the connector configuration will be used to process the transaction otherwise the next connector configuration in line will be chosen according to the priorities.
+        /// Conditions allow to define criteria that a transaction must fulfill in order for the connector configuration to be considered for processing the payment.
         /// </summary>
-        /// <value>If a transaction meet all selected conditions the connector configuration will be used to process the transaction otherwise the next connector configuration in line will be chosen according to the priorities.</value>
+        /// <value>Conditions allow to define criteria that a transaction must fulfill in order for the connector configuration to be considered for processing the payment.</value>
         [DataMember(Name="conditions", EmitDefaultValue=false)]
         public List<long?> Conditions { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Connector
+        /// The connector that the configuration is for.
         /// </summary>
+        /// <value>The connector that the configuration is for.</value>
         [DataMember(Name="connector", EmitDefaultValue=false)]
         public long? Connector { get; private set; }
 
         /// <summary>
-        /// Defines the sales channels the connector configuration is enabled for. In case the set is empty, the connector configuration is enabled for all sales channels.
+        /// The sales channels for which the connector configuration is enabled. If empty, it is enabled for all sales channels.
         /// </summary>
-        /// <value>Defines the sales channels the connector configuration is enabled for. In case the set is empty, the connector configuration is enabled for all sales channels.</value>
+        /// <value>The sales channels for which the connector configuration is enabled. If empty, it is enabled for all sales channels.</value>
         [DataMember(Name="enabledSalesChannels", EmitDefaultValue=false)]
         public List<SalesChannel> EnabledSalesChannels { get; private set; }
 
         /// <summary>
-        /// The connector configuration is only enabled for the selected space views. In case the set is empty the connector configuration is enabled for all space views.
+        /// The space views for which the connector configuration is enabled. If empty, it is enabled for all space views.
         /// </summary>
-        /// <value>The connector configuration is only enabled for the selected space views. In case the set is empty the connector configuration is enabled for all space views.</value>
+        /// <value>The space views for which the connector configuration is enabled. If empty, it is enabled for all space views.</value>
         [DataMember(Name="enabledSpaceViews", EmitDefaultValue=false)]
         public List<long?> EnabledSpaceViews { get; private set; }
 
@@ -76,8 +77,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ImagePath
+        /// The URL to the connector&#39;s image.
         /// </summary>
+        /// <value>The URL to the connector&#39;s image.</value>
         [DataMember(Name="imagePath", EmitDefaultValue=false)]
         public string ImagePath { get; private set; }
 
@@ -89,15 +91,16 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The connector configuration name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the connector configuration.
         /// </summary>
-        /// <value>The connector configuration name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the connector configuration.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PaymentMethodConfiguration
+        /// The payment method configuration that the connector configuration belongs to.
         /// </summary>
+        /// <value>The payment method configuration that the connector configuration belongs to.</value>
         [DataMember(Name="paymentMethodConfiguration", EmitDefaultValue=false)]
         public PaymentMethodConfiguration PaymentMethodConfiguration { get; private set; }
 
@@ -109,15 +112,16 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// The priority will define the order of choice of the connector configurations. The lower the value, the higher the priority is going to be. This value can also be a negative number in case you are adding a new configuration that you want to have a high priority and you dont want to change the priority of all the other configurations.
+        /// The priority that determines the order in which connector configurations are taken into account when processing a payment. Low values are considered first.
         /// </summary>
-        /// <value>The priority will define the order of choice of the connector configurations. The lower the value, the higher the priority is going to be. This value can also be a negative number in case you are adding a new configuration that you want to have a high priority and you dont want to change the priority of all the other configurations.</value>
+        /// <value>The priority that determines the order in which connector configurations are taken into account when processing a payment. Low values are considered first.</value>
         [DataMember(Name="priority", EmitDefaultValue=false)]
         public int? Priority { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ProcessorConfiguration
+        /// The processor configuration that the connector configuration belongs to.
         /// </summary>
+        /// <value>The processor configuration that the connector configuration belongs to.</value>
         [DataMember(Name="processorConfiguration", EmitDefaultValue=false)]
         public PaymentProcessorConfiguration ProcessorConfiguration { get; private set; }
 

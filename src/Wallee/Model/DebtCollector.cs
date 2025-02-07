@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The debt collector connects to an external service to process the debt collection case and as such directs the debt collection process.
+    /// The debt collector connects to an external service to process debt collection cases and directs the debt collection process.
     /// </summary>
     [DataContract]
     public partial class DebtCollector :  IEquatable<DebtCollector>

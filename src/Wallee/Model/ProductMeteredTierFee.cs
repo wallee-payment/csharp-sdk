@@ -29,9 +29,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The fee determines the amount which is charged. The consumed metric is multiplied by the defined fee. The resulting amount is charged at the end of the period.
+        /// The amount charged to the customer for each consumed unit at the end of a billing cycle.
         /// </summary>
-        /// <value>The fee determines the amount which is charged. The consumed metric is multiplied by the defined fee. The resulting amount is charged at the end of the period.</value>
+        /// <value>The amount charged to the customer for each consumed unit at the end of a billing cycle.</value>
         [DataMember(Name="fee", EmitDefaultValue=false)]
         public List<PersistableCurrencyAmount> Fee { get; private set; }
 
@@ -43,15 +43,16 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets MeteredFee
+        /// The metered fee that this tier belongs to.
         /// </summary>
+        /// <value>The metered fee that this tier belongs to.</value>
         [DataMember(Name="meteredFee", EmitDefaultValue=false)]
         public ProductMeteredFee MeteredFee { get; private set; }
 
         /// <summary>
-        /// The start range defines the metered consumption of the metric from which on the defined fee gets applied. This means when a subscription consumes a value of 10 or more and the start range is set to 10 the fee defined on the tier will be applied.
+        /// Starting from and including this quantity is contained in the tier.
         /// </summary>
-        /// <value>The start range defines the metered consumption of the metric from which on the defined fee gets applied. This means when a subscription consumes a value of 10 or more and the start range is set to 10 the fee defined on the tier will be applied.</value>
+        /// <value>Starting from and including this quantity is contained in the tier.</value>
         [DataMember(Name="startRange", EmitDefaultValue=false)]
         public decimal? StartRange { get; private set; }
 

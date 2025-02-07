@@ -28,10 +28,10 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionMetricUsageReportCreate" /> class.
         /// </summary>
-        /// <param name="consumedUnits">The consumed units describe the amount of resources consumed. Those consumed units will be billed in the next billing cycle. (required).</param>
-        /// <param name="externalId">The external id identifies the metric usage uniquely. (required).</param>
-        /// <param name="metric">The metric usage report is linked to the metric for which the usage should be recorded. (required).</param>
-        /// <param name="subscription">The subscription to which the usage is added to. (required).</param>
+        /// <param name="consumedUnits">The number of resources consumed, will be charged in the next billing cycle. (required).</param>
+        /// <param name="externalId">A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead. (required).</param>
+        /// <param name="metric">The metric that the usage report is recorded for. (required).</param>
+        /// <param name="subscription">The subscription that the usage report is recorded for. (required).</param>
         public SubscriptionMetricUsageReportCreate(decimal? consumedUnits, string externalId, long? metric, long? subscription)
         {
             // to ensure "consumedUnits" is required (not null)
@@ -61,37 +61,37 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The consumed units describe the amount of resources consumed. Those consumed units will be billed in the next billing cycle.
+        /// The number of resources consumed, will be charged in the next billing cycle.
         /// </summary>
-        /// <value>The consumed units describe the amount of resources consumed. Those consumed units will be billed in the next billing cycle.</value>
+        /// <value>The number of resources consumed, will be charged in the next billing cycle.</value>
         [DataMember(Name="consumedUnits", EmitDefaultValue=false)]
         public decimal? ConsumedUnits { get; set; }
 
         /// <summary>
-        /// The metric usage report description describe the reported usage. This description may be shown to the end user.
+        /// A description used to identify the usage report.
         /// </summary>
-        /// <value>The metric usage report description describe the reported usage. This description may be shown to the end user.</value>
+        /// <value>A description used to identify the usage report.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public string Description { get; set; }
 
         /// <summary>
-        /// The external id identifies the metric usage uniquely.
+        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
-        /// <value>The external id identifies the metric usage uniquely.</value>
+        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// The metric usage report is linked to the metric for which the usage should be recorded.
+        /// The metric that the usage report is recorded for.
         /// </summary>
-        /// <value>The metric usage report is linked to the metric for which the usage should be recorded.</value>
+        /// <value>The metric that the usage report is recorded for.</value>
         [DataMember(Name="metric", EmitDefaultValue=false)]
         public long? Metric { get; set; }
 
         /// <summary>
-        /// The subscription to which the usage is added to.
+        /// The subscription that the usage report is recorded for.
         /// </summary>
-        /// <value>The subscription to which the usage is added to.</value>
+        /// <value>The subscription that the usage report is recorded for.</value>
         [DataMember(Name="subscription", EmitDefaultValue=false)]
         public long? Subscription { get; set; }
 

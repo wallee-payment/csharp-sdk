@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The subscription update request allows to change a subscription properites.
+    /// SubscriptionUpdateRequest
     /// </summary>
     [DataContract]
     public partial class SubscriptionUpdateRequest :  IEquatable<SubscriptionUpdateRequest>
@@ -28,8 +28,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// A description used to identify the subscription.
         /// </summary>
+        /// <value>A description used to identify the subscription.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public string Description { get; set; }
 

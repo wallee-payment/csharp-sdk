@@ -28,14 +28,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets ProductComponentReferenceId
+        /// The ID of the component reference that is being configured.
         /// </summary>
+        /// <value>The ID of the component reference that is being configured.</value>
         [DataMember(Name="productComponentReferenceId", EmitDefaultValue=false)]
         public long? ProductComponentReferenceId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Quantity
+        /// The quantity that should be applied to the component.
         /// </summary>
+        /// <value>The quantity that should be applied to the component.</value>
         [DataMember(Name="quantity", EmitDefaultValue=false)]
         public decimal? Quantity { get; set; }
 

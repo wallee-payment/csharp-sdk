@@ -21,15 +21,15 @@ namespace Wallee.Model
     public partial class AbstractTransactionPending :  IEquatable<AbstractTransactionPending>
     {
         /// <summary>
-        /// The completion behavior controls when the transaction is completed.
+        /// The behavior that controls when the transaction is completed.
         /// </summary>
-        /// <value>The completion behavior controls when the transaction is completed.</value>
+        /// <value>The behavior that controls when the transaction is completed.</value>
         [DataMember(Name="completionBehavior", EmitDefaultValue=false)]
         public TransactionCompletionBehavior? CompletionBehavior { get; set; }
         /// <summary>
-        /// The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.
+        /// The tokenization mode specifies whether and how the tokenization of payment information is applied to the transaction.
         /// </summary>
-        /// <value>The tokenization mode controls if and how the tokenization of payment information is applied to the transaction.</value>
+        /// <value>The tokenization mode specifies whether and how the tokenization of payment information is applied to the transaction.</value>
         [DataMember(Name="tokenizationMode", EmitDefaultValue=false)]
         public TokenizationMode? TokenizationMode { get; set; }
         /// <summary>
@@ -40,53 +40,59 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets AllowedPaymentMethodBrands
+        /// The payment method brands that can be used to authorize the transaction.
         /// </summary>
+        /// <value>The payment method brands that can be used to authorize the transaction.</value>
         [DataMember(Name="allowedPaymentMethodBrands", EmitDefaultValue=false)]
         public List<long?> AllowedPaymentMethodBrands { get; set; }
 
         /// <summary>
-        /// Gets or Sets AllowedPaymentMethodConfigurations
+        /// The payment method configurations that can be used to authorize the transaction.
         /// </summary>
+        /// <value>The payment method configurations that can be used to authorize the transaction.</value>
         [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<long?> AllowedPaymentMethodConfigurations { get; set; }
 
         /// <summary>
-        /// Gets or Sets BillingAddress
+        /// The address associated with the payment method for invoicing and transaction processing purposes.
         /// </summary>
+        /// <value>The address associated with the payment method for invoicing and transaction processing purposes.</value>
         [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public AddressCreate BillingAddress { get; set; }
 
 
         /// <summary>
-        /// Gets or Sets Currency
+        /// The three-letter code (ISO 4217 format) of the transaction&#39;s currency.
         /// </summary>
+        /// <value>The three-letter code (ISO 4217 format) of the transaction&#39;s currency.</value>
         [DataMember(Name="currency", EmitDefaultValue=false)]
         public string Currency { get; set; }
 
         /// <summary>
-        /// The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.
+        /// The customer&#39;s email address.
         /// </summary>
-        /// <value>The customer email address is the email address of the customer. If no email address is provided on the shipping or billing address this address is used.</value>
+        /// <value>The customer&#39;s email address.</value>
         [DataMember(Name="customerEmailAddress", EmitDefaultValue=false)]
         public string CustomerEmailAddress { get; set; }
 
         /// <summary>
-        /// Gets or Sets CustomerId
+        /// The unique identifier of the customer in the external system.
         /// </summary>
+        /// <value>The unique identifier of the customer in the external system.</value>
         [DataMember(Name="customerId", EmitDefaultValue=false)]
         public string CustomerId { get; set; }
 
         /// <summary>
-        /// The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
+        /// The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
         /// </summary>
-        /// <value>The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.</value>
+        /// <value>The URL to redirect the customer back to after they canceled or failed to authenticated their payment.</value>
         [DataMember(Name="failedUrl", EmitDefaultValue=false)]
         public string FailedUrl { get; set; }
 
         /// <summary>
-        /// Gets or Sets InvoiceMerchantReference
+        /// The merchant&#39;s reference used to identify the invoice.
         /// </summary>
+        /// <value>The merchant&#39;s reference used to identify the invoice.</value>
         [DataMember(Name="invoiceMerchantReference", EmitDefaultValue=false)]
         public string InvoiceMerchantReference { get; set; }
 
@@ -98,14 +104,16 @@ namespace Wallee.Model
         public string Language { get; set; }
 
         /// <summary>
-        /// Gets or Sets LineItems
+        /// The line items purchased by the customer.
         /// </summary>
+        /// <value>The line items purchased by the customer.</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItemCreate> LineItems { get; set; }
 
         /// <summary>
-        /// Gets or Sets MerchantReference
+        /// The merchant&#39;s reference used to identify the transaction.
         /// </summary>
+        /// <value>The merchant&#39;s reference used to identify the transaction.</value>
         [DataMember(Name="merchantReference", EmitDefaultValue=false)]
         public string MerchantReference { get; set; }
 
@@ -117,34 +125,37 @@ namespace Wallee.Model
         public Dictionary<string, string> MetaData { get; set; }
 
         /// <summary>
-        /// Gets or Sets ShippingAddress
+        /// The address to where the order will be shipped.
         /// </summary>
+        /// <value>The address to where the order will be shipped.</value>
         [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
         public AddressCreate ShippingAddress { get; set; }
 
         /// <summary>
-        /// Gets or Sets ShippingMethod
+        /// The name of the shipping method used to ship the products.
         /// </summary>
+        /// <value>The name of the shipping method used to ship the products.</value>
         [DataMember(Name="shippingMethod", EmitDefaultValue=false)]
         public string ShippingMethod { get; set; }
 
         /// <summary>
-        /// The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
+        /// The URL to redirect the customer back to after they successfully authenticated their payment.
         /// </summary>
-        /// <value>The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.</value>
+        /// <value>The URL to redirect the customer back to after they successfully authenticated their payment.</value>
         [DataMember(Name="successUrl", EmitDefaultValue=false)]
         public string SuccessUrl { get; set; }
 
         /// <summary>
-        /// The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
+        /// The customer&#39;s time zone, which affects how dates and times are formatted when communicating with the customer.
         /// </summary>
-        /// <value>The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.</value>
+        /// <value>The customer&#39;s time zone, which affects how dates and times are formatted when communicating with the customer.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; set; }
 
         /// <summary>
-        /// Gets or Sets Token
+        /// The payment token that should be used to charge the customer.
         /// </summary>
+        /// <value>The payment token that should be used to charge the customer.</value>
         [DataMember(Name="token", EmitDefaultValue=false)]
         public long? Token { get; set; }
 

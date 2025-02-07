@@ -35,32 +35,37 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets ActivatedOn
+        /// The date and time when the subscription was activate.
         /// </summary>
+        /// <value>The date and time when the subscription was activate.</value>
         [DataMember(Name="activatedOn", EmitDefaultValue=false)]
         public DateTime? ActivatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Affiliate
+        /// The affiliate that led to the creation of the subscription.
         /// </summary>
+        /// <value>The affiliate that led to the creation of the subscription.</value>
         [DataMember(Name="affiliate", EmitDefaultValue=false)]
         public SubscriptionAffiliate Affiliate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CreatedOn
+        /// The date and time when the subscription was created.
         /// </summary>
+        /// <value>The date and time when the subscription was created.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CurrentProductVersion
+        /// The version of the product that the subscription is currently linked to.
         /// </summary>
+        /// <value>The version of the product that the subscription is currently linked to.</value>
         [DataMember(Name="currentProductVersion", EmitDefaultValue=false)]
         public SubscriptionProductVersion CurrentProductVersion { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// A description used to identify the subscription.
         /// </summary>
+        /// <value>A description used to identify the subscription.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public string Description { get; private set; }
 
@@ -72,8 +77,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets InitializedOn
+        /// The date and time when the subscription was initialized.
         /// </summary>
+        /// <value>The date and time when the subscription was initialized.</value>
         [DataMember(Name="initializedOn", EmitDefaultValue=false)]
         public DateTime? InitializedOn { get; private set; }
 
@@ -99,51 +105,59 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PlannedTerminationDate
+        /// The date and time when the subscription is planned to be terminated.
         /// </summary>
+        /// <value>The date and time when the subscription is planned to be terminated.</value>
         [DataMember(Name="plannedTerminationDate", EmitDefaultValue=false)]
         public DateTime? PlannedTerminationDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Reference
+        /// The merchant&#39;s reference used to identify the subscription.
         /// </summary>
+        /// <value>The merchant&#39;s reference used to identify the subscription.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets Subscriber
+        /// The subscriber that the subscription belongs to.
         /// </summary>
+        /// <value>The subscriber that the subscription belongs to.</value>
         [DataMember(Name="subscriber", EmitDefaultValue=false)]
         public Subscriber Subscriber { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TerminatedBy
+        /// The ID of the user the subscription was terminated by.
         /// </summary>
+        /// <value>The ID of the user the subscription was terminated by.</value>
         [DataMember(Name="terminatedBy", EmitDefaultValue=false)]
         public long? TerminatedBy { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TerminatedOn
+        /// The date and time when the subscription was terminated.
         /// </summary>
+        /// <value>The date and time when the subscription was terminated.</value>
         [DataMember(Name="terminatedOn", EmitDefaultValue=false)]
         public DateTime? TerminatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TerminatingOn
+        /// The date and time when the termination of the subscription started.
         /// </summary>
+        /// <value>The date and time when the termination of the subscription started.</value>
         [DataMember(Name="terminatingOn", EmitDefaultValue=false)]
         public DateTime? TerminatingOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TerminationScheduledOn
+        /// The date and time when the subscription was scheduled to be terminated.
         /// </summary>
+        /// <value>The date and time when the subscription was scheduled to be terminated.</value>
         [DataMember(Name="terminationScheduledOn", EmitDefaultValue=false)]
         public DateTime? TerminationScheduledOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Token
+        /// The payment token that is used to charge the customer.
         /// </summary>
+        /// <value>The payment token that is used to charge the customer.</value>
         [DataMember(Name="token", EmitDefaultValue=false)]
         public Token Token { get; private set; }
 

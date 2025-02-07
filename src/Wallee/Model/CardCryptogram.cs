@@ -21,11 +21,6 @@ namespace Wallee.Model
     public partial class CardCryptogram :  IEquatable<CardCryptogram>
     {
         /// <summary>
-        /// Gets or Sets Type
-        /// </summary>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public CardCryptogramType? Type { get; private set; }
-        /// <summary>
         /// Initializes a new instance of the <see cref="CardCryptogram" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -33,6 +28,11 @@ namespace Wallee.Model
         {
         }
 
+        /// <summary>
+        /// Gets or Sets Eci
+        /// </summary>
+        [DataMember(Name="eci", EmitDefaultValue=false)]
+        public string Eci { get; private set; }
 
         /// <summary>
         /// Gets or Sets Value
@@ -48,7 +48,7 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class CardCryptogram {\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  Eci: ").Append(Eci).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -85,9 +85,9 @@ namespace Wallee.Model
 
             return 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    this.Eci == input.Eci ||
+                    (this.Eci != null &&
+                    this.Eci.Equals(input.Eci))
                 ) && 
                 (
                     this.Value == input.Value ||
@@ -105,8 +105,8 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
+                if (this.Eci != null)
+                    hashCode = hashCode * 59 + this.Eci.GetHashCode();
                 if (this.Value != null)
                     hashCode = hashCode * 59 + this.Value.GetHashCode();
                 return hashCode;

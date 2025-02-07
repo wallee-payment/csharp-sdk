@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// A condition configuration controls under which condition a payment connector is applied to a transaction.
+    /// A condition allows you to define a criteria that a transaction must fulfill in order for a connector configuration to be considered for processing the payment.
     /// </summary>
     [DataContract]
     public partial class Condition :  IEquatable<Condition>
@@ -35,9 +35,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The selected condition type defines how the configuration is applied to the transactions.
+        /// The condition type determines the criteria that a transaction must fulfill in order for a connector configuration to be considered for processing the payment.
         /// </summary>
-        /// <value>The selected condition type defines how the configuration is applied to the transactions.</value>
+        /// <value>The condition type determines the criteria that a transaction must fulfill in order for a connector configuration to be considered for processing the payment.</value>
         [DataMember(Name="conditionType", EmitDefaultValue=false)]
         public long? ConditionType { get; private set; }
 
@@ -56,9 +56,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The condition name is used internally to identify the condition. For example the name is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the condition.
         /// </summary>
-        /// <value>The condition name is used internally to identify the condition. For example the name is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the condition.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 

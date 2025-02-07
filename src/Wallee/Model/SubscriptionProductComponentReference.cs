@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The product component reference binds components from different product versions together. By binding them together the product version migration can be realized.
+    /// The product component reference links components from different product versions, which makes it possible to carry out migrations.
     /// </summary>
     [DataContract]
     public partial class SubscriptionProductComponentReference :  IEquatable<SubscriptionProductComponentReference>
@@ -49,9 +49,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The component reference name is used internally to identify the reference. For example the name is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the component reference.
         /// </summary>
-        /// <value>The component reference name is used internally to identify the reference. For example the name is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the component reference.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -61,12 +61,6 @@ namespace Wallee.Model
         /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets SpaceId
-        /// </summary>
-        [DataMember(Name="spaceId", EmitDefaultValue=false)]
-        public long? SpaceId { get; private set; }
 
 
         /// <summary>
@@ -88,7 +82,6 @@ namespace Wallee.Model
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
@@ -146,11 +139,6 @@ namespace Wallee.Model
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
                 ) && 
                 (
-                    this.SpaceId == input.SpaceId ||
-                    (this.SpaceId != null &&
-                    this.SpaceId.Equals(input.SpaceId))
-                ) && 
-                (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
@@ -179,8 +167,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.SpaceId != null)
-                    hashCode = hashCode * 59 + this.SpaceId.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.Version != null)

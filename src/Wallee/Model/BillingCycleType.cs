@@ -15,38 +15,37 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The state of a query execution.
+    /// Defines BillingCycleType
     /// </summary>
-    /// <value>The state of a query execution.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     
-    public enum AnalyticsQueryExecutionState
+    public enum BillingCycleType
     {
         
         /// <summary>
-        /// Enum PROCESSING for value: PROCESSING
+        /// Enum DAILY for value: DAILY
         /// </summary>
-        [EnumMember(Value = "PROCESSING")]
-        PROCESSING,
+        [EnumMember(Value = "DAILY")]
+        DAILY,
         
         /// <summary>
-        /// Enum PROCESSED for value: PROCESSED
+        /// Enum WEEKLY for value: WEEKLY
         /// </summary>
-        [EnumMember(Value = "PROCESSED")]
-        PROCESSED,
+        [EnumMember(Value = "WEEKLY")]
+        WEEKLY,
         
         /// <summary>
-        /// Enum FAILED for value: FAILED
+        /// Enum MONTHLY for value: MONTHLY
         /// </summary>
-        [EnumMember(Value = "FAILED")]
-        FAILED,
+        [EnumMember(Value = "MONTHLY")]
+        MONTHLY,
         
         /// <summary>
-        /// Enum CANCELED for value: CANCELED
+        /// Enum YEARLY for value: YEARLY
         /// </summary>
-        [EnumMember(Value = "CANCELED")]
-        CANCELED
+        [EnumMember(Value = "YEARLY")]
+        YEARLY
     }
 
 }

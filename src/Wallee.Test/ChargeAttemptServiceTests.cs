@@ -1,15 +1,6 @@
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using RestSharp;
 using NUnit.Framework;
-
 using Wallee.Model;
 using Wallee.Service;
-using Wallee.Client;
 
 namespace Wallee.Test
 {
@@ -19,7 +10,6 @@ namespace Wallee.Test
     [TestFixture]
     public class ChargeAttemptServiceTests
     {
-
         private TransactionService transactionService;
         private ChargeAttemptService chargeAttemptService;
         private CardProcessingService cardProcessingService;
@@ -36,7 +26,7 @@ namespace Wallee.Test
         public void Cleanup()
         {
         }
-        
+
         /// <summary>
         /// Search() should find charge attempts by given criteria
         /// </summary>
@@ -54,17 +44,20 @@ namespace Wallee.Test
 
             Assert.AreEqual(TransactionState.AUTHORIZED, transactionProcessed.State, "State must be AUTHORIZED");
 
-            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF){
+            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF)
+            {
                 FieldName = "charge.transaction.id",
                 Value = transaction.Id,
                 Operator = CriteriaOperator.EQUALS
             };
-            var attemptsFound = chargeAttemptService.Search(Constants.SpaceId, new EntityQuery(){
+            var attemptsFound = chargeAttemptService.Search(Constants.SpaceId, new EntityQuery()
+            {
                 Filter = queryFilter
             });
 
             Assert.That(attemptsFound.Count > 0, "Should find a charge attempt");
-            attemptsFound.ForEach(attempt => {
+            attemptsFound.ForEach(attempt =>
+            {
                 Assert.AreEqual(transaction.Id, attempt.LinkedTransaction, "Transaction ids should match");
             });
         }

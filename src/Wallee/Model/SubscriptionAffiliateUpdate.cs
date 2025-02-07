@@ -81,8 +81,9 @@ namespace Wallee.Model
         public Dictionary<string, string> MetaData { get; set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The name used to identify the affiliate.
         /// </summary>
+        /// <value>The name used to identify the affiliate.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; set; }
 

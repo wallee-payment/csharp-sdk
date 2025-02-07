@@ -42,23 +42,23 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The customer email address is the email address of the customer.
+        /// The customer&#39;s email address.
         /// </summary>
-        /// <value>The customer email address is the email address of the customer.</value>
+        /// <value>The customer&#39;s email address.</value>
         [DataMember(Name="customerEmailAddress", EmitDefaultValue=false)]
         public string CustomerEmailAddress { get; private set; }
 
         /// <summary>
-        /// The customer ID identifies the customer in the merchant system. In case the customer ID has been provided it has to correspond with the customer ID provided on the transaction. The customer ID will not be changed automatically. The merchant system has to provide it.
+        /// The unique identifier of the customer in the external system.
         /// </summary>
-        /// <value>The customer ID identifies the customer in the merchant system. In case the customer ID has been provided it has to correspond with the customer ID provided on the transaction. The customer ID will not be changed automatically. The merchant system has to provide it.</value>
+        /// <value>The unique identifier of the customer in the external system.</value>
         [DataMember(Name="customerId", EmitDefaultValue=false)]
         public string CustomerId { get; private set; }
 
         /// <summary>
-        /// When a token is enabled for one-click payments the buyer will be able to select the token within the iFrame or on the payment page to pay with the token. The usage of the token will reduce the number of steps the buyer has to go through. The buyer is linked via the customer ID on the transaction with the token. Means the token will be visible for buyers with the same customer ID. Additionally the payment method has to be configured to allow the one-click payments.
+        /// Whether the token is enabled for one-click payments, which simplify the payment process for the customer. One-click tokens are linked to customers via the customer ID.
         /// </summary>
-        /// <value>When a token is enabled for one-click payments the buyer will be able to select the token within the iFrame or on the payment page to pay with the token. The usage of the token will reduce the number of steps the buyer has to go through. The buyer is linked via the customer ID on the transaction with the token. Means the token will be visible for buyers with the same customer ID. Additionally the payment method has to be configured to allow the one-click payments.</value>
+        /// <value>Whether the token is enabled for one-click payments, which simplify the payment process for the customer. One-click tokens are linked to customers via the customer ID.</value>
         [DataMember(Name="enabledForOneClickPayment", EmitDefaultValue=false)]
         public bool? EnabledForOneClickPayment { get; private set; }
 
@@ -99,16 +99,16 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.
+        /// The customer&#39;s time zone, which affects how dates and times are formatted when communicating with the customer.
         /// </summary>
-        /// <value>The time zone defines in which time zone the customer is located in. The time zone may affects how dates are formatted when interacting with the customer.</value>
+        /// <value>The customer&#39;s time zone, which affects how dates and times are formatted when communicating with the customer.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; private set; }
 
         /// <summary>
-        /// Use something that it is easy to identify and may help you find the token (e.g. customer id, email address).
+        /// The reference used to identify the payment token (e.g. the customer&#39;s ID or email address).
         /// </summary>
-        /// <value>Use something that it is easy to identify and may help you find the token (e.g. customer id, email address).</value>
+        /// <value>The reference used to identify the payment token (e.g. the customer&#39;s ID or email address).</value>
         [DataMember(Name="tokenReference", EmitDefaultValue=false)]
         public string TokenReference { get; private set; }
 

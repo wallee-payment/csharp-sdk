@@ -15,15 +15,15 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// ShopifySubscriptionModelItem
+    /// Item
     /// </summary>
     [DataContract]
-    public partial class ShopifySubscriptionModelItem :  IEquatable<ShopifySubscriptionModelItem>
+    public partial class Item :  IEquatable<Item>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShopifySubscriptionModelItem" /> class.
+        /// Initializes a new instance of the <see cref="Item" /> class.
         /// </summary>
-        public ShopifySubscriptionModelItem()
+        public Item()
         {
         }
 
@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// Gets or Sets TaxLines
         /// </summary>
         [DataMember(Name="taxLines", EmitDefaultValue=false)]
-        public List<ShopifySubscriptionModelTaxLine> TaxLines { get; set; }
+        public List<TaxLine> TaxLines { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -64,7 +64,7 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ShopifySubscriptionModelItem {\n");
+            sb.Append("class Item {\n");
             sb.Append("  PriceIncludingTax: ").Append(PriceIncludingTax).Append("\n");
             sb.Append("  ProductId: ").Append(ProductId).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
@@ -90,15 +90,15 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ShopifySubscriptionModelItem);
+            return this.Equals(input as Item);
         }
 
         /// <summary>
-        /// Returns true if ShopifySubscriptionModelItem instances are equal
+        /// Returns true if Item instances are equal
         /// </summary>
-        /// <param name="input">Instance of ShopifySubscriptionModelItem to be compared</param>
+        /// <param name="input">Instance of Item to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ShopifySubscriptionModelItem input)
+        public bool Equals(Item input)
         {
             if (input == null)
                 return false;

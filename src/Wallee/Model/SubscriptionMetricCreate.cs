@@ -28,29 +28,30 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionMetricCreate" /> class.
         /// </summary>
-        /// <param name="type">type (required).</param>
-        /// <param name="name">name (required).</param>
-        public SubscriptionMetricCreate(long? type, Dictionary<string, string> name)
+        /// <param name="name">The localized name of the metric that is displayed to the customer. (required).</param>
+        /// <param name="type">The type of the metric. (required).</param>
+        public SubscriptionMetricCreate(Dictionary<string, string> name, long? type)
         {
-            // to ensure "type" is required (not null)
-            if (type == null)
-            {
-                throw new InvalidDataException("type is a required property for SubscriptionMetricCreate and cannot be null");
-            }
-            this.Type = type;
             // to ensure "name" is required (not null)
             if (name == null)
             {
                 throw new InvalidDataException("name is a required property for SubscriptionMetricCreate and cannot be null");
             }
             this.Name = name;
+            // to ensure "type" is required (not null)
+            if (type == null)
+            {
+                throw new InvalidDataException("type is a required property for SubscriptionMetricCreate and cannot be null");
+            }
+            this.Type = type;
         }
 
 
 
         /// <summary>
-        /// Gets or Sets Type
+        /// The type of the metric.
         /// </summary>
+        /// <value>The type of the metric.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public long? Type { get; set; }
 

@@ -35,20 +35,30 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets ConfigurationVersion
+        /// The configuration that is assigned to the terminal and determines how it works.
         /// </summary>
+        /// <value>The configuration that is assigned to the terminal and determines how it works.</value>
         [DataMember(Name="configurationVersion", EmitDefaultValue=false)]
         public PaymentTerminalConfigurationVersion ConfigurationVersion { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DefaultCurrency
+        /// The default currency of the terminal.
         /// </summary>
+        /// <value>The default currency of the terminal.</value>
         [DataMember(Name="defaultCurrency", EmitDefaultValue=false)]
         public string DefaultCurrency { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DeviceSerialNumber
+        /// The name of the device that is currently linked to the payment terminal.
         /// </summary>
+        /// <value>The name of the device that is currently linked to the payment terminal.</value>
+        [DataMember(Name="deviceName", EmitDefaultValue=false)]
+        public string DeviceName { get; private set; }
+
+        /// <summary>
+        /// The serial number of the device that is currently linked to the payment terminal.
+        /// </summary>
+        /// <value>The serial number of the device that is currently linked to the payment terminal.</value>
         [DataMember(Name="deviceSerialNumber", EmitDefaultValue=false)]
         public string DeviceSerialNumber { get; private set; }
 
@@ -67,9 +77,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The identifier uniquely identifies the terminal. Normally it is visible on the device or in the display of the device.
+        /// The unique identifier of the terminal, that is displayed on the device.
         /// </summary>
-        /// <value>The identifier uniquely identifies the terminal. Normally it is visible on the device or in the display of the device.</value>
+        /// <value>The unique identifier of the terminal, that is displayed on the device.</value>
         [DataMember(Name="identifier", EmitDefaultValue=false)]
         public string Identifier { get; private set; }
 
@@ -81,15 +91,16 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets LocationVersion
+        /// The physical location where the terminal is used.
         /// </summary>
+        /// <value>The physical location where the terminal is used.</value>
         [DataMember(Name="locationVersion", EmitDefaultValue=false)]
         public PaymentTerminalLocationVersion LocationVersion { get; private set; }
 
         /// <summary>
-        /// The terminal name is used internally to identify the terminal in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the payment terminal.
         /// </summary>
-        /// <value>The terminal name is used internally to identify the terminal in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the payment terminal.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -102,8 +113,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets Type
+        /// The type of the payment terminal.
         /// </summary>
+        /// <value>The type of the payment terminal.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public PaymentTerminalType Type { get; private set; }
 
@@ -124,6 +136,7 @@ namespace Wallee.Model
             sb.Append("class PaymentTerminal {\n");
             sb.Append("  ConfigurationVersion: ").Append(ConfigurationVersion).Append("\n");
             sb.Append("  DefaultCurrency: ").Append(DefaultCurrency).Append("\n");
+            sb.Append("  DeviceName: ").Append(DeviceName).Append("\n");
             sb.Append("  DeviceSerialNumber: ").Append(DeviceSerialNumber).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
@@ -178,6 +191,11 @@ namespace Wallee.Model
                     this.DefaultCurrency == input.DefaultCurrency ||
                     (this.DefaultCurrency != null &&
                     this.DefaultCurrency.Equals(input.DefaultCurrency))
+                ) && 
+                (
+                    this.DeviceName == input.DeviceName ||
+                    (this.DeviceName != null &&
+                    this.DeviceName.Equals(input.DeviceName))
                 ) && 
                 (
                     this.DeviceSerialNumber == input.DeviceSerialNumber ||
@@ -249,6 +267,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ConfigurationVersion.GetHashCode();
                 if (this.DefaultCurrency != null)
                     hashCode = hashCode * 59 + this.DefaultCurrency.GetHashCode();
+                if (this.DeviceName != null)
+                    hashCode = hashCode * 59 + this.DeviceName.GetHashCode();
                 if (this.DeviceSerialNumber != null)
                     hashCode = hashCode * 59 + this.DeviceSerialNumber.GetHashCode();
                 if (this.ExternalId != null)

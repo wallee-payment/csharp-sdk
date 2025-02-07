@@ -70,8 +70,9 @@ namespace Wallee.Model
         public Dictionary<string, string> MetaData { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The name used to identify the affiliate.
         /// </summary>
+        /// <value>The name used to identify the affiliate.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -83,8 +84,9 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Reference
+        /// The reference used to identify the affiliate.
         /// </summary>
+        /// <value>The reference used to identify the affiliate.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; private set; }
 

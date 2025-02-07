@@ -1,15 +1,6 @@
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Reflection;
-using RestSharp;
 using NUnit.Framework;
-
 using Wallee.Model;
 using Wallee.Service;
-using Wallee.Client;
 
 namespace Wallee.Test
 {
@@ -38,14 +29,16 @@ namespace Wallee.Test
         {
         }
 
-        private RefundCreate GetRefundCreate(Transaction transaction) {
-            return new RefundCreate(transaction.Id.ToString(), RefundType.MERCHANT_INITIATED_ONLINE){
-                Amount=transaction.AuthorizationAmount,
-                Transaction=transaction.Id,
-                MerchantReference=transaction.MerchantReference
+        private RefundCreate GetRefundCreate(Transaction transaction)
+        {
+            return new RefundCreate(transaction.Id.ToString(), RefundType.MERCHANT_INITIATED_ONLINE)
+            {
+                Amount = transaction.AuthorizationAmount,
+                Transaction = transaction.Id,
+                MerchantReference = transaction.MerchantReference
             };
         }
-        
+
         /// <summary>
         /// Refund() should create a refund for transaction
         /// </summary>
@@ -56,9 +49,11 @@ namespace Wallee.Test
             var transactionProcessed = cardProcessingService.Process(Constants.SpaceId, transaction.Id,
                 Constants.TestCardPaymentMethodConfigurationId, Constants.FakeCardData);
 
-            var transactionCompletion = transactionCompletionService.CompleteOffline(Constants.SpaceId, transactionProcessed.Id);
+            var transactionCompletion =
+                transactionCompletionService.CompleteOffline(Constants.SpaceId, transactionProcessed.Id);
 
-            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transactionCompletion.State, "State must be SUCCESSFUL");
+            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transactionCompletion.State,
+                "State must be SUCCESSFUL");
 
             var transactionRead = transactionService.Read(Constants.SpaceId, transactionProcessed.Id);
 
@@ -77,9 +72,11 @@ namespace Wallee.Test
             var transactionProcessed = cardProcessingService.Process(Constants.SpaceId, transaction.Id,
                 Constants.TestCardPaymentMethodConfigurationId, Constants.FakeCardData);
 
-            var transactionCompletion = transactionCompletionService.CompleteOffline(Constants.SpaceId, transactionProcessed.Id);
+            var transactionCompletion =
+                transactionCompletionService.CompleteOffline(Constants.SpaceId, transactionProcessed.Id);
 
-            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transactionCompletion.State, "State must be SUCCESSFUL");
+            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transactionCompletion.State,
+                "State must be SUCCESSFUL");
 
             var transactionRead = transactionService.Read(Constants.SpaceId, transactionProcessed.Id);
 
@@ -102,9 +99,11 @@ namespace Wallee.Test
             var transactionProcessed = cardProcessingService.Process(Constants.SpaceId, transaction.Id,
                 Constants.TestCardPaymentMethodConfigurationId, Constants.FakeCardData);
 
-            var transactionCompletion = transactionCompletionService.CompleteOffline(Constants.SpaceId, transactionProcessed.Id);
+            var transactionCompletion =
+                transactionCompletionService.CompleteOffline(Constants.SpaceId, transactionProcessed.Id);
 
-            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transactionCompletion.State, "State must be SUCCESSFUL");
+            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transactionCompletion.State,
+                "State must be SUCCESSFUL");
 
             var transactionRead = transactionService.Read(Constants.SpaceId, transactionProcessed.Id);
 
@@ -112,19 +111,19 @@ namespace Wallee.Test
 
             Assert.AreEqual(RefundState.SUCCESSFUL, refund.State, "State must be SUCCESSFUL");
 
-            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF){
+            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF)
+            {
                 FieldName = "id",
                 Value = refund.Id,
                 Operator = CriteriaOperator.EQUALS
             };
-            var refundsFound = refundService.Search(Constants.SpaceId, new EntityQuery(){
+            var refundsFound = refundService.Search(Constants.SpaceId, new EntityQuery()
+            {
                 Filter = queryFilter
             });
 
             Assert.That(refundsFound.Count == 1, "Should find one refund");
-            refundsFound.ForEach(refnd => {
-                Assert.AreEqual(refund.Id, refnd.Id, "Refund ids should match");
-            });
+            refundsFound.ForEach(refnd => { Assert.AreEqual(refund.Id, refnd.Id, "Refund ids should match"); });
         }
 
         /// <summary>
@@ -137,9 +136,11 @@ namespace Wallee.Test
             var transactionProcessed = cardProcessingService.Process(Constants.SpaceId, transaction.Id,
                 Constants.TestCardPaymentMethodConfigurationId, Constants.FakeCardData);
 
-            var transactionCompletion = transactionCompletionService.CompleteOffline(Constants.SpaceId, transactionProcessed.Id);
+            var transactionCompletion =
+                transactionCompletionService.CompleteOffline(Constants.SpaceId, transactionProcessed.Id);
 
-            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transactionCompletion.State, "State must be SUCCESSFUL");
+            Assert.AreEqual(TransactionCompletionState.SUCCESSFUL, transactionCompletion.State,
+                "State must be SUCCESSFUL");
 
             var transactionRead = transactionService.Read(Constants.SpaceId, transactionProcessed.Id);
 
@@ -147,7 +148,8 @@ namespace Wallee.Test
 
             Assert.AreEqual(RefundState.SUCCESSFUL, refund.State, "State must be SUCCESSFUL");
 
-            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF){
+            var queryFilter = new EntityQueryFilter(EntityQueryFilterType.LEAF)
+            {
                 FieldName = "id",
                 Value = refund.Id,
                 Operator = CriteriaOperator.EQUALS

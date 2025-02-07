@@ -49,8 +49,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ImagePath
+        /// The path to the payment brand&#39;s image which is displayed to the customer.
         /// </summary>
+        /// <value>The path to the payment brand&#39;s image which is displayed to the customer.</value>
         [DataMember(Name="imagePath", EmitDefaultValue=false)]
         public string ImagePath { get; private set; }
 
@@ -62,8 +63,9 @@ namespace Wallee.Model
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PaymentMethod
+        /// The payment method that the brand belongs to.
         /// </summary>
+        /// <value>The payment method that the brand belongs to.</value>
         [DataMember(Name="paymentMethod", EmitDefaultValue=false)]
         public long? PaymentMethod { get; private set; }
 

@@ -59,7 +59,6 @@ namespace Wallee.Client
 
             var options = Configuration.RestClientOptions;
             options.BaseUrl = new Uri(Configuration.BasePath);
-            options.MaxTimeout = 600000;
             RestClient = new RestClient(options);
         }
 
@@ -147,6 +146,7 @@ namespace Wallee.Client
         /// <param name="fileParams">File parameters.</param>
         /// <param name="pathParams">Path parameters.</param>
         /// <param name="contentType">Content Type of the request</param>
+        /// <param name="timeout">Per-request timeout in milliseconds.
         /// <returns>Object</returns>
         public Object CallApi(
             String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
@@ -156,7 +156,7 @@ namespace Wallee.Client
         {
 
             Dictionary<String, String> defaultHeaderParams = new Dictionary<String, String>() {
-                {"x-meta-sdk-version", "7.0.4"},
+                {"x-meta-sdk-version", "8.0.0"},
                 {"x-meta-sdk-language", "csharp"},
                 {"x-meta-sdk-provider", "wallee"},
                 {"x-meta-sdk-language-version", Environment.Version.ToString()}
@@ -166,8 +166,8 @@ namespace Wallee.Client
                 path, method, queryParams, postBody, headerParams, defaultHeaderParams, formParams, fileParams,
                 pathParams, contentType);
 
-            //set timeout for request
-            request.Timeout = timeout;
+            // set timeout for the request
+            request.Timeout = TimeSpan.FromMilliseconds(timeout);
 
             InterceptRequest(request);
             var response = RestClient.Execute(request);
@@ -554,7 +554,7 @@ namespace Wallee.Client
         }
 
 		/// <summary>
-		/// Reset timeout to default
+		/// Reset timeout to default: 25 seconds
 		/// https://docs.microsoft.com/en-us/dotnet/api/system.net.httpwebrequest.timeout?view=netcore-3.1
 		/// </summary>
 		public void ResetTimeout(){

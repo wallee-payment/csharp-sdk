@@ -52,20 +52,23 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets Reference
+        /// The merchant&#39;s reference used to identify the subscription.
         /// </summary>
+        /// <value>The merchant&#39;s reference used to identify the subscription.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
 
         /// <summary>
-        /// Gets or Sets Subscriber
+        /// The subscriber that the subscription belongs to.
         /// </summary>
+        /// <value>The subscriber that the subscription belongs to.</value>
         [DataMember(Name="subscriber", EmitDefaultValue=false)]
         public long? Subscriber { get; set; }
 
         /// <summary>
-        /// Gets or Sets Token
+        /// The payment token that is used to charge the customer.
         /// </summary>
+        /// <value>The payment token that is used to charge the customer.</value>
         [DataMember(Name="token", EmitDefaultValue=false)]
         public long? Token { get; set; }
 

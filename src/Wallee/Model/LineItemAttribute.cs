@@ -29,14 +29,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Label
+        /// The label describing the line item attribute.
         /// </summary>
+        /// <value>The label describing the line item attribute.</value>
         [DataMember(Name="label", EmitDefaultValue=false)]
         public string Label { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Value
+        /// The value of the line item attribute.
         /// </summary>
+        /// <value>The value of the line item attribute.</value>
         [DataMember(Name="value", EmitDefaultValue=false)]
         public string Value { get; private set; }
 

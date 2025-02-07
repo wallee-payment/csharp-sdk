@@ -61,43 +61,44 @@ namespace Wallee.Model
         public long? Version { get; set; }
 
         /// <summary>
-        /// Gets or Sets Component
+        /// The product component that the fee belongs to.
         /// </summary>
+        /// <value>The product component that the fee belongs to.</value>
         [DataMember(Name="component", EmitDefaultValue=false)]
         public long? Component { get; set; }
 
         /// <summary>
-        /// The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
+        /// The localized description of the fee that is displayed to the customer.
         /// </summary>
-        /// <value>The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.</value>
+        /// <value>The localized description of the fee that is displayed to the customer.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; set; }
 
         /// <summary>
-        /// The name of the fee should describe for the subscriber in few words for what the fee is for.
+        /// The localized name of the fee that is displayed to the customer.
         /// </summary>
-        /// <value>The name of the fee should describe for the subscriber in few words for what the fee is for.</value>
+        /// <value>The localized name of the fee that is displayed to the customer.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; set; }
 
         /// <summary>
-        /// When the subscription is changed and the change is considered as a downgrade the amount defined by this property will be credited to the subscriber.
+        /// The amount charged to the customer when a subscription is downgraded.
         /// </summary>
-        /// <value>When the subscription is changed and the change is considered as a downgrade the amount defined by this property will be credited to the subscriber.</value>
+        /// <value>The amount charged to the customer when a subscription is downgraded.</value>
         [DataMember(Name="onDowngradeCreditedAmount", EmitDefaultValue=false)]
         public List<PersistableCurrencyAmountUpdate> OnDowngradeCreditedAmount { get; set; }
 
         /// <summary>
-        /// When the subscription is changed and the change is considered as a upgrade the amount defined by this property will be credited to the subscriber.
+        /// The amount charged to the customer when a subscription is upgraded.
         /// </summary>
-        /// <value>When the subscription is changed and the change is considered as a upgrade the amount defined by this property will be credited to the subscriber.</value>
+        /// <value>The amount charged to the customer when a subscription is upgraded.</value>
         [DataMember(Name="onUpgradeCreditedAmount", EmitDefaultValue=false)]
         public List<PersistableCurrencyAmountUpdate> OnUpgradeCreditedAmount { get; set; }
 
         /// <summary>
-        /// The setup fee is charged when the subscriber subscribes to this component. The setup fee is debited with the first charge for the subscriptions.
+        /// The amount charged to the customer once when they subscribe to a subscription.
         /// </summary>
-        /// <value>The setup fee is charged when the subscriber subscribes to this component. The setup fee is debited with the first charge for the subscriptions.</value>
+        /// <value>The amount charged to the customer once when they subscribe to a subscription.</value>
         [DataMember(Name="setupFee", EmitDefaultValue=false)]
         public List<PersistableCurrencyAmountUpdate> SetupFee { get; set; }
 

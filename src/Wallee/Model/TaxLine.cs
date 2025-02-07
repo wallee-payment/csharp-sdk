@@ -15,15 +15,15 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// ShopifySubscriptionModelTaxLine
+    /// TaxLine
     /// </summary>
     [DataContract]
-    public partial class ShopifySubscriptionModelTaxLine :  IEquatable<ShopifySubscriptionModelTaxLine>
+    public partial class TaxLine :  IEquatable<TaxLine>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShopifySubscriptionModelTaxLine" /> class.
+        /// Initializes a new instance of the <see cref="TaxLine" /> class.
         /// </summary>
-        public ShopifySubscriptionModelTaxLine()
+        public TaxLine()
         {
         }
 
@@ -46,7 +46,7 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ShopifySubscriptionModelTaxLine {\n");
+            sb.Append("class TaxLine {\n");
             sb.Append("  Rate: ").Append(Rate).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
             sb.Append("}\n");
@@ -69,15 +69,15 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ShopifySubscriptionModelTaxLine);
+            return this.Equals(input as TaxLine);
         }
 
         /// <summary>
-        /// Returns true if ShopifySubscriptionModelTaxLine instances are equal
+        /// Returns true if TaxLine instances are equal
         /// </summary>
-        /// <param name="input">Instance of ShopifySubscriptionModelTaxLine to be compared</param>
+        /// <param name="input">Instance of TaxLine to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ShopifySubscriptionModelTaxLine input)
+        public bool Equals(TaxLine input)
         {
             if (input == null)
                 return false;

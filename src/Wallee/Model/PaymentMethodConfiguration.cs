@@ -21,15 +21,15 @@ namespace Wallee.Model
     public partial class PaymentMethodConfiguration :  IEquatable<PaymentMethodConfiguration>
     {
         /// <summary>
-        /// The data collection type determines who is collecting the payment information. This can be done either by the processor (offsite) or by our application (onsite).
+        /// The data collection type specifies how the payment information is collected.
         /// </summary>
-        /// <value>The data collection type determines who is collecting the payment information. This can be done either by the processor (offsite) or by our application (onsite).</value>
+        /// <value>The data collection type specifies how the payment information is collected.</value>
         [DataMember(Name="dataCollectionType", EmitDefaultValue=false)]
         public DataCollectionType? DataCollectionType { get; private set; }
         /// <summary>
-        /// When the buyer is present on the payment page or within the iFrame the payment details can be stored automatically. The buyer will be able to use the stored payment details for subsequent transactions. When the transaction already contains a token one-click payments are disabled anyway
+        /// The one-click payment mode determines whether the customer can save their payment details for later payments.
         /// </summary>
-        /// <value>When the buyer is present on the payment page or within the iFrame the payment details can be stored automatically. The buyer will be able to use the stored payment details for subsequent transactions. When the transaction already contains a token one-click payments are disabled anyway</value>
+        /// <value>The one-click payment mode determines whether the customer can save their payment details for later payments.</value>
         [DataMember(Name="oneClickPaymentMode", EmitDefaultValue=false)]
         public OneClickPaymentMode? OneClickPaymentMode { get; private set; }
         /// <summary>
@@ -48,9 +48,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The payment method configuration description can be used to show a text during the payment process. Choose an appropriate description as it will be displayed to your customer.
+        /// A custom description for the payment method which is displayed to the customer.
         /// </summary>
-        /// <value>The payment method configuration description can be used to show a text during the payment process. Choose an appropriate description as it will be displayed to your customer.</value>
+        /// <value>A custom description for the payment method which is displayed to the customer.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
@@ -62,9 +62,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The image of the payment method configuration overrides the default image of the payment method.
+        /// The resource path to a custom image for the payment method which is displayed to the customer.
         /// </summary>
-        /// <value>The image of the payment method configuration overrides the default image of the payment method.</value>
+        /// <value>The resource path to a custom image for the payment method which is displayed to the customer.</value>
         [DataMember(Name="imageResourcePath", EmitDefaultValue=false)]
         public ResourcePath ImageResourcePath { get; private set; }
 
@@ -76,16 +76,17 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The payment method configuration name is used internally to identify the payment method configuration. For example the name is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the payment method configuration.
         /// </summary>
-        /// <value>The payment method configuration name is used internally to identify the payment method configuration. For example the name is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the payment method configuration.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets PaymentMethod
+        /// The payment method that the configuration is for.
         /// </summary>
+        /// <value>The payment method that the configuration is for.</value>
         [DataMember(Name="paymentMethod", EmitDefaultValue=false)]
         public long? PaymentMethod { get; private set; }
 
@@ -97,44 +98,45 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// The resolved description uses the specified description or the default one when it is not overridden.
+        /// The description for the payment method that is actually displayed to the customer. This is either the custom description, if defined, or otherwise the payment method&#39;s default one.
         /// </summary>
-        /// <value>The resolved description uses the specified description or the default one when it is not overridden.</value>
+        /// <value>The description for the payment method that is actually displayed to the customer. This is either the custom description, if defined, or otherwise the payment method&#39;s default one.</value>
         [DataMember(Name="resolvedDescription", EmitDefaultValue=false)]
         public Dictionary<string, string> ResolvedDescription { get; private set; }
 
         /// <summary>
-        /// The resolved URL of the image to use with this payment method.
+        /// The image URL for the payment method that is actually displayed to the customer. This is either the custom image, if defined, or otherwise the payment method&#39;s default one.
         /// </summary>
-        /// <value>The resolved URL of the image to use with this payment method.</value>
+        /// <value>The image URL for the payment method that is actually displayed to the customer. This is either the custom image, if defined, or otherwise the payment method&#39;s default one.</value>
         [DataMember(Name="resolvedImageUrl", EmitDefaultValue=false)]
         public string ResolvedImageUrl { get; private set; }
 
         /// <summary>
-        /// The resolved title uses the specified title or the default one when it is not overridden.
+        /// The title for the payment method that is actually displayed to the customer. This is either the custom title, if defined, or otherwise the payment method&#39;s default one.
         /// </summary>
-        /// <value>The resolved title uses the specified title or the default one when it is not overridden.</value>
+        /// <value>The title for the payment method that is actually displayed to the customer. This is either the custom title, if defined, or otherwise the payment method&#39;s default one.</value>
         [DataMember(Name="resolvedTitle", EmitDefaultValue=false)]
         public Dictionary<string, string> ResolvedTitle { get; private set; }
 
         /// <summary>
-        /// The sort order of the payment method determines the ordering of the methods shown to the user during the payment process.
+        /// When listing payment methods, they can be sorted by this number.
         /// </summary>
-        /// <value>The sort order of the payment method determines the ordering of the methods shown to the user during the payment process.</value>
+        /// <value>When listing payment methods, they can be sorted by this number.</value>
         [DataMember(Name="sortOrder", EmitDefaultValue=false)]
         public int? SortOrder { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SpaceId
+        /// The ID of the space this object belongs to.
         /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
         [DataMember(Name="spaceId", EmitDefaultValue=false)]
         public long? SpaceId { get; private set; }
 
 
         /// <summary>
-        /// The title of the payment method configuration is used within the payment process. The title is visible to the customer.
+        /// A custom title for the payment method which is displayed to the customer.
         /// </summary>
-        /// <value>The title of the payment method configuration is used within the payment process. The title is visible to the customer.</value>
+        /// <value>A custom title for the payment method which is displayed to the customer.</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
         public Dictionary<string, string> Title { get; private set; }
 

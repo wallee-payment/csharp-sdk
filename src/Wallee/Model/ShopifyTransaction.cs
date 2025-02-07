@@ -50,16 +50,28 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
+        /// Gets or Sets DraftOrderId
+        /// </summary>
+        [DataMember(Name="draftOrderId", EmitDefaultValue=false)]
+        public string DraftOrderId { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets DraftOrderLegacyId
+        /// </summary>
+        [DataMember(Name="draftOrderLegacyId", EmitDefaultValue=false)]
+        public string DraftOrderLegacyId { get; private set; }
+
+        /// <summary>
         /// Gets or Sets Integration
         /// </summary>
         [DataMember(Name="integration", EmitDefaultValue=false)]
-        public ShopifyIntegration Integration { get; private set; }
+        public ShopifyV1Integration Integration { get; private set; }
 
         /// <summary>
-        /// Gets or Sets OrderId
+        /// Gets or Sets OrderLegacyId
         /// </summary>
-        [DataMember(Name="orderId", EmitDefaultValue=false)]
-        public string OrderId { get; private set; }
+        [DataMember(Name="orderLegacyId", EmitDefaultValue=false)]
+        public string OrderLegacyId { get; private set; }
 
         /// <summary>
         /// Gets or Sets OrderName
@@ -102,8 +114,10 @@ namespace Wallee.Model
             sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  CheckoutId: ").Append(CheckoutId).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  DraftOrderId: ").Append(DraftOrderId).Append("\n");
+            sb.Append("  DraftOrderLegacyId: ").Append(DraftOrderLegacyId).Append("\n");
             sb.Append("  Integration: ").Append(Integration).Append("\n");
-            sb.Append("  OrderId: ").Append(OrderId).Append("\n");
+            sb.Append("  OrderLegacyId: ").Append(OrderLegacyId).Append("\n");
             sb.Append("  OrderName: ").Append(OrderName).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
@@ -169,14 +183,24 @@ namespace Wallee.Model
                     this.CreatedOn.Equals(input.CreatedOn))
                 ) && base.Equals(input) && 
                 (
+                    this.DraftOrderId == input.DraftOrderId ||
+                    (this.DraftOrderId != null &&
+                    this.DraftOrderId.Equals(input.DraftOrderId))
+                ) && base.Equals(input) && 
+                (
+                    this.DraftOrderLegacyId == input.DraftOrderLegacyId ||
+                    (this.DraftOrderLegacyId != null &&
+                    this.DraftOrderLegacyId.Equals(input.DraftOrderLegacyId))
+                ) && base.Equals(input) && 
+                (
                     this.Integration == input.Integration ||
                     (this.Integration != null &&
                     this.Integration.Equals(input.Integration))
                 ) && base.Equals(input) && 
                 (
-                    this.OrderId == input.OrderId ||
-                    (this.OrderId != null &&
-                    this.OrderId.Equals(input.OrderId))
+                    this.OrderLegacyId == input.OrderLegacyId ||
+                    (this.OrderLegacyId != null &&
+                    this.OrderLegacyId.Equals(input.OrderLegacyId))
                 ) && base.Equals(input) && 
                 (
                     this.OrderName == input.OrderName ||
@@ -224,10 +248,14 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.CheckoutId.GetHashCode();
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
+                if (this.DraftOrderId != null)
+                    hashCode = hashCode * 59 + this.DraftOrderId.GetHashCode();
+                if (this.DraftOrderLegacyId != null)
+                    hashCode = hashCode * 59 + this.DraftOrderLegacyId.GetHashCode();
                 if (this.Integration != null)
                     hashCode = hashCode * 59 + this.Integration.GetHashCode();
-                if (this.OrderId != null)
-                    hashCode = hashCode * 59 + this.OrderId.GetHashCode();
+                if (this.OrderLegacyId != null)
+                    hashCode = hashCode * 59 + this.OrderLegacyId.GetHashCode();
                 if (this.OrderName != null)
                     hashCode = hashCode * 59 + this.OrderName.GetHashCode();
                 if (this.PlannedPurgeDate != null)

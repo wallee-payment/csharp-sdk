@@ -50,20 +50,23 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Product
+        /// The product that is to be retired.
         /// </summary>
+        /// <value>The product that is to be retired.</value>
         [DataMember(Name="product", EmitDefaultValue=false)]
         public SubscriptionProduct Product { get; private set; }
 
         /// <summary>
-        /// Gets or Sets RespectTerminiationPeriodsEnabled
+        /// Whether the subscriptions&#39; termination periods should be respected.
         /// </summary>
-        [DataMember(Name="respectTerminiationPeriodsEnabled", EmitDefaultValue=false)]
-        public bool? RespectTerminiationPeriodsEnabled { get; private set; }
+        /// <value>Whether the subscriptions&#39; termination periods should be respected.</value>
+        [DataMember(Name="respectTerminationPeriods", EmitDefaultValue=false)]
+        public bool? RespectTerminationPeriods { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TargetProduct
+        /// The product to which the subscriptions with the retiring product are to be migrated. If none is defined, the subscriptions are terminated.
         /// </summary>
+        /// <value>The product to which the subscriptions with the retiring product are to be migrated. If none is defined, the subscriptions are terminated.</value>
         [DataMember(Name="targetProduct", EmitDefaultValue=false)]
         public SubscriptionProduct TargetProduct { get; private set; }
 
@@ -86,7 +89,7 @@ namespace Wallee.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  Product: ").Append(Product).Append("\n");
-            sb.Append("  RespectTerminiationPeriodsEnabled: ").Append(RespectTerminiationPeriodsEnabled).Append("\n");
+            sb.Append("  RespectTerminationPeriods: ").Append(RespectTerminationPeriods).Append("\n");
             sb.Append("  TargetProduct: ").Append(TargetProduct).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
@@ -144,9 +147,9 @@ namespace Wallee.Model
                     this.Product.Equals(input.Product))
                 ) && 
                 (
-                    this.RespectTerminiationPeriodsEnabled == input.RespectTerminiationPeriodsEnabled ||
-                    (this.RespectTerminiationPeriodsEnabled != null &&
-                    this.RespectTerminiationPeriodsEnabled.Equals(input.RespectTerminiationPeriodsEnabled))
+                    this.RespectTerminationPeriods == input.RespectTerminationPeriods ||
+                    (this.RespectTerminationPeriods != null &&
+                    this.RespectTerminationPeriods.Equals(input.RespectTerminationPeriods))
                 ) && 
                 (
                     this.TargetProduct == input.TargetProduct ||
@@ -177,8 +180,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
                 if (this.Product != null)
                     hashCode = hashCode * 59 + this.Product.GetHashCode();
-                if (this.RespectTerminiationPeriodsEnabled != null)
-                    hashCode = hashCode * 59 + this.RespectTerminiationPeriodsEnabled.GetHashCode();
+                if (this.RespectTerminationPeriods != null)
+                    hashCode = hashCode * 59 + this.RespectTerminationPeriods.GetHashCode();
                 if (this.TargetProduct != null)
                     hashCode = hashCode * 59 + this.TargetProduct.GetHashCode();
                 if (this.Version != null)

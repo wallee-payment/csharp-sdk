@@ -49,9 +49,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The space view name is used internally to identify the space view in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the space view.
         /// </summary>
-        /// <value>The space view name is used internally to identify the space view in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the space view.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -63,9 +63,9 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// The space to which the view belongs to.
+        /// The space that the space view belongs to.
         /// </summary>
-        /// <value>The space to which the view belongs to.</value>
+        /// <value>The space that the space view belongs to.</value>
         [DataMember(Name="space", EmitDefaultValue=false)]
         public Space Space { get; private set; }
 

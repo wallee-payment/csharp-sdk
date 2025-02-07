@@ -29,30 +29,30 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The consumed units provide the value of how much has been consumed of the particular metric.
+        /// The number of consumed units.
         /// </summary>
-        /// <value>The consumed units provide the value of how much has been consumed of the particular metric.</value>
+        /// <value>The number of consumed units.</value>
         [DataMember(Name="consumedUnits", EmitDefaultValue=false)]
         public decimal? ConsumedUnits { get; private set; }
 
         /// <summary>
-        /// The metric description describes the metric.
+        /// The description of the consumed unit&#39;s metric.
         /// </summary>
-        /// <value>The metric description describes the metric.</value>
+        /// <value>The description of the consumed unit&#39;s metric.</value>
         [DataMember(Name="metricDescription", EmitDefaultValue=false)]
         public Dictionary<string, string> MetricDescription { get; private set; }
 
         /// <summary>
-        /// The metric ID identifies the metric for consumed units.
+        /// The ID of the consumed units&#39; metric.
         /// </summary>
-        /// <value>The metric ID identifies the metric for consumed units.</value>
+        /// <value>The ID of the consumed units&#39; metric.</value>
         [DataMember(Name="metricId", EmitDefaultValue=false)]
         public long? MetricId { get; private set; }
 
         /// <summary>
-        /// The metric name defines the name of the consumed units.
+        /// The name of the consumed units&#39; metric.
         /// </summary>
-        /// <value>The metric name defines the name of the consumed units.</value>
+        /// <value>The name of the consumed units&#39; metric.</value>
         [DataMember(Name="metricName", EmitDefaultValue=false)]
         public Dictionary<string, string> MetricName { get; private set; }
 

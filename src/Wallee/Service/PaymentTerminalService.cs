@@ -131,8 +131,8 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="terminalId"></param>
-        /// <returns></returns>
-        void TriggerFinalBalance (long? spaceId, long? terminalId);
+        /// <returns>PaymentTerminalTransactionSummaryReference</returns>
+        PaymentTerminalTransactionSummaryReference TriggerFinalBalance (long? spaceId, long? terminalId);
 
         /// <summary>
         /// Remotely Trigger Final Balance
@@ -143,8 +143,8 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="terminalId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> TriggerFinalBalanceWithHttpInfo (long? spaceId, long? terminalId);
+        /// <returns>ApiResponse of PaymentTerminalTransactionSummaryReference</returns>
+        ApiResponse<PaymentTerminalTransactionSummaryReference> TriggerFinalBalanceWithHttpInfo (long? spaceId, long? terminalId);
 
 
 
@@ -157,8 +157,8 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="terminalIdentifier"></param>
-        /// <returns></returns>
-        void TriggerFinalBalanceByIdentifier (long? spaceId, string terminalIdentifier);
+        /// <returns>PaymentTerminalTransactionSummaryReference</returns>
+        PaymentTerminalTransactionSummaryReference TriggerFinalBalanceByIdentifier (long? spaceId, string terminalIdentifier);
 
         /// <summary>
         /// Remotely Trigger Final Balance By Identifier
@@ -169,8 +169,8 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="terminalIdentifier"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> TriggerFinalBalanceByIdentifierWithHttpInfo (long? spaceId, string terminalIdentifier);
+        /// <returns>ApiResponse of PaymentTerminalTransactionSummaryReference</returns>
+        ApiResponse<PaymentTerminalTransactionSummaryReference> TriggerFinalBalanceByIdentifierWithHttpInfo (long? spaceId, string terminalIdentifier);
 
 
 
@@ -218,7 +218,7 @@ namespace Wallee.Service
         /// <returns></returns>
         public PaymentTerminalService(Wallee.Client.Configuration configuration = null)
         {
-            if(configuration == null){
+            if (configuration == null) {
                 throw new ArgumentException("Parameter cannot be null", "configuration");
             }
             this.Configuration = configuration;
@@ -293,11 +293,19 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
                 "application/json;charset=utf-8"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (filter != null && filter.GetType() != typeof(byte[]))
@@ -309,12 +317,12 @@ namespace Wallee.Service
                 localVarPostBody = filter; // byte array
             }
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
+			int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -373,21 +381,28 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (terminalId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "terminalId", terminalId)); // query parameter
             if (serialNumber != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "serialNumber", serialNumber)); // query parameter
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
+			int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -442,21 +457,29 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
                 "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
+			int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -511,11 +534,19 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
                 "application/json;charset=utf-8"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json;charset=utf-8"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (query != null && query.GetType() != typeof(byte[]))
@@ -527,12 +558,12 @@ namespace Wallee.Service
                 localVarPostBody = query; // byte array
             }
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
+			int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -555,10 +586,11 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="terminalId"></param>
-        /// <returns></returns>
-        public void TriggerFinalBalance (long? spaceId, long? terminalId)
+        /// <returns>PaymentTerminalTransactionSummaryReference</returns>
+        public PaymentTerminalTransactionSummaryReference TriggerFinalBalance (long? spaceId, long? terminalId)
         {
-             TriggerFinalBalanceWithHttpInfo(spaceId, terminalId);
+             ApiResponse<PaymentTerminalTransactionSummaryReference> localVarResponse = TriggerFinalBalanceWithHttpInfo(spaceId, terminalId);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -568,8 +600,8 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="terminalId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> TriggerFinalBalanceWithHttpInfo (long? spaceId, long? terminalId)
+        /// <returns>ApiResponse of PaymentTerminalTransactionSummaryReference</returns>
+        public ApiResponse< PaymentTerminalTransactionSummaryReference > TriggerFinalBalanceWithHttpInfo (long? spaceId, long? terminalId)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
@@ -586,20 +618,27 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (terminalId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "terminalId", terminalId)); // query parameter
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
+			int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -610,11 +649,11 @@ namespace Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers
-                    .GroupBy(x => x.Name, x => x.Value.ToString())
-                    .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
-                null);
+            return new ApiResponse<PaymentTerminalTransactionSummaryReference>(localVarStatusCode,
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (PaymentTerminalTransactionSummaryReference) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PaymentTerminalTransactionSummaryReference)));
         }
         /// <summary>
         /// Remotely Trigger Final Balance By Identifier Remotely triggers the final balance receipt on the terminal by terminal identifier.
@@ -622,10 +661,11 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="terminalIdentifier"></param>
-        /// <returns></returns>
-        public void TriggerFinalBalanceByIdentifier (long? spaceId, string terminalIdentifier)
+        /// <returns>PaymentTerminalTransactionSummaryReference</returns>
+        public PaymentTerminalTransactionSummaryReference TriggerFinalBalanceByIdentifier (long? spaceId, string terminalIdentifier)
         {
-             TriggerFinalBalanceByIdentifierWithHttpInfo(spaceId, terminalIdentifier);
+             ApiResponse<PaymentTerminalTransactionSummaryReference> localVarResponse = TriggerFinalBalanceByIdentifierWithHttpInfo(spaceId, terminalIdentifier);
+             return localVarResponse.Data;
         }
 
         /// <summary>
@@ -635,8 +675,8 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="spaceId"></param>
         /// <param name="terminalIdentifier"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> TriggerFinalBalanceByIdentifierWithHttpInfo (long? spaceId, string terminalIdentifier)
+        /// <returns>ApiResponse of PaymentTerminalTransactionSummaryReference</returns>
+        public ApiResponse< PaymentTerminalTransactionSummaryReference > TriggerFinalBalanceByIdentifierWithHttpInfo (long? spaceId, string terminalIdentifier)
         {
             // verify the required parameter 'spaceId' is set
             if (spaceId == null)
@@ -653,20 +693,27 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (terminalIdentifier != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "terminalIdentifier", terminalIdentifier)); // query parameter
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
+			int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
@@ -677,11 +724,11 @@ namespace Wallee.Service
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
-                localVarResponse.Headers
-                    .GroupBy(x => x.Name, x => x.Value.ToString())
-                    .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
-                null);
+            return new ApiResponse<PaymentTerminalTransactionSummaryReference>(localVarStatusCode,
+                    localVarResponse.Headers
+                        .GroupBy(x => x.Name, x => x.Value.ToString())
+                        .ToDictionary(x => x.Key,  x => String.Join(", ", x)),
+                    (PaymentTerminalTransactionSummaryReference) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(PaymentTerminalTransactionSummaryReference)));
         }
         /// <summary>
         /// Unlink Device With Terminal Unlinks the device from terminal.
@@ -720,20 +767,27 @@ namespace Wallee.Service
             var localVarFileParams = new Dictionary<String, FileParameter>();
             Object localVarPostBody = null;
 
-            // to determine the Content type
+            // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
             if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (terminalId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "terminalId", terminalId)); // query parameter
 
-			
-            int requestTimeout = this.Configuration.Timeout * 1000;
+			int requestTimeout = this.Configuration.Timeout * 1000;
 
-                // make the HTTP request
+            // make the HTTP request
             RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams,
+                localVarFileParams,
                 localVarPathParams, localVarHttpContentType, requestTimeout);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;

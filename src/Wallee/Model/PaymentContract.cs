@@ -35,32 +35,37 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Account
+        /// This account that the contract belongs to.
         /// </summary>
+        /// <value>This account that the contract belongs to.</value>
         [DataMember(Name="account", EmitDefaultValue=false)]
         public Account Account { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ActivatedOn
+        /// The date and time when the contract was activated.
         /// </summary>
+        /// <value>The date and time when the contract was activated.</value>
         [DataMember(Name="activatedOn", EmitDefaultValue=false)]
         public DateTime? ActivatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ContractIdentifier
+        /// The identifier of the contract.
         /// </summary>
+        /// <value>The identifier of the contract.</value>
         [DataMember(Name="contractIdentifier", EmitDefaultValue=false)]
         public string ContractIdentifier { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ContractType
+        /// The type of the contract.
         /// </summary>
+        /// <value>The type of the contract.</value>
         [DataMember(Name="contractType", EmitDefaultValue=false)]
         public PaymentContractType ContractType { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CreatedBy
+        /// The ID of the user the contract was created by.
         /// </summary>
+        /// <value>The ID of the user the contract was created by.</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public User CreatedBy { get; private set; }
 
@@ -93,33 +98,38 @@ namespace Wallee.Model
         public DateTime? LastModifiedDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets RejectedOn
+        /// The date and time when the contract was rejected.
         /// </summary>
+        /// <value>The date and time when the contract was rejected.</value>
         [DataMember(Name="rejectedOn", EmitDefaultValue=false)]
         public DateTime? RejectedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets RejectionReason
+        /// The reason for rejecting the contract.
         /// </summary>
+        /// <value>The reason for rejecting the contract.</value>
         [DataMember(Name="rejectionReason", EmitDefaultValue=false)]
         public FailureReason RejectionReason { get; private set; }
 
         /// <summary>
-        /// Gets or Sets StartTerminatingOn
+        /// The date and time when the termination process of the contract was started.
         /// </summary>
+        /// <value>The date and time when the termination process of the contract was started.</value>
         [DataMember(Name="startTerminatingOn", EmitDefaultValue=false)]
         public DateTime? StartTerminatingOn { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets TerminatedBy
+        /// The ID of the user the contract was terminated by.
         /// </summary>
+        /// <value>The ID of the user the contract was terminated by.</value>
         [DataMember(Name="terminatedBy", EmitDefaultValue=false)]
         public User TerminatedBy { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TerminatedOn
+        /// The date and time when the contract was terminated.
         /// </summary>
+        /// <value>The date and time when the contract was terminated.</value>
         [DataMember(Name="terminatedOn", EmitDefaultValue=false)]
         public DateTime? TerminatedOn { get; private set; }
 

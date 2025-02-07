@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class SubscriptionCharge :  IEquatable<SubscriptionCharge>
     {
         /// <summary>
-        /// Gets or Sets ProcessingType
+        /// The processing type specifies how the charge is to be processed.
         /// </summary>
+        /// <value>The processing type specifies how the charge is to be processed.</value>
         [DataMember(Name="processingType", EmitDefaultValue=false)]
         public SubscriptionChargeProcessingType? ProcessingType { get; private set; }
         /// <summary>
@@ -32,8 +33,9 @@ namespace Wallee.Model
         [DataMember(Name="state", EmitDefaultValue=false)]
         public SubscriptionChargeState? State { get; private set; }
         /// <summary>
-        /// Gets or Sets Type
+        /// The type specified how the charge was initiated.
         /// </summary>
+        /// <value>The type specified how the charge was initiated.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public SubscriptionChargeType? Type { get; private set; }
         /// <summary>
@@ -45,20 +47,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets CreatedOn
+        /// The date and time when the charge was created.
         /// </summary>
+        /// <value>The date and time when the charge was created.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DiscardedBy
+        /// The ID of the user the charge was discarded by.
         /// </summary>
+        /// <value>The ID of the user the charge was discarded by.</value>
         [DataMember(Name="discardedBy", EmitDefaultValue=false)]
         public long? DiscardedBy { get; private set; }
 
         /// <summary>
-        /// Gets or Sets DiscardedOn
+        /// The date and time when the charge was discarded.
         /// </summary>
+        /// <value>The date and time when the charge was discarded.</value>
         [DataMember(Name="discardedOn", EmitDefaultValue=false)]
         public DateTime? DiscardedOn { get; private set; }
 
@@ -70,15 +75,16 @@ namespace Wallee.Model
         public string ExternalId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FailedOn
+        /// The date and time when the charge failed.
         /// </summary>
+        /// <value>The date and time when the charge failed.</value>
         [DataMember(Name="failedOn", EmitDefaultValue=false)]
         public DateTime? FailedOn { get; private set; }
 
         /// <summary>
-        /// The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.
+        /// The URL to redirect the customer back to after they canceled or failed to authenticated their payment.
         /// </summary>
-        /// <value>The user will be redirected to failed URL when the transaction could not be authorized or completed. In case no failed URL is specified a default failed page will be displayed.</value>
+        /// <value>The URL to redirect the customer back to after they canceled or failed to authenticated their payment.</value>
         [DataMember(Name="failedUrl", EmitDefaultValue=false)]
         public string FailedUrl { get; private set; }
 
@@ -97,8 +103,9 @@ namespace Wallee.Model
         public string Language { get; private set; }
 
         /// <summary>
-        /// Gets or Sets LedgerEntries
+        /// The ledger entries that belong to the charge.
         /// </summary>
+        /// <value>The ledger entries that belong to the charge.</value>
         [DataMember(Name="ledgerEntries", EmitDefaultValue=false)]
         public List<SubscriptionLedgerEntry> LedgerEntries { get; private set; }
 
@@ -110,8 +117,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PlannedExecutionDate
+        /// The date and time when the execution of the charge is planned.
         /// </summary>
+        /// <value>The date and time when the execution of the charge is planned.</value>
         [DataMember(Name="plannedExecutionDate", EmitDefaultValue=false)]
         public DateTime? PlannedExecutionDate { get; private set; }
 
@@ -124,35 +132,38 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets Reference
+        /// The merchant&#39;s reference used to identify the charge.
         /// </summary>
+        /// <value>The merchant&#39;s reference used to identify the charge.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; private set; }
 
 
         /// <summary>
-        /// The field subscription indicates the subscription to which the charge belongs to.
+        /// The subscription that the charge belongs to.
         /// </summary>
-        /// <value>The field subscription indicates the subscription to which the charge belongs to.</value>
+        /// <value>The subscription that the charge belongs to.</value>
         [DataMember(Name="subscription", EmitDefaultValue=false)]
         public Subscription Subscription { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SucceedOn
+        /// The date and time when the charge succeeded.
         /// </summary>
+        /// <value>The date and time when the charge succeeded.</value>
         [DataMember(Name="succeedOn", EmitDefaultValue=false)]
         public DateTime? SucceedOn { get; private set; }
 
         /// <summary>
-        /// The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.
+        /// The URL to redirect the customer back to after they successfully authenticated their payment.
         /// </summary>
-        /// <value>The user will be redirected to success URL when the transaction could be authorized or completed. In case no success URL is specified a default success page will be displayed.</value>
+        /// <value>The URL to redirect the customer back to after they successfully authenticated their payment.</value>
         [DataMember(Name="successUrl", EmitDefaultValue=false)]
         public string SuccessUrl { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Transaction
+        /// The transaction used to process the charge.
         /// </summary>
+        /// <value>The transaction used to process the charge.</value>
         [DataMember(Name="transaction", EmitDefaultValue=false)]
         public Transaction Transaction { get; private set; }
 

@@ -51,8 +51,9 @@ namespace Wallee.Model
         public string Language { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SpaceViewId
+        /// The ID of the space view this object is linked to.
         /// </summary>
+        /// <value>The ID of the space view this object is linked to.</value>
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 

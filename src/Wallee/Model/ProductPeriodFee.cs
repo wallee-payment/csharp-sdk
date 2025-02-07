@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class ProductPeriodFee :  IEquatable<ProductPeriodFee>
     {
         /// <summary>
-        /// Gets or Sets Type
+        /// The type of the fee.
         /// </summary>
+        /// <value>The type of the fee.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public ProductFeeType? Type { get; private set; }
         /// <summary>
@@ -34,15 +35,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Component
+        /// The product component that the fee belongs to.
         /// </summary>
+        /// <value>The product component that the fee belongs to.</value>
         [DataMember(Name="component", EmitDefaultValue=false)]
         public SubscriptionProductComponent Component { get; private set; }
 
         /// <summary>
-        /// The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.
+        /// The localized description of the fee that is displayed to the customer.
         /// </summary>
-        /// <value>The description of a component fee describes the fee to the subscriber. The description may be shown in documents or on certain user interfaces.</value>
+        /// <value>The localized description of the fee that is displayed to the customer.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
@@ -54,9 +56,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The ledger entry title will be used for the title in the ledger entry and in the invoice.
+        /// The localized title that be used on ledger entries and invoices.
         /// </summary>
-        /// <value>The ledger entry title will be used for the title in the ledger entry and in the invoice.</value>
+        /// <value>The localized title that be used on ledger entries and invoices.</value>
         [DataMember(Name="ledgerEntryTitle", EmitDefaultValue=false)]
         public Dictionary<string, string> LedgerEntryTitle { get; private set; }
 
@@ -68,23 +70,23 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The name of the fee should describe for the subscriber in few words for what the fee is for.
+        /// The localized name of the fee that is displayed to the customer.
         /// </summary>
-        /// <value>The name of the fee should describe for the subscriber in few words for what the fee is for.</value>
+        /// <value>The localized name of the fee that is displayed to the customer.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// The number of free trial periods specify how many periods are free of charge at the begining of the subscription.
+        /// The number of subscription billing cycles that count as a trial phase and during which no fees are charged.
         /// </summary>
-        /// <value>The number of free trial periods specify how many periods are free of charge at the begining of the subscription.</value>
+        /// <value>The number of subscription billing cycles that count as a trial phase and during which no fees are charged.</value>
         [DataMember(Name="numberOfFreeTrialPeriods", EmitDefaultValue=false)]
         public int? NumberOfFreeTrialPeriods { get; private set; }
 
         /// <summary>
-        /// The period fee is charged for every period of the subscription except for those periods which are trial periods.
+        /// The amount charged to the customer for each billing cycle during the term of a subscription.
         /// </summary>
-        /// <value>The period fee is charged for every period of the subscription except for those periods which are trial periods.</value>
+        /// <value>The amount charged to the customer for each billing cycle during the term of a subscription.</value>
         [DataMember(Name="periodFee", EmitDefaultValue=false)]
         public List<PersistableCurrencyAmount> PeriodFee { get; private set; }
 

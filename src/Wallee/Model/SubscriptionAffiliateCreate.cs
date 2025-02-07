@@ -28,22 +28,22 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionAffiliateCreate" /> class.
         /// </summary>
-        /// <param name="reference">reference (required).</param>
         /// <param name="externalId">A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead. (required).</param>
-        public SubscriptionAffiliateCreate(string reference, string externalId)
+        /// <param name="reference">The reference used to identify the affiliate. (required).</param>
+        public SubscriptionAffiliateCreate(string externalId, string reference)
         {
-            // to ensure "reference" is required (not null)
-            if (reference == null)
-            {
-                throw new InvalidDataException("reference is a required property for SubscriptionAffiliateCreate and cannot be null");
-            }
-            this.Reference = reference;
             // to ensure "externalId" is required (not null)
             if (externalId == null)
             {
                 throw new InvalidDataException("externalId is a required property for SubscriptionAffiliateCreate and cannot be null");
             }
             this.ExternalId = externalId;
+            // to ensure "reference" is required (not null)
+            if (reference == null)
+            {
+                throw new InvalidDataException("reference is a required property for SubscriptionAffiliateCreate and cannot be null");
+            }
+            this.Reference = reference;
         }
 
 
@@ -58,8 +58,9 @@ namespace Wallee.Model
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets Reference
+        /// The reference used to identify the affiliate.
         /// </summary>
+        /// <value>The reference used to identify the affiliate.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; set; }
 

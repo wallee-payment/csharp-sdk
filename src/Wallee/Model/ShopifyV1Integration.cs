@@ -18,7 +18,7 @@ namespace Wallee.Model
     /// A Shopify Integration allows to connect a Shopify shop.
     /// </summary>
     [DataContract]
-    public partial class ShopifyIntegration :  IEquatable<ShopifyIntegration>
+    public partial class ShopifyV1Integration :  IEquatable<ShopifyV1Integration>
     {
         /// <summary>
         /// Gets or Sets PaymentAppVersion
@@ -37,10 +37,10 @@ namespace Wallee.Model
         [DataMember(Name="subscriptionAppVersion", EmitDefaultValue=false)]
         public ShopifyIntegrationSubscriptionAppVersion? SubscriptionAppVersion { get; private set; }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ShopifyIntegration" /> class.
+        /// Initializes a new instance of the <see cref="ShopifyV1Integration" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public ShopifyIntegration()
+        public ShopifyV1Integration()
         {
         }
 
@@ -90,9 +90,9 @@ namespace Wallee.Model
         public string Language { get; private set; }
 
         /// <summary>
-        /// The login name is used to link a specific Shopify payment gateway to this integration.This login name is to be filled into the appropriate field in the shops payment gateway configuration.
+        /// The login name is used to link a specific Shopify payment gateway to this integration.This login name is to be filled into the appropriate field in the shop&#39;s payment gateway configuration.
         /// </summary>
-        /// <value>The login name is used to link a specific Shopify payment gateway to this integration.This login name is to be filled into the appropriate field in the shops payment gateway configuration.</value>
+        /// <value>The login name is used to link a specific Shopify payment gateway to this integration.This login name is to be filled into the appropriate field in the shop&#39;s payment gateway configuration.</value>
         [DataMember(Name="loginName", EmitDefaultValue=false)]
         public string LoginName { get; private set; }
 
@@ -111,9 +111,9 @@ namespace Wallee.Model
         public bool? PaymentInstalled { get; private set; }
 
         /// <summary>
-        /// Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
+        /// Define the path of the proxy URL. This only needs to be changed if the app&#39;s proxy URL is overwritten in the Shopify store.
         /// </summary>
-        /// <value>Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.</value>
+        /// <value>Define the path of the proxy URL. This only needs to be changed if the app&#39;s proxy URL is overwritten in the Shopify store.</value>
         [DataMember(Name="paymentProxyPath", EmitDefaultValue=false)]
         public string PaymentProxyPath { get; private set; }
 
@@ -131,9 +131,9 @@ namespace Wallee.Model
         public bool? ReplacePaymentMethodImage { get; private set; }
 
         /// <summary>
-        /// The store address is used to link a specific Shopify shop to this integration. This is the name used in the Shopifys admin URL: [storeAddress].myshopify.com
+        /// The store address is used to link a specific Shopify shop to this integration. This is the name used in the Shopify&#39;s admin URL: [storeAddress].myshopify.com
         /// </summary>
-        /// <value>The store address is used to link a specific Shopify shop to this integration. This is the name used in the Shopifys admin URL: [storeAddress].myshopify.com</value>
+        /// <value>The store address is used to link a specific Shopify shop to this integration. This is the name used in the Shopify&#39;s admin URL: [storeAddress].myshopify.com</value>
         [DataMember(Name="shopName", EmitDefaultValue=false)]
         public string ShopName { get; private set; }
 
@@ -156,8 +156,9 @@ namespace Wallee.Model
         public long? SpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SpaceViewId
+        /// The ID of the space view this object is linked to.
         /// </summary>
+        /// <value>The ID of the space view this object is linked to.</value>
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 
@@ -170,9 +171,9 @@ namespace Wallee.Model
         public bool? SubscriptionInstalled { get; private set; }
 
         /// <summary>
-        /// Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.
+        /// Define the path of the proxy URL. This only needs to be changed if the app&#39;s proxy URL is overwritten in the Shopify store.
         /// </summary>
-        /// <value>Define the path of the proxy URL. This only needs to be changed if the apps proxy URL is overwritten in the Shopify store.</value>
+        /// <value>Define the path of the proxy URL. This only needs to be changed if the app&#39;s proxy URL is overwritten in the Shopify store.</value>
         [DataMember(Name="subscriptionProxyPath", EmitDefaultValue=false)]
         public string SubscriptionProxyPath { get; private set; }
 
@@ -190,7 +191,7 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class ShopifyIntegration {\n");
+            sb.Append("class ShopifyV1Integration {\n");
             sb.Append("  AdditionalLineItemData: ").Append(AdditionalLineItemData).Append("\n");
             sb.Append("  AllowInvoiceDownload: ").Append(AllowInvoiceDownload).Append("\n");
             sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
@@ -235,15 +236,15 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ShopifyIntegration);
+            return this.Equals(input as ShopifyV1Integration);
         }
 
         /// <summary>
-        /// Returns true if ShopifyIntegration instances are equal
+        /// Returns true if ShopifyV1Integration instances are equal
         /// </summary>
-        /// <param name="input">Instance of ShopifyIntegration to be compared</param>
+        /// <param name="input">Instance of ShopifyV1Integration to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(ShopifyIntegration input)
+        public bool Equals(ShopifyV1Integration input)
         {
             if (input == null)
                 return false;

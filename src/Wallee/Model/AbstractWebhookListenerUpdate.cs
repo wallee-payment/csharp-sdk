@@ -34,9 +34,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Whether signature header and state property are enabled in webhook payload.
+        /// Whether signature header and &#39;state&#39; property are enabled in webhook payload.
         /// </summary>
-        /// <value>Whether signature header and state property are enabled in webhook payload.</value>
+        /// <value>Whether signature header and &#39;state&#39; property are enabled in webhook payload.</value>
         [DataMember(Name="enablePayloadSignatureAndState", EmitDefaultValue=false)]
         public bool? EnablePayloadSignatureAndState { get; set; }
 

@@ -26,9 +26,9 @@ namespace Wallee.Model
         [DataMember(Name="completionBehavior", EmitDefaultValue=false)]
         public TransactionCompletionBehavior? CompletionBehavior { get; private set; }
         /// <summary>
-        /// The customers presence indicates which kind of customer interaction was used during the charge attempt.
+        /// The customer&#39;s presence indicates which kind of customer interaction was used during the charge attempt.
         /// </summary>
-        /// <value>The customers presence indicates which kind of customer interaction was used during the charge attempt.</value>
+        /// <value>The customer&#39;s presence indicates which kind of customer interaction was used during the charge attempt.</value>
         [DataMember(Name="customersPresence", EmitDefaultValue=false)]
         public CustomersPresence? CustomersPresence { get; private set; }
         /// <summary>
@@ -100,8 +100,9 @@ namespace Wallee.Model
         public ConnectorInvocation Invocation { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Labels
+        /// The labels providing additional information about the object.
         /// </summary>
+        /// <value>The labels providing additional information about the object.</value>
         [DataMember(Name="labels", EmitDefaultValue=false)]
         public List<Label> Labels { get; private set; }
 
@@ -138,8 +139,9 @@ namespace Wallee.Model
         public long? SalesChannel { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SpaceViewId
+        /// The ID of the space view this object is linked to.
         /// </summary>
+        /// <value>The ID of the space view this object is linked to.</value>
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; private set; }
 

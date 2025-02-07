@@ -35,8 +35,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Description
+        /// The localized description of the metric that is displayed to the customer.
         /// </summary>
+        /// <value>The localized description of the metric that is displayed to the customer.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
@@ -55,8 +56,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The localized name of the metric that is displayed to the customer.
         /// </summary>
+        /// <value>The localized name of the metric that is displayed to the customer.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 
@@ -69,8 +71,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets Type
+        /// The type of the metric.
         /// </summary>
+        /// <value>The type of the metric.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public SubscriptionMetricType Type { get; private set; }
 

@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+        <TargetFrameworks>net8.0</TargetFrameworks>
     </PropertyGroup>
     <PropertyGroup>
         <AssemblyName>Wallee.Test</AssemblyName>
@@ -21,27 +21,25 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="NUnit" Version="3.13.3" />
-        <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
-        <PackageReference Include="RestSharp" Version="110.2.0"/>
+        <PackageReference Include="NUnit" Version="3.13.3"/>
+        <PackageReference Include="NUnit3TestAdapter" Version="4.5.0"/>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0"/>
+        <PackageReference Include="RestSharp" Version="112.1.0"/>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
         <PackageReference Include="JsonSubTypes" Version="2.0.1"/>
-        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0"/>
     </ItemGroup>
-
-        <ItemGroup>
-            <Reference Include="System"/>
-            <Reference Include="System.Net.Http"/>
-            <Reference Include="System.Core"/>
-            <Reference Include="System.Xml.Linq"/>
-            <Reference Include="System.Data.DataSetExtensions"/>
-            <Reference Include="System.ComponentModel.DataAnnotations"/>
-            <Reference Include="Microsoft.CSharp"/>
-            <Reference Include="System.Data"/>
-            <Reference Include="System.Runtime.Serialization"/>
-            <Reference Include="System.Xml"/>
-        </ItemGroup>
+    <ItemGroup>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Xml.Linq"/>
+        <Reference Include="System.Data.DataSetExtensions"/>
+        <Reference Include="System.ComponentModel.DataAnnotations"/>
+        <Reference Include="Microsoft.CSharp"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Runtime.Serialization"/>
+        <Reference Include="System.Xml"/>
+    </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\Wallee\Wallee.csproj"/>

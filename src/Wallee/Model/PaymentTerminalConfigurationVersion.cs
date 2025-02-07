@@ -35,20 +35,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Configuration
+        /// The payment terminal configuration that the version belongs to.
         /// </summary>
+        /// <value>The payment terminal configuration that the version belongs to.</value>
         [DataMember(Name="configuration", EmitDefaultValue=false)]
         public PaymentTerminalConfiguration Configuration { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ConnectorConfigurations
+        /// The payment connector configurations that are available on the payment terminal.
         /// </summary>
+        /// <value>The payment connector configurations that are available on the payment terminal.</value>
         [DataMember(Name="connectorConfigurations", EmitDefaultValue=false)]
         public List<long?> ConnectorConfigurations { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CreatedBy
+        /// The ID of the user the payment terminal configuration version was created by.
         /// </summary>
+        /// <value>The ID of the user the payment terminal configuration version was created by.</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
@@ -60,9 +63,9 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The currency is derived by default from the terminal location. By setting a specific currency the derived currency is overridden.
+        /// The default currency that is used if none is set on the payment terminal itself. If it is empty, the currency is derived from the location of the terminal.
         /// </summary>
-        /// <value>The currency is derived by default from the terminal location. By setting a specific currency the derived currency is overridden.</value>
+        /// <value>The default currency that is used if none is set on the payment terminal itself. If it is empty, the currency is derived from the location of the terminal.</value>
         [DataMember(Name="defaultCurrency", EmitDefaultValue=false)]
         public string DefaultCurrency { get; private set; }
 
@@ -81,14 +84,16 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets MaintenanceWindowDuration
+        /// The permitted duration of the terminal&#39;s maintenance window.
         /// </summary>
+        /// <value>The permitted duration of the terminal&#39;s maintenance window.</value>
         [DataMember(Name="maintenanceWindowDuration", EmitDefaultValue=false)]
         public string MaintenanceWindowDuration { get; private set; }
 
         /// <summary>
-        /// Gets or Sets MaintenanceWindowStart
+        /// The start time of the terminal&#39;s maintenance window.
         /// </summary>
+        /// <value>The start time of the terminal&#39;s maintenance window.</value>
         [DataMember(Name="maintenanceWindowStart", EmitDefaultValue=false)]
         public string MaintenanceWindowStart { get; private set; }
 
@@ -101,8 +106,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets TimeZone
+        /// The time zone of the payment terminal used to determine the maintenance window.
         /// </summary>
+        /// <value>The time zone of the payment terminal used to determine the maintenance window.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; private set; }
 
@@ -114,8 +120,9 @@ namespace Wallee.Model
         public int? Version { get; private set; }
 
         /// <summary>
-        /// Gets or Sets VersionAppliedImmediately
+        /// Whether payment terminals are immediately updated to this configuration version. If not, it will be applied during the maintenance window.
         /// </summary>
+        /// <value>Whether payment terminals are immediately updated to this configuration version. If not, it will be applied during the maintenance window.</value>
         [DataMember(Name="versionAppliedImmediately", EmitDefaultValue=false)]
         public bool? VersionAppliedImmediately { get; private set; }
 

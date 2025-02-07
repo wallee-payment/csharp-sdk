@@ -35,14 +35,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets CreatedOn
+        /// The date and time when the period bill was created.
         /// </summary>
+        /// <value>The date and time when the period bill was created.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets EffectivePeriodEndDate
+        /// The date and time when the period actually ended.
         /// </summary>
+        /// <value>The date and time when the period actually ended.</value>
         [DataMember(Name="effectivePeriodEndDate", EmitDefaultValue=false)]
         public DateTime? EffectivePeriodEndDate { get; private set; }
 
@@ -68,14 +70,16 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PeriodStartDate
+        /// The date and time when the period started.
         /// </summary>
+        /// <value>The date and time when the period started.</value>
         [DataMember(Name="periodStartDate", EmitDefaultValue=false)]
         public DateTime? PeriodStartDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PlannedPeriodEndDate
+        /// The date and time when the period is planned to end.
         /// </summary>
+        /// <value>The date and time when the period is planned to end.</value>
         [DataMember(Name="plannedPeriodEndDate", EmitDefaultValue=false)]
         public DateTime? PlannedPeriodEndDate { get; private set; }
 
@@ -88,8 +92,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets SubscriptionVersion
+        /// The subscription version that the period bill belongs to.
         /// </summary>
+        /// <value>The subscription version that the period bill belongs to.</value>
         [DataMember(Name="subscriptionVersion", EmitDefaultValue=false)]
         public SubscriptionVersion SubscriptionVersion { get; private set; }
 

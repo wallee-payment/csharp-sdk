@@ -129,6 +129,13 @@ namespace Wallee.Model
         public string ProductId { get; private set; }
 
         /// <summary>
+        /// The legacy ID of the Shopify product that is enabled to be ordered as subscription.
+        /// </summary>
+        /// <value>The legacy ID of the Shopify product that is enabled to be ordered as subscription.</value>
+        [DataMember(Name="productLegacyId", EmitDefaultValue=false)]
+        public string ProductLegacyId { get; private set; }
+
+        /// <summary>
         /// Gets or Sets ProductName
         /// </summary>
         [DataMember(Name="productName", EmitDefaultValue=false)]
@@ -151,6 +158,12 @@ namespace Wallee.Model
         /// </summary>
         [DataMember(Name="productVariantId", EmitDefaultValue=false)]
         public string ProductVariantId { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets ProductVariantLegacyId
+        /// </summary>
+        [DataMember(Name="productVariantLegacyId", EmitDefaultValue=false)]
+        public string ProductVariantLegacyId { get; private set; }
 
         /// <summary>
         /// Gets or Sets ProductVariantName
@@ -239,10 +252,12 @@ namespace Wallee.Model
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  PricingOption: ").Append(PricingOption).Append("\n");
             sb.Append("  ProductId: ").Append(ProductId).Append("\n");
+            sb.Append("  ProductLegacyId: ").Append(ProductLegacyId).Append("\n");
             sb.Append("  ProductName: ").Append(ProductName).Append("\n");
             sb.Append("  ProductPrice: ").Append(ProductPrice).Append("\n");
             sb.Append("  ProductSku: ").Append(ProductSku).Append("\n");
             sb.Append("  ProductVariantId: ").Append(ProductVariantId).Append("\n");
+            sb.Append("  ProductVariantLegacyId: ").Append(ProductVariantLegacyId).Append("\n");
             sb.Append("  ProductVariantName: ").Append(ProductVariantName).Append("\n");
             sb.Append("  RelativePriceAdjustment: ").Append(RelativePriceAdjustment).Append("\n");
             sb.Append("  ShippingRequired: ").Append(ShippingRequired).Append("\n");
@@ -359,6 +374,11 @@ namespace Wallee.Model
                     this.ProductId.Equals(input.ProductId))
                 ) && 
                 (
+                    this.ProductLegacyId == input.ProductLegacyId ||
+                    (this.ProductLegacyId != null &&
+                    this.ProductLegacyId.Equals(input.ProductLegacyId))
+                ) && 
+                (
                     this.ProductName == input.ProductName ||
                     (this.ProductName != null &&
                     this.ProductName.Equals(input.ProductName))
@@ -377,6 +397,11 @@ namespace Wallee.Model
                     this.ProductVariantId == input.ProductVariantId ||
                     (this.ProductVariantId != null &&
                     this.ProductVariantId.Equals(input.ProductVariantId))
+                ) && 
+                (
+                    this.ProductVariantLegacyId == input.ProductVariantLegacyId ||
+                    (this.ProductVariantLegacyId != null &&
+                    this.ProductVariantLegacyId.Equals(input.ProductVariantLegacyId))
                 ) && 
                 (
                     this.ProductVariantName == input.ProductVariantName ||
@@ -472,6 +497,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.PricingOption.GetHashCode();
                 if (this.ProductId != null)
                     hashCode = hashCode * 59 + this.ProductId.GetHashCode();
+                if (this.ProductLegacyId != null)
+                    hashCode = hashCode * 59 + this.ProductLegacyId.GetHashCode();
                 if (this.ProductName != null)
                     hashCode = hashCode * 59 + this.ProductName.GetHashCode();
                 if (this.ProductPrice != null)
@@ -480,6 +507,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ProductSku.GetHashCode();
                 if (this.ProductVariantId != null)
                     hashCode = hashCode * 59 + this.ProductVariantId.GetHashCode();
+                if (this.ProductVariantLegacyId != null)
+                    hashCode = hashCode * 59 + this.ProductVariantLegacyId.GetHashCode();
                 if (this.ProductVariantName != null)
                     hashCode = hashCode * 59 + this.ProductVariantName.GetHashCode();
                 if (this.RelativePriceAdjustment != null)

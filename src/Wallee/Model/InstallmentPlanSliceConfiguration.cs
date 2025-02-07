@@ -42,9 +42,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The title of this slices line items. The title is visible to the buyer.
+        /// The title of this slice&#39;s line items. The title is visible to the buyer.
         /// </summary>
-        /// <value>The title of this slices line items. The title is visible to the buyer.</value>
+        /// <value>The title of this slice&#39;s line items. The title is visible to the buyer.</value>
         [DataMember(Name="lineItemTitle", EmitDefaultValue=false)]
         public Dictionary<string, string> LineItemTitle { get; private set; }
 

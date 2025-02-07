@@ -1,9 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
-		<SignAssembly>true</SignAssembly>
-		<DelaySign>false</DelaySign>
-		<AssemblyOriginatorKeyFile>..\..\AssemblyOriginatorKeyFile.snk</AssemblyOriginatorKeyFile>
+        <TargetFrameworks>net8.0</TargetFrameworks>
+        <SignAssembly>true</SignAssembly>
+        <DelaySign>false</DelaySign>
+        <AssemblyOriginatorKeyFile>..\..\AssemblyOriginatorKeyFile.snk</AssemblyOriginatorKeyFile>
     </PropertyGroup>
     <PropertyGroup>
         <AssemblyName>Wallee</AssemblyName>
@@ -16,16 +16,15 @@
         <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-        <PackageIconUrl>https://app-wallee.com/assets/images/wallee-icon-primary.svg</PackageIconUrl>
         <PackageId>Wallee</PackageId>
         <PackageLicense>https://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicense>
         <PackageProjectUrl>https://github.com/wallee-payment/csharp-sdk</PackageProjectUrl>
-        <PackageVersion>7.0.4</PackageVersion>
-        <Version>7.0.4</Version>
+        <PackageVersion>8.0.0</PackageVersion>
+        <Version>8.0.0</Version>
         <PackageTags>Wallee;payment;sdk;Payment Integration</PackageTags>
         <OutputType>Library</OutputType>
         <Owners>customweb</Owners>
-        <ReleaseVersion>7.0.4</ReleaseVersion>
+        <ReleaseVersion>8.0.0</ReleaseVersion>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
         <RootNamespace>Wallee</RootNamespace>
@@ -37,24 +36,22 @@
         <NoWarn>CS0472</NoWarn>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="RestSharp" Version="110.2.0"/>
+        <PackageReference Include="RestSharp" Version="112.1.0"/>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
         <PackageReference Include="JsonSubTypes" Version="2.0.1"/>
-        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
-        <PackageReference Include="BouncyCastle.Cryptography" Version="2.0.0" />
+        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0"/>
+        <PackageReference Include="BouncyCastle.Cryptography" Version="2.0.0"/>
     </ItemGroup>
-
-        <ItemGroup>
-            <Reference Include="System"/>
-            <Reference Include="System.Net.Http"/>
-            <Reference Include="System.Core"/>
-            <Reference Include="System.Xml.Linq"/>
-            <Reference Include="System.Data.DataSetExtensions"/>
-            <Reference Include="System.ComponentModel.DataAnnotations"/>
-            <Reference Include="Microsoft.CSharp"/>
-            <Reference Include="System.Data"/>
-            <Reference Include="System.Runtime.Serialization"/>
-            <Reference Include="System.Xml"/>
-        </ItemGroup>
+    <ItemGroup>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Xml.Linq"/>
+        <Reference Include="System.Data.DataSetExtensions"/>
+        <Reference Include="System.ComponentModel.DataAnnotations"/>
+        <Reference Include="Microsoft.CSharp"/>
+        <Reference Include="System.Data"/>
+        <Reference Include="System.Runtime.Serialization"/>
+        <Reference Include="System.Xml"/>
+    </ItemGroup>
 
 </Project>

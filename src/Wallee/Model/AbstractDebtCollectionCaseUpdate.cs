@@ -21,9 +21,9 @@ namespace Wallee.Model
     public partial class AbstractDebtCollectionCaseUpdate :  IEquatable<AbstractDebtCollectionCaseUpdate>
     {
         /// <summary>
-        /// The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.
+        /// The environment in which the case is processed.
         /// </summary>
-        /// <value>The environment in which this case will be processed. There must be a debt collector configuration present which supports the chosen environment.</value>
+        /// <value>The environment in which the case is processed.</value>
         [DataMember(Name="environment", EmitDefaultValue=false)]
         public DebtCollectionEnvironment? Environment { get; set; }
         /// <summary>
@@ -34,51 +34,52 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The billing address of the case identifies the debtor.
+        /// The billing address that identifies the debtor.
         /// </summary>
-        /// <value>The billing address of the case identifies the debtor.</value>
+        /// <value>The billing address that identifies the debtor.</value>
         [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public AddressCreate BillingAddress { get; set; }
 
         /// <summary>
-        /// The contract date is the date on which the contract with the debtor was signed on.
+        /// The date and time when the contract with the debtor was signed.
         /// </summary>
-        /// <value>The contract date is the date on which the contract with the debtor was signed on.</value>
+        /// <value>The date and time when the contract with the debtor was signed.</value>
         [DataMember(Name="contractDate", EmitDefaultValue=false)]
         public DateTime? ContractDate { get; set; }
 
         /// <summary>
-        /// The currency defines the billing currency of the debt collection case.
+        /// The three-letter code (ISO 4217 format) of the case&#39;s currency.
         /// </summary>
-        /// <value>The currency defines the billing currency of the debt collection case.</value>
+        /// <value>The three-letter code (ISO 4217 format) of the case&#39;s currency.</value>
         [DataMember(Name="currency", EmitDefaultValue=false)]
         public string Currency { get; set; }
 
         /// <summary>
-        /// The due date indicates the date on which the amount receivable was due. This date has to be always in the past.
+        /// The date and time when the claim was due.
         /// </summary>
-        /// <value>The due date indicates the date on which the amount receivable was due. This date has to be always in the past.</value>
+        /// <value>The date and time when the claim was due.</value>
         [DataMember(Name="dueDate", EmitDefaultValue=false)]
         public DateTime? DueDate { get; set; }
 
 
         /// <summary>
-        /// The language indicates the language to be used in the communication with the debtor.
+        /// The language that is linked to the object.
         /// </summary>
-        /// <value>The language indicates the language to be used in the communication with the debtor.</value>
+        /// <value>The language that is linked to the object.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; set; }
 
         /// <summary>
-        /// The line items of the debt collection case will be shown on documents sent to the debtor and the total of them makes up total amount to collect.
+        /// The line items that are subject of this debt collection case.
         /// </summary>
-        /// <value>The line items of the debt collection case will be shown on documents sent to the debtor and the total of them makes up total amount to collect.</value>
+        /// <value>The line items that are subject of this debt collection case.</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItemCreate> LineItems { get; set; }
 
         /// <summary>
-        /// Gets or Sets SpaceViewId
+        /// The ID of the space view this object is linked to.
         /// </summary>
+        /// <value>The ID of the space view this object is linked to.</value>
         [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
         public long? SpaceViewId { get; set; }
 
