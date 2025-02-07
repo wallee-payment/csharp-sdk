@@ -6,19 +6,19 @@ on:
 
 jobs:
   build:
-    name: Build and Test
+    name: Build and Test - wallee
     strategy:
       matrix:
-        dotnet-version: [8.0]
+        dotnet-version: ["8.0"]
     runs-on: ubuntu-22.04
 
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup .NET SDK $
+      - name: Setup .NET SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: $
+          dotnet-version: ${{ matrix.dotnet-version }}
 
       - name: Restore dependencies
         run: dotnet restore
@@ -31,14 +31,14 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix:
-        dotnet-version: [8.0]
+        dotnet-version: ["8.0"]
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup .NET SDK $ for release
+      - name: Setup .NET SDK ${{ matrix.dotnet-version }} for release
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: $
+          dotnet-version: ${{ matrix.dotnet-version }}
 
       - name: Restore dependencies
         run: dotnet restore
