@@ -984,8 +984,8 @@ namespace Wallee.Service
 
             // to determine the Accept header
             String[] localVarHttpHeaderAccepts = new String[] {
-                "text/csv",
-                "application/json;charset=utf-8"
+                "application/json;charset=utf-8",
+                "text/csv"
             };
             String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if (localVarHttpHeaderAccept != null)

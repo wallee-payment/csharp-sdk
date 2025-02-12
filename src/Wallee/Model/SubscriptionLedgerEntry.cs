@@ -21,6 +21,11 @@ namespace Wallee.Model
     public partial class SubscriptionLedgerEntry :  IEquatable<SubscriptionLedgerEntry>
     {
         /// <summary>
+        /// Gets or Sets FeeType
+        /// </summary>
+        [DataMember(Name="feeType", EmitDefaultValue=false)]
+        public ProductFeeType? FeeType { get; private set; }
+        /// <summary>
         /// The object&#39;s current state.
         /// </summary>
         /// <value>The object&#39;s current state.</value>
@@ -89,11 +94,6 @@ namespace Wallee.Model
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
-        /// <summary>
-        /// Gets or Sets FeeType
-        /// </summary>
-        [DataMember(Name="feeType", EmitDefaultValue=false)]
-        public string FeeType { get; private set; }
 
         /// <summary>
         /// A unique identifier for the object.

@@ -34,20 +34,23 @@ namespace Wallee.Model
         public byte[] Data { get; set; }
 
         /// <summary>
-        /// Gets or Sets DocumentTemplateType
+        /// The document&#39;s template type
         /// </summary>
+        /// <value>The document&#39;s template type</value>
         [DataMember(Name="documentTemplateType", EmitDefaultValue=false)]
         public long? DocumentTemplateType { get; private set; }
 
         /// <summary>
-        /// Gets or Sets MimeType
+        /// The document&#39;s content type
         /// </summary>
+        /// <value>The document&#39;s content type</value>
         [DataMember(Name="mimeType", EmitDefaultValue=false)]
         public string MimeType { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Title
+        /// The title of the rendered document
         /// </summary>
+        /// <value>The title of the rendered document</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
         public string Title { get; private set; }
 

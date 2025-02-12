@@ -50,20 +50,6 @@ namespace Wallee.Model
         public LabelDescriptor Descriptor { get; private set; }
 
         /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
-
-        /// <summary>
-        /// The version is used for optimistic locking and incremented whenever the object is updated.
-        /// </summary>
-        /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; private set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -74,8 +60,6 @@ namespace Wallee.Model
             sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("  ContentAsString: ").Append(ContentAsString).Append("\n");
             sb.Append("  Descriptor: ").Append(Descriptor).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -124,16 +108,6 @@ namespace Wallee.Model
                     this.Descriptor == input.Descriptor ||
                     (this.Descriptor != null &&
                     this.Descriptor.Equals(input.Descriptor))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
                 );
         }
 
@@ -152,10 +126,6 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.ContentAsString.GetHashCode();
                 if (this.Descriptor != null)
                     hashCode = hashCode * 59 + this.Descriptor.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
                 return hashCode;
             }
         }

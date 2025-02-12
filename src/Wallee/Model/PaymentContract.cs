@@ -39,7 +39,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>This account that the contract belongs to.</value>
         [DataMember(Name="account", EmitDefaultValue=false)]
-        public Account Account { get; private set; }
+        public long? Account { get; private set; }
 
         /// <summary>
         /// The date and time when the contract was activated.
@@ -67,7 +67,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The ID of the user the contract was created by.</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
-        public User CreatedBy { get; private set; }
+        public long? CreatedBy { get; private set; }
 
         /// <summary>
         /// The date and time when the object was created.
@@ -124,7 +124,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>The ID of the user the contract was terminated by.</value>
         [DataMember(Name="terminatedBy", EmitDefaultValue=false)]
-        public User TerminatedBy { get; private set; }
+        public long? TerminatedBy { get; private set; }
 
         /// <summary>
         /// The date and time when the contract was terminated.

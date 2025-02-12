@@ -19,12 +19,12 @@
         <PackageId>Wallee</PackageId>
         <PackageLicense>https://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicense>
         <PackageProjectUrl>https://github.com/wallee-payment/csharp-sdk</PackageProjectUrl>
-        <PackageVersion>8.2.0</PackageVersion>
-        <Version>8.2.0</Version>
+        <PackageVersion>8.3.0</PackageVersion>
+        <Version>8.3.0</Version>
         <PackageTags>Wallee;payment;sdk;Payment Integration</PackageTags>
         <OutputType>Library</OutputType>
         <Owners>customweb</Owners>
-        <ReleaseVersion>8.2.0</ReleaseVersion>
+        <ReleaseVersion>8.3.0</ReleaseVersion>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
         <RootNamespace>Wallee</RootNamespace>
@@ -40,7 +40,7 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
         <PackageReference Include="JsonSubTypes" Version="2.0.1"/>
         <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0"/>
-        <PackageReference Include="BouncyCastle.Cryptography" Version="2.0.0"/>
+        <PackageReference Include="BouncyCastle.Cryptography" Version="2.3.1"/>
     </ItemGroup>
     <ItemGroup>
         <Reference Include="System"/>

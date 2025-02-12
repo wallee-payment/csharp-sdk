@@ -17,7 +17,7 @@ The wallee C# library wraps around the wallee API. This library facilitates your
 - [RestSharp](https://www.nuget.org/packages/RestSharp) - 112.1.0
 - [Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/) - 13.0.3
 - [JsonSubTypes](https://www.nuget.org/packages/JsonSubTypes/) - 2.0.1
-- [BouncyCastle.Cryptography](https://www.nuget.org/packages/BouncyCastle.Cryptography/) - 2.0.0
+- [BouncyCastle.Cryptography](https://www.nuget.org/packages/BouncyCastle.Cryptography/) - 2.3.1
 
 The DLLs included in the package may not be the latest version. We recommend using [NuGet](https://docs.nuget.org/consume/installing-nuget) to obtain the latest version of the packages:
 ```
@@ -32,13 +32,13 @@ Install-Package BouncyCastle.Cryptography
 ## Installation
 ```
 # Package Manager
-Install-Package Wallee -Version 8.2.0
+Install-Package Wallee -Version 8.3.0
 # .NET CLI
-dotnet add package Wallee --version 8.2.0
+dotnet add package Wallee --version 8.3.0
 # Paket CLI
-paket add Wallee --version 8.2.0
+paket add Wallee --version 8.3.0
 # PackageReference
-<PackageReference Include="Wallee" Version="8.2.0" />
+<PackageReference Include="Wallee" Version="8.3.0" />
 ```
 
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
