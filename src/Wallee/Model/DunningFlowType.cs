@@ -15,18 +15,25 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// TransactionAwareEntity
+    /// DunningFlowType
     /// </summary>
     [DataContract]
-    public partial class TransactionAwareEntity :  IEquatable<TransactionAwareEntity>
+    public partial class DunningFlowType :  IEquatable<DunningFlowType>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TransactionAwareEntity" /> class.
+        /// Initializes a new instance of the <see cref="DunningFlowType" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        public TransactionAwareEntity()
+        public DunningFlowType()
         {
         }
+
+        /// <summary>
+        /// The localized description of the object.
+        /// </summary>
+        /// <value>The localized description of the object.</value>
+        [DataMember(Name="description", EmitDefaultValue=false)]
+        public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
         /// A unique identifier for the object.
@@ -36,17 +43,17 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The ID of the space this object belongs to.
+        /// The localized name of the object.
         /// </summary>
-        /// <value>The ID of the space this object belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; private set; }
+        /// <value>The localized name of the object.</value>
+        [DataMember(Name="name", EmitDefaultValue=false)]
+        public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets LinkedTransaction
+        /// Gets or Sets SpecificCountry
         /// </summary>
-        [DataMember(Name="linkedTransaction", EmitDefaultValue=false)]
-        public long? LinkedTransaction { get; private set; }
+        [DataMember(Name="specificCountry", EmitDefaultValue=false)]
+        public string SpecificCountry { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -55,10 +62,11 @@ namespace Wallee.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class TransactionAwareEntity {\n");
+            sb.Append("class DunningFlowType {\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  SpecificCountry: ").Append(SpecificCountry).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -79,34 +87,41 @@ namespace Wallee.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as TransactionAwareEntity);
+            return this.Equals(input as DunningFlowType);
         }
 
         /// <summary>
-        /// Returns true if TransactionAwareEntity instances are equal
+        /// Returns true if DunningFlowType instances are equal
         /// </summary>
-        /// <param name="input">Instance of TransactionAwareEntity to be compared</param>
+        /// <param name="input">Instance of DunningFlowType to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(TransactionAwareEntity input)
+        public bool Equals(DunningFlowType input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
+                    this.Description == input.Description ||
+                    this.Description != null &&
+                    input.Description != null &&
+                    this.Description.SequenceEqual(input.Description)
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
+                    this.Name == input.Name ||
+                    this.Name != null &&
+                    input.Name != null &&
+                    this.Name.SequenceEqual(input.Name)
                 ) && 
                 (
-                    this.LinkedTransaction == input.LinkedTransaction ||
-                    (this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(input.LinkedTransaction))
+                    this.SpecificCountry == input.SpecificCountry ||
+                    (this.SpecificCountry != null &&
+                    this.SpecificCountry.Equals(input.SpecificCountry))
                 );
         }
 
@@ -119,12 +134,14 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Description != null)
+                    hashCode = hashCode * 59 + this.Description.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
+                if (this.Name != null)
+                    hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.SpecificCountry != null)
+                    hashCode = hashCode * 59 + this.SpecificCountry.GetHashCode();
                 return hashCode;
             }
         }

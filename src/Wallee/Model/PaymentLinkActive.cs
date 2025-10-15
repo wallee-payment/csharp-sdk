@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The payment link defines an URL to automatically create transactions.
+    /// PaymentLinkActive
     /// </summary>
     [DataContract]
     public partial class PaymentLinkActive : PaymentLinkUpdate,  IEquatable<PaymentLinkActive>
@@ -66,6 +66,7 @@ namespace Wallee.Model
 
 
 
+
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -78,6 +79,7 @@ namespace Wallee.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
+            sb.Append("  AllowedRedirectionDomains: ").Append(AllowedRedirectionDomains).Append("\n");
             sb.Append("  AppliedSpaceView: ").Append(AppliedSpaceView).Append("\n");
             sb.Append("  AvailableFrom: ").Append(AvailableFrom).Append("\n");
             sb.Append("  AvailableUntil: ").Append(AvailableUntil).Append("\n");
@@ -138,6 +140,12 @@ namespace Wallee.Model
                     this.AllowedPaymentMethodConfigurations != null &&
                     input.AllowedPaymentMethodConfigurations != null &&
                     this.AllowedPaymentMethodConfigurations.SequenceEqual(input.AllowedPaymentMethodConfigurations)
+                ) && base.Equals(input) && 
+                (
+                    this.AllowedRedirectionDomains == input.AllowedRedirectionDomains ||
+                    this.AllowedRedirectionDomains != null &&
+                    input.AllowedRedirectionDomains != null &&
+                    this.AllowedRedirectionDomains.SequenceEqual(input.AllowedRedirectionDomains)
                 ) && base.Equals(input) && 
                 (
                     this.AppliedSpaceView == input.AppliedSpaceView ||
@@ -212,6 +220,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Version.GetHashCode();
                 if (this.AllowedPaymentMethodConfigurations != null)
                     hashCode = hashCode * 59 + this.AllowedPaymentMethodConfigurations.GetHashCode();
+                if (this.AllowedRedirectionDomains != null)
+                    hashCode = hashCode * 59 + this.AllowedRedirectionDomains.GetHashCode();
                 if (this.AppliedSpaceView != null)
                     hashCode = hashCode * 59 + this.AppliedSpaceView.GetHashCode();
                 if (this.AvailableFrom != null)

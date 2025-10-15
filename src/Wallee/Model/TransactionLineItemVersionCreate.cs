@@ -28,9 +28,9 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionLineItemVersionCreate" /> class.
         /// </summary>
-        /// <param name="externalId">A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead. (required).</param>
-        /// <param name="lineItems">lineItems (required).</param>
-        /// <param name="transaction">transaction (required).</param>
+        /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
+        /// <param name="lineItems">The line items that replace the original line items in the transaction. (required).</param>
+        /// <param name="transaction">The transaction that the line item version belongs to. (required).</param>
         public TransactionLineItemVersionCreate(string externalId, List<LineItemCreate> lineItems, long? transaction)
         {
             // to ensure "externalId" is required (not null)
@@ -54,21 +54,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets LineItems
+        /// The line items that replace the original line items in the transaction.
         /// </summary>
+        /// <value>The line items that replace the original line items in the transaction.</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItemCreate> LineItems { get; set; }
 
         /// <summary>
-        /// Gets or Sets Transaction
+        /// The transaction that the line item version belongs to.
         /// </summary>
+        /// <value>The transaction that the line item version belongs to.</value>
         [DataMember(Name="transaction", EmitDefaultValue=false)]
         public long? Transaction { get; set; }
 

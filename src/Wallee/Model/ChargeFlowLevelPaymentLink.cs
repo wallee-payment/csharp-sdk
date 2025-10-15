@@ -18,7 +18,7 @@ namespace Wallee.Model
     /// ChargeFlowLevelPaymentLink
     /// </summary>
     [DataContract]
-    public partial class ChargeFlowLevelPaymentLink : TransactionAwareEntity,  IEquatable<ChargeFlowLevelPaymentLink>
+    public partial class ChargeFlowLevelPaymentLink :  IEquatable<ChargeFlowLevelPaymentLink>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ChargeFlowLevelPaymentLink" /> class.
@@ -28,18 +28,31 @@ namespace Wallee.Model
         {
         }
 
-
-
-
         /// <summary>
-        /// Gets or Sets ChargeFlowLevel
+        /// The charge flow level that the payment link belongs to.
         /// </summary>
+        /// <value>The charge flow level that the payment link belongs to.</value>
         [DataMember(Name="chargeFlowLevel", EmitDefaultValue=false)]
         public ChargeFlowLevel ChargeFlowLevel { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PaymentLink
+        /// A unique identifier for the object.
         /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; private set; }
+
+        /// <summary>
+        /// The ID of the space this object belongs to.
+        /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        public long? LinkedSpaceId { get; private set; }
+
+        /// <summary>
+        /// The URL provided to the customer for entering their payment details and completing the transaction.
+        /// </summary>
+        /// <value>The URL provided to the customer for entering their payment details and completing the transaction.</value>
         [DataMember(Name="paymentLink", EmitDefaultValue=false)]
         public string PaymentLink { get; private set; }
 
@@ -51,11 +64,9 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ChargeFlowLevelPaymentLink {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
+            sb.Append("  ChargeFlowLevel: ").Append(ChargeFlowLevel).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
-            sb.Append("  ChargeFlowLevel: ").Append(ChargeFlowLevel).Append("\n");
             sb.Append("  PaymentLink: ").Append(PaymentLink).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -65,7 +76,7 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
@@ -90,27 +101,22 @@ namespace Wallee.Model
             if (input == null)
                 return false;
 
-            return base.Equals(input) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedTransaction == input.LinkedTransaction ||
-                    (this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(input.LinkedTransaction))
-                ) && base.Equals(input) && 
+            return 
                 (
                     this.ChargeFlowLevel == input.ChargeFlowLevel ||
                     (this.ChargeFlowLevel != null &&
                     this.ChargeFlowLevel.Equals(input.ChargeFlowLevel))
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.LinkedSpaceId == input.LinkedSpaceId ||
+                    (this.LinkedSpaceId != null &&
+                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
+                ) && 
                 (
                     this.PaymentLink == input.PaymentLink ||
                     (this.PaymentLink != null &&
@@ -126,15 +132,13 @@ namespace Wallee.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = base.GetHashCode();
+                int hashCode = 41;
+                if (this.ChargeFlowLevel != null)
+                    hashCode = hashCode * 59 + this.ChargeFlowLevel.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.LinkedSpaceId != null)
                     hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
-                if (this.ChargeFlowLevel != null)
-                    hashCode = hashCode * 59 + this.ChargeFlowLevel.GetHashCode();
                 if (this.PaymentLink != null)
                     hashCode = hashCode * 59 + this.PaymentLink.GetHashCode();
                 return hashCode;

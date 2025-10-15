@@ -43,8 +43,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Label
+        /// The localized label that describes the action triggered by the configuration type.
         /// </summary>
+        /// <value>The localized label that describes the action triggered by the configuration type.</value>
         [DataMember(Name="label", EmitDefaultValue=false)]
         public Dictionary<string, string> Label { get; private set; }
 

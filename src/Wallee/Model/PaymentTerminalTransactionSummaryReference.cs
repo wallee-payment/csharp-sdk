@@ -43,14 +43,16 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TerminalId
+        /// The unique identifier of the terminal.
         /// </summary>
+        /// <value>The unique identifier of the terminal.</value>
         [DataMember(Name="terminalId", EmitDefaultValue=false)]
         public long? TerminalId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TerminalIdentifier
+        /// The unique identifier of the terminal, that is displayed on the device.
         /// </summary>
+        /// <value>The unique identifier of the terminal, that is displayed on the device.</value>
         [DataMember(Name="terminalIdentifier", EmitDefaultValue=false)]
         public string TerminalIdentifier { get; private set; }
 

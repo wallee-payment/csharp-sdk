@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// A condition allows you to define a criteria that a transaction must fulfill in order for a connector configuration to be considered for processing the payment.
+    /// A connector condition defines criteria that a transaction must meet for a connector configuration to process the payment.
     /// </summary>
     [DataContract]
     public partial class Condition :  IEquatable<Condition>

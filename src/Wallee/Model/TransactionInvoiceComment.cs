@@ -85,8 +85,9 @@ namespace Wallee.Model
         public bool? Pinned { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TransactionInvoice
+        /// The transaction invoice that the comment belongs to.
         /// </summary>
+        /// <value>The transaction invoice that the comment belongs to.</value>
         [DataMember(Name="transactionInvoice", EmitDefaultValue=false)]
         public long? TransactionInvoice { get; private set; }
 

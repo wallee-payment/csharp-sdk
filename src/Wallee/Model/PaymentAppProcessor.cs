@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class PaymentAppProcessor :  IEquatable<PaymentAppProcessor>
     {
         /// <summary>
-        /// Gets or Sets ConfiguredEnvironment
+        /// The environment (e.g., test or production) currently configured for the processor.
         /// </summary>
+        /// <value>The environment (e.g., test or production) currently configured for the processor.</value>
         [DataMember(Name="configuredEnvironment", EmitDefaultValue=false)]
         public ChargeAttemptEnvironment? ConfiguredEnvironment { get; private set; }
         /// <summary>
@@ -41,23 +42,23 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The created on date is the date when this processor has been added.
+        /// The date and time when the processor was created.
         /// </summary>
-        /// <value>The created on date is the date when this processor has been added.</value>
+        /// <value>The date and time when the processor was created.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The documentation URL points to a web site that describes how to configure and use the processor.
+        /// A URL pointing to the documentation that explains how to configure and use the processor.
         /// </summary>
-        /// <value>The documentation URL points to a web site that describes how to configure and use the processor.</value>
+        /// <value>A URL pointing to the documentation that explains how to configure and use the processor.</value>
         [DataMember(Name="documentationUrl", EmitDefaultValue=false)]
         public string DocumentationUrl { get; private set; }
 
         /// <summary>
-        /// The external ID corresponds to the ID that was provided during creation of the processor.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>The external ID corresponds to the ID that was provided during creation of the processor.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
@@ -83,50 +84,52 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The name of the processor will be displayed within the user interfaces that the merchant is interacting with.
+        /// The name used to identify the processor.
         /// </summary>
-        /// <value>The name of the processor will be displayed within the user interfaces that the merchant is interacting with.</value>
+        /// <value>The name used to identify the processor.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
-        /// This processor configuration is created as part of the app processor. Any transaction created with the processor is linked with this processor configuration.
+        /// The processor configuration created alongside the process within its designated space. This configuration is used in transactions created using this processor.
         /// </summary>
-        /// <value>This processor configuration is created as part of the app processor. Any transaction created with the processor is linked with this processor configuration.</value>
+        /// <value>The processor configuration created alongside the process within its designated space. This configuration is used in transactions created using this processor.</value>
         [DataMember(Name="processorConfiguration", EmitDefaultValue=false)]
         public PaymentProcessorConfiguration ProcessorConfiguration { get; private set; }
 
         /// <summary>
-        /// When the user sets the processor into the production mode the user will be forwarded to this URL to configure the production environment. When no URL is provided no redirection will happen.
+        /// A URL pointing to the site where merchants can set up production mode for the processor.
         /// </summary>
-        /// <value>When the user sets the processor into the production mode the user will be forwarded to this URL to configure the production environment. When no URL is provided no redirection will happen.</value>
+        /// <value>A URL pointing to the site where merchants can set up production mode for the processor.</value>
         [DataMember(Name="productionModeUrl", EmitDefaultValue=false)]
         public string ProductionModeUrl { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets SvgIcon
+        /// An SVG icon representing the processor, displayed to the user in the interface.
         /// </summary>
+        /// <value>An SVG icon representing the processor, displayed to the user in the interface.</value>
         [DataMember(Name="svgIcon", EmitDefaultValue=false)]
         public string SvgIcon { get; private set; }
 
         /// <summary>
-        /// The updated on date indicates when the last update on the processor occurred.
+        /// The date and time when the processor was last updated.
         /// </summary>
-        /// <value>The updated on date indicates when the last update on the processor occurred.</value>
+        /// <value>The date and time when the processor was last updated.</value>
         [DataMember(Name="updatedOn", EmitDefaultValue=false)]
         public DateTime? UpdatedOn { get; private set; }
 
         /// <summary>
-        /// When the processor is ready to be used for transactions in the production environment this flag is set to true.
+        /// Whether the processor is fully prepared and available for handling transactions in a production environment.
         /// </summary>
-        /// <value>When the processor is ready to be used for transactions in the production environment this flag is set to true.</value>
+        /// <value>Whether the processor is fully prepared and available for handling transactions in a production environment.</value>
         [DataMember(Name="usableInProduction", EmitDefaultValue=false)]
         public bool? UsableInProduction { get; private set; }
 
         /// <summary>
-        /// Gets or Sets UsableInProductionSince
+        /// the date and time when the processor became fully usable and available for handling transactions in a production environment.
         /// </summary>
+        /// <value>the date and time when the processor became fully usable and available for handling transactions in a production environment.</value>
         [DataMember(Name="usableInProductionSince", EmitDefaultValue=false)]
         public DateTime? UsableInProductionSince { get; private set; }
 

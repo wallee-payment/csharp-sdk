@@ -85,8 +85,9 @@ namespace Wallee.Model
         public int? SortOrder { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Visible
+        /// Whether the feature is visible to the user.
         /// </summary>
+        /// <value>Whether the feature is visible to the user.</value>
         [DataMember(Name="visible", EmitDefaultValue=false)]
         public bool? Visible { get; private set; }
 

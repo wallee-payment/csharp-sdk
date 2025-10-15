@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// A payment information hash is calculated based on the information entered by the user. The same input leads to the same hash. The hash is collision free.
+    /// A payment information hash is generated from user input, ensuring consistent and collision-free results for identical inputs.
     /// </summary>
     [DataContract]
     public partial class PaymentInformationHash :  IEquatable<PaymentInformationHash>
@@ -36,14 +36,16 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// The type specifies the algorithm used for calculating the hash.
         /// </summary>
+        /// <value>The type specifies the algorithm used for calculating the hash.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public PaymentInformationHashType Type { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Value
+        /// The hash value generated based on the specified type.
         /// </summary>
+        /// <value>The hash value generated based on the specified type.</value>
         [DataMember(Name="value", EmitDefaultValue=false)]
         public string Value { get; private set; }
 

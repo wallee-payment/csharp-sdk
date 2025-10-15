@@ -67,6 +67,12 @@ namespace Wallee.Model
         public string ComponentReferenceName { get; private set; }
 
         /// <summary>
+        /// Gets or Sets ComponentReferenceSku
+        /// </summary>
+        [DataMember(Name="componentReferenceSku", EmitDefaultValue=false)]
+        public string ComponentReferenceSku { get; private set; }
+
+        /// <summary>
         /// The ID of the user the ledger entry was created by.
         /// </summary>
         /// <value>The ID of the user the ledger entry was created by.</value>
@@ -88,9 +94,9 @@ namespace Wallee.Model
         public decimal? DiscountIncludingTax { get; private set; }
 
         /// <summary>
-        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
@@ -183,6 +189,7 @@ namespace Wallee.Model
             sb.Append("  AmountExcludingTax: ").Append(AmountExcludingTax).Append("\n");
             sb.Append("  AmountIncludingTax: ").Append(AmountIncludingTax).Append("\n");
             sb.Append("  ComponentReferenceName: ").Append(ComponentReferenceName).Append("\n");
+            sb.Append("  ComponentReferenceSku: ").Append(ComponentReferenceSku).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  DiscountIncludingTax: ").Append(DiscountIncludingTax).Append("\n");
@@ -253,6 +260,11 @@ namespace Wallee.Model
                     this.ComponentReferenceName == input.ComponentReferenceName ||
                     (this.ComponentReferenceName != null &&
                     this.ComponentReferenceName.Equals(input.ComponentReferenceName))
+                ) && 
+                (
+                    this.ComponentReferenceSku == input.ComponentReferenceSku ||
+                    (this.ComponentReferenceSku != null &&
+                    this.ComponentReferenceSku.Equals(input.ComponentReferenceSku))
                 ) && 
                 (
                     this.CreatedBy == input.CreatedBy ||
@@ -359,6 +371,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.AmountIncludingTax.GetHashCode();
                 if (this.ComponentReferenceName != null)
                     hashCode = hashCode * 59 + this.ComponentReferenceName.GetHashCode();
+                if (this.ComponentReferenceSku != null)
+                    hashCode = hashCode * 59 + this.ComponentReferenceSku.GetHashCode();
                 if (this.CreatedBy != null)
                     hashCode = hashCode * 59 + this.CreatedBy.GetHashCode();
                 if (this.CreatedOn != null)

@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The payment method configuration builds the base to connect with different payment method connectors.
+    /// PaymentMethodConfiguration
     /// </summary>
     [DataContract]
     public partial class PaymentMethodConfiguration :  IEquatable<PaymentMethodConfiguration>
@@ -48,9 +48,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// A custom description for the payment method which is displayed to the customer.
+        /// A customer-facing custom description for the payment method.
         /// </summary>
-        /// <value>A custom description for the payment method which is displayed to the customer.</value>
+        /// <value>A customer-facing custom description for the payment method.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public Dictionary<string, string> Description { get; private set; }
 
@@ -62,9 +62,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The resource path to a custom image for the payment method which is displayed to the customer.
+        /// The resource path to a custom image for the payment method, displayed to the customer for visual identification.
         /// </summary>
-        /// <value>The resource path to a custom image for the payment method which is displayed to the customer.</value>
+        /// <value>The resource path to a custom image for the payment method, displayed to the customer for visual identification.</value>
         [DataMember(Name="imageResourcePath", EmitDefaultValue=false)]
         public ResourcePath ImageResourcePath { get; private set; }
 
@@ -98,23 +98,23 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// The description for the payment method that is actually displayed to the customer. This is either the custom description, if defined, or otherwise the payment method&#39;s default one.
+        /// The description of the payment method displayed to the customer. If a custom description is defined, it will be used; otherwise, the default description of the payment method will be shown.
         /// </summary>
-        /// <value>The description for the payment method that is actually displayed to the customer. This is either the custom description, if defined, or otherwise the payment method&#39;s default one.</value>
+        /// <value>The description of the payment method displayed to the customer. If a custom description is defined, it will be used; otherwise, the default description of the payment method will be shown.</value>
         [DataMember(Name="resolvedDescription", EmitDefaultValue=false)]
         public Dictionary<string, string> ResolvedDescription { get; private set; }
 
         /// <summary>
-        /// The image URL for the payment method that is actually displayed to the customer. This is either the custom image, if defined, or otherwise the payment method&#39;s default one.
+        /// The URL to the image of the payment method displayed to the customer. If a custom image is defined, it will be used; otherwise, the default image of the payment method will be shown.
         /// </summary>
-        /// <value>The image URL for the payment method that is actually displayed to the customer. This is either the custom image, if defined, or otherwise the payment method&#39;s default one.</value>
+        /// <value>The URL to the image of the payment method displayed to the customer. If a custom image is defined, it will be used; otherwise, the default image of the payment method will be shown.</value>
         [DataMember(Name="resolvedImageUrl", EmitDefaultValue=false)]
         public string ResolvedImageUrl { get; private set; }
 
         /// <summary>
-        /// The title for the payment method that is actually displayed to the customer. This is either the custom title, if defined, or otherwise the payment method&#39;s default one.
+        /// The title of the payment method displayed to the customer. If a custom title is defined, it will be used; otherwise, the default title of the payment method will be shown.
         /// </summary>
-        /// <value>The title for the payment method that is actually displayed to the customer. This is either the custom title, if defined, or otherwise the payment method&#39;s default one.</value>
+        /// <value>The title of the payment method displayed to the customer. If a custom title is defined, it will be used; otherwise, the default title of the payment method will be shown.</value>
         [DataMember(Name="resolvedTitle", EmitDefaultValue=false)]
         public Dictionary<string, string> ResolvedTitle { get; private set; }
 
@@ -134,9 +134,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// A custom title for the payment method which is displayed to the customer.
+        /// A customer-facing custom title for the payment method.
         /// </summary>
-        /// <value>A custom title for the payment method which is displayed to the customer.</value>
+        /// <value>A customer-facing custom title for the payment method.</value>
         [DataMember(Name="title", EmitDefaultValue=false)]
         public Dictionary<string, string> Title { get; private set; }
 

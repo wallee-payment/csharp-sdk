@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class BankTransaction :  IEquatable<BankTransaction>
     {
         /// <summary>
-        /// Gets or Sets FlowDirection
+        /// Indicates the direction of a bank transaction, specifying whether the amount flows into or out of the bank account.
         /// </summary>
+        /// <value>Indicates the direction of a bank transaction, specifying whether the amount flows into or out of the bank account.</value>
         [DataMember(Name="flowDirection", EmitDefaultValue=false)]
         public BankTransactionFlowDirection? FlowDirection { get; private set; }
         /// <summary>
@@ -40,16 +41,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The adjustments applied on this bank transaction.
+        /// Adjustments are changes made to the initial transaction amount, such as fees or corrections.
         /// </summary>
-        /// <value>The adjustments applied on this bank transaction.</value>
+        /// <value>Adjustments are changes made to the initial transaction amount, such as fees or corrections.</value>
         [DataMember(Name="adjustments", EmitDefaultValue=false)]
         public List<PaymentAdjustment> Adjustments { get; private set; }
 
         /// <summary>
-        /// The created by indicates the user which has created the bank transaction.
+        /// The ID of the user the bank transaction was created by.
         /// </summary>
-        /// <value>The created by indicates the user which has created the bank transaction.</value>
+        /// <value>The ID of the user the bank transaction was created by.</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
@@ -61,15 +62,16 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The currency bank account which is used to handle money flow.
+        /// The currency bank account that sends or receives money based on the bank transaction&#39;s flow direction.
         /// </summary>
-        /// <value>The currency bank account which is used to handle money flow.</value>
+        /// <value>The currency bank account that sends or receives money based on the bank transaction&#39;s flow direction.</value>
         [DataMember(Name="currencyBankAccount", EmitDefaultValue=false)]
         public CurrencyBankAccount CurrencyBankAccount { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ExternalId
+        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
         /// </summary>
+        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
@@ -89,9 +91,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The payment date describes the date when the transaction was made.
+        /// The payment date specifies the date on which the payment was processed.
         /// </summary>
-        /// <value>The payment date describes the date when the transaction was made.</value>
+        /// <value>The payment date specifies the date on which the payment was processed.</value>
         [DataMember(Name="paymentDate", EmitDefaultValue=false)]
         public DateTime? PaymentDate { get; private set; }
 
@@ -103,47 +105,52 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// The posting amount indicates the amount including adjustments.
+        /// The posting amount refers to the monetary value recorded for the bank transaction prior to any adjustments.
         /// </summary>
-        /// <value>The posting amount indicates the amount including adjustments.</value>
+        /// <value>The posting amount refers to the monetary value recorded for the bank transaction prior to any adjustments.</value>
         [DataMember(Name="postingAmount", EmitDefaultValue=false)]
         public decimal? PostingAmount { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Reference
+        /// A unique reference to identify the bank transaction.
         /// </summary>
+        /// <value>A unique reference to identify the bank transaction.</value>
         [DataMember(Name="reference", EmitDefaultValue=false)]
         public string Reference { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Source
+        /// The source indicates how the bank transaction was created.
         /// </summary>
+        /// <value>The source indicates how the bank transaction was created.</value>
         [DataMember(Name="source", EmitDefaultValue=false)]
         public long? Source { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets TotalAdjustmentAmountIncludingTax
+        /// Represents the total value of all adjustments to the bank transaction, including tax.
         /// </summary>
+        /// <value>Represents the total value of all adjustments to the bank transaction, including tax.</value>
         [DataMember(Name="totalAdjustmentAmountIncludingTax", EmitDefaultValue=false)]
         public decimal? TotalAdjustmentAmountIncludingTax { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// The bank transaction&#39;s type.
         /// </summary>
+        /// <value>The bank transaction&#39;s type.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public long? Type { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ValueAmount
+        /// The value amount represents the net monetary value of the transaction after applicable deductions.
         /// </summary>
+        /// <value>The value amount represents the net monetary value of the transaction after applicable deductions.</value>
         [DataMember(Name="valueAmount", EmitDefaultValue=false)]
         public decimal? ValueAmount { get; private set; }
 
         /// <summary>
-        /// The value date describes the date the amount is effective on the account.
+        /// The value date indicates the date on which the transaction amount becomes effective.
         /// </summary>
-        /// <value>The value date describes the date the amount is effective on the account.</value>
+        /// <value>The value date indicates the date on which the transaction amount becomes effective.</value>
         [DataMember(Name="valueDate", EmitDefaultValue=false)]
         public DateTime? ValueDate { get; private set; }
 

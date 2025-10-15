@@ -28,9 +28,9 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CompletionLineItemCreate" /> class.
         /// </summary>
-        /// <param name="amount">The total amount of the line item including any tax. (required).</param>
-        /// <param name="quantity">The quantity of the line item which should be completed. (required).</param>
-        /// <param name="uniqueId">The unique id identifies the line item on which the capture is applied on. (required).</param>
+        /// <param name="amount">The total amount of the line item to be captured, including taxes. (required).</param>
+        /// <param name="quantity">The number of items to be captured. (required).</param>
+        /// <param name="uniqueId">The unique identifier of the line item within the set of line items. (required).</param>
         public CompletionLineItemCreate(decimal? amount, decimal? quantity, string uniqueId)
         {
             // to ensure "amount" is required (not null)
@@ -54,23 +54,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The total amount of the line item including any tax.
+        /// The total amount of the line item to be captured, including taxes.
         /// </summary>
-        /// <value>The total amount of the line item including any tax.</value>
+        /// <value>The total amount of the line item to be captured, including taxes.</value>
         [DataMember(Name="amount", EmitDefaultValue=false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
-        /// The quantity of the line item which should be completed.
+        /// The number of items to be captured.
         /// </summary>
-        /// <value>The quantity of the line item which should be completed.</value>
+        /// <value>The number of items to be captured.</value>
         [DataMember(Name="quantity", EmitDefaultValue=false)]
         public decimal? Quantity { get; set; }
 
         /// <summary>
-        /// The unique id identifies the line item on which the capture is applied on.
+        /// The unique identifier of the line item within the set of line items.
         /// </summary>
-        /// <value>The unique id identifies the line item on which the capture is applied on.</value>
+        /// <value>The unique identifier of the line item within the set of line items.</value>
         [DataMember(Name="uniqueId", EmitDefaultValue=false)]
         public string UniqueId { get; set; }
 

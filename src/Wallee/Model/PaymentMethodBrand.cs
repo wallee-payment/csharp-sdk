@@ -36,8 +36,9 @@ namespace Wallee.Model
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
-        /// Gets or Sets GrayImagePath
+        /// The path to the payment method brand&#39;s grayscale image.
         /// </summary>
+        /// <value>The path to the payment method brand&#39;s grayscale image.</value>
         [DataMember(Name="grayImagePath", EmitDefaultValue=false)]
         public string GrayImagePath { get; private set; }
 
@@ -49,9 +50,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The path to the payment brand&#39;s image which is displayed to the customer.
+        /// The path to the payment method brand&#39;s image.
         /// </summary>
-        /// <value>The path to the payment brand&#39;s image which is displayed to the customer.</value>
+        /// <value>The path to the payment method brand&#39;s image.</value>
         [DataMember(Name="imagePath", EmitDefaultValue=false)]
         public string ImagePath { get; private set; }
 

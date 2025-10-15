@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// This model holds the card data and optional cardholder authentication details.
+    /// AuthenticatedCardData
     /// </summary>
     [DataContract]
     public partial class AuthenticatedCardData : TokenizedCardData,  IEquatable<AuthenticatedCardData>
@@ -33,9 +33,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The cardholder authentication information. The authentication is optional and can be provided if the cardholder has been already authenticated (e.g. in 3-D Secure system).
+        /// Optional authentication details for the cardholder, such as 3D Secure authentication, used when the cardholder has already been verified during the transaction for added security.
         /// </summary>
-        /// <value>The cardholder authentication information. The authentication is optional and can be provided if the cardholder has been already authenticated (e.g. in 3-D Secure system).</value>
+        /// <value>Optional authentication details for the cardholder, such as 3D Secure authentication, used when the cardholder has already been verified during the transaction for added security.</value>
         [DataMember(Name="cardholderAuthentication", EmitDefaultValue=false)]
         public CardholderAuthentication CardholderAuthentication { get; private set; }
 

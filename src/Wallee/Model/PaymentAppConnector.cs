@@ -35,36 +35,37 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets AuthorizationTimeout
+        /// The duration within which the authorization process for a payment should complete.
         /// </summary>
+        /// <value>The duration within which the authorization process for a payment should complete.</value>
         [DataMember(Name="authorizationTimeout", EmitDefaultValue=false)]
         public string AuthorizationTimeout { get; private set; }
 
         /// <summary>
-        /// The completion configuration defines how the deferred completion is processed. If it is not present it means that deferred completion is not supported by this connector.
+        /// The completion configuration controlling how deferred completion is processed. If not present, deferred completion is not supported for this connector.
         /// </summary>
-        /// <value>The completion configuration defines how the deferred completion is processed. If it is not present it means that deferred completion is not supported by this connector.</value>
+        /// <value>The completion configuration controlling how deferred completion is processed. If not present, deferred completion is not supported for this connector.</value>
         [DataMember(Name="completionConfiguration", EmitDefaultValue=false)]
         public PaymentAppCompletionConfiguration CompletionConfiguration { get; private set; }
 
         /// <summary>
-        /// The connector configuration references the configuration that was created as part of this connector within the space. The connector configuration is referenced within transactions created with this connector.
+        /// The connector configuration created alongside the connector within its designated space. This configuration is used in transactions created using this connector.
         /// </summary>
-        /// <value>The connector configuration references the configuration that was created as part of this connector within the space. The connector configuration is referenced within transactions created with this connector.</value>
+        /// <value>The connector configuration created alongside the connector within its designated space. This configuration is used in transactions created using this connector.</value>
         [DataMember(Name="connectorConfiguration", EmitDefaultValue=false)]
         public PaymentConnectorConfiguration ConnectorConfiguration { get; private set; }
 
         /// <summary>
-        /// The created on date indicates when the connector was added.
+        /// The date and time when the connector was created.
         /// </summary>
-        /// <value>The created on date indicates when the connector was added.</value>
+        /// <value>The date and time when the connector was created.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The external ID corresponds to the ID provided during inserting of the processor.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>The external ID corresponds to the ID provided during inserting of the processor.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
@@ -83,38 +84,38 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The name of the connector will be displayed within the user interfaces that the merchant is interacting with.
+        /// The name used to identify the connector.
         /// </summary>
-        /// <value>The name of the connector will be displayed within the user interfaces that the merchant is interacting with.</value>
+        /// <value>The name used to identify the connector.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
-        /// The payment page endpoint is invoked to process the transaction. The endpoint is defined by the external service provider.
+        /// The URL where the user is redirected to process a payment. This endpoint is provided by the external service provider.
         /// </summary>
-        /// <value>The payment page endpoint is invoked to process the transaction. The endpoint is defined by the external service provider.</value>
+        /// <value>The URL where the user is redirected to process a payment. This endpoint is provided by the external service provider.</value>
         [DataMember(Name="paymentPageEndpoint", EmitDefaultValue=false)]
         public string PaymentPageEndpoint { get; private set; }
 
         /// <summary>
-        /// The processor references the app processor to which this connector belongs to. The relationship is established during the creation of the connector.
+        /// The payment app processor that the connector belongs to. This relationship is defined when the connector is created.
         /// </summary>
-        /// <value>The processor references the app processor to which this connector belongs to. The relationship is established during the creation of the connector.</value>
+        /// <value>The payment app processor that the connector belongs to. This relationship is defined when the connector is created.</value>
         [DataMember(Name="processor", EmitDefaultValue=false)]
         public PaymentAppProcessor Processor { get; private set; }
 
         /// <summary>
-        /// The refund configuration defines how refunds are processed. If it is not present it means that refunds are not supported by this connector.
+        /// The refund configuration controlling the behavior for processing refunds. If not present, refunds are not supported for this connector.
         /// </summary>
-        /// <value>The refund configuration defines how refunds are processed. If it is not present it means that refunds are not supported by this connector.</value>
+        /// <value>The refund configuration controlling the behavior for processing refunds. If not present, refunds are not supported for this connector.</value>
         [DataMember(Name="refundConfiguration", EmitDefaultValue=false)]
         public PaymentAppRefundConfiguration RefundConfiguration { get; private set; }
 
 
         /// <summary>
-        /// The updated on date indicates when the last time the connector was updated on.
+        /// The date and time when the connector was last updated.
         /// </summary>
-        /// <value>The updated on date indicates when the last time the connector was updated on.</value>
+        /// <value>The date and time when the connector was last updated.</value>
         [DataMember(Name="updatedOn", EmitDefaultValue=false)]
         public DateTime? UpdatedOn { get; private set; }
 

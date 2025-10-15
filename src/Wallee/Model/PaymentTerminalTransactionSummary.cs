@@ -29,6 +29,13 @@ namespace Wallee.Model
         }
 
         /// <summary>
+        /// The transactions amount per currency.
+        /// </summary>
+        /// <value>The transactions amount per currency.</value>
+        [DataMember(Name="balanceAmountPerCurrency", EmitDefaultValue=false)]
+        public Dictionary<string, decimal?> BalanceAmountPerCurrency { get; private set; }
+
+        /// <summary>
         /// Gets or Sets DccTransactionSums
         /// </summary>
         [DataMember(Name="dccTransactionSums", EmitDefaultValue=false)]
@@ -61,8 +68,9 @@ namespace Wallee.Model
         public int? NumberOfTransactions { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PaymentTerminal
+        /// The payment terminal of the transaction summary.
         /// </summary>
+        /// <value>The payment terminal of the transaction summary.</value>
         [DataMember(Name="paymentTerminal", EmitDefaultValue=false)]
         public long? PaymentTerminal { get; private set; }
 
@@ -105,6 +113,7 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class PaymentTerminalTransactionSummary {\n");
+            sb.Append("  BalanceAmountPerCurrency: ").Append(BalanceAmountPerCurrency).Append("\n");
             sb.Append("  DccTransactionSums: ").Append(DccTransactionSums).Append("\n");
             sb.Append("  EndedOn: ").Append(EndedOn).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
@@ -150,6 +159,12 @@ namespace Wallee.Model
                 return false;
 
             return 
+                (
+                    this.BalanceAmountPerCurrency == input.BalanceAmountPerCurrency ||
+                    this.BalanceAmountPerCurrency != null &&
+                    input.BalanceAmountPerCurrency != null &&
+                    this.BalanceAmountPerCurrency.SequenceEqual(input.BalanceAmountPerCurrency)
+                ) && 
                 (
                     this.DccTransactionSums == input.DccTransactionSums ||
                     this.DccTransactionSums != null &&
@@ -218,6 +233,8 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.BalanceAmountPerCurrency != null)
+                    hashCode = hashCode * 59 + this.BalanceAmountPerCurrency.GetHashCode();
                 if (this.DccTransactionSums != null)
                     hashCode = hashCode * 59 + this.DccTransactionSums.GetHashCode();
                 if (this.EndedOn != null)

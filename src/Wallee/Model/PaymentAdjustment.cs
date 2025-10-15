@@ -29,15 +29,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets AmountExcludingTax
+        /// The adjustment&#39;s amount, excluding taxes.
         /// </summary>
+        /// <value>The adjustment&#39;s amount, excluding taxes.</value>
         [DataMember(Name="amountExcludingTax", EmitDefaultValue=false)]
         public decimal? AmountExcludingTax { get; private set; }
 
         /// <summary>
-        /// The total amount of this adjustment including taxes.
+        /// The adjustment&#39;s amount, including taxes.
         /// </summary>
-        /// <value>The total amount of this adjustment including taxes.</value>
+        /// <value>The adjustment&#39;s amount, including taxes.</value>
         [DataMember(Name="amountIncludingTax", EmitDefaultValue=false)]
         public decimal? AmountIncludingTax { get; private set; }
 
@@ -49,21 +50,23 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The rate in percentage is the rate on which the adjustment amount was calculated with.
+        /// The percentage rate used to calculate the adjustment amount.
         /// </summary>
-        /// <value>The rate in percentage is the rate on which the adjustment amount was calculated with.</value>
+        /// <value>The percentage rate used to calculate the adjustment amount.</value>
         [DataMember(Name="rateInPercentage", EmitDefaultValue=false)]
         public decimal? RateInPercentage { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Tax
+        /// The tax applied to the adjustment.
         /// </summary>
+        /// <value>The tax applied to the adjustment.</value>
         [DataMember(Name="tax", EmitDefaultValue=false)]
         public Tax Tax { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Type
+        /// The type of the adjustment.
         /// </summary>
+        /// <value>The type of the adjustment.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public long? Type { get; private set; }
 

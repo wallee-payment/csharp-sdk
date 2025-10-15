@@ -29,7 +29,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="SubscriptionLedgerEntryCreate" /> class.
         /// </summary>
         /// <param name="amountIncludingTax">The leger entry&#39;s amount with discounts applied, including taxes. (required).</param>
-        /// <param name="externalId">A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead. (required).</param>
+        /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
         /// <param name="quantity">The number of items that were consumed. (required).</param>
         /// <param name="subscriptionVersion">The subscription version that the ledger entry belongs to. (required).</param>
         /// <param name="title">The title that indicates what the ledger entry is about. (required).</param>
@@ -81,9 +81,9 @@ namespace Wallee.Model
         public string ComponentReferenceName { get; set; }
 
         /// <summary>
-        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 

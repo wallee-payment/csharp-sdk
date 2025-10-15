@@ -35,9 +35,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The optional description is shown along the identifier. The intention of the description is to give an alternative name to the bank account.
+        /// The description serves as an alternative name for the bank account.
         /// </summary>
-        /// <value>The optional description is shown along the identifier. The intention of the description is to give an alternative name to the bank account.</value>
+        /// <value>The description serves as an alternative name for the bank account.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
         public string Description { get; private set; }
 
@@ -49,9 +49,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The bank account identifier is responsible to uniquely identify the bank account.
+        /// The identifier is used to uniquely identify the bank account.
         /// </summary>
-        /// <value>The bank account identifier is responsible to uniquely identify the bank account.</value>
+        /// <value>The identifier is used to uniquely identify the bank account.</value>
         [DataMember(Name="identifier", EmitDefaultValue=false)]
         public string Identifier { get; private set; }
 
@@ -71,8 +71,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets Type
+        /// The bank account&#39;s type
         /// </summary>
+        /// <value>The bank account&#39;s type</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public long? Type { get; private set; }
 

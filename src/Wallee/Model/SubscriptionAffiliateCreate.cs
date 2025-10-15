@@ -28,22 +28,22 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionAffiliateCreate" /> class.
         /// </summary>
-        /// <param name="externalId">A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead. (required).</param>
         /// <param name="reference">The reference used to identify the affiliate. (required).</param>
-        public SubscriptionAffiliateCreate(string externalId, string reference)
+        /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
+        public SubscriptionAffiliateCreate(string reference, string externalId)
         {
-            // to ensure "externalId" is required (not null)
-            if (externalId == null)
-            {
-                throw new InvalidDataException("externalId is a required property for SubscriptionAffiliateCreate and cannot be null");
-            }
-            this.ExternalId = externalId;
             // to ensure "reference" is required (not null)
             if (reference == null)
             {
                 throw new InvalidDataException("reference is a required property for SubscriptionAffiliateCreate and cannot be null");
             }
             this.Reference = reference;
+            // to ensure "externalId" is required (not null)
+            if (externalId == null)
+            {
+                throw new InvalidDataException("externalId is a required property for SubscriptionAffiliateCreate and cannot be null");
+            }
+            this.ExternalId = externalId;
         }
 
 
@@ -51,9 +51,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 

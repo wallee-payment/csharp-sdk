@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// Payment processors handle the connection to third part companies (payment service providers) that technically manage payment transactions and therefore process payments.
+    /// Payment processors serve as intermediaries that establish connections with third-party companies, known as payment service providers. These providers are responsible for managing the technical aspects of payment transactions, ensuring seamless and secure payment processing.
     /// </summary>
     [DataContract]
     public partial class PaymentProcessor :  IEquatable<PaymentProcessor>

@@ -62,6 +62,13 @@ namespace Wallee.Model
         [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
         public DateTime? PlannedPurgeDate { get; private set; }
 
+        /// <summary>
+        /// The component reference sku as a unique identifier.
+        /// </summary>
+        /// <value>The component reference sku as a unique identifier.</value>
+        [DataMember(Name="sku", EmitDefaultValue=false)]
+        public string Sku { get; private set; }
+
 
         /// <summary>
         /// The version is used for optimistic locking and incremented whenever the object is updated.
@@ -82,6 +89,7 @@ namespace Wallee.Model
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
+            sb.Append("  Sku: ").Append(Sku).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
@@ -139,6 +147,11 @@ namespace Wallee.Model
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
                 ) && 
                 (
+                    this.Sku == input.Sku ||
+                    (this.Sku != null &&
+                    this.Sku.Equals(input.Sku))
+                ) && 
+                (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
@@ -167,6 +180,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
+                if (this.Sku != null)
+                    hashCode = hashCode * 59 + this.Sku.GetHashCode();
                 if (this.State != null)
                     hashCode = hashCode * 59 + this.State.GetHashCode();
                 if (this.Version != null)

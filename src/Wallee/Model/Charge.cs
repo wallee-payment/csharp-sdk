@@ -18,7 +18,7 @@ namespace Wallee.Model
     /// Charge
     /// </summary>
     [DataContract]
-    public partial class Charge : TransactionAwareEntity,  IEquatable<Charge>
+    public partial class Charge :  IEquatable<Charge>
     {
         /// <summary>
         /// The object&#39;s current state.
@@ -27,8 +27,9 @@ namespace Wallee.Model
         [DataMember(Name="state", EmitDefaultValue=false)]
         public ChargeState? State { get; private set; }
         /// <summary>
-        /// Gets or Sets Type
+        /// The type specifying how the customer was charged.
         /// </summary>
+        /// <value>The type specifying how the customer was charged.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public ChargeType? Type { get; private set; }
         /// <summary>
@@ -39,21 +40,26 @@ namespace Wallee.Model
         {
         }
 
-
-
-
         /// <summary>
-        /// The date on which the charge was created on.
+        /// The date and time when the object was created.
         /// </summary>
-        /// <value>The date on which the charge was created on.</value>
+        /// <value>The date and time when the object was created.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FailureReason
+        /// The reason for the failure of the charge.
         /// </summary>
+        /// <value>The reason for the failure of the charge.</value>
         [DataMember(Name="failureReason", EmitDefaultValue=false)]
         public FailureReason FailureReason { get; private set; }
+
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; private set; }
 
         /// <summary>
         /// The language that is linked to the object.
@@ -61,6 +67,13 @@ namespace Wallee.Model
         /// <value>The language that is linked to the object.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
+
+        /// <summary>
+        /// The ID of the space this object belongs to.
+        /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
@@ -78,28 +91,31 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets TimeZone
+        /// The time zone that this object is associated with.
         /// </summary>
+        /// <value>The time zone that this object is associated with.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TimeoutOn
+        /// The date and time when the charge will expire.
         /// </summary>
+        /// <value>The date and time when the charge will expire.</value>
         [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
         public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Transaction
+        /// The transaction that the charge belongs to.
         /// </summary>
+        /// <value>The transaction that the charge belongs to.</value>
         [DataMember(Name="transaction", EmitDefaultValue=false)]
         public Transaction Transaction { get; private set; }
 
 
         /// <summary>
-        /// The failure message describes for an end user why the charge is failed in the language of the user. This is only provided when the charge is marked as failed.
+        /// The message that can be displayed to the customer explaining why the charge failed, in the customer&#39;s language.
         /// </summary>
-        /// <value>The failure message describes for an end user why the charge is failed in the language of the user. This is only provided when the charge is marked as failed.</value>
+        /// <value>The message that can be displayed to the customer explaining why the charge failed, in the customer&#39;s language.</value>
         [DataMember(Name="userFailureMessage", EmitDefaultValue=false)]
         public string UserFailureMessage { get; private set; }
 
@@ -118,13 +134,11 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class Charge {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  SpaceViewId: ").Append(SpaceViewId).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
@@ -142,7 +156,7 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
@@ -167,77 +181,72 @@ namespace Wallee.Model
             if (input == null)
                 return false;
 
-            return base.Equals(input) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedTransaction == input.LinkedTransaction ||
-                    (this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(input.LinkedTransaction))
-                ) && base.Equals(input) && 
+            return 
                 (
                     this.CreatedOn == input.CreatedOn ||
                     (this.CreatedOn != null &&
                     this.CreatedOn.Equals(input.CreatedOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.FailureReason == input.FailureReason ||
                     (this.FailureReason != null &&
                     this.FailureReason.Equals(input.FailureReason))
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
                 (
                     this.Language == input.Language ||
                     (this.Language != null &&
                     this.Language.Equals(input.Language))
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.LinkedSpaceId == input.LinkedSpaceId ||
+                    (this.LinkedSpaceId != null &&
+                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
+                ) && 
                 (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||
                     (this.PlannedPurgeDate != null &&
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.SpaceViewId == input.SpaceViewId ||
                     (this.SpaceViewId != null &&
                     this.SpaceViewId.Equals(input.SpaceViewId))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TimeZone == input.TimeZone ||
                     (this.TimeZone != null &&
                     this.TimeZone.Equals(input.TimeZone))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TimeoutOn == input.TimeoutOn ||
                     (this.TimeoutOn != null &&
                     this.TimeoutOn.Equals(input.TimeoutOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Transaction == input.Transaction ||
                     (this.Transaction != null &&
                     this.Transaction.Equals(input.Transaction))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.UserFailureMessage == input.UserFailureMessage ||
                     (this.UserFailureMessage != null &&
                     this.UserFailureMessage.Equals(input.UserFailureMessage))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Version == input.Version ||
                     (this.Version != null &&
@@ -253,19 +262,17 @@ namespace Wallee.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = base.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
+                int hashCode = 41;
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
                 if (this.FailureReason != null)
                     hashCode = hashCode * 59 + this.FailureReason.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Language != null)
                     hashCode = hashCode * 59 + this.Language.GetHashCode();
+                if (this.LinkedSpaceId != null)
+                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
                 if (this.SpaceViewId != null)

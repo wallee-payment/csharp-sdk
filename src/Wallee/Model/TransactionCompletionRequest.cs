@@ -81,9 +81,9 @@ namespace Wallee.Model
         public List<CompletionLineItemCreate> LineItems { get; set; }
 
         /// <summary>
-        /// The statement descriptor explain charges or payments on bank statements.
+        /// The statement descriptor that appears on a customer&#39;s bank statement, providing an explanation for charges or payments, helping customers identify the transaction.
         /// </summary>
-        /// <value>The statement descriptor explain charges or payments on bank statements.</value>
+        /// <value>The statement descriptor that appears on a customer&#39;s bank statement, providing an explanation for charges or payments, helping customers identify the transaction.</value>
         [DataMember(Name="statementDescriptor", EmitDefaultValue=false)]
         public string StatementDescriptor { get; set; }
 

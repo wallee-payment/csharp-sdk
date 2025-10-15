@@ -15,14 +15,15 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The refund represents a credit back to the customer. It can be issued by the merchant or by the customer (reversal).
+    /// A refund is a credit issued to the customer, which can be initiated either by the merchant or by the customer as a reversal.
     /// </summary>
     [DataContract]
     public partial class Refund :  IEquatable<Refund>
     {
         /// <summary>
-        /// Gets or Sets Environment
+        /// The environment used when rendering resources.
         /// </summary>
+        /// <value>The environment used when rendering resources.</value>
         [DataMember(Name="environment", EmitDefaultValue=false)]
         public Environment? Environment { get; private set; }
         /// <summary>
@@ -32,8 +33,9 @@ namespace Wallee.Model
         [DataMember(Name="state", EmitDefaultValue=false)]
         public RefundState? State { get; private set; }
         /// <summary>
-        /// Gets or Sets Type
+        /// The type specifying the method and origin of the refund (e.g., initiated by the customer or merchant).
         /// </summary>
+        /// <value>The type specifying the method and origin of the refund (e.g., initiated by the customer or merchant).</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public RefundType? Type { get; private set; }
         /// <summary>
@@ -45,26 +47,30 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Amount
+        /// The total monetary amount of the refund, representing the exact credit issued to the customer.
         /// </summary>
+        /// <value>The total monetary amount of the refund, representing the exact credit issued to the customer.</value>
         [DataMember(Name="amount", EmitDefaultValue=false)]
         public decimal? Amount { get; private set; }
 
         /// <summary>
-        /// Gets or Sets BaseLineItems
+        /// The original base line items from the transaction prior to the refund, serving as a reference for the refunded amounts.
         /// </summary>
+        /// <value>The original base line items from the transaction prior to the refund, serving as a reference for the refunded amounts.</value>
         [DataMember(Name="baseLineItems", EmitDefaultValue=false)]
         public List<LineItem> BaseLineItems { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Completion
+        /// The transaction completion that the refund belongs to.
         /// </summary>
+        /// <value>The transaction completion that the refund belongs to.</value>
         [DataMember(Name="completion", EmitDefaultValue=false)]
         public long? Completion { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CreatedBy
+        /// The ID of the user the refund was created by.
         /// </summary>
+        /// <value>The ID of the user the refund was created by.</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
@@ -77,21 +83,23 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FailedOn
+        /// The date and time when the refund failed.
         /// </summary>
+        /// <value>The date and time when the refund failed.</value>
         [DataMember(Name="failedOn", EmitDefaultValue=false)]
         public DateTime? FailedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FailureReason
+        /// The reason for the failure of the refund.
         /// </summary>
+        /// <value>The reason for the failure of the refund.</value>
         [DataMember(Name="failureReason", EmitDefaultValue=false)]
         public FailureReason FailureReason { get; private set; }
 
@@ -117,8 +125,9 @@ namespace Wallee.Model
         public string Language { get; private set; }
 
         /// <summary>
-        /// Gets or Sets LineItems
+        /// The line items included in the refund, representing the reductions.
         /// </summary>
+        /// <value>The line items included in the refund, representing the reductions.</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItem> LineItems { get; private set; }
 
@@ -130,14 +139,16 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets MerchantReference
+        /// The merchant&#39;s reference used to identify the refund.
         /// </summary>
+        /// <value>The merchant&#39;s reference used to identify the refund.</value>
         [DataMember(Name="merchantReference", EmitDefaultValue=false)]
         public string MerchantReference { get; private set; }
 
         /// <summary>
-        /// Gets or Sets NextUpdateOn
+        /// The date and time when the next update of the object&#39;s state is planned.
         /// </summary>
+        /// <value>The date and time when the next update of the object&#39;s state is planned.</value>
         [DataMember(Name="nextUpdateOn", EmitDefaultValue=false)]
         public DateTime? NextUpdateOn { get; private set; }
 
@@ -149,78 +160,88 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ProcessingOn
+        /// The date and time when the processing of the refund was started.
         /// </summary>
+        /// <value>The date and time when the processing of the refund was started.</value>
         [DataMember(Name="processingOn", EmitDefaultValue=false)]
         public DateTime? ProcessingOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ProcessorReference
+        /// The reference ID provided by the payment processor, used to trace the refund through the external payment system.
         /// </summary>
+        /// <value>The reference ID provided by the payment processor, used to trace the refund through the external payment system.</value>
         [DataMember(Name="processorReference", EmitDefaultValue=false)]
         public string ProcessorReference { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ReducedLineItems
+        /// The line items from the original transaction, adjusted to reflect any reductions applied during the refund process.
         /// </summary>
+        /// <value>The line items from the original transaction, adjusted to reflect any reductions applied during the refund process.</value>
         [DataMember(Name="reducedLineItems", EmitDefaultValue=false)]
         public List<LineItem> ReducedLineItems { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Reductions
+        /// The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.
         /// </summary>
+        /// <value>The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.</value>
         [DataMember(Name="reductions", EmitDefaultValue=false)]
         public List<LineItemReduction> Reductions { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets SucceededOn
+        /// The date and time when the refund succeeded.
         /// </summary>
+        /// <value>The date and time when the refund succeeded.</value>
         [DataMember(Name="succeededOn", EmitDefaultValue=false)]
         public DateTime? SucceededOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Taxes
+        /// The tax breakdown applied to the refund amount, helping with tax calculations or reporting.
         /// </summary>
+        /// <value>The tax breakdown applied to the refund amount, helping with tax calculations or reporting.</value>
         [DataMember(Name="taxes", EmitDefaultValue=false)]
         public List<Tax> Taxes { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TimeZone
+        /// The time zone that this object is associated with.
         /// </summary>
+        /// <value>The time zone that this object is associated with.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TimeoutOn
+        /// The date and time when the object will expire.
         /// </summary>
+        /// <value>The date and time when the object will expire.</value>
         [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
         public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
-        /// The total applied fees is the sum of all fees that have been applied so far.
+        /// The sum of fees applied to the refund transaction, such as processing or service charges.
         /// </summary>
-        /// <value>The total applied fees is the sum of all fees that have been applied so far.</value>
+        /// <value>The sum of fees applied to the refund transaction, such as processing or service charges.</value>
         [DataMember(Name="totalAppliedFees", EmitDefaultValue=false)]
         public decimal? TotalAppliedFees { get; private set; }
 
         /// <summary>
-        /// The total settled amount is the total amount which has been settled so far.
+        /// The total amount settled for the refund, factoring in reductions, taxes, and any additional applied fees.
         /// </summary>
-        /// <value>The total settled amount is the total amount which has been settled so far.</value>
+        /// <value>The total amount settled for the refund, factoring in reductions, taxes, and any additional applied fees.</value>
         [DataMember(Name="totalSettledAmount", EmitDefaultValue=false)]
         public decimal? TotalSettledAmount { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Transaction
+        /// The transaction that the refund belongs to.
         /// </summary>
+        /// <value>The transaction that the refund belongs to.</value>
         [DataMember(Name="transaction", EmitDefaultValue=false)]
         public Transaction Transaction { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets UpdatedInvoice
+        /// An updated invoice reflecting adjustments made by the refund.
         /// </summary>
+        /// <value>An updated invoice reflecting adjustments made by the refund.</value>
         [DataMember(Name="updatedInvoice", EmitDefaultValue=false)]
         public long? UpdatedInvoice { get; private set; }
 

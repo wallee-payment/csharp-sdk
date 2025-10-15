@@ -39,8 +39,9 @@ namespace Wallee.Model
         [DataMember(Name="customersPresence", EmitDefaultValue=false)]
         public CustomersPresence? CustomersPresence { get; private set; }
         /// <summary>
-        /// Gets or Sets Environment
+        /// The environment used when rendering resources.
         /// </summary>
+        /// <value>The environment used when rendering resources.</value>
         [DataMember(Name="environment", EmitDefaultValue=false)]
         public Environment? Environment { get; private set; }
         /// <summary>

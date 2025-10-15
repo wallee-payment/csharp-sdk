@@ -84,6 +84,20 @@ namespace Wallee.Model
         public int? Port { get; private set; }
 
         /// <summary>
+        /// The preprod domain name that belongs to the scope.
+        /// </summary>
+        /// <value>The preprod domain name that belongs to the scope.</value>
+        [DataMember(Name="preprodDomainName", EmitDefaultValue=false)]
+        public string PreprodDomainName { get; private set; }
+
+        /// <summary>
+        /// The sandbox domain name that belongs to the scope.
+        /// </summary>
+        /// <value>The sandbox domain name that belongs to the scope.</value>
+        [DataMember(Name="sandboxDomainName", EmitDefaultValue=false)]
+        public string SandboxDomainName { get; private set; }
+
+        /// <summary>
         /// Whether the scope supports SSL.
         /// </summary>
         /// <value>Whether the scope supports SSL.</value>
@@ -127,6 +141,8 @@ namespace Wallee.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
+            sb.Append("  PreprodDomainName: ").Append(PreprodDomainName).Append("\n");
+            sb.Append("  SandboxDomainName: ").Append(SandboxDomainName).Append("\n");
             sb.Append("  SslActive: ").Append(SslActive).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  Themes: ").Append(Themes).Append("\n");
@@ -203,6 +219,16 @@ namespace Wallee.Model
                     this.Port.Equals(input.Port))
                 ) && 
                 (
+                    this.PreprodDomainName == input.PreprodDomainName ||
+                    (this.PreprodDomainName != null &&
+                    this.PreprodDomainName.Equals(input.PreprodDomainName))
+                ) && 
+                (
+                    this.SandboxDomainName == input.SandboxDomainName ||
+                    (this.SandboxDomainName != null &&
+                    this.SandboxDomainName.Equals(input.SandboxDomainName))
+                ) && 
+                (
                     this.SslActive == input.SslActive ||
                     (this.SslActive != null &&
                     this.SslActive.Equals(input.SslActive))
@@ -253,6 +279,10 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
                 if (this.Port != null)
                     hashCode = hashCode * 59 + this.Port.GetHashCode();
+                if (this.PreprodDomainName != null)
+                    hashCode = hashCode * 59 + this.PreprodDomainName.GetHashCode();
+                if (this.SandboxDomainName != null)
+                    hashCode = hashCode * 59 + this.SandboxDomainName.GetHashCode();
                 if (this.SslActive != null)
                     hashCode = hashCode * 59 + this.SslActive.GetHashCode();
                 if (this.State != null)

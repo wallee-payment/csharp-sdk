@@ -29,37 +29,37 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The completion endpoint is invoked to request the payment service provider to execute a completion.
+        /// The URL that the payment service provider will invoke to process a completion request. This endpoint handles communication with the provider for initiating and managing completions.
         /// </summary>
-        /// <value>The completion endpoint is invoked to request the payment service provider to execute a completion.</value>
+        /// <value>The URL that the payment service provider will invoke to process a completion request. This endpoint handles communication with the provider for initiating and managing completions.</value>
         [DataMember(Name="completionEndpoint", EmitDefaultValue=false)]
         public string CompletionEndpoint { get; private set; }
 
         /// <summary>
-        /// When the completion or the void is triggered we expect a feedback about the state of it. This timeout defines after how long we consider the void resp. completion as failed without receiving a final state update.
+        /// The maximum time (in minutes) to wait for a response from the payment service provider after a completion request is triggered. If no feedback or final status is received within this period, the completion is considered failed.
         /// </summary>
-        /// <value>When the completion or the void is triggered we expect a feedback about the state of it. This timeout defines after how long we consider the void resp. completion as failed without receiving a final state update.</value>
+        /// <value>The maximum time (in minutes) to wait for a response from the payment service provider after a completion request is triggered. If no feedback or final status is received within this period, the completion is considered failed.</value>
         [DataMember(Name="completionTimeoutInMinutes", EmitDefaultValue=false)]
         public int? CompletionTimeoutInMinutes { get; private set; }
 
         /// <summary>
-        /// The completion resp. the void can be triggered a while after the authorization of the transaction has been executed. This delay defines how many days after the authorization the void resp. completion must be triggered at the latest.
+        /// The maximum number of days after a transaction&#39;s authorization during which a completion or void action can be triggered. Once this period has passed, neither action can be executed.
         /// </summary>
-        /// <value>The completion resp. the void can be triggered a while after the authorization of the transaction has been executed. This delay defines how many days after the authorization the void resp. completion must be triggered at the latest.</value>
+        /// <value>The maximum number of days after a transaction&#39;s authorization during which a completion or void action can be triggered. Once this period has passed, neither action can be executed.</value>
         [DataMember(Name="maximalCompletionDelayInDays", EmitDefaultValue=false)]
         public int? MaximalCompletionDelayInDays { get; private set; }
 
         /// <summary>
-        /// This flag indicates whether the connector supports multiple completions for a single transaction or not.
+        /// Whether the payment connector can process multiple completions for a single transaction.
         /// </summary>
-        /// <value>This flag indicates whether the connector supports multiple completions for a single transaction or not.</value>
+        /// <value>Whether the payment connector can process multiple completions for a single transaction.</value>
         [DataMember(Name="multipleCompletionsSupported", EmitDefaultValue=false)]
         public bool? MultipleCompletionsSupported { get; private set; }
 
         /// <summary>
-        /// The void endpoint is invoked to request the payment service provider to execute a void.
+        /// The URL that the payment service provider will invoke to process a void request. This endpoint handles communication with the provider for initiating and managing voids.
         /// </summary>
-        /// <value>The void endpoint is invoked to request the payment service provider to execute a void.</value>
+        /// <value>The URL that the payment service provider will invoke to process a void request. This endpoint handles communication with the provider for initiating and managing voids.</value>
         [DataMember(Name="voidEndpoint", EmitDefaultValue=false)]
         public string VoidEndpoint { get; private set; }
 

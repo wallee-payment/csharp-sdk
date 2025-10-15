@@ -23,18 +23,47 @@ namespace Wallee.Model
         /// <summary>
         /// Gets or Sets BillingCycleType
         /// </summary>
-        [DataMember(Name="billingCycleType", EmitDefaultValue=false)]
-        public BillingCycleType? BillingCycleType { get; set; }
+        [DataMember(Name="billingCycleType", EmitDefaultValue=true)]
+        public BillingCycleType BillingCycleType { get; set; }
         /// <summary>
         /// Gets or Sets Customization
         /// </summary>
         [DataMember(Name="customization", EmitDefaultValue=false)]
         public BillingDayCustomization? Customization { get; set; }
         /// <summary>
+        /// Gets or Sets Month
+        /// </summary>
+        [DataMember(Name="month", EmitDefaultValue=false)]
+        public DisplayableMonth? Month { get; set; }
+        /// <summary>
+        /// Gets or Sets WeeklyDay
+        /// </summary>
+        [DataMember(Name="weeklyDay", EmitDefaultValue=false)]
+        public DisplayableDayOfWeek? WeeklyDay { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="BillingCycleModel" /> class.
         /// </summary>
-        public BillingCycleModel()
+        [JsonConstructorAttribute]
+        protected BillingCycleModel() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BillingCycleModel" /> class.
+        /// </summary>
+        /// <param name="billingCycleType">billingCycleType (required).</param>
+        /// <param name="numberOfPeriods">Billing Cycle type multiplied by Number of Periods defines billing cycle duration, e.g. 3 months. Monthly types require 1-12; weekly and yearly types require 1-9 periods; and daily types require 1-30. (required).</param>
+        public BillingCycleModel(BillingCycleType billingCycleType, int? numberOfPeriods)
         {
+            // to ensure "billingCycleType" is required (not null)
+            if (billingCycleType == null)
+            {
+                throw new InvalidDataException("billingCycleType is a required property for BillingCycleModel and cannot be null");
+            }
+            this.BillingCycleType = billingCycleType;
+            // to ensure "numberOfPeriods" is required (not null)
+            if (numberOfPeriods == null)
+            {
+                throw new InvalidDataException("numberOfPeriods is a required property for BillingCycleModel and cannot be null");
+            }
+            this.NumberOfPeriods = numberOfPeriods;
         }
 
 
@@ -45,23 +74,14 @@ namespace Wallee.Model
         [DataMember(Name="dayOfMonth", EmitDefaultValue=false)]
         public int? DayOfMonth { get; set; }
 
-        /// <summary>
-        /// Gets or Sets Month
-        /// </summary>
-        [DataMember(Name="month", EmitDefaultValue=false)]
-        public string Month { get; set; }
 
         /// <summary>
-        /// Gets or Sets NumberOfPeriods
+        /// Billing Cycle type multiplied by Number of Periods defines billing cycle duration, e.g. 3 months. Monthly types require 1-12; weekly and yearly types require 1-9 periods; and daily types require 1-30.
         /// </summary>
+        /// <value>Billing Cycle type multiplied by Number of Periods defines billing cycle duration, e.g. 3 months. Monthly types require 1-12; weekly and yearly types require 1-9 periods; and daily types require 1-30.</value>
         [DataMember(Name="numberOfPeriods", EmitDefaultValue=false)]
         public int? NumberOfPeriods { get; set; }
 
-        /// <summary>
-        /// Gets or Sets WeeklyDay
-        /// </summary>
-        [DataMember(Name="weeklyDay", EmitDefaultValue=false)]
-        public string WeeklyDay { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

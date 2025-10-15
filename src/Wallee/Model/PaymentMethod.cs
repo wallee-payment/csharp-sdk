@@ -29,9 +29,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The data collection types that are supported by the payment method.
+        /// The data collection types that payment method supports.
         /// </summary>
-        /// <value>The data collection types that are supported by the payment method.</value>
+        /// <value>The data collection types that payment method supports.</value>
         [DataMember(Name="dataCollectionTypes", EmitDefaultValue=false)]
         public List<DataCollectionType> DataCollectionTypes { get; private set; }
 
@@ -50,15 +50,16 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The path to the payment method&#39;s image which is displayed to the customer.
+        /// The path to the payment method&#39;s image.
         /// </summary>
-        /// <value>The path to the payment method&#39;s image which is displayed to the customer.</value>
+        /// <value>The path to the payment method&#39;s image.</value>
         [DataMember(Name="imagePath", EmitDefaultValue=false)]
         public string ImagePath { get; private set; }
 
         /// <summary>
-        /// Gets or Sets MerchantDescription
+        /// A merchant-focused, localized description of the payment method, providing its purpose and details.
         /// </summary>
+        /// <value>A merchant-focused, localized description of the payment method, providing its purpose and details.</value>
         [DataMember(Name="merchantDescription", EmitDefaultValue=false)]
         public Dictionary<string, string> MerchantDescription { get; private set; }
 
@@ -70,9 +71,9 @@ namespace Wallee.Model
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
-        /// The currencies that are supported by the payment method.
+        /// The currencies that the payment method supports.
         /// </summary>
-        /// <value>The currencies that are supported by the payment method.</value>
+        /// <value>The currencies that the payment method supports.</value>
         [DataMember(Name="supportedCurrencies", EmitDefaultValue=false)]
         public List<string> SupportedCurrencies { get; private set; }
 

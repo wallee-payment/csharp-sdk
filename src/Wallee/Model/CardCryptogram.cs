@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// This model holds the additional card authentication.
+    /// CardCryptogram
     /// </summary>
     [DataContract]
     public partial class CardCryptogram :  IEquatable<CardCryptogram>
@@ -29,14 +29,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Eci
+        /// The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.
         /// </summary>
+        /// <value>The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.</value>
         [DataMember(Name="eci", EmitDefaultValue=false)]
         public string Eci { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Value
+        /// The cryptogram value used for securing card transactions, format varying based on the PAN type.
         /// </summary>
+        /// <value>The cryptogram value used for securing card transactions, format varying based on the PAN type.</value>
         [DataMember(Name="value", EmitDefaultValue=false)]
         public string Value { get; private set; }
 

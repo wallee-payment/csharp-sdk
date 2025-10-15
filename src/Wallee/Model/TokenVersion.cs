@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class TokenVersion :  IEquatable<TokenVersion>
     {
         /// <summary>
-        /// Gets or Sets Environment
+        /// The environment in which the token version was created.
         /// </summary>
+        /// <value>The environment in which the token version was created.</value>
         [DataMember(Name="environment", EmitDefaultValue=false)]
         public ChargeAttemptEnvironment? Environment { get; private set; }
         /// <summary>
@@ -40,14 +41,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets ActivatedOn
+        /// The date and time when the token version was activated.
         /// </summary>
+        /// <value>The date and time when the token version was activated.</value>
         [DataMember(Name="activatedOn", EmitDefaultValue=false)]
         public DateTime? ActivatedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets BillingAddress
+        /// The billing address to be used for the transaction if no explicit billing address is provided during payment processing.
         /// </summary>
+        /// <value>The billing address to be used for the transaction if no explicit billing address is provided during payment processing.</value>
         [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public Address BillingAddress { get; private set; }
 
@@ -60,15 +63,16 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The expires on date indicates when token version expires. Once this date is reached the token version is marked as obsolete.
+        /// The date and time when the token version is set to expire, after which it will be marked as obsolete.
         /// </summary>
-        /// <value>The expires on date indicates when token version expires. Once this date is reached the token version is marked as obsolete.</value>
+        /// <value>The date and time when the token version is set to expire, after which it will be marked as obsolete.</value>
         [DataMember(Name="expiresOn", EmitDefaultValue=false)]
         public DateTime? ExpiresOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets IconUrl
+        /// The URL to the token&#39;s icon displayed to the customer.
         /// </summary>
+        /// <value>The URL to the token&#39;s icon displayed to the customer.</value>
         [DataMember(Name="iconUrl", EmitDefaultValue=false)]
         public string IconUrl { get; private set; }
 
@@ -101,39 +105,44 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The name used to identify the token.
         /// </summary>
+        /// <value>The name used to identify the token.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ObsoletedOn
+        /// The date and time when the token version was marked obsolete.
         /// </summary>
+        /// <value>The date and time when the token version was marked obsolete.</value>
         [DataMember(Name="obsoletedOn", EmitDefaultValue=false)]
         public DateTime? ObsoletedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PaymentConnectorConfiguration
+        /// The payment connector configuration that initialized the token version.
         /// </summary>
+        /// <value>The payment connector configuration that initialized the token version.</value>
         [DataMember(Name="paymentConnectorConfiguration", EmitDefaultValue=false)]
         public PaymentConnectorConfiguration PaymentConnectorConfiguration { get; private set; }
 
         /// <summary>
-        /// The payment information hash set contains hashes of the payment information represented by this token version.
+        /// The hashed payment information that the token version represents.
         /// </summary>
-        /// <value>The payment information hash set contains hashes of the payment information represented by this token version.</value>
+        /// <value>The hashed payment information that the token version represents.</value>
         [DataMember(Name="paymentInformationHashes", EmitDefaultValue=false)]
         public List<PaymentInformationHash> PaymentInformationHashes { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PaymentMethod
+        /// The payment method that initialized the token version.
         /// </summary>
+        /// <value>The payment method that initialized the token version.</value>
         [DataMember(Name="paymentMethod", EmitDefaultValue=false)]
         public long? PaymentMethod { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PaymentMethodBrand
+        /// The payment method brand that initialized the token version.
         /// </summary>
+        /// <value>The payment method brand that initialized the token version.</value>
         [DataMember(Name="paymentMethodBrand", EmitDefaultValue=false)]
         public long? PaymentMethodBrand { get; private set; }
 
@@ -145,28 +154,31 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ProcessorToken
+        /// The token name as specified by the processor.
         /// </summary>
+        /// <value>The token name as specified by the processor.</value>
         [DataMember(Name="processorToken", EmitDefaultValue=false)]
         public string ProcessorToken { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ShippingAddress
+        /// The shipping address to be used for the transaction if no explicit shipping address is provided during payment processing.
         /// </summary>
+        /// <value>The shipping address to be used for the transaction if no explicit shipping address is provided during payment processing.</value>
         [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
         public Address ShippingAddress { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets Token
+        /// The token that the token version belongs to.
         /// </summary>
+        /// <value>The token that the token version belongs to.</value>
         [DataMember(Name="token", EmitDefaultValue=false)]
         public Token Token { get; private set; }
 
         /// <summary>
-        /// The token version type determines what kind of token it is and by which payment connector the token can be processed by.
+        /// The type specifies the nature of the token and identifies the payment connector capable of processing it.
         /// </summary>
-        /// <value>The token version type determines what kind of token it is and by which payment connector the token can be processed by.</value>
+        /// <value>The type specifies the nature of the token and identifies the payment connector capable of processing it.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public TokenVersionType Type { get; private set; }
 

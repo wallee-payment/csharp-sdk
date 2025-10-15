@@ -36,6 +36,12 @@ namespace Wallee.Model
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
+        /// Gets or Sets Feature
+        /// </summary>
+        [DataMember(Name="feature", EmitDefaultValue=false)]
+        public Feature Feature { get; private set; }
+
+        /// <summary>
         /// A unique identifier for the object.
         /// </summary>
         /// <value>A unique identifier for the object.</value>
@@ -50,6 +56,18 @@ namespace Wallee.Model
         public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
+        /// Gets or Sets NavigationPath
+        /// </summary>
+        [DataMember(Name="navigationPath", EmitDefaultValue=false)]
+        public string NavigationPath { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets SortOrder
+        /// </summary>
+        [DataMember(Name="sortOrder", EmitDefaultValue=false)]
+        public int? SortOrder { get; private set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -58,8 +76,11 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class WalletType {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Feature: ").Append(Feature).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  NavigationPath: ").Append(NavigationPath).Append("\n");
+            sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -101,6 +122,11 @@ namespace Wallee.Model
                     this.Description.SequenceEqual(input.Description)
                 ) && 
                 (
+                    this.Feature == input.Feature ||
+                    (this.Feature != null &&
+                    this.Feature.Equals(input.Feature))
+                ) && 
+                (
                     this.Id == input.Id ||
                     (this.Id != null &&
                     this.Id.Equals(input.Id))
@@ -110,6 +136,16 @@ namespace Wallee.Model
                     this.Name != null &&
                     input.Name != null &&
                     this.Name.SequenceEqual(input.Name)
+                ) && 
+                (
+                    this.NavigationPath == input.NavigationPath ||
+                    (this.NavigationPath != null &&
+                    this.NavigationPath.Equals(input.NavigationPath))
+                ) && 
+                (
+                    this.SortOrder == input.SortOrder ||
+                    (this.SortOrder != null &&
+                    this.SortOrder.Equals(input.SortOrder))
                 );
         }
 
@@ -124,10 +160,16 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.Description != null)
                     hashCode = hashCode * 59 + this.Description.GetHashCode();
+                if (this.Feature != null)
+                    hashCode = hashCode * 59 + this.Feature.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.NavigationPath != null)
+                    hashCode = hashCode * 59 + this.NavigationPath.GetHashCode();
+                if (this.SortOrder != null)
+                    hashCode = hashCode * 59 + this.SortOrder.GetHashCode();
                 return hashCode;
             }
         }

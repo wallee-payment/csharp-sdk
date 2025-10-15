@@ -15,14 +15,15 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// This model holds the card data in plain.
+    /// TokenizedCardData
     /// </summary>
     [DataContract]
     public partial class TokenizedCardData :  IEquatable<TokenizedCardData>
     {
         /// <summary>
-        /// Gets or Sets RecurringIndicator
+        /// The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction&#39;s properties.
         /// </summary>
+        /// <value>The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction&#39;s properties.</value>
         [DataMember(Name="recurringIndicator", EmitDefaultValue=false)]
         public RecurringIndicator? RecurringIndicator { get; private set; }
         /// <summary>
@@ -34,22 +35,24 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The additional authentication value used to secure the tokenized card transactions.
+        /// An additional authentication value that enhances the security of tokenized card transactions.
         /// </summary>
-        /// <value>The additional authentication value used to secure the tokenized card transactions.</value>
+        /// <value>An additional authentication value that enhances the security of tokenized card transactions.</value>
         [DataMember(Name="cryptogram", EmitDefaultValue=false)]
         public CardCryptogram Cryptogram { get; private set; }
 
         /// <summary>
-        /// Gets or Sets InitialRecurringTransaction
+        /// Whether the transaction is an initial recurring transaction, based on the recurring indicator. This is used to identify the first transaction in a recurring payment setup.
         /// </summary>
+        /// <value>Whether the transaction is an initial recurring transaction, based on the recurring indicator. This is used to identify the first transaction in a recurring payment setup.</value>
         [DataMember(Name="initialRecurringTransaction", EmitDefaultValue=false)]
         public bool? InitialRecurringTransaction { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets TokenRequestorId
+        /// The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
         /// </summary>
+        /// <value>The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.</value>
         [DataMember(Name="tokenRequestorId", EmitDefaultValue=false)]
         public string TokenRequestorId { get; private set; }
 

@@ -15,19 +15,21 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// This model holds the card data and optional cardholder authentication details.
+    /// AuthenticatedCardDataCreate
     /// </summary>
     [DataContract]
     public partial class AuthenticatedCardDataCreate :  IEquatable<AuthenticatedCardDataCreate>
     {
         /// <summary>
-        /// Gets or Sets PanType
+        /// The type of PAN or token, indicating the source or security method of the card information.
         /// </summary>
+        /// <value>The type of PAN or token, indicating the source or security method of the card information.</value>
         [DataMember(Name="panType", EmitDefaultValue=false)]
         public PanType? PanType { get; set; }
         /// <summary>
-        /// Gets or Sets RecurringIndicator
+        /// The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction&#39;s properties.
         /// </summary>
+        /// <value>The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction&#39;s properties.</value>
         [DataMember(Name="recurringIndicator", EmitDefaultValue=false)]
         public RecurringIndicator? RecurringIndicator { get; set; }
         /// <summary>
@@ -38,7 +40,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticatedCardDataCreate" /> class.
         /// </summary>
-        /// <param name="primaryAccountNumber">The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card. (required).</param>
+        /// <param name="primaryAccountNumber">The card&#39;s primary account number (PAN), the unique identifier of the card. (required).</param>
         public AuthenticatedCardDataCreate(string primaryAccountNumber)
         {
             // to ensure "primaryAccountNumber" is required (not null)
@@ -50,58 +52,60 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The card holder name is the name printed onto the card. It identifies the person who owns the card.
+        /// The name of the cardholder, as printed on the card, identifying the card owner.
         /// </summary>
-        /// <value>The card holder name is the name printed onto the card. It identifies the person who owns the card.</value>
+        /// <value>The name of the cardholder, as printed on the card, identifying the card owner.</value>
         [DataMember(Name="cardHolderName", EmitDefaultValue=false)]
         public string CardHolderName { get; set; }
 
         /// <summary>
-        /// The card verification code (CVC) is a 3 to 4 digit code typically printed on the back of the card. It helps to ensure that the card holder is authorizing the transaction. For card not-present transactions this field is optional.
+        /// The security code used to validate the card during transactions.
         /// </summary>
-        /// <value>The card verification code (CVC) is a 3 to 4 digit code typically printed on the back of the card. It helps to ensure that the card holder is authorizing the transaction. For card not-present transactions this field is optional.</value>
+        /// <value>The security code used to validate the card during transactions.</value>
         [DataMember(Name="cardVerificationCode", EmitDefaultValue=false)]
         public string CardVerificationCode { get; set; }
 
         /// <summary>
-        /// The cardholder authentication information. The authentication is optional and can be provided if the cardholder has been already authenticated (e.g. in 3-D Secure system).
+        /// Optional authentication details for the cardholder, such as 3D Secure authentication, used when the cardholder has already been verified during the transaction for added security.
         /// </summary>
-        /// <value>The cardholder authentication information. The authentication is optional and can be provided if the cardholder has been already authenticated (e.g. in 3-D Secure system).</value>
+        /// <value>Optional authentication details for the cardholder, such as 3D Secure authentication, used when the cardholder has already been verified during the transaction for added security.</value>
         [DataMember(Name="cardholderAuthentication", EmitDefaultValue=false)]
         public CardholderAuthenticationCreate CardholderAuthentication { get; set; }
 
         /// <summary>
-        /// The additional authentication value used to secure the tokenized card transactions.
+        /// An additional authentication value that enhances the security of tokenized card transactions.
         /// </summary>
-        /// <value>The additional authentication value used to secure the tokenized card transactions.</value>
+        /// <value>An additional authentication value that enhances the security of tokenized card transactions.</value>
         [DataMember(Name="cryptogram", EmitDefaultValue=false)]
         public CardCryptogramCreate Cryptogram { get; set; }
 
         /// <summary>
-        /// The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).
+        /// The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).
         /// </summary>
-        /// <value>The card expiry date indicates when the card expires. The format is the format yyyy-mm where yyyy is the year (e.g. 2019) and the mm is the month (e.g. 09).</value>
+        /// <value>The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).</value>
         [DataMember(Name="expiryDate", EmitDefaultValue=false)]
         public string ExpiryDate { get; set; }
 
 
         /// <summary>
-        /// The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card.
+        /// The card&#39;s primary account number (PAN), the unique identifier of the card.
         /// </summary>
-        /// <value>The primary account number (PAN) identifies the card. The number is numeric and typically printed on the front of the card.</value>
+        /// <value>The card&#39;s primary account number (PAN), the unique identifier of the card.</value>
         [DataMember(Name="primaryAccountNumber", EmitDefaultValue=false)]
         public string PrimaryAccountNumber { get; set; }
 
 
         /// <summary>
-        /// Gets or Sets SchemeTransactionReference
+        /// A reference specific to the card&#39;s transaction within its payment scheme.
         /// </summary>
+        /// <value>A reference specific to the card&#39;s transaction within its payment scheme.</value>
         [DataMember(Name="schemeTransactionReference", EmitDefaultValue=false)]
         public string SchemeTransactionReference { get; set; }
 
         /// <summary>
-        /// Gets or Sets TokenRequestorId
+        /// The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
         /// </summary>
+        /// <value>The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.</value>
         [DataMember(Name="tokenRequestorId", EmitDefaultValue=false)]
         public string TokenRequestorId { get; set; }
 

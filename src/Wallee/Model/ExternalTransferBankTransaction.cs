@@ -29,26 +29,30 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets BankTransaction
+        /// Provides general information about the bank transaction.
         /// </summary>
+        /// <value>Provides general information about the bank transaction.</value>
         [DataMember(Name="bankTransaction", EmitDefaultValue=false)]
         public BankTransaction BankTransaction { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ExternalAccountIdentifier
+        /// The identifier is used to uniquely identify the external bank account.
         /// </summary>
+        /// <value>The identifier is used to uniquely identify the external bank account.</value>
         [DataMember(Name="externalAccountIdentifier", EmitDefaultValue=false)]
         public string ExternalAccountIdentifier { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ExternalAccountType
+        /// The external bank account&#39;s type.
         /// </summary>
+        /// <value>The external bank account&#39;s type.</value>
         [DataMember(Name="externalAccountType", EmitDefaultValue=false)]
         public string ExternalAccountType { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ExternalBankName
+        /// The external bank account&#39;s name.
         /// </summary>
+        /// <value>The external bank account&#39;s name.</value>
         [DataMember(Name="externalBankName", EmitDefaultValue=false)]
         public string ExternalBankName { get; private set; }
 

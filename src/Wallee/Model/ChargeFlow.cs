@@ -35,9 +35,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// If a transaction meets all selected conditions, the charge flow will be used to process the transaction. If the conditions are not met the next charge flow in line will be chosen according to the priorities.
+        /// Conditions allow to define criteria that a transaction must fulfill in order for the charge flow to be considered for processing the payment.
         /// </summary>
-        /// <value>If a transaction meets all selected conditions, the charge flow will be used to process the transaction. If the conditions are not met the next charge flow in line will be chosen according to the priorities.</value>
+        /// <value>Conditions allow to define criteria that a transaction must fulfill in order for the charge flow to be considered for processing the payment.</value>
         [DataMember(Name="conditions", EmitDefaultValue=false)]
         public List<long?> Conditions { get; private set; }
 
@@ -56,9 +56,9 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The charge flow name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the charge flow.
         /// </summary>
-        /// <value>The charge flow name is used internally to identify the configuration in administrative interfaces. For example it is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the charge flow.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -70,9 +70,9 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// The priority orders the charge flows. As such the priority determines together with the conditions the charge flow the selection mechanism for a particular transaction. A change of the priority affects all future selections.
+        /// The priority that determines the order in which charge flows are taken into account when processing a payment. Low values are considered first.
         /// </summary>
-        /// <value>The priority orders the charge flows. As such the priority determines together with the conditions the charge flow the selection mechanism for a particular transaction. A change of the priority affects all future selections.</value>
+        /// <value>The priority that determines the order in which charge flows are taken into account when processing a payment. Low values are considered first.</value>
         [DataMember(Name="priority", EmitDefaultValue=false)]
         public int? Priority { get; private set; }
 

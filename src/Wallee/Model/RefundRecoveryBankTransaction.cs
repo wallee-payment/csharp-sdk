@@ -18,7 +18,7 @@ namespace Wallee.Model
     /// RefundRecoveryBankTransaction
     /// </summary>
     [DataContract]
-    public partial class RefundRecoveryBankTransaction : TransactionAwareEntity,  IEquatable<RefundRecoveryBankTransaction>
+    public partial class RefundRecoveryBankTransaction :  IEquatable<RefundRecoveryBankTransaction>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RefundRecoveryBankTransaction" /> class.
@@ -28,14 +28,19 @@ namespace Wallee.Model
         {
         }
 
-
-
-
         /// <summary>
-        /// Gets or Sets BankTransaction
+        /// Provides general information about the bank transaction.
         /// </summary>
+        /// <value>Provides general information about the bank transaction.</value>
         [DataMember(Name="bankTransaction", EmitDefaultValue=false)]
         public BankTransaction BankTransaction { get; private set; }
+
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; private set; }
 
         /// <summary>
         /// The language that is linked to the object.
@@ -45,28 +50,44 @@ namespace Wallee.Model
         public string Language { get; private set; }
 
         /// <summary>
-        /// The line items contain the items which could be recovered.
+        /// The line items that were recovered.
         /// </summary>
-        /// <value>The line items contain the items which could be recovered.</value>
+        /// <value>The line items that were recovered.</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItem> LineItems { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Refund
+        /// The ID of the space this object belongs to.
         /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        public long? LinkedSpaceId { get; private set; }
+
+        /// <summary>
+        /// The payment transaction this object is linked to.
+        /// </summary>
+        /// <value>The payment transaction this object is linked to.</value>
+        [DataMember(Name="linkedTransaction", EmitDefaultValue=false)]
+        public long? LinkedTransaction { get; private set; }
+
+        /// <summary>
+        /// The refund this bank transaction belongs to.
+        /// </summary>
+        /// <value>The refund this bank transaction belongs to.</value>
         [DataMember(Name="refund", EmitDefaultValue=false)]
         public Refund Refund { get; private set; }
 
         /// <summary>
-        /// Specify the posting amount in the refund&#39;s currency.
+        /// The posting amount represents the monetary value of the bank transaction, recorded in the refund&#39;s currency, before applying any adjustments.
         /// </summary>
-        /// <value>Specify the posting amount in the refund&#39;s currency.</value>
+        /// <value>The posting amount represents the monetary value of the bank transaction, recorded in the refund&#39;s currency, before applying any adjustments.</value>
         [DataMember(Name="refundCurrencyAmount", EmitDefaultValue=false)]
         public decimal? RefundCurrencyAmount { get; private set; }
 
         /// <summary>
-        /// Gets or Sets RefundCurrencyValueAmount
+        /// The value amount represents the net monetary value of the bank transaction, recorded in the refund&#39;s currency, after applicable deductions.
         /// </summary>
+        /// <value>The value amount represents the net monetary value of the bank transaction, recorded in the refund&#39;s currency, after applicable deductions.</value>
         [DataMember(Name="refundCurrencyValueAmount", EmitDefaultValue=false)]
         public decimal? RefundCurrencyValueAmount { get; private set; }
 
@@ -92,13 +113,12 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class RefundRecoveryBankTransaction {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  BankTransaction: ").Append(BankTransaction).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  Refund: ").Append(Refund).Append("\n");
             sb.Append("  RefundCurrencyAmount: ").Append(RefundCurrencyAmount).Append("\n");
             sb.Append("  RefundCurrencyValueAmount: ").Append(RefundCurrencyValueAmount).Append("\n");
@@ -112,7 +132,7 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
@@ -137,58 +157,58 @@ namespace Wallee.Model
             if (input == null)
                 return false;
 
-            return base.Equals(input) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedTransaction == input.LinkedTransaction ||
-                    (this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(input.LinkedTransaction))
-                ) && base.Equals(input) && 
+            return 
                 (
                     this.BankTransaction == input.BankTransaction ||
                     (this.BankTransaction != null &&
                     this.BankTransaction.Equals(input.BankTransaction))
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
                 (
                     this.Language == input.Language ||
                     (this.Language != null &&
                     this.Language.Equals(input.Language))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
                     input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.LinkedSpaceId == input.LinkedSpaceId ||
+                    (this.LinkedSpaceId != null &&
+                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
+                ) && 
+                (
+                    this.LinkedTransaction == input.LinkedTransaction ||
+                    (this.LinkedTransaction != null &&
+                    this.LinkedTransaction.Equals(input.LinkedTransaction))
+                ) && 
                 (
                     this.Refund == input.Refund ||
                     (this.Refund != null &&
                     this.Refund.Equals(input.Refund))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.RefundCurrencyAmount == input.RefundCurrencyAmount ||
                     (this.RefundCurrencyAmount != null &&
                     this.RefundCurrencyAmount.Equals(input.RefundCurrencyAmount))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.RefundCurrencyValueAmount == input.RefundCurrencyValueAmount ||
                     (this.RefundCurrencyValueAmount != null &&
                     this.RefundCurrencyValueAmount.Equals(input.RefundCurrencyValueAmount))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.SpaceViewId == input.SpaceViewId ||
                     (this.SpaceViewId != null &&
                     this.SpaceViewId.Equals(input.SpaceViewId))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Version == input.Version ||
                     (this.Version != null &&
@@ -204,19 +224,19 @@ namespace Wallee.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = base.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
+                int hashCode = 41;
                 if (this.BankTransaction != null)
                     hashCode = hashCode * 59 + this.BankTransaction.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Language != null)
                     hashCode = hashCode * 59 + this.Language.GetHashCode();
                 if (this.LineItems != null)
                     hashCode = hashCode * 59 + this.LineItems.GetHashCode();
+                if (this.LinkedSpaceId != null)
+                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
+                if (this.LinkedTransaction != null)
+                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
                 if (this.Refund != null)
                     hashCode = hashCode * 59 + this.Refund.GetHashCode();
                 if (this.RefundCurrencyAmount != null)

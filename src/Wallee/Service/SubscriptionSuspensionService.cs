@@ -49,10 +49,9 @@ namespace Wallee.Service
         /// The create operation creates a new subscription suspension.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
         /// <param name="suspension"></param>
         /// <returns>SubscriptionSuspension</returns>
-        SubscriptionSuspension Create (long? spaceId, SubscriptionSuspensionCreate suspension);
+        SubscriptionSuspension Create (SubscriptionSuspensionCreate suspension);
 
         /// <summary>
         /// Create
@@ -61,10 +60,9 @@ namespace Wallee.Service
         /// The create operation creates a new subscription suspension.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
         /// <param name="suspension"></param>
         /// <returns>ApiResponse of SubscriptionSuspension</returns>
-        ApiResponse<SubscriptionSuspension> CreateWithHttpInfo (long? spaceId, SubscriptionSuspensionCreate suspension);
+        ApiResponse<SubscriptionSuspension> CreateWithHttpInfo (SubscriptionSuspensionCreate suspension);
 
 
 
@@ -124,25 +122,23 @@ namespace Wallee.Service
         /// terminate
         /// </summary>
         /// <remarks>
-        /// The create operation creates a new subscription suspension.
+        /// Terminates an existing subscription suspension.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
         /// <param name="suspensionId"></param>
         /// <returns>SubscriptionSuspension</returns>
-        SubscriptionSuspension Terminate (long? spaceId, long? suspensionId);
+        SubscriptionSuspension Terminate (long? suspensionId);
 
         /// <summary>
         /// terminate
         /// </summary>
         /// <remarks>
-        /// The create operation creates a new subscription suspension.
+        /// Terminates an existing subscription suspension.
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
         /// <param name="suspensionId"></param>
         /// <returns>ApiResponse of SubscriptionSuspension</returns>
-        ApiResponse<SubscriptionSuspension> TerminateWithHttpInfo (long? spaceId, long? suspensionId);
+        ApiResponse<SubscriptionSuspension> TerminateWithHttpInfo (long? suspensionId);
 
 
 
@@ -289,12 +285,11 @@ namespace Wallee.Service
         /// Create The create operation creates a new subscription suspension.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
         /// <param name="suspension"></param>
         /// <returns>SubscriptionSuspension</returns>
-        public SubscriptionSuspension Create (long? spaceId, SubscriptionSuspensionCreate suspension)
+        public SubscriptionSuspension Create (SubscriptionSuspensionCreate suspension)
         {
-             ApiResponse<SubscriptionSuspension> localVarResponse = CreateWithHttpInfo(spaceId, suspension);
+             ApiResponse<SubscriptionSuspension> localVarResponse = CreateWithHttpInfo(suspension);
              return localVarResponse.Data;
         }
 
@@ -303,14 +298,10 @@ namespace Wallee.Service
         
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
         /// <param name="suspension"></param>
         /// <returns>ApiResponse of SubscriptionSuspension</returns>
-        public ApiResponse< SubscriptionSuspension > CreateWithHttpInfo (long? spaceId, SubscriptionSuspensionCreate suspension)
+        public ApiResponse< SubscriptionSuspension > CreateWithHttpInfo (SubscriptionSuspensionCreate suspension)
         {
-            // verify the required parameter 'spaceId' is set
-            if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionSuspensionService->Create");
             // verify the required parameter 'suspension' is set
             if (suspension == null)
                 throw new ApiException(400, "Missing required parameter 'suspension' when calling SubscriptionSuspensionService->Create");
@@ -337,7 +328,6 @@ namespace Wallee.Service
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (suspension != null && suspension.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(suspension); // http body (model) parameter
@@ -531,31 +521,26 @@ namespace Wallee.Service
                     (List<SubscriptionSuspension>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SubscriptionSuspension>)));
         }
         /// <summary>
-        /// terminate The create operation creates a new subscription suspension.
+        /// terminate Terminates an existing subscription suspension.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
         /// <param name="suspensionId"></param>
         /// <returns>SubscriptionSuspension</returns>
-        public SubscriptionSuspension Terminate (long? spaceId, long? suspensionId)
+        public SubscriptionSuspension Terminate (long? suspensionId)
         {
-             ApiResponse<SubscriptionSuspension> localVarResponse = TerminateWithHttpInfo(spaceId, suspensionId);
+             ApiResponse<SubscriptionSuspension> localVarResponse = TerminateWithHttpInfo(suspensionId);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// terminate The create operation creates a new subscription suspension.
+        /// terminate Terminates an existing subscription suspension.
         
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="spaceId"></param>
         /// <param name="suspensionId"></param>
         /// <returns>ApiResponse of SubscriptionSuspension</returns>
-        public ApiResponse< SubscriptionSuspension > TerminateWithHttpInfo (long? spaceId, long? suspensionId)
+        public ApiResponse< SubscriptionSuspension > TerminateWithHttpInfo (long? suspensionId)
         {
-            // verify the required parameter 'spaceId' is set
-            if (spaceId == null)
-                throw new ApiException(400, "Missing required parameter 'spaceId' when calling SubscriptionSuspensionService->Terminate");
             // verify the required parameter 'suspensionId' is set
             if (suspensionId == null)
                 throw new ApiException(400, "Missing required parameter 'suspensionId' when calling SubscriptionSuspensionService->Terminate");
@@ -582,7 +567,6 @@ namespace Wallee.Service
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (spaceId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "spaceId", spaceId)); // query parameter
             if (suspensionId != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "suspensionId", suspensionId)); // query parameter
 
 			int requestTimeout = this.Configuration.Timeout * 1000;

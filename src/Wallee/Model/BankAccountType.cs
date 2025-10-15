@@ -43,8 +43,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets IdentifierName
+        /// The identifier name specifies how the bank account type&#39;s identifier is called.
         /// </summary>
+        /// <value>The identifier name specifies how the bank account type&#39;s identifier is called.</value>
         [DataMember(Name="identifierName", EmitDefaultValue=false)]
         public Dictionary<string, string> IdentifierName { get; private set; }
 

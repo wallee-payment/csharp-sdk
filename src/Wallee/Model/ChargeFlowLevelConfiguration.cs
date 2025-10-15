@@ -35,9 +35,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The charge flow level configuration to which the flow is associated.
+        /// The charge flow that this level configuration belongs to.
         /// </summary>
-        /// <value>The charge flow level configuration to which the flow is associated.</value>
+        /// <value>The charge flow that this level configuration belongs to.</value>
         [DataMember(Name="flow", EmitDefaultValue=false)]
         public ChargeFlow Flow { get; private set; }
 
@@ -56,16 +56,16 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The charge flow level configuration name is used internally to identify the charge flow level configuration. For example the name is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the charge flow level configuration.
         /// </summary>
-        /// <value>The charge flow level configuration name is used internally to identify the charge flow level configuration. For example the name is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the charge flow level configuration.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
         /// <summary>
-        /// The duration of the level before switching to the next one.
+        /// The duration specifies how long the level remains active before transitioning to the next one.
         /// </summary>
-        /// <value>The duration of the level before switching to the next one.</value>
+        /// <value>The duration specifies how long the level remains active before transitioning to the next one.</value>
         [DataMember(Name="period", EmitDefaultValue=false)]
         public string Period { get; private set; }
 
@@ -77,17 +77,17 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// The priority indicates the sort order of the level configurations. A low value indicates that the level configuration is executed before any level with a higher value. Any change to this value affects future level configuration selections.
+        /// The priority that determines the order in which level configurations are taken into account when processing a charge flow. Low values are considered first.
         /// </summary>
-        /// <value>The priority indicates the sort order of the level configurations. A low value indicates that the level configuration is executed before any level with a higher value. Any change to this value affects future level configuration selections.</value>
+        /// <value>The priority that determines the order in which level configurations are taken into account when processing a charge flow. Low values are considered first.</value>
         [DataMember(Name="priority", EmitDefaultValue=false)]
         public int? Priority { get; private set; }
 
 
         /// <summary>
-        /// The type determines how the payment link is delivered to the customer. Once the type is defined it cannot be changed anymore.
+        /// The type defines the method of delivering the payment link to the customer.
         /// </summary>
-        /// <value>The type determines how the payment link is delivered to the customer. Once the type is defined it cannot be changed anymore.</value>
+        /// <value>The type defines the method of delivering the payment link to the customer.</value>
         [DataMember(Name="type", EmitDefaultValue=false)]
         public long? Type { get; private set; }
 

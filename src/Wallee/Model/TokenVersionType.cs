@@ -36,8 +36,9 @@ namespace Wallee.Model
         public Dictionary<string, string> Description { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Feature
+        /// The feature that the token version type belongs to.
         /// </summary>
+        /// <value>The feature that the token version type belongs to.</value>
         [DataMember(Name="feature", EmitDefaultValue=false)]
         public Feature Feature { get; private set; }
 

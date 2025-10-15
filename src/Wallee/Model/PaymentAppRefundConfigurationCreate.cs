@@ -28,23 +28,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// This flag indicates whether the connector supports multiple refunds for a single transaction or not.
+        /// Whether the payment connector can process multiple refunds for a single transaction.
         /// </summary>
-        /// <value>This flag indicates whether the connector supports multiple refunds for a single transaction or not.</value>
+        /// <value>Whether the payment connector can process multiple refunds for a single transaction.</value>
         [DataMember(Name="multipleRefundsSupported", EmitDefaultValue=false)]
         public bool? MultipleRefundsSupported { get; set; }
 
         /// <summary>
-        /// The refund endpoint is invoked to request the payment service provider to execute a refund.
+        /// The URL that the payment service provider will invoke to process a refund request. This endpoint handles communication with the provider for initiating and managing refunds.
         /// </summary>
-        /// <value>The refund endpoint is invoked to request the payment service provider to execute a refund.</value>
+        /// <value>The URL that the payment service provider will invoke to process a refund request. This endpoint handles communication with the provider for initiating and managing refunds.</value>
         [DataMember(Name="refundEndpoint", EmitDefaultValue=false)]
         public string RefundEndpoint { get; set; }
 
         /// <summary>
-        /// When the refund is triggered we expect a feedback about the state of it. This timeout defines after how long we consider the refund as failed without receiving a final state update.
+        /// The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed.
         /// </summary>
-        /// <value>When the refund is triggered we expect a feedback about the state of it. This timeout defines after how long we consider the refund as failed without receiving a final state update.</value>
+        /// <value>The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed.</value>
         [DataMember(Name="refundTimeoutInMinutes", EmitDefaultValue=false)]
         public int? RefundTimeoutInMinutes { get; set; }
 

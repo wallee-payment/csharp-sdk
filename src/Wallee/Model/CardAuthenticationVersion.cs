@@ -15,9 +15,8 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// This model defines the card authentication versions.
+    /// Defines CardAuthenticationVersion
     /// </summary>
-    /// <value>This model defines the card authentication versions.</value>
     
     [JsonConverter(typeof(StringEnumConverter))]
     

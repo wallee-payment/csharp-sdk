@@ -15,19 +15,21 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// This model holds the cardholder authentication data (e.g. 3-D Secure authentication).
+    /// CardholderAuthenticationCreate
     /// </summary>
     [DataContract]
     public partial class CardholderAuthenticationCreate :  IEquatable<CardholderAuthenticationCreate>
     {
         /// <summary>
-        /// Gets or Sets AuthenticationResponse
+        /// The result of the authentication process.
         /// </summary>
+        /// <value>The result of the authentication process.</value>
         [DataMember(Name="authenticationResponse", EmitDefaultValue=true)]
         public CardAuthenticationResponse AuthenticationResponse { get; set; }
         /// <summary>
-        /// Gets or Sets Version
+        /// The version of the authentication protocol (e.g., 3D Secure 1.0 or 2.0) used for the transaction.
         /// </summary>
+        /// <value>The version of the authentication protocol (e.g., 3D Secure 1.0 or 2.0) used for the transaction.</value>
         [DataMember(Name="version", EmitDefaultValue=true)]
         public CardAuthenticationVersion Version { get; set; }
         /// <summary>
@@ -38,8 +40,8 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CardholderAuthenticationCreate" /> class.
         /// </summary>
-        /// <param name="authenticationResponse">authenticationResponse (required).</param>
-        /// <param name="version">version (required).</param>
+        /// <param name="authenticationResponse">The result of the authentication process. (required).</param>
+        /// <param name="version">The version of the authentication protocol (e.g., 3D Secure 1.0 or 2.0) used for the transaction. (required).</param>
         public CardholderAuthenticationCreate(CardAuthenticationResponse authenticationResponse, CardAuthenticationVersion version)
         {
             // to ensure "authenticationResponse" is required (not null)
@@ -57,24 +59,24 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The authentication identifier as assigned by authentication system (e.g. XID or DSTransactionID).
+        /// The identifier (e.g., XID or DSTransactionID) assigned by the authentication system for tracking and verification.
         /// </summary>
-        /// <value>The authentication identifier as assigned by authentication system (e.g. XID or DSTransactionID).</value>
+        /// <value>The identifier (e.g., XID or DSTransactionID) assigned by the authentication system for tracking and verification.</value>
         [DataMember(Name="authenticationIdentifier", EmitDefaultValue=false)]
         public string AuthenticationIdentifier { get; set; }
 
 
         /// <summary>
-        /// The cardholder authentication value. Also known as Cardholder Authentication Verification Value (CAVV).
+        /// The cryptographic token (CAVV/AAV) generated during the authentication process to validate the cardholder&#39;s identity.
         /// </summary>
-        /// <value>The cardholder authentication value. Also known as Cardholder Authentication Verification Value (CAVV).</value>
+        /// <value>The cryptographic token (CAVV/AAV) generated during the authentication process to validate the cardholder&#39;s identity.</value>
         [DataMember(Name="authenticationValue", EmitDefaultValue=false)]
         public string AuthenticationValue { get; set; }
 
         /// <summary>
-        /// The Electronic Commerce Indicator (ECI) value. The ECI is returned by authentication system and indicates the outcome/status of authentication.
+        /// The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.
         /// </summary>
-        /// <value>The Electronic Commerce Indicator (ECI) value. The ECI is returned by authentication system and indicates the outcome/status of authentication.</value>
+        /// <value>The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions.</value>
         [DataMember(Name="electronicCommerceIndicator", EmitDefaultValue=false)]
         public string ElectronicCommerceIndicator { get; set; }
 

@@ -18,22 +18,24 @@ namespace Wallee.Model
     /// ChargeAttempt
     /// </summary>
     [DataContract]
-    public partial class ChargeAttempt : TransactionAwareEntity,  IEquatable<ChargeAttempt>
+    public partial class ChargeAttempt :  IEquatable<ChargeAttempt>
     {
         /// <summary>
-        /// Gets or Sets CompletionBehavior
+        /// The behavior that controls when the transaction is completed.
         /// </summary>
+        /// <value>The behavior that controls when the transaction is completed.</value>
         [DataMember(Name="completionBehavior", EmitDefaultValue=false)]
         public TransactionCompletionBehavior? CompletionBehavior { get; private set; }
         /// <summary>
-        /// The customer&#39;s presence indicates which kind of customer interaction was used during the charge attempt.
+        /// The customer&#39;s presence indicates whether and in what way the charge attempt&#39;s customer is present.
         /// </summary>
-        /// <value>The customer&#39;s presence indicates which kind of customer interaction was used during the charge attempt.</value>
+        /// <value>The customer&#39;s presence indicates whether and in what way the charge attempt&#39;s customer is present.</value>
         [DataMember(Name="customersPresence", EmitDefaultValue=false)]
         public CustomersPresence? CustomersPresence { get; private set; }
         /// <summary>
-        /// Gets or Sets Environment
+        /// The environment in which the charge attempt is executed.
         /// </summary>
+        /// <value>The environment in which the charge attempt is executed.</value>
         [DataMember(Name="environment", EmitDefaultValue=false)]
         public ChargeAttemptEnvironment? Environment { get; private set; }
         /// <summary>
@@ -50,19 +52,18 @@ namespace Wallee.Model
         {
         }
 
-
-
-
         /// <summary>
-        /// Gets or Sets Charge
+        /// The charge that the charge attempt belongs to.
         /// </summary>
+        /// <value>The charge that the charge attempt belongs to.</value>
         [DataMember(Name="charge", EmitDefaultValue=false)]
         public Charge Charge { get; private set; }
 
 
         /// <summary>
-        /// Gets or Sets ConnectorConfiguration
+        /// The payment connector configuration that was used for the charge attempt.
         /// </summary>
+        /// <value>The payment connector configuration that was used for the charge attempt.</value>
         [DataMember(Name="connectorConfiguration", EmitDefaultValue=false)]
         public PaymentConnectorConfiguration ConnectorConfiguration { get; private set; }
 
@@ -76,26 +77,37 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets FailedOn
+        /// The date and time when the charge attempt failed.
         /// </summary>
+        /// <value>The date and time when the charge attempt failed.</value>
         [DataMember(Name="failedOn", EmitDefaultValue=false)]
         public DateTime? FailedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FailureReason
+        /// The reason for the failure of the charge attempt.
         /// </summary>
+        /// <value>The reason for the failure of the charge attempt.</value>
         [DataMember(Name="failureReason", EmitDefaultValue=false)]
         public FailureReason FailureReason { get; private set; }
 
         /// <summary>
-        /// Gets or Sets InitializingTokenVersion
+        /// A unique identifier for the object.
         /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; private set; }
+
+        /// <summary>
+        /// Whether a new token version is being initialized.
+        /// </summary>
+        /// <value>Whether a new token version is being initialized.</value>
         [DataMember(Name="initializingTokenVersion", EmitDefaultValue=false)]
         public bool? InitializingTokenVersion { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Invocation
+        /// The connector invocation that the charge attempt belongs to.
         /// </summary>
+        /// <value>The connector invocation that the charge attempt belongs to.</value>
         [DataMember(Name="invocation", EmitDefaultValue=false)]
         public ConnectorInvocation Invocation { get; private set; }
 
@@ -114,8 +126,23 @@ namespace Wallee.Model
         public string Language { get; private set; }
 
         /// <summary>
-        /// Gets or Sets NextUpdateOn
+        /// The ID of the space this object belongs to.
         /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        public long? LinkedSpaceId { get; private set; }
+
+        /// <summary>
+        /// The payment transaction this object is linked to.
+        /// </summary>
+        /// <value>The payment transaction this object is linked to.</value>
+        [DataMember(Name="linkedTransaction", EmitDefaultValue=false)]
+        public long? LinkedTransaction { get; private set; }
+
+        /// <summary>
+        /// The date and time when the next update of the object&#39;s state is planned.
+        /// </summary>
+        /// <value>The date and time when the next update of the object&#39;s state is planned.</value>
         [DataMember(Name="nextUpdateOn", EmitDefaultValue=false)]
         public DateTime? NextUpdateOn { get; private set; }
 
@@ -127,14 +154,16 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets RedirectionUrl
+        /// The URL to redirect the customer to after payment processing.
         /// </summary>
+        /// <value>The URL to redirect the customer to after payment processing.</value>
         [DataMember(Name="redirectionUrl", EmitDefaultValue=false)]
         public string RedirectionUrl { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SalesChannel
+        /// The sales channel through which the charge attempt was made.
         /// </summary>
+        /// <value>The sales channel through which the charge attempt was made.</value>
         [DataMember(Name="salesChannel", EmitDefaultValue=false)]
         public long? SalesChannel { get; private set; }
 
@@ -147,39 +176,44 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets SucceededOn
+        /// The date and time when the charge attempt succeeded.
         /// </summary>
+        /// <value>The date and time when the charge attempt succeeded.</value>
         [DataMember(Name="succeededOn", EmitDefaultValue=false)]
         public DateTime? SucceededOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Terminal
+        /// The payment terminal through which the charge attempt was made.
         /// </summary>
+        /// <value>The payment terminal through which the charge attempt was made.</value>
         [DataMember(Name="terminal", EmitDefaultValue=false)]
         public PaymentTerminal Terminal { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TimeZone
+        /// The time zone that this object is associated with.
         /// </summary>
+        /// <value>The time zone that this object is associated with.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TimeoutOn
+        /// The date and time when the object will expire.
         /// </summary>
+        /// <value>The date and time when the object will expire.</value>
         [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
         public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TokenVersion
+        /// The token version used for the charge attempt.
         /// </summary>
+        /// <value>The token version used for the charge attempt.</value>
         [DataMember(Name="tokenVersion", EmitDefaultValue=false)]
         public TokenVersion TokenVersion { get; private set; }
 
         /// <summary>
-        /// The user failure message contains the message for the user in case the attempt failed. The message is localized into the language specified on the transaction.
+        /// The message that can be displayed to the customer explaining why the charge attempt failed, in the customer&#39;s language.
         /// </summary>
-        /// <value>The user failure message contains the message for the user in case the attempt failed. The message is localized into the language specified on the transaction.</value>
+        /// <value>The message that can be displayed to the customer explaining why the charge attempt failed, in the customer&#39;s language.</value>
         [DataMember(Name="userFailureMessage", EmitDefaultValue=false)]
         public string UserFailureMessage { get; private set; }
 
@@ -191,8 +225,9 @@ namespace Wallee.Model
         public int? Version { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Wallet
+        /// The type of wallet used to make the charge attempt.
         /// </summary>
+        /// <value>The type of wallet used to make the charge attempt.</value>
         [DataMember(Name="wallet", EmitDefaultValue=false)]
         public WalletType Wallet { get; private set; }
 
@@ -204,10 +239,6 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ChargeAttempt {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  Charge: ").Append(Charge).Append("\n");
             sb.Append("  CompletionBehavior: ").Append(CompletionBehavior).Append("\n");
             sb.Append("  ConnectorConfiguration: ").Append(ConnectorConfiguration).Append("\n");
@@ -216,10 +247,13 @@ namespace Wallee.Model
             sb.Append("  Environment: ").Append(Environment).Append("\n");
             sb.Append("  FailedOn: ").Append(FailedOn).Append("\n");
             sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  InitializingTokenVersion: ").Append(InitializingTokenVersion).Append("\n");
             sb.Append("  Invocation: ").Append(Invocation).Append("\n");
             sb.Append("  Labels: ").Append(Labels).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  NextUpdateOn: ").Append(NextUpdateOn).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  RedirectionUrl: ").Append(RedirectionUrl).Append("\n");
@@ -242,7 +276,7 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
@@ -267,148 +301,148 @@ namespace Wallee.Model
             if (input == null)
                 return false;
 
-            return base.Equals(input) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedTransaction == input.LinkedTransaction ||
-                    (this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(input.LinkedTransaction))
-                ) && base.Equals(input) && 
+            return 
                 (
                     this.Charge == input.Charge ||
                     (this.Charge != null &&
                     this.Charge.Equals(input.Charge))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.CompletionBehavior == input.CompletionBehavior ||
                     (this.CompletionBehavior != null &&
                     this.CompletionBehavior.Equals(input.CompletionBehavior))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.ConnectorConfiguration == input.ConnectorConfiguration ||
                     (this.ConnectorConfiguration != null &&
                     this.ConnectorConfiguration.Equals(input.ConnectorConfiguration))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.CreatedOn == input.CreatedOn ||
                     (this.CreatedOn != null &&
                     this.CreatedOn.Equals(input.CreatedOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.CustomersPresence == input.CustomersPresence ||
                     (this.CustomersPresence != null &&
                     this.CustomersPresence.Equals(input.CustomersPresence))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Environment == input.Environment ||
                     (this.Environment != null &&
                     this.Environment.Equals(input.Environment))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.FailedOn == input.FailedOn ||
                     (this.FailedOn != null &&
                     this.FailedOn.Equals(input.FailedOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.FailureReason == input.FailureReason ||
                     (this.FailureReason != null &&
                     this.FailureReason.Equals(input.FailureReason))
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
                 (
                     this.InitializingTokenVersion == input.InitializingTokenVersion ||
                     (this.InitializingTokenVersion != null &&
                     this.InitializingTokenVersion.Equals(input.InitializingTokenVersion))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Invocation == input.Invocation ||
                     (this.Invocation != null &&
                     this.Invocation.Equals(input.Invocation))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Labels == input.Labels ||
                     this.Labels != null &&
                     input.Labels != null &&
                     this.Labels.SequenceEqual(input.Labels)
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Language == input.Language ||
                     (this.Language != null &&
                     this.Language.Equals(input.Language))
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.LinkedSpaceId == input.LinkedSpaceId ||
+                    (this.LinkedSpaceId != null &&
+                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
+                ) && 
+                (
+                    this.LinkedTransaction == input.LinkedTransaction ||
+                    (this.LinkedTransaction != null &&
+                    this.LinkedTransaction.Equals(input.LinkedTransaction))
+                ) && 
                 (
                     this.NextUpdateOn == input.NextUpdateOn ||
                     (this.NextUpdateOn != null &&
                     this.NextUpdateOn.Equals(input.NextUpdateOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||
                     (this.PlannedPurgeDate != null &&
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.RedirectionUrl == input.RedirectionUrl ||
                     (this.RedirectionUrl != null &&
                     this.RedirectionUrl.Equals(input.RedirectionUrl))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.SalesChannel == input.SalesChannel ||
                     (this.SalesChannel != null &&
                     this.SalesChannel.Equals(input.SalesChannel))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.SpaceViewId == input.SpaceViewId ||
                     (this.SpaceViewId != null &&
                     this.SpaceViewId.Equals(input.SpaceViewId))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.SucceededOn == input.SucceededOn ||
                     (this.SucceededOn != null &&
                     this.SucceededOn.Equals(input.SucceededOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Terminal == input.Terminal ||
                     (this.Terminal != null &&
                     this.Terminal.Equals(input.Terminal))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TimeZone == input.TimeZone ||
                     (this.TimeZone != null &&
                     this.TimeZone.Equals(input.TimeZone))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TimeoutOn == input.TimeoutOn ||
                     (this.TimeoutOn != null &&
                     this.TimeoutOn.Equals(input.TimeoutOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TokenVersion == input.TokenVersion ||
                     (this.TokenVersion != null &&
                     this.TokenVersion.Equals(input.TokenVersion))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.UserFailureMessage == input.UserFailureMessage ||
                     (this.UserFailureMessage != null &&
                     this.UserFailureMessage.Equals(input.UserFailureMessage))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Version == input.Version ||
                     (this.Version != null &&
                     this.Version.Equals(input.Version))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Wallet == input.Wallet ||
                     (this.Wallet != null &&
@@ -424,13 +458,7 @@ namespace Wallee.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = base.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
+                int hashCode = 41;
                 if (this.Charge != null)
                     hashCode = hashCode * 59 + this.Charge.GetHashCode();
                 if (this.CompletionBehavior != null)
@@ -447,6 +475,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.FailedOn.GetHashCode();
                 if (this.FailureReason != null)
                     hashCode = hashCode * 59 + this.FailureReason.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.InitializingTokenVersion != null)
                     hashCode = hashCode * 59 + this.InitializingTokenVersion.GetHashCode();
                 if (this.Invocation != null)
@@ -455,6 +485,10 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.Labels.GetHashCode();
                 if (this.Language != null)
                     hashCode = hashCode * 59 + this.Language.GetHashCode();
+                if (this.LinkedSpaceId != null)
+                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
+                if (this.LinkedTransaction != null)
+                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
                 if (this.NextUpdateOn != null)
                     hashCode = hashCode * 59 + this.NextUpdateOn.GetHashCode();
                 if (this.PlannedPurgeDate != null)

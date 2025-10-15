@@ -15,14 +15,15 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The refund represents a credit back to the customer. It can be issued by the merchant or by the customer (reversal).
+    /// A refund is a credit issued to the customer, which can be initiated either by the merchant or by the customer as a reversal.
     /// </summary>
     [DataContract]
     public partial class RefundCreate :  IEquatable<RefundCreate>
     {
         /// <summary>
-        /// Gets or Sets Type
+        /// The type specifying the method and origin of the refund (e.g., initiated by the customer or merchant).
         /// </summary>
+        /// <value>The type specifying the method and origin of the refund (e.g., initiated by the customer or merchant).</value>
         [DataMember(Name="type", EmitDefaultValue=true)]
         public RefundType Type { get; set; }
         /// <summary>
@@ -33,8 +34,8 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RefundCreate" /> class.
         /// </summary>
-        /// <param name="externalId">The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction. (required).</param>
-        /// <param name="type">type (required).</param>
+        /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
+        /// <param name="type">The type specifying the method and origin of the refund (e.g., initiated by the customer or merchant). (required).</param>
         public RefundCreate(string externalId, RefundType type)
         {
             // to ensure "externalId" is required (not null)
@@ -52,39 +53,44 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets Amount
+        /// The total monetary amount of the refund, representing the exact credit issued to the customer.
         /// </summary>
+        /// <value>The total monetary amount of the refund, representing the exact credit issued to the customer.</value>
         [DataMember(Name="amount", EmitDefaultValue=false)]
         public decimal? Amount { get; set; }
 
         /// <summary>
-        /// Gets or Sets Completion
+        /// The transaction completion that the refund belongs to.
         /// </summary>
+        /// <value>The transaction completion that the refund belongs to.</value>
         [DataMember(Name="completion", EmitDefaultValue=false)]
         public long? Completion { get; set; }
 
         /// <summary>
-        /// The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>The external id helps to identify duplicate calls to the refund service. As such the external ID has to be unique per transaction.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets MerchantReference
+        /// The merchant&#39;s reference used to identify the refund.
         /// </summary>
+        /// <value>The merchant&#39;s reference used to identify the refund.</value>
         [DataMember(Name="merchantReference", EmitDefaultValue=false)]
         public string MerchantReference { get; set; }
 
         /// <summary>
-        /// Gets or Sets Reductions
+        /// The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.
         /// </summary>
+        /// <value>The reductions applied on the original transaction items, detailing specific adjustments associated with the refund.</value>
         [DataMember(Name="reductions", EmitDefaultValue=false)]
         public List<LineItemReductionCreate> Reductions { get; set; }
 
         /// <summary>
-        /// Gets or Sets Transaction
+        /// The transaction that the refund belongs to.
         /// </summary>
+        /// <value>The transaction that the refund belongs to.</value>
         [DataMember(Name="transaction", EmitDefaultValue=false)]
         public long? Transaction { get; set; }
 

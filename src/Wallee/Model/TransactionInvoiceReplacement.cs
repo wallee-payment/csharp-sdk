@@ -28,8 +28,8 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionInvoiceReplacement" /> class.
         /// </summary>
-        /// <param name="externalId">The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity. (required).</param>
-        /// <param name="lineItems">lineItems (required).</param>
+        /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
+        /// <param name="lineItems">The invoiced line items that will appear on the invoice document. (required).</param>
         public TransactionInvoiceReplacement(string externalId, List<LineItemCreate> lineItems)
         {
             // to ensure "externalId" is required (not null)
@@ -47,41 +47,44 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets BillingAddress
+        /// The address associated with the invoice, used for billing purposes.
         /// </summary>
+        /// <value>The address associated with the invoice, used for billing purposes.</value>
         [DataMember(Name="billingAddress", EmitDefaultValue=false)]
         public AddressCreate BillingAddress { get; set; }
 
         /// <summary>
-        /// The date on which the invoice should be paid on.
+        /// The due date for payment of the invoice.
         /// </summary>
-        /// <value>The date on which the invoice should be paid on.</value>
+        /// <value>The due date for payment of the invoice.</value>
         [DataMember(Name="dueOn", EmitDefaultValue=false)]
         public DateTime? DueOn { get; set; }
 
         /// <summary>
-        /// The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>The external id helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
         /// <summary>
-        /// Gets or Sets LineItems
+        /// The invoiced line items that will appear on the invoice document.
         /// </summary>
+        /// <value>The invoiced line items that will appear on the invoice document.</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItemCreate> LineItems { get; set; }
 
         /// <summary>
-        /// Gets or Sets MerchantReference
+        /// The merchant&#39;s reference used to identify the invoice.
         /// </summary>
+        /// <value>The merchant&#39;s reference used to identify the invoice.</value>
         [DataMember(Name="merchantReference", EmitDefaultValue=false)]
         public string MerchantReference { get; set; }
 
         /// <summary>
-        /// When the connector is configured to send the invoice to the customer and this property is true the customer will receive an email with the updated invoice. When this property is false no invoice is sent.
+        /// Whether the invoice will be sent to the customer via email.
         /// </summary>
-        /// <value>When the connector is configured to send the invoice to the customer and this property is true the customer will receive an email with the updated invoice. When this property is false no invoice is sent.</value>
+        /// <value>Whether the invoice will be sent to the customer via email.</value>
         [DataMember(Name="sentToCustomer", EmitDefaultValue=false)]
         public bool? SentToCustomer { get; set; }
 

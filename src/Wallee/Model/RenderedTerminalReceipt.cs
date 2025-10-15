@@ -34,23 +34,23 @@ namespace Wallee.Model
         public byte[] Data { get; set; }
 
         /// <summary>
-        /// The mime type indicates the format of the receipt document. The mime type depends on the requested receipt format.
+        /// The MIME type specifies the format of the receipt document and is determined by the requested format.
         /// </summary>
-        /// <value>The mime type indicates the format of the receipt document. The mime type depends on the requested receipt format.</value>
+        /// <value>The MIME type specifies the format of the receipt document and is determined by the requested format.</value>
         [DataMember(Name="mimeType", EmitDefaultValue=false)]
         public string MimeType { get; private set; }
 
         /// <summary>
-        /// The terminal might or might not print the receipt. This property is set to true when the configuration of the terminal forces the printing and the device supports the receipt printing.
+        /// Whether the terminal&#39;s configuration mandates printing and the device has receipt printing capabilities.
         /// </summary>
-        /// <value>The terminal might or might not print the receipt. This property is set to true when the configuration of the terminal forces the printing and the device supports the receipt printing.</value>
+        /// <value>Whether the terminal&#39;s configuration mandates printing and the device has receipt printing capabilities.</value>
         [DataMember(Name="printed", EmitDefaultValue=false)]
         public bool? Printed { get; private set; }
 
         /// <summary>
-        /// Each receipt has a different usage. The receipt type indicates for what resp. for whom the document is for.
+        /// The receipt type specifies the intended use and the target audience of the document.
         /// </summary>
-        /// <value>Each receipt has a different usage. The receipt type indicates for what resp. for whom the document is for.</value>
+        /// <value>The receipt type specifies the intended use and the target audience of the document.</value>
         [DataMember(Name="receiptType", EmitDefaultValue=false)]
         public PaymentTerminalReceiptType ReceiptType { get; private set; }
 

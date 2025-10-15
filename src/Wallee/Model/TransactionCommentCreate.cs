@@ -28,7 +28,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionCommentCreate" /> class.
         /// </summary>
-        /// <param name="transaction">transaction (required).</param>
+        /// <param name="transaction">The transaction that the comment belongs to. (required).</param>
         public TransactionCommentCreate(long? transaction)
         {
             // to ensure "transaction" is required (not null)
@@ -41,8 +41,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets Transaction
+        /// The transaction that the comment belongs to.
         /// </summary>
+        /// <value>The transaction that the comment belongs to.</value>
         [DataMember(Name="transaction", EmitDefaultValue=false)]
         public long? Transaction { get; set; }
 

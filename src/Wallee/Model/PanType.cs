@@ -30,6 +30,12 @@ namespace Wallee.Model
         PLAIN,
         
         /// <summary>
+        /// Enum PLAIN_GOOGLE_PAY for value: PLAIN_GOOGLE_PAY
+        /// </summary>
+        [EnumMember(Value = "PLAIN_GOOGLE_PAY")]
+        PLAIN_GOOGLE_PAY,
+        
+        /// <summary>
         /// Enum SCHEME_TOKEN for value: SCHEME_TOKEN
         /// </summary>
         [EnumMember(Value = "SCHEME_TOKEN")]

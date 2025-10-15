@@ -15,27 +15,27 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The payment link defines an URL to automatically create transactions.
+    /// PaymentLink
     /// </summary>
     [DataContract]
     public partial class PaymentLink :  IEquatable<PaymentLink>
     {
         /// <summary>
-        /// The billing address handling mode controls if the address is collected or not and how it is collected.
+        /// The handling mode defines whether a billing address is required and specifies how it should be provided.
         /// </summary>
-        /// <value>The billing address handling mode controls if the address is collected or not and how it is collected.</value>
+        /// <value>The handling mode defines whether a billing address is required and specifies how it should be provided.</value>
         [DataMember(Name="billingAddressHandlingMode", EmitDefaultValue=false)]
         public PaymentLinkAddressHandlingMode? BillingAddressHandlingMode { get; private set; }
         /// <summary>
-        /// The protection mode determines if the payment link is protected against tampering and in what way.
+        /// The protection mode defines whether the payment link is protected against tampering and specifies the protection method.
         /// </summary>
-        /// <value>The protection mode determines if the payment link is protected against tampering and in what way.</value>
+        /// <value>The protection mode defines whether the payment link is protected against tampering and specifies the protection method.</value>
         [DataMember(Name="protectionMode", EmitDefaultValue=false)]
         public PaymentLinkProtectionMode? ProtectionMode { get; private set; }
         /// <summary>
-        /// The shipping address handling mode controls if the address is collected or not and how it is collected.
+        /// The handling mode defines whether a shipping address is required and specifies how it should be provided.
         /// </summary>
-        /// <value>The shipping address handling mode controls if the address is collected or not and how it is collected.</value>
+        /// <value>The handling mode defines whether a shipping address is required and specifies how it should be provided.</value>
         [DataMember(Name="shippingAddressHandlingMode", EmitDefaultValue=false)]
         public PaymentLinkAddressHandlingMode? ShippingAddressHandlingMode { get; private set; }
         /// <summary>
@@ -53,45 +53,52 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The allowed payment method configurations restrict the payment methods which can be used with this payment link.
+        /// The payment method configurations that customers can use for making payments.
         /// </summary>
-        /// <value>The allowed payment method configurations restrict the payment methods which can be used with this payment link.</value>
+        /// <value>The payment method configurations that customers can use for making payments.</value>
         [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=false)]
         public List<PaymentMethodConfiguration> AllowedPaymentMethodConfigurations { get; private set; }
 
         /// <summary>
-        /// The payment link can be conducted in a specific space view. The space view may apply a specific design to the payment page.
+        /// The domains to which the user is allowed to be redirected after the payment is completed. The following options can be configured: Exact domain: enter a full domain, e.g. (https://example.com). Wildcard domain: use to allow subdomains, e.g. (https://_*.example.com). All domains: use (ALL) to allow redirection to any domain (not recommended for security reasons). No domains : use (NONE) to disallow any redirection. Only one option per line is allowed. Invalid entries will be rejected. 
         /// </summary>
-        /// <value>The payment link can be conducted in a specific space view. The space view may apply a specific design to the payment page.</value>
+        /// <value>The domains to which the user is allowed to be redirected after the payment is completed. The following options can be configured: Exact domain: enter a full domain, e.g. (https://example.com). Wildcard domain: use to allow subdomains, e.g. (https://_*.example.com). All domains: use (ALL) to allow redirection to any domain (not recommended for security reasons). No domains : use (NONE) to disallow any redirection. Only one option per line is allowed. Invalid entries will be rejected. </value>
+        [DataMember(Name="allowedRedirectionDomains", EmitDefaultValue=false)]
+        public List<string> AllowedRedirectionDomains { get; private set; }
+
+        /// <summary>
+        /// The payment link can be used within a specific space view, which may apply a customized design to the payment page.
+        /// </summary>
+        /// <value>The payment link can be used within a specific space view, which may apply a customized design to the payment page.</value>
         [DataMember(Name="appliedSpaceView", EmitDefaultValue=false)]
         public long? AppliedSpaceView { get; private set; }
 
         /// <summary>
-        /// The available from date defines the earliest date on which the payment link can be used. When no date is specified there will be no restriction.
+        /// The earliest date the payment link can be used to initiate a transaction. If no date is provided, the link will be available immediately.
         /// </summary>
-        /// <value>The available from date defines the earliest date on which the payment link can be used. When no date is specified there will be no restriction.</value>
+        /// <value>The earliest date the payment link can be used to initiate a transaction. If no date is provided, the link will be available immediately.</value>
         [DataMember(Name="availableFrom", EmitDefaultValue=false)]
         public DateTime? AvailableFrom { get; private set; }
 
         /// <summary>
-        /// The available from date defines the latest date on which the payment link can be used to initialize a transaction. When no date is specified there will be no restriction.
+        /// The latest date the payment link can be used to initiate a transaction. If no date is provided, the link will remain available indefinitely.
         /// </summary>
-        /// <value>The available from date defines the latest date on which the payment link can be used to initialize a transaction. When no date is specified there will be no restriction.</value>
+        /// <value>The latest date the payment link can be used to initiate a transaction. If no date is provided, the link will remain available indefinitely.</value>
         [DataMember(Name="availableUntil", EmitDefaultValue=false)]
         public DateTime? AvailableUntil { get; private set; }
 
 
         /// <summary>
-        /// The currency defines in which currency the payment is executed in. If no currency is defined it has to be specified within the request parameter &#39;currency&#39;.
+        /// The three-letter currency code (ISO 4217). If not specified, it must be provided in the &#39;currency&#39; request parameter.
         /// </summary>
-        /// <value>The currency defines in which currency the payment is executed in. If no currency is defined it has to be specified within the request parameter &#39;currency&#39;.</value>
+        /// <value>The three-letter currency code (ISO 4217). If not specified, it must be provided in the &#39;currency&#39; request parameter.</value>
         [DataMember(Name="currency", EmitDefaultValue=false)]
         public string Currency { get; private set; }
 
         /// <summary>
-        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
@@ -103,16 +110,16 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// The language defines the language of the payment page. If no language is provided it can be provided through the request parameter.
+        /// The language for displaying the payment page. If not specified, it can be supplied via the &#39;language&#39; request parameter.
         /// </summary>
-        /// <value>The language defines the language of the payment page. If no language is provided it can be provided through the request parameter.</value>
+        /// <value>The language for displaying the payment page. If not specified, it can be supplied via the &#39;language&#39; request parameter.</value>
         [DataMember(Name="language", EmitDefaultValue=false)]
         public string Language { get; private set; }
 
         /// <summary>
-        /// The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters. If no amount for the payment link is defined, the additional checkout page to enter the amount is shown to the consumer.
+        /// The line items representing what is being sold. If not specified, they can be supplied via request parameters.
         /// </summary>
-        /// <value>The line items allows to define the line items for this payment link. When the line items are defined they cannot be overridden through the request parameters. If no amount for the payment link is defined, the additional checkout page to enter the amount is shown to the consumer.</value>
+        /// <value>The line items representing what is being sold. If not specified, they can be supplied via request parameters.</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItem> LineItems { get; private set; }
 
@@ -124,16 +131,16 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// The maximal number of transactions limits the number of transactions which can be created with this payment link.
+        /// The maximum number of transactions that can be initiated using the payment link.
         /// </summary>
-        /// <value>The maximal number of transactions limits the number of transactions which can be created with this payment link.</value>
+        /// <value>The maximum number of transactions that can be initiated using the payment link.</value>
         [DataMember(Name="maximalNumberOfTransactions", EmitDefaultValue=false)]
         public int? MaximalNumberOfTransactions { get; private set; }
 
         /// <summary>
-        /// The payment link name is used internally to identify the payment link. For example the name is used within search fields and hence it should be distinct and descriptive.
+        /// The name used to identify the payment link.
         /// </summary>
-        /// <value>The payment link name is used internally to identify the payment link. For example the name is used within search fields and hence it should be distinct and descriptive.</value>
+        /// <value>The name used to identify the payment link.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public string Name { get; private set; }
 
@@ -148,9 +155,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The URL defines the URL to which the user has to be forwarded to initialize the payment.
+        /// The public URL to share with customers for making payments.
         /// </summary>
-        /// <value>The URL defines the URL to which the user has to be forwarded to initialize the payment.</value>
+        /// <value>The public URL to share with customers for making payments.</value>
         [DataMember(Name="url", EmitDefaultValue=false)]
         public string Url { get; private set; }
 
@@ -170,6 +177,7 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class PaymentLink {\n");
             sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
+            sb.Append("  AllowedRedirectionDomains: ").Append(AllowedRedirectionDomains).Append("\n");
             sb.Append("  AppliedSpaceView: ").Append(AppliedSpaceView).Append("\n");
             sb.Append("  AvailableFrom: ").Append(AvailableFrom).Append("\n");
             sb.Append("  AvailableUntil: ").Append(AvailableUntil).Append("\n");
@@ -227,6 +235,12 @@ namespace Wallee.Model
                     this.AllowedPaymentMethodConfigurations != null &&
                     input.AllowedPaymentMethodConfigurations != null &&
                     this.AllowedPaymentMethodConfigurations.SequenceEqual(input.AllowedPaymentMethodConfigurations)
+                ) && 
+                (
+                    this.AllowedRedirectionDomains == input.AllowedRedirectionDomains ||
+                    this.AllowedRedirectionDomains != null &&
+                    input.AllowedRedirectionDomains != null &&
+                    this.AllowedRedirectionDomains.SequenceEqual(input.AllowedRedirectionDomains)
                 ) && 
                 (
                     this.AppliedSpaceView == input.AppliedSpaceView ||
@@ -332,6 +346,8 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.AllowedPaymentMethodConfigurations != null)
                     hashCode = hashCode * 59 + this.AllowedPaymentMethodConfigurations.GetHashCode();
+                if (this.AllowedRedirectionDomains != null)
+                    hashCode = hashCode * 59 + this.AllowedRedirectionDomains.GetHashCode();
                 if (this.AppliedSpaceView != null)
                     hashCode = hashCode * 59 + this.AppliedSpaceView.GetHashCode();
                 if (this.AvailableFrom != null)

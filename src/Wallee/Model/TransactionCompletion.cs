@@ -18,11 +18,12 @@ namespace Wallee.Model
     /// TransactionCompletion
     /// </summary>
     [DataContract]
-    public partial class TransactionCompletion : TransactionAwareEntity,  IEquatable<TransactionCompletion>
+    public partial class TransactionCompletion :  IEquatable<TransactionCompletion>
     {
         /// <summary>
-        /// Gets or Sets Mode
+        /// The mode of transaction completion, such as online or offline, determining how the completion process is executed.
         /// </summary>
+        /// <value>The mode of transaction completion, such as online or offline, determining how the completion process is executed.</value>
         [DataMember(Name="mode", EmitDefaultValue=false)]
         public TransactionCompletionMode? Mode { get; private set; }
         /// <summary>
@@ -39,26 +40,24 @@ namespace Wallee.Model
         {
         }
 
-
-
-
         /// <summary>
-        /// The amount which is captured. The amount represents sum of line items including taxes.
+        /// The total amount to be captured in this completion, including taxes.
         /// </summary>
-        /// <value>The amount which is captured. The amount represents sum of line items including taxes.</value>
+        /// <value>The total amount to be captured in this completion, including taxes.</value>
         [DataMember(Name="amount", EmitDefaultValue=false)]
         public decimal? Amount { get; private set; }
 
         /// <summary>
-        /// The base line items on which the completion is applied on.
+        /// The original line items from the transaction that serve as the baseline for this completion.
         /// </summary>
-        /// <value>The base line items on which the completion is applied on.</value>
+        /// <value>The original line items from the transaction that serve as the baseline for this completion.</value>
         [DataMember(Name="baseLineItems", EmitDefaultValue=false)]
         public List<LineItem> BaseLineItems { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CreatedBy
+        /// The ID of the user the transaction completion was created by.
         /// </summary>
+        /// <value>The ID of the user the transaction completion was created by.</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
@@ -70,27 +69,37 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// The external ID helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>The external ID helps to identify the entity and a subsequent creation of an entity with the same ID will not create a new entity.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FailedOn
+        /// The date and time when the transaction completion failed.
         /// </summary>
+        /// <value>The date and time when the transaction completion failed.</value>
         [DataMember(Name="failedOn", EmitDefaultValue=false)]
         public DateTime? FailedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FailureReason
+        /// The reason for the failure of the transaction completion.
         /// </summary>
+        /// <value>The reason for the failure of the transaction completion.</value>
         [DataMember(Name="failureReason", EmitDefaultValue=false)]
         public FailureReason FailureReason { get; private set; }
 
         /// <summary>
-        /// Gets or Sets InvoiceMerchantReference
+        /// A unique identifier for the object.
         /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; private set; }
+
+        /// <summary>
+        /// The merchant&#39;s reference used to identify the invoice.
+        /// </summary>
+        /// <value>The merchant&#39;s reference used to identify the invoice.</value>
         [DataMember(Name="invoiceMerchantReference", EmitDefaultValue=false)]
         public string InvoiceMerchantReference { get; private set; }
 
@@ -109,35 +118,52 @@ namespace Wallee.Model
         public string Language { get; private set; }
 
         /// <summary>
-        /// Indicates if this is the last completion. After the last completion is created the transaction cannot be completed anymore.
+        /// Whether this is the final completion for the transaction. After the last completion is successfully created, the transaction enters its final state, and no further completions can occur.
         /// </summary>
-        /// <value>Indicates if this is the last completion. After the last completion is created the transaction cannot be completed anymore.</value>
+        /// <value>Whether this is the final completion for the transaction. After the last completion is successfully created, the transaction enters its final state, and no further completions can occur.</value>
         [DataMember(Name="lastCompletion", EmitDefaultValue=false)]
         public bool? LastCompletion { get; private set; }
 
         /// <summary>
-        /// Gets or Sets LineItemVersion
+        /// The specific version of the line items that are being used for this completion.
         /// </summary>
+        /// <value>The specific version of the line items that are being used for this completion.</value>
         [DataMember(Name="lineItemVersion", EmitDefaultValue=false)]
         public TransactionLineItemVersion LineItemVersion { get; private set; }
 
         /// <summary>
-        /// The line items which are captured.
+        /// The line items captured in this transaction completion.
         /// </summary>
-        /// <value>The line items which are captured.</value>
+        /// <value>The line items captured in this transaction completion.</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItem> LineItems { get; private set; }
 
+        /// <summary>
+        /// The ID of the space this object belongs to.
+        /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets NextUpdateOn
+        /// The payment transaction this object is linked to.
         /// </summary>
+        /// <value>The payment transaction this object is linked to.</value>
+        [DataMember(Name="linkedTransaction", EmitDefaultValue=false)]
+        public long? LinkedTransaction { get; private set; }
+
+
+        /// <summary>
+        /// The date and time when the next update of the object&#39;s state is planned.
+        /// </summary>
+        /// <value>The date and time when the next update of the object&#39;s state is planned.</value>
         [DataMember(Name="nextUpdateOn", EmitDefaultValue=false)]
         public DateTime? NextUpdateOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PaymentInformation
+        /// Payment-specific details related to this transaction completion such as payment instructions or references needed for processing.
         /// </summary>
+        /// <value>Payment-specific details related to this transaction completion such as payment instructions or references needed for processing.</value>
         [DataMember(Name="paymentInformation", EmitDefaultValue=false)]
         public string PaymentInformation { get; private set; }
 
@@ -149,20 +175,23 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ProcessingOn
+        /// The date and time when the processing of the transaction completion was started.
         /// </summary>
+        /// <value>The date and time when the processing of the transaction completion was started.</value>
         [DataMember(Name="processingOn", EmitDefaultValue=false)]
         public DateTime? ProcessingOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ProcessorReference
+        /// The reference ID provided by the payment processor, used to trace the completion through the external payment system.
         /// </summary>
+        /// <value>The reference ID provided by the payment processor, used to trace the completion through the external payment system.</value>
         [DataMember(Name="processorReference", EmitDefaultValue=false)]
         public string ProcessorReference { get; private set; }
 
         /// <summary>
-        /// Gets or Sets RemainingLineItems
+        /// The line items yet to be captured in the transaction.
         /// </summary>
+        /// <value>The line items yet to be captured in the transaction.</value>
         [DataMember(Name="remainingLineItems", EmitDefaultValue=false)]
         public List<LineItem> RemainingLineItems { get; private set; }
 
@@ -175,34 +204,37 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// The statement descriptor explain charges or payments on bank statements.
+        /// The statement descriptor that appears on a customer&#39;s bank statement, providing an explanation for charges or payments, helping customers identify the transaction.
         /// </summary>
-        /// <value>The statement descriptor explain charges or payments on bank statements.</value>
+        /// <value>The statement descriptor that appears on a customer&#39;s bank statement, providing an explanation for charges or payments, helping customers identify the transaction.</value>
         [DataMember(Name="statementDescriptor", EmitDefaultValue=false)]
         public string StatementDescriptor { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SucceededOn
+        /// The date and time when the transaction completion succeeded.
         /// </summary>
+        /// <value>The date and time when the transaction completion succeeded.</value>
         [DataMember(Name="succeededOn", EmitDefaultValue=false)]
         public DateTime? SucceededOn { get; private set; }
 
         /// <summary>
-        /// The total sum of all taxes of line items.
+        /// The portion of the captured amount that corresponds to taxes.
         /// </summary>
-        /// <value>The total sum of all taxes of line items.</value>
+        /// <value>The portion of the captured amount that corresponds to taxes.</value>
         [DataMember(Name="taxAmount", EmitDefaultValue=false)]
         public decimal? TaxAmount { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TimeZone
+        /// The time zone that this object is associated with.
         /// </summary>
+        /// <value>The time zone that this object is associated with.</value>
         [DataMember(Name="timeZone", EmitDefaultValue=false)]
         public string TimeZone { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TimeoutOn
+        /// The date and time when the object will expire.
         /// </summary>
+        /// <value>The date and time when the object will expire.</value>
         [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
         public DateTime? TimeoutOn { get; private set; }
 
@@ -221,10 +253,6 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class TransactionCompletion {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  BaseLineItems: ").Append(BaseLineItems).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
@@ -232,12 +260,15 @@ namespace Wallee.Model
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  FailedOn: ").Append(FailedOn).Append("\n");
             sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  InvoiceMerchantReference: ").Append(InvoiceMerchantReference).Append("\n");
             sb.Append("  Labels: ").Append(Labels).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LastCompletion: ").Append(LastCompletion).Append("\n");
             sb.Append("  LineItemVersion: ").Append(LineItemVersion).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  Mode: ").Append(Mode).Append("\n");
             sb.Append("  NextUpdateOn: ").Append(NextUpdateOn).Append("\n");
             sb.Append("  PaymentInformation: ").Append(PaymentInformation).Append("\n");
@@ -261,7 +292,7 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
@@ -286,161 +317,161 @@ namespace Wallee.Model
             if (input == null)
                 return false;
 
-            return base.Equals(input) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedTransaction == input.LinkedTransaction ||
-                    (this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(input.LinkedTransaction))
-                ) && base.Equals(input) && 
+            return 
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.BaseLineItems == input.BaseLineItems ||
                     this.BaseLineItems != null &&
                     input.BaseLineItems != null &&
                     this.BaseLineItems.SequenceEqual(input.BaseLineItems)
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.CreatedBy == input.CreatedBy ||
                     (this.CreatedBy != null &&
                     this.CreatedBy.Equals(input.CreatedBy))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.CreatedOn == input.CreatedOn ||
                     (this.CreatedOn != null &&
                     this.CreatedOn.Equals(input.CreatedOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.ExternalId == input.ExternalId ||
                     (this.ExternalId != null &&
                     this.ExternalId.Equals(input.ExternalId))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.FailedOn == input.FailedOn ||
                     (this.FailedOn != null &&
                     this.FailedOn.Equals(input.FailedOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.FailureReason == input.FailureReason ||
                     (this.FailureReason != null &&
                     this.FailureReason.Equals(input.FailureReason))
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
                 (
                     this.InvoiceMerchantReference == input.InvoiceMerchantReference ||
                     (this.InvoiceMerchantReference != null &&
                     this.InvoiceMerchantReference.Equals(input.InvoiceMerchantReference))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Labels == input.Labels ||
                     this.Labels != null &&
                     input.Labels != null &&
                     this.Labels.SequenceEqual(input.Labels)
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Language == input.Language ||
                     (this.Language != null &&
                     this.Language.Equals(input.Language))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.LastCompletion == input.LastCompletion ||
                     (this.LastCompletion != null &&
                     this.LastCompletion.Equals(input.LastCompletion))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.LineItemVersion == input.LineItemVersion ||
                     (this.LineItemVersion != null &&
                     this.LineItemVersion.Equals(input.LineItemVersion))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
                     input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.LinkedSpaceId == input.LinkedSpaceId ||
+                    (this.LinkedSpaceId != null &&
+                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
+                ) && 
+                (
+                    this.LinkedTransaction == input.LinkedTransaction ||
+                    (this.LinkedTransaction != null &&
+                    this.LinkedTransaction.Equals(input.LinkedTransaction))
+                ) && 
                 (
                     this.Mode == input.Mode ||
                     (this.Mode != null &&
                     this.Mode.Equals(input.Mode))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.NextUpdateOn == input.NextUpdateOn ||
                     (this.NextUpdateOn != null &&
                     this.NextUpdateOn.Equals(input.NextUpdateOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.PaymentInformation == input.PaymentInformation ||
                     (this.PaymentInformation != null &&
                     this.PaymentInformation.Equals(input.PaymentInformation))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||
                     (this.PlannedPurgeDate != null &&
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.ProcessingOn == input.ProcessingOn ||
                     (this.ProcessingOn != null &&
                     this.ProcessingOn.Equals(input.ProcessingOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.ProcessorReference == input.ProcessorReference ||
                     (this.ProcessorReference != null &&
                     this.ProcessorReference.Equals(input.ProcessorReference))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.RemainingLineItems == input.RemainingLineItems ||
                     this.RemainingLineItems != null &&
                     input.RemainingLineItems != null &&
                     this.RemainingLineItems.SequenceEqual(input.RemainingLineItems)
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.SpaceViewId == input.SpaceViewId ||
                     (this.SpaceViewId != null &&
                     this.SpaceViewId.Equals(input.SpaceViewId))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.StatementDescriptor == input.StatementDescriptor ||
                     (this.StatementDescriptor != null &&
                     this.StatementDescriptor.Equals(input.StatementDescriptor))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.SucceededOn == input.SucceededOn ||
                     (this.SucceededOn != null &&
                     this.SucceededOn.Equals(input.SucceededOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TaxAmount == input.TaxAmount ||
                     (this.TaxAmount != null &&
                     this.TaxAmount.Equals(input.TaxAmount))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TimeZone == input.TimeZone ||
                     (this.TimeZone != null &&
                     this.TimeZone.Equals(input.TimeZone))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TimeoutOn == input.TimeoutOn ||
                     (this.TimeoutOn != null &&
                     this.TimeoutOn.Equals(input.TimeoutOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Version == input.Version ||
                     (this.Version != null &&
@@ -456,13 +487,7 @@ namespace Wallee.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = base.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
+                int hashCode = 41;
                 if (this.Amount != null)
                     hashCode = hashCode * 59 + this.Amount.GetHashCode();
                 if (this.BaseLineItems != null)
@@ -477,6 +502,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.FailedOn.GetHashCode();
                 if (this.FailureReason != null)
                     hashCode = hashCode * 59 + this.FailureReason.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.InvoiceMerchantReference != null)
                     hashCode = hashCode * 59 + this.InvoiceMerchantReference.GetHashCode();
                 if (this.Labels != null)
@@ -489,6 +516,10 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.LineItemVersion.GetHashCode();
                 if (this.LineItems != null)
                     hashCode = hashCode * 59 + this.LineItems.GetHashCode();
+                if (this.LinkedSpaceId != null)
+                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
+                if (this.LinkedTransaction != null)
+                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
                 if (this.Mode != null)
                     hashCode = hashCode * 59 + this.Mode.GetHashCode();
                 if (this.NextUpdateOn != null)

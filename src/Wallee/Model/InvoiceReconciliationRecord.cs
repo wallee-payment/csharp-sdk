@@ -18,7 +18,7 @@ namespace Wallee.Model
     /// InvoiceReconciliationRecord
     /// </summary>
     [DataContract]
-    public partial class InvoiceReconciliationRecord : TransactionAwareEntity,  IEquatable<InvoiceReconciliationRecord>
+    public partial class InvoiceReconciliationRecord :  IEquatable<InvoiceReconciliationRecord>
     {
         /// <summary>
         /// Gets or Sets Environment
@@ -43,9 +43,6 @@ namespace Wallee.Model
         public InvoiceReconciliationRecord()
         {
         }
-
-
-
 
         /// <summary>
         /// Gets or Sets Address
@@ -117,10 +114,31 @@ namespace Wallee.Model
         public string Iban { get; private set; }
 
         /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; private set; }
+
+        /// <summary>
         /// Gets or Sets LastResolutionFailure
         /// </summary>
         [DataMember(Name="lastResolutionFailure", EmitDefaultValue=false)]
         public FailureReason LastResolutionFailure { get; private set; }
+
+        /// <summary>
+        /// The ID of the space this object belongs to.
+        /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        public long? LinkedSpaceId { get; private set; }
+
+        /// <summary>
+        /// The payment transaction this object is linked to.
+        /// </summary>
+        /// <value>The payment transaction this object is linked to.</value>
+        [DataMember(Name="linkedTransaction", EmitDefaultValue=false)]
+        public long? LinkedTransaction { get; private set; }
 
         /// <summary>
         /// Gets or Sets ParticipantNumber
@@ -225,10 +243,6 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class InvoiceReconciliationRecord {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  City: ").Append(City).Append("\n");
@@ -241,7 +255,10 @@ namespace Wallee.Model
             sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");
             sb.Append("  GivenName: ").Append(GivenName).Append("\n");
             sb.Append("  Iban: ").Append(Iban).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LastResolutionFailure: ").Append(LastResolutionFailure).Append("\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  ParticipantNumber: ").Append(ParticipantNumber).Append("\n");
             sb.Append("  PaymentFeeAmount: ").Append(PaymentFeeAmount).Append("\n");
             sb.Append("  PaymentFeeCurrency: ").Append(PaymentFeeCurrency).Append("\n");
@@ -267,7 +284,7 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
@@ -292,167 +309,167 @@ namespace Wallee.Model
             if (input == null)
                 return false;
 
-            return base.Equals(input) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedTransaction == input.LinkedTransaction ||
-                    (this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(input.LinkedTransaction))
-                ) && base.Equals(input) && 
+            return 
                 (
                     this.Address == input.Address ||
                     (this.Address != null &&
                     this.Address.Equals(input.Address))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.City == input.City ||
                     (this.City != null &&
                     this.City.Equals(input.City))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Country == input.Country ||
                     (this.Country != null &&
                     this.Country.Equals(input.Country))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.CreatedOn == input.CreatedOn ||
                     (this.CreatedOn != null &&
                     this.CreatedOn.Equals(input.CreatedOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Currency == input.Currency ||
                     (this.Currency != null &&
                     this.Currency.Equals(input.Currency))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.DiscardedBy == input.DiscardedBy ||
                     (this.DiscardedBy != null &&
                     this.DiscardedBy.Equals(input.DiscardedBy))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.DiscardedOn == input.DiscardedOn ||
                     (this.DiscardedOn != null &&
                     this.DiscardedOn.Equals(input.DiscardedOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Environment == input.Environment ||
                     (this.Environment != null &&
                     this.Environment.Equals(input.Environment))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.FamilyName == input.FamilyName ||
                     (this.FamilyName != null &&
                     this.FamilyName.Equals(input.FamilyName))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.GivenName == input.GivenName ||
                     (this.GivenName != null &&
                     this.GivenName.Equals(input.GivenName))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Iban == input.Iban ||
                     (this.Iban != null &&
                     this.Iban.Equals(input.Iban))
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
                 (
                     this.LastResolutionFailure == input.LastResolutionFailure ||
                     (this.LastResolutionFailure != null &&
                     this.LastResolutionFailure.Equals(input.LastResolutionFailure))
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.LinkedSpaceId == input.LinkedSpaceId ||
+                    (this.LinkedSpaceId != null &&
+                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
+                ) && 
+                (
+                    this.LinkedTransaction == input.LinkedTransaction ||
+                    (this.LinkedTransaction != null &&
+                    this.LinkedTransaction.Equals(input.LinkedTransaction))
+                ) && 
                 (
                     this.ParticipantNumber == input.ParticipantNumber ||
                     (this.ParticipantNumber != null &&
                     this.ParticipantNumber.Equals(input.ParticipantNumber))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.PaymentFeeAmount == input.PaymentFeeAmount ||
                     (this.PaymentFeeAmount != null &&
                     this.PaymentFeeAmount.Equals(input.PaymentFeeAmount))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.PaymentFeeCurrency == input.PaymentFeeCurrency ||
                     (this.PaymentFeeCurrency != null &&
                     this.PaymentFeeCurrency.Equals(input.PaymentFeeCurrency))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.PaymentReason == input.PaymentReason ||
                     (this.PaymentReason != null &&
                     this.PaymentReason.Equals(input.PaymentReason))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||
                     (this.PlannedPurgeDate != null &&
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.PostCode == input.PostCode ||
                     (this.PostCode != null &&
                     this.PostCode.Equals(input.PostCode))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.ReferenceNumber == input.ReferenceNumber ||
                     (this.ReferenceNumber != null &&
                     this.ReferenceNumber.Equals(input.ReferenceNumber))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.RejectionStatus == input.RejectionStatus ||
                     (this.RejectionStatus != null &&
                     this.RejectionStatus.Equals(input.RejectionStatus))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.ResolvedBy == input.ResolvedBy ||
                     (this.ResolvedBy != null &&
                     this.ResolvedBy.Equals(input.ResolvedBy))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.ResolvedOn == input.ResolvedOn ||
                     (this.ResolvedOn != null &&
                     this.ResolvedOn.Equals(input.ResolvedOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.SenderBankAccount == input.SenderBankAccount ||
                     (this.SenderBankAccount != null &&
                     this.SenderBankAccount.Equals(input.SenderBankAccount))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Street == input.Street ||
                     (this.Street != null &&
                     this.Street.Equals(input.Street))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Type == input.Type ||
                     (this.Type != null &&
                     this.Type.Equals(input.Type))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.UniqueId == input.UniqueId ||
                     (this.UniqueId != null &&
                     this.UniqueId.Equals(input.UniqueId))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.ValueDate == input.ValueDate ||
                     (this.ValueDate != null &&
                     this.ValueDate.Equals(input.ValueDate))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Version == input.Version ||
                     (this.Version != null &&
@@ -468,13 +485,7 @@ namespace Wallee.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = base.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
+                int hashCode = 41;
                 if (this.Address != null)
                     hashCode = hashCode * 59 + this.Address.GetHashCode();
                 if (this.Amount != null)
@@ -499,8 +510,14 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.GivenName.GetHashCode();
                 if (this.Iban != null)
                     hashCode = hashCode * 59 + this.Iban.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.LastResolutionFailure != null)
                     hashCode = hashCode * 59 + this.LastResolutionFailure.GetHashCode();
+                if (this.LinkedSpaceId != null)
+                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
+                if (this.LinkedTransaction != null)
+                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
                 if (this.ParticipantNumber != null)
                     hashCode = hashCode * 59 + this.ParticipantNumber.GetHashCode();
                 if (this.PaymentFeeAmount != null)

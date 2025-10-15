@@ -29,23 +29,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The total amount of the line item including any tax.
+        /// The total amount of the line item to be captured, including taxes.
         /// </summary>
-        /// <value>The total amount of the line item including any tax.</value>
+        /// <value>The total amount of the line item to be captured, including taxes.</value>
         [DataMember(Name="amount", EmitDefaultValue=false)]
         public decimal? Amount { get; private set; }
 
         /// <summary>
-        /// The quantity of the line item which should be completed.
+        /// The number of items to be captured.
         /// </summary>
-        /// <value>The quantity of the line item which should be completed.</value>
+        /// <value>The number of items to be captured.</value>
         [DataMember(Name="quantity", EmitDefaultValue=false)]
         public decimal? Quantity { get; private set; }
 
         /// <summary>
-        /// The unique id identifies the line item on which the capture is applied on.
+        /// The unique identifier of the line item within the set of line items.
         /// </summary>
-        /// <value>The unique id identifies the line item on which the capture is applied on.</value>
+        /// <value>The unique identifier of the line item within the set of line items.</value>
         [DataMember(Name="uniqueId", EmitDefaultValue=false)]
         public string UniqueId { get; private set; }
 

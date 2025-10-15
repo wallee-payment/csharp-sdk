@@ -36,12 +36,6 @@ namespace Wallee.Model
         public string Code { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Country
-        /// </summary>
-        [DataMember(Name="country", EmitDefaultValue=false)]
-        public string Country { get; private set; }
-
-        /// <summary>
         /// The two-letter code of the state&#39;s country (ISO 3166-1 alpha-2 format).
         /// </summary>
         /// <value>The two-letter code of the state&#39;s country (ISO 3166-1 alpha-2 format).</value>
@@ -71,7 +65,6 @@ namespace Wallee.Model
             var sb = new StringBuilder();
             sb.Append("class RestCountryState {\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
-            sb.Append("  Country: ").Append(Country).Append("\n");
             sb.Append("  CountryCode: ").Append(CountryCode).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -115,11 +108,6 @@ namespace Wallee.Model
                     this.Code.Equals(input.Code))
                 ) && 
                 (
-                    this.Country == input.Country ||
-                    (this.Country != null &&
-                    this.Country.Equals(input.Country))
-                ) && 
-                (
                     this.CountryCode == input.CountryCode ||
                     (this.CountryCode != null &&
                     this.CountryCode.Equals(input.CountryCode))
@@ -147,8 +135,6 @@ namespace Wallee.Model
                 int hashCode = 41;
                 if (this.Code != null)
                     hashCode = hashCode * 59 + this.Code.GetHashCode();
-                if (this.Country != null)
-                    hashCode = hashCode * 59 + this.Country.GetHashCode();
                 if (this.CountryCode != null)
                     hashCode = hashCode * 59 + this.CountryCode.GetHashCode();
                 if (this.Id != null)

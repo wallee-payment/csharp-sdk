@@ -21,8 +21,9 @@ namespace Wallee.Model
     public partial class CurrencyBankAccount :  IEquatable<CurrencyBankAccount>
     {
         /// <summary>
-        /// Gets or Sets Environment
+        /// Whether the bank account operates in a test or production environment.
         /// </summary>
+        /// <value>Whether the bank account operates in a test or production environment.</value>
         [DataMember(Name="environment", EmitDefaultValue=false)]
         public BankAccountEnvironment? Environment { get; private set; }
         /// <summary>
@@ -34,14 +35,16 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Gets or Sets BankAccount
+        /// The bank account this currency bank account belongs to.
         /// </summary>
+        /// <value>The bank account this currency bank account belongs to.</value>
         [DataMember(Name="bankAccount", EmitDefaultValue=false)]
         public BankAccount BankAccount { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Currency
+        /// The currency associated with the bank account.
         /// </summary>
+        /// <value>The currency associated with the bank account.</value>
         [DataMember(Name="currency", EmitDefaultValue=false)]
         public string Currency { get; private set; }
 

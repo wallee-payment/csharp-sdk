@@ -18,11 +18,12 @@ namespace Wallee.Model
     /// ConnectorInvocation
     /// </summary>
     [DataContract]
-    public partial class ConnectorInvocation : TransactionAwareEntity,  IEquatable<ConnectorInvocation>
+    public partial class ConnectorInvocation :  IEquatable<ConnectorInvocation>
     {
         /// <summary>
-        /// Gets or Sets Stage
+        /// The transaction stage during which the connector invocation was performed.
         /// </summary>
+        /// <value>The transaction stage during which the connector invocation was performed.</value>
         [DataMember(Name="stage", EmitDefaultValue=false)]
         public ConnectorInvocationStage? Stage { get; private set; }
         /// <summary>
@@ -33,15 +34,26 @@ namespace Wallee.Model
         {
         }
 
-
-
-
         /// <summary>
         /// The date and time when the object was created.
         /// </summary>
         /// <value>The date and time when the object was created.</value>
         [DataMember(Name="createdOn", EmitDefaultValue=false)]
         public DateTime? CreatedOn { get; private set; }
+
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; private set; }
+
+        /// <summary>
+        /// The ID of the space this object belongs to.
+        /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
         /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
@@ -52,14 +64,16 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets TimeTookInMilliseconds
+        /// The duration, in milliseconds, taken to execute the connector invocation.
         /// </summary>
+        /// <value>The duration, in milliseconds, taken to execute the connector invocation.</value>
         [DataMember(Name="timeTookInMilliseconds", EmitDefaultValue=false)]
         public long? TimeTookInMilliseconds { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Transaction
+        /// The transaction that the connector invocation belongs to.
         /// </summary>
+        /// <value>The transaction that the connector invocation belongs to.</value>
         [DataMember(Name="transaction", EmitDefaultValue=false)]
         public long? Transaction { get; private set; }
 
@@ -78,11 +92,9 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ConnectorInvocation {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  Stage: ").Append(Stage).Append("\n");
             sb.Append("  TimeTookInMilliseconds: ").Append(TimeTookInMilliseconds).Append("\n");
@@ -96,7 +108,7 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
@@ -121,47 +133,42 @@ namespace Wallee.Model
             if (input == null)
                 return false;
 
-            return base.Equals(input) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedTransaction == input.LinkedTransaction ||
-                    (this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(input.LinkedTransaction))
-                ) && base.Equals(input) && 
+            return 
                 (
                     this.CreatedOn == input.CreatedOn ||
                     (this.CreatedOn != null &&
                     this.CreatedOn.Equals(input.CreatedOn))
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.LinkedSpaceId == input.LinkedSpaceId ||
+                    (this.LinkedSpaceId != null &&
+                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
+                ) && 
                 (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||
                     (this.PlannedPurgeDate != null &&
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Stage == input.Stage ||
                     (this.Stage != null &&
                     this.Stage.Equals(input.Stage))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TimeTookInMilliseconds == input.TimeTookInMilliseconds ||
                     (this.TimeTookInMilliseconds != null &&
                     this.TimeTookInMilliseconds.Equals(input.TimeTookInMilliseconds))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Transaction == input.Transaction ||
                     (this.Transaction != null &&
                     this.Transaction.Equals(input.Transaction))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Version == input.Version ||
                     (this.Version != null &&
@@ -177,15 +184,13 @@ namespace Wallee.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = base.GetHashCode();
+                int hashCode = 41;
+                if (this.CreatedOn != null)
+                    hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.LinkedSpaceId != null)
                     hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
-                if (this.CreatedOn != null)
-                    hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
                 if (this.Stage != null)

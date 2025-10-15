@@ -29,21 +29,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The unique id identifies the line item on which the reduction is applied on.
+        /// The unique identifier of the line item to which the reduction is applied. This ID ensures the reduction is accurately associated with the correct item.
         /// </summary>
-        /// <value>The unique id identifies the line item on which the reduction is applied on.</value>
+        /// <value>The unique identifier of the line item to which the reduction is applied. This ID ensures the reduction is accurately associated with the correct item.</value>
         [DataMember(Name="lineItemUniqueId", EmitDefaultValue=false)]
         public string LineItemUniqueId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets QuantityReduction
+        /// The quantity removed or reduced from the line item. This value reflects the decrease in the item count due to the reduction.
         /// </summary>
+        /// <value>The quantity removed or reduced from the line item. This value reflects the decrease in the item count due to the reduction.</value>
         [DataMember(Name="quantityReduction", EmitDefaultValue=false)]
         public decimal? QuantityReduction { get; private set; }
 
         /// <summary>
-        /// Gets or Sets UnitPriceReduction
+        /// The monetary amount by which the line item&#39;s unit price is discounted. This reduction adjusts the price without altering the quantity.
         /// </summary>
+        /// <value>The monetary amount by which the line item&#39;s unit price is discounted. This reduction adjusts the price without altering the quantity.</value>
         [DataMember(Name="unitPriceReduction", EmitDefaultValue=false)]
         public decimal? UnitPriceReduction { get; private set; }
 

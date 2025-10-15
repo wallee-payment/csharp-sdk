@@ -28,7 +28,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RefundCommentCreate" /> class.
         /// </summary>
-        /// <param name="refund">refund (required).</param>
+        /// <param name="refund">The refund that the comment belongs to. (required).</param>
         public RefundCommentCreate(long? refund)
         {
             // to ensure "refund" is required (not null)
@@ -41,8 +41,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets Refund
+        /// The refund that the comment belongs to.
         /// </summary>
+        /// <value>The refund that the comment belongs to.</value>
         [DataMember(Name="refund", EmitDefaultValue=false)]
         public long? Refund { get; set; }
 

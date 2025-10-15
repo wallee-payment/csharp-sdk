@@ -85,8 +85,9 @@ namespace Wallee.Model
         public bool? Pinned { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Refund
+        /// The refund that the comment belongs to.
         /// </summary>
+        /// <value>The refund that the comment belongs to.</value>
         [DataMember(Name="refund", EmitDefaultValue=false)]
         public long? Refund { get; private set; }
 

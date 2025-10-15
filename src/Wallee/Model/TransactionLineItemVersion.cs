@@ -18,7 +18,7 @@ namespace Wallee.Model
     /// TransactionLineItemVersion
     /// </summary>
     [DataContract]
-    public partial class TransactionLineItemVersion : TransactionAwareEntity,  IEquatable<TransactionLineItemVersion>
+    public partial class TransactionLineItemVersion :  IEquatable<TransactionLineItemVersion>
     {
         /// <summary>
         /// The object&#39;s current state.
@@ -34,18 +34,17 @@ namespace Wallee.Model
         {
         }
 
-
-
-
         /// <summary>
-        /// Gets or Sets Amount
+        /// The total amount of the updated line items, including taxes.
         /// </summary>
+        /// <value>The total amount of the updated line items, including taxes.</value>
         [DataMember(Name="amount", EmitDefaultValue=false)]
         public decimal? Amount { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CreatedBy
+        /// The ID of the user the line item version was created by.
         /// </summary>
+        /// <value>The ID of the user the line item version was created by.</value>
         [DataMember(Name="createdBy", EmitDefaultValue=false)]
         public long? CreatedBy { get; private set; }
 
@@ -57,15 +56,16 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
-        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FailedOn
+        /// The date and time when the processing of the line item version failed.
         /// </summary>
+        /// <value>The date and time when the processing of the line item version failed.</value>
         [DataMember(Name="failedOn", EmitDefaultValue=false)]
         public DateTime? FailedOn { get; private set; }
 
@@ -74,6 +74,13 @@ namespace Wallee.Model
         /// </summary>
         [DataMember(Name="failureReason", EmitDefaultValue=false)]
         public FailureReason FailureReason { get; private set; }
+
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; private set; }
 
         /// <summary>
         /// The labels providing additional information about the object.
@@ -90,14 +97,30 @@ namespace Wallee.Model
         public string Language { get; private set; }
 
         /// <summary>
-        /// Gets or Sets LineItems
+        /// The line items that replace the original line items in the transaction.
         /// </summary>
+        /// <value>The line items that replace the original line items in the transaction.</value>
         [DataMember(Name="lineItems", EmitDefaultValue=false)]
         public List<LineItem> LineItems { get; private set; }
 
         /// <summary>
-        /// Gets or Sets NextUpdateOn
+        /// The ID of the space this object belongs to.
         /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        public long? LinkedSpaceId { get; private set; }
+
+        /// <summary>
+        /// The payment transaction this object is linked to.
+        /// </summary>
+        /// <value>The payment transaction this object is linked to.</value>
+        [DataMember(Name="linkedTransaction", EmitDefaultValue=false)]
+        public long? LinkedTransaction { get; private set; }
+
+        /// <summary>
+        /// The date and time when the next update of the line item version&#39;s state is planned.
+        /// </summary>
+        /// <value>The date and time when the next update of the line item version&#39;s state is planned.</value>
         [DataMember(Name="nextUpdateOn", EmitDefaultValue=false)]
         public DateTime? NextUpdateOn { get; private set; }
 
@@ -109,8 +132,9 @@ namespace Wallee.Model
         public DateTime? PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ProcessingOn
+        /// The date and time when the processing of the line item version was started.
         /// </summary>
+        /// <value>The date and time when the processing of the line item version was started.</value>
         [DataMember(Name="processingOn", EmitDefaultValue=false)]
         public DateTime? ProcessingOn { get; private set; }
 
@@ -123,26 +147,30 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets SucceededOn
+        /// The date and time when the line item version was processed successfully.
         /// </summary>
+        /// <value>The date and time when the line item version was processed successfully.</value>
         [DataMember(Name="succeededOn", EmitDefaultValue=false)]
         public DateTime? SucceededOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TaxAmount
+        /// The portion of the total amount that corresponds to taxes.
         /// </summary>
+        /// <value>The portion of the total amount that corresponds to taxes.</value>
         [DataMember(Name="taxAmount", EmitDefaultValue=false)]
         public decimal? TaxAmount { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TimeoutOn
+        /// The date and time by when the line item version is expected to be processed.
         /// </summary>
+        /// <value>The date and time by when the line item version is expected to be processed.</value>
         [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
         public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Transaction
+        /// The transaction that the line item version belongs to.
         /// </summary>
+        /// <value>The transaction that the line item version belongs to.</value>
         [DataMember(Name="transaction", EmitDefaultValue=false)]
         public Transaction Transaction { get; private set; }
 
@@ -161,19 +189,18 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class TransactionLineItemVersion {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  FailedOn: ").Append(FailedOn).Append("\n");
             sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Labels: ").Append(Labels).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  NextUpdateOn: ").Append(NextUpdateOn).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  ProcessingOn: ").Append(ProcessingOn).Append("\n");
@@ -192,7 +219,7 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
@@ -217,114 +244,114 @@ namespace Wallee.Model
             if (input == null)
                 return false;
 
-            return base.Equals(input) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedTransaction == input.LinkedTransaction ||
-                    (this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(input.LinkedTransaction))
-                ) && base.Equals(input) && 
+            return 
                 (
                     this.Amount == input.Amount ||
                     (this.Amount != null &&
                     this.Amount.Equals(input.Amount))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.CreatedBy == input.CreatedBy ||
                     (this.CreatedBy != null &&
                     this.CreatedBy.Equals(input.CreatedBy))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.CreatedOn == input.CreatedOn ||
                     (this.CreatedOn != null &&
                     this.CreatedOn.Equals(input.CreatedOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.ExternalId == input.ExternalId ||
                     (this.ExternalId != null &&
                     this.ExternalId.Equals(input.ExternalId))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.FailedOn == input.FailedOn ||
                     (this.FailedOn != null &&
                     this.FailedOn.Equals(input.FailedOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.FailureReason == input.FailureReason ||
                     (this.FailureReason != null &&
                     this.FailureReason.Equals(input.FailureReason))
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
                 (
                     this.Labels == input.Labels ||
                     this.Labels != null &&
                     input.Labels != null &&
                     this.Labels.SequenceEqual(input.Labels)
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Language == input.Language ||
                     (this.Language != null &&
                     this.Language.Equals(input.Language))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.LineItems == input.LineItems ||
                     this.LineItems != null &&
                     input.LineItems != null &&
                     this.LineItems.SequenceEqual(input.LineItems)
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.LinkedSpaceId == input.LinkedSpaceId ||
+                    (this.LinkedSpaceId != null &&
+                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
+                ) && 
+                (
+                    this.LinkedTransaction == input.LinkedTransaction ||
+                    (this.LinkedTransaction != null &&
+                    this.LinkedTransaction.Equals(input.LinkedTransaction))
+                ) && 
                 (
                     this.NextUpdateOn == input.NextUpdateOn ||
                     (this.NextUpdateOn != null &&
                     this.NextUpdateOn.Equals(input.NextUpdateOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||
                     (this.PlannedPurgeDate != null &&
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.ProcessingOn == input.ProcessingOn ||
                     (this.ProcessingOn != null &&
                     this.ProcessingOn.Equals(input.ProcessingOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.SpaceViewId == input.SpaceViewId ||
                     (this.SpaceViewId != null &&
                     this.SpaceViewId.Equals(input.SpaceViewId))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.SucceededOn == input.SucceededOn ||
                     (this.SucceededOn != null &&
                     this.SucceededOn.Equals(input.SucceededOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TaxAmount == input.TaxAmount ||
                     (this.TaxAmount != null &&
                     this.TaxAmount.Equals(input.TaxAmount))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TimeoutOn == input.TimeoutOn ||
                     (this.TimeoutOn != null &&
                     this.TimeoutOn.Equals(input.TimeoutOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Transaction == input.Transaction ||
                     (this.Transaction != null &&
                     this.Transaction.Equals(input.Transaction))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Version == input.Version ||
                     (this.Version != null &&
@@ -340,13 +367,7 @@ namespace Wallee.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = base.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
+                int hashCode = 41;
                 if (this.Amount != null)
                     hashCode = hashCode * 59 + this.Amount.GetHashCode();
                 if (this.CreatedBy != null)
@@ -359,12 +380,18 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.FailedOn.GetHashCode();
                 if (this.FailureReason != null)
                     hashCode = hashCode * 59 + this.FailureReason.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
                 if (this.Labels != null)
                     hashCode = hashCode * 59 + this.Labels.GetHashCode();
                 if (this.Language != null)
                     hashCode = hashCode * 59 + this.Language.GetHashCode();
                 if (this.LineItems != null)
                     hashCode = hashCode * 59 + this.LineItems.GetHashCode();
+                if (this.LinkedSpaceId != null)
+                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
+                if (this.LinkedTransaction != null)
+                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
                 if (this.NextUpdateOn != null)
                     hashCode = hashCode * 59 + this.NextUpdateOn.GetHashCode();
                 if (this.PlannedPurgeDate != null)

@@ -15,7 +15,7 @@ using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// The payment link defines an URL to automatically create transactions.
+    /// PaymentLinkCreate
     /// </summary>
     [DataContract]
     public partial class PaymentLinkCreate : AbstractPaymentLinkUpdate,  IEquatable<PaymentLinkCreate>
@@ -27,9 +27,9 @@ namespace Wallee.Model
         [DataMember(Name="state", EmitDefaultValue=false)]
         public CreationEntityState? State { get; set; }
         /// <summary>
-        /// The protection mode determines if the payment link is protected against tampering and in what way.
+        /// The protection mode defines whether the payment link is protected against tampering and specifies the protection method.
         /// </summary>
-        /// <value>The protection mode determines if the payment link is protected against tampering and in what way.</value>
+        /// <value>The protection mode defines whether the payment link is protected against tampering and specifies the protection method.</value>
         [DataMember(Name="protectionMode", EmitDefaultValue=true)]
         public PaymentLinkProtectionMode ProtectionMode { get; set; }
         /// <summary>
@@ -40,22 +40,22 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentLinkCreate" /> class.
         /// </summary>
-        /// <param name="externalId">A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead. (required).</param>
-        /// <param name="protectionMode">The protection mode determines if the payment link is protected against tampering and in what way. (required).</param>
-        public PaymentLinkCreate(string externalId, PaymentLinkProtectionMode protectionMode)
+        /// <param name="protectionMode">The protection mode defines whether the payment link is protected against tampering and specifies the protection method. (required).</param>
+        /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
+        public PaymentLinkCreate(PaymentLinkProtectionMode protectionMode, string externalId)
         {
-            // to ensure "externalId" is required (not null)
-            if (externalId == null)
-            {
-                throw new InvalidDataException("externalId is a required property for PaymentLinkCreate and cannot be null");
-            }
-            this.ExternalId = externalId;
             // to ensure "protectionMode" is required (not null)
             if (protectionMode == null)
             {
                 throw new InvalidDataException("protectionMode is a required property for PaymentLinkCreate and cannot be null");
             }
             this.ProtectionMode = protectionMode;
+            // to ensure "externalId" is required (not null)
+            if (externalId == null)
+            {
+                throw new InvalidDataException("externalId is a required property for PaymentLinkCreate and cannot be null");
+            }
+            this.ExternalId = externalId;
         }
 
 
@@ -70,10 +70,11 @@ namespace Wallee.Model
 
 
 
+
         /// <summary>
-        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
-        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
         [DataMember(Name="externalId", EmitDefaultValue=false)]
         public string ExternalId { get; set; }
 
@@ -88,6 +89,7 @@ namespace Wallee.Model
             sb.Append("class PaymentLinkCreate {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
+            sb.Append("  AllowedRedirectionDomains: ").Append(AllowedRedirectionDomains).Append("\n");
             sb.Append("  AppliedSpaceView: ").Append(AppliedSpaceView).Append("\n");
             sb.Append("  AvailableFrom: ").Append(AvailableFrom).Append("\n");
             sb.Append("  AvailableUntil: ").Append(AvailableUntil).Append("\n");
@@ -140,6 +142,12 @@ namespace Wallee.Model
                     this.AllowedPaymentMethodConfigurations != null &&
                     input.AllowedPaymentMethodConfigurations != null &&
                     this.AllowedPaymentMethodConfigurations.SequenceEqual(input.AllowedPaymentMethodConfigurations)
+                ) && base.Equals(input) && 
+                (
+                    this.AllowedRedirectionDomains == input.AllowedRedirectionDomains ||
+                    this.AllowedRedirectionDomains != null &&
+                    input.AllowedRedirectionDomains != null &&
+                    this.AllowedRedirectionDomains.SequenceEqual(input.AllowedRedirectionDomains)
                 ) && base.Equals(input) && 
                 (
                     this.AppliedSpaceView == input.AppliedSpaceView ||
@@ -220,6 +228,8 @@ namespace Wallee.Model
                 int hashCode = base.GetHashCode();
                 if (this.AllowedPaymentMethodConfigurations != null)
                     hashCode = hashCode * 59 + this.AllowedPaymentMethodConfigurations.GetHashCode();
+                if (this.AllowedRedirectionDomains != null)
+                    hashCode = hashCode * 59 + this.AllowedRedirectionDomains.GetHashCode();
                 if (this.AppliedSpaceView != null)
                     hashCode = hashCode * 59 + this.AppliedSpaceView.GetHashCode();
                 if (this.AvailableFrom != null)

@@ -43,14 +43,16 @@ namespace Wallee.Model
         public long? LinkedSpaceId { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SourceBankTransaction
+        /// The bank transaction from which funds are being transferred out.
         /// </summary>
+        /// <value>The bank transaction from which funds are being transferred out.</value>
         [DataMember(Name="sourceBankTransaction", EmitDefaultValue=false)]
         public BankTransaction SourceBankTransaction { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TargetBankTransaction
+        /// The bank transaction to which funds are being transferred in.
         /// </summary>
+        /// <value>The bank transaction to which funds are being transferred in.</value>
         [DataMember(Name="targetBankTransaction", EmitDefaultValue=false)]
         public BankTransaction TargetBankTransaction { get; private set; }
 

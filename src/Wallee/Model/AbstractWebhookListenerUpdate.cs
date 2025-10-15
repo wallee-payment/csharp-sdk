@@ -34,13 +34,6 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Whether signature header and &#39;state&#39; property are enabled in webhook payload.
-        /// </summary>
-        /// <value>Whether signature header and &#39;state&#39; property are enabled in webhook payload.</value>
-        [DataMember(Name="enablePayloadSignatureAndState", EmitDefaultValue=false)]
-        public bool? EnablePayloadSignatureAndState { get; set; }
-
-        /// <summary>
         /// The entity&#39;s target states that are to be monitored.
         /// </summary>
         /// <value>The entity&#39;s target states that are to be monitored.</value>
@@ -70,7 +63,6 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class AbstractWebhookListenerUpdate {\n");
-            sb.Append("  EnablePayloadSignatureAndState: ").Append(EnablePayloadSignatureAndState).Append("\n");
             sb.Append("  EntityStates: ").Append(EntityStates).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  NotifyEveryChange: ").Append(NotifyEveryChange).Append("\n");
@@ -110,11 +102,6 @@ namespace Wallee.Model
 
             return 
                 (
-                    this.EnablePayloadSignatureAndState == input.EnablePayloadSignatureAndState ||
-                    (this.EnablePayloadSignatureAndState != null &&
-                    this.EnablePayloadSignatureAndState.Equals(input.EnablePayloadSignatureAndState))
-                ) && 
-                (
                     this.EntityStates == input.EntityStates ||
                     this.EntityStates != null &&
                     input.EntityStates != null &&
@@ -146,8 +133,6 @@ namespace Wallee.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.EnablePayloadSignatureAndState != null)
-                    hashCode = hashCode * 59 + this.EnablePayloadSignatureAndState.GetHashCode();
                 if (this.EntityStates != null)
                     hashCode = hashCode * 59 + this.EntityStates.GetHashCode();
                 if (this.Name != null)

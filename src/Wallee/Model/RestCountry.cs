@@ -29,9 +29,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Specifies the country&#39;s way of formatting addresses.
+        /// The country&#39;s way of formatting addresses.
         /// </summary>
-        /// <value>Specifies the country&#39;s way of formatting addresses.</value>
+        /// <value>The country&#39;s way of formatting addresses.</value>
         [DataMember(Name="addressFormat", EmitDefaultValue=false)]
         public RestAddressFormat AddressFormat { get; private set; }
 

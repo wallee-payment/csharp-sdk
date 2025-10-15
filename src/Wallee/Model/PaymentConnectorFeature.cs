@@ -29,9 +29,9 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The name of the feature.
+        /// The localized name of the feature.
         /// </summary>
-        /// <value>The name of the feature.</value>
+        /// <value>The localized name of the feature.</value>
         [DataMember(Name="displayName", EmitDefaultValue=false)]
         public string DisplayName { get; private set; }
 

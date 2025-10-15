@@ -57,6 +57,13 @@ namespace Wallee.Model
         public bool? AllowInvoiceDownload { get; private set; }
 
         /// <summary>
+        /// If in the merchant Shopify store is used legacy tax service, rounding discrepancies in line item tax amounts may occur. When this check is enabled, such discrepancies are tolerated, allowing the payment to proceed without raising an exception.
+        /// </summary>
+        /// <value>If in the merchant Shopify store is used legacy tax service, rounding discrepancies in line item tax amounts may occur. When this check is enabled, such discrepancies are tolerated, allowing the payment to proceed without raising an exception.</value>
+        [DataMember(Name="allowPaymentWithTaxDiscrepancy", EmitDefaultValue=false)]
+        public bool? AllowPaymentWithTaxDiscrepancy { get; private set; }
+
+        /// <summary>
         /// Gets or Sets AllowedPaymentMethodConfigurations
         /// </summary>
         [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=false)]
@@ -194,6 +201,7 @@ namespace Wallee.Model
             sb.Append("class ShopifyV1Integration {\n");
             sb.Append("  AdditionalLineItemData: ").Append(AdditionalLineItemData).Append("\n");
             sb.Append("  AllowInvoiceDownload: ").Append(AllowInvoiceDownload).Append("\n");
+            sb.Append("  AllowPaymentWithTaxDiscrepancy: ").Append(AllowPaymentWithTaxDiscrepancy).Append("\n");
             sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
             sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
@@ -260,6 +268,11 @@ namespace Wallee.Model
                     this.AllowInvoiceDownload == input.AllowInvoiceDownload ||
                     (this.AllowInvoiceDownload != null &&
                     this.AllowInvoiceDownload.Equals(input.AllowInvoiceDownload))
+                ) && 
+                (
+                    this.AllowPaymentWithTaxDiscrepancy == input.AllowPaymentWithTaxDiscrepancy ||
+                    (this.AllowPaymentWithTaxDiscrepancy != null &&
+                    this.AllowPaymentWithTaxDiscrepancy.Equals(input.AllowPaymentWithTaxDiscrepancy))
                 ) && 
                 (
                     this.AllowedPaymentMethodConfigurations == input.AllowedPaymentMethodConfigurations ||
@@ -387,6 +400,8 @@ namespace Wallee.Model
                     hashCode = hashCode * 59 + this.AdditionalLineItemData.GetHashCode();
                 if (this.AllowInvoiceDownload != null)
                     hashCode = hashCode * 59 + this.AllowInvoiceDownload.GetHashCode();
+                if (this.AllowPaymentWithTaxDiscrepancy != null)
+                    hashCode = hashCode * 59 + this.AllowPaymentWithTaxDiscrepancy.GetHashCode();
                 if (this.AllowedPaymentMethodConfigurations != null)
                     hashCode = hashCode * 59 + this.AllowedPaymentMethodConfigurations.GetHashCode();
                 if (this.Currency != null)

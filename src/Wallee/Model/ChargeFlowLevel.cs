@@ -18,7 +18,7 @@ namespace Wallee.Model
     /// ChargeFlowLevel
     /// </summary>
     [DataContract]
-    public partial class ChargeFlowLevel : TransactionAwareEntity,  IEquatable<ChargeFlowLevel>
+    public partial class ChargeFlowLevel :  IEquatable<ChargeFlowLevel>
     {
         /// <summary>
         /// The object&#39;s current state.
@@ -34,18 +34,17 @@ namespace Wallee.Model
         {
         }
 
-
-
-
         /// <summary>
-        /// Gets or Sets AsynchronousCharge
+        /// The charge to process the payment asynchronously.
         /// </summary>
+        /// <value>The charge to process the payment asynchronously.</value>
         [DataMember(Name="asynchronousCharge", EmitDefaultValue=false)]
         public long? AsynchronousCharge { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Configuration
+        /// The configuration that was used for this charge flow level.
         /// </summary>
+        /// <value>The configuration that was used for this charge flow level.</value>
         [DataMember(Name="configuration", EmitDefaultValue=false)]
         public ChargeFlowLevelConfiguration Configuration { get; private set; }
 
@@ -57,6 +56,27 @@ namespace Wallee.Model
         public DateTime? CreatedOn { get; private set; }
 
         /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name="id", EmitDefaultValue=false)]
+        public long? Id { get; private set; }
+
+        /// <summary>
+        /// The ID of the space this object belongs to.
+        /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
+        public long? LinkedSpaceId { get; private set; }
+
+        /// <summary>
+        /// The payment transaction this object is linked to.
+        /// </summary>
+        /// <value>The payment transaction this object is linked to.</value>
+        [DataMember(Name="linkedTransaction", EmitDefaultValue=false)]
+        public long? LinkedTransaction { get; private set; }
+
+        /// <summary>
         /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
         /// </summary>
         /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
@@ -65,26 +85,30 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets SynchronousCharge
+        /// The charge to process the payment synchronously.
         /// </summary>
+        /// <value>The charge to process the payment synchronously.</value>
         [DataMember(Name="synchronousCharge", EmitDefaultValue=false)]
         public long? SynchronousCharge { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TimeoutOn
+        /// The date and time when the charge flow level will expire.
         /// </summary>
+        /// <value>The date and time when the charge flow level will expire.</value>
         [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
         public DateTime? TimeoutOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TokenCharge
+        /// The charge to process the payment using a token.
         /// </summary>
+        /// <value>The charge to process the payment using a token.</value>
         [DataMember(Name="tokenCharge", EmitDefaultValue=false)]
         public long? TokenCharge { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Transaction
+        /// The transaction that the charge flow level belongs to.
         /// </summary>
+        /// <value>The transaction that the charge flow level belongs to.</value>
         [DataMember(Name="transaction", EmitDefaultValue=false)]
         public Transaction Transaction { get; private set; }
 
@@ -103,13 +127,12 @@ namespace Wallee.Model
         {
             var sb = new StringBuilder();
             sb.Append("class ChargeFlowLevel {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  AsynchronousCharge: ").Append(AsynchronousCharge).Append("\n");
             sb.Append("  Configuration: ").Append(Configuration).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  SynchronousCharge: ").Append(SynchronousCharge).Append("\n");
@@ -125,7 +148,7 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
@@ -150,67 +173,67 @@ namespace Wallee.Model
             if (input == null)
                 return false;
 
-            return base.Equals(input) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && base.Equals(input) && 
-                (
-                    this.LinkedTransaction == input.LinkedTransaction ||
-                    (this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(input.LinkedTransaction))
-                ) && base.Equals(input) && 
+            return 
                 (
                     this.AsynchronousCharge == input.AsynchronousCharge ||
                     (this.AsynchronousCharge != null &&
                     this.AsynchronousCharge.Equals(input.AsynchronousCharge))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Configuration == input.Configuration ||
                     (this.Configuration != null &&
                     this.Configuration.Equals(input.Configuration))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.CreatedOn == input.CreatedOn ||
                     (this.CreatedOn != null &&
                     this.CreatedOn.Equals(input.CreatedOn))
-                ) && base.Equals(input) && 
+                ) && 
+                (
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
+                ) && 
+                (
+                    this.LinkedSpaceId == input.LinkedSpaceId ||
+                    (this.LinkedSpaceId != null &&
+                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
+                ) && 
+                (
+                    this.LinkedTransaction == input.LinkedTransaction ||
+                    (this.LinkedTransaction != null &&
+                    this.LinkedTransaction.Equals(input.LinkedTransaction))
+                ) && 
                 (
                     this.PlannedPurgeDate == input.PlannedPurgeDate ||
                     (this.PlannedPurgeDate != null &&
                     this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.State == input.State ||
                     (this.State != null &&
                     this.State.Equals(input.State))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.SynchronousCharge == input.SynchronousCharge ||
                     (this.SynchronousCharge != null &&
                     this.SynchronousCharge.Equals(input.SynchronousCharge))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TimeoutOn == input.TimeoutOn ||
                     (this.TimeoutOn != null &&
                     this.TimeoutOn.Equals(input.TimeoutOn))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.TokenCharge == input.TokenCharge ||
                     (this.TokenCharge != null &&
                     this.TokenCharge.Equals(input.TokenCharge))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Transaction == input.Transaction ||
                     (this.Transaction != null &&
                     this.Transaction.Equals(input.Transaction))
-                ) && base.Equals(input) && 
+                ) && 
                 (
                     this.Version == input.Version ||
                     (this.Version != null &&
@@ -226,19 +249,19 @@ namespace Wallee.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = base.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
+                int hashCode = 41;
                 if (this.AsynchronousCharge != null)
                     hashCode = hashCode * 59 + this.AsynchronousCharge.GetHashCode();
                 if (this.Configuration != null)
                     hashCode = hashCode * 59 + this.Configuration.GetHashCode();
                 if (this.CreatedOn != null)
                     hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
+                if (this.Id != null)
+                    hashCode = hashCode * 59 + this.Id.GetHashCode();
+                if (this.LinkedSpaceId != null)
+                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
+                if (this.LinkedTransaction != null)
+                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
                 if (this.PlannedPurgeDate != null)
                     hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
                 if (this.State != null)

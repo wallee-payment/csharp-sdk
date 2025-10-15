@@ -28,7 +28,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionInvoiceCommentCreate" /> class.
         /// </summary>
-        /// <param name="transactionInvoice">transactionInvoice (required).</param>
+        /// <param name="transactionInvoice">The transaction invoice that the comment belongs to. (required).</param>
         public TransactionInvoiceCommentCreate(long? transactionInvoice)
         {
             // to ensure "transactionInvoice" is required (not null)
@@ -41,8 +41,9 @@ namespace Wallee.Model
 
 
         /// <summary>
-        /// Gets or Sets TransactionInvoice
+        /// The transaction invoice that the comment belongs to.
         /// </summary>
+        /// <value>The transaction invoice that the comment belongs to.</value>
         [DataMember(Name="transactionInvoice", EmitDefaultValue=false)]
         public long? TransactionInvoice { get; set; }
 

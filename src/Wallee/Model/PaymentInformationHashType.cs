@@ -36,8 +36,9 @@ namespace Wallee.Model
         public long? Id { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Name
+        /// The name that describes the hash type.
         /// </summary>
+        /// <value>The name that describes the hash type.</value>
         [DataMember(Name="name", EmitDefaultValue=false)]
         public Dictionary<string, string> Name { get; private set; }
 

@@ -23,6 +23,7 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionUpdateRequest" /> class.
         /// </summary>
+        [JsonConstructorAttribute]
         public SubscriptionUpdateRequest()
         {
         }
@@ -32,7 +33,7 @@ namespace Wallee.Model
         /// </summary>
         /// <value>A description used to identify the subscription.</value>
         [DataMember(Name="description", EmitDefaultValue=false)]
-        public string Description { get; set; }
+        public string Description { get; private set; }
 
         /// <summary>
         /// Returns the string presentation of the object
