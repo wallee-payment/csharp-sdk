@@ -1,24 +1,47 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// The metric usage is the actual usage of a metric for a particular subscription as collected by an external application.
     /// </summary>
-    [DataContract]
-    public partial class SubscriptionMetricUsageReportCreate :  IEquatable<SubscriptionMetricUsageReportCreate>
+    [DataContract(Name = "SubscriptionMetricUsageReport.Create")]
+    public partial class SubscriptionMetricUsageReportCreate : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionMetricUsageReportCreate" /> class.
@@ -29,71 +52,58 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="SubscriptionMetricUsageReportCreate" /> class.
         /// </summary>
         /// <param name="consumedUnits">The number of resources consumed, will be charged in the next billing cycle. (required).</param>
-        /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
         /// <param name="metric">The metric that the usage report is recorded for. (required).</param>
+        /// <param name="description">A description used to identify the usage report..</param>
+        /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
         /// <param name="subscription">The subscription that the usage report is recorded for. (required).</param>
-        public SubscriptionMetricUsageReportCreate(decimal? consumedUnits, string externalId, long? metric, long? subscription)
+        public SubscriptionMetricUsageReportCreate(decimal consumedUnits = default(decimal), long metric = default(long), string description = default(string), string externalId = default(string), long subscription = default(long))
         {
-            // to ensure "consumedUnits" is required (not null)
-            if (consumedUnits == null)
-            {
-                throw new InvalidDataException("consumedUnits is a required property for SubscriptionMetricUsageReportCreate and cannot be null");
-            }
             this.ConsumedUnits = consumedUnits;
+            this.Metric = metric;
             // to ensure "externalId" is required (not null)
             if (externalId == null)
             {
-                throw new InvalidDataException("externalId is a required property for SubscriptionMetricUsageReportCreate and cannot be null");
+                throw new ArgumentNullException("externalId is a required property for SubscriptionMetricUsageReportCreate and cannot be null");
             }
             this.ExternalId = externalId;
-            // to ensure "metric" is required (not null)
-            if (metric == null)
-            {
-                throw new InvalidDataException("metric is a required property for SubscriptionMetricUsageReportCreate and cannot be null");
-            }
-            this.Metric = metric;
-            // to ensure "subscription" is required (not null)
-            if (subscription == null)
-            {
-                throw new InvalidDataException("subscription is a required property for SubscriptionMetricUsageReportCreate and cannot be null");
-            }
             this.Subscription = subscription;
+            this.Description = description;
         }
 
         /// <summary>
         /// The number of resources consumed, will be charged in the next billing cycle.
         /// </summary>
         /// <value>The number of resources consumed, will be charged in the next billing cycle.</value>
-        [DataMember(Name="consumedUnits", EmitDefaultValue=false)]
-        public decimal? ConsumedUnits { get; set; }
+        [DataMember(Name = "consumedUnits", IsRequired = true, EmitDefaultValue = true)]
+        public decimal ConsumedUnits { get; set; }
+
+        /// <summary>
+        /// The metric that the usage report is recorded for.
+        /// </summary>
+        /// <value>The metric that the usage report is recorded for.</value>
+        [DataMember(Name = "metric", IsRequired = true, EmitDefaultValue = true)]
+        public long Metric { get; set; }
 
         /// <summary>
         /// A description used to identify the usage report.
         /// </summary>
         /// <value>A description used to identify the usage report.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
+        [DataMember(Name = "description", EmitDefaultValue = false)]
         public string Description { get; set; }
 
         /// <summary>
         /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
         /// </summary>
         /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
+        [DataMember(Name = "externalId", IsRequired = true, EmitDefaultValue = true)]
         public string ExternalId { get; set; }
-
-        /// <summary>
-        /// The metric that the usage report is recorded for.
-        /// </summary>
-        /// <value>The metric that the usage report is recorded for.</value>
-        [DataMember(Name="metric", EmitDefaultValue=false)]
-        public long? Metric { get; set; }
 
         /// <summary>
         /// The subscription that the usage report is recorded for.
         /// </summary>
         /// <value>The subscription that the usage report is recorded for.</value>
-        [DataMember(Name="subscription", EmitDefaultValue=false)]
-        public long? Subscription { get; set; }
+        [DataMember(Name = "subscription", IsRequired = true, EmitDefaultValue = true)]
+        public long Subscription { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -101,12 +111,12 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SubscriptionMetricUsageReportCreate {\n");
             sb.Append("  ConsumedUnits: ").Append(ConsumedUnits).Append("\n");
+            sb.Append("  Metric: ").Append(Metric).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
-            sb.Append("  Metric: ").Append(Metric).Append("\n");
             sb.Append("  Subscription: ").Append(Subscription).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -118,80 +128,24 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as SubscriptionMetricUsageReportCreate);
-        }
-
-        /// <summary>
-        /// Returns true if SubscriptionMetricUsageReportCreate instances are equal
-        /// </summary>
-        /// <param name="input">Instance of SubscriptionMetricUsageReportCreate to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(SubscriptionMetricUsageReportCreate input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.ConsumedUnits == input.ConsumedUnits ||
-                    (this.ConsumedUnits != null &&
-                    this.ConsumedUnits.Equals(input.ConsumedUnits))
-                ) && 
-                (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
-                ) && 
-                (
-                    this.ExternalId == input.ExternalId ||
-                    (this.ExternalId != null &&
-                    this.ExternalId.Equals(input.ExternalId))
-                ) && 
-                (
-                    this.Metric == input.Metric ||
-                    (this.Metric != null &&
-                    this.Metric.Equals(input.Metric))
-                ) && 
-                (
-                    this.Subscription == input.Subscription ||
-                    (this.Subscription != null &&
-                    this.Subscription.Equals(input.Subscription))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // Description (string) maxLength
+            if (this.Description != null && this.Description.Length > 100)
             {
-                int hashCode = 41;
-                if (this.ConsumedUnits != null)
-                    hashCode = hashCode * 59 + this.ConsumedUnits.GetHashCode();
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.ExternalId != null)
-                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
-                if (this.Metric != null)
-                    hashCode = hashCode * 59 + this.Metric.GetHashCode();
-                if (this.Subscription != null)
-                    hashCode = hashCode * 59 + this.Subscription.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for Description, length must be less than 100.", new [] { "Description" });
             }
-        }
 
+            yield break;
+        }
     }
 
 }

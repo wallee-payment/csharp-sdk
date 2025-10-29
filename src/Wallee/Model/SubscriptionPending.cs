@@ -1,24 +1,47 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// SubscriptionPending
     /// </summary>
-    [DataContract]
-    public partial class SubscriptionPending : SubscriptionUpdate,  IEquatable<SubscriptionPending>
+    [DataContract(Name = "Subscription.Pending")]
+    public partial class SubscriptionPending : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionPending" /> class.
@@ -28,49 +51,72 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionPending" /> class.
         /// </summary>
-        /// <param name="id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required).</param>
-        /// <param name="version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public SubscriptionPending(long? id, long? version)
+        /// <param name="description">A description used to identify the subscription..</param>
+        /// <param name="plannedTerminationDate">The date and time when the subscription is planned to be terminated..</param>
+        /// <param name="affiliate">The affiliate that led to the creation of the subscription..</param>
+        /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
+        /// <param name="reference">The merchant&#39;s reference used to identify the subscription..</param>
+        /// <param name="subscriber">The subscriber that the subscription belongs to..</param>
+        /// <param name="token">The payment token that is used to charge the customer..</param>
+        public SubscriptionPending(string description = default(string), DateTime plannedTerminationDate = default(DateTime), long affiliate = default(long), int varVersion = default(int), string reference = default(string), long subscriber = default(long), long token = default(long))
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new InvalidDataException("id is a required property for SubscriptionPending and cannot be null");
-            }
-            this.Id = id;
-            // to ensure "version" is required (not null)
-            if (version == null)
-            {
-                throw new InvalidDataException("version is a required property for SubscriptionPending and cannot be null");
-            }
-            this.Version = version;
+            this.VarVersion = varVersion;
+            this.Description = description;
+            this.PlannedTerminationDate = plannedTerminationDate;
+            this.Affiliate = affiliate;
+            this.Reference = reference;
+            this.Subscriber = subscriber;
+            this.Token = token;
         }
 
+        /// <summary>
+        /// A description used to identify the subscription.
+        /// </summary>
+        /// <value>A description used to identify the subscription.</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
+        /// <summary>
+        /// The date and time when the subscription is planned to be terminated.
+        /// </summary>
+        /// <value>The date and time when the subscription is planned to be terminated.</value>
+        [DataMember(Name = "plannedTerminationDate", EmitDefaultValue = false)]
+        public DateTime PlannedTerminationDate { get; set; }
 
+        /// <summary>
+        /// The affiliate that led to the creation of the subscription.
+        /// </summary>
+        /// <value>The affiliate that led to the creation of the subscription.</value>
+        [DataMember(Name = "affiliate", EmitDefaultValue = false)]
+        public long Affiliate { get; set; }
 
-
+        /// <summary>
+        /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
+        /// </summary>
+        /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
+        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
+        public int VarVersion { get; set; }
 
         /// <summary>
         /// The merchant&#39;s reference used to identify the subscription.
         /// </summary>
         /// <value>The merchant&#39;s reference used to identify the subscription.</value>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
+        [DataMember(Name = "reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
         /// The subscriber that the subscription belongs to.
         /// </summary>
         /// <value>The subscriber that the subscription belongs to.</value>
-        [DataMember(Name="subscriber", EmitDefaultValue=false)]
-        public long? Subscriber { get; set; }
+        [DataMember(Name = "subscriber", EmitDefaultValue = false)]
+        public long Subscriber { get; set; }
 
         /// <summary>
         /// The payment token that is used to charge the customer.
         /// </summary>
         /// <value>The payment token that is used to charge the customer.</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
-        public long? Token { get; set; }
+        [DataMember(Name = "token", EmitDefaultValue = false)]
+        public long Token { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -78,14 +124,12 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SubscriptionPending {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
-            sb.Append("  Affiliate: ").Append(Affiliate).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  PlannedTerminationDate: ").Append(PlannedTerminationDate).Append("\n");
+            sb.Append("  Affiliate: ").Append(Affiliate).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  Subscriber: ").Append(Subscriber).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
@@ -97,103 +141,41 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as SubscriptionPending);
-        }
-
-        /// <summary>
-        /// Returns true if SubscriptionPending instances are equal
-        /// </summary>
-        /// <param name="input">Instance of SubscriptionPending to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(SubscriptionPending input)
-        {
-            if (input == null)
-                return false;
-
-            return base.Equals(input) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && base.Equals(input) && 
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
-                ) && base.Equals(input) && 
-                (
-                    this.Affiliate == input.Affiliate ||
-                    (this.Affiliate != null &&
-                    this.Affiliate.Equals(input.Affiliate))
-                ) && base.Equals(input) && 
-                (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
-                ) && base.Equals(input) && 
-                (
-                    this.PlannedTerminationDate == input.PlannedTerminationDate ||
-                    (this.PlannedTerminationDate != null &&
-                    this.PlannedTerminationDate.Equals(input.PlannedTerminationDate))
-                ) && base.Equals(input) && 
-                (
-                    this.Reference == input.Reference ||
-                    (this.Reference != null &&
-                    this.Reference.Equals(input.Reference))
-                ) && base.Equals(input) && 
-                (
-                    this.Subscriber == input.Subscriber ||
-                    (this.Subscriber != null &&
-                    this.Subscriber.Equals(input.Subscriber))
-                ) && base.Equals(input) && 
-                (
-                    this.Token == input.Token ||
-                    (this.Token != null &&
-                    this.Token.Equals(input.Token))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // Description (string) maxLength
+            if (this.Description != null && this.Description.Length > 200)
             {
-                int hashCode = base.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
-                if (this.Affiliate != null)
-                    hashCode = hashCode * 59 + this.Affiliate.GetHashCode();
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.PlannedTerminationDate != null)
-                    hashCode = hashCode * 59 + this.PlannedTerminationDate.GetHashCode();
-                if (this.Reference != null)
-                    hashCode = hashCode * 59 + this.Reference.GetHashCode();
-                if (this.Subscriber != null)
-                    hashCode = hashCode * 59 + this.Subscriber.GetHashCode();
-                if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for Description, length must be less than 200.", new [] { "Description" });
             }
-        }
 
+            // Reference (string) maxLength
+            if (this.Reference != null && this.Reference.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for Reference, length must be less than 100.", new [] { "Reference" });
+            }
+
+            if (this.Reference != null) {
+                // Reference (string) pattern
+                Regex regexReference = new Regex(@"[	\x20-\x7e]*", RegexOptions.CultureInvariant);
+                if (!regexReference.Match(this.Reference).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Reference, must match a pattern of " + regexReference, new [] { "Reference" });
+                }
+            }
+
+            yield break;
+        }
     }
 
 }

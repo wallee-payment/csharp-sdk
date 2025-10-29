@@ -1,73 +1,120 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// ManualTaskAction
     /// </summary>
-    [DataContract]
-    public partial class ManualTaskAction :  IEquatable<ManualTaskAction>
+    [DataContract(Name = "ManualTaskAction")]
+    public partial class ManualTaskAction : IValidatableObject
     {
+
         /// <summary>
-        /// The action&#39;s style.
+        /// Gets or Sets Style
         /// </summary>
-        /// <value>The action&#39;s style.</value>
-        [DataMember(Name="style", EmitDefaultValue=false)]
-        public ManualTaskActionStyle? Style { get; private set; }
+        [DataMember(Name = "style", EmitDefaultValue = false)]
+        public ManualTaskActionStyle? Style { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ManualTaskAction" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public ManualTaskAction()
+        /// <param name="style">style.</param>
+        public ManualTaskAction(ManualTaskActionStyle? style = default(ManualTaskActionStyle?))
         {
+            this.Style = style;
         }
-
-        /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
-
-        /// <summary>
-        /// The action&#39;s label.
-        /// </summary>
-        /// <value>The action&#39;s label.</value>
-        [DataMember(Name="label", EmitDefaultValue=false)]
-        public Dictionary<string, string> Label { get; private set; }
-
 
         /// <summary>
         /// The type of manual tasks this action belongs to.
         /// </summary>
         /// <value>The type of manual tasks this action belongs to.</value>
-        [DataMember(Name="taskType", EmitDefaultValue=false)]
-        public long? TaskType { get; private set; }
+        [DataMember(Name = "taskType", EmitDefaultValue = false)]
+        public long TaskType { get; private set; }
 
+        /// <summary>
+        /// Returns false as TaskType should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTaskType()
+        {
+            return false;
+        }
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; private set; }
+
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The action&#39;s label.
+        /// </summary>
+        /// <value>The action&#39;s label.</value>
+        [DataMember(Name = "label", EmitDefaultValue = false)]
+        public Dictionary<string, string> Label { get; private set; }
+
+        /// <summary>
+        /// Returns false as Label should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLabel()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ManualTaskAction {\n");
+            sb.Append("  TaskType: ").Append(TaskType).Append("\n");
+            sb.Append("  Style: ").Append(Style).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
-            sb.Append("  Style: ").Append(Style).Append("\n");
-            sb.Append("  TaskType: ").Append(TaskType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -78,74 +125,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as ManualTaskAction);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if ManualTaskAction instances are equal
-        /// </summary>
-        /// <param name="input">Instance of ManualTaskAction to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(ManualTaskAction input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Label == input.Label ||
-                    this.Label != null &&
-                    input.Label != null &&
-                    this.Label.SequenceEqual(input.Label)
-                ) && 
-                (
-                    this.Style == input.Style ||
-                    (this.Style != null &&
-                    this.Style.Equals(input.Style))
-                ) && 
-                (
-                    this.TaskType == input.TaskType ||
-                    (this.TaskType != null &&
-                    this.TaskType.Equals(input.TaskType))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Label != null)
-                    hashCode = hashCode * 59 + this.Label.GetHashCode();
-                if (this.Style != null)
-                    hashCode = hashCode * 59 + this.Style.GetHashCode();
-                if (this.TaskType != null)
-                    hashCode = hashCode * 59 + this.TaskType.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

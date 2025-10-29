@@ -1,26 +1,197 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text.RegularExpressions;
 using System.IO;
-using System.Web;
 using System.Linq;
 using System.Net;
-using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using RestSharp;
+using RestSharp.Serializers;
+using RestSharpMethod = RestSharp.Method;
+using FileIO = System.IO.File;
+using Wallee.Client.Auth;
+using Wallee.Model;
 
 namespace Wallee.Client
 {
     /// <summary>
-    /// API client is mainly responsible for making the HTTP call to the API backend.
+    /// Allows RestSharp to Serialize/Deserialize JSON using our custom logic, but only when ContentType is JSON.
     /// </summary>
-    public partial class ApiClient
+    internal class CustomJsonCodec : IRestSerializer, ISerializer, IDeserializer
     {
-        private JsonSerializerSettings serializerSettings = new JsonSerializerSettings
+        private readonly IReadableConfiguration _configuration;
+        private readonly JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
         {
-            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor
+            // OpenAPI generated types generally hide default constructors.
+            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
+            ContractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new CamelCaseNamingStrategy
+                {
+                    OverrideSpecifiedNames = false
+                }
+            }
+        };
+
+        public CustomJsonCodec(IReadableConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+        public CustomJsonCodec(JsonSerializerSettings serializerSettings, IReadableConfiguration configuration)
+        {
+            _serializerSettings = serializerSettings;
+            _configuration = configuration;
+        }
+
+        /// <summary>
+        /// Serialize the object into a JSON string.
+        /// </summary>
+        /// <param name="obj">Object to be serialized.</param>
+        /// <returns>A JSON string.</returns>
+        public string Serialize(object obj)
+        {
+            if (obj != null && obj is AbstractOpenAPISchema)
+            {
+                // the object to be serialized is an oneOf/anyOf schema
+                return ((AbstractOpenAPISchema)obj).ToJson();
+            }
+            else
+            {
+                return JsonConvert.SerializeObject(obj, _serializerSettings);
+            }
+        }
+
+        public string Serialize(Parameter bodyParameter) => Serialize(bodyParameter.Value);
+
+        public T Deserialize<T>(RestResponse response)
+        {
+            var result = (T)Deserialize(response, typeof(T));
+            return result;
+        }
+
+        /// <summary>
+        /// Deserialize the JSON string into a proper object.
+        /// </summary>
+        /// <param name="response">The HTTP response.</param>
+        /// <param name="type">Object type.</param>
+        /// <returns>Object representation of the JSON string.</returns>
+        internal object Deserialize(RestResponse response, Type type)
+        {
+            if (type == typeof(byte[])) // return byte array
+            {
+                return response.RawBytes;
+            }
+
+            // TODO: ? if (type.IsAssignableFrom(typeof(Stream)))
+            if (type == typeof(Stream))
+            {
+                var bytes = response.RawBytes;
+                if (response.Headers != null)
+                {
+                    var filePath = string.IsNullOrEmpty(_configuration.TempFolderPath)
+                        ? Path.GetTempPath()
+                        : _configuration.TempFolderPath;
+                    var regex = new Regex(@"Content-Disposition=.*filename=['""]?([^'""\s]+)['""]?$");
+                    foreach (var header in response.Headers)
+                    {
+                        var match = regex.Match(header.ToString());
+                        if (match.Success)
+                        {
+                            string fileName = filePath + ClientUtils.SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
+                            FileIO.WriteAllBytes(fileName, bytes);
+                            return new FileStream(fileName, FileMode.Open);
+                        }
+                    }
+                }
+                var stream = new MemoryStream(bytes);
+                return stream;
+            }
+
+            if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
+            {
+                return DateTime.Parse(response.Content, null, DateTimeStyles.RoundtripKind);
+            }
+
+            if (type == typeof(string) || type.Name.StartsWith("System.Nullable")) // return primitive type
+            {
+                return Convert.ChangeType(response.Content, type);
+            }
+
+            // at this point, it must be a model (json)
+            try
+            {
+                return JsonConvert.DeserializeObject(response.Content, type, _serializerSettings);
+            }
+            catch (Exception e)
+            {
+                throw new ApiException(500, e.Message);
+            }
+        }
+
+        public ISerializer Serializer => this;
+        public IDeserializer Deserializer => this;
+
+        public string[] AcceptedContentTypes => ContentType.JsonAccept;
+
+        public SupportsContentType SupportsContentType => contentType =>
+            contentType.Value.EndsWith("json", StringComparison.InvariantCultureIgnoreCase) ||
+            contentType.Value.EndsWith("javascript", StringComparison.InvariantCultureIgnoreCase);
+
+        public ContentType ContentType { get; set; } = ContentType.Json;
+
+        public DataFormat DataFormat => DataFormat.Json;
+    }
+    /// <summary>
+    /// Provides a default implementation of an Api client (ONLY synchronous implementations, asynchronous - not supported),
+    /// encapsulating general REST accessor use cases.
+    /// </summary>
+    public partial class ApiClient : ISynchronousClient
+    {
+        private readonly string _baseUrl;
+
+        private readonly IDictionary<string, IAuthentication> _authentications;
+
+        /// <summary>
+        /// Specifies the settings on a <see cref="JsonSerializer" /> object.
+        /// These settings can be adjusted to accommodate custom serialization rules.
+        /// </summary>
+        public JsonSerializerSettings SerializerSettings { get; set; } = new JsonSerializerSettings
+        {
+            // OpenAPI generated types generally hide default constructors.
+            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
+            ContractResolver = new DefaultContractResolver
+            {
+                NamingStrategy = new CamelCaseNamingStrategy
+                {
+                    OverrideSpecifiedNames = false
+                }
+            }
         };
 
         /// <summary>
@@ -37,529 +208,495 @@ namespace Wallee.Client
         partial void InterceptResponse(RestRequest request, RestResponse response);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default configuration.
+        /// Initializes a new instance of the <see cref="ApiClient" />
         /// </summary>
-        public ApiClient()
+        /// <param name="configuration">An instance of Configuration</param>
+        /// <exception cref="ArgumentException"></exception>
+        public ApiClient(IReadableConfiguration configuration)
         {
-            RestClient = new RestClient("https://app-wallee.com:443/api");
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default base path (https://app-wallee.com:443/api).
-        /// </summary>
-        /// <param name="config">An instance of Configuration.</param>
-        public ApiClient(Configuration config)
-        {
-            Configuration = config;
-
-            if (String.IsNullOrEmpty(Configuration.BasePath))
+            if (string.IsNullOrEmpty(configuration.BasePath))
                 throw new ArgumentException("basePath cannot be empty");
 
-            var options = Configuration.RestClientOptions;
-            options.BaseUrl = new Uri(Configuration.BasePath);
-            RestClient = new RestClient(options);
+            _baseUrl = configuration.BasePath;
+            _authentications = new Dictionary<string, IAuthentication>();
+
+            // Setup authentications (key: authentication name, value: authentication).
+            if (!string.IsNullOrEmpty(configuration.AuthenticationKey))
+            {
+                _authentications["jwtAuth"] =
+                    new HttpBearerAuth(configuration.ApplicationUserId, configuration.AuthenticationKey);
+            }
         }
 
         /// <summary>
-        /// Gets or sets an instance of the IReadableConfiguration.
+        /// Constructs the RestSharp version of the http method
         /// </summary>
-        /// <value>An instance of the IReadableConfiguration.</value>
-        /// <remarks>
-        /// <see cref="IReadableConfiguration"/> helps us to avoid modifying possibly global
-        /// configuration values from within a given client. It does not guarantee thread-safety
-        /// of the <see cref="Configuration"/> instance in any way.
-        /// </remarks>
-        public Configuration Configuration { get; set; }
+        /// <param name="method">Swagger Client Custom HttpMethod</param>
+        /// <returns>RestSharp's HttpMethod instance.</returns>
+        /// <exception cref="ArgumentOutOfRangeException"></exception>
+        private RestSharpMethod Method(HttpMethod method)
+        {
+            RestSharpMethod other;
+            switch (method)
+            {
+                case HttpMethod.GET:
+                    other = RestSharpMethod.Get;
+                    break;
+                case HttpMethod.POST:
+                    other = RestSharpMethod.Post;
+                    break;
+                case HttpMethod.PUT:
+                    other = RestSharpMethod.Put;
+                    break;
+                case HttpMethod.DELETE:
+                    other = RestSharpMethod.Delete;
+                    break;
+                case HttpMethod.HEAD:
+                    other = RestSharpMethod.Head;
+                    break;
+                case HttpMethod.OPTIONS:
+                    other = RestSharpMethod.Options;
+                    break;
+                case HttpMethod.PATCH:
+                    other = RestSharpMethod.Patch;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("method", method, null);
+            }
+
+            return other;
+        }
 
         /// <summary>
-        /// Gets or sets the RestClient.
+        /// Provides all logic for constructing a new RestSharp <see cref="RestRequest"/>.
+        /// At this point, all information for querying the service is known. 
+        /// Here, it is simply mapped into the RestSharp request.
         /// </summary>
-        /// <value>An instance of the RestClient</value>
-        public RestClient RestClient { get; set; }
-
-        // Creates and sets up a RestRequest prior to a call.
-        private RestRequest PrepareRequest(
-            String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
-            Dictionary<String, String> headerParams, Dictionary<String, String> defaultHeaderParams, Dictionary<String, String> formParams,
-            Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
-            String contentType)
+        /// <param name="method">The http verb.</param>
+        /// <param name="path">The target path (or resource).</param>
+        /// <param name="options">The additional request options.</param>
+        /// <param name="configuration">A per-request configuration object.</param>
+        /// <returns>[private] A new RestRequest instance.</returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        private RestRequest NewRequest(
+            HttpMethod method,
+            string path,
+            RequestOptions options,
+            IReadableConfiguration configuration)
         {
-            var request = new RestRequest(path, method);
+            if (path == null) throw new ArgumentNullException("path");
+            if (options == null) throw new ArgumentNullException("options");
+            if (configuration == null) throw new ArgumentNullException("configuration");
 
-            // add path parameter, if any
-            foreach(var param in pathParams)
-                request.AddParameter(param.Key, param.Value, ParameterType.UrlSegment);
+            RestRequest request = new RestRequest(path, Method(method));
 
-            // add header parameter, if any
-            foreach(var param in headerParams)
-                request.AddHeader(param.Key, param.Value);
-
-            // add default header parameters
-            foreach(var param in defaultHeaderParams)
-                request.AddHeader(param.Key, param.Value);
-
-            // add authentication headers
-            foreach (var param in AuthenticationHeaders(method, path, queryParams))
-                request.AddHeader(param.Key, param.Value);
-
-            // add query parameter, if any
-            foreach(var param in queryParams)
-                request.AddQueryParameter(param.Key, param.Value);
-
-            // add form parameter, if any
-            foreach(var param in formParams)
-                request.AddParameter(param.Key, param.Value);
-
-            // add file parameter, if any
-            foreach(var param in fileParams)
+            if (options.PathParameters != null)
             {
-                request.AddFile(param.Value.Name, param.Value.FileName, param.Value.ContentType);
+                foreach (var pathParam in options.PathParameters)
+                {
+                    request.AddParameter(pathParam.Key, pathParam.Value, ParameterType.UrlSegment);
+                }
             }
 
-            if (postBody != null) // http body (model or byte[]) parameter
+            if (options.QueryParameters != null)
             {
-                request.AddBody(postBody, contentType);
+                foreach (var queryParam in options.QueryParameters)
+                {
+                    foreach (var value in queryParam.Value)
+                    {
+                        string encodedValue = Uri.EscapeDataString(value);
+                        request.AddQueryParameter(queryParam.Key, encodedValue, false);
+                    }
+                }
             }
 
-            var isPostMethod = (method == RestSharp.Method.Post);
-            // NB: Our server wants even empty POST to have a Content-Type header. Don't provide Content-Type for GET requests.
-            if (contentType != null 
-                && (postBody != null || isPostMethod)
-            ) {
-                request.AddHeader("Content-Type", contentType);
+            if (configuration.DefaultHeaders != null)
+            {
+                foreach (var headerParam in configuration.DefaultHeaders)
+                {
+                    request.AddHeader(headerParam.Key, headerParam.Value);
+                }
+            }
+
+            // Add additional meta headers
+            AddMetaHeaders(request);
+
+            if (options.HeaderParameters != null)
+            {
+                foreach (var headerParam in options.HeaderParameters)
+                {
+                    foreach (var value in headerParam.Value)
+                    {
+                        request.AddHeader(headerParam.Key, value);
+                    }
+                }
+            }
+
+            UpdateParamsForAuth(path, method, options.PathParameters, options.QueryParameters, request);
+
+            if (options.FormParameters != null)
+            {
+                foreach (var formParam in options.FormParameters)
+                {
+                    request.AddParameter(formParam.Key, formParam.Value);
+                }
+            }
+
+            if (options.Data != null)
+            {
+                if (options.Data is Stream stream)
+                {
+                    var contentType = "application/octet-stream";
+                    if (options.HeaderParameters != null)
+                    {
+                        var contentTypes = options.HeaderParameters["Content-Type"];
+                        contentType = contentTypes[0];
+                    }
+
+                    var bytes = ClientUtils.ReadAsBytes(stream);
+                    request.AddParameter(contentType, bytes, ParameterType.RequestBody);
+                }
+                else
+                {
+                    if (options.HeaderParameters != null)
+                    {
+                        var contentTypes = options.HeaderParameters["Content-Type"];
+                        if (contentTypes == null || contentTypes.Any(header => header.Contains("application/json")))
+                        {
+                            request.RequestFormat = DataFormat.Json;
+                        }
+                        else
+                        {
+                            // TODO: Generated client user should add additional handlers. RestSharp only supports XML and JSON, with XML as default.
+                        }
+                    }
+                    else
+                    {
+                        // Here, we'll assume JSON APIs are more common. XML can be forced by adding produces/consumes to openapi spec explicitly.
+                        request.RequestFormat = DataFormat.Json;
+                    }
+
+                    request.AddJsonBody(options.Data);
+                }
+            }
+
+            if (options.FileParameters != null)
+            {
+                foreach (var fileParam in options.FileParameters)
+                {
+                    foreach (var file in fileParam.Value)
+                    {
+                        var bytes = ClientUtils.ReadAsBytes(file);
+                        var fileStream = file as FileStream;
+                        if (fileStream != null)
+                            request.AddFile(fileParam.Key, bytes, Path.GetFileName(fileStream.Name));
+                        else
+                            request.AddFile(fileParam.Key, bytes, "no_file_name_provided");
+                    }
+                }
             }
 
             return request;
         }
 
         /// <summary>
-        /// Makes the HTTP request (Sync).
+        /// Transforms a RestResponse instance into a new ApiResponse instance.
+        /// At this point, we have a concrete http response from the service.
+        /// Here, it is simply mapped into the [public] ApiResponse object.
         /// </summary>
-        /// <param name="path">URL path.</param>
-        /// <param name="method">HTTP method.</param>
-        /// <param name="queryParams">Query parameters.</param>
-        /// <param name="postBody">HTTP body (POST request).</param>
-        /// <param name="headerParams">Header parameters.</param>
-        /// <param name="formParams">Form parameters.</param>
-        /// <param name="fileParams">File parameters.</param>
-        /// <param name="pathParams">Path parameters.</param>
-        /// <param name="contentType">Content Type of the request</param>
-        /// <param name="timeout">Per-request timeout in milliseconds.
-        /// <returns>Object</returns>
-        public Object CallApi(
-            String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
-            Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
-            Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
-            String contentType, int timeout)
+        /// <param name="response">The RestSharp response object</param>
+        /// <returns>A new ApiResponse instance.</returns>
+        private ApiResponse<T> ToApiResponse<T>(RestResponse<T> response)
         {
+            T result = response.Data;
+            string rawContent = response.Content;
 
-            Dictionary<String, String> defaultHeaderParams = new Dictionary<String, String>() {
-                {"x-meta-sdk-version", "9.1.0"},
-                {"x-meta-sdk-language", "csharp"},
-                {"x-meta-sdk-provider", "wallee"},
-                {"x-meta-sdk-language-version", Environment.Version.ToString()}
+            var transformed = new ApiResponse<T>(response.StatusCode, new Multimap<string, string>(), result, rawContent)
+            {
+                ErrorText = response.ErrorMessage,
+                Cookies = new List<Cookie>()
             };
 
-            var request = PrepareRequest(
-                path, method, queryParams, postBody, headerParams, defaultHeaderParams, formParams, fileParams,
-                pathParams, contentType);
-
-            // set timeout for the request
-            request.Timeout = TimeSpan.FromMilliseconds(timeout);
-
-            InterceptRequest(request);
-            var response = RestClient.Execute(request);
-            InterceptResponse(request, response);
-
-            return (Object) response;
-        }
-
-        /// <summary>
-        /// Escape string (url-encoded).
-        /// </summary>
-        /// <param name="str">String to be escaped.</param>
-        /// <returns>Escaped string.</returns>
-        public string EscapeString(string str)
-        {
-            return UrlEncode(str);
-        }
-
-        /// <summary>
-        /// Create FileParameter based on Stream.
-        /// </summary>
-        /// <param name="name">Parameter name.</param>
-        /// <param name="stream">Input stream.</param>
-        /// <returns>FileParameter.</returns>
-        public FileParameter ParameterToFile(string name, Stream stream)
-        {
-            if (stream is FileStream)
-                return FileParameter.Create(name, ReadAsBytes(stream), Path.GetFileName(((FileStream)stream).Name));
-            else
-                return FileParameter.Create(name, ReadAsBytes(stream), "no_file_name_provided");
-        }
-
-        /// <summary>
-        /// If parameter is DateTime, output in a formatted string (default ISO 8601), customizable with Configuration.DateTime.
-        /// If parameter is a list, join the list with ",".
-        /// Otherwise just return the string.
-        /// </summary>
-        /// <param name="obj">The parameter (header, path, query, form).</param>
-        /// <returns>Formatted string.</returns>
-        public string ParameterToString(object obj)
-        {
-            if (obj is DateTime)
-                // Return a formatted date string - Can be customized with Configuration.DateTimeFormat
-                // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern ("o")
-                // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
-                // For example: 2009-06-15T13:45:30.0000000
-                return ((DateTime)obj).ToString (Configuration.DateTimeFormat);
-            else if (obj is DateTimeOffset)
-                // Return a formatted date string - Can be customized with Configuration.DateTimeFormat
-                // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern ("o")
-                // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
-                // For example: 2009-06-15T13:45:30.0000000
-                return ((DateTimeOffset)obj).ToString (Configuration.DateTimeFormat);
-            else if (obj is IList)
+            if (response.Headers != null)
             {
-                var flattenedString = new StringBuilder();
-                foreach (var param in (IList)obj)
+                foreach (var responseHeader in response.Headers)
                 {
-                    if (flattenedString.Length > 0)
-                        flattenedString.Append(",");
-                    flattenedString.Append(param);
+                    transformed.Headers.Add(responseHeader.Name, ClientUtils.ParameterToString(responseHeader.Value));
                 }
-                return flattenedString.ToString();
             }
-            else
-                return Convert.ToString (obj);
+
+            if (response.ContentHeaders != null)
+            {
+                foreach (var responseHeader in response.ContentHeaders)
+                {
+                    transformed.Headers.Add(responseHeader.Name, ClientUtils.ParameterToString(responseHeader.Value));
+                }
+            }
+
+            if (response.Cookies != null)
+            {
+                foreach (var responseCookies in response.Cookies.Cast<Cookie>())
+                {
+                    transformed.Cookies.Add(
+                        new Cookie(
+                            responseCookies.Name,
+                            responseCookies.Value,
+                            responseCookies.Path,
+                            responseCookies.Domain)
+                        );
+                }
+            }
+
+            return transformed;
         }
 
         /// <summary>
-        /// Deserialize the JSON string into a proper object.
+        /// Executes the HTTP request for the current service.
+        /// Based on functions received it can be async or sync.
         /// </summary>
-        /// <param name="response">The HTTP response.</param>
-        /// <param name="type">Object type.</param>
-        /// <returns>Object representation of the JSON string.</returns>
-        public object Deserialize(RestResponse response, Type type)
+        /// <param name="getResponse">Local function that executes http request and returns http response.</param>
+        /// <param name="setOptions">Local function to specify options for the service.</param>        
+        /// <param name="request">The RestSharp request object</param>
+        /// <param name="options">The RestSharp options object</param>
+        /// <param name="requestTimeout">A per-request (connection) timeout in seconds.</param>
+        /// <param name="configuration">A per-request configuration object.</param>
+        /// <returns>A new ApiResponse instance.</returns>
+        private async Task<ApiResponse<T>> ExecClientAsync<T>(Func<RestClient, Task<RestResponse<T>>> getResponse,
+            Action<RestClientOptions> setOptions, RestRequest request, RequestOptions options, int requestTimeout,
+            IReadableConfiguration configuration)
         {
-            IReadOnlyCollection<HeaderParameter> headers = response.Headers;
-            if (type == typeof(byte[])) // return byte array
-            {
-                return response.RawBytes;
-            }
+            var baseUrl = configuration.GetOperationServerUrl(options.Operation, options.OperationIndex) ?? _baseUrl;
 
-            // TODO: ? if (type.IsAssignableFrom(typeof(Stream)))
-            if (type == typeof(Stream))
+            // Prioritizes the request timeout provided, falling back to the configuration as a secondary option.
+            var resolveRequestTimeout = requestTimeout > 0 ? requestTimeout : configuration.Timeout;
+
+            var clientOptions = new RestClientOptions(baseUrl)
             {
-                if (headers != null)
+                ClientCertificates = configuration.ClientCertificates,
+                Timeout = TimeSpan.FromSeconds(resolveRequestTimeout),
+                Proxy = configuration.Proxy,
+                UserAgent = configuration.UserAgent,
+                UseDefaultCredentials = configuration.UseDefaultCredentials,
+                RemoteCertificateValidationCallback = configuration.RemoteCertificateValidationCallback
+            };
+            setOptions(clientOptions);
+
+            using (RestClient client = new RestClient(clientOptions,
+                configureSerialization: serializerConfig => serializerConfig.UseSerializer(() => new CustomJsonCodec(SerializerSettings, configuration))))
+            {
+                InterceptRequest(request);
+
+                RestResponse<T> response = await getResponse(client);
+
+                // if the response type is oneOf/anyOf, call FromJSON to deserialize the data
+                if (typeof(AbstractOpenAPISchema).IsAssignableFrom(typeof(T)))
                 {
-                    var filePath = String.IsNullOrEmpty(Configuration.TempFolderPath)
-                        ? Path.GetTempPath()
-                        : Configuration.TempFolderPath;
-                    var regex = new Regex(@"Content-Disposition=.*filename=['""]?([^'""\s]+)['""]?$");
-                    foreach (var header in headers)
+                    try
                     {
-                        var match = regex.Match(header.ToString());
-                        if (match.Success)
+                        response.Data = (T)typeof(T).GetMethod("FromJson").Invoke(null, new object[] { response.Content });
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex.InnerException != null ? ex.InnerException : ex;
+                    }
+                }
+                else if (typeof(T).Name == "Stream") // for binary response
+                {
+                    response.Data = (T)(object)new MemoryStream(response.RawBytes);
+                }
+                else if (typeof(T).Name == "Byte[]") // for byte response
+                {
+                    response.Data = (T)(object)response.RawBytes;
+                }
+                else if (typeof(T).Name == "String") // for string response
+                {
+                    response.Data = (T)(object)response.Content;
+                }
+
+                InterceptResponse(request, response);
+
+                var result = ToApiResponse(response);
+                if (response.ErrorMessage != null)
+                {
+                    result.ErrorText = response.ErrorMessage;
+                }
+
+                if (response.Cookies != null && response.Cookies.Count > 0)
+                {
+                    if (result.Cookies == null) result.Cookies = new List<Cookie>();
+                    foreach (var restResponseCookie in response.Cookies.Cast<Cookie>())
+                    {
+                        var cookie = new Cookie(
+                            restResponseCookie.Name,
+                            restResponseCookie.Value,
+                            restResponseCookie.Path,
+                            restResponseCookie.Domain
+                        )
                         {
-                            string fileName = filePath + SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
-                            File.WriteAllBytes(fileName, response.RawBytes);
-                            return new FileStream(fileName, FileMode.Open);
-                        }
+                            Comment = restResponseCookie.Comment,
+                            CommentUri = restResponseCookie.CommentUri,
+                            Discard = restResponseCookie.Discard,
+                            Expired = restResponseCookie.Expired,
+                            Expires = restResponseCookie.Expires,
+                            HttpOnly = restResponseCookie.HttpOnly,
+                            Port = restResponseCookie.Port,
+                            Secure = restResponseCookie.Secure,
+                            Version = restResponseCookie.Version
+                        };
+
+                        result.Cookies.Add(cookie);
                     }
                 }
-                var stream = new MemoryStream(response.RawBytes);
-                return stream;
-            }
-
-            if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
-            {
-                return DateTime.Parse(response.Content,  null, System.Globalization.DateTimeStyles.RoundtripKind);
-            }
-
-            if (type == typeof(String) || type.Name.StartsWith("System.Nullable")) // return primitive type
-            {
-                return ConvertType(response.Content, type);
-            }
-
-            // at this point, it must be a model (json)
-            try
-            {
-                return JsonConvert.DeserializeObject(response.Content, type, serializerSettings);
-            }
-            catch (Exception e)
-            {
-                throw new ApiException(500, e.Message);
+                return result;
             }
         }
 
-        /// <summary>
-        /// Serialize an input (model) into JSON string
-        /// </summary>
-        /// <param name="obj">Object.</param>
-        /// <returns>JSON string.</returns>
-        public String Serialize(object obj)
+        private ApiResponse<T> Exec<T>(RestRequest request, RequestOptions options, int requestTimeout,
+            IReadableConfiguration configuration)
         {
-            try
+            Action<RestClientOptions> setOptions = (clientOptions) =>
             {
-				return obj != null ? JsonConvert.SerializeObject(obj, Formatting.None, new JsonSerializerSettings{ NullValueHandling = NullValueHandling.Ignore}) : null;
-            }
-            catch (Exception e)
-            {
-                throw new ApiException(500, e.Message);
-            }
-        }
+                var cookies = new CookieContainer();
 
-        /// <summary>
-        ///Check if the given MIME is a JSON MIME.
-        ///JSON MIME examples:
-        ///    application/json
-        ///    application/json; charset=UTF8
-        ///    APPLICATION/JSON
-        ///    application/vnd.company+json
-        /// </summary>
-        /// <param name="mime">MIME</param>
-        /// <returns>Returns True if MIME type is json.</returns>
-        public bool IsJsonMime(String mime)
-        {
-            var jsonRegex = new Regex("(?i)^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$");
-            return mime != null && (jsonRegex.IsMatch(mime) || mime.Equals("application/json-patch+json"));
-        }
-
-        /// <summary>
-        /// Select the Content-Type header's value from the given content-type array:
-        /// if JSON type exists in the given array, use it;
-        /// otherwise use the first one defined in 'consumes'
-        /// </summary>
-        /// <param name="contentTypes">The Content-Type array to select from.</param>
-        /// <returns>The Content-Type header to use.</returns>
-        public String SelectHeaderContentType(String[] contentTypes)
-        {
-            if (contentTypes.Length == 0)
-                return "application/json";
-
-            foreach (var contentType in contentTypes)
-            {
-                if (IsJsonMime(contentType.ToLower()))
+                if (options.Cookies != null && options.Cookies.Count > 0)
                 {
-                    String jsonContentType = contentType;
-                    int index = jsonContentType.IndexOf(";");
-                    if (index >= 0)
+                    foreach (var cookie in options.Cookies)
                     {
-                        jsonContentType = jsonContentType.Substring(0, index);
+                        cookies.Add(new Cookie(cookie.Name, cookie.Value));
                     }
-                    return jsonContentType;
                 }
-            }
-            return contentTypes[0]; // use the first content type specified in 'consumes'
+                clientOptions.CookieContainer = cookies;
+            };
+
+            Func<RestClient, Task<RestResponse<T>>> getResponse = (client) =>
+            {
+                // Directly execute the request without retry logic
+                return Task.FromResult(client.Execute<T>(request));
+            };
+
+            return ExecClientAsync(getResponse, setOptions, request, options, requestTimeout, configuration)
+                .GetAwaiter()
+                .GetResult();
+        }
+
+        #region ISynchronousClient
+        /// <summary>
+        /// Make the HTTP GET request (synchronous).
+        /// </summary>
+        /// <param name="path">The target path (or resource).</param>
+        /// <param name="options">The additional request options.</param>
+        /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
+        /// <param name="config">A per-request configuration object.</param>
+        /// <returns>A Task containing ApiResponse</returns>
+        public ApiResponse<T> Get<T>(string path, RequestOptions options, int requestTimeout,
+            IReadableConfiguration config)
+        {
+            return Exec<T>(NewRequest(HttpMethod.GET, path, options, config), options, requestTimeout, config);
         }
 
         /// <summary>
-        /// Select the Accept header's value from the given accepts array:
-        /// if JSON exists in the given array, use it;
-        /// otherwise use all of them (joining into a string)
+        /// Make the HTTP POST request (synchronous).
         /// </summary>
-        /// <param name="accepts">The accepts array to select from.</param>
-        /// <returns>The Accept header to use.</returns>
-        public String SelectHeaderAccept(String[] accepts)
+        /// <param name="path">The target path (or resource).</param>
+        /// <param name="options">The additional request options.</param>
+        /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
+        /// <param name="config">A per-request configuration object.</param>
+        /// <returns>A Task containing ApiResponse</returns>
+        public ApiResponse<T> Post<T>(string path, RequestOptions options, int requestTimeout,
+            IReadableConfiguration config)
         {
-            if (accepts.Length == 0)
-                return null;
-
-            if (accepts.Contains("application/json", StringComparer.OrdinalIgnoreCase))
-                return "application/json";
-
-            return String.Join(",", accepts);
+            return Exec<T>(NewRequest(HttpMethod.POST, path, options, config), options, requestTimeout, config);
         }
 
         /// <summary>
-        /// Encode string in base64 format.
+        /// Make the HTTP PUT request (synchronous).
         /// </summary>
-        /// <param name="text">String to be encoded.</param>
-        /// <returns>Encoded string.</returns>
-        public static string Base64Encode(string text)
+        /// <param name="path">The target path (or resource).</param>
+        /// <param name="options">The additional request options.</param>
+        /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
+        /// <param name="config">A per-request configuration object.</param
+        /// <returns>A Task containing ApiResponse</returns>
+        public ApiResponse<T> Put<T>(string path, RequestOptions options, int requestTimeout,
+            IReadableConfiguration config)
         {
-            return System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(text));
+            return Exec<T>(NewRequest(HttpMethod.PUT, path, options, config), options, requestTimeout, config);
         }
 
         /// <summary>
-        /// Dynamically cast the object into target type.
+        /// Make the HTTP DELETE request (synchronous).
         /// </summary>
-        /// <param name="fromObject">Object to be casted</param>
-        /// <param name="toObject">Target type</param>
-        /// <returns>Casted object</returns>
-        public static object ConvertType<T>(T fromObject, Type toObject) where T : class
+        /// <param name="path">The target path (or resource).</param>
+        /// <param name="options">The additional request options.</param>
+        /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
+        /// <param name="config">A per-request configuration object.</param>
+        /// <returns>A Task containing ApiResponse</returns>
+        public ApiResponse<T> Delete<T>(string path, RequestOptions options, int requestTimeout,
+            IReadableConfiguration config)
         {
-            return Convert.ChangeType(fromObject, toObject);
+            return Exec<T>(NewRequest(HttpMethod.DELETE, path, options, config), options, requestTimeout, config);
         }
 
         /// <summary>
-        /// Convert stream to byte array
+        /// Make the HTTP HEAD request (synchronous).
         /// </summary>
-        /// <param name="inputStream">Input stream to be converted</param>
-        /// <returns>Byte array</returns>
-        public static byte[] ReadAsBytes(Stream inputStream)
+        /// <param name="path">The target path (or resource).</param>
+        /// <param name="options">The additional request options.</param>
+        /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
+        /// <param name="config">A per-request configuration object.</param>
+        /// <returns>A Task containing ApiResponse</returns>
+        public ApiResponse<T> Head<T>(string path, RequestOptions options, int requestTimeout,
+            IReadableConfiguration config)
         {
-            byte[] buf = new byte[16*1024];
-            using (MemoryStream ms = new MemoryStream())
-            {
-                int count;
-                while ((count = inputStream.Read(buf, 0, buf.Length)) > 0)
-                {
-                    ms.Write(buf, 0, count);
-                }
-                return ms.ToArray();
-            }
+            return Exec<T>(NewRequest(HttpMethod.HEAD, path, options, config), options, requestTimeout, config);
         }
 
         /// <summary>
-        /// URL encode a string
-        /// Credit/Ref: https://github.com/restsharp/RestSharp/blob/master/RestSharp/Extensions/StringExtensions.cs#L50
+        /// Make the HTTP OPTION request (synchronous).
         /// </summary>
-        /// <param name="input">String to be URL encoded</param>
-        /// <returns>Byte array</returns>
-        public static string UrlEncode(string input)
+        /// <param name="path">The target path (or resource).</param>
+        /// <param name="options">The additional request options.</param>
+        /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
+        /// <param name="config">A per-request configuration object.</param>
+        /// <returns>A Task containing ApiResponse</returns>
+        public ApiResponse<T> Options<T>(string path, RequestOptions options, int requestTimeout,
+            IReadableConfiguration config)
         {
-            const int maxLength = 32766;
-
-            if (input == null)
-            {
-                throw new ArgumentNullException("input");
-            }
-
-            if (input.Length <= maxLength)
-            {
-                return Uri.EscapeDataString(input);
-            }
-
-            StringBuilder sb = new StringBuilder(input.Length * 2);
-            int index = 0;
-
-            while (index < input.Length)
-            {
-                int length = Math.Min(input.Length - index, maxLength);
-                string subString = input.Substring(index, length);
-
-                sb.Append(Uri.EscapeDataString(subString));
-                index += subString.Length;
-            }
-
-            return sb.ToString();
+            return Exec<T>(NewRequest(HttpMethod.OPTIONS, path, options, config), options, requestTimeout, config);
         }
 
         /// <summary>
-        /// Sanitize filename by removing the path
+        /// Make the HTTP PATCH request (synchronous).
         /// </summary>
-        /// <param name="filename">Filename</param>
-        /// <returns>Filename</returns>
-        public static string SanitizeFilename(string filename)
+        /// <param name="path">The target path (or resource).</param>
+        /// <param name="options">The additional request options.</param>
+        /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
+        /// <param name="config">A per-request configuration object.</param>
+        /// <returns>A Task containing ApiResponse</returns>
+        public ApiResponse<T> Patch<T>(string path, RequestOptions options, int requestTimeout,
+            IReadableConfiguration config)
         {
-            Match match = Regex.Match(filename, @".*[/\\](.*)$");
+            return Exec<T>(NewRequest(HttpMethod.PATCH, path, options, config), options, requestTimeout, config);
+        }
+        #endregion ISynchronousClient
 
-            if (match.Success)
+        #region Methods
+        private void UpdateParamsForAuth(string path, HttpMethod method, Dictionary<string, string> pathParameters,
+            Multimap<string, string> queryParameters, RestRequest request)
+        {
+            foreach (var auth in _authentications.Values)
             {
-                return match.Groups[1].Value;
-            }
-            else
-            {
-                return filename;
+                var authHeaderParam = auth.GetAuthParam(path, method, pathParameters, queryParameters);
+                request.AddHeader(authHeaderParam.Name, authHeaderParam.Value);
             }
         }
 
-        /// <summary>
-        /// Convert params to key/value pairs.
-        /// Use collectionFormat to properly format lists and collections.
-        /// </summary>
-        /// <param name="name">Key name.</param>
-        /// <param name="value">Value object.</param>
-        /// <returns>A list of KeyValuePairs</returns>
-        public IEnumerable<KeyValuePair<string, string>> ParameterToKeyValuePairs(string collectionFormat, string name, object value)
+        private static void AddMetaHeaders(RestRequest request)
         {
-            var parameters = new List<KeyValuePair<string, string>>();
-
-            if (IsCollection(value) && collectionFormat == "multi")
-            {
-                var valueCollection = value as IEnumerable;
-                parameters.AddRange(from object item in valueCollection select new KeyValuePair<string, string>(name, ParameterToString(item)));
-            }
-            else
-            {
-                parameters.Add(new KeyValuePair<string, string>(name, ParameterToString(value)));
-            }
-
-            return parameters;
+            request.AddHeader("x-meta-sdk-version", "10.0.0");
+            request.AddHeader("x-meta-sdk-language", "csharp");
+            request.AddHeader("x-meta-sdk-provider", "wallee");
+            request.AddHeader("x-meta-sdk-language-version", Environment.Version.ToString());
         }
-
-        /// <summary>
-        /// Check if generic object is a collection.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns>True if object is a collection type</returns>
-        private static bool IsCollection(object value)
-        {
-            return value is IList || value is ICollection;
-        }
-
-        /// <summary>
-        /// Generates the authentication headers for this configuration.
-        /// </summary>
-        /// <returns>The authentication headers.</returns>
-        /// <param name="method">HTTP method.</param>
-        /// <param name="path">The request path.</param>
-        public IEnumerable<KeyValuePair<string, string>> AuthenticationHeaders(Method method, string path, List<KeyValuePair<string, string>> queryParams)
-        {
-            var headers = new List<KeyValuePair<string, string>>();
-            var pathWithQueryString = RestClient.Options.BaseUrl.AbsolutePath + path + ToQueryString(queryParams);
-            var version = "1";
-            var userID = Configuration.ApplicationUserID;
-            var timestamp = (long)(DateTime.UtcNow - new DateTime(1970, 1, 1)).TotalSeconds;
-            var signature = version + "|" + userID + "|" + timestamp + "|" + method.ToString().ToUpper() + "|" + pathWithQueryString;
-            headers.Add(new KeyValuePair<string, string>("x-mac-version", version));
-            headers.Add(new KeyValuePair<string, string>("x-mac-userid", userID));
-            headers.Add(new KeyValuePair<string, string>("x-mac-timestamp", timestamp.ToString()));
-            headers.Add(new KeyValuePair<string, string>("x-mac-value", CalculateHmac(signature)));
-            return headers;
-        }
-
-        private string CalculateHmac(string signature)
-        {
-            string encodedKey = Configuration.AuthenticationKey;
-            while (encodedKey.Length % 4 != 0)
-            {
-                encodedKey += "=";
-            }
-            byte[] keyBytes = System.Convert.FromBase64String(encodedKey);
-            using (var hmac = new System.Security.Cryptography.HMACSHA512(keyBytes))
-            {
-                byte[] signatureBytes = System.Text.Encoding.UTF8.GetBytes(signature);
-                byte[] hashBytes = hmac.ComputeHash(signatureBytes);
-                return System.Convert.ToBase64String(hashBytes);
-            }
-        }
-
-        private String ToQueryString(List<KeyValuePair<string, string>> queryParams)
-        {
-            if (queryParams.Count == 0)
-            {
-                return string.Empty;
-            }
-            List<String> query = new List<String>();
-            foreach (var param in queryParams)
-            {
-                query.Add(param.Key + "=" + HttpUtility.UrlEncode(param.Value));
-            }
-            return "?" + string.Join("&", query.ToArray());
-        }
-
-		/// <summary>
-		/// Reset timeout to default: 25 seconds
-		/// https://docs.microsoft.com/en-us/dotnet/api/system.net.httpwebrequest.timeout?view=netcore-3.1
-		/// </summary>
-		public void ResetTimeout(){
-			Configuration.Timeout = 25;
-		}
-
+        #endregion Methods
     }
 }

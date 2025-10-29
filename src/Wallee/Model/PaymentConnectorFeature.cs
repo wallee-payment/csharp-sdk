@@ -1,24 +1,47 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// PaymentConnectorFeature
     /// </summary>
-    [DataContract]
-    public partial class PaymentConnectorFeature :  IEquatable<PaymentConnectorFeature>
+    [DataContract(Name = "PaymentConnectorFeature")]
+    public partial class PaymentConnectorFeature : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentConnectorFeature" /> class.
@@ -32,23 +55,39 @@ namespace Wallee.Model
         /// The localized name of the feature.
         /// </summary>
         /// <value>The localized name of the feature.</value>
-        [DataMember(Name="displayName", EmitDefaultValue=false)]
+        [DataMember(Name = "displayName", EmitDefaultValue = false)]
         public string DisplayName { get; private set; }
 
+        /// <summary>
+        /// Returns false as DisplayName should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDisplayName()
+        {
+            return false;
+        }
         /// <summary>
         /// A unique identifier for the object.
         /// </summary>
         /// <value>A unique identifier for the object.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; private set; }
 
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PaymentConnectorFeature {\n");
             sb.Append("  DisplayName: ").Append(DisplayName).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
@@ -62,59 +101,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as PaymentConnectorFeature);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if PaymentConnectorFeature instances are equal
-        /// </summary>
-        /// <param name="input">Instance of PaymentConnectorFeature to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(PaymentConnectorFeature input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.DisplayName == input.DisplayName ||
-                    (this.DisplayName != null &&
-                    this.DisplayName.Equals(input.DisplayName))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.DisplayName != null)
-                    hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

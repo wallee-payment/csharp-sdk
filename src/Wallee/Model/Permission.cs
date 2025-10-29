@@ -1,128 +1,231 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// Permission
     /// </summary>
-    [DataContract]
-    public partial class Permission :  IEquatable<Permission>
+    [DataContract(Name = "Permission")]
+    public partial class Permission : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Permission" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public Permission()
+        /// <param name="feature">feature.</param>
+        public Permission(Feature feature = default(Feature))
         {
+            this.Feature = feature;
         }
-
-        /// <summary>
-        /// The localized description of the object.
-        /// </summary>
-        /// <value>The localized description of the object.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; private set; }
-
-        /// <summary>
-        /// The feature that this permission belongs to.
-        /// </summary>
-        /// <value>The feature that this permission belongs to.</value>
-        [DataMember(Name="feature", EmitDefaultValue=false)]
-        public long? Feature { get; private set; }
-
-        /// <summary>
-        /// Whether this is a permission group.
-        /// </summary>
-        /// <value>Whether this is a permission group.</value>
-        [DataMember(Name="group", EmitDefaultValue=false)]
-        public bool? Group { get; private set; }
-
-        /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
-
-        /// <summary>
-        /// Whether this is a leaf in the tree of permissions, and not a group.
-        /// </summary>
-        /// <value>Whether this is a leaf in the tree of permissions, and not a group.</value>
-        [DataMember(Name="leaf", EmitDefaultValue=false)]
-        public bool? Leaf { get; private set; }
-
-        /// <summary>
-        /// The localized name of the object.
-        /// </summary>
-        /// <value>The localized name of the object.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; private set; }
 
         /// <summary>
         /// The group that this permission belongs to.
         /// </summary>
         /// <value>The group that this permission belongs to.</value>
-        [DataMember(Name="parent", EmitDefaultValue=false)]
-        public long? Parent { get; private set; }
+        [DataMember(Name = "parent", EmitDefaultValue = false)]
+        public long Parent { get; private set; }
 
         /// <summary>
-        /// All parents of this permission up to the root of the permission tree.
+        /// Returns false as Parent should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>All parents of this permission up to the root of the permission tree.</value>
-        [DataMember(Name="pathToRoot", EmitDefaultValue=false)]
-        public List<long?> PathToRoot { get; private set; }
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeParent()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets Feature
+        /// </summary>
+        [DataMember(Name = "feature", EmitDefaultValue = false)]
+        public Feature Feature { get; set; }
 
         /// <summary>
         /// The localized name of the object.
         /// </summary>
         /// <value>The localized name of the object.</value>
-        [DataMember(Name="title", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        public Dictionary<string, string> Name { get; private set; }
+
+        /// <summary>
+        /// Returns false as Name should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeName()
+        {
+            return false;
+        }
+        /// <summary>
+        /// All parents of this permission up to the root of the permission tree.
+        /// </summary>
+        /// <value>All parents of this permission up to the root of the permission tree.</value>
+        [DataMember(Name = "pathToRoot", EmitDefaultValue = false)]
+        public List<long> PathToRoot { get; private set; }
+
+        /// <summary>
+        /// Returns false as PathToRoot should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePathToRoot()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets WebAppEnabled
+        /// </summary>
+        [DataMember(Name = "webAppEnabled", EmitDefaultValue = true)]
+        public bool WebAppEnabled { get; private set; }
+
+        /// <summary>
+        /// Returns false as WebAppEnabled should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeWebAppEnabled()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The localized description of the object.
+        /// </summary>
+        /// <value>The localized description of the object.</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public Dictionary<string, string> Description { get; private set; }
+
+        /// <summary>
+        /// Returns false as Description should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDescription()
+        {
+            return false;
+        }
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; private set; }
+
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Whether this is a leaf in the tree of permissions, and not a group.
+        /// </summary>
+        /// <value>Whether this is a leaf in the tree of permissions, and not a group.</value>
+        [DataMember(Name = "leaf", EmitDefaultValue = true)]
+        public bool Leaf { get; private set; }
+
+        /// <summary>
+        /// Returns false as Leaf should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLeaf()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The localized name of the object.
+        /// </summary>
+        /// <value>The localized name of the object.</value>
+        [DataMember(Name = "title", EmitDefaultValue = false)]
         public Dictionary<string, string> Title { get; private set; }
 
+        /// <summary>
+        /// Returns false as Title should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTitle()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Whether this is a permission group.
+        /// </summary>
+        /// <value>Whether this is a permission group.</value>
+        [DataMember(Name = "group", EmitDefaultValue = true)]
+        public bool Group { get; private set; }
+
+        /// <summary>
+        /// Returns false as Group should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeGroup()
+        {
+            return false;
+        }
         /// <summary>
         /// Whether users with this permission are required to enable two-factor authentication.
         /// </summary>
         /// <value>Whether users with this permission are required to enable two-factor authentication.</value>
-        [DataMember(Name="twoFactorRequired", EmitDefaultValue=false)]
-        public bool? TwoFactorRequired { get; private set; }
+        [DataMember(Name = "twoFactorRequired", EmitDefaultValue = true)]
+        public bool TwoFactorRequired { get; private set; }
 
         /// <summary>
-        /// Gets or Sets WebAppEnabled
+        /// Returns false as TwoFactorRequired should not be serialized given that it's read-only.
         /// </summary>
-        [DataMember(Name="webAppEnabled", EmitDefaultValue=false)]
-        public bool? WebAppEnabled { get; private set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTwoFactorRequired()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class Permission {\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Parent: ").Append(Parent).Append("\n");
             sb.Append("  Feature: ").Append(Feature).Append("\n");
-            sb.Append("  Group: ").Append(Group).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PathToRoot: ").Append(PathToRoot).Append("\n");
+            sb.Append("  WebAppEnabled: ").Append(WebAppEnabled).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Leaf: ").Append(Leaf).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Parent: ").Append(Parent).Append("\n");
-            sb.Append("  PathToRoot: ").Append(PathToRoot).Append("\n");
             sb.Append("  Title: ").Append(Title).Append("\n");
+            sb.Append("  Group: ").Append(Group).Append("\n");
             sb.Append("  TwoFactorRequired: ").Append(TwoFactorRequired).Append("\n");
-            sb.Append("  WebAppEnabled: ").Append(WebAppEnabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -133,126 +236,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as Permission);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if Permission instances are equal
-        /// </summary>
-        /// <param name="input">Instance of Permission to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(Permission input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.Description == input.Description ||
-                    this.Description != null &&
-                    input.Description != null &&
-                    this.Description.SequenceEqual(input.Description)
-                ) && 
-                (
-                    this.Feature == input.Feature ||
-                    (this.Feature != null &&
-                    this.Feature.Equals(input.Feature))
-                ) && 
-                (
-                    this.Group == input.Group ||
-                    (this.Group != null &&
-                    this.Group.Equals(input.Group))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Leaf == input.Leaf ||
-                    (this.Leaf != null &&
-                    this.Leaf.Equals(input.Leaf))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    this.Name != null &&
-                    input.Name != null &&
-                    this.Name.SequenceEqual(input.Name)
-                ) && 
-                (
-                    this.Parent == input.Parent ||
-                    (this.Parent != null &&
-                    this.Parent.Equals(input.Parent))
-                ) && 
-                (
-                    this.PathToRoot == input.PathToRoot ||
-                    this.PathToRoot != null &&
-                    input.PathToRoot != null &&
-                    this.PathToRoot.SequenceEqual(input.PathToRoot)
-                ) && 
-                (
-                    this.Title == input.Title ||
-                    this.Title != null &&
-                    input.Title != null &&
-                    this.Title.SequenceEqual(input.Title)
-                ) && 
-                (
-                    this.TwoFactorRequired == input.TwoFactorRequired ||
-                    (this.TwoFactorRequired != null &&
-                    this.TwoFactorRequired.Equals(input.TwoFactorRequired))
-                ) && 
-                (
-                    this.WebAppEnabled == input.WebAppEnabled ||
-                    (this.WebAppEnabled != null &&
-                    this.WebAppEnabled.Equals(input.WebAppEnabled))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.Feature != null)
-                    hashCode = hashCode * 59 + this.Feature.GetHashCode();
-                if (this.Group != null)
-                    hashCode = hashCode * 59 + this.Group.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Leaf != null)
-                    hashCode = hashCode * 59 + this.Leaf.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Parent != null)
-                    hashCode = hashCode * 59 + this.Parent.GetHashCode();
-                if (this.PathToRoot != null)
-                    hashCode = hashCode * 59 + this.PathToRoot.GetHashCode();
-                if (this.Title != null)
-                    hashCode = hashCode * 59 + this.Title.GetHashCode();
-                if (this.TwoFactorRequired != null)
-                    hashCode = hashCode * 59 + this.TwoFactorRequired.GetHashCode();
-                if (this.WebAppEnabled != null)
-                    hashCode = hashCode * 59 + this.WebAppEnabled.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

@@ -1,80 +1,117 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// AbstractCustomerActive
     /// </summary>
-    [DataContract]
-    public partial class AbstractCustomerActive :  IEquatable<AbstractCustomerActive>
+    [DataContract(Name = "Abstract.Customer.Active")]
+    public partial class AbstractCustomerActive : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractCustomerActive" /> class.
         /// </summary>
-        public AbstractCustomerActive()
+        /// <param name="metaData">Allow to store additional information about the object..</param>
+        /// <param name="emailAddress">The customer&#39;s email address..</param>
+        /// <param name="familyName">The customer&#39;s family or last name..</param>
+        /// <param name="givenName">The customer&#39;s given or first name..</param>
+        /// <param name="preferredCurrency">The customer&#39;s preferred currency..</param>
+        /// <param name="customerId">The customer&#39;s ID in the merchant&#39;s system..</param>
+        /// <param name="language">The language that is linked to the object..</param>
+        public AbstractCustomerActive(Dictionary<string, string> metaData = default(Dictionary<string, string>), string emailAddress = default(string), string familyName = default(string), string givenName = default(string), string preferredCurrency = default(string), string customerId = default(string), string language = default(string))
         {
+            this.MetaData = metaData;
+            this.EmailAddress = emailAddress;
+            this.FamilyName = familyName;
+            this.GivenName = givenName;
+            this.PreferredCurrency = preferredCurrency;
+            this.CustomerId = customerId;
+            this.Language = language;
         }
 
         /// <summary>
-        /// The customer&#39;s ID in the merchant&#39;s system.
+        /// Allow to store additional information about the object.
         /// </summary>
-        /// <value>The customer&#39;s ID in the merchant&#39;s system.</value>
-        [DataMember(Name="customerId", EmitDefaultValue=false)]
-        public string CustomerId { get; set; }
+        /// <value>Allow to store additional information about the object.</value>
+        [DataMember(Name = "metaData", EmitDefaultValue = false)]
+        public Dictionary<string, string> MetaData { get; set; }
 
         /// <summary>
         /// The customer&#39;s email address.
         /// </summary>
         /// <value>The customer&#39;s email address.</value>
-        [DataMember(Name="emailAddress", EmitDefaultValue=false)]
+        [DataMember(Name = "emailAddress", EmitDefaultValue = false)]
         public string EmailAddress { get; set; }
 
         /// <summary>
         /// The customer&#39;s family or last name.
         /// </summary>
         /// <value>The customer&#39;s family or last name.</value>
-        [DataMember(Name="familyName", EmitDefaultValue=false)]
+        [DataMember(Name = "familyName", EmitDefaultValue = false)]
         public string FamilyName { get; set; }
 
         /// <summary>
         /// The customer&#39;s given or first name.
         /// </summary>
         /// <value>The customer&#39;s given or first name.</value>
-        [DataMember(Name="givenName", EmitDefaultValue=false)]
+        [DataMember(Name = "givenName", EmitDefaultValue = false)]
         public string GivenName { get; set; }
-
-        /// <summary>
-        /// The language that is linked to the object.
-        /// </summary>
-        /// <value>The language that is linked to the object.</value>
-        [DataMember(Name="language", EmitDefaultValue=false)]
-        public string Language { get; set; }
-
-        /// <summary>
-        /// Allow to store additional information about the object.
-        /// </summary>
-        /// <value>Allow to store additional information about the object.</value>
-        [DataMember(Name="metaData", EmitDefaultValue=false)]
-        public Dictionary<string, string> MetaData { get; set; }
 
         /// <summary>
         /// The customer&#39;s preferred currency.
         /// </summary>
         /// <value>The customer&#39;s preferred currency.</value>
-        [DataMember(Name="preferredCurrency", EmitDefaultValue=false)]
+        [DataMember(Name = "preferredCurrency", EmitDefaultValue = false)]
         public string PreferredCurrency { get; set; }
+
+        /// <summary>
+        /// The customer&#39;s ID in the merchant&#39;s system.
+        /// </summary>
+        /// <value>The customer&#39;s ID in the merchant&#39;s system.</value>
+        [DataMember(Name = "customerId", EmitDefaultValue = false)]
+        public string CustomerId { get; set; }
+
+        /// <summary>
+        /// The language that is linked to the object.
+        /// </summary>
+        /// <value>The language that is linked to the object.</value>
+        [DataMember(Name = "language", EmitDefaultValue = false)]
+        public string Language { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -82,15 +119,15 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AbstractCustomerActive {\n");
-            sb.Append("  CustomerId: ").Append(CustomerId).Append("\n");
+            sb.Append("  MetaData: ").Append(MetaData).Append("\n");
             sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
             sb.Append("  FamilyName: ").Append(FamilyName).Append("\n");
             sb.Append("  GivenName: ").Append(GivenName).Append("\n");
-            sb.Append("  Language: ").Append(Language).Append("\n");
-            sb.Append("  MetaData: ").Append(MetaData).Append("\n");
             sb.Append("  PreferredCurrency: ").Append(PreferredCurrency).Append("\n");
+            sb.Append("  CustomerId: ").Append(CustomerId).Append("\n");
+            sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -101,95 +138,51 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as AbstractCustomerActive);
-        }
-
-        /// <summary>
-        /// Returns true if AbstractCustomerActive instances are equal
-        /// </summary>
-        /// <param name="input">Instance of AbstractCustomerActive to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(AbstractCustomerActive input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.CustomerId == input.CustomerId ||
-                    (this.CustomerId != null &&
-                    this.CustomerId.Equals(input.CustomerId))
-                ) && 
-                (
-                    this.EmailAddress == input.EmailAddress ||
-                    (this.EmailAddress != null &&
-                    this.EmailAddress.Equals(input.EmailAddress))
-                ) && 
-                (
-                    this.FamilyName == input.FamilyName ||
-                    (this.FamilyName != null &&
-                    this.FamilyName.Equals(input.FamilyName))
-                ) && 
-                (
-                    this.GivenName == input.GivenName ||
-                    (this.GivenName != null &&
-                    this.GivenName.Equals(input.GivenName))
-                ) && 
-                (
-                    this.Language == input.Language ||
-                    (this.Language != null &&
-                    this.Language.Equals(input.Language))
-                ) && 
-                (
-                    this.MetaData == input.MetaData ||
-                    this.MetaData != null &&
-                    input.MetaData != null &&
-                    this.MetaData.SequenceEqual(input.MetaData)
-                ) && 
-                (
-                    this.PreferredCurrency == input.PreferredCurrency ||
-                    (this.PreferredCurrency != null &&
-                    this.PreferredCurrency.Equals(input.PreferredCurrency))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // EmailAddress (string) maxLength
+            if (this.EmailAddress != null && this.EmailAddress.Length > 254)
             {
-                int hashCode = 41;
-                if (this.CustomerId != null)
-                    hashCode = hashCode * 59 + this.CustomerId.GetHashCode();
-                if (this.EmailAddress != null)
-                    hashCode = hashCode * 59 + this.EmailAddress.GetHashCode();
-                if (this.FamilyName != null)
-                    hashCode = hashCode * 59 + this.FamilyName.GetHashCode();
-                if (this.GivenName != null)
-                    hashCode = hashCode * 59 + this.GivenName.GetHashCode();
-                if (this.Language != null)
-                    hashCode = hashCode * 59 + this.Language.GetHashCode();
-                if (this.MetaData != null)
-                    hashCode = hashCode * 59 + this.MetaData.GetHashCode();
-                if (this.PreferredCurrency != null)
-                    hashCode = hashCode * 59 + this.PreferredCurrency.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for EmailAddress, length must be less than 254.", new [] { "EmailAddress" });
             }
-        }
 
+            // FamilyName (string) maxLength
+            if (this.FamilyName != null && this.FamilyName.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for FamilyName, length must be less than 100.", new [] { "FamilyName" });
+            }
+
+            // GivenName (string) maxLength
+            if (this.GivenName != null && this.GivenName.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for GivenName, length must be less than 100.", new [] { "GivenName" });
+            }
+
+            // CustomerId (string) maxLength
+            if (this.CustomerId != null && this.CustomerId.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for CustomerId, length must be less than 100.", new [] { "CustomerId" });
+            }
+
+            if (this.CustomerId != null) {
+                // CustomerId (string) pattern
+                Regex regexCustomerId = new Regex(@"[	\x20-\x7e]*", RegexOptions.CultureInvariant);
+                if (!regexCustomerId.Match(this.CustomerId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CustomerId, must match a pattern of " + regexCustomerId, new [] { "CustomerId" });
+                }
+            }
+
+            yield break;
+        }
     }
 
 }

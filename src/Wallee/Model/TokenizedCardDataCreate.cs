@@ -1,36 +1,59 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// TokenizedCardDataCreate
     /// </summary>
-    [DataContract]
-    public partial class TokenizedCardDataCreate :  IEquatable<TokenizedCardDataCreate>
+    [DataContract(Name = "TokenizedCardData.Create")]
+    public partial class TokenizedCardDataCreate : IValidatableObject
     {
+
         /// <summary>
-        /// The type of PAN or token, indicating the source or security method of the card information.
+        /// Gets or Sets PanType
         /// </summary>
-        /// <value>The type of PAN or token, indicating the source or security method of the card information.</value>
-        [DataMember(Name="panType", EmitDefaultValue=false)]
+        [DataMember(Name = "panType", EmitDefaultValue = false)]
         public PanType? PanType { get; set; }
+
         /// <summary>
-        /// The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction&#39;s properties.
+        /// Gets or Sets RecurringIndicator
         /// </summary>
-        /// <value>The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction&#39;s properties.</value>
-        [DataMember(Name="recurringIndicator", EmitDefaultValue=false)]
+        [DataMember(Name = "recurringIndicator", EmitDefaultValue = false)]
         public RecurringIndicator? RecurringIndicator { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenizedCardDataCreate" /> class.
@@ -40,67 +63,80 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenizedCardDataCreate" /> class.
         /// </summary>
+        /// <param name="expiryDate">The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09)..</param>
+        /// <param name="panType">panType.</param>
+        /// <param name="cardHolderName">The name of the cardholder, as printed on the card, identifying the card owner..</param>
+        /// <param name="cardVerificationCode">The security code used to validate the card during transactions..</param>
         /// <param name="primaryAccountNumber">The card&#39;s primary account number (PAN), the unique identifier of the card. (required).</param>
-        public TokenizedCardDataCreate(string primaryAccountNumber)
+        /// <param name="recurringIndicator">recurringIndicator.</param>
+        /// <param name="schemeTransactionReference">A reference specific to the card&#39;s transaction within its payment scheme..</param>
+        /// <param name="tokenRequestorId">The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction..</param>
+        /// <param name="cryptogram">cryptogram.</param>
+        public TokenizedCardDataCreate(string expiryDate = default(string), PanType? panType = default(PanType?), string cardHolderName = default(string), string cardVerificationCode = default(string), string primaryAccountNumber = default(string), RecurringIndicator? recurringIndicator = default(RecurringIndicator?), string schemeTransactionReference = default(string), string tokenRequestorId = default(string), CardCryptogramCreate cryptogram = default(CardCryptogramCreate))
         {
             // to ensure "primaryAccountNumber" is required (not null)
             if (primaryAccountNumber == null)
             {
-                throw new InvalidDataException("primaryAccountNumber is a required property for TokenizedCardDataCreate and cannot be null");
+                throw new ArgumentNullException("primaryAccountNumber is a required property for TokenizedCardDataCreate and cannot be null");
             }
             this.PrimaryAccountNumber = primaryAccountNumber;
+            this.ExpiryDate = expiryDate;
+            this.PanType = panType;
+            this.CardHolderName = cardHolderName;
+            this.CardVerificationCode = cardVerificationCode;
+            this.RecurringIndicator = recurringIndicator;
+            this.SchemeTransactionReference = schemeTransactionReference;
+            this.TokenRequestorId = tokenRequestorId;
+            this.Cryptogram = cryptogram;
         }
+
+        /// <summary>
+        /// The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).
+        /// </summary>
+        /// <value>The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).</value>
+        [DataMember(Name = "expiryDate", EmitDefaultValue = false)]
+        public string ExpiryDate { get; set; }
 
         /// <summary>
         /// The name of the cardholder, as printed on the card, identifying the card owner.
         /// </summary>
         /// <value>The name of the cardholder, as printed on the card, identifying the card owner.</value>
-        [DataMember(Name="cardHolderName", EmitDefaultValue=false)]
+        [DataMember(Name = "cardHolderName", EmitDefaultValue = false)]
         public string CardHolderName { get; set; }
 
         /// <summary>
         /// The security code used to validate the card during transactions.
         /// </summary>
         /// <value>The security code used to validate the card during transactions.</value>
-        [DataMember(Name="cardVerificationCode", EmitDefaultValue=false)]
+        [DataMember(Name = "cardVerificationCode", EmitDefaultValue = false)]
         public string CardVerificationCode { get; set; }
-
-        /// <summary>
-        /// An additional authentication value that enhances the security of tokenized card transactions.
-        /// </summary>
-        /// <value>An additional authentication value that enhances the security of tokenized card transactions.</value>
-        [DataMember(Name="cryptogram", EmitDefaultValue=false)]
-        public CardCryptogramCreate Cryptogram { get; set; }
-
-        /// <summary>
-        /// The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).
-        /// </summary>
-        /// <value>The expiry date of the card, indicating its validity period in yyyy-mm format (e.g., 2023-09).</value>
-        [DataMember(Name="expiryDate", EmitDefaultValue=false)]
-        public string ExpiryDate { get; set; }
-
 
         /// <summary>
         /// The card&#39;s primary account number (PAN), the unique identifier of the card.
         /// </summary>
         /// <value>The card&#39;s primary account number (PAN), the unique identifier of the card.</value>
-        [DataMember(Name="primaryAccountNumber", EmitDefaultValue=false)]
+        [DataMember(Name = "primaryAccountNumber", IsRequired = true, EmitDefaultValue = true)]
         public string PrimaryAccountNumber { get; set; }
-
 
         /// <summary>
         /// A reference specific to the card&#39;s transaction within its payment scheme.
         /// </summary>
         /// <value>A reference specific to the card&#39;s transaction within its payment scheme.</value>
-        [DataMember(Name="schemeTransactionReference", EmitDefaultValue=false)]
+        [DataMember(Name = "schemeTransactionReference", EmitDefaultValue = false)]
         public string SchemeTransactionReference { get; set; }
 
         /// <summary>
         /// The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
         /// </summary>
         /// <value>The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.</value>
-        [DataMember(Name="tokenRequestorId", EmitDefaultValue=false)]
+        [DataMember(Name = "tokenRequestorId", EmitDefaultValue = false)]
         public string TokenRequestorId { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Cryptogram
+        /// </summary>
+        [DataMember(Name = "cryptogram", EmitDefaultValue = false)]
+        public CardCryptogramCreate Cryptogram { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -108,17 +144,17 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class TokenizedCardDataCreate {\n");
-            sb.Append("  CardHolderName: ").Append(CardHolderName).Append("\n");
-            sb.Append("  CardVerificationCode: ").Append(CardVerificationCode).Append("\n");
-            sb.Append("  Cryptogram: ").Append(Cryptogram).Append("\n");
             sb.Append("  ExpiryDate: ").Append(ExpiryDate).Append("\n");
             sb.Append("  PanType: ").Append(PanType).Append("\n");
+            sb.Append("  CardHolderName: ").Append(CardHolderName).Append("\n");
+            sb.Append("  CardVerificationCode: ").Append(CardVerificationCode).Append("\n");
             sb.Append("  PrimaryAccountNumber: ").Append(PrimaryAccountNumber).Append("\n");
             sb.Append("  RecurringIndicator: ").Append(RecurringIndicator).Append("\n");
             sb.Append("  SchemeTransactionReference: ").Append(SchemeTransactionReference).Append("\n");
             sb.Append("  TokenRequestorId: ").Append(TokenRequestorId).Append("\n");
+            sb.Append("  Cryptogram: ").Append(Cryptogram).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -129,108 +165,81 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as TokenizedCardDataCreate);
-        }
-
-        /// <summary>
-        /// Returns true if TokenizedCardDataCreate instances are equal
-        /// </summary>
-        /// <param name="input">Instance of TokenizedCardDataCreate to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(TokenizedCardDataCreate input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.CardHolderName == input.CardHolderName ||
-                    (this.CardHolderName != null &&
-                    this.CardHolderName.Equals(input.CardHolderName))
-                ) && 
-                (
-                    this.CardVerificationCode == input.CardVerificationCode ||
-                    (this.CardVerificationCode != null &&
-                    this.CardVerificationCode.Equals(input.CardVerificationCode))
-                ) && 
-                (
-                    this.Cryptogram == input.Cryptogram ||
-                    (this.Cryptogram != null &&
-                    this.Cryptogram.Equals(input.Cryptogram))
-                ) && 
-                (
-                    this.ExpiryDate == input.ExpiryDate ||
-                    (this.ExpiryDate != null &&
-                    this.ExpiryDate.Equals(input.ExpiryDate))
-                ) && 
-                (
-                    this.PanType == input.PanType ||
-                    (this.PanType != null &&
-                    this.PanType.Equals(input.PanType))
-                ) && 
-                (
-                    this.PrimaryAccountNumber == input.PrimaryAccountNumber ||
-                    (this.PrimaryAccountNumber != null &&
-                    this.PrimaryAccountNumber.Equals(input.PrimaryAccountNumber))
-                ) && 
-                (
-                    this.RecurringIndicator == input.RecurringIndicator ||
-                    (this.RecurringIndicator != null &&
-                    this.RecurringIndicator.Equals(input.RecurringIndicator))
-                ) && 
-                (
-                    this.SchemeTransactionReference == input.SchemeTransactionReference ||
-                    (this.SchemeTransactionReference != null &&
-                    this.SchemeTransactionReference.Equals(input.SchemeTransactionReference))
-                ) && 
-                (
-                    this.TokenRequestorId == input.TokenRequestorId ||
-                    (this.TokenRequestorId != null &&
-                    this.TokenRequestorId.Equals(input.TokenRequestorId))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.CardHolderName != null)
-                    hashCode = hashCode * 59 + this.CardHolderName.GetHashCode();
-                if (this.CardVerificationCode != null)
-                    hashCode = hashCode * 59 + this.CardVerificationCode.GetHashCode();
-                if (this.Cryptogram != null)
-                    hashCode = hashCode * 59 + this.Cryptogram.GetHashCode();
-                if (this.ExpiryDate != null)
-                    hashCode = hashCode * 59 + this.ExpiryDate.GetHashCode();
-                if (this.PanType != null)
-                    hashCode = hashCode * 59 + this.PanType.GetHashCode();
-                if (this.PrimaryAccountNumber != null)
-                    hashCode = hashCode * 59 + this.PrimaryAccountNumber.GetHashCode();
-                if (this.RecurringIndicator != null)
-                    hashCode = hashCode * 59 + this.RecurringIndicator.GetHashCode();
-                if (this.SchemeTransactionReference != null)
-                    hashCode = hashCode * 59 + this.SchemeTransactionReference.GetHashCode();
-                if (this.TokenRequestorId != null)
-                    hashCode = hashCode * 59 + this.TokenRequestorId.GetHashCode();
-                return hashCode;
+            if (this.ExpiryDate != null) {
+                // ExpiryDate (string) pattern
+                Regex regexExpiryDate = new Regex(@"(\d{4})-(11|12|10|0[1-9])", RegexOptions.CultureInvariant);
+                if (!regexExpiryDate.Match(this.ExpiryDate).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExpiryDate, must match a pattern of " + regexExpiryDate, new [] { "ExpiryDate" });
+                }
             }
-        }
 
+            // CardHolderName (string) maxLength
+            if (this.CardHolderName != null && this.CardHolderName.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for CardHolderName, length must be less than 100.", new [] { "CardHolderName" });
+            }
+
+            // CardVerificationCode (string) maxLength
+            if (this.CardVerificationCode != null && this.CardVerificationCode.Length > 4)
+            {
+                yield return new ValidationResult("Invalid value for CardVerificationCode, length must be less than 4.", new [] { "CardVerificationCode" });
+            }
+
+            // CardVerificationCode (string) minLength
+            if (this.CardVerificationCode != null && this.CardVerificationCode.Length < 3)
+            {
+                yield return new ValidationResult("Invalid value for CardVerificationCode, length must be greater than 3.", new [] { "CardVerificationCode" });
+            }
+
+            if (this.CardVerificationCode != null) {
+                // CardVerificationCode (string) pattern
+                Regex regexCardVerificationCode = new Regex(@"([0-9 ]+)", RegexOptions.CultureInvariant);
+                if (!regexCardVerificationCode.Match(this.CardVerificationCode).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for CardVerificationCode, must match a pattern of " + regexCardVerificationCode, new [] { "CardVerificationCode" });
+                }
+            }
+
+            // PrimaryAccountNumber (string) maxLength
+            if (this.PrimaryAccountNumber != null && this.PrimaryAccountNumber.Length > 30)
+            {
+                yield return new ValidationResult("Invalid value for PrimaryAccountNumber, length must be less than 30.", new [] { "PrimaryAccountNumber" });
+            }
+
+            // PrimaryAccountNumber (string) minLength
+            if (this.PrimaryAccountNumber != null && this.PrimaryAccountNumber.Length < 10)
+            {
+                yield return new ValidationResult("Invalid value for PrimaryAccountNumber, length must be greater than 10.", new [] { "PrimaryAccountNumber" });
+            }
+
+            if (this.PrimaryAccountNumber != null) {
+                // PrimaryAccountNumber (string) pattern
+                Regex regexPrimaryAccountNumber = new Regex(@"([0-9 ]+)", RegexOptions.CultureInvariant);
+                if (!regexPrimaryAccountNumber.Match(this.PrimaryAccountNumber).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PrimaryAccountNumber, must match a pattern of " + regexPrimaryAccountNumber, new [] { "PrimaryAccountNumber" });
+                }
+            }
+
+            // SchemeTransactionReference (string) maxLength
+            if (this.SchemeTransactionReference != null && this.SchemeTransactionReference.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for SchemeTransactionReference, length must be less than 100.", new [] { "SchemeTransactionReference" });
+            }
+
+            yield break;
+        }
     }
 
 }

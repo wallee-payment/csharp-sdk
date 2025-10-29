@@ -1,24 +1,47 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// RefundCommentCreate
     /// </summary>
-    [DataContract]
-    public partial class RefundCommentCreate : AbstractRefundCommentActive,  IEquatable<RefundCommentCreate>
+    [DataContract(Name = "RefundComment.Create")]
+    public partial class RefundCommentCreate : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RefundCommentCreate" /> class.
@@ -28,24 +51,27 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RefundCommentCreate" /> class.
         /// </summary>
+        /// <param name="content">The comment&#39;s actual content..</param>
         /// <param name="refund">The refund that the comment belongs to. (required).</param>
-        public RefundCommentCreate(long? refund)
+        public RefundCommentCreate(string content = default(string), long refund = default(long))
         {
-            // to ensure "refund" is required (not null)
-            if (refund == null)
-            {
-                throw new InvalidDataException("refund is a required property for RefundCommentCreate and cannot be null");
-            }
             this.Refund = refund;
+            this.Content = content;
         }
 
+        /// <summary>
+        /// The comment&#39;s actual content.
+        /// </summary>
+        /// <value>The comment&#39;s actual content.</value>
+        [DataMember(Name = "content", EmitDefaultValue = false)]
+        public string Content { get; set; }
 
         /// <summary>
         /// The refund that the comment belongs to.
         /// </summary>
         /// <value>The refund that the comment belongs to.</value>
-        [DataMember(Name="refund", EmitDefaultValue=false)]
-        public long? Refund { get; set; }
+        [DataMember(Name = "refund", IsRequired = true, EmitDefaultValue = true)]
+        public long Refund { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -53,9 +79,8 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class RefundCommentCreate {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("  Refund: ").Append(Refund).Append("\n");
             sb.Append("}\n");
@@ -66,61 +91,26 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as RefundCommentCreate);
-        }
-
-        /// <summary>
-        /// Returns true if RefundCommentCreate instances are equal
-        /// </summary>
-        /// <param name="input">Instance of RefundCommentCreate to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(RefundCommentCreate input)
-        {
-            if (input == null)
-                return false;
-
-            return base.Equals(input) && 
-                (
-                    this.Content == input.Content ||
-                    (this.Content != null &&
-                    this.Content.Equals(input.Content))
-                ) && base.Equals(input) && 
-                (
-                    this.Refund == input.Refund ||
-                    (this.Refund != null &&
-                    this.Refund.Equals(input.Refund))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // Content (string) maxLength
+            if (this.Content != null && this.Content.Length > 262144)
             {
-                int hashCode = base.GetHashCode();
-                if (this.Content != null)
-                    hashCode = hashCode * 59 + this.Content.GetHashCode();
-                if (this.Refund != null)
-                    hashCode = hashCode * 59 + this.Refund.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for Content, length must be less than 262144.", new [] { "Content" });
             }
-        }
 
+            yield break;
+        }
     }
 
 }

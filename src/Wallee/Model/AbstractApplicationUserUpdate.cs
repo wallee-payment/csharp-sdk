@@ -1,52 +1,80 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// AbstractApplicationUserUpdate
     /// </summary>
-    [DataContract]
-    public partial class AbstractApplicationUserUpdate :  IEquatable<AbstractApplicationUserUpdate>
+    [DataContract(Name = "Abstract.ApplicationUser.Update")]
+    public partial class AbstractApplicationUserUpdate : IValidatableObject
     {
+
         /// <summary>
-        /// The object&#39;s current state.
+        /// Gets or Sets State
         /// </summary>
-        /// <value>The object&#39;s current state.</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name = "state", EmitDefaultValue = false)]
         public CreationEntityState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractApplicationUserUpdate" /> class.
         /// </summary>
-        public AbstractApplicationUserUpdate()
+        /// <param name="requestLimit">The maximum number of API requests that are accepted every 2 minutes..</param>
+        /// <param name="name">The name used to identify the application user..</param>
+        /// <param name="state">state.</param>
+        public AbstractApplicationUserUpdate(long requestLimit = default(long), string name = default(string), CreationEntityState? state = default(CreationEntityState?))
         {
+            this.RequestLimit = requestLimit;
+            this.Name = name;
+            this.State = state;
         }
-
-        /// <summary>
-        /// The name used to identify the application user.
-        /// </summary>
-        /// <value>The name used to identify the application user.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; set; }
 
         /// <summary>
         /// The maximum number of API requests that are accepted every 2 minutes.
         /// </summary>
         /// <value>The maximum number of API requests that are accepted every 2 minutes.</value>
-        [DataMember(Name="requestLimit", EmitDefaultValue=false)]
-        public long? RequestLimit { get; set; }
+        [DataMember(Name = "requestLimit", EmitDefaultValue = false)]
+        public long RequestLimit { get; set; }
 
+        /// <summary>
+        /// The name used to identify the application user.
+        /// </summary>
+        /// <value>The name used to identify the application user.</value>
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -54,10 +82,10 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AbstractApplicationUserUpdate {\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  RequestLimit: ").Append(RequestLimit).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -69,66 +97,24 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as AbstractApplicationUserUpdate);
-        }
-
-        /// <summary>
-        /// Returns true if AbstractApplicationUserUpdate instances are equal
-        /// </summary>
-        /// <param name="input">Instance of AbstractApplicationUserUpdate to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(AbstractApplicationUserUpdate input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.RequestLimit == input.RequestLimit ||
-                    (this.RequestLimit != null &&
-                    this.RequestLimit.Equals(input.RequestLimit))
-                ) && 
-                (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // Name (string) maxLength
+            if (this.Name != null && this.Name.Length > 256)
             {
-                int hashCode = 41;
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.RequestLimit != null)
-                    hashCode = hashCode * 59 + this.RequestLimit.GetHashCode();
-                if (this.State != null)
-                    hashCode = hashCode * 59 + this.State.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for Name, length must be less than 256.", new [] { "Name" });
             }
-        }
 
+            yield break;
+        }
     }
 
 }

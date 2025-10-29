@@ -1,193 +1,374 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// TokenVersion
     /// </summary>
-    [DataContract]
-    public partial class TokenVersion :  IEquatable<TokenVersion>
+    [DataContract(Name = "TokenVersion")]
+    public partial class TokenVersion : IValidatableObject
     {
+
         /// <summary>
-        /// The environment in which the token version was created.
+        /// Gets or Sets State
         /// </summary>
-        /// <value>The environment in which the token version was created.</value>
-        [DataMember(Name="environment", EmitDefaultValue=false)]
-        public ChargeAttemptEnvironment? Environment { get; private set; }
+        [DataMember(Name = "state", EmitDefaultValue = false)]
+        public TokenVersionState? State { get; set; }
+
         /// <summary>
-        /// The object&#39;s current state.
+        /// Gets or Sets VarEnvironment
         /// </summary>
-        /// <value>The object&#39;s current state.</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public TokenVersionState? State { get; private set; }
+        [DataMember(Name = "environment", EmitDefaultValue = false)]
+        public ChargeAttemptEnvironment? VarEnvironment { get; set; }
+
+        /// <summary>
+        /// Gets or Sets RetryStrategy
+        /// </summary>
+        [DataMember(Name = "retryStrategy", EmitDefaultValue = false)]
+        public TokenVersionRetryStrategy? RetryStrategy { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenVersion" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public TokenVersion()
+        /// <param name="type">type.</param>
+        /// <param name="paymentConnectorConfiguration">paymentConnectorConfiguration.</param>
+        /// <param name="state">state.</param>
+        /// <param name="paymentMethodBrand">paymentMethodBrand.</param>
+        /// <param name="token">token.</param>
+        /// <param name="varEnvironment">varEnvironment.</param>
+        /// <param name="paymentMethod">paymentMethod.</param>
+        /// <param name="shippingAddress">shippingAddress.</param>
+        /// <param name="billingAddress">billingAddress.</param>
+        /// <param name="retryStrategy">retryStrategy.</param>
+        public TokenVersion(TokenVersionType type = default(TokenVersionType), PaymentConnectorConfiguration paymentConnectorConfiguration = default(PaymentConnectorConfiguration), TokenVersionState? state = default(TokenVersionState?), PaymentMethodBrand paymentMethodBrand = default(PaymentMethodBrand), Token token = default(Token), ChargeAttemptEnvironment? varEnvironment = default(ChargeAttemptEnvironment?), PaymentMethod paymentMethod = default(PaymentMethod), Address shippingAddress = default(Address), Address billingAddress = default(Address), TokenVersionRetryStrategy? retryStrategy = default(TokenVersionRetryStrategy?))
         {
+            this.Type = type;
+            this.PaymentConnectorConfiguration = paymentConnectorConfiguration;
+            this.State = state;
+            this.PaymentMethodBrand = paymentMethodBrand;
+            this.Token = token;
+            this.VarEnvironment = varEnvironment;
+            this.PaymentMethod = paymentMethod;
+            this.ShippingAddress = shippingAddress;
+            this.BillingAddress = billingAddress;
+            this.RetryStrategy = retryStrategy;
         }
-
-        /// <summary>
-        /// The date and time when the token version was activated.
-        /// </summary>
-        /// <value>The date and time when the token version was activated.</value>
-        [DataMember(Name="activatedOn", EmitDefaultValue=false)]
-        public DateTime? ActivatedOn { get; private set; }
-
-        /// <summary>
-        /// The billing address to be used for the transaction if no explicit billing address is provided during payment processing.
-        /// </summary>
-        /// <value>The billing address to be used for the transaction if no explicit billing address is provided during payment processing.</value>
-        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
-        public Address BillingAddress { get; private set; }
-
-        /// <summary>
-        /// The date and time when the object was created.
-        /// </summary>
-        /// <value>The date and time when the object was created.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
-        public DateTime? CreatedOn { get; private set; }
-
-
-        /// <summary>
-        /// The date and time when the token version is set to expire, after which it will be marked as obsolete.
-        /// </summary>
-        /// <value>The date and time when the token version is set to expire, after which it will be marked as obsolete.</value>
-        [DataMember(Name="expiresOn", EmitDefaultValue=false)]
-        public DateTime? ExpiresOn { get; private set; }
-
-        /// <summary>
-        /// The URL to the token&#39;s icon displayed to the customer.
-        /// </summary>
-        /// <value>The URL to the token&#39;s icon displayed to the customer.</value>
-        [DataMember(Name="iconUrl", EmitDefaultValue=false)]
-        public string IconUrl { get; private set; }
-
-        /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
-
-        /// <summary>
-        /// The labels providing additional information about the object.
-        /// </summary>
-        /// <value>The labels providing additional information about the object.</value>
-        [DataMember(Name="labels", EmitDefaultValue=false)]
-        public List<Label> Labels { get; private set; }
-
-        /// <summary>
-        /// The language that is linked to the object.
-        /// </summary>
-        /// <value>The language that is linked to the object.</value>
-        [DataMember(Name="language", EmitDefaultValue=false)]
-        public string Language { get; private set; }
-
-        /// <summary>
-        /// The ID of the space this object belongs to.
-        /// </summary>
-        /// <value>The ID of the space this object belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; private set; }
-
-        /// <summary>
-        /// The name used to identify the token.
-        /// </summary>
-        /// <value>The name used to identify the token.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; private set; }
-
-        /// <summary>
-        /// The date and time when the token version was marked obsolete.
-        /// </summary>
-        /// <value>The date and time when the token version was marked obsolete.</value>
-        [DataMember(Name="obsoletedOn", EmitDefaultValue=false)]
-        public DateTime? ObsoletedOn { get; private set; }
-
-        /// <summary>
-        /// The payment connector configuration that initialized the token version.
-        /// </summary>
-        /// <value>The payment connector configuration that initialized the token version.</value>
-        [DataMember(Name="paymentConnectorConfiguration", EmitDefaultValue=false)]
-        public PaymentConnectorConfiguration PaymentConnectorConfiguration { get; private set; }
 
         /// <summary>
         /// The hashed payment information that the token version represents.
         /// </summary>
         /// <value>The hashed payment information that the token version represents.</value>
-        [DataMember(Name="paymentInformationHashes", EmitDefaultValue=false)]
+        [DataMember(Name = "paymentInformationHashes", EmitDefaultValue = false)]
         public List<PaymentInformationHash> PaymentInformationHashes { get; private set; }
 
         /// <summary>
-        /// The payment method that initialized the token version.
+        /// Returns false as PaymentInformationHashes should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The payment method that initialized the token version.</value>
-        [DataMember(Name="paymentMethod", EmitDefaultValue=false)]
-        public long? PaymentMethod { get; private set; }
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePaymentInformationHashes()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The language that is linked to the object.
+        /// </summary>
+        /// <value>The language that is linked to the object.</value>
+        [DataMember(Name = "language", EmitDefaultValue = false)]
+        public string Language { get; private set; }
 
         /// <summary>
-        /// The payment method brand that initialized the token version.
+        /// Returns false as Language should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The payment method brand that initialized the token version.</value>
-        [DataMember(Name="paymentMethodBrand", EmitDefaultValue=false)]
-        public long? PaymentMethodBrand { get; private set; }
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLanguage()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets Type
+        /// </summary>
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public TokenVersionType Type { get; set; }
 
         /// <summary>
-        /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
+        /// The date and time when the object was created.
         /// </summary>
-        /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; private set; }
+        /// <value>The date and time when the object was created.</value>
+        [DataMember(Name = "createdOn", EmitDefaultValue = false)]
+        public DateTime CreatedOn { get; private set; }
 
+        /// <summary>
+        /// Returns false as CreatedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCreatedOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Retry interval when the strategy advises retrying later.
+        /// </summary>
+        /// <value>Retry interval when the strategy advises retrying later.</value>
+        [DataMember(Name = "retryIn", EmitDefaultValue = false)]
+        public string RetryIn { get; private set; }
+
+        /// <summary>
+        /// Returns false as RetryIn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRetryIn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets PaymentConnectorConfiguration
+        /// </summary>
+        [DataMember(Name = "paymentConnectorConfiguration", EmitDefaultValue = false)]
+        public PaymentConnectorConfiguration PaymentConnectorConfiguration { get; set; }
+
+        /// <summary>
+        /// The date and time when the token version was marked obsolete.
+        /// </summary>
+        /// <value>The date and time when the token version was marked obsolete.</value>
+        [DataMember(Name = "obsoletedOn", EmitDefaultValue = false)]
+        public DateTime ObsoletedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as ObsoletedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeObsoletedOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the token version is set to expire, after which it will be marked as obsolete.
+        /// </summary>
+        /// <value>The date and time when the token version is set to expire, after which it will be marked as obsolete.</value>
+        [DataMember(Name = "expiresOn", EmitDefaultValue = false)]
+        public DateTime ExpiresOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as ExpiresOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeExpiresOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The URL to the token&#39;s icon displayed to the customer.
+        /// </summary>
+        /// <value>The URL to the token&#39;s icon displayed to the customer.</value>
+        [DataMember(Name = "iconUrl", EmitDefaultValue = false)]
+        public string IconUrl { get; private set; }
+
+        /// <summary>
+        /// Returns false as IconUrl should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeIconUrl()
+        {
+            return false;
+        }
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; private set; }
+
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
         /// <summary>
         /// The token name as specified by the processor.
         /// </summary>
         /// <value>The token name as specified by the processor.</value>
-        [DataMember(Name="processorToken", EmitDefaultValue=false)]
+        [DataMember(Name = "processorToken", EmitDefaultValue = false)]
         public string ProcessorToken { get; private set; }
 
         /// <summary>
-        /// The shipping address to be used for the transaction if no explicit shipping address is provided during payment processing.
+        /// Returns false as ProcessorToken should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The shipping address to be used for the transaction if no explicit shipping address is provided during payment processing.</value>
-        [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
-        public Address ShippingAddress { get; private set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeProcessorToken()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
+        /// </summary>
+        /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
+        [DataMember(Name = "plannedPurgeDate", EmitDefaultValue = false)]
+        public DateTime PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// The token that the token version belongs to.
+        /// Returns false as PlannedPurgeDate should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The token that the token version belongs to.</value>
-        [DataMember(Name="token", EmitDefaultValue=false)]
-        public Token Token { get; private set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePlannedPurgeDate()
+        {
+            return false;
+        }
         /// <summary>
-        /// The type specifies the nature of the token and identifies the payment connector capable of processing it.
+        /// Gets or Sets PaymentMethodBrand
         /// </summary>
-        /// <value>The type specifies the nature of the token and identifies the payment connector capable of processing it.</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public TokenVersionType Type { get; private set; }
+        [DataMember(Name = "paymentMethodBrand", EmitDefaultValue = false)]
+        public PaymentMethodBrand PaymentMethodBrand { get; set; }
 
         /// <summary>
         /// The version is used for optimistic locking and incremented whenever the object is updated.
         /// </summary>
         /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; private set; }
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int VarVersion { get; private set; }
+
+        /// <summary>
+        /// Returns false as VarVersion should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVarVersion()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the system last attempted a retry for this token version.
+        /// </summary>
+        /// <value>The date and time when the system last attempted a retry for this token version.</value>
+        [DataMember(Name = "lastRetriedOn", EmitDefaultValue = false)]
+        public DateTime LastRetriedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as LastRetriedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLastRetriedOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The labels providing additional information about the object.
+        /// </summary>
+        /// <value>The labels providing additional information about the object.</value>
+        [DataMember(Name = "labels", EmitDefaultValue = false)]
+        public List<Label> Labels { get; private set; }
+
+        /// <summary>
+        /// Returns false as Labels should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLabels()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets Token
+        /// </summary>
+        [DataMember(Name = "token", EmitDefaultValue = false)]
+        public Token Token { get; set; }
+
+        /// <summary>
+        /// The ID of the space this object belongs to.
+        /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name = "linkedSpaceId", EmitDefaultValue = false)]
+        public long LinkedSpaceId { get; private set; }
+
+        /// <summary>
+        /// Returns false as LinkedSpaceId should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLinkedSpaceId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the token version was activated.
+        /// </summary>
+        /// <value>The date and time when the token version was activated.</value>
+        [DataMember(Name = "activatedOn", EmitDefaultValue = false)]
+        public DateTime ActivatedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as ActivatedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeActivatedOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The name used to identify the token.
+        /// </summary>
+        /// <value>The name used to identify the token.</value>
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Returns false as Name should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeName()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets PaymentMethod
+        /// </summary>
+        [DataMember(Name = "paymentMethod", EmitDefaultValue = false)]
+        public PaymentMethod PaymentMethod { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ShippingAddress
+        /// </summary>
+        [DataMember(Name = "shippingAddress", EmitDefaultValue = false)]
+        public Address ShippingAddress { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BillingAddress
+        /// </summary>
+        [DataMember(Name = "billingAddress", EmitDefaultValue = false)]
+        public Address BillingAddress { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -195,31 +376,34 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class TokenVersion {\n");
-            sb.Append("  ActivatedOn: ").Append(ActivatedOn).Append("\n");
-            sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
+            sb.Append("  PaymentInformationHashes: ").Append(PaymentInformationHashes).Append("\n");
+            sb.Append("  Language: ").Append(Language).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
-            sb.Append("  Environment: ").Append(Environment).Append("\n");
+            sb.Append("  RetryIn: ").Append(RetryIn).Append("\n");
+            sb.Append("  PaymentConnectorConfiguration: ").Append(PaymentConnectorConfiguration).Append("\n");
+            sb.Append("  ObsoletedOn: ").Append(ObsoletedOn).Append("\n");
             sb.Append("  ExpiresOn: ").Append(ExpiresOn).Append("\n");
             sb.Append("  IconUrl: ").Append(IconUrl).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Labels: ").Append(Labels).Append("\n");
-            sb.Append("  Language: ").Append(Language).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  ObsoletedOn: ").Append(ObsoletedOn).Append("\n");
-            sb.Append("  PaymentConnectorConfiguration: ").Append(PaymentConnectorConfiguration).Append("\n");
-            sb.Append("  PaymentInformationHashes: ").Append(PaymentInformationHashes).Append("\n");
-            sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
-            sb.Append("  PaymentMethodBrand: ").Append(PaymentMethodBrand).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  ProcessorToken: ").Append(ProcessorToken).Append("\n");
-            sb.Append("  ShippingAddress: ").Append(ShippingAddress).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  ProcessorToken: ").Append(ProcessorToken).Append("\n");
+            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
+            sb.Append("  PaymentMethodBrand: ").Append(PaymentMethodBrand).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("  LastRetriedOn: ").Append(LastRetriedOn).Append("\n");
+            sb.Append("  Labels: ").Append(Labels).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  VarEnvironment: ").Append(VarEnvironment).Append("\n");
+            sb.Append("  ActivatedOn: ").Append(ActivatedOn).Append("\n");
+            sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
+            sb.Append("  ShippingAddress: ").Append(ShippingAddress).Append("\n");
+            sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
+            sb.Append("  RetryStrategy: ").Append(RetryStrategy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -230,208 +414,30 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as TokenVersion);
-        }
-
-        /// <summary>
-        /// Returns true if TokenVersion instances are equal
-        /// </summary>
-        /// <param name="input">Instance of TokenVersion to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(TokenVersion input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.ActivatedOn == input.ActivatedOn ||
-                    (this.ActivatedOn != null &&
-                    this.ActivatedOn.Equals(input.ActivatedOn))
-                ) && 
-                (
-                    this.BillingAddress == input.BillingAddress ||
-                    (this.BillingAddress != null &&
-                    this.BillingAddress.Equals(input.BillingAddress))
-                ) && 
-                (
-                    this.CreatedOn == input.CreatedOn ||
-                    (this.CreatedOn != null &&
-                    this.CreatedOn.Equals(input.CreatedOn))
-                ) && 
-                (
-                    this.Environment == input.Environment ||
-                    (this.Environment != null &&
-                    this.Environment.Equals(input.Environment))
-                ) && 
-                (
-                    this.ExpiresOn == input.ExpiresOn ||
-                    (this.ExpiresOn != null &&
-                    this.ExpiresOn.Equals(input.ExpiresOn))
-                ) && 
-                (
-                    this.IconUrl == input.IconUrl ||
-                    (this.IconUrl != null &&
-                    this.IconUrl.Equals(input.IconUrl))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Labels == input.Labels ||
-                    this.Labels != null &&
-                    input.Labels != null &&
-                    this.Labels.SequenceEqual(input.Labels)
-                ) && 
-                (
-                    this.Language == input.Language ||
-                    (this.Language != null &&
-                    this.Language.Equals(input.Language))
-                ) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.ObsoletedOn == input.ObsoletedOn ||
-                    (this.ObsoletedOn != null &&
-                    this.ObsoletedOn.Equals(input.ObsoletedOn))
-                ) && 
-                (
-                    this.PaymentConnectorConfiguration == input.PaymentConnectorConfiguration ||
-                    (this.PaymentConnectorConfiguration != null &&
-                    this.PaymentConnectorConfiguration.Equals(input.PaymentConnectorConfiguration))
-                ) && 
-                (
-                    this.PaymentInformationHashes == input.PaymentInformationHashes ||
-                    this.PaymentInformationHashes != null &&
-                    input.PaymentInformationHashes != null &&
-                    this.PaymentInformationHashes.SequenceEqual(input.PaymentInformationHashes)
-                ) && 
-                (
-                    this.PaymentMethod == input.PaymentMethod ||
-                    (this.PaymentMethod != null &&
-                    this.PaymentMethod.Equals(input.PaymentMethod))
-                ) && 
-                (
-                    this.PaymentMethodBrand == input.PaymentMethodBrand ||
-                    (this.PaymentMethodBrand != null &&
-                    this.PaymentMethodBrand.Equals(input.PaymentMethodBrand))
-                ) && 
-                (
-                    this.PlannedPurgeDate == input.PlannedPurgeDate ||
-                    (this.PlannedPurgeDate != null &&
-                    this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
-                ) && 
-                (
-                    this.ProcessorToken == input.ProcessorToken ||
-                    (this.ProcessorToken != null &&
-                    this.ProcessorToken.Equals(input.ProcessorToken))
-                ) && 
-                (
-                    this.ShippingAddress == input.ShippingAddress ||
-                    (this.ShippingAddress != null &&
-                    this.ShippingAddress.Equals(input.ShippingAddress))
-                ) && 
-                (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
-                ) && 
-                (
-                    this.Token == input.Token ||
-                    (this.Token != null &&
-                    this.Token.Equals(input.Token))
-                ) && 
-                (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
-                ) && 
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // ProcessorToken (string) maxLength
+            if (this.ProcessorToken != null && this.ProcessorToken.Length > 150)
             {
-                int hashCode = 41;
-                if (this.ActivatedOn != null)
-                    hashCode = hashCode * 59 + this.ActivatedOn.GetHashCode();
-                if (this.BillingAddress != null)
-                    hashCode = hashCode * 59 + this.BillingAddress.GetHashCode();
-                if (this.CreatedOn != null)
-                    hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
-                if (this.Environment != null)
-                    hashCode = hashCode * 59 + this.Environment.GetHashCode();
-                if (this.ExpiresOn != null)
-                    hashCode = hashCode * 59 + this.ExpiresOn.GetHashCode();
-                if (this.IconUrl != null)
-                    hashCode = hashCode * 59 + this.IconUrl.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Labels != null)
-                    hashCode = hashCode * 59 + this.Labels.GetHashCode();
-                if (this.Language != null)
-                    hashCode = hashCode * 59 + this.Language.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.ObsoletedOn != null)
-                    hashCode = hashCode * 59 + this.ObsoletedOn.GetHashCode();
-                if (this.PaymentConnectorConfiguration != null)
-                    hashCode = hashCode * 59 + this.PaymentConnectorConfiguration.GetHashCode();
-                if (this.PaymentInformationHashes != null)
-                    hashCode = hashCode * 59 + this.PaymentInformationHashes.GetHashCode();
-                if (this.PaymentMethod != null)
-                    hashCode = hashCode * 59 + this.PaymentMethod.GetHashCode();
-                if (this.PaymentMethodBrand != null)
-                    hashCode = hashCode * 59 + this.PaymentMethodBrand.GetHashCode();
-                if (this.PlannedPurgeDate != null)
-                    hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.ProcessorToken != null)
-                    hashCode = hashCode * 59 + this.ProcessorToken.GetHashCode();
-                if (this.ShippingAddress != null)
-                    hashCode = hashCode * 59 + this.ShippingAddress.GetHashCode();
-                if (this.State != null)
-                    hashCode = hashCode * 59 + this.State.GetHashCode();
-                if (this.Token != null)
-                    hashCode = hashCode * 59 + this.Token.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for ProcessorToken, length must be less than 150.", new [] { "ProcessorToken" });
             }
-        }
 
+            // Name (string) maxLength
+            if (this.Name != null && this.Name.Length > 150)
+            {
+                yield return new ValidationResult("Invalid value for Name, length must be less than 150.", new [] { "Name" });
+            }
+
+            yield break;
+        }
     }
 
 }

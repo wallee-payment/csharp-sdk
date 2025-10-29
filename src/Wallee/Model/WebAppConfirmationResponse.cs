@@ -1,67 +1,122 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// The confirmation response provides details about the installation of the web app.
     /// </summary>
-    [DataContract]
-    public partial class WebAppConfirmationResponse :  IEquatable<WebAppConfirmationResponse>
+    [DataContract(Name = "WebAppConfirmationResponse")]
+    public partial class WebAppConfirmationResponse : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="WebAppConfirmationResponse" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public WebAppConfirmationResponse()
+        /// <param name="space">space.</param>
+        public WebAppConfirmationResponse(Space space = default(Space))
         {
+            this.Space = space;
         }
 
         /// <summary>
         /// The access code granting permissions to the web service API according to the OAuth standard.
         /// </summary>
         /// <value>The access code granting permissions to the web service API according to the OAuth standard.</value>
-        [DataMember(Name="access_token", EmitDefaultValue=false)]
+        [DataMember(Name = "access_token", EmitDefaultValue = false)]
         public string AccessToken { get; private set; }
 
+        /// <summary>
+        /// Returns false as AccessToken should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAccessToken()
+        {
+            return false;
+        }
         /// <summary>
         /// The list of the permissions granted to the web app within the space.
         /// </summary>
         /// <value>The list of the permissions granted to the web app within the space.</value>
-        [DataMember(Name="scope", EmitDefaultValue=false)]
+        [DataMember(Name = "scope", EmitDefaultValue = false)]
         public string Scope { get; private set; }
 
         /// <summary>
-        /// The space that the web app was installed in.
+        /// Returns false as Scope should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The space that the web app was installed in.</value>
-        [DataMember(Name="space", EmitDefaultValue=false)]
-        public Space Space { get; private set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeScope()
+        {
+            return false;
+        }
         /// <summary>
         /// The state parameter that was provided in the authorization request.
         /// </summary>
         /// <value>The state parameter that was provided in the authorization request.</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name = "state", EmitDefaultValue = false)]
         public string State { get; private set; }
 
+        /// <summary>
+        /// Returns false as State should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeState()
+        {
+            return false;
+        }
         /// <summary>
         /// The type of the access token that determines the authentication mechanism to use for accessing the web service API.
         /// </summary>
         /// <value>The type of the access token that determines the authentication mechanism to use for accessing the web service API.</value>
-        [DataMember(Name="token_type", EmitDefaultValue=false)]
+        [DataMember(Name = "token_type", EmitDefaultValue = false)]
         public string TokenType { get; private set; }
+
+        /// <summary>
+        /// Returns false as TokenType should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTokenType()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets Space
+        /// </summary>
+        [DataMember(Name = "space", EmitDefaultValue = false)]
+        public Space Space { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,13 +124,13 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class WebAppConfirmationResponse {\n");
             sb.Append("  AccessToken: ").Append(AccessToken).Append("\n");
             sb.Append("  Scope: ").Append(Scope).Append("\n");
-            sb.Append("  Space: ").Append(Space).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  TokenType: ").Append(TokenType).Append("\n");
+            sb.Append("  Space: ").Append(Space).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -86,80 +141,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as WebAppConfirmationResponse);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if WebAppConfirmationResponse instances are equal
-        /// </summary>
-        /// <param name="input">Instance of WebAppConfirmationResponse to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(WebAppConfirmationResponse input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.AccessToken == input.AccessToken ||
-                    (this.AccessToken != null &&
-                    this.AccessToken.Equals(input.AccessToken))
-                ) && 
-                (
-                    this.Scope == input.Scope ||
-                    (this.Scope != null &&
-                    this.Scope.Equals(input.Scope))
-                ) && 
-                (
-                    this.Space == input.Space ||
-                    (this.Space != null &&
-                    this.Space.Equals(input.Space))
-                ) && 
-                (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
-                ) && 
-                (
-                    this.TokenType == input.TokenType ||
-                    (this.TokenType != null &&
-                    this.TokenType.Equals(input.TokenType))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.AccessToken != null)
-                    hashCode = hashCode * 59 + this.AccessToken.GetHashCode();
-                if (this.Scope != null)
-                    hashCode = hashCode * 59 + this.Scope.GetHashCode();
-                if (this.Space != null)
-                    hashCode = hashCode * 59 + this.Space.GetHashCode();
-                if (this.State != null)
-                    hashCode = hashCode * 59 + this.State.GetHashCode();
-                if (this.TokenType != null)
-                    hashCode = hashCode * 59 + this.TokenType.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

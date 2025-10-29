@@ -1,273 +1,450 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// ChargeAttempt
     /// </summary>
-    [DataContract]
-    public partial class ChargeAttempt :  IEquatable<ChargeAttempt>
+    [DataContract(Name = "ChargeAttempt")]
+    public partial class ChargeAttempt : IValidatableObject
     {
+
         /// <summary>
-        /// The behavior that controls when the transaction is completed.
+        /// Gets or Sets State
         /// </summary>
-        /// <value>The behavior that controls when the transaction is completed.</value>
-        [DataMember(Name="completionBehavior", EmitDefaultValue=false)]
-        public TransactionCompletionBehavior? CompletionBehavior { get; private set; }
+        [DataMember(Name = "state", EmitDefaultValue = false)]
+        public ChargeAttemptState? State { get; set; }
+
         /// <summary>
-        /// The customer&#39;s presence indicates whether and in what way the charge attempt&#39;s customer is present.
+        /// Gets or Sets CompletionBehavior
         /// </summary>
-        /// <value>The customer&#39;s presence indicates whether and in what way the charge attempt&#39;s customer is present.</value>
-        [DataMember(Name="customersPresence", EmitDefaultValue=false)]
-        public CustomersPresence? CustomersPresence { get; private set; }
+        [DataMember(Name = "completionBehavior", EmitDefaultValue = false)]
+        public TransactionCompletionBehavior? CompletionBehavior { get; set; }
+
         /// <summary>
-        /// The environment in which the charge attempt is executed.
+        /// Gets or Sets VarEnvironment
         /// </summary>
-        /// <value>The environment in which the charge attempt is executed.</value>
-        [DataMember(Name="environment", EmitDefaultValue=false)]
-        public ChargeAttemptEnvironment? Environment { get; private set; }
+        [DataMember(Name = "environment", EmitDefaultValue = false)]
+        public ChargeAttemptEnvironment? VarEnvironment { get; set; }
+
         /// <summary>
-        /// The object&#39;s current state.
+        /// Gets or Sets CustomersPresence
         /// </summary>
-        /// <value>The object&#39;s current state.</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public ChargeAttemptState? State { get; private set; }
+        [DataMember(Name = "customersPresence", EmitDefaultValue = false)]
+        public CustomersPresence? CustomersPresence { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ChargeAttempt" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public ChargeAttempt()
+        /// <param name="tokenVersion">tokenVersion.</param>
+        /// <param name="state">state.</param>
+        /// <param name="charge">charge.</param>
+        /// <param name="wallet">wallet.</param>
+        /// <param name="terminal">terminal.</param>
+        /// <param name="completionBehavior">completionBehavior.</param>
+        /// <param name="varEnvironment">varEnvironment.</param>
+        /// <param name="invocation">invocation.</param>
+        /// <param name="connectorConfiguration">connectorConfiguration.</param>
+        /// <param name="failureReason">failureReason.</param>
+        /// <param name="customersPresence">customersPresence.</param>
+        public ChargeAttempt(TokenVersion tokenVersion = default(TokenVersion), ChargeAttemptState? state = default(ChargeAttemptState?), Charge charge = default(Charge), WalletType wallet = default(WalletType), PaymentTerminal terminal = default(PaymentTerminal), TransactionCompletionBehavior? completionBehavior = default(TransactionCompletionBehavior?), ChargeAttemptEnvironment? varEnvironment = default(ChargeAttemptEnvironment?), ConnectorInvocation invocation = default(ConnectorInvocation), PaymentConnectorConfiguration connectorConfiguration = default(PaymentConnectorConfiguration), FailureReason failureReason = default(FailureReason), CustomersPresence? customersPresence = default(CustomersPresence?))
         {
+            this.TokenVersion = tokenVersion;
+            this.State = state;
+            this.Charge = charge;
+            this.Wallet = wallet;
+            this.Terminal = terminal;
+            this.CompletionBehavior = completionBehavior;
+            this.VarEnvironment = varEnvironment;
+            this.Invocation = invocation;
+            this.ConnectorConfiguration = connectorConfiguration;
+            this.FailureReason = failureReason;
+            this.CustomersPresence = customersPresence;
         }
-
-        /// <summary>
-        /// The charge that the charge attempt belongs to.
-        /// </summary>
-        /// <value>The charge that the charge attempt belongs to.</value>
-        [DataMember(Name="charge", EmitDefaultValue=false)]
-        public Charge Charge { get; private set; }
-
-
-        /// <summary>
-        /// The payment connector configuration that was used for the charge attempt.
-        /// </summary>
-        /// <value>The payment connector configuration that was used for the charge attempt.</value>
-        [DataMember(Name="connectorConfiguration", EmitDefaultValue=false)]
-        public PaymentConnectorConfiguration ConnectorConfiguration { get; private set; }
-
-        /// <summary>
-        /// The date and time when the object was created.
-        /// </summary>
-        /// <value>The date and time when the object was created.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
-        public DateTime? CreatedOn { get; private set; }
-
-
-
-        /// <summary>
-        /// The date and time when the charge attempt failed.
-        /// </summary>
-        /// <value>The date and time when the charge attempt failed.</value>
-        [DataMember(Name="failedOn", EmitDefaultValue=false)]
-        public DateTime? FailedOn { get; private set; }
-
-        /// <summary>
-        /// The reason for the failure of the charge attempt.
-        /// </summary>
-        /// <value>The reason for the failure of the charge attempt.</value>
-        [DataMember(Name="failureReason", EmitDefaultValue=false)]
-        public FailureReason FailureReason { get; private set; }
-
-        /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
-
-        /// <summary>
-        /// Whether a new token version is being initialized.
-        /// </summary>
-        /// <value>Whether a new token version is being initialized.</value>
-        [DataMember(Name="initializingTokenVersion", EmitDefaultValue=false)]
-        public bool? InitializingTokenVersion { get; private set; }
-
-        /// <summary>
-        /// The connector invocation that the charge attempt belongs to.
-        /// </summary>
-        /// <value>The connector invocation that the charge attempt belongs to.</value>
-        [DataMember(Name="invocation", EmitDefaultValue=false)]
-        public ConnectorInvocation Invocation { get; private set; }
-
-        /// <summary>
-        /// The labels providing additional information about the object.
-        /// </summary>
-        /// <value>The labels providing additional information about the object.</value>
-        [DataMember(Name="labels", EmitDefaultValue=false)]
-        public List<Label> Labels { get; private set; }
 
         /// <summary>
         /// The language that is linked to the object.
         /// </summary>
         /// <value>The language that is linked to the object.</value>
-        [DataMember(Name="language", EmitDefaultValue=false)]
+        [DataMember(Name = "language", EmitDefaultValue = false)]
         public string Language { get; private set; }
 
         /// <summary>
-        /// The ID of the space this object belongs to.
+        /// Returns false as Language should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The ID of the space this object belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; private set; }
-
-        /// <summary>
-        /// The payment transaction this object is linked to.
-        /// </summary>
-        /// <value>The payment transaction this object is linked to.</value>
-        [DataMember(Name="linkedTransaction", EmitDefaultValue=false)]
-        public long? LinkedTransaction { get; private set; }
-
-        /// <summary>
-        /// The date and time when the next update of the object&#39;s state is planned.
-        /// </summary>
-        /// <value>The date and time when the next update of the object&#39;s state is planned.</value>
-        [DataMember(Name="nextUpdateOn", EmitDefaultValue=false)]
-        public DateTime? NextUpdateOn { get; private set; }
-
-        /// <summary>
-        /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
-        /// </summary>
-        /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; private set; }
-
-        /// <summary>
-        /// The URL to redirect the customer to after payment processing.
-        /// </summary>
-        /// <value>The URL to redirect the customer to after payment processing.</value>
-        [DataMember(Name="redirectionUrl", EmitDefaultValue=false)]
-        public string RedirectionUrl { get; private set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLanguage()
+        {
+            return false;
+        }
         /// <summary>
         /// The sales channel through which the charge attempt was made.
         /// </summary>
         /// <value>The sales channel through which the charge attempt was made.</value>
-        [DataMember(Name="salesChannel", EmitDefaultValue=false)]
-        public long? SalesChannel { get; private set; }
+        [DataMember(Name = "salesChannel", EmitDefaultValue = false)]
+        public long SalesChannel { get; private set; }
 
         /// <summary>
-        /// The ID of the space view this object is linked to.
+        /// Returns false as SalesChannel should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The ID of the space view this object is linked to.</value>
-        [DataMember(Name="spaceViewId", EmitDefaultValue=false)]
-        public long? SpaceViewId { get; private set; }
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeSalesChannel()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the object was created.
+        /// </summary>
+        /// <value>The date and time when the object was created.</value>
+        [DataMember(Name = "createdOn", EmitDefaultValue = false)]
+        public DateTime CreatedOn { get; private set; }
 
+        /// <summary>
+        /// Returns false as CreatedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCreatedOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Whether a new token version is being initialized.
+        /// </summary>
+        /// <value>Whether a new token version is being initialized.</value>
+        [DataMember(Name = "initializingTokenVersion", EmitDefaultValue = true)]
+        public bool InitializingTokenVersion { get; private set; }
+
+        /// <summary>
+        /// Returns false as InitializingTokenVersion should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeInitializingTokenVersion()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets TokenVersion
+        /// </summary>
+        [DataMember(Name = "tokenVersion", EmitDefaultValue = false)]
+        public TokenVersion TokenVersion { get; set; }
 
         /// <summary>
         /// The date and time when the charge attempt succeeded.
         /// </summary>
         /// <value>The date and time when the charge attempt succeeded.</value>
-        [DataMember(Name="succeededOn", EmitDefaultValue=false)]
-        public DateTime? SucceededOn { get; private set; }
+        [DataMember(Name = "succeededOn", EmitDefaultValue = false)]
+        public DateTime SucceededOn { get; private set; }
 
         /// <summary>
-        /// The payment terminal through which the charge attempt was made.
+        /// Returns false as SucceededOn should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The payment terminal through which the charge attempt was made.</value>
-        [DataMember(Name="terminal", EmitDefaultValue=false)]
-        public PaymentTerminal Terminal { get; private set; }
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeSucceededOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; private set; }
 
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The payment transaction this object is linked to.
+        /// </summary>
+        /// <value>The payment transaction this object is linked to.</value>
+        [DataMember(Name = "linkedTransaction", EmitDefaultValue = false)]
+        public long LinkedTransaction { get; private set; }
+
+        /// <summary>
+        /// Returns false as LinkedTransaction should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLinkedTransaction()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The URL to redirect the customer to after payment processing.
+        /// </summary>
+        /// <value>The URL to redirect the customer to after payment processing.</value>
+        [DataMember(Name = "redirectionUrl", EmitDefaultValue = false)]
+        public string RedirectionUrl { get; private set; }
+
+        /// <summary>
+        /// Returns false as RedirectionUrl should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRedirectionUrl()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets Charge
+        /// </summary>
+        [DataMember(Name = "charge", EmitDefaultValue = false)]
+        public Charge Charge { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Wallet
+        /// </summary>
+        [DataMember(Name = "wallet", EmitDefaultValue = false)]
+        public WalletType Wallet { get; set; }
+
+        /// <summary>
+        /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
+        /// </summary>
+        /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
+        [DataMember(Name = "plannedPurgeDate", EmitDefaultValue = false)]
+        public DateTime PlannedPurgeDate { get; private set; }
+
+        /// <summary>
+        /// Returns false as PlannedPurgeDate should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePlannedPurgeDate()
+        {
+            return false;
+        }
         /// <summary>
         /// The time zone that this object is associated with.
         /// </summary>
         /// <value>The time zone that this object is associated with.</value>
-        [DataMember(Name="timeZone", EmitDefaultValue=false)]
-        public string TimeZone { get; private set; }
+        [DataMember(Name = "timeZone", EmitDefaultValue = false)]
+        public string VarTimeZone { get; private set; }
 
         /// <summary>
-        /// The date and time when the object will expire.
+        /// Returns false as VarTimeZone should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The date and time when the object will expire.</value>
-        [DataMember(Name="timeoutOn", EmitDefaultValue=false)]
-        public DateTime? TimeoutOn { get; private set; }
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVarTimeZone()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The ID of the space view this object is linked to.
+        /// </summary>
+        /// <value>The ID of the space view this object is linked to.</value>
+        [DataMember(Name = "spaceViewId", EmitDefaultValue = false)]
+        public long SpaceViewId { get; private set; }
 
         /// <summary>
-        /// The token version used for the charge attempt.
+        /// Returns false as SpaceViewId should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The token version used for the charge attempt.</value>
-        [DataMember(Name="tokenVersion", EmitDefaultValue=false)]
-        public TokenVersion TokenVersion { get; private set; }
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeSpaceViewId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets Terminal
+        /// </summary>
+        [DataMember(Name = "terminal", EmitDefaultValue = false)]
+        public PaymentTerminal Terminal { get; set; }
 
         /// <summary>
         /// The message that can be displayed to the customer explaining why the charge attempt failed, in the customer&#39;s language.
         /// </summary>
         /// <value>The message that can be displayed to the customer explaining why the charge attempt failed, in the customer&#39;s language.</value>
-        [DataMember(Name="userFailureMessage", EmitDefaultValue=false)]
+        [DataMember(Name = "userFailureMessage", EmitDefaultValue = false)]
         public string UserFailureMessage { get; private set; }
 
+        /// <summary>
+        /// Returns false as UserFailureMessage should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeUserFailureMessage()
+        {
+            return false;
+        }
         /// <summary>
         /// The version is used for optimistic locking and incremented whenever the object is updated.
         /// </summary>
         /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; private set; }
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int VarVersion { get; private set; }
 
         /// <summary>
-        /// The type of wallet used to make the charge attempt.
+        /// Returns false as VarVersion should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The type of wallet used to make the charge attempt.</value>
-        [DataMember(Name="wallet", EmitDefaultValue=false)]
-        public WalletType Wallet { get; private set; }
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVarVersion()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The labels providing additional information about the object.
+        /// </summary>
+        /// <value>The labels providing additional information about the object.</value>
+        [DataMember(Name = "labels", EmitDefaultValue = false)]
+        public List<Label> Labels { get; private set; }
 
+        /// <summary>
+        /// Returns false as Labels should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLabels()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The ID of the space this object belongs to.
+        /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name = "linkedSpaceId", EmitDefaultValue = false)]
+        public long LinkedSpaceId { get; private set; }
+
+        /// <summary>
+        /// Returns false as LinkedSpaceId should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLinkedSpaceId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the object will expire.
+        /// </summary>
+        /// <value>The date and time when the object will expire.</value>
+        [DataMember(Name = "timeoutOn", EmitDefaultValue = false)]
+        public DateTime TimeoutOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as TimeoutOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTimeoutOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets Invocation
+        /// </summary>
+        [DataMember(Name = "invocation", EmitDefaultValue = false)]
+        public ConnectorInvocation Invocation { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ConnectorConfiguration
+        /// </summary>
+        [DataMember(Name = "connectorConfiguration", EmitDefaultValue = false)]
+        public PaymentConnectorConfiguration ConnectorConfiguration { get; set; }
+
+        /// <summary>
+        /// The date and time when the next update of the object&#39;s state is planned.
+        /// </summary>
+        /// <value>The date and time when the next update of the object&#39;s state is planned.</value>
+        [DataMember(Name = "nextUpdateOn", EmitDefaultValue = false)]
+        public DateTime NextUpdateOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as NextUpdateOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeNextUpdateOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets FailureReason
+        /// </summary>
+        [DataMember(Name = "failureReason", EmitDefaultValue = false)]
+        public FailureReason FailureReason { get; set; }
+
+        /// <summary>
+        /// The date and time when the charge attempt failed.
+        /// </summary>
+        /// <value>The date and time when the charge attempt failed.</value>
+        [DataMember(Name = "failedOn", EmitDefaultValue = false)]
+        public DateTime FailedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as FailedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFailedOn()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ChargeAttempt {\n");
-            sb.Append("  Charge: ").Append(Charge).Append("\n");
-            sb.Append("  CompletionBehavior: ").Append(CompletionBehavior).Append("\n");
-            sb.Append("  ConnectorConfiguration: ").Append(ConnectorConfiguration).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
-            sb.Append("  CustomersPresence: ").Append(CustomersPresence).Append("\n");
-            sb.Append("  Environment: ").Append(Environment).Append("\n");
-            sb.Append("  FailedOn: ").Append(FailedOn).Append("\n");
-            sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  InitializingTokenVersion: ").Append(InitializingTokenVersion).Append("\n");
-            sb.Append("  Invocation: ").Append(Invocation).Append("\n");
-            sb.Append("  Labels: ").Append(Labels).Append("\n");
             sb.Append("  Language: ").Append(Language).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
-            sb.Append("  NextUpdateOn: ").Append(NextUpdateOn).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  RedirectionUrl: ").Append(RedirectionUrl).Append("\n");
             sb.Append("  SalesChannel: ").Append(SalesChannel).Append("\n");
-            sb.Append("  SpaceViewId: ").Append(SpaceViewId).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  SucceededOn: ").Append(SucceededOn).Append("\n");
-            sb.Append("  Terminal: ").Append(Terminal).Append("\n");
-            sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
-            sb.Append("  TimeoutOn: ").Append(TimeoutOn).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  InitializingTokenVersion: ").Append(InitializingTokenVersion).Append("\n");
             sb.Append("  TokenVersion: ").Append(TokenVersion).Append("\n");
-            sb.Append("  UserFailureMessage: ").Append(UserFailureMessage).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  SucceededOn: ").Append(SucceededOn).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
+            sb.Append("  RedirectionUrl: ").Append(RedirectionUrl).Append("\n");
+            sb.Append("  Charge: ").Append(Charge).Append("\n");
             sb.Append("  Wallet: ").Append(Wallet).Append("\n");
+            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
+            sb.Append("  VarTimeZone: ").Append(VarTimeZone).Append("\n");
+            sb.Append("  SpaceViewId: ").Append(SpaceViewId).Append("\n");
+            sb.Append("  Terminal: ").Append(Terminal).Append("\n");
+            sb.Append("  UserFailureMessage: ").Append(UserFailureMessage).Append("\n");
+            sb.Append("  CompletionBehavior: ").Append(CompletionBehavior).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("  Labels: ").Append(Labels).Append("\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  TimeoutOn: ").Append(TimeoutOn).Append("\n");
+            sb.Append("  VarEnvironment: ").Append(VarEnvironment).Append("\n");
+            sb.Append("  Invocation: ").Append(Invocation).Append("\n");
+            sb.Append("  ConnectorConfiguration: ").Append(ConnectorConfiguration).Append("\n");
+            sb.Append("  NextUpdateOn: ").Append(NextUpdateOn).Append("\n");
+            sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
+            sb.Append("  CustomersPresence: ").Append(CustomersPresence).Append("\n");
+            sb.Append("  FailedOn: ").Append(FailedOn).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -278,249 +455,24 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as ChargeAttempt);
-        }
-
-        /// <summary>
-        /// Returns true if ChargeAttempt instances are equal
-        /// </summary>
-        /// <param name="input">Instance of ChargeAttempt to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(ChargeAttempt input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.Charge == input.Charge ||
-                    (this.Charge != null &&
-                    this.Charge.Equals(input.Charge))
-                ) && 
-                (
-                    this.CompletionBehavior == input.CompletionBehavior ||
-                    (this.CompletionBehavior != null &&
-                    this.CompletionBehavior.Equals(input.CompletionBehavior))
-                ) && 
-                (
-                    this.ConnectorConfiguration == input.ConnectorConfiguration ||
-                    (this.ConnectorConfiguration != null &&
-                    this.ConnectorConfiguration.Equals(input.ConnectorConfiguration))
-                ) && 
-                (
-                    this.CreatedOn == input.CreatedOn ||
-                    (this.CreatedOn != null &&
-                    this.CreatedOn.Equals(input.CreatedOn))
-                ) && 
-                (
-                    this.CustomersPresence == input.CustomersPresence ||
-                    (this.CustomersPresence != null &&
-                    this.CustomersPresence.Equals(input.CustomersPresence))
-                ) && 
-                (
-                    this.Environment == input.Environment ||
-                    (this.Environment != null &&
-                    this.Environment.Equals(input.Environment))
-                ) && 
-                (
-                    this.FailedOn == input.FailedOn ||
-                    (this.FailedOn != null &&
-                    this.FailedOn.Equals(input.FailedOn))
-                ) && 
-                (
-                    this.FailureReason == input.FailureReason ||
-                    (this.FailureReason != null &&
-                    this.FailureReason.Equals(input.FailureReason))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.InitializingTokenVersion == input.InitializingTokenVersion ||
-                    (this.InitializingTokenVersion != null &&
-                    this.InitializingTokenVersion.Equals(input.InitializingTokenVersion))
-                ) && 
-                (
-                    this.Invocation == input.Invocation ||
-                    (this.Invocation != null &&
-                    this.Invocation.Equals(input.Invocation))
-                ) && 
-                (
-                    this.Labels == input.Labels ||
-                    this.Labels != null &&
-                    input.Labels != null &&
-                    this.Labels.SequenceEqual(input.Labels)
-                ) && 
-                (
-                    this.Language == input.Language ||
-                    (this.Language != null &&
-                    this.Language.Equals(input.Language))
-                ) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && 
-                (
-                    this.LinkedTransaction == input.LinkedTransaction ||
-                    (this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(input.LinkedTransaction))
-                ) && 
-                (
-                    this.NextUpdateOn == input.NextUpdateOn ||
-                    (this.NextUpdateOn != null &&
-                    this.NextUpdateOn.Equals(input.NextUpdateOn))
-                ) && 
-                (
-                    this.PlannedPurgeDate == input.PlannedPurgeDate ||
-                    (this.PlannedPurgeDate != null &&
-                    this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
-                ) && 
-                (
-                    this.RedirectionUrl == input.RedirectionUrl ||
-                    (this.RedirectionUrl != null &&
-                    this.RedirectionUrl.Equals(input.RedirectionUrl))
-                ) && 
-                (
-                    this.SalesChannel == input.SalesChannel ||
-                    (this.SalesChannel != null &&
-                    this.SalesChannel.Equals(input.SalesChannel))
-                ) && 
-                (
-                    this.SpaceViewId == input.SpaceViewId ||
-                    (this.SpaceViewId != null &&
-                    this.SpaceViewId.Equals(input.SpaceViewId))
-                ) && 
-                (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
-                ) && 
-                (
-                    this.SucceededOn == input.SucceededOn ||
-                    (this.SucceededOn != null &&
-                    this.SucceededOn.Equals(input.SucceededOn))
-                ) && 
-                (
-                    this.Terminal == input.Terminal ||
-                    (this.Terminal != null &&
-                    this.Terminal.Equals(input.Terminal))
-                ) && 
-                (
-                    this.TimeZone == input.TimeZone ||
-                    (this.TimeZone != null &&
-                    this.TimeZone.Equals(input.TimeZone))
-                ) && 
-                (
-                    this.TimeoutOn == input.TimeoutOn ||
-                    (this.TimeoutOn != null &&
-                    this.TimeoutOn.Equals(input.TimeoutOn))
-                ) && 
-                (
-                    this.TokenVersion == input.TokenVersion ||
-                    (this.TokenVersion != null &&
-                    this.TokenVersion.Equals(input.TokenVersion))
-                ) && 
-                (
-                    this.UserFailureMessage == input.UserFailureMessage ||
-                    (this.UserFailureMessage != null &&
-                    this.UserFailureMessage.Equals(input.UserFailureMessage))
-                ) && 
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
-                ) && 
-                (
-                    this.Wallet == input.Wallet ||
-                    (this.Wallet != null &&
-                    this.Wallet.Equals(input.Wallet))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // UserFailureMessage (string) maxLength
+            if (this.UserFailureMessage != null && this.UserFailureMessage.Length > 2000)
             {
-                int hashCode = 41;
-                if (this.Charge != null)
-                    hashCode = hashCode * 59 + this.Charge.GetHashCode();
-                if (this.CompletionBehavior != null)
-                    hashCode = hashCode * 59 + this.CompletionBehavior.GetHashCode();
-                if (this.ConnectorConfiguration != null)
-                    hashCode = hashCode * 59 + this.ConnectorConfiguration.GetHashCode();
-                if (this.CreatedOn != null)
-                    hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
-                if (this.CustomersPresence != null)
-                    hashCode = hashCode * 59 + this.CustomersPresence.GetHashCode();
-                if (this.Environment != null)
-                    hashCode = hashCode * 59 + this.Environment.GetHashCode();
-                if (this.FailedOn != null)
-                    hashCode = hashCode * 59 + this.FailedOn.GetHashCode();
-                if (this.FailureReason != null)
-                    hashCode = hashCode * 59 + this.FailureReason.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.InitializingTokenVersion != null)
-                    hashCode = hashCode * 59 + this.InitializingTokenVersion.GetHashCode();
-                if (this.Invocation != null)
-                    hashCode = hashCode * 59 + this.Invocation.GetHashCode();
-                if (this.Labels != null)
-                    hashCode = hashCode * 59 + this.Labels.GetHashCode();
-                if (this.Language != null)
-                    hashCode = hashCode * 59 + this.Language.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
-                if (this.NextUpdateOn != null)
-                    hashCode = hashCode * 59 + this.NextUpdateOn.GetHashCode();
-                if (this.PlannedPurgeDate != null)
-                    hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.RedirectionUrl != null)
-                    hashCode = hashCode * 59 + this.RedirectionUrl.GetHashCode();
-                if (this.SalesChannel != null)
-                    hashCode = hashCode * 59 + this.SalesChannel.GetHashCode();
-                if (this.SpaceViewId != null)
-                    hashCode = hashCode * 59 + this.SpaceViewId.GetHashCode();
-                if (this.State != null)
-                    hashCode = hashCode * 59 + this.State.GetHashCode();
-                if (this.SucceededOn != null)
-                    hashCode = hashCode * 59 + this.SucceededOn.GetHashCode();
-                if (this.Terminal != null)
-                    hashCode = hashCode * 59 + this.Terminal.GetHashCode();
-                if (this.TimeZone != null)
-                    hashCode = hashCode * 59 + this.TimeZone.GetHashCode();
-                if (this.TimeoutOn != null)
-                    hashCode = hashCode * 59 + this.TimeoutOn.GetHashCode();
-                if (this.TokenVersion != null)
-                    hashCode = hashCode * 59 + this.TokenVersion.GetHashCode();
-                if (this.UserFailureMessage != null)
-                    hashCode = hashCode * 59 + this.UserFailureMessage.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
-                if (this.Wallet != null)
-                    hashCode = hashCode * 59 + this.Wallet.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for UserFailureMessage, length must be less than 2000.", new [] { "UserFailureMessage" });
             }
-        }
 
+            yield break;
+        }
     }
 
 }

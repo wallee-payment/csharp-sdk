@@ -1,24 +1,47 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// TransactionLineItemVersionCreate
     /// </summary>
-    [DataContract]
-    public partial class TransactionLineItemVersionCreate :  IEquatable<TransactionLineItemVersionCreate>
+    [DataContract(Name = "TransactionLineItemVersion.Create")]
+    public partial class TransactionLineItemVersionCreate : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionLineItemVersionCreate" /> class.
@@ -28,51 +51,46 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionLineItemVersionCreate" /> class.
         /// </summary>
-        /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
         /// <param name="lineItems">The line items that replace the original line items in the transaction. (required).</param>
+        /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
         /// <param name="transaction">The transaction that the line item version belongs to. (required).</param>
-        public TransactionLineItemVersionCreate(string externalId, List<LineItemCreate> lineItems, long? transaction)
+        public TransactionLineItemVersionCreate(List<LineItemCreate> lineItems = default(List<LineItemCreate>), string externalId = default(string), long transaction = default(long))
         {
-            // to ensure "externalId" is required (not null)
-            if (externalId == null)
-            {
-                throw new InvalidDataException("externalId is a required property for TransactionLineItemVersionCreate and cannot be null");
-            }
-            this.ExternalId = externalId;
             // to ensure "lineItems" is required (not null)
             if (lineItems == null)
             {
-                throw new InvalidDataException("lineItems is a required property for TransactionLineItemVersionCreate and cannot be null");
+                throw new ArgumentNullException("lineItems is a required property for TransactionLineItemVersionCreate and cannot be null");
             }
             this.LineItems = lineItems;
-            // to ensure "transaction" is required (not null)
-            if (transaction == null)
+            // to ensure "externalId" is required (not null)
+            if (externalId == null)
             {
-                throw new InvalidDataException("transaction is a required property for TransactionLineItemVersionCreate and cannot be null");
+                throw new ArgumentNullException("externalId is a required property for TransactionLineItemVersionCreate and cannot be null");
             }
+            this.ExternalId = externalId;
             this.Transaction = transaction;
         }
-
-        /// <summary>
-        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-        /// </summary>
-        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
-        public string ExternalId { get; set; }
 
         /// <summary>
         /// The line items that replace the original line items in the transaction.
         /// </summary>
         /// <value>The line items that replace the original line items in the transaction.</value>
-        [DataMember(Name="lineItems", EmitDefaultValue=false)]
+        [DataMember(Name = "lineItems", IsRequired = true, EmitDefaultValue = true)]
         public List<LineItemCreate> LineItems { get; set; }
+
+        /// <summary>
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
+        /// </summary>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
+        [DataMember(Name = "externalId", IsRequired = true, EmitDefaultValue = true)]
+        public string ExternalId { get; set; }
 
         /// <summary>
         /// The transaction that the line item version belongs to.
         /// </summary>
         /// <value>The transaction that the line item version belongs to.</value>
-        [DataMember(Name="transaction", EmitDefaultValue=false)]
-        public long? Transaction { get; set; }
+        [DataMember(Name = "transaction", IsRequired = true, EmitDefaultValue = true)]
+        public long Transaction { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -80,10 +98,10 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class TransactionLineItemVersionCreate {\n");
-            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Transaction: ").Append(Transaction).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -95,67 +113,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as TransactionLineItemVersionCreate);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if TransactionLineItemVersionCreate instances are equal
-        /// </summary>
-        /// <param name="input">Instance of TransactionLineItemVersionCreate to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(TransactionLineItemVersionCreate input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.ExternalId == input.ExternalId ||
-                    (this.ExternalId != null &&
-                    this.ExternalId.Equals(input.ExternalId))
-                ) && 
-                (
-                    this.LineItems == input.LineItems ||
-                    this.LineItems != null &&
-                    input.LineItems != null &&
-                    this.LineItems.SequenceEqual(input.LineItems)
-                ) && 
-                (
-                    this.Transaction == input.Transaction ||
-                    (this.Transaction != null &&
-                    this.Transaction.Equals(input.Transaction))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.ExternalId != null)
-                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
-                if (this.LineItems != null)
-                    hashCode = hashCode * 59 + this.LineItems.GetHashCode();
-                if (this.Transaction != null)
-                    hashCode = hashCode * 59 + this.Transaction.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

@@ -1,12 +1,32 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Reflection;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using RestSharp;
-
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 namespace Wallee.Client
 {
@@ -21,7 +41,7 @@ namespace Wallee.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "9.1.0";
+        public const string Version = "1.0.0";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -43,13 +63,13 @@ namespace Wallee.Client
             if (status >= 400)
             {
                 return new ApiException(status,
-                    string.Format("Error calling {0}: {1}", methodName, response.Content),
-                    response.Content);
+                    string.Format("Error calling {0}: {1}", methodName, response.RawContent),
+                    response.RawContent, response.Headers);
             }
             if (status == 0)
             {
                 return new ApiException(status,
-                    string.Format("Error calling {0}: {1}", methodName, response.ErrorMessage), response.ErrorMessage);
+                    string.Format("Error calling {0}: {1}", methodName, response.ErrorText), response.ErrorText);
             }
             return null;
         };
@@ -59,19 +79,39 @@ namespace Wallee.Client
         #region Private Members
 
         /// <summary>
-        /// Gets or sets the API key based on the authentication name.
+        /// Defines the base path of the target API server.
+        /// Example: http://localhost:3000/v1/
         /// </summary>
-        /// <value>The API key.</value>
-        private IDictionary<string, string> _apiKey = null;
+        private string _basePath;
+
+        private bool _useDefaultCredentials = false;
 
         /// <summary>
-        /// Gets or sets the prefix (e.g. Token) of the API key based on the authentication name.
+        /// Stores the unique identifier for the application user making the API request.
+        /// This ID is used to associate actions with a specific application user.
         /// </summary>
-        /// <value>The prefix of the API key.</value>
-        private IDictionary<string, string> _apiKeyPrefix = null;
+        private long _applicationUserId;
+
+        /// <summary>
+        /// The key used to authenticate the application user with the API server.
+        /// This should be kept secure and used in headers.
+        /// </summary>
+        private string _authenticationKey;
 
         private string _dateTimeFormat = ISO8601_DATETIME_FORMAT;
         private string _tempFolderPath = Path.GetTempPath();
+
+        /// <summary>
+        /// Gets or sets the servers defined in the OpenAPI spec.
+        /// </summary>
+        /// <value>The servers</value>
+        private IList<IReadOnlyDictionary<string, object>> _servers;
+
+        /// <summary>
+        /// Gets or sets the operation servers defined in the OpenAPI spec.
+        /// </summary>
+        /// <value>The operation servers</value>
+        private IReadOnlyDictionary<string, List<IReadOnlyDictionary<string, object>>> _operationServers;
 
         #endregion Private Members
 
@@ -80,112 +120,131 @@ namespace Wallee.Client
         /// <summary>
         /// Initializes a new instance of the <see cref="Configuration" /> class
         /// </summary>
-        /// <param name="applicationUserID">The ID of application user.</param>
+        /// <param name="applicationUserId">The ID of application user.</param>
         /// <param name="authenticationKey">The secret authentication key.</param>
-        /// <param name="restClientOptions">Rest client options for  authentication key.</param>
-        public Configuration(string applicationUserID, string authenticationKey, RestClientOptions restClientOptions)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
+        public Configuration(long applicationUserId, string authenticationKey)
         {
-            if(applicationUserID == null){
-                throw new ArgumentException("Parameter cannot be null", "applicationUserID");
-            }
-            if(authenticationKey == null){
-                throw new ArgumentException("Parameter cannot be null", "authenticationKey");
-            }
-            _authenticationKey =  authenticationKey;
-            _applicationUserID = applicationUserID;
-            _restClientOptions = restClientOptions;
-            UserAgent = "Wallee/9.1.0/csharp";
-            BasePath = "https://app-wallee.com:443/api";
-            DefaultHeader = new ConcurrentDictionary<string, string>();
-            ApiKey = new ConcurrentDictionary<string, string>();
-            ApiKeyPrefix = new ConcurrentDictionary<string, string>();
-
-            Timeout = 25;
+            if(string.IsNullOrWhiteSpace(authenticationKey))
+                throw new ArgumentException("The provided authenticationKey is invalid.", "authenticationKey");
+            Proxy = null;
+            UserAgent = WebUtility.UrlEncode("Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36");
+            BasePath = "https://app-wallee.com/api/v2.0";
+            DefaultHeaders = new ConcurrentDictionary<string, string>();
+            ApplicationUserId = applicationUserId;
+            AuthenticationKey = authenticationKey;
+            Servers = new List<IReadOnlyDictionary<string, object>>()
+            {
+                {
+                    new Dictionary<string, object> {
+                        {"url", "https://app-wallee.com/api/v2.0"},
+                        {"description", "No description provided"},
+                    }
+                }
+            };
+            OperationServers = new Dictionary<string, List<IReadOnlyDictionary<string, object>>>()
+            {
+            };
         }
-
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Configuration" /> class
         /// </summary>
-        /// <param name="applicationUserID">The ID of application user.</param>
+        /// <param name="applicationUserId">The ID of application user.</param>
         /// <param name="authenticationKey">The secret authentication key.</param>
-        public Configuration(string applicationUserID, string authenticationKey) : this(applicationUserID, authenticationKey, new RestClientOptions())
+        /// <param name="defaultHeaders">The default headers as key-value pairs.</param>
+        /// <param name="basePath">The base URL path for API requests.</param>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
+        public Configuration(
+            long applicationUserId,
+            string authenticationKey,
+            IDictionary<string, string> defaultHeaders,
+            string basePath = "https://app-wallee.com/api/v2.0") : this(applicationUserId, authenticationKey)
         {
+            if (string.IsNullOrWhiteSpace(basePath))
+                throw new ArgumentException("The provided basePath is invalid.", "basePath");
+            if (defaultHeaders == null)
+                throw new ArgumentNullException("defaultHeaders");
+
+            BasePath = basePath;
+
+            foreach (var keyValuePair in defaultHeaders)
+            {
+                DefaultHeaders.Add(keyValuePair);
+            }
         }
 
         #endregion Constructors
 
-
         #region Properties
 
-        private ApiClient _apiClient = null;
-        /// <summary>
-        /// Gets an instance of an ApiClient for this configuration
-        /// </summary>
-        public virtual ApiClient ApiClient
-        {
-            get
-            {
-                if (_apiClient == null) _apiClient = CreateApiClient();
-                return _apiClient;
-            }
-        }
-
-        private String _basePath = null;
         /// <summary>
         /// Gets or sets the base path for API access.
         /// </summary>
-        public virtual string BasePath {
-            get { return _basePath; }
-            set {
-                _basePath = value;
-                new Uri(_basePath);
-            }
-        }
-
-        private readonly string _applicationUserID;
-
-        /// <summary>
-        /// Gets the application user's ID.
-        /// </summary>
-        /// <value>The application user ID.</value>
-        public string ApplicationUserID
+        public virtual string BasePath 
         {
-            get { return _applicationUserID; }
+            get { return _basePath; }
+            set { _basePath = value; }
         }
 
-        private readonly string _authenticationKey;
+        /// <summary>
+        /// Gets or sets the application user ID for API access.
+        /// </summary>
+        public virtual long ApplicationUserId
+        {
+            get { return _applicationUserId; }
+            set { _applicationUserId = value; }
+        }
 
         /// <summary>
-        /// Gets the authentication key.
+        /// Gets or sets the authentication key for API access.
         /// </summary>
-        /// <value>The authentication key.</value>
-        public string AuthenticationKey
+        public virtual string AuthenticationKey
         {
             get { return _authenticationKey; }
+            set { _authenticationKey = value; }
         }
 
-        private readonly RestClientOptions _restClientOptions;
-
         /// <summary>
-        /// Gets the Rest Client Options.
+        /// Determine whether the "default credentials" (e.g. the user account under which the current process is running) will be sent along to the server. The default is false.
         /// </summary>
-        /// <value>The rest client options.</value>
-        public RestClientOptions RestClientOptions
+        public virtual bool UseDefaultCredentials
         {
-            get { return _restClientOptions; }
+            get { return _useDefaultCredentials; }
+            set { _useDefaultCredentials = value; }
         }
 
         /// <summary>
         /// Gets or sets the default header.
         /// </summary>
-        public virtual IDictionary<string, string> DefaultHeader { get; set; }
+        [Obsolete("Use DefaultHeaders instead.")]
+        public virtual IDictionary<string, string> DefaultHeader
+        {
+            get
+            {
+                return DefaultHeaders;
+            }
+            set
+            {
+                DefaultHeaders = value;
+            }
+        }
 
         /// <summary>
-        /// Gets or sets the HTTP timeout (seconds) of ApiClient. Default to 25 seconds.
+        /// Gets or sets the default headers.
         /// </summary>
-        public virtual int Timeout
-        { get; set;}
+        public virtual IDictionary<string, string> DefaultHeaders { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HTTP timeout (seconds) of ApiClient. Default: 25 seconds.
+        /// </summary>
+        public virtual int Timeout { get; set; } = 25;
+
+        /// <summary>
+        /// Gets or sets the proxy
+        /// </summary>
+        /// <value>Proxy.</value>
+        public virtual WebProxy Proxy { get; set; }
 
         /// <summary>
         /// Gets or sets the HTTP user agent.
@@ -194,38 +253,10 @@ namespace Wallee.Client
         public virtual string UserAgent { get; set; }
 
         /// <summary>
-        /// Gets or sets the username (HTTP basic authentication).
+        /// Gets or sets certificate collection to be sent with requests.
         /// </summary>
-        /// <value>The username.</value>
-        public virtual string Username { get; set; }
-
-        /// <summary>
-        /// Gets or sets the password (HTTP basic authentication).
-        /// </summary>
-        /// <value>The password.</value>
-        public virtual string Password { get; set; }
-
-        /// <summary>
-        /// Gets the API key with prefix.
-        /// </summary>
-        /// <param name="apiKeyIdentifier">API key identifier (authentication scheme).</param>
-        /// <returns>API key with prefix.</returns>
-        public string GetApiKeyWithPrefix(string apiKeyIdentifier)
-        {
-            var apiKeyValue = "";
-            ApiKey.TryGetValue (apiKeyIdentifier, out apiKeyValue);
-            var apiKeyPrefix = "";
-            if (ApiKeyPrefix.TryGetValue (apiKeyIdentifier, out apiKeyPrefix))
-                return apiKeyPrefix + " " + apiKeyValue;
-            else
-                return apiKeyValue;
-        }
-
-        /// <summary>
-        /// Gets or sets the access token for OAuth2 authentication.
-        /// </summary>
-        /// <value>The access token.</value>
-        public virtual string AccessToken { get; set; }
+        /// <value>X509 Certificate collection.</value>
+        public X509CertificateCollection ClientCertificates { get; set; }
 
         /// <summary>
         /// Gets or sets the temporary folder path to store the files downloaded from the server.
@@ -239,7 +270,6 @@ namespace Wallee.Client
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    // Possible breaking change since swagger-codegen 2.2.1, enforce a valid temporary path on set.
                     _tempFolderPath = Path.GetTempPath();
                     return;
                 }
@@ -288,100 +318,172 @@ namespace Wallee.Client
             }
         }
 
+
         /// <summary>
-        /// Gets or sets the prefix (e.g. Token) of the API key based on the authentication name.
+        /// Gets or sets the servers.
         /// </summary>
-        /// <value>The prefix of the API key.</value>
-        public virtual IDictionary<string, string> ApiKeyPrefix
+        /// <value>The servers.</value>
+        public virtual IList<IReadOnlyDictionary<string, object>> Servers
         {
-            get { return _apiKeyPrefix; }
+            get { return _servers; }
             set
             {
                 if (value == null)
                 {
-                    throw new InvalidOperationException("ApiKeyPrefix collection may not be null.");
+                    throw new InvalidOperationException("Servers may not be null.");
                 }
-                _apiKeyPrefix = value;
+                _servers = value;
             }
         }
 
         /// <summary>
-        /// Gets or sets the API key based on the authentication name.
+        /// Gets or sets the operation servers.
         /// </summary>
-        /// <value>The API key.</value>
-        public virtual IDictionary<string, string> ApiKey
+        /// <value>The operation servers.</value>
+        public virtual IReadOnlyDictionary<string, List<IReadOnlyDictionary<string, object>>> OperationServers
         {
-            get { return _apiKey; }
+            get { return _operationServers; }
             set
             {
                 if (value == null)
                 {
-                    throw new InvalidOperationException("ApiKey collection may not be null.");
+                    throw new InvalidOperationException("Operation servers may not be null.");
                 }
-                _apiKey = value;
+                _operationServers = value;
             }
         }
+
+        /// <summary>
+        /// Returns URL based on server settings without providing values
+        /// for the variables
+        /// </summary>
+        /// <param name="index">Array index of the server settings.</param>
+        /// <return>The server URL.</return>
+        public string GetServerUrl(int index)
+        {
+            return GetServerUrl(Servers, index, null);
+        }
+
+        /// <summary>
+        /// Returns URL based on server settings.
+        /// </summary>
+        /// <param name="index">Array index of the server settings.</param>
+        /// <param name="inputVariables">Dictionary of the variables and the corresponding values.</param>
+        /// <return>The server URL.</return>
+        public string GetServerUrl(int index, Dictionary<string, string> inputVariables)
+        {
+            return GetServerUrl(Servers, index, inputVariables);
+        }
+
+        /// <summary>
+        /// Returns URL based on operation server settings.
+        /// </summary>
+        /// <param name="operation">Operation associated with the request path.</param>
+        /// <param name="index">Array index of the server settings.</param>
+        /// <return>The operation server URL.</return>
+        public string GetOperationServerUrl(string operation, int index)
+        {
+            return GetOperationServerUrl(operation, index, null);
+        }
+
+        /// <summary>
+        /// Returns URL based on operation server settings.
+        /// </summary>
+        /// <param name="operation">Operation associated with the request path.</param>
+        /// <param name="index">Array index of the server settings.</param>
+        /// <param name="inputVariables">Dictionary of the variables and the corresponding values.</param>
+        /// <return>The operation server URL.</return>
+        public string GetOperationServerUrl(string operation, int index, Dictionary<string, string> inputVariables)
+        {
+            if (operation != null && OperationServers.TryGetValue(operation, out var operationServer))
+            {
+                return GetServerUrl(operationServer, index, inputVariables);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Returns URL based on server settings.
+        /// </summary>
+        /// <param name="servers">Dictionary of server settings.</param>
+        /// <param name="index">Array index of the server settings.</param>
+        /// <param name="inputVariables">Dictionary of the variables and the corresponding values.</param>
+        /// <return>The server URL.</return>
+        private string GetServerUrl(IList<IReadOnlyDictionary<string, object>> servers, int index, Dictionary<string, string> inputVariables)
+        {
+            if (index < 0 || index >= servers.Count)
+            {
+                throw new InvalidOperationException($"Invalid index {index} when selecting the server. Must be less than {servers.Count}.");
+            }
+
+            if (inputVariables == null)
+            {
+                inputVariables = new Dictionary<string, string>();
+            }
+
+            IReadOnlyDictionary<string, object> server = servers[index];
+            string url = (string)server["url"];
+
+            if (server.ContainsKey("variables"))
+            {
+                // go through each variable and assign a value
+                foreach (KeyValuePair<string, object> variable in (IReadOnlyDictionary<string, object>)server["variables"])
+                {
+
+                    IReadOnlyDictionary<string, object> serverVariables = (IReadOnlyDictionary<string, object>)(variable.Value);
+
+                    if (inputVariables.ContainsKey(variable.Key))
+                    {
+                        if (((List<string>)serverVariables["enum_values"]).Contains(inputVariables[variable.Key]))
+                        {
+                            url = url.Replace("{" + variable.Key + "}", inputVariables[variable.Key]);
+                        }
+                        else
+                        {
+                            throw new InvalidOperationException($"The variable `{variable.Key}` in the server URL has invalid value #{inputVariables[variable.Key]}. Must be {(List<string>)serverVariables["enum_values"]}");
+                        }
+                    }
+                    else
+                    {
+                        // use default value
+                        url = url.Replace("{" + variable.Key + "}", (string)serverVariables["default_value"]);
+                    }
+                }
+            }
+
+            return url;
+        }
+        
+        /// <summary>
+        /// Gets and Sets the RemoteCertificateValidationCallback
+        /// </summary>
+        public RemoteCertificateValidationCallback RemoteCertificateValidationCallback { get; set; }
 
         #endregion Properties
 
         #region Methods
 
         /// <summary>
-        /// Add default header.
-        /// </summary>
-        /// <param name="key">Header field name.</param>
-        /// <param name="value">Header field value.</param>
-        /// <returns></returns>
-        public void AddDefaultHeader(string key, string value)
-        {
-            DefaultHeader[key] = value;
-        }
-
-        /// <summary>
-        /// Creates a new <see cref="ApiClient" /> based on this <see cref="Configuration" /> instance.
-        /// </summary>
-        /// <returns></returns>
-        public ApiClient CreateApiClient()
-        {
-            return new ApiClient(this);
-        }
-
-
-        /// <summary>
         /// Returns a string with essential information for debugging.
         /// </summary>
-        public static String ToDebugReport()
+        public static string ToDebugReport()
         {
-            String report = "C# SDK (Wallee) Debug Report:\n";
+            string report = "C# SDK (Wallee) Debug Report:\n";
             report += "    OS: " + System.Environment.OSVersion + "\n";
-            report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
-            report += "    Version of the API: 9.1.0\n";
-            report += "    SDK Package Version: 9.1.0\n";
+            report += "    .NET Framework Version: " + System.Environment.Version + "\n";
+            report += "    Version of the API: 2.0\n";
+            report += "    SDK Package Version: 1.0.0\n";
 
             return report;
         }
 
         /// <summary>
-        /// Add Api Key Header.
+        /// Resets the timeout in the Configuration to the default value - 25 seconds.
         /// </summary>
-        /// <param name="key">Api Key name.</param>
-        /// <param name="value">Api Key value.</param>
-        /// <returns></returns>
-        public void AddApiKey(string key, string value)
-        {
-            ApiKey[key] = value;
+        public void ResetTimeout(){
+            this.Timeout = 25;
         }
-
-        /// <summary>
-        /// Sets the API key prefix.
-        /// </summary>
-        /// <param name="key">Api Key name.</param>
-        /// <param name="value">Api Key value.</param>
-        public void AddApiKeyPrefix(string key, string value)
-        {
-            ApiKeyPrefix[key] = value;
-        }
-
         #endregion Methods
     }
 }

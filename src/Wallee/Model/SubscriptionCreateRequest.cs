@@ -1,87 +1,88 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
-    /// The subscription create request holds all the data required to create a new subscription.
+    /// SubscriptionCreateRequest
     /// </summary>
-    [DataContract]
-    public partial class SubscriptionCreateRequest :  IEquatable<SubscriptionCreateRequest>
+    [DataContract(Name = "SubscriptionCreateRequest")]
+    public partial class SubscriptionCreateRequest : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionCreateRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected SubscriptionCreateRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SubscriptionCreateRequest" /> class.
-        /// </summary>
-        /// <param name="currency">currency (required).</param>
-        /// <param name="product">The subscription has to be linked with a product. (required).</param>
-        /// <param name="subscription">subscription (required).</param>
-        public SubscriptionCreateRequest(string currency, long? product, SubscriptionPending subscription)
+        /// <param name="componentConfigurations">The configurations of the subscription&#39;s components..</param>
+        /// <param name="product">The product to subscribe to..</param>
+        /// <param name="currency">The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product..</param>
+        /// <param name="subscription">subscription.</param>
+        public SubscriptionCreateRequest(List<SubscriptionComponentReferenceConfiguration> componentConfigurations = default(List<SubscriptionComponentReferenceConfiguration>), long product = default(long), string currency = default(string), SubscriptionPending subscription = default(SubscriptionPending))
         {
-            // to ensure "currency" is required (not null)
-            if (currency == null)
-            {
-                throw new InvalidDataException("currency is a required property for SubscriptionCreateRequest and cannot be null");
-            }
-            this.Currency = currency;
-            // to ensure "product" is required (not null)
-            if (product == null)
-            {
-                throw new InvalidDataException("product is a required property for SubscriptionCreateRequest and cannot be null");
-            }
+            this.ComponentConfigurations = componentConfigurations;
             this.Product = product;
-            // to ensure "subscription" is required (not null)
-            if (subscription == null)
-            {
-                throw new InvalidDataException("subscription is a required property for SubscriptionCreateRequest and cannot be null");
-            }
+            this.Currency = currency;
             this.Subscription = subscription;
         }
 
         /// <summary>
-        /// Gets or Sets ComponentConfigurations
+        /// The configurations of the subscription&#39;s components.
         /// </summary>
-        [DataMember(Name="componentConfigurations", EmitDefaultValue=false)]
+        /// <value>The configurations of the subscription&#39;s components.</value>
+        [DataMember(Name = "componentConfigurations", EmitDefaultValue = false)]
         public List<SubscriptionComponentReferenceConfiguration> ComponentConfigurations { get; set; }
 
         /// <summary>
-        /// Gets or Sets Currency
+        /// The product to subscribe to.
         /// </summary>
-        [DataMember(Name="currency", EmitDefaultValue=false)]
+        /// <value>The product to subscribe to.</value>
+        [DataMember(Name = "product", EmitDefaultValue = false)]
+        public long Product { get; set; }
+
+        /// <summary>
+        /// The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.
+        /// </summary>
+        /// <value>The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.</value>
+        [DataMember(Name = "currency", EmitDefaultValue = false)]
         public string Currency { get; set; }
-
-        /// <summary>
-        /// The subscription has to be linked with a product.
-        /// </summary>
-        /// <value>The subscription has to be linked with a product.</value>
-        [DataMember(Name="product", EmitDefaultValue=false)]
-        public long? Product { get; set; }
-
-        /// <summary>
-        /// Gets or Sets SelectedComponents
-        /// </summary>
-        [DataMember(Name="selectedComponents", EmitDefaultValue=false)]
-        public List<SubscriptionProductComponentReference> SelectedComponents { get; set; }
 
         /// <summary>
         /// Gets or Sets Subscription
         /// </summary>
-        [DataMember(Name="subscription", EmitDefaultValue=false)]
+        [DataMember(Name = "subscription", EmitDefaultValue = false)]
         public SubscriptionPending Subscription { get; set; }
 
         /// <summary>
@@ -90,12 +91,11 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SubscriptionCreateRequest {\n");
             sb.Append("  ComponentConfigurations: ").Append(ComponentConfigurations).Append("\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  Product: ").Append(Product).Append("\n");
-            sb.Append("  SelectedComponents: ").Append(SelectedComponents).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  Subscription: ").Append(Subscription).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -107,82 +107,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as SubscriptionCreateRequest);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if SubscriptionCreateRequest instances are equal
-        /// </summary>
-        /// <param name="input">Instance of SubscriptionCreateRequest to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(SubscriptionCreateRequest input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.ComponentConfigurations == input.ComponentConfigurations ||
-                    this.ComponentConfigurations != null &&
-                    input.ComponentConfigurations != null &&
-                    this.ComponentConfigurations.SequenceEqual(input.ComponentConfigurations)
-                ) && 
-                (
-                    this.Currency == input.Currency ||
-                    (this.Currency != null &&
-                    this.Currency.Equals(input.Currency))
-                ) && 
-                (
-                    this.Product == input.Product ||
-                    (this.Product != null &&
-                    this.Product.Equals(input.Product))
-                ) && 
-                (
-                    this.SelectedComponents == input.SelectedComponents ||
-                    this.SelectedComponents != null &&
-                    input.SelectedComponents != null &&
-                    this.SelectedComponents.SequenceEqual(input.SelectedComponents)
-                ) && 
-                (
-                    this.Subscription == input.Subscription ||
-                    (this.Subscription != null &&
-                    this.Subscription.Equals(input.Subscription))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.ComponentConfigurations != null)
-                    hashCode = hashCode * 59 + this.ComponentConfigurations.GetHashCode();
-                if (this.Currency != null)
-                    hashCode = hashCode * 59 + this.Currency.GetHashCode();
-                if (this.Product != null)
-                    hashCode = hashCode * 59 + this.Product.GetHashCode();
-                if (this.SelectedComponents != null)
-                    hashCode = hashCode * 59 + this.SelectedComponents.GetHashCode();
-                if (this.Subscription != null)
-                    hashCode = hashCode * 59 + this.Subscription.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

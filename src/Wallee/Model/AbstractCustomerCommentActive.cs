@@ -1,37 +1,62 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// AbstractCustomerCommentActive
     /// </summary>
-    [DataContract]
-    public partial class AbstractCustomerCommentActive :  IEquatable<AbstractCustomerCommentActive>
+    [DataContract(Name = "Abstract.CustomerComment.Active")]
+    public partial class AbstractCustomerCommentActive : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractCustomerCommentActive" /> class.
         /// </summary>
-        public AbstractCustomerCommentActive()
+        /// <param name="content">The comment&#39;s actual content..</param>
+        public AbstractCustomerCommentActive(string content = default(string))
         {
+            this.Content = content;
         }
 
         /// <summary>
         /// The comment&#39;s actual content.
         /// </summary>
         /// <value>The comment&#39;s actual content.</value>
-        [DataMember(Name="content", EmitDefaultValue=false)]
+        [DataMember(Name = "content", EmitDefaultValue = false)]
         public string Content { get; set; }
 
         /// <summary>
@@ -40,7 +65,7 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AbstractCustomerCommentActive {\n");
             sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("}\n");
@@ -53,52 +78,24 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as AbstractCustomerCommentActive);
-        }
-
-        /// <summary>
-        /// Returns true if AbstractCustomerCommentActive instances are equal
-        /// </summary>
-        /// <param name="input">Instance of AbstractCustomerCommentActive to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(AbstractCustomerCommentActive input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.Content == input.Content ||
-                    (this.Content != null &&
-                    this.Content.Equals(input.Content))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // Content (string) maxLength
+            if (this.Content != null && this.Content.Length > 262144)
             {
-                int hashCode = 41;
-                if (this.Content != null)
-                    hashCode = hashCode * 59 + this.Content.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for Content, length must be less than 262144.", new [] { "Content" });
             }
-        }
 
+            yield break;
+        }
     }
 
 }

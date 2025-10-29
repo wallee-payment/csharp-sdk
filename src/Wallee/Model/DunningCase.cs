@@ -1,117 +1,224 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// DunningCase
     /// </summary>
-    [DataContract]
-    public partial class DunningCase :  IEquatable<DunningCase>
+    [DataContract(Name = "DunningCase")]
+    public partial class DunningCase : IValidatableObject
     {
+
         /// <summary>
-        /// The object&#39;s current state.
+        /// Gets or Sets State
         /// </summary>
-        /// <value>The object&#39;s current state.</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public DunningCaseState? State { get; private set; }
+        [DataMember(Name = "state", EmitDefaultValue = false)]
+        public DunningCaseState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="DunningCase" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public DunningCase()
+        /// <param name="initialInvoice">initialInvoice.</param>
+        /// <param name="state">state.</param>
+        /// <param name="flow">flow.</param>
+        public DunningCase(TransactionInvoice initialInvoice = default(TransactionInvoice), DunningCaseState? state = default(DunningCaseState?), DunningFlow flow = default(DunningFlow))
         {
+            this.InitialInvoice = initialInvoice;
+            this.State = state;
+            this.Flow = flow;
         }
 
         /// <summary>
         /// Gets or Sets CanceledOn
         /// </summary>
-        [DataMember(Name="canceledOn", EmitDefaultValue=false)]
-        public DateTime? CanceledOn { get; private set; }
+        [DataMember(Name = "canceledOn", EmitDefaultValue = false)]
+        public DateTime CanceledOn { get; private set; }
 
         /// <summary>
-        /// The date and time when the object was created.
+        /// Returns false as CanceledOn should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The date and time when the object was created.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
-        public DateTime? CreatedOn { get; private set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCanceledOn()
+        {
+            return false;
+        }
         /// <summary>
         /// Gets or Sets DerecognizedOn
         /// </summary>
-        [DataMember(Name="derecognizedOn", EmitDefaultValue=false)]
-        public DateTime? DerecognizedOn { get; private set; }
+        [DataMember(Name = "derecognizedOn", EmitDefaultValue = false)]
+        public DateTime DerecognizedOn { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FailedOn
+        /// Returns false as DerecognizedOn should not be serialized given that it's read-only.
         /// </summary>
-        [DataMember(Name="failedOn", EmitDefaultValue=false)]
-        public DateTime? FailedOn { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Flow
-        /// </summary>
-        [DataMember(Name="flow", EmitDefaultValue=false)]
-        public DunningFlow Flow { get; private set; }
-
-        /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets InitialInvoice
-        /// </summary>
-        [DataMember(Name="initialInvoice", EmitDefaultValue=false)]
-        public TransactionInvoice InitialInvoice { get; private set; }
-
-        /// <summary>
-        /// The ID of the space this object belongs to.
-        /// </summary>
-        /// <value>The ID of the space this object belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; private set; }
-
-        /// <summary>
-        /// The payment transaction this object is linked to.
-        /// </summary>
-        /// <value>The payment transaction this object is linked to.</value>
-        [DataMember(Name="linkedTransaction", EmitDefaultValue=false)]
-        public long? LinkedTransaction { get; private set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDerecognizedOn()
+        {
+            return false;
+        }
         /// <summary>
         /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
         /// </summary>
         /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; private set; }
-
+        [DataMember(Name = "plannedPurgeDate", EmitDefaultValue = false)]
+        public DateTime PlannedPurgeDate { get; private set; }
 
         /// <summary>
-        /// Gets or Sets SucceededOn
+        /// Returns false as PlannedPurgeDate should not be serialized given that it's read-only.
         /// </summary>
-        [DataMember(Name="succeededOn", EmitDefaultValue=false)]
-        public DateTime? SucceededOn { get; private set; }
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePlannedPurgeDate()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the object was created.
+        /// </summary>
+        /// <value>The date and time when the object was created.</value>
+        [DataMember(Name = "createdOn", EmitDefaultValue = false)]
+        public DateTime CreatedOn { get; private set; }
 
+        /// <summary>
+        /// Returns false as CreatedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCreatedOn()
+        {
+            return false;
+        }
         /// <summary>
         /// The version is used for optimistic locking and incremented whenever the object is updated.
         /// </summary>
         /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; private set; }
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int VarVersion { get; private set; }
+
+        /// <summary>
+        /// Returns false as VarVersion should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVarVersion()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The ID of the space this object belongs to.
+        /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name = "linkedSpaceId", EmitDefaultValue = false)]
+        public long LinkedSpaceId { get; private set; }
+
+        /// <summary>
+        /// Returns false as LinkedSpaceId should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLinkedSpaceId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets InitialInvoice
+        /// </summary>
+        [DataMember(Name = "initialInvoice", EmitDefaultValue = false)]
+        public TransactionInvoice InitialInvoice { get; set; }
+
+        /// <summary>
+        /// Gets or Sets SucceededOn
+        /// </summary>
+        [DataMember(Name = "succeededOn", EmitDefaultValue = false)]
+        public DateTime SucceededOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as SucceededOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeSucceededOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; private set; }
+
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The payment transaction this object is linked to.
+        /// </summary>
+        /// <value>The payment transaction this object is linked to.</value>
+        [DataMember(Name = "linkedTransaction", EmitDefaultValue = false)]
+        public long LinkedTransaction { get; private set; }
+
+        /// <summary>
+        /// Returns false as LinkedTransaction should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLinkedTransaction()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets FailedOn
+        /// </summary>
+        [DataMember(Name = "failedOn", EmitDefaultValue = false)]
+        public DateTime FailedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as FailedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFailedOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets Flow
+        /// </summary>
+        [DataMember(Name = "flow", EmitDefaultValue = false)]
+        public DunningFlow Flow { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -119,21 +226,21 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DunningCase {\n");
             sb.Append("  CanceledOn: ").Append(CanceledOn).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  DerecognizedOn: ").Append(DerecognizedOn).Append("\n");
+            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  InitialInvoice: ").Append(InitialInvoice).Append("\n");
+            sb.Append("  SucceededOn: ").Append(SucceededOn).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
             sb.Append("  FailedOn: ").Append(FailedOn).Append("\n");
             sb.Append("  Flow: ").Append(Flow).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  InitialInvoice: ").Append(InitialInvoice).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  LinkedTransaction: ").Append(LinkedTransaction).Append("\n");
-            sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  SucceededOn: ").Append(SucceededOn).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -144,136 +251,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as DunningCase);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if DunningCase instances are equal
-        /// </summary>
-        /// <param name="input">Instance of DunningCase to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(DunningCase input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.CanceledOn == input.CanceledOn ||
-                    (this.CanceledOn != null &&
-                    this.CanceledOn.Equals(input.CanceledOn))
-                ) && 
-                (
-                    this.CreatedOn == input.CreatedOn ||
-                    (this.CreatedOn != null &&
-                    this.CreatedOn.Equals(input.CreatedOn))
-                ) && 
-                (
-                    this.DerecognizedOn == input.DerecognizedOn ||
-                    (this.DerecognizedOn != null &&
-                    this.DerecognizedOn.Equals(input.DerecognizedOn))
-                ) && 
-                (
-                    this.FailedOn == input.FailedOn ||
-                    (this.FailedOn != null &&
-                    this.FailedOn.Equals(input.FailedOn))
-                ) && 
-                (
-                    this.Flow == input.Flow ||
-                    (this.Flow != null &&
-                    this.Flow.Equals(input.Flow))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.InitialInvoice == input.InitialInvoice ||
-                    (this.InitialInvoice != null &&
-                    this.InitialInvoice.Equals(input.InitialInvoice))
-                ) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && 
-                (
-                    this.LinkedTransaction == input.LinkedTransaction ||
-                    (this.LinkedTransaction != null &&
-                    this.LinkedTransaction.Equals(input.LinkedTransaction))
-                ) && 
-                (
-                    this.PlannedPurgeDate == input.PlannedPurgeDate ||
-                    (this.PlannedPurgeDate != null &&
-                    this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
-                ) && 
-                (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
-                ) && 
-                (
-                    this.SucceededOn == input.SucceededOn ||
-                    (this.SucceededOn != null &&
-                    this.SucceededOn.Equals(input.SucceededOn))
-                ) && 
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.CanceledOn != null)
-                    hashCode = hashCode * 59 + this.CanceledOn.GetHashCode();
-                if (this.CreatedOn != null)
-                    hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
-                if (this.DerecognizedOn != null)
-                    hashCode = hashCode * 59 + this.DerecognizedOn.GetHashCode();
-                if (this.FailedOn != null)
-                    hashCode = hashCode * 59 + this.FailedOn.GetHashCode();
-                if (this.Flow != null)
-                    hashCode = hashCode * 59 + this.Flow.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.InitialInvoice != null)
-                    hashCode = hashCode * 59 + this.InitialInvoice.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.LinkedTransaction != null)
-                    hashCode = hashCode * 59 + this.LinkedTransaction.GetHashCode();
-                if (this.PlannedPurgeDate != null)
-                    hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.State != null)
-                    hashCode = hashCode * 59 + this.State.GetHashCode();
-                if (this.SucceededOn != null)
-                    hashCode = hashCode * 59 + this.SucceededOn.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

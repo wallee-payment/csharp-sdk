@@ -1,24 +1,47 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// RestCurrency
     /// </summary>
-    [DataContract]
-    public partial class RestCurrency :  IEquatable<RestCurrency>
+    [DataContract(Name = "RestCurrency")]
+    public partial class RestCurrency : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RestCurrency" /> class.
@@ -29,44 +52,76 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// The currency&#39;s three-letter code (ISO 4217 format).
+        /// The name of the currency.
         /// </summary>
-        /// <value>The currency&#39;s three-letter code (ISO 4217 format).</value>
-        [DataMember(Name="currencyCode", EmitDefaultValue=false)]
-        public string CurrencyCode { get; private set; }
+        /// <value>The name of the currency.</value>
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        public string Name { get; private set; }
 
+        /// <summary>
+        /// Returns false as Name should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeName()
+        {
+            return false;
+        }
         /// <summary>
         /// The currency&#39;s number of decimals. When calculating amounts in this currency, the fraction digits determine the accuracy.
         /// </summary>
         /// <value>The currency&#39;s number of decimals. When calculating amounts in this currency, the fraction digits determine the accuracy.</value>
-        [DataMember(Name="fractionDigits", EmitDefaultValue=false)]
-        public int? FractionDigits { get; private set; }
+        [DataMember(Name = "fractionDigits", EmitDefaultValue = false)]
+        public int FractionDigits { get; private set; }
 
         /// <summary>
-        /// The name of the currency.
+        /// Returns false as FractionDigits should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The name of the currency.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public string Name { get; private set; }
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFractionDigits()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The currency&#39;s three-letter code (ISO 4217 format).
+        /// </summary>
+        /// <value>The currency&#39;s three-letter code (ISO 4217 format).</value>
+        [DataMember(Name = "currencyCode", EmitDefaultValue = false)]
+        public string CurrencyCode { get; private set; }
 
+        /// <summary>
+        /// Returns false as CurrencyCode should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCurrencyCode()
+        {
+            return false;
+        }
         /// <summary>
         /// The currency&#39;s three-digit code (ISO 4217 format).
         /// </summary>
         /// <value>The currency&#39;s three-digit code (ISO 4217 format).</value>
-        [DataMember(Name="numericCode", EmitDefaultValue=false)]
-        public int? NumericCode { get; private set; }
+        [DataMember(Name = "numericCode", EmitDefaultValue = false)]
+        public int NumericCode { get; private set; }
 
+        /// <summary>
+        /// Returns false as NumericCode should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeNumericCode()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class RestCurrency {\n");
-            sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
-            sb.Append("  FractionDigits: ").Append(FractionDigits).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  FractionDigits: ").Append(FractionDigits).Append("\n");
+            sb.Append("  CurrencyCode: ").Append(CurrencyCode).Append("\n");
             sb.Append("  NumericCode: ").Append(NumericCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -78,73 +133,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as RestCurrency);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if RestCurrency instances are equal
-        /// </summary>
-        /// <param name="input">Instance of RestCurrency to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(RestCurrency input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.CurrencyCode == input.CurrencyCode ||
-                    (this.CurrencyCode != null &&
-                    this.CurrencyCode.Equals(input.CurrencyCode))
-                ) && 
-                (
-                    this.FractionDigits == input.FractionDigits ||
-                    (this.FractionDigits != null &&
-                    this.FractionDigits.Equals(input.FractionDigits))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.NumericCode == input.NumericCode ||
-                    (this.NumericCode != null &&
-                    this.NumericCode.Equals(input.NumericCode))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.CurrencyCode != null)
-                    hashCode = hashCode * 59 + this.CurrencyCode.GetHashCode();
-                if (this.FractionDigits != null)
-                    hashCode = hashCode * 59 + this.FractionDigits.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.NumericCode != null)
-                    hashCode = hashCode * 59 + this.NumericCode.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

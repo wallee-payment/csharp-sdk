@@ -1,24 +1,47 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// TokenUpdate
     /// </summary>
-    [DataContract]
-    public partial class TokenUpdate : AbstractTokenUpdate,  IEquatable<TokenUpdate>
+    [DataContract(Name = "Token.Update")]
+    public partial class TokenUpdate : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenUpdate" /> class.
@@ -28,43 +51,72 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenUpdate" /> class.
         /// </summary>
-        /// <param name="version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        /// <param name="id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required).</param>
-        public TokenUpdate(long? version, long? id)
+        /// <param name="enabledForOneClickPayment">Whether the token is enabled for one-click payments, which simplify the payment process for the customer. One-click tokens are linked to customers via the customer ID..</param>
+        /// <param name="customerEmailAddress">The customer&#39;s email address..</param>
+        /// <param name="tokenReference">The reference used to identify the payment token (e.g. the customer&#39;s ID or email address)..</param>
+        /// <param name="customerId">The unique identifier of the customer in the external system..</param>
+        /// <param name="varTimeZone">The customer&#39;s time zone, which affects how dates and times are formatted when communicating with the customer..</param>
+        /// <param name="language">The language that is linked to the object..</param>
+        /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
+        public TokenUpdate(bool enabledForOneClickPayment = default(bool), string customerEmailAddress = default(string), string tokenReference = default(string), string customerId = default(string), string varTimeZone = default(string), string language = default(string), int varVersion = default(int))
         {
-            // to ensure "version" is required (not null)
-            if (version == null)
-            {
-                throw new InvalidDataException("version is a required property for TokenUpdate and cannot be null");
-            }
-            this.Version = version;
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new InvalidDataException("id is a required property for TokenUpdate and cannot be null");
-            }
-            this.Id = id;
+            this.VarVersion = varVersion;
+            this.EnabledForOneClickPayment = enabledForOneClickPayment;
+            this.CustomerEmailAddress = customerEmailAddress;
+            this.TokenReference = tokenReference;
+            this.CustomerId = customerId;
+            this.VarTimeZone = varTimeZone;
+            this.Language = language;
         }
 
-
-
-
-
-
+        /// <summary>
+        /// Whether the token is enabled for one-click payments, which simplify the payment process for the customer. One-click tokens are linked to customers via the customer ID.
+        /// </summary>
+        /// <value>Whether the token is enabled for one-click payments, which simplify the payment process for the customer. One-click tokens are linked to customers via the customer ID.</value>
+        [DataMember(Name = "enabledForOneClickPayment", EmitDefaultValue = true)]
+        public bool EnabledForOneClickPayment { get; set; }
 
         /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
+        /// The customer&#39;s email address.
         /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        /// <value>The customer&#39;s email address.</value>
+        [DataMember(Name = "customerEmailAddress", EmitDefaultValue = false)]
+        public string CustomerEmailAddress { get; set; }
+
+        /// <summary>
+        /// The reference used to identify the payment token (e.g. the customer&#39;s ID or email address).
+        /// </summary>
+        /// <value>The reference used to identify the payment token (e.g. the customer&#39;s ID or email address).</value>
+        [DataMember(Name = "tokenReference", EmitDefaultValue = false)]
+        public string TokenReference { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the customer in the external system.
+        /// </summary>
+        /// <value>The unique identifier of the customer in the external system.</value>
+        [DataMember(Name = "customerId", EmitDefaultValue = false)]
+        public string CustomerId { get; set; }
+
+        /// <summary>
+        /// The customer&#39;s time zone, which affects how dates and times are formatted when communicating with the customer.
+        /// </summary>
+        /// <value>The customer&#39;s time zone, which affects how dates and times are formatted when communicating with the customer.</value>
+        [DataMember(Name = "timeZone", EmitDefaultValue = false)]
+        public string VarTimeZone { get; set; }
+
+        /// <summary>
+        /// The language that is linked to the object.
+        /// </summary>
+        /// <value>The language that is linked to the object.</value>
+        [DataMember(Name = "language", EmitDefaultValue = false)]
+        public string Language { get; set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public long? Version { get; set; }
+        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
+        public int VarVersion { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -72,17 +124,15 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class TokenUpdate {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  CustomerEmailAddress: ").Append(CustomerEmailAddress).Append("\n");
-            sb.Append("  CustomerId: ").Append(CustomerId).Append("\n");
             sb.Append("  EnabledForOneClickPayment: ").Append(EnabledForOneClickPayment).Append("\n");
-            sb.Append("  Language: ").Append(Language).Append("\n");
-            sb.Append("  TimeZone: ").Append(TimeZone).Append("\n");
+            sb.Append("  CustomerEmailAddress: ").Append(CustomerEmailAddress).Append("\n");
             sb.Append("  TokenReference: ").Append(TokenReference).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  CustomerId: ").Append(CustomerId).Append("\n");
+            sb.Append("  VarTimeZone: ").Append(VarTimeZone).Append("\n");
+            sb.Append("  Language: ").Append(Language).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -91,103 +141,41 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as TokenUpdate);
-        }
-
-        /// <summary>
-        /// Returns true if TokenUpdate instances are equal
-        /// </summary>
-        /// <param name="input">Instance of TokenUpdate to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(TokenUpdate input)
-        {
-            if (input == null)
-                return false;
-
-            return base.Equals(input) && 
-                (
-                    this.CustomerEmailAddress == input.CustomerEmailAddress ||
-                    (this.CustomerEmailAddress != null &&
-                    this.CustomerEmailAddress.Equals(input.CustomerEmailAddress))
-                ) && base.Equals(input) && 
-                (
-                    this.CustomerId == input.CustomerId ||
-                    (this.CustomerId != null &&
-                    this.CustomerId.Equals(input.CustomerId))
-                ) && base.Equals(input) && 
-                (
-                    this.EnabledForOneClickPayment == input.EnabledForOneClickPayment ||
-                    (this.EnabledForOneClickPayment != null &&
-                    this.EnabledForOneClickPayment.Equals(input.EnabledForOneClickPayment))
-                ) && base.Equals(input) && 
-                (
-                    this.Language == input.Language ||
-                    (this.Language != null &&
-                    this.Language.Equals(input.Language))
-                ) && base.Equals(input) && 
-                (
-                    this.TimeZone == input.TimeZone ||
-                    (this.TimeZone != null &&
-                    this.TimeZone.Equals(input.TimeZone))
-                ) && base.Equals(input) && 
-                (
-                    this.TokenReference == input.TokenReference ||
-                    (this.TokenReference != null &&
-                    this.TokenReference.Equals(input.TokenReference))
-                ) && base.Equals(input) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && base.Equals(input) && 
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // CustomerEmailAddress (string) maxLength
+            if (this.CustomerEmailAddress != null && this.CustomerEmailAddress.Length > 150)
             {
-                int hashCode = base.GetHashCode();
-                if (this.CustomerEmailAddress != null)
-                    hashCode = hashCode * 59 + this.CustomerEmailAddress.GetHashCode();
-                if (this.CustomerId != null)
-                    hashCode = hashCode * 59 + this.CustomerId.GetHashCode();
-                if (this.EnabledForOneClickPayment != null)
-                    hashCode = hashCode * 59 + this.EnabledForOneClickPayment.GetHashCode();
-                if (this.Language != null)
-                    hashCode = hashCode * 59 + this.Language.GetHashCode();
-                if (this.TimeZone != null)
-                    hashCode = hashCode * 59 + this.TimeZone.GetHashCode();
-                if (this.TokenReference != null)
-                    hashCode = hashCode * 59 + this.TokenReference.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for CustomerEmailAddress, length must be less than 150.", new [] { "CustomerEmailAddress" });
             }
-        }
 
+            // TokenReference (string) maxLength
+            if (this.TokenReference != null && this.TokenReference.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for TokenReference, length must be less than 100.", new [] { "TokenReference" });
+            }
+
+            if (this.TokenReference != null) {
+                // TokenReference (string) pattern
+                Regex regexTokenReference = new Regex(@"[	\x20-\x7e]*", RegexOptions.CultureInvariant);
+                if (!regexTokenReference.Match(this.TokenReference).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TokenReference, must match a pattern of " + regexTokenReference, new [] { "TokenReference" });
+                }
+            }
+
+            yield break;
+        }
     }
 
 }

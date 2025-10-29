@@ -1,24 +1,47 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// AccountUpdate
     /// </summary>
-    [DataContract]
-    public partial class AccountUpdate : AbstractAccountUpdate,  IEquatable<AccountUpdate>
+    [DataContract(Name = "Account.Update")]
+    public partial class AccountUpdate : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountUpdate" /> class.
@@ -28,40 +51,36 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountUpdate" /> class.
         /// </summary>
-        /// <param name="version">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        /// <param name="id">The ID is the primary key of the entity. The ID identifies the entity uniquely. (required).</param>
-        public AccountUpdate(long? version, long? id)
+        /// <param name="name">The name used to identify the account..</param>
+        /// <param name="subaccountLimit">The number of sub-accounts that can be created within this account..</param>
+        /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
+        public AccountUpdate(string name = default(string), long subaccountLimit = default(long), int varVersion = default(int))
         {
-            // to ensure "version" is required (not null)
-            if (version == null)
-            {
-                throw new InvalidDataException("version is a required property for AccountUpdate and cannot be null");
-            }
-            this.Version = version;
-            // to ensure "id" is required (not null)
-            if (id == null)
-            {
-                throw new InvalidDataException("id is a required property for AccountUpdate and cannot be null");
-            }
-            this.Id = id;
+            this.VarVersion = varVersion;
+            this.Name = name;
+            this.SubaccountLimit = subaccountLimit;
         }
 
-
-
+        /// <summary>
+        /// The name used to identify the account.
+        /// </summary>
+        /// <value>The name used to identify the account.</value>
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        public string Name { get; set; }
 
         /// <summary>
-        /// The ID is the primary key of the entity. The ID identifies the entity uniquely.
+        /// The number of sub-accounts that can be created within this account.
         /// </summary>
-        /// <value>The ID is the primary key of the entity. The ID identifies the entity uniquely.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; set; }
+        /// <value>The number of sub-accounts that can be created within this account.</value>
+        [DataMember(Name = "subaccountLimit", EmitDefaultValue = false)]
+        public long SubaccountLimit { get; set; }
 
         /// <summary>
         /// The version number indicates the version of the entity. The version is incremented whenever the entity is changed.
         /// </summary>
         /// <value>The version number indicates the version of the entity. The version is incremented whenever the entity is changed.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public long? Version { get; set; }
+        [DataMember(Name = "version", IsRequired = true, EmitDefaultValue = true)]
+        public int VarVersion { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -69,14 +88,11 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AccountUpdate {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  LastModifiedDate: ").Append(LastModifiedDate).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  SubaccountLimit: ").Append(SubaccountLimit).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -85,82 +101,32 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as AccountUpdate);
-        }
-
-        /// <summary>
-        /// Returns true if AccountUpdate instances are equal
-        /// </summary>
-        /// <param name="input">Instance of AccountUpdate to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(AccountUpdate input)
-        {
-            if (input == null)
-                return false;
-
-            return base.Equals(input) && 
-                (
-                    this.LastModifiedDate == input.LastModifiedDate ||
-                    (this.LastModifiedDate != null &&
-                    this.LastModifiedDate.Equals(input.LastModifiedDate))
-                ) && base.Equals(input) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && base.Equals(input) && 
-                (
-                    this.SubaccountLimit == input.SubaccountLimit ||
-                    (this.SubaccountLimit != null &&
-                    this.SubaccountLimit.Equals(input.SubaccountLimit))
-                ) && base.Equals(input) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && base.Equals(input) && 
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // Name (string) maxLength
+            if (this.Name != null && this.Name.Length > 200)
             {
-                int hashCode = base.GetHashCode();
-                if (this.LastModifiedDate != null)
-                    hashCode = hashCode * 59 + this.LastModifiedDate.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.SubaccountLimit != null)
-                    hashCode = hashCode * 59 + this.SubaccountLimit.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for Name, length must be less than 200.", new [] { "Name" });
             }
-        }
 
+            // Name (string) minLength
+            if (this.Name != null && this.Name.Length < 3)
+            {
+                yield return new ValidationResult("Invalid value for Name, length must be greater than 3.", new [] { "Name" });
+            }
+
+            yield break;
+        }
     }
 
 }

@@ -1,25 +1,54 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// The debt collection case represents a try to collect the money from the debtor.
     /// </summary>
-    [DataContract]
-    public partial class DebtCollectionCaseCreate : AbstractDebtCollectionCaseUpdate,  IEquatable<DebtCollectionCaseCreate>
+    [DataContract(Name = "DebtCollectionCase.Create")]
+    public partial class DebtCollectionCaseCreate : IValidatableObject
     {
+
+        /// <summary>
+        /// Gets or Sets VarEnvironment
+        /// </summary>
+        [DataMember(Name = "environment", EmitDefaultValue = false)]
+        public DebtCollectionEnvironment? VarEnvironment { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="DebtCollectionCaseCreate" /> class.
         /// </summary>
@@ -28,52 +57,110 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DebtCollectionCaseCreate" /> class.
         /// </summary>
-        /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
+        /// <param name="lineItems">The line items that are subject of this debt collection case..</param>
+        /// <param name="contractDate">The date and time when the contract with the debtor was signed..</param>
+        /// <param name="varEnvironment">varEnvironment.</param>
+        /// <param name="dueDate">The date and time when the claim was due..</param>
+        /// <param name="currency">The three-letter code (ISO 4217 format) of the case&#39;s currency..</param>
+        /// <param name="language">The language that is linked to the object..</param>
+        /// <param name="billingAddress">billingAddress.</param>
+        /// <param name="spaceViewId">The ID of the space view this object is linked to..</param>
         /// <param name="reference">A unique reference to identify the debt collection case in communication with the debtor. (required).</param>
-        public DebtCollectionCaseCreate(string externalId, string reference)
+        /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
+        /// <param name="collectorConfiguration">The configuration that the case is processed with..</param>
+        public DebtCollectionCaseCreate(List<LineItemCreate> lineItems = default(List<LineItemCreate>), DateTime contractDate = default(DateTime), DebtCollectionEnvironment? varEnvironment = default(DebtCollectionEnvironment?), DateTime dueDate = default(DateTime), string currency = default(string), string language = default(string), AddressCreate billingAddress = default(AddressCreate), long spaceViewId = default(long), string reference = default(string), string externalId = default(string), long collectorConfiguration = default(long))
         {
-            // to ensure "externalId" is required (not null)
-            if (externalId == null)
-            {
-                throw new InvalidDataException("externalId is a required property for DebtCollectionCaseCreate and cannot be null");
-            }
-            this.ExternalId = externalId;
             // to ensure "reference" is required (not null)
             if (reference == null)
             {
-                throw new InvalidDataException("reference is a required property for DebtCollectionCaseCreate and cannot be null");
+                throw new ArgumentNullException("reference is a required property for DebtCollectionCaseCreate and cannot be null");
             }
             this.Reference = reference;
+            // to ensure "externalId" is required (not null)
+            if (externalId == null)
+            {
+                throw new ArgumentNullException("externalId is a required property for DebtCollectionCaseCreate and cannot be null");
+            }
+            this.ExternalId = externalId;
+            this.LineItems = lineItems;
+            this.ContractDate = contractDate;
+            this.VarEnvironment = varEnvironment;
+            this.DueDate = dueDate;
+            this.Currency = currency;
+            this.Language = language;
+            this.BillingAddress = billingAddress;
+            this.SpaceViewId = spaceViewId;
+            this.CollectorConfiguration = collectorConfiguration;
         }
 
-
-
-
-
-
-
-
+        /// <summary>
+        /// The line items that are subject of this debt collection case.
+        /// </summary>
+        /// <value>The line items that are subject of this debt collection case.</value>
+        [DataMember(Name = "lineItems", EmitDefaultValue = false)]
+        public List<LineItemCreate> LineItems { get; set; }
 
         /// <summary>
-        /// The configuration that the case is processed with.
+        /// The date and time when the contract with the debtor was signed.
         /// </summary>
-        /// <value>The configuration that the case is processed with.</value>
-        [DataMember(Name="collectorConfiguration", EmitDefaultValue=false)]
-        public long? CollectorConfiguration { get; set; }
+        /// <value>The date and time when the contract with the debtor was signed.</value>
+        [DataMember(Name = "contractDate", EmitDefaultValue = false)]
+        public DateTime ContractDate { get; set; }
 
         /// <summary>
-        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
+        /// The date and time when the claim was due.
         /// </summary>
-        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
-        public string ExternalId { get; set; }
+        /// <value>The date and time when the claim was due.</value>
+        [DataMember(Name = "dueDate", EmitDefaultValue = false)]
+        public DateTime DueDate { get; set; }
+
+        /// <summary>
+        /// The three-letter code (ISO 4217 format) of the case&#39;s currency.
+        /// </summary>
+        /// <value>The three-letter code (ISO 4217 format) of the case&#39;s currency.</value>
+        [DataMember(Name = "currency", EmitDefaultValue = false)]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// The language that is linked to the object.
+        /// </summary>
+        /// <value>The language that is linked to the object.</value>
+        [DataMember(Name = "language", EmitDefaultValue = false)]
+        public string Language { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BillingAddress
+        /// </summary>
+        [DataMember(Name = "billingAddress", EmitDefaultValue = false)]
+        public AddressCreate BillingAddress { get; set; }
+
+        /// <summary>
+        /// The ID of the space view this object is linked to.
+        /// </summary>
+        /// <value>The ID of the space view this object is linked to.</value>
+        [DataMember(Name = "spaceViewId", EmitDefaultValue = false)]
+        public long SpaceViewId { get; set; }
 
         /// <summary>
         /// A unique reference to identify the debt collection case in communication with the debtor.
         /// </summary>
         /// <value>A unique reference to identify the debt collection case in communication with the debtor.</value>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
+        [DataMember(Name = "reference", IsRequired = true, EmitDefaultValue = true)]
         public string Reference { get; set; }
+
+        /// <summary>
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
+        /// </summary>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
+        [DataMember(Name = "externalId", IsRequired = true, EmitDefaultValue = true)]
+        public string ExternalId { get; set; }
+
+        /// <summary>
+        /// The configuration that the case is processed with.
+        /// </summary>
+        /// <value>The configuration that the case is processed with.</value>
+        [DataMember(Name = "collectorConfiguration", EmitDefaultValue = false)]
+        public long CollectorConfiguration { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -81,20 +168,19 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class DebtCollectionCaseCreate {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
-            sb.Append("  ContractDate: ").Append(ContractDate).Append("\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
-            sb.Append("  DueDate: ").Append(DueDate).Append("\n");
-            sb.Append("  Environment: ").Append(Environment).Append("\n");
-            sb.Append("  Language: ").Append(Language).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
+            sb.Append("  ContractDate: ").Append(ContractDate).Append("\n");
+            sb.Append("  VarEnvironment: ").Append(VarEnvironment).Append("\n");
+            sb.Append("  DueDate: ").Append(DueDate).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  Language: ").Append(Language).Append("\n");
+            sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
             sb.Append("  SpaceViewId: ").Append(SpaceViewId).Append("\n");
-            sb.Append("  CollectorConfiguration: ").Append(CollectorConfiguration).Append("\n");
-            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  CollectorConfiguration: ").Append(CollectorConfiguration).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -103,125 +189,20 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as DebtCollectionCaseCreate);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if DebtCollectionCaseCreate instances are equal
-        /// </summary>
-        /// <param name="input">Instance of DebtCollectionCaseCreate to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(DebtCollectionCaseCreate input)
-        {
-            if (input == null)
-                return false;
-
-            return base.Equals(input) && 
-                (
-                    this.BillingAddress == input.BillingAddress ||
-                    (this.BillingAddress != null &&
-                    this.BillingAddress.Equals(input.BillingAddress))
-                ) && base.Equals(input) && 
-                (
-                    this.ContractDate == input.ContractDate ||
-                    (this.ContractDate != null &&
-                    this.ContractDate.Equals(input.ContractDate))
-                ) && base.Equals(input) && 
-                (
-                    this.Currency == input.Currency ||
-                    (this.Currency != null &&
-                    this.Currency.Equals(input.Currency))
-                ) && base.Equals(input) && 
-                (
-                    this.DueDate == input.DueDate ||
-                    (this.DueDate != null &&
-                    this.DueDate.Equals(input.DueDate))
-                ) && base.Equals(input) && 
-                (
-                    this.Environment == input.Environment ||
-                    (this.Environment != null &&
-                    this.Environment.Equals(input.Environment))
-                ) && base.Equals(input) && 
-                (
-                    this.Language == input.Language ||
-                    (this.Language != null &&
-                    this.Language.Equals(input.Language))
-                ) && base.Equals(input) && 
-                (
-                    this.LineItems == input.LineItems ||
-                    this.LineItems != null &&
-                    input.LineItems != null &&
-                    this.LineItems.SequenceEqual(input.LineItems)
-                ) && base.Equals(input) && 
-                (
-                    this.SpaceViewId == input.SpaceViewId ||
-                    (this.SpaceViewId != null &&
-                    this.SpaceViewId.Equals(input.SpaceViewId))
-                ) && base.Equals(input) && 
-                (
-                    this.CollectorConfiguration == input.CollectorConfiguration ||
-                    (this.CollectorConfiguration != null &&
-                    this.CollectorConfiguration.Equals(input.CollectorConfiguration))
-                ) && base.Equals(input) && 
-                (
-                    this.ExternalId == input.ExternalId ||
-                    (this.ExternalId != null &&
-                    this.ExternalId.Equals(input.ExternalId))
-                ) && base.Equals(input) && 
-                (
-                    this.Reference == input.Reference ||
-                    (this.Reference != null &&
-                    this.Reference.Equals(input.Reference))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = base.GetHashCode();
-                if (this.BillingAddress != null)
-                    hashCode = hashCode * 59 + this.BillingAddress.GetHashCode();
-                if (this.ContractDate != null)
-                    hashCode = hashCode * 59 + this.ContractDate.GetHashCode();
-                if (this.Currency != null)
-                    hashCode = hashCode * 59 + this.Currency.GetHashCode();
-                if (this.DueDate != null)
-                    hashCode = hashCode * 59 + this.DueDate.GetHashCode();
-                if (this.Environment != null)
-                    hashCode = hashCode * 59 + this.Environment.GetHashCode();
-                if (this.Language != null)
-                    hashCode = hashCode * 59 + this.Language.GetHashCode();
-                if (this.LineItems != null)
-                    hashCode = hashCode * 59 + this.LineItems.GetHashCode();
-                if (this.SpaceViewId != null)
-                    hashCode = hashCode * 59 + this.SpaceViewId.GetHashCode();
-                if (this.CollectorConfiguration != null)
-                    hashCode = hashCode * 59 + this.CollectorConfiguration.GetHashCode();
-                if (this.ExternalId != null)
-                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
-                if (this.Reference != null)
-                    hashCode = hashCode * 59 + this.Reference.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

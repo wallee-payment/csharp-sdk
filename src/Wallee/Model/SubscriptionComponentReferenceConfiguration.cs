@@ -1,45 +1,72 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// The component reference configuration adjusts the product component for a particular subscription.
     /// </summary>
-    [DataContract]
-    public partial class SubscriptionComponentReferenceConfiguration :  IEquatable<SubscriptionComponentReferenceConfiguration>
+    [DataContract(Name = "SubscriptionComponentReferenceConfiguration")]
+    public partial class SubscriptionComponentReferenceConfiguration : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionComponentReferenceConfiguration" /> class.
         /// </summary>
-        public SubscriptionComponentReferenceConfiguration()
+        /// <param name="quantity">The quantity that should be applied to the component..</param>
+        /// <param name="productComponentReferenceId">The ID of the component reference that is being configured..</param>
+        public SubscriptionComponentReferenceConfiguration(decimal quantity = default(decimal), long productComponentReferenceId = default(long))
         {
+            this.Quantity = quantity;
+            this.ProductComponentReferenceId = productComponentReferenceId;
         }
-
-        /// <summary>
-        /// The ID of the component reference that is being configured.
-        /// </summary>
-        /// <value>The ID of the component reference that is being configured.</value>
-        [DataMember(Name="productComponentReferenceId", EmitDefaultValue=false)]
-        public long? ProductComponentReferenceId { get; set; }
 
         /// <summary>
         /// The quantity that should be applied to the component.
         /// </summary>
         /// <value>The quantity that should be applied to the component.</value>
-        [DataMember(Name="quantity", EmitDefaultValue=false)]
-        public decimal? Quantity { get; set; }
+        [DataMember(Name = "quantity", EmitDefaultValue = false)]
+        public decimal Quantity { get; set; }
+
+        /// <summary>
+        /// The ID of the component reference that is being configured.
+        /// </summary>
+        /// <value>The ID of the component reference that is being configured.</value>
+        [DataMember(Name = "productComponentReferenceId", EmitDefaultValue = false)]
+        public long ProductComponentReferenceId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -47,10 +74,10 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SubscriptionComponentReferenceConfiguration {\n");
-            sb.Append("  ProductComponentReferenceId: ").Append(ProductComponentReferenceId).Append("\n");
             sb.Append("  Quantity: ").Append(Quantity).Append("\n");
+            sb.Append("  ProductComponentReferenceId: ").Append(ProductComponentReferenceId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -61,59 +88,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as SubscriptionComponentReferenceConfiguration);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if SubscriptionComponentReferenceConfiguration instances are equal
-        /// </summary>
-        /// <param name="input">Instance of SubscriptionComponentReferenceConfiguration to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(SubscriptionComponentReferenceConfiguration input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.ProductComponentReferenceId == input.ProductComponentReferenceId ||
-                    (this.ProductComponentReferenceId != null &&
-                    this.ProductComponentReferenceId.Equals(input.ProductComponentReferenceId))
-                ) && 
-                (
-                    this.Quantity == input.Quantity ||
-                    (this.Quantity != null &&
-                    this.Quantity.Equals(input.Quantity))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.ProductComponentReferenceId != null)
-                    hashCode = hashCode * 59 + this.ProductComponentReferenceId.GetHashCode();
-                if (this.Quantity != null)
-                    hashCode = hashCode * 59 + this.Quantity.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

@@ -1,193 +1,346 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// BankTransaction
     /// </summary>
-    [DataContract]
-    public partial class BankTransaction :  IEquatable<BankTransaction>
+    [DataContract(Name = "BankTransaction")]
+    public partial class BankTransaction : IValidatableObject
     {
+
         /// <summary>
-        /// Indicates the direction of a bank transaction, specifying whether the amount flows into or out of the bank account.
+        /// Gets or Sets FlowDirection
         /// </summary>
-        /// <value>Indicates the direction of a bank transaction, specifying whether the amount flows into or out of the bank account.</value>
-        [DataMember(Name="flowDirection", EmitDefaultValue=false)]
-        public BankTransactionFlowDirection? FlowDirection { get; private set; }
+        [DataMember(Name = "flowDirection", EmitDefaultValue = false)]
+        public BankTransactionFlowDirection? FlowDirection { get; set; }
+
         /// <summary>
-        /// The object&#39;s current state.
+        /// Gets or Sets State
         /// </summary>
-        /// <value>The object&#39;s current state.</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public BankTransactionState? State { get; private set; }
+        [DataMember(Name = "state", EmitDefaultValue = false)]
+        public BankTransactionState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="BankTransaction" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public BankTransaction()
+        /// <param name="currencyBankAccount">currencyBankAccount.</param>
+        /// <param name="flowDirection">flowDirection.</param>
+        /// <param name="state">state.</param>
+        public BankTransaction(CurrencyBankAccount currencyBankAccount = default(CurrencyBankAccount), BankTransactionFlowDirection? flowDirection = default(BankTransactionFlowDirection?), BankTransactionState? state = default(BankTransactionState?))
         {
+            this.CurrencyBankAccount = currencyBankAccount;
+            this.FlowDirection = flowDirection;
+            this.State = state;
         }
 
         /// <summary>
         /// Adjustments are changes made to the initial transaction amount, such as fees or corrections.
         /// </summary>
         /// <value>Adjustments are changes made to the initial transaction amount, such as fees or corrections.</value>
-        [DataMember(Name="adjustments", EmitDefaultValue=false)]
+        [DataMember(Name = "adjustments", EmitDefaultValue = false)]
         public List<PaymentAdjustment> Adjustments { get; private set; }
 
         /// <summary>
-        /// The ID of the user the bank transaction was created by.
+        /// Returns false as Adjustments should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The ID of the user the bank transaction was created by.</value>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
-        public long? CreatedBy { get; private set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAdjustments()
+        {
+            return false;
+        }
         /// <summary>
-        /// The date and time when the object was created.
+        /// Gets or Sets CurrencyBankAccount
         /// </summary>
-        /// <value>The date and time when the object was created.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
-        public DateTime? CreatedOn { get; private set; }
-
-        /// <summary>
-        /// The currency bank account that sends or receives money based on the bank transaction&#39;s flow direction.
-        /// </summary>
-        /// <value>The currency bank account that sends or receives money based on the bank transaction&#39;s flow direction.</value>
-        [DataMember(Name="currencyBankAccount", EmitDefaultValue=false)]
-        public CurrencyBankAccount CurrencyBankAccount { get; private set; }
-
-        /// <summary>
-        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
-        /// </summary>
-        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
-        public string ExternalId { get; private set; }
-
-
-        /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
-
-        /// <summary>
-        /// The ID of the space this object belongs to.
-        /// </summary>
-        /// <value>The ID of the space this object belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; private set; }
-
-        /// <summary>
-        /// The payment date specifies the date on which the payment was processed.
-        /// </summary>
-        /// <value>The payment date specifies the date on which the payment was processed.</value>
-        [DataMember(Name="paymentDate", EmitDefaultValue=false)]
-        public DateTime? PaymentDate { get; private set; }
+        [DataMember(Name = "currencyBankAccount", EmitDefaultValue = false)]
+        public CurrencyBankAccount CurrencyBankAccount { get; set; }
 
         /// <summary>
         /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
         /// </summary>
         /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
-        [DataMember(Name="plannedPurgeDate", EmitDefaultValue=false)]
-        public DateTime? PlannedPurgeDate { get; private set; }
+        [DataMember(Name = "plannedPurgeDate", EmitDefaultValue = false)]
+        public DateTime PlannedPurgeDate { get; private set; }
 
+        /// <summary>
+        /// Returns false as PlannedPurgeDate should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePlannedPurgeDate()
+        {
+            return false;
+        }
+        /// <summary>
+        /// A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.
+        /// </summary>
+        /// <value>A client generated nonce which identifies the entity to be created. Subsequent creation requests with the same external ID will not create new entities but return the initially created entity instead.</value>
+        [DataMember(Name = "externalId", EmitDefaultValue = false)]
+        public string ExternalId { get; private set; }
+
+        /// <summary>
+        /// Returns false as ExternalId should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeExternalId()
+        {
+            return false;
+        }
         /// <summary>
         /// The posting amount refers to the monetary value recorded for the bank transaction prior to any adjustments.
         /// </summary>
         /// <value>The posting amount refers to the monetary value recorded for the bank transaction prior to any adjustments.</value>
-        [DataMember(Name="postingAmount", EmitDefaultValue=false)]
-        public decimal? PostingAmount { get; private set; }
+        [DataMember(Name = "postingAmount", EmitDefaultValue = false)]
+        public decimal PostingAmount { get; private set; }
 
         /// <summary>
-        /// A unique reference to identify the bank transaction.
+        /// Returns false as PostingAmount should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>A unique reference to identify the bank transaction.</value>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
-        public string Reference { get; private set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePostingAmount()
+        {
+            return false;
+        }
         /// <summary>
         /// The source indicates how the bank transaction was created.
         /// </summary>
         /// <value>The source indicates how the bank transaction was created.</value>
-        [DataMember(Name="source", EmitDefaultValue=false)]
-        public long? Source { get; private set; }
-
-
-        /// <summary>
-        /// Represents the total value of all adjustments to the bank transaction, including tax.
-        /// </summary>
-        /// <value>Represents the total value of all adjustments to the bank transaction, including tax.</value>
-        [DataMember(Name="totalAdjustmentAmountIncludingTax", EmitDefaultValue=false)]
-        public decimal? TotalAdjustmentAmountIncludingTax { get; private set; }
+        [DataMember(Name = "source", EmitDefaultValue = false)]
+        public long Source { get; private set; }
 
         /// <summary>
-        /// The bank transaction&#39;s type.
+        /// Returns false as Source should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The bank transaction&#39;s type.</value>
-        [DataMember(Name="type", EmitDefaultValue=false)]
-        public long? Type { get; private set; }
-
-        /// <summary>
-        /// The value amount represents the net monetary value of the transaction after applicable deductions.
-        /// </summary>
-        /// <value>The value amount represents the net monetary value of the transaction after applicable deductions.</value>
-        [DataMember(Name="valueAmount", EmitDefaultValue=false)]
-        public decimal? ValueAmount { get; private set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeSource()
+        {
+            return false;
+        }
         /// <summary>
         /// The value date indicates the date on which the transaction amount becomes effective.
         /// </summary>
         /// <value>The value date indicates the date on which the transaction amount becomes effective.</value>
-        [DataMember(Name="valueDate", EmitDefaultValue=false)]
-        public DateTime? ValueDate { get; private set; }
+        [DataMember(Name = "valueDate", EmitDefaultValue = false)]
+        public DateTime ValueDate { get; private set; }
 
+        /// <summary>
+        /// Returns false as ValueDate should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeValueDate()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The bank transaction&#39;s type.
+        /// </summary>
+        /// <value>The bank transaction&#39;s type.</value>
+        [DataMember(Name = "type", EmitDefaultValue = false)]
+        public long Type { get; private set; }
+
+        /// <summary>
+        /// Returns false as Type should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeType()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the object was created.
+        /// </summary>
+        /// <value>The date and time when the object was created.</value>
+        [DataMember(Name = "createdOn", EmitDefaultValue = false)]
+        public DateTime CreatedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as CreatedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCreatedOn()
+        {
+            return false;
+        }
         /// <summary>
         /// The version is used for optimistic locking and incremented whenever the object is updated.
         /// </summary>
         /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; private set; }
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int VarVersion { get; private set; }
 
+        /// <summary>
+        /// Returns false as VarVersion should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVarVersion()
+        {
+            return false;
+        }
+        /// <summary>
+        /// A unique reference to identify the bank transaction.
+        /// </summary>
+        /// <value>A unique reference to identify the bank transaction.</value>
+        [DataMember(Name = "reference", EmitDefaultValue = false)]
+        public string Reference { get; private set; }
+
+        /// <summary>
+        /// Returns false as Reference should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeReference()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The ID of the space this object belongs to.
+        /// </summary>
+        /// <value>The ID of the space this object belongs to.</value>
+        [DataMember(Name = "linkedSpaceId", EmitDefaultValue = false)]
+        public long LinkedSpaceId { get; private set; }
+
+        /// <summary>
+        /// Returns false as LinkedSpaceId should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLinkedSpaceId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The value amount represents the net monetary value of the transaction after applicable deductions.
+        /// </summary>
+        /// <value>The value amount represents the net monetary value of the transaction after applicable deductions.</value>
+        [DataMember(Name = "valueAmount", EmitDefaultValue = false)]
+        public decimal ValueAmount { get; private set; }
+
+        /// <summary>
+        /// Returns false as ValueAmount should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeValueAmount()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The ID of the user the bank transaction was created by.
+        /// </summary>
+        /// <value>The ID of the user the bank transaction was created by.</value>
+        [DataMember(Name = "createdBy", EmitDefaultValue = false)]
+        public long CreatedBy { get; private set; }
+
+        /// <summary>
+        /// Returns false as CreatedBy should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCreatedBy()
+        {
+            return false;
+        }
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; private set; }
+
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The payment date specifies the date on which the payment was processed.
+        /// </summary>
+        /// <value>The payment date specifies the date on which the payment was processed.</value>
+        [DataMember(Name = "paymentDate", EmitDefaultValue = false)]
+        public DateTime PaymentDate { get; private set; }
+
+        /// <summary>
+        /// Returns false as PaymentDate should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializePaymentDate()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Represents the total value of all adjustments to the bank transaction, including tax.
+        /// </summary>
+        /// <value>Represents the total value of all adjustments to the bank transaction, including tax.</value>
+        [DataMember(Name = "totalAdjustmentAmountIncludingTax", EmitDefaultValue = false)]
+        public decimal TotalAdjustmentAmountIncludingTax { get; private set; }
+
+        /// <summary>
+        /// Returns false as TotalAdjustmentAmountIncludingTax should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTotalAdjustmentAmountIncludingTax()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class BankTransaction {\n");
             sb.Append("  Adjustments: ").Append(Adjustments).Append("\n");
-            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  CurrencyBankAccount: ").Append(CurrencyBankAccount).Append("\n");
-            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
-            sb.Append("  FlowDirection: ").Append(FlowDirection).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  PaymentDate: ").Append(PaymentDate).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  PostingAmount: ").Append(PostingAmount).Append("\n");
-            sb.Append("  Reference: ").Append(Reference).Append("\n");
             sb.Append("  Source: ").Append(Source).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
-            sb.Append("  TotalAdjustmentAmountIncludingTax: ").Append(TotalAdjustmentAmountIncludingTax).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
-            sb.Append("  ValueAmount: ").Append(ValueAmount).Append("\n");
             sb.Append("  ValueDate: ").Append(ValueDate).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  Type: ").Append(Type).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("  Reference: ").Append(Reference).Append("\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  ValueAmount: ").Append(ValueAmount).Append("\n");
+            sb.Append("  FlowDirection: ").Append(FlowDirection).Append("\n");
+            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  PaymentDate: ").Append(PaymentDate).Append("\n");
+            sb.Append("  TotalAdjustmentAmountIncludingTax: ").Append(TotalAdjustmentAmountIncludingTax).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -198,179 +351,39 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as BankTransaction);
-        }
-
-        /// <summary>
-        /// Returns true if BankTransaction instances are equal
-        /// </summary>
-        /// <param name="input">Instance of BankTransaction to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(BankTransaction input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.Adjustments == input.Adjustments ||
-                    this.Adjustments != null &&
-                    input.Adjustments != null &&
-                    this.Adjustments.SequenceEqual(input.Adjustments)
-                ) && 
-                (
-                    this.CreatedBy == input.CreatedBy ||
-                    (this.CreatedBy != null &&
-                    this.CreatedBy.Equals(input.CreatedBy))
-                ) && 
-                (
-                    this.CreatedOn == input.CreatedOn ||
-                    (this.CreatedOn != null &&
-                    this.CreatedOn.Equals(input.CreatedOn))
-                ) && 
-                (
-                    this.CurrencyBankAccount == input.CurrencyBankAccount ||
-                    (this.CurrencyBankAccount != null &&
-                    this.CurrencyBankAccount.Equals(input.CurrencyBankAccount))
-                ) && 
-                (
-                    this.ExternalId == input.ExternalId ||
-                    (this.ExternalId != null &&
-                    this.ExternalId.Equals(input.ExternalId))
-                ) && 
-                (
-                    this.FlowDirection == input.FlowDirection ||
-                    (this.FlowDirection != null &&
-                    this.FlowDirection.Equals(input.FlowDirection))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && 
-                (
-                    this.PaymentDate == input.PaymentDate ||
-                    (this.PaymentDate != null &&
-                    this.PaymentDate.Equals(input.PaymentDate))
-                ) && 
-                (
-                    this.PlannedPurgeDate == input.PlannedPurgeDate ||
-                    (this.PlannedPurgeDate != null &&
-                    this.PlannedPurgeDate.Equals(input.PlannedPurgeDate))
-                ) && 
-                (
-                    this.PostingAmount == input.PostingAmount ||
-                    (this.PostingAmount != null &&
-                    this.PostingAmount.Equals(input.PostingAmount))
-                ) && 
-                (
-                    this.Reference == input.Reference ||
-                    (this.Reference != null &&
-                    this.Reference.Equals(input.Reference))
-                ) && 
-                (
-                    this.Source == input.Source ||
-                    (this.Source != null &&
-                    this.Source.Equals(input.Source))
-                ) && 
-                (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
-                ) && 
-                (
-                    this.TotalAdjustmentAmountIncludingTax == input.TotalAdjustmentAmountIncludingTax ||
-                    (this.TotalAdjustmentAmountIncludingTax != null &&
-                    this.TotalAdjustmentAmountIncludingTax.Equals(input.TotalAdjustmentAmountIncludingTax))
-                ) && 
-                (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
-                ) && 
-                (
-                    this.ValueAmount == input.ValueAmount ||
-                    (this.ValueAmount != null &&
-                    this.ValueAmount.Equals(input.ValueAmount))
-                ) && 
-                (
-                    this.ValueDate == input.ValueDate ||
-                    (this.ValueDate != null &&
-                    this.ValueDate.Equals(input.ValueDate))
-                ) && 
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // ExternalId (string) maxLength
+            if (this.ExternalId != null && this.ExternalId.Length > 100)
             {
-                int hashCode = 41;
-                if (this.Adjustments != null)
-                    hashCode = hashCode * 59 + this.Adjustments.GetHashCode();
-                if (this.CreatedBy != null)
-                    hashCode = hashCode * 59 + this.CreatedBy.GetHashCode();
-                if (this.CreatedOn != null)
-                    hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
-                if (this.CurrencyBankAccount != null)
-                    hashCode = hashCode * 59 + this.CurrencyBankAccount.GetHashCode();
-                if (this.ExternalId != null)
-                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
-                if (this.FlowDirection != null)
-                    hashCode = hashCode * 59 + this.FlowDirection.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.PaymentDate != null)
-                    hashCode = hashCode * 59 + this.PaymentDate.GetHashCode();
-                if (this.PlannedPurgeDate != null)
-                    hashCode = hashCode * 59 + this.PlannedPurgeDate.GetHashCode();
-                if (this.PostingAmount != null)
-                    hashCode = hashCode * 59 + this.PostingAmount.GetHashCode();
-                if (this.Reference != null)
-                    hashCode = hashCode * 59 + this.Reference.GetHashCode();
-                if (this.Source != null)
-                    hashCode = hashCode * 59 + this.Source.GetHashCode();
-                if (this.State != null)
-                    hashCode = hashCode * 59 + this.State.GetHashCode();
-                if (this.TotalAdjustmentAmountIncludingTax != null)
-                    hashCode = hashCode * 59 + this.TotalAdjustmentAmountIncludingTax.GetHashCode();
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.ValueAmount != null)
-                    hashCode = hashCode * 59 + this.ValueAmount.GetHashCode();
-                if (this.ValueDate != null)
-                    hashCode = hashCode * 59 + this.ValueDate.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for ExternalId, length must be less than 100.", new [] { "ExternalId" });
             }
-        }
 
+            // ExternalId (string) minLength
+            if (this.ExternalId != null && this.ExternalId.Length < 1)
+            {
+                yield return new ValidationResult("Invalid value for ExternalId, length must be greater than 1.", new [] { "ExternalId" });
+            }
+
+            if (this.ExternalId != null) {
+                // ExternalId (string) pattern
+                Regex regexExternalId = new Regex(@"[	\x20-\x7e]*", RegexOptions.CultureInvariant);
+                if (!regexExternalId.Match(this.ExternalId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ExternalId, must match a pattern of " + regexExternalId, new [] { "ExternalId" });
+                }
+            }
+
+            yield break;
+        }
     }
 
 }

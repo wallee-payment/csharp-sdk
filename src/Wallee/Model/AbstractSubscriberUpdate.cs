@@ -1,94 +1,133 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// AbstractSubscriberUpdate
     /// </summary>
-    [DataContract]
-    public partial class AbstractSubscriberUpdate :  IEquatable<AbstractSubscriberUpdate>
+    [DataContract(Name = "Abstract.Subscriber.Update")]
+    public partial class AbstractSubscriberUpdate : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractSubscriberUpdate" /> class.
         /// </summary>
-        public AbstractSubscriberUpdate()
+        /// <param name="reference">The merchant&#39;s reference used to identify the subscriber..</param>
+        /// <param name="additionalAllowedPaymentMethodConfigurations">Allow the subscriber to use these payment methods even if subscription products do not accept them..</param>
+        /// <param name="metaData">Allow to store additional information about the object..</param>
+        /// <param name="emailAddress">The email address that is used to communicate with the subscriber. There can be only one subscriber per space with the same email address..</param>
+        /// <param name="disallowedPaymentMethodConfigurations">Prevent the subscriber from using these payment methods even if subscription products do accept them..</param>
+        /// <param name="description">The description used to identify the subscriber..</param>
+        /// <param name="shippingAddress">shippingAddress.</param>
+        /// <param name="language">The language that is used when communicating with the subscriber via emails and documents..</param>
+        /// <param name="billingAddress">billingAddress.</param>
+        public AbstractSubscriberUpdate(string reference = default(string), List<long> additionalAllowedPaymentMethodConfigurations = default(List<long>), Dictionary<string, string> metaData = default(Dictionary<string, string>), string emailAddress = default(string), List<long> disallowedPaymentMethodConfigurations = default(List<long>), string description = default(string), AddressCreate shippingAddress = default(AddressCreate), string language = default(string), AddressCreate billingAddress = default(AddressCreate))
         {
+            this.Reference = reference;
+            this.AdditionalAllowedPaymentMethodConfigurations = additionalAllowedPaymentMethodConfigurations;
+            this.MetaData = metaData;
+            this.EmailAddress = emailAddress;
+            this.DisallowedPaymentMethodConfigurations = disallowedPaymentMethodConfigurations;
+            this.Description = description;
+            this.ShippingAddress = shippingAddress;
+            this.Language = language;
+            this.BillingAddress = billingAddress;
         }
-
-        /// <summary>
-        /// Allow the subscriber to use these payment methods even if subscription products do not accept them.
-        /// </summary>
-        /// <value>Allow the subscriber to use these payment methods even if subscription products do not accept them.</value>
-        [DataMember(Name="additionalAllowedPaymentMethodConfigurations", EmitDefaultValue=false)]
-        public List<long?> AdditionalAllowedPaymentMethodConfigurations { get; set; }
-
-        /// <summary>
-        /// The address associated with the subscriber for invoicing and transaction processing purposes.
-        /// </summary>
-        /// <value>The address associated with the subscriber for invoicing and transaction processing purposes.</value>
-        [DataMember(Name="billingAddress", EmitDefaultValue=false)]
-        public AddressCreate BillingAddress { get; set; }
-
-        /// <summary>
-        /// The description used to identify the subscriber.
-        /// </summary>
-        /// <value>The description used to identify the subscriber.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Prevent the subscriber from using these payment methods even if subscription products do accept them.
-        /// </summary>
-        /// <value>Prevent the subscriber from using these payment methods even if subscription products do accept them.</value>
-        [DataMember(Name="disallowedPaymentMethodConfigurations", EmitDefaultValue=false)]
-        public List<long?> DisallowedPaymentMethodConfigurations { get; set; }
-
-        /// <summary>
-        /// The email address that is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.
-        /// </summary>
-        /// <value>The email address that is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.</value>
-        [DataMember(Name="emailAddress", EmitDefaultValue=false)]
-        public string EmailAddress { get; set; }
-
-        /// <summary>
-        /// The language that is used when communicating with the subscriber via emails and documents.
-        /// </summary>
-        /// <value>The language that is used when communicating with the subscriber via emails and documents.</value>
-        [DataMember(Name="language", EmitDefaultValue=false)]
-        public string Language { get; set; }
-
-        /// <summary>
-        /// Allow to store additional information about the object.
-        /// </summary>
-        /// <value>Allow to store additional information about the object.</value>
-        [DataMember(Name="metaData", EmitDefaultValue=false)]
-        public Dictionary<string, string> MetaData { get; set; }
 
         /// <summary>
         /// The merchant&#39;s reference used to identify the subscriber.
         /// </summary>
         /// <value>The merchant&#39;s reference used to identify the subscriber.</value>
-        [DataMember(Name="reference", EmitDefaultValue=false)]
+        [DataMember(Name = "reference", EmitDefaultValue = false)]
         public string Reference { get; set; }
 
         /// <summary>
-        /// The address to where orders will be shipped.
+        /// Allow the subscriber to use these payment methods even if subscription products do not accept them.
         /// </summary>
-        /// <value>The address to where orders will be shipped.</value>
-        [DataMember(Name="shippingAddress", EmitDefaultValue=false)]
+        /// <value>Allow the subscriber to use these payment methods even if subscription products do not accept them.</value>
+        [DataMember(Name = "additionalAllowedPaymentMethodConfigurations", EmitDefaultValue = false)]
+        public List<long> AdditionalAllowedPaymentMethodConfigurations { get; set; }
+
+        /// <summary>
+        /// Allow to store additional information about the object.
+        /// </summary>
+        /// <value>Allow to store additional information about the object.</value>
+        [DataMember(Name = "metaData", EmitDefaultValue = false)]
+        public Dictionary<string, string> MetaData { get; set; }
+
+        /// <summary>
+        /// The email address that is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.
+        /// </summary>
+        /// <value>The email address that is used to communicate with the subscriber. There can be only one subscriber per space with the same email address.</value>
+        [DataMember(Name = "emailAddress", EmitDefaultValue = false)]
+        public string EmailAddress { get; set; }
+
+        /// <summary>
+        /// Prevent the subscriber from using these payment methods even if subscription products do accept them.
+        /// </summary>
+        /// <value>Prevent the subscriber from using these payment methods even if subscription products do accept them.</value>
+        [DataMember(Name = "disallowedPaymentMethodConfigurations", EmitDefaultValue = false)]
+        public List<long> DisallowedPaymentMethodConfigurations { get; set; }
+
+        /// <summary>
+        /// The description used to identify the subscriber.
+        /// </summary>
+        /// <value>The description used to identify the subscriber.</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or Sets ShippingAddress
+        /// </summary>
+        [DataMember(Name = "shippingAddress", EmitDefaultValue = false)]
         public AddressCreate ShippingAddress { get; set; }
+
+        /// <summary>
+        /// The language that is used when communicating with the subscriber via emails and documents.
+        /// </summary>
+        /// <value>The language that is used when communicating with the subscriber via emails and documents.</value>
+        [DataMember(Name = "language", EmitDefaultValue = false)]
+        public string Language { get; set; }
+
+        /// <summary>
+        /// Gets or Sets BillingAddress
+        /// </summary>
+        [DataMember(Name = "billingAddress", EmitDefaultValue = false)]
+        public AddressCreate BillingAddress { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -96,17 +135,17 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AbstractSubscriberUpdate {\n");
-            sb.Append("  AdditionalAllowedPaymentMethodConfigurations: ").Append(AdditionalAllowedPaymentMethodConfigurations).Append("\n");
-            sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  DisallowedPaymentMethodConfigurations: ").Append(DisallowedPaymentMethodConfigurations).Append("\n");
-            sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
-            sb.Append("  Language: ").Append(Language).Append("\n");
-            sb.Append("  MetaData: ").Append(MetaData).Append("\n");
             sb.Append("  Reference: ").Append(Reference).Append("\n");
+            sb.Append("  AdditionalAllowedPaymentMethodConfigurations: ").Append(AdditionalAllowedPaymentMethodConfigurations).Append("\n");
+            sb.Append("  MetaData: ").Append(MetaData).Append("\n");
+            sb.Append("  EmailAddress: ").Append(EmailAddress).Append("\n");
+            sb.Append("  DisallowedPaymentMethodConfigurations: ").Append(DisallowedPaymentMethodConfigurations).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  ShippingAddress: ").Append(ShippingAddress).Append("\n");
+            sb.Append("  Language: ").Append(Language).Append("\n");
+            sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -117,111 +156,45 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as AbstractSubscriberUpdate);
-        }
-
-        /// <summary>
-        /// Returns true if AbstractSubscriberUpdate instances are equal
-        /// </summary>
-        /// <param name="input">Instance of AbstractSubscriberUpdate to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(AbstractSubscriberUpdate input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.AdditionalAllowedPaymentMethodConfigurations == input.AdditionalAllowedPaymentMethodConfigurations ||
-                    this.AdditionalAllowedPaymentMethodConfigurations != null &&
-                    input.AdditionalAllowedPaymentMethodConfigurations != null &&
-                    this.AdditionalAllowedPaymentMethodConfigurations.SequenceEqual(input.AdditionalAllowedPaymentMethodConfigurations)
-                ) && 
-                (
-                    this.BillingAddress == input.BillingAddress ||
-                    (this.BillingAddress != null &&
-                    this.BillingAddress.Equals(input.BillingAddress))
-                ) && 
-                (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
-                ) && 
-                (
-                    this.DisallowedPaymentMethodConfigurations == input.DisallowedPaymentMethodConfigurations ||
-                    this.DisallowedPaymentMethodConfigurations != null &&
-                    input.DisallowedPaymentMethodConfigurations != null &&
-                    this.DisallowedPaymentMethodConfigurations.SequenceEqual(input.DisallowedPaymentMethodConfigurations)
-                ) && 
-                (
-                    this.EmailAddress == input.EmailAddress ||
-                    (this.EmailAddress != null &&
-                    this.EmailAddress.Equals(input.EmailAddress))
-                ) && 
-                (
-                    this.Language == input.Language ||
-                    (this.Language != null &&
-                    this.Language.Equals(input.Language))
-                ) && 
-                (
-                    this.MetaData == input.MetaData ||
-                    this.MetaData != null &&
-                    input.MetaData != null &&
-                    this.MetaData.SequenceEqual(input.MetaData)
-                ) && 
-                (
-                    this.Reference == input.Reference ||
-                    (this.Reference != null &&
-                    this.Reference.Equals(input.Reference))
-                ) && 
-                (
-                    this.ShippingAddress == input.ShippingAddress ||
-                    (this.ShippingAddress != null &&
-                    this.ShippingAddress.Equals(input.ShippingAddress))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // Reference (string) maxLength
+            if (this.Reference != null && this.Reference.Length > 100)
             {
-                int hashCode = 41;
-                if (this.AdditionalAllowedPaymentMethodConfigurations != null)
-                    hashCode = hashCode * 59 + this.AdditionalAllowedPaymentMethodConfigurations.GetHashCode();
-                if (this.BillingAddress != null)
-                    hashCode = hashCode * 59 + this.BillingAddress.GetHashCode();
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.DisallowedPaymentMethodConfigurations != null)
-                    hashCode = hashCode * 59 + this.DisallowedPaymentMethodConfigurations.GetHashCode();
-                if (this.EmailAddress != null)
-                    hashCode = hashCode * 59 + this.EmailAddress.GetHashCode();
-                if (this.Language != null)
-                    hashCode = hashCode * 59 + this.Language.GetHashCode();
-                if (this.MetaData != null)
-                    hashCode = hashCode * 59 + this.MetaData.GetHashCode();
-                if (this.Reference != null)
-                    hashCode = hashCode * 59 + this.Reference.GetHashCode();
-                if (this.ShippingAddress != null)
-                    hashCode = hashCode * 59 + this.ShippingAddress.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for Reference, length must be less than 100.", new [] { "Reference" });
             }
-        }
 
+            if (this.Reference != null) {
+                // Reference (string) pattern
+                Regex regexReference = new Regex(@"[	\x20-\x7e]*", RegexOptions.CultureInvariant);
+                if (!regexReference.Match(this.Reference).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Reference, must match a pattern of " + regexReference, new [] { "Reference" });
+                }
+            }
+
+            // EmailAddress (string) maxLength
+            if (this.EmailAddress != null && this.EmailAddress.Length > 254)
+            {
+                yield return new ValidationResult("Invalid value for EmailAddress, length must be less than 254.", new [] { "EmailAddress" });
+            }
+
+            // Description (string) maxLength
+            if (this.Description != null && this.Description.Length > 200)
+            {
+                yield return new ValidationResult("Invalid value for Description, length must be less than 200.", new [] { "Description" });
+            }
+
+            yield break;
+        }
     }
 
 }

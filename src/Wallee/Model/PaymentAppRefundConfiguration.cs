@@ -1,24 +1,47 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// PaymentAppRefundConfiguration
     /// </summary>
-    [DataContract]
-    public partial class PaymentAppRefundConfiguration :  IEquatable<PaymentAppRefundConfiguration>
+    [DataContract(Name = "PaymentAppRefundConfiguration")]
+    public partial class PaymentAppRefundConfiguration : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentAppRefundConfiguration" /> class.
@@ -29,37 +52,61 @@ namespace Wallee.Model
         }
 
         /// <summary>
+        /// The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed.
+        /// </summary>
+        /// <value>The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed.</value>
+        [DataMember(Name = "refundTimeoutInMinutes", EmitDefaultValue = false)]
+        public int RefundTimeoutInMinutes { get; private set; }
+
+        /// <summary>
+        /// Returns false as RefundTimeoutInMinutes should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRefundTimeoutInMinutes()
+        {
+            return false;
+        }
+        /// <summary>
         /// Whether the payment connector can process multiple refunds for a single transaction.
         /// </summary>
         /// <value>Whether the payment connector can process multiple refunds for a single transaction.</value>
-        [DataMember(Name="multipleRefundsSupported", EmitDefaultValue=false)]
-        public bool? MultipleRefundsSupported { get; private set; }
+        [DataMember(Name = "multipleRefundsSupported", EmitDefaultValue = true)]
+        public bool MultipleRefundsSupported { get; private set; }
 
+        /// <summary>
+        /// Returns false as MultipleRefundsSupported should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeMultipleRefundsSupported()
+        {
+            return false;
+        }
         /// <summary>
         /// The URL that the payment service provider will invoke to process a refund request. This endpoint handles communication with the provider for initiating and managing refunds.
         /// </summary>
         /// <value>The URL that the payment service provider will invoke to process a refund request. This endpoint handles communication with the provider for initiating and managing refunds.</value>
-        [DataMember(Name="refundEndpoint", EmitDefaultValue=false)]
+        [DataMember(Name = "refundEndpoint", EmitDefaultValue = false)]
         public string RefundEndpoint { get; private set; }
 
         /// <summary>
-        /// The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed.
+        /// Returns false as RefundEndpoint should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed.</value>
-        [DataMember(Name="refundTimeoutInMinutes", EmitDefaultValue=false)]
-        public int? RefundTimeoutInMinutes { get; private set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRefundEndpoint()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PaymentAppRefundConfiguration {\n");
+            sb.Append("  RefundTimeoutInMinutes: ").Append(RefundTimeoutInMinutes).Append("\n");
             sb.Append("  MultipleRefundsSupported: ").Append(MultipleRefundsSupported).Append("\n");
             sb.Append("  RefundEndpoint: ").Append(RefundEndpoint).Append("\n");
-            sb.Append("  RefundTimeoutInMinutes: ").Append(RefundTimeoutInMinutes).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -70,66 +117,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as PaymentAppRefundConfiguration);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if PaymentAppRefundConfiguration instances are equal
-        /// </summary>
-        /// <param name="input">Instance of PaymentAppRefundConfiguration to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(PaymentAppRefundConfiguration input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.MultipleRefundsSupported == input.MultipleRefundsSupported ||
-                    (this.MultipleRefundsSupported != null &&
-                    this.MultipleRefundsSupported.Equals(input.MultipleRefundsSupported))
-                ) && 
-                (
-                    this.RefundEndpoint == input.RefundEndpoint ||
-                    (this.RefundEndpoint != null &&
-                    this.RefundEndpoint.Equals(input.RefundEndpoint))
-                ) && 
-                (
-                    this.RefundTimeoutInMinutes == input.RefundTimeoutInMinutes ||
-                    (this.RefundTimeoutInMinutes != null &&
-                    this.RefundTimeoutInMinutes.Equals(input.RefundTimeoutInMinutes))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.MultipleRefundsSupported != null)
-                    hashCode = hashCode * 59 + this.MultipleRefundsSupported.GetHashCode();
-                if (this.RefundEndpoint != null)
-                    hashCode = hashCode * 59 + this.RefundEndpoint.GetHashCode();
-                if (this.RefundTimeoutInMinutes != null)
-                    hashCode = hashCode * 59 + this.RefundTimeoutInMinutes.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

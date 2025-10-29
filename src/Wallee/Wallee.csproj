@@ -1,57 +1,52 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFrameworks>net8.0</TargetFrameworks>
-        <SignAssembly>true</SignAssembly>
-        <DelaySign>false</DelaySign>
-        <AssemblyOriginatorKeyFile>..\..\AssemblyOriginatorKeyFile.snk</AssemblyOriginatorKeyFile>
-    </PropertyGroup>
-    <PropertyGroup>
-        <AssemblyName>Wallee</AssemblyName>
-        <AssemblyTitle>wallee SDK for C#</AssemblyTitle>
-        <Authors>wallee AG</Authors>
-        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-        <Company>wallee AG</Company>
-        <Copyright>Apache-2.0</Copyright>
-        <Description>wallee SDK for C#</Description>
-        <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
-        <PackageId>Wallee</PackageId>
-        <PackageLicense>https://www.apache.org/licenses/LICENSE-2.0.txt</PackageLicense>
-        <PackageProjectUrl>https://github.com/wallee-payment/csharp-sdk</PackageProjectUrl>
-        <PackageVersion>9.1.0</PackageVersion>
-        <Version>9.1.0</Version>
-        <PackageTags>Wallee;payment;sdk;Payment Integration</PackageTags>
-        <OutputType>Library</OutputType>
-        <Owners>customweb</Owners>
-        <ReleaseVersion>9.1.0</ReleaseVersion>
-        <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
-        <RootNamespace>Wallee</RootNamespace>
-        <Summary>wallee SDK for C#</Summary>
-        <SynchReleaseVersion>false</SynchReleaseVersion>
-        <Title>Wallee</Title>
-    </PropertyGroup>
-    <PropertyGroup>
-        <NoWarn>CS0472</NoWarn>
-    </PropertyGroup>
-    <ItemGroup>
-        <PackageReference Include="RestSharp" Version="112.1.0"/>
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
-        <PackageReference Include="JsonSubTypes" Version="2.0.1"/>
-        <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0"/>
-        <PackageReference Include="BouncyCastle.Cryptography" Version="2.3.1"/>
-    </ItemGroup>
-    <ItemGroup>
-        <Reference Include="System"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="System.Xml.Linq"/>
-        <Reference Include="System.Data.DataSetExtensions"/>
-        <Reference Include="System.ComponentModel.DataAnnotations"/>
-        <Reference Include="Microsoft.CSharp"/>
-        <Reference Include="System.Data"/>
-        <Reference Include="System.Runtime.Serialization"/>
-        <Reference Include="System.Xml"/>
-    </ItemGroup>
 
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+      <DelaySign>false</DelaySign>
+      <AssemblyOriginatorKeyFile>..\..\AssemblyOriginatorKeyFile.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>annotations</Nullable>
+    <AssemblyName>Wallee</AssemblyName>
+    <AssemblyTitle>wallee SDK for C#</AssemblyTitle>
+    <Authors>wallee AG</Authors>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Company>wallee AG</Company>
+    <Copyright>Apache-2.0</Copyright>
+    <Description>wallee SDK for C#</Description>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <Owners>customweb</Owners>
+    <OutputType>Library</OutputType>
+    <!--
+    <PackageIcon>https://app-wallee.com/assets/images/wallee-icon-primary.svg</PackageIcon> //FIXME The 'icon' element has an invalid file extension. Valid options are .png, .jpg or .jpeg.
+    -->
+    <PackageId>Wallee</PackageId>
+    <PackageLicense>LICENSE</PackageLicense>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/wallee-payment/csharp-sdk</PackageProjectUrl>
+    <PackageReleaseNotes>Minor update</PackageReleaseNotes>
+    <PackageTags>Wallee;payment;sdk;Payment Integration</PackageTags>
+    <PackageVersion>10.0.0</PackageVersion>
+    <ReleaseVersion>10.0.0</ReleaseVersion>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
+    <RootNamespace>Wallee</RootNamespace>
+    <Summary>wallee SDK for C#</Summary>
+    <SynchReleaseVersion>false</SynchReleaseVersion>
+    <Title>Wallee</Title>
+    <Version>10.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="JsonSubTypes" Version="2.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="RestSharp" Version="112.1.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.12.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.12.1" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
+  </ItemGroup>
 </Project>

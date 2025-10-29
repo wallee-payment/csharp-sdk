@@ -1,75 +1,95 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// Defines SubscriptionState
     /// </summary>
-    
     [JsonConverter(typeof(StringEnumConverter))]
-    
     public enum SubscriptionState
     {
-        
         /// <summary>
         /// Enum PENDING for value: PENDING
         /// </summary>
         [EnumMember(Value = "PENDING")]
-        PENDING,
-        
+        PENDING = 1,
+
         /// <summary>
         /// Enum INITIALIZING for value: INITIALIZING
         /// </summary>
         [EnumMember(Value = "INITIALIZING")]
-        INITIALIZING,
-        
+        INITIALIZING = 2,
+
         /// <summary>
         /// Enum FAILED for value: FAILED
         /// </summary>
         [EnumMember(Value = "FAILED")]
-        FAILED,
-        
+        FAILED = 3,
+
         /// <summary>
         /// Enum ACTIVE for value: ACTIVE
         /// </summary>
         [EnumMember(Value = "ACTIVE")]
-        ACTIVE,
-        
+        ACTIVE = 4,
+
         /// <summary>
         /// Enum SUSPENDED for value: SUSPENDED
         /// </summary>
         [EnumMember(Value = "SUSPENDED")]
-        SUSPENDED,
-        
+        SUSPENDED = 5,
+
         /// <summary>
-        /// Enum TERMINATION_SCHEDULED for value: TERMINATION_SCHEDULED
+        /// Enum TERMINATIONSCHEDULED for value: TERMINATION_SCHEDULED
         /// </summary>
         [EnumMember(Value = "TERMINATION_SCHEDULED")]
-        TERMINATION_SCHEDULED,
-        
+        TERMINATIONSCHEDULED = 6,
+
         /// <summary>
         /// Enum TERMINATING for value: TERMINATING
         /// </summary>
         [EnumMember(Value = "TERMINATING")]
-        TERMINATING,
-        
+        TERMINATING = 7,
+
         /// <summary>
         /// Enum TERMINATED for value: TERMINATED
         /// </summary>
         [EnumMember(Value = "TERMINATED")]
-        TERMINATED
+        TERMINATED = 8
     }
 
 }

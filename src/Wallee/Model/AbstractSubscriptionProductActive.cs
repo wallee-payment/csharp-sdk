@@ -1,73 +1,107 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// AbstractSubscriptionProductActive
     /// </summary>
-    [DataContract]
-    public partial class AbstractSubscriptionProductActive :  IEquatable<AbstractSubscriptionProductActive>
+    [DataContract(Name = "Abstract.SubscriptionProduct.Active")]
+    public partial class AbstractSubscriptionProductActive : IValidatableObject
     {
+
         /// <summary>
-        /// The object&#39;s current state.
+        /// Gets or Sets State
         /// </summary>
-        /// <value>The object&#39;s current state.</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
+        [DataMember(Name = "state", EmitDefaultValue = false)]
         public SubscriptionProductState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="AbstractSubscriptionProductActive" /> class.
         /// </summary>
-        public AbstractSubscriptionProductActive()
+        /// <param name="sortOrder">When listing products, they can be sorted by this number..</param>
+        /// <param name="name">The name used to identify the product..</param>
+        /// <param name="productLocked">Whether subscriptions can be switched to or from this product, or whether they are locked in..</param>
+        /// <param name="state">state.</param>
+        /// <param name="failedPaymentSuspensionPeriod">The period after which a subscription that has been suspended due to a failed payment is terminated..</param>
+        /// <param name="allowedPaymentMethodConfigurations">The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied..</param>
+        public AbstractSubscriptionProductActive(int sortOrder = default(int), string name = default(string), bool productLocked = default(bool), SubscriptionProductState? state = default(SubscriptionProductState?), string failedPaymentSuspensionPeriod = default(string), List<long> allowedPaymentMethodConfigurations = default(List<long>))
         {
+            this.SortOrder = sortOrder;
+            this.Name = name;
+            this.ProductLocked = productLocked;
+            this.State = state;
+            this.FailedPaymentSuspensionPeriod = failedPaymentSuspensionPeriod;
+            this.AllowedPaymentMethodConfigurations = allowedPaymentMethodConfigurations;
         }
 
         /// <summary>
-        /// The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.
+        /// When listing products, they can be sorted by this number.
         /// </summary>
-        /// <value>The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.</value>
-        [DataMember(Name="allowedPaymentMethodConfigurations", EmitDefaultValue=false)]
-        public List<long?> AllowedPaymentMethodConfigurations { get; set; }
-
-        /// <summary>
-        /// The period after which a subscription that has been suspended due to a failed payment is terminated.
-        /// </summary>
-        /// <value>The period after which a subscription that has been suspended due to a failed payment is terminated.</value>
-        [DataMember(Name="failedPaymentSuspensionPeriod", EmitDefaultValue=false)]
-        public string FailedPaymentSuspensionPeriod { get; set; }
+        /// <value>When listing products, they can be sorted by this number.</value>
+        [DataMember(Name = "sortOrder", EmitDefaultValue = false)]
+        public int SortOrder { get; set; }
 
         /// <summary>
         /// The name used to identify the product.
         /// </summary>
         /// <value>The name used to identify the product.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
+        [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
 
         /// <summary>
         /// Whether subscriptions can be switched to or from this product, or whether they are locked in.
         /// </summary>
         /// <value>Whether subscriptions can be switched to or from this product, or whether they are locked in.</value>
-        [DataMember(Name="productLocked", EmitDefaultValue=false)]
-        public bool? ProductLocked { get; set; }
+        [DataMember(Name = "productLocked", EmitDefaultValue = true)]
+        public bool ProductLocked { get; set; }
 
         /// <summary>
-        /// When listing products, they can be sorted by this number.
+        /// The period after which a subscription that has been suspended due to a failed payment is terminated.
         /// </summary>
-        /// <value>When listing products, they can be sorted by this number.</value>
-        [DataMember(Name="sortOrder", EmitDefaultValue=false)]
-        public int? SortOrder { get; set; }
+        /// <value>The period after which a subscription that has been suspended due to a failed payment is terminated.</value>
+        [DataMember(Name = "failedPaymentSuspensionPeriod", EmitDefaultValue = false)]
+        public string FailedPaymentSuspensionPeriod { get; set; }
 
+        /// <summary>
+        /// The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.
+        /// </summary>
+        /// <value>The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied.</value>
+        [DataMember(Name = "allowedPaymentMethodConfigurations", EmitDefaultValue = false)]
+        public List<long> AllowedPaymentMethodConfigurations { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,14 +109,14 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class AbstractSubscriptionProductActive {\n");
-            sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
-            sb.Append("  FailedPaymentSuspensionPeriod: ").Append(FailedPaymentSuspensionPeriod).Append("\n");
+            sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ProductLocked: ").Append(ProductLocked).Append("\n");
-            sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  FailedPaymentSuspensionPeriod: ").Append(FailedPaymentSuspensionPeriod).Append("\n");
+            sb.Append("  AllowedPaymentMethodConfigurations: ").Append(AllowedPaymentMethodConfigurations).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -93,88 +127,24 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as AbstractSubscriptionProductActive);
-        }
-
-        /// <summary>
-        /// Returns true if AbstractSubscriptionProductActive instances are equal
-        /// </summary>
-        /// <param name="input">Instance of AbstractSubscriptionProductActive to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(AbstractSubscriptionProductActive input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.AllowedPaymentMethodConfigurations == input.AllowedPaymentMethodConfigurations ||
-                    this.AllowedPaymentMethodConfigurations != null &&
-                    input.AllowedPaymentMethodConfigurations != null &&
-                    this.AllowedPaymentMethodConfigurations.SequenceEqual(input.AllowedPaymentMethodConfigurations)
-                ) && 
-                (
-                    this.FailedPaymentSuspensionPeriod == input.FailedPaymentSuspensionPeriod ||
-                    (this.FailedPaymentSuspensionPeriod != null &&
-                    this.FailedPaymentSuspensionPeriod.Equals(input.FailedPaymentSuspensionPeriod))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
-                ) && 
-                (
-                    this.ProductLocked == input.ProductLocked ||
-                    (this.ProductLocked != null &&
-                    this.ProductLocked.Equals(input.ProductLocked))
-                ) && 
-                (
-                    this.SortOrder == input.SortOrder ||
-                    (this.SortOrder != null &&
-                    this.SortOrder.Equals(input.SortOrder))
-                ) && 
-                (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // Name (string) maxLength
+            if (this.Name != null && this.Name.Length > 100)
             {
-                int hashCode = 41;
-                if (this.AllowedPaymentMethodConfigurations != null)
-                    hashCode = hashCode * 59 + this.AllowedPaymentMethodConfigurations.GetHashCode();
-                if (this.FailedPaymentSuspensionPeriod != null)
-                    hashCode = hashCode * 59 + this.FailedPaymentSuspensionPeriod.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.ProductLocked != null)
-                    hashCode = hashCode * 59 + this.ProductLocked.GetHashCode();
-                if (this.SortOrder != null)
-                    hashCode = hashCode * 59 + this.SortOrder.GetHashCode();
-                if (this.State != null)
-                    hashCode = hashCode * 59 + this.State.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for Name, length must be less than 100.", new [] { "Name" });
             }
-        }
 
+            yield break;
+        }
     }
 
 }

@@ -1,145 +1,236 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// PaymentConnector
     /// </summary>
-    [DataContract]
-    public partial class PaymentConnector :  IEquatable<PaymentConnector>
+    [DataContract(Name = "PaymentConnector")]
+    public partial class PaymentConnector : IValidatableObject
     {
+
         /// <summary>
-        /// The data collection type specifies how the payment information is collected.
+        /// Gets or Sets DataCollectionType
         /// </summary>
-        /// <value>The data collection type specifies how the payment information is collected.</value>
-        [DataMember(Name="dataCollectionType", EmitDefaultValue=false)]
-        public DataCollectionType? DataCollectionType { get; private set; }
+        [DataMember(Name = "dataCollectionType", EmitDefaultValue = false)]
+        public DataCollectionType? DataCollectionType { get; set; }
+
         /// <summary>
-        /// The entity that bears the main risk in the event that a contracting party fails to meet its obligations.
+        /// Gets or Sets PrimaryRiskTaker
         /// </summary>
-        /// <value>The entity that bears the main risk in the event that a contracting party fails to meet its obligations.</value>
-        [DataMember(Name="primaryRiskTaker", EmitDefaultValue=false)]
-        public PaymentPrimaryRiskTaker? PrimaryRiskTaker { get; private set; }
+        [DataMember(Name = "primaryRiskTaker", EmitDefaultValue = false)]
+        public PaymentPrimaryRiskTaker? PrimaryRiskTaker { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentConnector" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public PaymentConnector()
+        /// <param name="dataCollectionType">dataCollectionType.</param>
+        /// <param name="primaryRiskTaker">primaryRiskTaker.</param>
+        /// <param name="paymentMethodBrand">paymentMethodBrand.</param>
+        /// <param name="processor">processor.</param>
+        /// <param name="paymentMethod">paymentMethod.</param>
+        public PaymentConnector(DataCollectionType? dataCollectionType = default(DataCollectionType?), PaymentPrimaryRiskTaker? primaryRiskTaker = default(PaymentPrimaryRiskTaker?), PaymentMethodBrand paymentMethodBrand = default(PaymentMethodBrand), PaymentProcessor processor = default(PaymentProcessor), PaymentMethod paymentMethod = default(PaymentMethod))
         {
+            this.DataCollectionType = dataCollectionType;
+            this.PrimaryRiskTaker = primaryRiskTaker;
+            this.PaymentMethodBrand = paymentMethodBrand;
+            this.Processor = processor;
+            this.PaymentMethod = paymentMethod;
         }
-
-
-        /// <summary>
-        /// Whether the object was deprecated.
-        /// </summary>
-        /// <value>Whether the object was deprecated.</value>
-        [DataMember(Name="deprecated", EmitDefaultValue=false)]
-        public bool? Deprecated { get; private set; }
-
-        /// <summary>
-        /// The deprecation reason describes why the object was deprecated.
-        /// </summary>
-        /// <value>The deprecation reason describes why the object was deprecated.</value>
-        [DataMember(Name="deprecationReason", EmitDefaultValue=false)]
-        public Dictionary<string, string> DeprecationReason { get; private set; }
-
-        /// <summary>
-        /// The localized description of the object.
-        /// </summary>
-        /// <value>The localized description of the object.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public Dictionary<string, string> Description { get; private set; }
-
-        /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
-
-        /// <summary>
-        /// The localized name of the object.
-        /// </summary>
-        /// <value>The localized name of the object.</value>
-        [DataMember(Name="name", EmitDefaultValue=false)]
-        public Dictionary<string, string> Name { get; private set; }
-
-        /// <summary>
-        /// The payment method that the connector supports.
-        /// </summary>
-        /// <value>The payment method that the connector supports.</value>
-        [DataMember(Name="paymentMethod", EmitDefaultValue=false)]
-        public long? PaymentMethod { get; private set; }
-
-        /// <summary>
-        /// The specific brand that this payment connector supports.
-        /// </summary>
-        /// <value>The specific brand that this payment connector supports.</value>
-        [DataMember(Name="paymentMethodBrand", EmitDefaultValue=false)]
-        public PaymentMethodBrand PaymentMethodBrand { get; private set; }
-
-
-        /// <summary>
-        /// The processor that the connector belongs to.
-        /// </summary>
-        /// <value>The processor that the connector belongs to.</value>
-        [DataMember(Name="processor", EmitDefaultValue=false)]
-        public long? Processor { get; private set; }
-
-        /// <summary>
-        /// The currencies that are supported by the connector.
-        /// </summary>
-        /// <value>The currencies that are supported by the connector.</value>
-        [DataMember(Name="supportedCurrencies", EmitDefaultValue=false)]
-        public List<string> SupportedCurrencies { get; private set; }
-
-        /// <summary>
-        /// The types of customer&#39;s presence that are supported by the connector.
-        /// </summary>
-        /// <value>The types of customer&#39;s presence that are supported by the connector.</value>
-        [DataMember(Name="supportedCustomersPresences", EmitDefaultValue=false)]
-        public List<CustomersPresence> SupportedCustomersPresences { get; private set; }
 
         /// <summary>
         /// The features that are supported by the connector.
         /// </summary>
         /// <value>The features that are supported by the connector.</value>
-        [DataMember(Name="supportedFeatures", EmitDefaultValue=false)]
-        public List<long?> SupportedFeatures { get; private set; }
+        [DataMember(Name = "supportedFeatures", EmitDefaultValue = false)]
+        public List<PaymentConnectorFeature> SupportedFeatures { get; private set; }
 
+        /// <summary>
+        /// Returns false as SupportedFeatures should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeSupportedFeatures()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The types of customer&#39;s presence that are supported by the connector.
+        /// </summary>
+        /// <value>The types of customer&#39;s presence that are supported by the connector.</value>
+        [DataMember(Name = "supportedCustomersPresences", EmitDefaultValue = false)]
+        public List<CustomersPresence> SupportedCustomersPresences { get; private set; }
+
+        /// <summary>
+        /// Returns false as SupportedCustomersPresences should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeSupportedCustomersPresences()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Whether the object was deprecated.
+        /// </summary>
+        /// <value>Whether the object was deprecated.</value>
+        [DataMember(Name = "deprecated", EmitDefaultValue = true)]
+        public bool Deprecated { get; private set; }
+
+        /// <summary>
+        /// Returns false as Deprecated should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDeprecated()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The localized description of the object.
+        /// </summary>
+        /// <value>The localized description of the object.</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public Dictionary<string, string> Description { get; private set; }
+
+        /// <summary>
+        /// Returns false as Description should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDescription()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets PaymentMethodBrand
+        /// </summary>
+        [DataMember(Name = "paymentMethodBrand", EmitDefaultValue = false)]
+        public PaymentMethodBrand PaymentMethodBrand { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Processor
+        /// </summary>
+        [DataMember(Name = "processor", EmitDefaultValue = false)]
+        public PaymentProcessor Processor { get; set; }
+
+        /// <summary>
+        /// The deprecation reason describes why the object was deprecated.
+        /// </summary>
+        /// <value>The deprecation reason describes why the object was deprecated.</value>
+        [DataMember(Name = "deprecationReason", EmitDefaultValue = false)]
+        public Dictionary<string, string> DeprecationReason { get; private set; }
+
+        /// <summary>
+        /// Returns false as DeprecationReason should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDeprecationReason()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The currencies that are supported by the connector.
+        /// </summary>
+        /// <value>The currencies that are supported by the connector.</value>
+        [DataMember(Name = "supportedCurrencies", EmitDefaultValue = false)]
+        public List<string> SupportedCurrencies { get; private set; }
+
+        /// <summary>
+        /// Returns false as SupportedCurrencies should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeSupportedCurrencies()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The localized name of the object.
+        /// </summary>
+        /// <value>The localized name of the object.</value>
+        [DataMember(Name = "name", EmitDefaultValue = false)]
+        public Dictionary<string, string> Name { get; private set; }
+
+        /// <summary>
+        /// Returns false as Name should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeName()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets PaymentMethod
+        /// </summary>
+        [DataMember(Name = "paymentMethod", EmitDefaultValue = false)]
+        public PaymentMethod PaymentMethod { get; set; }
+
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; private set; }
+
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PaymentConnector {\n");
+            sb.Append("  SupportedFeatures: ").Append(SupportedFeatures).Append("\n");
+            sb.Append("  SupportedCustomersPresences: ").Append(SupportedCustomersPresences).Append("\n");
             sb.Append("  DataCollectionType: ").Append(DataCollectionType).Append("\n");
             sb.Append("  Deprecated: ").Append(Deprecated).Append("\n");
-            sb.Append("  DeprecationReason: ").Append(DeprecationReason).Append("\n");
+            sb.Append("  PrimaryRiskTaker: ").Append(PrimaryRiskTaker).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  PaymentMethodBrand: ").Append(PaymentMethodBrand).Append("\n");
+            sb.Append("  Processor: ").Append(Processor).Append("\n");
+            sb.Append("  DeprecationReason: ").Append(DeprecationReason).Append("\n");
+            sb.Append("  SupportedCurrencies: ").Append(SupportedCurrencies).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PaymentMethod: ").Append(PaymentMethod).Append("\n");
-            sb.Append("  PaymentMethodBrand: ").Append(PaymentMethodBrand).Append("\n");
-            sb.Append("  PrimaryRiskTaker: ").Append(PrimaryRiskTaker).Append("\n");
-            sb.Append("  Processor: ").Append(Processor).Append("\n");
-            sb.Append("  SupportedCurrencies: ").Append(SupportedCurrencies).Append("\n");
-            sb.Append("  SupportedCustomersPresences: ").Append(SupportedCustomersPresences).Append("\n");
-            sb.Append("  SupportedFeatures: ").Append(SupportedFeatures).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -150,142 +241,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as PaymentConnector);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if PaymentConnector instances are equal
-        /// </summary>
-        /// <param name="input">Instance of PaymentConnector to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(PaymentConnector input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.DataCollectionType == input.DataCollectionType ||
-                    (this.DataCollectionType != null &&
-                    this.DataCollectionType.Equals(input.DataCollectionType))
-                ) && 
-                (
-                    this.Deprecated == input.Deprecated ||
-                    (this.Deprecated != null &&
-                    this.Deprecated.Equals(input.Deprecated))
-                ) && 
-                (
-                    this.DeprecationReason == input.DeprecationReason ||
-                    this.DeprecationReason != null &&
-                    input.DeprecationReason != null &&
-                    this.DeprecationReason.SequenceEqual(input.DeprecationReason)
-                ) && 
-                (
-                    this.Description == input.Description ||
-                    this.Description != null &&
-                    input.Description != null &&
-                    this.Description.SequenceEqual(input.Description)
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Name == input.Name ||
-                    this.Name != null &&
-                    input.Name != null &&
-                    this.Name.SequenceEqual(input.Name)
-                ) && 
-                (
-                    this.PaymentMethod == input.PaymentMethod ||
-                    (this.PaymentMethod != null &&
-                    this.PaymentMethod.Equals(input.PaymentMethod))
-                ) && 
-                (
-                    this.PaymentMethodBrand == input.PaymentMethodBrand ||
-                    (this.PaymentMethodBrand != null &&
-                    this.PaymentMethodBrand.Equals(input.PaymentMethodBrand))
-                ) && 
-                (
-                    this.PrimaryRiskTaker == input.PrimaryRiskTaker ||
-                    (this.PrimaryRiskTaker != null &&
-                    this.PrimaryRiskTaker.Equals(input.PrimaryRiskTaker))
-                ) && 
-                (
-                    this.Processor == input.Processor ||
-                    (this.Processor != null &&
-                    this.Processor.Equals(input.Processor))
-                ) && 
-                (
-                    this.SupportedCurrencies == input.SupportedCurrencies ||
-                    this.SupportedCurrencies != null &&
-                    input.SupportedCurrencies != null &&
-                    this.SupportedCurrencies.SequenceEqual(input.SupportedCurrencies)
-                ) && 
-                (
-                    this.SupportedCustomersPresences == input.SupportedCustomersPresences ||
-                    this.SupportedCustomersPresences != null &&
-                    input.SupportedCustomersPresences != null &&
-                    this.SupportedCustomersPresences.SequenceEqual(input.SupportedCustomersPresences)
-                ) && 
-                (
-                    this.SupportedFeatures == input.SupportedFeatures ||
-                    this.SupportedFeatures != null &&
-                    input.SupportedFeatures != null &&
-                    this.SupportedFeatures.SequenceEqual(input.SupportedFeatures)
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.DataCollectionType != null)
-                    hashCode = hashCode * 59 + this.DataCollectionType.GetHashCode();
-                if (this.Deprecated != null)
-                    hashCode = hashCode * 59 + this.Deprecated.GetHashCode();
-                if (this.DeprecationReason != null)
-                    hashCode = hashCode * 59 + this.DeprecationReason.GetHashCode();
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.PaymentMethod != null)
-                    hashCode = hashCode * 59 + this.PaymentMethod.GetHashCode();
-                if (this.PaymentMethodBrand != null)
-                    hashCode = hashCode * 59 + this.PaymentMethodBrand.GetHashCode();
-                if (this.PrimaryRiskTaker != null)
-                    hashCode = hashCode * 59 + this.PrimaryRiskTaker.GetHashCode();
-                if (this.Processor != null)
-                    hashCode = hashCode * 59 + this.Processor.GetHashCode();
-                if (this.SupportedCurrencies != null)
-                    hashCode = hashCode * 59 + this.SupportedCurrencies.GetHashCode();
-                if (this.SupportedCustomersPresences != null)
-                    hashCode = hashCode * 59 + this.SupportedCustomersPresences.GetHashCode();
-                if (this.SupportedFeatures != null)
-                    hashCode = hashCode * 59 + this.SupportedFeatures.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

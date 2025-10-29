@@ -1,169 +1,282 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// PaymentContract
     /// </summary>
-    [DataContract]
-    public partial class PaymentContract :  IEquatable<PaymentContract>
+    [DataContract(Name = "PaymentContract")]
+    public partial class PaymentContract : IValidatableObject
     {
+
         /// <summary>
-        /// The object&#39;s current state.
+        /// Gets or Sets State
         /// </summary>
-        /// <value>The object&#39;s current state.</value>
-        [DataMember(Name="state", EmitDefaultValue=false)]
-        public PaymentContractState? State { get; private set; }
+        [DataMember(Name = "state", EmitDefaultValue = false)]
+        public PaymentContractState? State { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentContract" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public PaymentContract()
+        /// <param name="contractType">contractType.</param>
+        /// <param name="state">state.</param>
+        /// <param name="rejectionReason">rejectionReason.</param>
+        public PaymentContract(PaymentContractType contractType = default(PaymentContractType), PaymentContractState? state = default(PaymentContractState?), FailureReason rejectionReason = default(FailureReason))
         {
+            this.ContractType = contractType;
+            this.State = state;
+            this.RejectionReason = rejectionReason;
         }
 
         /// <summary>
-        /// This account that the contract belongs to.
+        /// Gets or Sets ContractType
         /// </summary>
-        /// <value>This account that the contract belongs to.</value>
-        [DataMember(Name="account", EmitDefaultValue=false)]
-        public long? Account { get; private set; }
-
-        /// <summary>
-        /// The date and time when the contract was activated.
-        /// </summary>
-        /// <value>The date and time when the contract was activated.</value>
-        [DataMember(Name="activatedOn", EmitDefaultValue=false)]
-        public DateTime? ActivatedOn { get; private set; }
-
-        /// <summary>
-        /// The identifier of the contract.
-        /// </summary>
-        /// <value>The identifier of the contract.</value>
-        [DataMember(Name="contractIdentifier", EmitDefaultValue=false)]
-        public string ContractIdentifier { get; private set; }
-
-        /// <summary>
-        /// The type of the contract.
-        /// </summary>
-        /// <value>The type of the contract.</value>
-        [DataMember(Name="contractType", EmitDefaultValue=false)]
-        public PaymentContractType ContractType { get; private set; }
-
-        /// <summary>
-        /// The ID of the user the contract was created by.
-        /// </summary>
-        /// <value>The ID of the user the contract was created by.</value>
-        [DataMember(Name="createdBy", EmitDefaultValue=false)]
-        public long? CreatedBy { get; private set; }
-
-        /// <summary>
-        /// The date and time when the object was created.
-        /// </summary>
-        /// <value>The date and time when the object was created.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
-        public DateTime? CreatedOn { get; private set; }
-
-        /// <summary>
-        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
-        /// </summary>
-        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
-        [DataMember(Name="externalId", EmitDefaultValue=false)]
-        public string ExternalId { get; private set; }
-
-        /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
-
-        /// <summary>
-        /// The date and time when the object was last modified.
-        /// </summary>
-        /// <value>The date and time when the object was last modified.</value>
-        [DataMember(Name="lastModifiedDate", EmitDefaultValue=false)]
-        public DateTime? LastModifiedDate { get; private set; }
-
-        /// <summary>
-        /// The date and time when the contract was rejected.
-        /// </summary>
-        /// <value>The date and time when the contract was rejected.</value>
-        [DataMember(Name="rejectedOn", EmitDefaultValue=false)]
-        public DateTime? RejectedOn { get; private set; }
-
-        /// <summary>
-        /// The reason for rejecting the contract.
-        /// </summary>
-        /// <value>The reason for rejecting the contract.</value>
-        [DataMember(Name="rejectionReason", EmitDefaultValue=false)]
-        public FailureReason RejectionReason { get; private set; }
-
-        /// <summary>
-        /// The date and time when the termination process of the contract was started.
-        /// </summary>
-        /// <value>The date and time when the termination process of the contract was started.</value>
-        [DataMember(Name="startTerminatingOn", EmitDefaultValue=false)]
-        public DateTime? StartTerminatingOn { get; private set; }
-
+        [DataMember(Name = "contractType", EmitDefaultValue = false)]
+        public PaymentContractType ContractType { get; set; }
 
         /// <summary>
         /// The ID of the user the contract was terminated by.
         /// </summary>
         /// <value>The ID of the user the contract was terminated by.</value>
-        [DataMember(Name="terminatedBy", EmitDefaultValue=false)]
-        public long? TerminatedBy { get; private set; }
+        [DataMember(Name = "terminatedBy", EmitDefaultValue = false)]
+        public long TerminatedBy { get; private set; }
 
         /// <summary>
-        /// The date and time when the contract was terminated.
+        /// Returns false as TerminatedBy should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>The date and time when the contract was terminated.</value>
-        [DataMember(Name="terminatedOn", EmitDefaultValue=false)]
-        public DateTime? TerminatedOn { get; private set; }
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTerminatedBy()
+        {
+            return false;
+        }
+        /// <summary>
+        /// A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.
+        /// </summary>
+        /// <value>A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result.</value>
+        [DataMember(Name = "externalId", EmitDefaultValue = false)]
+        public string ExternalId { get; private set; }
 
+        /// <summary>
+        /// Returns false as ExternalId should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeExternalId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the object was created.
+        /// </summary>
+        /// <value>The date and time when the object was created.</value>
+        [DataMember(Name = "createdOn", EmitDefaultValue = false)]
+        public DateTime CreatedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as CreatedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCreatedOn()
+        {
+            return false;
+        }
         /// <summary>
         /// The version is used for optimistic locking and incremented whenever the object is updated.
         /// </summary>
         /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; private set; }
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int VarVersion { get; private set; }
 
+        /// <summary>
+        /// Returns false as VarVersion should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVarVersion()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the contract was terminated.
+        /// </summary>
+        /// <value>The date and time when the contract was terminated.</value>
+        [DataMember(Name = "terminatedOn", EmitDefaultValue = false)]
+        public DateTime TerminatedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as TerminatedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTerminatedOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the contract was activated.
+        /// </summary>
+        /// <value>The date and time when the contract was activated.</value>
+        [DataMember(Name = "activatedOn", EmitDefaultValue = false)]
+        public DateTime ActivatedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as ActivatedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeActivatedOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the termination process of the contract was started.
+        /// </summary>
+        /// <value>The date and time when the termination process of the contract was started.</value>
+        [DataMember(Name = "startTerminatingOn", EmitDefaultValue = false)]
+        public DateTime StartTerminatingOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as StartTerminatingOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeStartTerminatingOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The ID of the user the contract was created by.
+        /// </summary>
+        /// <value>The ID of the user the contract was created by.</value>
+        [DataMember(Name = "createdBy", EmitDefaultValue = false)]
+        public long CreatedBy { get; private set; }
+
+        /// <summary>
+        /// Returns false as CreatedBy should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCreatedBy()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The identifier of the contract.
+        /// </summary>
+        /// <value>The identifier of the contract.</value>
+        [DataMember(Name = "contractIdentifier", EmitDefaultValue = false)]
+        public string ContractIdentifier { get; private set; }
+
+        /// <summary>
+        /// Returns false as ContractIdentifier should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeContractIdentifier()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the contract was rejected.
+        /// </summary>
+        /// <value>The date and time when the contract was rejected.</value>
+        [DataMember(Name = "rejectedOn", EmitDefaultValue = false)]
+        public DateTime RejectedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as RejectedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRejectedOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; private set; }
+
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets RejectionReason
+        /// </summary>
+        [DataMember(Name = "rejectionReason", EmitDefaultValue = false)]
+        public FailureReason RejectionReason { get; set; }
+
+        /// <summary>
+        /// This account that the contract belongs to.
+        /// </summary>
+        /// <value>This account that the contract belongs to.</value>
+        [DataMember(Name = "account", EmitDefaultValue = false)]
+        public long Account { get; private set; }
+
+        /// <summary>
+        /// Returns false as Account should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeAccount()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class PaymentContract {\n");
-            sb.Append("  Account: ").Append(Account).Append("\n");
-            sb.Append("  ActivatedOn: ").Append(ActivatedOn).Append("\n");
-            sb.Append("  ContractIdentifier: ").Append(ContractIdentifier).Append("\n");
             sb.Append("  ContractType: ").Append(ContractType).Append("\n");
-            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
-            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
-            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LastModifiedDate: ").Append(LastModifiedDate).Append("\n");
-            sb.Append("  RejectedOn: ").Append(RejectedOn).Append("\n");
-            sb.Append("  RejectionReason: ").Append(RejectionReason).Append("\n");
-            sb.Append("  StartTerminatingOn: ").Append(StartTerminatingOn).Append("\n");
-            sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  TerminatedBy: ").Append(TerminatedBy).Append("\n");
+            sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
+            sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  TerminatedOn: ").Append(TerminatedOn).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  ActivatedOn: ").Append(ActivatedOn).Append("\n");
+            sb.Append("  StartTerminatingOn: ").Append(StartTerminatingOn).Append("\n");
+            sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
+            sb.Append("  ContractIdentifier: ").Append(ContractIdentifier).Append("\n");
+            sb.Append("  RejectedOn: ").Append(RejectedOn).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  RejectionReason: ").Append(RejectionReason).Append("\n");
+            sb.Append("  Account: ").Append(Account).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -174,157 +287,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as PaymentContract);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if PaymentContract instances are equal
-        /// </summary>
-        /// <param name="input">Instance of PaymentContract to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(PaymentContract input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.Account == input.Account ||
-                    (this.Account != null &&
-                    this.Account.Equals(input.Account))
-                ) && 
-                (
-                    this.ActivatedOn == input.ActivatedOn ||
-                    (this.ActivatedOn != null &&
-                    this.ActivatedOn.Equals(input.ActivatedOn))
-                ) && 
-                (
-                    this.ContractIdentifier == input.ContractIdentifier ||
-                    (this.ContractIdentifier != null &&
-                    this.ContractIdentifier.Equals(input.ContractIdentifier))
-                ) && 
-                (
-                    this.ContractType == input.ContractType ||
-                    (this.ContractType != null &&
-                    this.ContractType.Equals(input.ContractType))
-                ) && 
-                (
-                    this.CreatedBy == input.CreatedBy ||
-                    (this.CreatedBy != null &&
-                    this.CreatedBy.Equals(input.CreatedBy))
-                ) && 
-                (
-                    this.CreatedOn == input.CreatedOn ||
-                    (this.CreatedOn != null &&
-                    this.CreatedOn.Equals(input.CreatedOn))
-                ) && 
-                (
-                    this.ExternalId == input.ExternalId ||
-                    (this.ExternalId != null &&
-                    this.ExternalId.Equals(input.ExternalId))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.LastModifiedDate == input.LastModifiedDate ||
-                    (this.LastModifiedDate != null &&
-                    this.LastModifiedDate.Equals(input.LastModifiedDate))
-                ) && 
-                (
-                    this.RejectedOn == input.RejectedOn ||
-                    (this.RejectedOn != null &&
-                    this.RejectedOn.Equals(input.RejectedOn))
-                ) && 
-                (
-                    this.RejectionReason == input.RejectionReason ||
-                    (this.RejectionReason != null &&
-                    this.RejectionReason.Equals(input.RejectionReason))
-                ) && 
-                (
-                    this.StartTerminatingOn == input.StartTerminatingOn ||
-                    (this.StartTerminatingOn != null &&
-                    this.StartTerminatingOn.Equals(input.StartTerminatingOn))
-                ) && 
-                (
-                    this.State == input.State ||
-                    (this.State != null &&
-                    this.State.Equals(input.State))
-                ) && 
-                (
-                    this.TerminatedBy == input.TerminatedBy ||
-                    (this.TerminatedBy != null &&
-                    this.TerminatedBy.Equals(input.TerminatedBy))
-                ) && 
-                (
-                    this.TerminatedOn == input.TerminatedOn ||
-                    (this.TerminatedOn != null &&
-                    this.TerminatedOn.Equals(input.TerminatedOn))
-                ) && 
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.Account != null)
-                    hashCode = hashCode * 59 + this.Account.GetHashCode();
-                if (this.ActivatedOn != null)
-                    hashCode = hashCode * 59 + this.ActivatedOn.GetHashCode();
-                if (this.ContractIdentifier != null)
-                    hashCode = hashCode * 59 + this.ContractIdentifier.GetHashCode();
-                if (this.ContractType != null)
-                    hashCode = hashCode * 59 + this.ContractType.GetHashCode();
-                if (this.CreatedBy != null)
-                    hashCode = hashCode * 59 + this.CreatedBy.GetHashCode();
-                if (this.CreatedOn != null)
-                    hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
-                if (this.ExternalId != null)
-                    hashCode = hashCode * 59 + this.ExternalId.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.LastModifiedDate != null)
-                    hashCode = hashCode * 59 + this.LastModifiedDate.GetHashCode();
-                if (this.RejectedOn != null)
-                    hashCode = hashCode * 59 + this.RejectedOn.GetHashCode();
-                if (this.RejectionReason != null)
-                    hashCode = hashCode * 59 + this.RejectionReason.GetHashCode();
-                if (this.StartTerminatingOn != null)
-                    hashCode = hashCode * 59 + this.StartTerminatingOn.GetHashCode();
-                if (this.State != null)
-                    hashCode = hashCode * 59 + this.State.GetHashCode();
-                if (this.TerminatedBy != null)
-                    hashCode = hashCode * 59 + this.TerminatedBy.GetHashCode();
-                if (this.TerminatedOn != null)
-                    hashCode = hashCode * 59 + this.TerminatedOn.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

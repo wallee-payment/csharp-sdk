@@ -1,60 +1,100 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// TokenizedCardData
     /// </summary>
-    [DataContract]
-    public partial class TokenizedCardData :  IEquatable<TokenizedCardData>
+    [DataContract(Name = "TokenizedCardData")]
+    public partial class TokenizedCardData : IValidatableObject
     {
+
         /// <summary>
-        /// The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction&#39;s properties.
+        /// Gets or Sets RecurringIndicator
         /// </summary>
-        /// <value>The indicator used to distinguish between recurring and one-time transactions. If omitted, it will be automatically determined based on the transaction&#39;s properties.</value>
-        [DataMember(Name="recurringIndicator", EmitDefaultValue=false)]
-        public RecurringIndicator? RecurringIndicator { get; private set; }
+        [DataMember(Name = "recurringIndicator", EmitDefaultValue = false)]
+        public RecurringIndicator? RecurringIndicator { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenizedCardData" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public TokenizedCardData()
+        /// <param name="recurringIndicator">recurringIndicator.</param>
+        /// <param name="cryptogram">cryptogram.</param>
+        public TokenizedCardData(RecurringIndicator? recurringIndicator = default(RecurringIndicator?), CardCryptogram cryptogram = default(CardCryptogram))
         {
+            this.RecurringIndicator = recurringIndicator;
+            this.Cryptogram = cryptogram;
         }
-
-        /// <summary>
-        /// An additional authentication value that enhances the security of tokenized card transactions.
-        /// </summary>
-        /// <value>An additional authentication value that enhances the security of tokenized card transactions.</value>
-        [DataMember(Name="cryptogram", EmitDefaultValue=false)]
-        public CardCryptogram Cryptogram { get; private set; }
 
         /// <summary>
         /// Whether the transaction is an initial recurring transaction, based on the recurring indicator. This is used to identify the first transaction in a recurring payment setup.
         /// </summary>
         /// <value>Whether the transaction is an initial recurring transaction, based on the recurring indicator. This is used to identify the first transaction in a recurring payment setup.</value>
-        [DataMember(Name="initialRecurringTransaction", EmitDefaultValue=false)]
-        public bool? InitialRecurringTransaction { get; private set; }
+        [DataMember(Name = "initialRecurringTransaction", EmitDefaultValue = true)]
+        public bool InitialRecurringTransaction { get; private set; }
 
-
+        /// <summary>
+        /// Returns false as InitialRecurringTransaction should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeInitialRecurringTransaction()
+        {
+            return false;
+        }
         /// <summary>
         /// The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.
         /// </summary>
         /// <value>The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction.</value>
-        [DataMember(Name="tokenRequestorId", EmitDefaultValue=false)]
+        [DataMember(Name = "tokenRequestorId", EmitDefaultValue = false)]
         public string TokenRequestorId { get; private set; }
+
+        /// <summary>
+        /// Returns false as TokenRequestorId should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTokenRequestorId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets Cryptogram
+        /// </summary>
+        [DataMember(Name = "cryptogram", EmitDefaultValue = false)]
+        public CardCryptogram Cryptogram { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -62,12 +102,12 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class TokenizedCardData {\n");
-            sb.Append("  Cryptogram: ").Append(Cryptogram).Append("\n");
             sb.Append("  InitialRecurringTransaction: ").Append(InitialRecurringTransaction).Append("\n");
             sb.Append("  RecurringIndicator: ").Append(RecurringIndicator).Append("\n");
             sb.Append("  TokenRequestorId: ").Append(TokenRequestorId).Append("\n");
+            sb.Append("  Cryptogram: ").Append(Cryptogram).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -78,73 +118,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as TokenizedCardData);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if TokenizedCardData instances are equal
-        /// </summary>
-        /// <param name="input">Instance of TokenizedCardData to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(TokenizedCardData input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.Cryptogram == input.Cryptogram ||
-                    (this.Cryptogram != null &&
-                    this.Cryptogram.Equals(input.Cryptogram))
-                ) && 
-                (
-                    this.InitialRecurringTransaction == input.InitialRecurringTransaction ||
-                    (this.InitialRecurringTransaction != null &&
-                    this.InitialRecurringTransaction.Equals(input.InitialRecurringTransaction))
-                ) && 
-                (
-                    this.RecurringIndicator == input.RecurringIndicator ||
-                    (this.RecurringIndicator != null &&
-                    this.RecurringIndicator.Equals(input.RecurringIndicator))
-                ) && 
-                (
-                    this.TokenRequestorId == input.TokenRequestorId ||
-                    (this.TokenRequestorId != null &&
-                    this.TokenRequestorId.Equals(input.TokenRequestorId))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.Cryptogram != null)
-                    hashCode = hashCode * 59 + this.Cryptogram.GetHashCode();
-                if (this.InitialRecurringTransaction != null)
-                    hashCode = hashCode * 59 + this.InitialRecurringTransaction.GetHashCode();
-                if (this.RecurringIndicator != null)
-                    hashCode = hashCode * 59 + this.RecurringIndicator.GetHashCode();
-                if (this.TokenRequestorId != null)
-                    hashCode = hashCode * 59 + this.TokenRequestorId.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

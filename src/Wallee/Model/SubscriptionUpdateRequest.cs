@@ -1,39 +1,63 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// SubscriptionUpdateRequest
     /// </summary>
-    [DataContract]
-    public partial class SubscriptionUpdateRequest :  IEquatable<SubscriptionUpdateRequest>
+    [DataContract(Name = "SubscriptionUpdateRequest")]
+    public partial class SubscriptionUpdateRequest : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionUpdateRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public SubscriptionUpdateRequest()
+        /// <param name="description">A description used to identify the subscription..</param>
+        public SubscriptionUpdateRequest(string description = default(string))
         {
+            this.Description = description;
         }
 
         /// <summary>
         /// A description used to identify the subscription.
         /// </summary>
         /// <value>A description used to identify the subscription.</value>
-        [DataMember(Name="description", EmitDefaultValue=false)]
-        public string Description { get; private set; }
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -41,7 +65,7 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class SubscriptionUpdateRequest {\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("}\n");
@@ -54,52 +78,24 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as SubscriptionUpdateRequest);
-        }
-
-        /// <summary>
-        /// Returns true if SubscriptionUpdateRequest instances are equal
-        /// </summary>
-        /// <param name="input">Instance of SubscriptionUpdateRequest to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(SubscriptionUpdateRequest input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // Description (string) maxLength
+            if (this.Description != null && this.Description.Length > 200)
             {
-                int hashCode = 41;
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for Description, length must be less than 200.", new [] { "Description" });
             }
-        }
 
+            yield break;
+        }
     }
 
 }

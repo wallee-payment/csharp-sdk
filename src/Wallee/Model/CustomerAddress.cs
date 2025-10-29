@@ -1,105 +1,170 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// CustomerAddress
     /// </summary>
-    [DataContract]
-    public partial class CustomerAddress :  IEquatable<CustomerAddress>
+    [DataContract(Name = "CustomerAddress")]
+    public partial class CustomerAddress : IValidatableObject
     {
+
         /// <summary>
-        /// Whether the address is for billing or shipping or both.
+        /// Gets or Sets AddressType
         /// </summary>
-        /// <value>Whether the address is for billing or shipping or both.</value>
-        [DataMember(Name="addressType", EmitDefaultValue=false)]
-        public CustomerAddressType? AddressType { get; private set; }
+        [DataMember(Name = "addressType", EmitDefaultValue = false)]
+        public CustomerAddressType? AddressType { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomerAddress" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public CustomerAddress()
+        /// <param name="address">address.</param>
+        /// <param name="addressType">addressType.</param>
+        /// <param name="customer">customer.</param>
+        public CustomerAddress(CustomerPostalAddress address = default(CustomerPostalAddress), CustomerAddressType? addressType = default(CustomerAddressType?), Customer customer = default(Customer))
         {
+            this.Address = address;
+            this.AddressType = addressType;
+            this.Customer = customer;
         }
-
-        /// <summary>
-        /// The actual postal address.
-        /// </summary>
-        /// <value>The actual postal address.</value>
-        [DataMember(Name="address", EmitDefaultValue=false)]
-        public CustomerPostalAddress Address { get; private set; }
-
-
-        /// <summary>
-        /// The date and time when the object was created.
-        /// </summary>
-        /// <value>The date and time when the object was created.</value>
-        [DataMember(Name="createdOn", EmitDefaultValue=false)]
-        public DateTime? CreatedOn { get; private set; }
-
-        /// <summary>
-        /// The customer that the object belongs to.
-        /// </summary>
-        /// <value>The customer that the object belongs to.</value>
-        [DataMember(Name="customer", EmitDefaultValue=false)]
-        public Customer Customer { get; private set; }
-
-        /// <summary>
-        /// Whether this is the customer&#39;s default address.
-        /// </summary>
-        /// <value>Whether this is the customer&#39;s default address.</value>
-        [DataMember(Name="defaultAddress", EmitDefaultValue=false)]
-        public bool? DefaultAddress { get; private set; }
-
-        /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
 
         /// <summary>
         /// The ID of the space this object belongs to.
         /// </summary>
         /// <value>The ID of the space this object belongs to.</value>
-        [DataMember(Name="linkedSpaceId", EmitDefaultValue=false)]
-        public long? LinkedSpaceId { get; private set; }
+        [DataMember(Name = "linkedSpaceId", EmitDefaultValue = false)]
+        public long LinkedSpaceId { get; private set; }
 
+        /// <summary>
+        /// Returns false as LinkedSpaceId should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeLinkedSpaceId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets Address
+        /// </summary>
+        [DataMember(Name = "address", EmitDefaultValue = false)]
+        public CustomerPostalAddress Address { get; set; }
+
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; private set; }
+
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The date and time when the object was created.
+        /// </summary>
+        /// <value>The date and time when the object was created.</value>
+        [DataMember(Name = "createdOn", EmitDefaultValue = false)]
+        public DateTime CreatedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as CreatedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCreatedOn()
+        {
+            return false;
+        }
         /// <summary>
         /// The version is used for optimistic locking and incremented whenever the object is updated.
         /// </summary>
         /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; private set; }
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int VarVersion { get; private set; }
 
+        /// <summary>
+        /// Returns false as VarVersion should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVarVersion()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets Customer
+        /// </summary>
+        [DataMember(Name = "customer", EmitDefaultValue = false)]
+        public Customer Customer { get; set; }
+
+        /// <summary>
+        /// Whether this is the customer&#39;s default address.
+        /// </summary>
+        /// <value>Whether this is the customer&#39;s default address.</value>
+        [DataMember(Name = "defaultAddress", EmitDefaultValue = true)]
+        public bool DefaultAddress { get; private set; }
+
+        /// <summary>
+        /// Returns false as DefaultAddress should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDefaultAddress()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class CustomerAddress {\n");
+            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  AddressType: ").Append(AddressType).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  Customer: ").Append(Customer).Append("\n");
             sb.Append("  DefaultAddress: ").Append(DefaultAddress).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -110,101 +175,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as CustomerAddress);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if CustomerAddress instances are equal
-        /// </summary>
-        /// <param name="input">Instance of CustomerAddress to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(CustomerAddress input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.Address == input.Address ||
-                    (this.Address != null &&
-                    this.Address.Equals(input.Address))
-                ) && 
-                (
-                    this.AddressType == input.AddressType ||
-                    (this.AddressType != null &&
-                    this.AddressType.Equals(input.AddressType))
-                ) && 
-                (
-                    this.CreatedOn == input.CreatedOn ||
-                    (this.CreatedOn != null &&
-                    this.CreatedOn.Equals(input.CreatedOn))
-                ) && 
-                (
-                    this.Customer == input.Customer ||
-                    (this.Customer != null &&
-                    this.Customer.Equals(input.Customer))
-                ) && 
-                (
-                    this.DefaultAddress == input.DefaultAddress ||
-                    (this.DefaultAddress != null &&
-                    this.DefaultAddress.Equals(input.DefaultAddress))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.LinkedSpaceId == input.LinkedSpaceId ||
-                    (this.LinkedSpaceId != null &&
-                    this.LinkedSpaceId.Equals(input.LinkedSpaceId))
-                ) && 
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.Address != null)
-                    hashCode = hashCode * 59 + this.Address.GetHashCode();
-                if (this.AddressType != null)
-                    hashCode = hashCode * 59 + this.AddressType.GetHashCode();
-                if (this.CreatedOn != null)
-                    hashCode = hashCode * 59 + this.CreatedOn.GetHashCode();
-                if (this.Customer != null)
-                    hashCode = hashCode * 59 + this.Customer.GetHashCode();
-                if (this.DefaultAddress != null)
-                    hashCode = hashCode * 59 + this.DefaultAddress.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.LinkedSpaceId != null)
-                    hashCode = hashCode * 59 + this.LinkedSpaceId.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

@@ -1,81 +1,136 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// ProductMeteredTierFee
     /// </summary>
-    [DataContract]
-    public partial class ProductMeteredTierFee :  IEquatable<ProductMeteredTierFee>
+    [DataContract(Name = "ProductMeteredTierFee")]
+    public partial class ProductMeteredTierFee : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ProductMeteredTierFee" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        public ProductMeteredTierFee()
+        /// <param name="meteredFee">meteredFee.</param>
+        public ProductMeteredTierFee(ProductMeteredFee meteredFee = default(ProductMeteredFee))
         {
+            this.MeteredFee = meteredFee;
         }
-
-        /// <summary>
-        /// The amount charged to the customer for each consumed unit at the end of a billing cycle.
-        /// </summary>
-        /// <value>The amount charged to the customer for each consumed unit at the end of a billing cycle.</value>
-        [DataMember(Name="fee", EmitDefaultValue=false)]
-        public List<PersistableCurrencyAmount> Fee { get; private set; }
-
-        /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
-        [DataMember(Name="id", EmitDefaultValue=false)]
-        public long? Id { get; private set; }
-
-        /// <summary>
-        /// The metered fee that this tier belongs to.
-        /// </summary>
-        /// <value>The metered fee that this tier belongs to.</value>
-        [DataMember(Name="meteredFee", EmitDefaultValue=false)]
-        public ProductMeteredFee MeteredFee { get; private set; }
 
         /// <summary>
         /// Starting from and including this quantity is contained in the tier.
         /// </summary>
         /// <value>Starting from and including this quantity is contained in the tier.</value>
-        [DataMember(Name="startRange", EmitDefaultValue=false)]
-        public decimal? StartRange { get; private set; }
+        [DataMember(Name = "startRange", EmitDefaultValue = false)]
+        public decimal StartRange { get; private set; }
 
+        /// <summary>
+        /// Returns false as StartRange should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeStartRange()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets MeteredFee
+        /// </summary>
+        [DataMember(Name = "meteredFee", EmitDefaultValue = false)]
+        public ProductMeteredFee MeteredFee { get; set; }
+
+        /// <summary>
+        /// The amount charged to the customer for each consumed unit at the end of a billing cycle.
+        /// </summary>
+        /// <value>The amount charged to the customer for each consumed unit at the end of a billing cycle.</value>
+        [DataMember(Name = "fee", EmitDefaultValue = false)]
+        public List<PersistableCurrencyAmount> Fee { get; private set; }
+
+        /// <summary>
+        /// Returns false as Fee should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeFee()
+        {
+            return false;
+        }
+        /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; private set; }
+
+        /// <summary>
+        /// Returns false as Id should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
         /// <summary>
         /// The version is used for optimistic locking and incremented whenever the object is updated.
         /// </summary>
         /// <value>The version is used for optimistic locking and incremented whenever the object is updated.</value>
-        [DataMember(Name="version", EmitDefaultValue=false)]
-        public int? Version { get; private set; }
+        [DataMember(Name = "version", EmitDefaultValue = false)]
+        public int VarVersion { get; private set; }
 
+        /// <summary>
+        /// Returns false as VarVersion should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeVarVersion()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class ProductMeteredTierFee {\n");
+            sb.Append("  StartRange: ").Append(StartRange).Append("\n");
+            sb.Append("  MeteredFee: ").Append(MeteredFee).Append("\n");
             sb.Append("  Fee: ").Append(Fee).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  MeteredFee: ").Append(MeteredFee).Append("\n");
-            sb.Append("  StartRange: ").Append(StartRange).Append("\n");
-            sb.Append("  Version: ").Append(Version).Append("\n");
+            sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -86,81 +141,18 @@ namespace Wallee.Model
         /// <returns>JSON string presentation of the object</returns>
         public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as ProductMeteredTierFee);
+            yield break;
         }
-
-        /// <summary>
-        /// Returns true if ProductMeteredTierFee instances are equal
-        /// </summary>
-        /// <param name="input">Instance of ProductMeteredTierFee to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(ProductMeteredTierFee input)
-        {
-            if (input == null)
-                return false;
-
-            return 
-                (
-                    this.Fee == input.Fee ||
-                    this.Fee != null &&
-                    input.Fee != null &&
-                    this.Fee.SequenceEqual(input.Fee)
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.MeteredFee == input.MeteredFee ||
-                    (this.MeteredFee != null &&
-                    this.MeteredFee.Equals(input.MeteredFee))
-                ) && 
-                (
-                    this.StartRange == input.StartRange ||
-                    (this.StartRange != null &&
-                    this.StartRange.Equals(input.StartRange))
-                ) && 
-                (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hashCode = 41;
-                if (this.Fee != null)
-                    hashCode = hashCode * 59 + this.Fee.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.MeteredFee != null)
-                    hashCode = hashCode * 59 + this.MeteredFee.GetHashCode();
-                if (this.StartRange != null)
-                    hashCode = hashCode * 59 + this.StartRange.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
-                return hashCode;
-            }
-        }
-
     }
 
 }

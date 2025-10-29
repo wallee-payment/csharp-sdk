@@ -1,24 +1,47 @@
+/**
+ * Wallee AG C# SDK
+ *
+ * This library allows to interact with the Wallee AG payment service.
+ *
+ * Copyright owner: Wallee AG
+ * Website: https://en.wallee.com
+ * Developer email: ecosystem-team@wallee.com
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 using System;
-using System.Linq;
-using System.IO;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.IO;
 using System.Runtime.Serialization;
+using System.Text;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
-using SwaggerDateConverter = Wallee.Client.SwaggerDateConverter;
+using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 
 namespace Wallee.Model
 {
     /// <summary>
     /// TransactionCommentCreate
     /// </summary>
-    [DataContract]
-    public partial class TransactionCommentCreate : AbstractTransactionCommentActive,  IEquatable<TransactionCommentCreate>
+    [DataContract(Name = "TransactionComment.Create")]
+    public partial class TransactionCommentCreate : IValidatableObject
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionCommentCreate" /> class.
@@ -28,24 +51,27 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TransactionCommentCreate" /> class.
         /// </summary>
+        /// <param name="content">The comment&#39;s actual content..</param>
         /// <param name="transaction">The transaction that the comment belongs to. (required).</param>
-        public TransactionCommentCreate(long? transaction)
+        public TransactionCommentCreate(string content = default(string), long transaction = default(long))
         {
-            // to ensure "transaction" is required (not null)
-            if (transaction == null)
-            {
-                throw new InvalidDataException("transaction is a required property for TransactionCommentCreate and cannot be null");
-            }
             this.Transaction = transaction;
+            this.Content = content;
         }
 
+        /// <summary>
+        /// The comment&#39;s actual content.
+        /// </summary>
+        /// <value>The comment&#39;s actual content.</value>
+        [DataMember(Name = "content", EmitDefaultValue = false)]
+        public string Content { get; set; }
 
         /// <summary>
         /// The transaction that the comment belongs to.
         /// </summary>
         /// <value>The transaction that the comment belongs to.</value>
-        [DataMember(Name="transaction", EmitDefaultValue=false)]
-        public long? Transaction { get; set; }
+        [DataMember(Name = "transaction", IsRequired = true, EmitDefaultValue = true)]
+        public long Transaction { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -53,9 +79,8 @@ namespace Wallee.Model
         /// <returns>String presentation of the object</returns>
         public override string ToString()
         {
-            var sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder();
             sb.Append("class TransactionCommentCreate {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("  Transaction: ").Append(Transaction).Append("\n");
             sb.Append("}\n");
@@ -66,61 +91,26 @@ namespace Wallee.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public override string ToJson()
+        public virtual string ToJson()
         {
-            return JsonConvert.SerializeObject(this, Formatting.Indented, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
-        /// Returns true if objects are equal
+        /// To validate all properties of the instance
         /// </summary>
-        /// <param name="input">Object to be compared</param>
-        /// <returns>Boolean</returns>
-        public override bool Equals(object input)
+        /// <param name="validationContext">Validation context</param>
+        /// <returns>Validation Result</returns>
+        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            return this.Equals(input as TransactionCommentCreate);
-        }
-
-        /// <summary>
-        /// Returns true if TransactionCommentCreate instances are equal
-        /// </summary>
-        /// <param name="input">Instance of TransactionCommentCreate to be compared</param>
-        /// <returns>Boolean</returns>
-        public bool Equals(TransactionCommentCreate input)
-        {
-            if (input == null)
-                return false;
-
-            return base.Equals(input) && 
-                (
-                    this.Content == input.Content ||
-                    (this.Content != null &&
-                    this.Content.Equals(input.Content))
-                ) && base.Equals(input) && 
-                (
-                    this.Transaction == input.Transaction ||
-                    (this.Transaction != null &&
-                    this.Transaction.Equals(input.Transaction))
-                );
-        }
-
-        /// <summary>
-        /// Gets the hash code
-        /// </summary>
-        /// <returns>Hash code</returns>
-        public override int GetHashCode()
-        {
-            unchecked // Overflow is fine, just wrap
+            // Content (string) maxLength
+            if (this.Content != null && this.Content.Length > 262144)
             {
-                int hashCode = base.GetHashCode();
-                if (this.Content != null)
-                    hashCode = hashCode * 59 + this.Content.GetHashCode();
-                if (this.Transaction != null)
-                    hashCode = hashCode * 59 + this.Transaction.GetHashCode();
-                return hashCode;
+                yield return new ValidationResult("Invalid value for Content, length must be less than 262144.", new [] { "Content" });
             }
-        }
 
+            yield break;
+        }
     }
 
 }
