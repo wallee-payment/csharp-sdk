@@ -46,9 +46,9 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AnalyticsQueryExecutionRequest" /> class.
         /// </summary>
-        /// <param name="sftpDispatchSettingsId">Optional. Active SFTP Dispatch connection settings ID (dispatch settings ID) associated with the target account. Only required if the Analytics query result file is scheduled for delivery to a remote SFTP server..</param>
-        /// <param name="sftpDispatchResultFileRenamePattern">Optional. Renaming pattern for Analytics query result file (may be used when Analytics query results file is scheduled for SFTP delivery). Pattern may look like Latin alphabet string with some timestamp placeholder: \&quot;transaction_report_{YYYMMDD_hhmmss}\&quot;. Supported placeholder formats are just these: DDMMYY , MMDDYY , YYYYMMDD , DD_MM_YY , DD-MM-YY , YYYY-MM-DD , YYYY_MM_DD , YYYYMMDD_hhmmss , YYYY-MM-DD_hh-mm-ss.</param>
-        /// <param name="sql">The SQL query (in PrestoDB dialect) to be executed against the analytics database. This query defines the data retrieval operation..</param>
+        /// <param name="sftpDispatchSettingsId">Optional. ID of the active SFTP configuration to use (associated with the target account). This is only required if the result file is scheduled for delivery to a remote SFTP server..</param>
+        /// <param name="sftpDispatchResultFileRenamePattern">Optional. Renaming pattern used for the result file during SFTP delivery. You can use a combination of fixed Latin text and timestamp variables (e.g., \&quot;transaction_report_{YYYMMDD_hhmmss}\&quot;). Supported variable formats: DDMMYY, MMDDYY, YYYYMMDD, DD_MM_YY, DD-MM-YY, YYYY-MM-DD, YYYY_MM_DD, YYYYMMDD_hhmmss, YYYY-MM-DD_hh-mm-ss..</param>
+        /// <param name="sql">The SQL query (in PrestoDB dialect) to execute on the analytics database. This query defines exactly which data should be retrieved..</param>
         public AnalyticsQueryExecutionRequest(long sftpDispatchSettingsId = default(long), string sftpDispatchResultFileRenamePattern = default(string), string sql = default(string))
         {
             this.SftpDispatchSettingsId = sftpDispatchSettingsId;
@@ -57,23 +57,23 @@ namespace Wallee.Model
         }
 
         /// <summary>
-        /// Optional. Active SFTP Dispatch connection settings ID (dispatch settings ID) associated with the target account. Only required if the Analytics query result file is scheduled for delivery to a remote SFTP server.
+        /// Optional. ID of the active SFTP configuration to use (associated with the target account). This is only required if the result file is scheduled for delivery to a remote SFTP server.
         /// </summary>
-        /// <value>Optional. Active SFTP Dispatch connection settings ID (dispatch settings ID) associated with the target account. Only required if the Analytics query result file is scheduled for delivery to a remote SFTP server.</value>
+        /// <value>Optional. ID of the active SFTP configuration to use (associated with the target account). This is only required if the result file is scheduled for delivery to a remote SFTP server.</value>
         [DataMember(Name = "sftpDispatchSettingsId", EmitDefaultValue = false)]
         public long SftpDispatchSettingsId { get; set; }
 
         /// <summary>
-        /// Optional. Renaming pattern for Analytics query result file (may be used when Analytics query results file is scheduled for SFTP delivery). Pattern may look like Latin alphabet string with some timestamp placeholder: \&quot;transaction_report_{YYYMMDD_hhmmss}\&quot;. Supported placeholder formats are just these: DDMMYY , MMDDYY , YYYYMMDD , DD_MM_YY , DD-MM-YY , YYYY-MM-DD , YYYY_MM_DD , YYYYMMDD_hhmmss , YYYY-MM-DD_hh-mm-ss
+        /// Optional. Renaming pattern used for the result file during SFTP delivery. You can use a combination of fixed Latin text and timestamp variables (e.g., \&quot;transaction_report_{YYYMMDD_hhmmss}\&quot;). Supported variable formats: DDMMYY, MMDDYY, YYYYMMDD, DD_MM_YY, DD-MM-YY, YYYY-MM-DD, YYYY_MM_DD, YYYYMMDD_hhmmss, YYYY-MM-DD_hh-mm-ss.
         /// </summary>
-        /// <value>Optional. Renaming pattern for Analytics query result file (may be used when Analytics query results file is scheduled for SFTP delivery). Pattern may look like Latin alphabet string with some timestamp placeholder: \&quot;transaction_report_{YYYMMDD_hhmmss}\&quot;. Supported placeholder formats are just these: DDMMYY , MMDDYY , YYYYMMDD , DD_MM_YY , DD-MM-YY , YYYY-MM-DD , YYYY_MM_DD , YYYYMMDD_hhmmss , YYYY-MM-DD_hh-mm-ss</value>
+        /// <value>Optional. Renaming pattern used for the result file during SFTP delivery. You can use a combination of fixed Latin text and timestamp variables (e.g., \&quot;transaction_report_{YYYMMDD_hhmmss}\&quot;). Supported variable formats: DDMMYY, MMDDYY, YYYYMMDD, DD_MM_YY, DD-MM-YY, YYYY-MM-DD, YYYY_MM_DD, YYYYMMDD_hhmmss, YYYY-MM-DD_hh-mm-ss.</value>
         [DataMember(Name = "sftpDispatchResultFileRenamePattern", EmitDefaultValue = false)]
         public string SftpDispatchResultFileRenamePattern { get; set; }
 
         /// <summary>
-        /// The SQL query (in PrestoDB dialect) to be executed against the analytics database. This query defines the data retrieval operation.
+        /// The SQL query (in PrestoDB dialect) to execute on the analytics database. This query defines exactly which data should be retrieved.
         /// </summary>
-        /// <value>The SQL query (in PrestoDB dialect) to be executed against the analytics database. This query defines the data retrieval operation.</value>
+        /// <value>The SQL query (in PrestoDB dialect) to execute on the analytics database. This query defines exactly which data should be retrieved.</value>
         [DataMember(Name = "sql", EmitDefaultValue = false)]
         public string Sql { get; set; }
 

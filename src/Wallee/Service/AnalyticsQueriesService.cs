@@ -35,17 +35,40 @@ namespace Wallee.Service
     {
         #region Synchronous Operations
         /// <summary>
-        /// Cancel a query execution
+        /// Cancel a query execution, identifying it by its external id.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">Identifies the query execution.</param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void DeleteAnalyticsQueriesQueryExternalIdQueryExternalId(string queryExternalId, long account, int operationIndex = 0);
+
+        /// <summary>
+        /// Cancel a query execution, identifying it by its external id.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">Identifies the query execution.</param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteAnalyticsQueriesQueryExternalIdQueryExternalIdWithHttpInfo(string queryExternalId, long account, int operationIndex = 0);
+
+        /// <summary>
+        /// Cancel a query execution, identifying it by its query token.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="queryToken">Identifies the query execution.</param>
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        void DeleteAnalyticsQueriesQueryToken(string queryToken, long account, int operationIndex = 0);
+        void DeleteAnalyticsQueriesQueryTokenQueryToken(string queryToken, long account, int operationIndex = 0);
 
         /// <summary>
-        /// Cancel a query execution
+        /// Cancel a query execution, identifying it by its query token.
         /// </summary>
         /// <remarks>
         /// 
@@ -55,7 +78,7 @@ namespace Wallee.Service
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteAnalyticsQueriesQueryTokenWithHttpInfo(string queryToken, long account, int operationIndex = 0);
+        ApiResponse<Object> DeleteAnalyticsQueriesQueryTokenQueryTokenWithHttpInfo(string queryToken, long account, int operationIndex = 0);
 
         /// <summary>
         /// Get portion of query executions for account
@@ -83,7 +106,59 @@ namespace Wallee.Service
         ApiResponse<ResultPortionModel> GetAnalyticsQueriesWithHttpInfo(int offset, int limit, long account, int operationIndex = 0);
 
         /// <summary>
-        /// Retrieve a query execution information
+        /// Retrieve a query execution information by its external id
+        /// </summary>
+        /// <remarks>
+        /// Queries are processed asynchronously and may take several minutes to complete. Avoid frequent requests, as they will not speed up processing.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">Identifies the query execution.</param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>SubmittedAnalyticsQueryExecution</returns>
+        SubmittedAnalyticsQueryExecution GetAnalyticsQueriesQueryExternalIdQueryExternalId(string queryExternalId, long account, int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve a query execution information by its external id
+        /// </summary>
+        /// <remarks>
+        /// Queries are processed asynchronously and may take several minutes to complete. Avoid frequent requests, as they will not speed up processing.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">Identifies the query execution.</param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of SubmittedAnalyticsQueryExecution</returns>
+        ApiResponse<SubmittedAnalyticsQueryExecution> GetAnalyticsQueriesQueryExternalIdQueryExternalIdWithHttpInfo(string queryExternalId, long account, int operationIndex = 0);
+
+        /// <summary>
+        /// Generate a temporary URL to download the query result. It retrieves the query by its external id
+        /// </summary>
+        /// <remarks>
+        /// Generate a short-lived (5-minute) URL for downloading the Analytics query result file. Note that each URL generation is counted as a potential download and will be billed accordingly. Do not use this endpoint for periodic checks of file availability. Instead, use the &#39;Retrieve a query execution&#39; endpoint for status checks.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">Identifies the query execution.</param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>string</returns>
+        string GetAnalyticsQueriesQueryExternalIdQueryExternalIdResult(string queryExternalId, long account, int operationIndex = 0);
+
+        /// <summary>
+        /// Generate a temporary URL to download the query result. It retrieves the query by its external id
+        /// </summary>
+        /// <remarks>
+        /// Generate a short-lived (5-minute) URL for downloading the Analytics query result file. Note that each URL generation is counted as a potential download and will be billed accordingly. Do not use this endpoint for periodic checks of file availability. Instead, use the &#39;Retrieve a query execution&#39; endpoint for status checks.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">Identifies the query execution.</param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> GetAnalyticsQueriesQueryExternalIdQueryExternalIdResultWithHttpInfo(string queryExternalId, long account, int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve a query execution information by its query token
         /// </summary>
         /// <remarks>
         /// Queries are processed asynchronously and may take several minutes to complete. Avoid frequent requests, as they will not speed up processing.
@@ -93,10 +168,10 @@ namespace Wallee.Service
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubmittedAnalyticsQueryExecution</returns>
-        SubmittedAnalyticsQueryExecution GetAnalyticsQueriesQueryToken(string queryToken, long account, int operationIndex = 0);
+        SubmittedAnalyticsQueryExecution GetAnalyticsQueriesQueryTokenQueryToken(string queryToken, long account, int operationIndex = 0);
 
         /// <summary>
-        /// Retrieve a query execution information
+        /// Retrieve a query execution information by its query token
         /// </summary>
         /// <remarks>
         /// Queries are processed asynchronously and may take several minutes to complete. Avoid frequent requests, as they will not speed up processing.
@@ -106,10 +181,10 @@ namespace Wallee.Service
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubmittedAnalyticsQueryExecution</returns>
-        ApiResponse<SubmittedAnalyticsQueryExecution> GetAnalyticsQueriesQueryTokenWithHttpInfo(string queryToken, long account, int operationIndex = 0);
+        ApiResponse<SubmittedAnalyticsQueryExecution> GetAnalyticsQueriesQueryTokenQueryTokenWithHttpInfo(string queryToken, long account, int operationIndex = 0);
 
         /// <summary>
-        /// Generate a temporary URL to download the query result
+        /// Generate a temporary URL to download the query result. It retrieves the query by its query token
         /// </summary>
         /// <remarks>
         /// Generate a short-lived (5-minute) URL for downloading the Analytics query result file. Note that each URL generation is counted as a potential download and will be billed accordingly. Do not use this endpoint for periodic checks of file availability. Instead, use the &#39;Retrieve a query execution&#39; endpoint for status checks.
@@ -119,10 +194,10 @@ namespace Wallee.Service
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>string</returns>
-        string GetAnalyticsQueriesQueryTokenResult(string queryToken, long account, int operationIndex = 0);
+        string GetAnalyticsQueriesQueryTokenQueryTokenResult(string queryToken, long account, int operationIndex = 0);
 
         /// <summary>
-        /// Generate a temporary URL to download the query result
+        /// Generate a temporary URL to download the query result. It retrieves the query by its query token
         /// </summary>
         /// <remarks>
         /// Generate a short-lived (5-minute) URL for downloading the Analytics query result file. Note that each URL generation is counted as a potential download and will be billed accordingly. Do not use this endpoint for periodic checks of file availability. Instead, use the &#39;Retrieve a query execution&#39; endpoint for status checks.
@@ -132,17 +207,18 @@ namespace Wallee.Service
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> GetAnalyticsQueriesQueryTokenResultWithHttpInfo(string queryToken, long account, int operationIndex = 0);
+        ApiResponse<string> GetAnalyticsQueriesQueryTokenQueryTokenResultWithHttpInfo(string queryToken, long account, int operationIndex = 0);
 
         /// <summary>
         /// Submit a query execution
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">A unique id to be provided for each query. The same id for different queries will be only executed the first time</param>
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="analyticsQueryExecutionRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AnalyticsQueryExecutionResponse</returns>
-        AnalyticsQueryExecutionResponse PostAnalyticsQueriesSubmit(long account, AnalyticsQueryExecutionRequest analyticsQueryExecutionRequest, int operationIndex = 0);
+        AnalyticsQueryExecutionResponse PostAnalyticsQueriesSubmit(string queryExternalId, long account, AnalyticsQueryExecutionRequest analyticsQueryExecutionRequest, int operationIndex = 0);
 
         /// <summary>
         /// Submit a query execution
@@ -151,11 +227,12 @@ namespace Wallee.Service
         /// 
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">A unique id to be provided for each query. The same id for different queries will be only executed the first time</param>
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="analyticsQueryExecutionRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AnalyticsQueryExecutionResponse</returns>
-        ApiResponse<AnalyticsQueryExecutionResponse> PostAnalyticsQueriesSubmitWithHttpInfo(long account, AnalyticsQueryExecutionRequest analyticsQueryExecutionRequest, int operationIndex = 0);
+        ApiResponse<AnalyticsQueryExecutionResponse> PostAnalyticsQueriesSubmitWithHttpInfo(string queryExternalId, long account, AnalyticsQueryExecutionRequest analyticsQueryExecutionRequest, int operationIndex = 0);
 
         #endregion Synchronous Operations
     }
@@ -243,32 +320,106 @@ namespace Wallee.Service
         }
 
         /// <summary>
-        /// Cancel a query execution 
+        /// Cancel a query execution, identifying it by its external id. 
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">Identifies the query execution.</param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void DeleteAnalyticsQueriesQueryExternalIdQueryExternalId(string queryExternalId, long account, int operationIndex = 0)
+        {
+            DeleteAnalyticsQueriesQueryExternalIdQueryExternalIdWithHttpInfo(queryExternalId, account);
+        }
+
+        /// <summary>
+        /// Cancel a query execution, identifying it by its external id. 
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">Identifies the query execution.</param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Wallee.Client.ApiResponse<Object> DeleteAnalyticsQueriesQueryExternalIdQueryExternalIdWithHttpInfo(string queryExternalId, long account, int operationIndex = 0)
+        {
+            // verify the required parameter 'queryExternalId' is set
+            if (queryExternalId == null)
+            {
+                throw new Wallee.Client.ApiException(400, "Missing required parameter 'queryExternalId' when calling AnalyticsQueriesService->DeleteAnalyticsQueriesQueryExternalIdQueryExternalId");
+            }
+
+            Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Wallee.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("queryExternalId", Wallee.Client.ClientUtils.ParameterToString(queryExternalId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
+
+            localVarRequestOptions.Operation = "AnalyticsQueriesService.DeleteAnalyticsQueriesQueryExternalIdQueryExternalId";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = Configuration.Timeout;
+
+            // make the HTTP request
+            var localVarResponse = Client.Delete<Object>("/analytics/queries/queryExternalId/{queryExternalId}",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("DeleteAnalyticsQueriesQueryExternalIdQueryExternalId", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Cancel a query execution, identifying it by its query token. 
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="queryToken">Identifies the query execution.</param>
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        public void DeleteAnalyticsQueriesQueryToken(string queryToken, long account, int operationIndex = 0)
+        public void DeleteAnalyticsQueriesQueryTokenQueryToken(string queryToken, long account, int operationIndex = 0)
         {
-            DeleteAnalyticsQueriesQueryTokenWithHttpInfo(queryToken, account);
+            DeleteAnalyticsQueriesQueryTokenQueryTokenWithHttpInfo(queryToken, account);
         }
 
         /// <summary>
-        /// Cancel a query execution 
+        /// Cancel a query execution, identifying it by its query token. 
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="queryToken">Identifies the query execution.</param>
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Wallee.Client.ApiResponse<Object> DeleteAnalyticsQueriesQueryTokenWithHttpInfo(string queryToken, long account, int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Object> DeleteAnalyticsQueriesQueryTokenQueryTokenWithHttpInfo(string queryToken, long account, int operationIndex = 0)
         {
             // verify the required parameter 'queryToken' is set
             if (queryToken == null)
             {
-                throw new Wallee.Client.ApiException(400, "Missing required parameter 'queryToken' when calling AnalyticsQueriesService->DeleteAnalyticsQueriesQueryToken");
+                throw new Wallee.Client.ApiException(400, "Missing required parameter 'queryToken' when calling AnalyticsQueriesService->DeleteAnalyticsQueriesQueryTokenQueryToken");
             }
 
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
@@ -296,18 +447,18 @@ namespace Wallee.Service
             localVarRequestOptions.PathParameters.Add("queryToken", Wallee.Client.ClientUtils.ParameterToString(queryToken)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
 
-            localVarRequestOptions.Operation = "AnalyticsQueriesService.DeleteAnalyticsQueriesQueryToken";
+            localVarRequestOptions.Operation = "AnalyticsQueriesService.DeleteAnalyticsQueriesQueryTokenQueryToken";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // set request timeout in seconds
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/analytics/queries/{queryToken}",
+            var localVarResponse = Client.Delete<Object>("/analytics/queries/queryToken/{queryToken}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("DeleteAnalyticsQueriesQueryToken", localVarResponse);
+                Exception _exception = this.ExceptionFactory("DeleteAnalyticsQueriesQueryTokenQueryToken", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -389,7 +540,161 @@ namespace Wallee.Service
             return localVarResponse;
         }
         /// <summary>
-        /// Retrieve a query execution information Queries are processed asynchronously and may take several minutes to complete. Avoid frequent requests, as they will not speed up processing.
+        /// Retrieve a query execution information by its external id Queries are processed asynchronously and may take several minutes to complete. Avoid frequent requests, as they will not speed up processing.
+        /// Timeout for this request is: 97 seconds.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">Identifies the query execution.</param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>SubmittedAnalyticsQueryExecution</returns>
+        public SubmittedAnalyticsQueryExecution GetAnalyticsQueriesQueryExternalIdQueryExternalId(string queryExternalId, long account, int operationIndex = 0)
+        {
+            Wallee.Client.ApiResponse<SubmittedAnalyticsQueryExecution> localVarResponse = GetAnalyticsQueriesQueryExternalIdQueryExternalIdWithHttpInfo(queryExternalId, account);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve a query execution information by its external id Queries are processed asynchronously and may take several minutes to complete. Avoid frequent requests, as they will not speed up processing.
+        /// Timeout for this request is: 97 seconds.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">Identifies the query execution.</param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of SubmittedAnalyticsQueryExecution</returns>
+        public Wallee.Client.ApiResponse<SubmittedAnalyticsQueryExecution> GetAnalyticsQueriesQueryExternalIdQueryExternalIdWithHttpInfo(string queryExternalId, long account, int operationIndex = 0)
+        {
+            // verify the required parameter 'queryExternalId' is set
+            if (queryExternalId == null)
+            {
+                throw new Wallee.Client.ApiException(400, "Missing required parameter 'queryExternalId' when calling AnalyticsQueriesService->GetAnalyticsQueriesQueryExternalIdQueryExternalId");
+            }
+
+            Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Wallee.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("queryExternalId", Wallee.Client.ClientUtils.ParameterToString(queryExternalId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
+
+            localVarRequestOptions.Operation = "AnalyticsQueriesService.GetAnalyticsQueriesQueryExternalIdQueryExternalId";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = 97;
+            
+
+            // make the HTTP request
+            var localVarResponse = Client.Get<SubmittedAnalyticsQueryExecution>("/analytics/queries/queryExternalId/{queryExternalId}",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticsQueriesQueryExternalIdQueryExternalId", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Generate a temporary URL to download the query result. It retrieves the query by its external id Generate a short-lived (5-minute) URL for downloading the Analytics query result file. Note that each URL generation is counted as a potential download and will be billed accordingly. Do not use this endpoint for periodic checks of file availability. Instead, use the &#39;Retrieve a query execution&#39; endpoint for status checks.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">Identifies the query execution.</param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>string</returns>
+        public string GetAnalyticsQueriesQueryExternalIdQueryExternalIdResult(string queryExternalId, long account, int operationIndex = 0)
+        {
+            Wallee.Client.ApiResponse<string> localVarResponse = GetAnalyticsQueriesQueryExternalIdQueryExternalIdResultWithHttpInfo(queryExternalId, account);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Generate a temporary URL to download the query result. It retrieves the query by its external id Generate a short-lived (5-minute) URL for downloading the Analytics query result file. Note that each URL generation is counted as a potential download and will be billed accordingly. Do not use this endpoint for periodic checks of file availability. Instead, use the &#39;Retrieve a query execution&#39; endpoint for status checks.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">Identifies the query execution.</param>
+        /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of string</returns>
+        public Wallee.Client.ApiResponse<string> GetAnalyticsQueriesQueryExternalIdQueryExternalIdResultWithHttpInfo(string queryExternalId, long account, int operationIndex = 0)
+        {
+            // verify the required parameter 'queryExternalId' is set
+            if (queryExternalId == null)
+            {
+                throw new Wallee.Client.ApiException(400, "Missing required parameter 'queryExternalId' when calling AnalyticsQueriesService->GetAnalyticsQueriesQueryExternalIdQueryExternalIdResult");
+            }
+
+            Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "text/plain",
+                "application/json"
+            };
+
+            var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Wallee.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("queryExternalId", Wallee.Client.ClientUtils.ParameterToString(queryExternalId)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
+
+            localVarRequestOptions.Operation = "AnalyticsQueriesService.GetAnalyticsQueriesQueryExternalIdQueryExternalIdResult";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = Configuration.Timeout;
+
+            // make the HTTP request
+            var localVarResponse = Client.Get<string>("/analytics/queries/queryExternalId/{queryExternalId}/result",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetAnalyticsQueriesQueryExternalIdQueryExternalIdResult", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Retrieve a query execution information by its query token Queries are processed asynchronously and may take several minutes to complete. Avoid frequent requests, as they will not speed up processing.
         /// Timeout for this request is: 97 seconds.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
@@ -397,14 +702,14 @@ namespace Wallee.Service
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubmittedAnalyticsQueryExecution</returns>
-        public SubmittedAnalyticsQueryExecution GetAnalyticsQueriesQueryToken(string queryToken, long account, int operationIndex = 0)
+        public SubmittedAnalyticsQueryExecution GetAnalyticsQueriesQueryTokenQueryToken(string queryToken, long account, int operationIndex = 0)
         {
-            Wallee.Client.ApiResponse<SubmittedAnalyticsQueryExecution> localVarResponse = GetAnalyticsQueriesQueryTokenWithHttpInfo(queryToken, account);
+            Wallee.Client.ApiResponse<SubmittedAnalyticsQueryExecution> localVarResponse = GetAnalyticsQueriesQueryTokenQueryTokenWithHttpInfo(queryToken, account);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Retrieve a query execution information Queries are processed asynchronously and may take several minutes to complete. Avoid frequent requests, as they will not speed up processing.
+        /// Retrieve a query execution information by its query token Queries are processed asynchronously and may take several minutes to complete. Avoid frequent requests, as they will not speed up processing.
         /// Timeout for this request is: 97 seconds.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
@@ -412,12 +717,12 @@ namespace Wallee.Service
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubmittedAnalyticsQueryExecution</returns>
-        public Wallee.Client.ApiResponse<SubmittedAnalyticsQueryExecution> GetAnalyticsQueriesQueryTokenWithHttpInfo(string queryToken, long account, int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SubmittedAnalyticsQueryExecution> GetAnalyticsQueriesQueryTokenQueryTokenWithHttpInfo(string queryToken, long account, int operationIndex = 0)
         {
             // verify the required parameter 'queryToken' is set
             if (queryToken == null)
             {
-                throw new Wallee.Client.ApiException(400, "Missing required parameter 'queryToken' when calling AnalyticsQueriesService->GetAnalyticsQueriesQueryToken");
+                throw new Wallee.Client.ApiException(400, "Missing required parameter 'queryToken' when calling AnalyticsQueriesService->GetAnalyticsQueriesQueryTokenQueryToken");
             }
 
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
@@ -445,7 +750,7 @@ namespace Wallee.Service
             localVarRequestOptions.PathParameters.Add("queryToken", Wallee.Client.ClientUtils.ParameterToString(queryToken)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
 
-            localVarRequestOptions.Operation = "AnalyticsQueriesService.GetAnalyticsQueriesQueryToken";
+            localVarRequestOptions.Operation = "AnalyticsQueriesService.GetAnalyticsQueriesQueryTokenQueryToken";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // set request timeout in seconds
@@ -453,11 +758,11 @@ namespace Wallee.Service
             
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SubmittedAnalyticsQueryExecution>("/analytics/queries/{queryToken}",
+            var localVarResponse = Client.Get<SubmittedAnalyticsQueryExecution>("/analytics/queries/queryToken/{queryToken}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetAnalyticsQueriesQueryToken", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetAnalyticsQueriesQueryTokenQueryToken", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -467,33 +772,33 @@ namespace Wallee.Service
             return localVarResponse;
         }
         /// <summary>
-        /// Generate a temporary URL to download the query result Generate a short-lived (5-minute) URL for downloading the Analytics query result file. Note that each URL generation is counted as a potential download and will be billed accordingly. Do not use this endpoint for periodic checks of file availability. Instead, use the &#39;Retrieve a query execution&#39; endpoint for status checks.
+        /// Generate a temporary URL to download the query result. It retrieves the query by its query token Generate a short-lived (5-minute) URL for downloading the Analytics query result file. Note that each URL generation is counted as a potential download and will be billed accordingly. Do not use this endpoint for periodic checks of file availability. Instead, use the &#39;Retrieve a query execution&#39; endpoint for status checks.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="queryToken">Identifies the query execution.</param>
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>string</returns>
-        public string GetAnalyticsQueriesQueryTokenResult(string queryToken, long account, int operationIndex = 0)
+        public string GetAnalyticsQueriesQueryTokenQueryTokenResult(string queryToken, long account, int operationIndex = 0)
         {
-            Wallee.Client.ApiResponse<string> localVarResponse = GetAnalyticsQueriesQueryTokenResultWithHttpInfo(queryToken, account);
+            Wallee.Client.ApiResponse<string> localVarResponse = GetAnalyticsQueriesQueryTokenQueryTokenResultWithHttpInfo(queryToken, account);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Generate a temporary URL to download the query result Generate a short-lived (5-minute) URL for downloading the Analytics query result file. Note that each URL generation is counted as a potential download and will be billed accordingly. Do not use this endpoint for periodic checks of file availability. Instead, use the &#39;Retrieve a query execution&#39; endpoint for status checks.
+        /// Generate a temporary URL to download the query result. It retrieves the query by its query token Generate a short-lived (5-minute) URL for downloading the Analytics query result file. Note that each URL generation is counted as a potential download and will be billed accordingly. Do not use this endpoint for periodic checks of file availability. Instead, use the &#39;Retrieve a query execution&#39; endpoint for status checks.
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="queryToken">Identifies the query execution.</param>
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of string</returns>
-        public Wallee.Client.ApiResponse<string> GetAnalyticsQueriesQueryTokenResultWithHttpInfo(string queryToken, long account, int operationIndex = 0)
+        public Wallee.Client.ApiResponse<string> GetAnalyticsQueriesQueryTokenQueryTokenResultWithHttpInfo(string queryToken, long account, int operationIndex = 0)
         {
             // verify the required parameter 'queryToken' is set
             if (queryToken == null)
             {
-                throw new Wallee.Client.ApiException(400, "Missing required parameter 'queryToken' when calling AnalyticsQueriesService->GetAnalyticsQueriesQueryTokenResult");
+                throw new Wallee.Client.ApiException(400, "Missing required parameter 'queryToken' when calling AnalyticsQueriesService->GetAnalyticsQueriesQueryTokenQueryTokenResult");
             }
 
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
@@ -522,18 +827,18 @@ namespace Wallee.Service
             localVarRequestOptions.PathParameters.Add("queryToken", Wallee.Client.ClientUtils.ParameterToString(queryToken)); // path parameter
             localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
 
-            localVarRequestOptions.Operation = "AnalyticsQueriesService.GetAnalyticsQueriesQueryTokenResult";
+            localVarRequestOptions.Operation = "AnalyticsQueriesService.GetAnalyticsQueriesQueryTokenQueryTokenResult";
             localVarRequestOptions.OperationIndex = operationIndex;
 
             // set request timeout in seconds
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<string>("/analytics/queries/{queryToken}/result",
+            var localVarResponse = Client.Get<string>("/analytics/queries/queryToken/{queryToken}/result",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
-                Exception _exception = this.ExceptionFactory("GetAnalyticsQueriesQueryTokenResult", localVarResponse);
+                Exception _exception = this.ExceptionFactory("GetAnalyticsQueriesQueryTokenQueryTokenResult", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -546,13 +851,14 @@ namespace Wallee.Service
         /// Submit a query execution 
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">A unique id to be provided for each query. The same id for different queries will be only executed the first time</param>
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="analyticsQueryExecutionRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AnalyticsQueryExecutionResponse</returns>
-        public AnalyticsQueryExecutionResponse PostAnalyticsQueriesSubmit(long account, AnalyticsQueryExecutionRequest analyticsQueryExecutionRequest, int operationIndex = 0)
+        public AnalyticsQueryExecutionResponse PostAnalyticsQueriesSubmit(string queryExternalId, long account, AnalyticsQueryExecutionRequest analyticsQueryExecutionRequest, int operationIndex = 0)
         {
-            Wallee.Client.ApiResponse<AnalyticsQueryExecutionResponse> localVarResponse = PostAnalyticsQueriesSubmitWithHttpInfo(account, analyticsQueryExecutionRequest);
+            Wallee.Client.ApiResponse<AnalyticsQueryExecutionResponse> localVarResponse = PostAnalyticsQueriesSubmitWithHttpInfo(queryExternalId, account, analyticsQueryExecutionRequest);
             return localVarResponse.Data;
         }
 
@@ -560,12 +866,19 @@ namespace Wallee.Service
         /// Submit a query execution 
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="queryExternalId">A unique id to be provided for each query. The same id for different queries will be only executed the first time</param>
         /// <param name="account">Specifies the ID of the account the operation should be executed in.</param>
         /// <param name="analyticsQueryExecutionRequest"></param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AnalyticsQueryExecutionResponse</returns>
-        public Wallee.Client.ApiResponse<AnalyticsQueryExecutionResponse> PostAnalyticsQueriesSubmitWithHttpInfo(long account, AnalyticsQueryExecutionRequest analyticsQueryExecutionRequest, int operationIndex = 0)
+        public Wallee.Client.ApiResponse<AnalyticsQueryExecutionResponse> PostAnalyticsQueriesSubmitWithHttpInfo(string queryExternalId, long account, AnalyticsQueryExecutionRequest analyticsQueryExecutionRequest, int operationIndex = 0)
         {
+            // verify the required parameter 'queryExternalId' is set
+            if (queryExternalId == null)
+            {
+                throw new Wallee.Client.ApiException(400, "Missing required parameter 'queryExternalId' when calling AnalyticsQueriesService->PostAnalyticsQueriesSubmit");
+            }
+
             // verify the required parameter 'analyticsQueryExecutionRequest' is set
             if (analyticsQueryExecutionRequest == null)
             {
@@ -595,6 +908,7 @@ namespace Wallee.Service
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "queryExternalId", queryExternalId));
             localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
             localVarRequestOptions.Data = analyticsQueryExecutionRequest;
 

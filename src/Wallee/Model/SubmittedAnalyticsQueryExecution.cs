@@ -59,6 +59,21 @@ namespace Wallee.Model
         }
 
         /// <summary>
+        /// The external id associated with this query, if any.
+        /// </summary>
+        /// <value>The external id associated with this query, if any.</value>
+        [DataMember(Name = "queryExternalId", EmitDefaultValue = false)]
+        public string QueryExternalId { get; private set; }
+
+        /// <summary>
+        /// Returns false as QueryExternalId should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeQueryExternalId()
+        {
+            return false;
+        }
+        /// <summary>
         /// The ID of the target account for which the analytics query will be executed, determining the data scope for the request.
         /// </summary>
         /// <value>The ID of the target account for which the analytics query will be executed, determining the data scope for the request.</value>
@@ -186,6 +201,7 @@ namespace Wallee.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SubmittedAnalyticsQueryExecution {\n");
+            sb.Append("  QueryExternalId: ").Append(QueryExternalId).Append("\n");
             sb.Append("  AccountId: ").Append(AccountId).Append("\n");
             sb.Append("  TotalBilledExecutionTimeMs: ").Append(TotalBilledExecutionTimeMs).Append("\n");
             sb.Append("  CreatedTimestamp: ").Append(CreatedTimestamp).Append("\n");
