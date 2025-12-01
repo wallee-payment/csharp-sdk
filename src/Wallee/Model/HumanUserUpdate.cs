@@ -66,7 +66,7 @@ namespace Wallee.Model
         /// <param name="state">state.</param>
         /// <param name="lastname">The user&#39;s last name..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public HumanUserUpdate(string mobilePhoneNumber = default(string), bool twoFactorEnabled = default(bool), string emailAddress = default(string), string firstname = default(string), string varTimeZone = default(string), string language = default(string), CreationEntityState? state = default(CreationEntityState?), string lastname = default(string), int varVersion = default(int))
+        public HumanUserUpdate(string mobilePhoneNumber = default, bool twoFactorEnabled = default, string emailAddress = default, string firstname = default, string varTimeZone = default, string language = default, CreationEntityState? state = default, string lastname = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.MobilePhoneNumber = mobilePhoneNumber;

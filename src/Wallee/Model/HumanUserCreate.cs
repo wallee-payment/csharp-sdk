@@ -61,7 +61,7 @@ namespace Wallee.Model
         /// <param name="state">state.</param>
         /// <param name="lastname">The user&#39;s last name..</param>
         /// <param name="primaryAccount">The primary account that the user belongs to..</param>
-        public HumanUserCreate(string mobilePhoneNumber = default(string), bool twoFactorEnabled = default(bool), string emailAddress = default(string), string firstname = default(string), string varTimeZone = default(string), string language = default(string), CreationEntityState? state = default(CreationEntityState?), string lastname = default(string), long primaryAccount = default(long))
+        public HumanUserCreate(string mobilePhoneNumber = default, bool twoFactorEnabled = default, string emailAddress = default, string firstname = default, string varTimeZone = default, string language = default, CreationEntityState? state = default, string lastname = default, long primaryAccount = default)
         {
             this.MobilePhoneNumber = mobilePhoneNumber;
             this.TwoFactorEnabled = twoFactorEnabled;

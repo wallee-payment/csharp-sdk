@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// <param name="name">The localized name of the metric that is displayed to the customer..</param>
         /// <param name="description">The localized description of the metric that is displayed to the customer..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public SubscriptionMetricUpdate(Dictionary<string, string> name = default(Dictionary<string, string>), Dictionary<string, string> description = default(Dictionary<string, string>), int varVersion = default(int))
+        public SubscriptionMetricUpdate(Dictionary<string, string> name = default, Dictionary<string, string> description = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Name = name;

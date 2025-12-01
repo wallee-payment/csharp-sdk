@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="bankAccount">bankAccount.</param>
         /// <param name="varEnvironment">varEnvironment.</param>
-        public CurrencyBankAccount(BankAccount bankAccount = default(BankAccount), BankAccountEnvironment? varEnvironment = default(BankAccountEnvironment?))
+        public CurrencyBankAccount(BankAccount bankAccount = default, BankAccountEnvironment? varEnvironment = default)
         {
             this.BankAccount = bankAccount;
             this.VarEnvironment = varEnvironment;

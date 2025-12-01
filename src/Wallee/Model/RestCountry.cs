@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="RestCountry" /> class.
         /// </summary>
         /// <param name="addressFormat">addressFormat.</param>
-        public RestCountry(RestAddressFormat addressFormat = default(RestAddressFormat))
+        public RestCountry(RestAddressFormat addressFormat = default)
         {
             this.AddressFormat = addressFormat;
         }

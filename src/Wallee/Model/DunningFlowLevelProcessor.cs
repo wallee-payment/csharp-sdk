@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="DunningFlowLevelProcessor" /> class.
         /// </summary>
         /// <param name="feature">feature.</param>
-        public DunningFlowLevelProcessor(Feature feature = default(Feature))
+        public DunningFlowLevelProcessor(Feature feature = default)
         {
             this.Feature = feature;
         }

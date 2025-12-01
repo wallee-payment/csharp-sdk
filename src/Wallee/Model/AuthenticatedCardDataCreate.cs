@@ -73,7 +73,7 @@ namespace Wallee.Model
         /// <param name="cardholderAuthentication">cardholderAuthentication.</param>
         /// <param name="tokenRequestorId">The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction..</param>
         /// <param name="cryptogram">cryptogram.</param>
-        public AuthenticatedCardDataCreate(string expiryDate = default(string), PanType? panType = default(PanType?), string cardHolderName = default(string), string cardVerificationCode = default(string), string primaryAccountNumber = default(string), RecurringIndicator? recurringIndicator = default(RecurringIndicator?), string schemeTransactionReference = default(string), CardholderAuthenticationCreate cardholderAuthentication = default(CardholderAuthenticationCreate), string tokenRequestorId = default(string), CardCryptogramCreate cryptogram = default(CardCryptogramCreate))
+        public AuthenticatedCardDataCreate(string expiryDate = default, PanType? panType = default, string cardHolderName = default, string cardVerificationCode = default, string primaryAccountNumber = default, RecurringIndicator? recurringIndicator = default, string schemeTransactionReference = default, CardholderAuthenticationCreate cardholderAuthentication = default, string tokenRequestorId = default, CardCryptogramCreate cryptogram = default)
         {
             // to ensure "primaryAccountNumber" is required (not null)
             if (primaryAccountNumber == null)

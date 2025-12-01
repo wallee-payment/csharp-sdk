@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="quantity">The quantity that should be applied to the component..</param>
         /// <param name="productComponentReferenceId">The ID of the component reference that is being configured..</param>
-        public SubscriptionComponentReferenceConfiguration(decimal quantity = default(decimal), long productComponentReferenceId = default(long))
+        public SubscriptionComponentReferenceConfiguration(decimal quantity = default, long productComponentReferenceId = default)
         {
             this.Quantity = quantity;
             this.ProductComponentReferenceId = productComponentReferenceId;

@@ -58,7 +58,7 @@ namespace Wallee.Model
         /// <param name="description">The localized description of the fee that is displayed to the customer..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
         /// <param name="ledgerEntryTitle">The localized title that be used on ledger entries and invoices..</param>
-        public ProductPeriodFeeUpdate(List<PersistableCurrencyAmountUpdate> periodFee = default(List<PersistableCurrencyAmountUpdate>), long component = default(long), int numberOfFreeTrialPeriods = default(int), Dictionary<string, string> name = default(Dictionary<string, string>), Dictionary<string, string> description = default(Dictionary<string, string>), int varVersion = default(int), Dictionary<string, string> ledgerEntryTitle = default(Dictionary<string, string>))
+        public ProductPeriodFeeUpdate(List<PersistableCurrencyAmountUpdate> periodFee = default, long component = default, int numberOfFreeTrialPeriods = default, Dictionary<string, string> name = default, Dictionary<string, string> description = default, int varVersion = default, Dictionary<string, string> ledgerEntryTitle = default)
         {
             this.VarVersion = varVersion;
             this.PeriodFee = periodFee;

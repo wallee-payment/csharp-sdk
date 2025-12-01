@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="identity">identity.</param>
         /// <param name="state">state.</param>
         /// <param name="url">url.</param>
-        public WebhookListener(WebhookIdentity identity = default(WebhookIdentity), CreationEntityState? state = default(CreationEntityState?), WebhookUrl url = default(WebhookUrl))
+        public WebhookListener(WebhookIdentity identity = default, CreationEntityState? state = default, WebhookUrl url = default)
         {
             this.Identity = identity;
             this.State = state;

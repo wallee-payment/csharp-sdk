@@ -51,7 +51,7 @@ namespace Wallee.Model
         /// <param name="conditions">Conditions allow to define criteria that a transaction must fulfill in order for the connector configuration to be considered for processing the payment..</param>
         /// <param name="priority">The priority that determines the order in which connector configurations are taken into account when processing a payment. Low values are considered first..</param>
         /// <param name="enabledSalesChannels">The sales channels for which the connector configuration is enabled. If empty, it is enabled for all sales channels..</param>
-        public AbstractPaymentConnectorConfigurationUpdate(string name = default(string), List<long> enabledSpaceViews = default(List<long>), List<Condition> conditions = default(List<Condition>), int priority = default(int), List<SalesChannel> enabledSalesChannels = default(List<SalesChannel>))
+        public AbstractPaymentConnectorConfigurationUpdate(string name = default, List<long> enabledSpaceViews = default, List<Condition> conditions = default, int priority = default, List<SalesChannel> enabledSalesChannels = default)
         {
             this.Name = name;
             this.EnabledSpaceViews = enabledSpaceViews;

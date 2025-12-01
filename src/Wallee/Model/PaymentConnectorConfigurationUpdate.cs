@@ -57,7 +57,7 @@ namespace Wallee.Model
         /// <param name="priority">The priority that determines the order in which connector configurations are taken into account when processing a payment. Low values are considered first..</param>
         /// <param name="enabledSalesChannels">The sales channels for which the connector configuration is enabled. If empty, it is enabled for all sales channels..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public PaymentConnectorConfigurationUpdate(string name = default(string), List<long> enabledSpaceViews = default(List<long>), List<Condition> conditions = default(List<Condition>), int priority = default(int), List<SalesChannel> enabledSalesChannels = default(List<SalesChannel>), int varVersion = default(int))
+        public PaymentConnectorConfigurationUpdate(string name = default, List<long> enabledSpaceViews = default, List<Condition> conditions = default, int priority = default, List<SalesChannel> enabledSalesChannels = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Name = name;

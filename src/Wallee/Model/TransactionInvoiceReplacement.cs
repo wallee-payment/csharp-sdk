@@ -57,7 +57,7 @@ namespace Wallee.Model
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="sentToCustomer">Whether the invoice will be sent to the customer via email..</param>
         /// <param name="merchantReference">The merchant&#39;s reference used to identify the invoice..</param>
-        public TransactionInvoiceReplacement(List<LineItemCreate> lineItems = default(List<LineItemCreate>), DateTime dueOn = default(DateTime), string externalId = default(string), AddressCreate billingAddress = default(AddressCreate), bool sentToCustomer = default(bool), string merchantReference = default(string))
+        public TransactionInvoiceReplacement(List<LineItemCreate> lineItems = default, DateTime dueOn = default, string externalId = default, AddressCreate billingAddress = default, bool sentToCustomer = default, string merchantReference = default)
         {
             // to ensure "lineItems" is required (not null)
             if (lineItems == null)

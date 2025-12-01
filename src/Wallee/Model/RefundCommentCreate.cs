@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="content">The comment&#39;s actual content..</param>
         /// <param name="refund">The refund that the comment belongs to. (required).</param>
-        public RefundCommentCreate(string content = default(string), long refund = default(long))
+        public RefundCommentCreate(string content = default, long refund = default)
         {
             this.Refund = refund;
             this.Content = content;

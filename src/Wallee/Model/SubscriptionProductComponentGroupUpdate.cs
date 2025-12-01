@@ -56,7 +56,7 @@ namespace Wallee.Model
         /// <param name="name">The localized name of the component group that is displayed to the customer..</param>
         /// <param name="optional">Whether the component group is optional, i.e. the customer does not have to select any component..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public SubscriptionProductComponentGroupUpdate(long productVersion = default(long), int sortOrder = default(int), Dictionary<string, string> name = default(Dictionary<string, string>), bool optional = default(bool), int varVersion = default(int))
+        public SubscriptionProductComponentGroupUpdate(long productVersion = default, int sortOrder = default, Dictionary<string, string> name = default, bool optional = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.ProductVersion = productVersion;

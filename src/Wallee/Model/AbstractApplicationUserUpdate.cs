@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="requestLimit">The maximum number of API requests that are accepted every 2 minutes..</param>
         /// <param name="name">The name used to identify the application user..</param>
         /// <param name="state">state.</param>
-        public AbstractApplicationUserUpdate(long requestLimit = default(long), string name = default(string), CreationEntityState? state = default(CreationEntityState?))
+        public AbstractApplicationUserUpdate(long requestLimit = default, string name = default, CreationEntityState? state = default)
         {
             this.RequestLimit = requestLimit;
             this.Name = name;

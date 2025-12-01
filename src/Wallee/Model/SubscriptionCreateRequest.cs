@@ -50,7 +50,7 @@ namespace Wallee.Model
         /// <param name="product">The product to subscribe to..</param>
         /// <param name="currency">The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product..</param>
         /// <param name="subscription">subscription.</param>
-        public SubscriptionCreateRequest(List<SubscriptionComponentReferenceConfiguration> componentConfigurations = default(List<SubscriptionComponentReferenceConfiguration>), long product = default(long), string currency = default(string), SubscriptionPending subscription = default(SubscriptionPending))
+        public SubscriptionCreateRequest(List<SubscriptionComponentReferenceConfiguration> componentConfigurations = default, long product = default, string currency = default, SubscriptionPending subscription = default)
         {
             this.ComponentConfigurations = componentConfigurations;
             this.Product = product;

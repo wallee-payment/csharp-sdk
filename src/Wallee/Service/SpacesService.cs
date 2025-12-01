@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -57,7 +61,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteSpacesIdWithHttpInfo(long id, int operationIndex = 0);
-
         /// <summary>
         /// List all spaces
         /// </summary>
@@ -69,7 +72,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SpaceListResponse</returns>
-        SpaceListResponse GetSpaces(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        SpaceListResponse GetSpaces(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all spaces
@@ -85,8 +88,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SpaceListResponse</returns>
-        ApiResponse<SpaceListResponse> GetSpacesWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<SpaceListResponse> GetSpacesWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a space
         /// </summary>
@@ -95,7 +97,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Space</returns>
-        Space GetSpacesId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Space GetSpacesId(long id, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a space
@@ -108,8 +110,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Space</returns>
-        ApiResponse<Space> GetSpacesIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Space> GetSpacesIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search spaces
         /// </summary>
@@ -121,7 +122,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SpaceSearchResponse</returns>
-        SpaceSearchResponse GetSpacesSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        SpaceSearchResponse GetSpacesSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search spaces
@@ -137,8 +138,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SpaceSearchResponse</returns>
-        ApiResponse<SpaceSearchResponse> GetSpacesSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<SpaceSearchResponse> GetSpacesSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a space
         /// </summary>
@@ -148,7 +148,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Space</returns>
-        Space PatchSpacesId(long id, SpaceUpdate spaceUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Space PatchSpacesId(long id, SpaceUpdate spaceUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a space
@@ -162,8 +162,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Space</returns>
-        ApiResponse<Space> PatchSpacesIdWithHttpInfo(long id, SpaceUpdate spaceUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Space> PatchSpacesIdWithHttpInfo(long id, SpaceUpdate spaceUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a space
         /// </summary>
@@ -172,7 +171,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Space</returns>
-        Space PostSpaces(SpaceCreate spaceCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Space PostSpaces(SpaceCreate spaceCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a space
@@ -185,8 +184,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Space</returns>
-        ApiResponse<Space> PostSpacesWithHttpInfo(SpaceCreate spaceCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Space> PostSpacesWithHttpInfo(SpaceCreate spaceCreate, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -304,6 +302,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -324,7 +323,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/spaces/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/spaces/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -348,7 +347,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SpaceListResponse</returns>
-        public SpaceListResponse GetSpaces(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public SpaceListResponse GetSpaces(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SpaceListResponse> localVarResponse = GetSpacesWithHttpInfo(after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -365,7 +364,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SpaceListResponse</returns>
-        public Wallee.Client.ApiResponse<SpaceListResponse> GetSpacesWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SpaceListResponse> GetSpacesWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -378,6 +377,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -417,7 +417,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SpaceListResponse>("/spaces",
+            var localVarResponse = this.Client.Get<SpaceListResponse>("/spaces",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -438,7 +438,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Space</returns>
-        public Space GetSpacesId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Space GetSpacesId(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Space> localVarResponse = GetSpacesIdWithHttpInfo(id, expand);
             return localVarResponse.Data;
@@ -452,7 +452,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Space</returns>
-        public Wallee.Client.ApiResponse<Space> GetSpacesIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Space> GetSpacesIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -465,6 +465,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -489,7 +490,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<Space>("/spaces/{id}",
+            var localVarResponse = this.Client.Get<Space>("/spaces/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -513,7 +514,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SpaceSearchResponse</returns>
-        public SpaceSearchResponse GetSpacesSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public SpaceSearchResponse GetSpacesSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SpaceSearchResponse> localVarResponse = GetSpacesSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -530,7 +531,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SpaceSearchResponse</returns>
-        public Wallee.Client.ApiResponse<SpaceSearchResponse> GetSpacesSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SpaceSearchResponse> GetSpacesSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -543,6 +544,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -582,7 +584,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SpaceSearchResponse>("/spaces/search",
+            var localVarResponse = this.Client.Get<SpaceSearchResponse>("/spaces/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -604,7 +606,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Space</returns>
-        public Space PatchSpacesId(long id, SpaceUpdate spaceUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Space PatchSpacesId(long id, SpaceUpdate spaceUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Space> localVarResponse = PatchSpacesIdWithHttpInfo(id, spaceUpdate, expand);
             return localVarResponse.Data;
@@ -619,7 +621,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Space</returns>
-        public Wallee.Client.ApiResponse<Space> PatchSpacesIdWithHttpInfo(long id, SpaceUpdate spaceUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Space> PatchSpacesIdWithHttpInfo(long id, SpaceUpdate spaceUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'spaceUpdate' is set
             if (spaceUpdate == null)
@@ -639,6 +641,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -664,7 +667,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<Space>("/spaces/{id}",
+            var localVarResponse = this.Client.Patch<Space>("/spaces/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -685,7 +688,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Space</returns>
-        public Space PostSpaces(SpaceCreate spaceCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Space PostSpaces(SpaceCreate spaceCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Space> localVarResponse = PostSpacesWithHttpInfo(spaceCreate, expand);
             return localVarResponse.Data;
@@ -699,7 +702,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Space</returns>
-        public Wallee.Client.ApiResponse<Space> PostSpacesWithHttpInfo(SpaceCreate spaceCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Space> PostSpacesWithHttpInfo(SpaceCreate spaceCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'spaceCreate' is set
             if (spaceCreate == null)
@@ -719,6 +722,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -743,7 +747,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Space>("/spaces",
+            var localVarResponse = this.Client.Post<Space>("/spaces",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

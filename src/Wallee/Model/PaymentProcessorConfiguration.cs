@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="state">state.</param>
         /// <param name="processor">processor.</param>
-        public PaymentProcessorConfiguration(CreationEntityState? state = default(CreationEntityState?), PaymentProcessor processor = default(PaymentProcessor))
+        public PaymentProcessorConfiguration(CreationEntityState? state = default, PaymentProcessor processor = default)
         {
             this.State = state;
             this.Processor = processor;

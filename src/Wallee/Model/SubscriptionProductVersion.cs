@@ -62,7 +62,7 @@ namespace Wallee.Model
         /// <param name="taxCalculation">taxCalculation.</param>
         /// <param name="billingCycleModel">billingCycleModel.</param>
         /// <param name="state">state.</param>
-        public SubscriptionProductVersion(SubscriptionProduct product = default(SubscriptionProduct), TaxCalculation? taxCalculation = default(TaxCalculation?), BillingCycleModel billingCycleModel = default(BillingCycleModel), SubscriptionProductVersionState? state = default(SubscriptionProductVersionState?))
+        public SubscriptionProductVersion(SubscriptionProduct product = default, TaxCalculation? taxCalculation = default, BillingCycleModel billingCycleModel = default, SubscriptionProductVersionState? state = default)
         {
             this.Product = product;
             this.TaxCalculation = taxCalculation;

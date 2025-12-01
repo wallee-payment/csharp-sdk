@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -46,7 +50,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CompletionListResponse</returns>
-        CompletionListResponse GetPaymentTransactionsCompletions(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        CompletionListResponse GetPaymentTransactionsCompletions(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all transaction completions
@@ -63,8 +67,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CompletionListResponse</returns>
-        ApiResponse<CompletionListResponse> GetPaymentTransactionsCompletionsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<CompletionListResponse> GetPaymentTransactionsCompletionsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a transaction completion
         /// </summary>
@@ -74,7 +77,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionCompletion</returns>
-        TransactionCompletion GetPaymentTransactionsCompletionsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionCompletion GetPaymentTransactionsCompletionsId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a transaction completion
@@ -88,8 +91,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionCompletion</returns>
-        ApiResponse<TransactionCompletion> GetPaymentTransactionsCompletionsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionCompletion> GetPaymentTransactionsCompletionsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search transaction completions
         /// </summary>
@@ -102,7 +104,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CompletionSearchResponse</returns>
-        CompletionSearchResponse GetPaymentTransactionsCompletionsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        CompletionSearchResponse GetPaymentTransactionsCompletionsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search transaction completions
@@ -119,8 +121,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CompletionSearchResponse</returns>
-        ApiResponse<CompletionSearchResponse> GetPaymentTransactionsCompletionsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<CompletionSearchResponse> GetPaymentTransactionsCompletionsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -218,7 +219,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CompletionListResponse</returns>
-        public CompletionListResponse GetPaymentTransactionsCompletions(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public CompletionListResponse GetPaymentTransactionsCompletions(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<CompletionListResponse> localVarResponse = GetPaymentTransactionsCompletionsWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -236,7 +237,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CompletionListResponse</returns>
-        public Wallee.Client.ApiResponse<CompletionListResponse> GetPaymentTransactionsCompletionsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<CompletionListResponse> GetPaymentTransactionsCompletionsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -249,6 +250,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -289,7 +291,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<CompletionListResponse>("/payment/transactions/completions",
+            var localVarResponse = this.Client.Get<CompletionListResponse>("/payment/transactions/completions",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -311,7 +313,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionCompletion</returns>
-        public TransactionCompletion GetPaymentTransactionsCompletionsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionCompletion GetPaymentTransactionsCompletionsId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionCompletion> localVarResponse = GetPaymentTransactionsCompletionsIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -326,7 +328,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionCompletion</returns>
-        public Wallee.Client.ApiResponse<TransactionCompletion> GetPaymentTransactionsCompletionsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionCompletion> GetPaymentTransactionsCompletionsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -339,6 +341,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -364,7 +367,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<TransactionCompletion>("/payment/transactions/completions/{id}",
+            var localVarResponse = this.Client.Get<TransactionCompletion>("/payment/transactions/completions/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -389,7 +392,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CompletionSearchResponse</returns>
-        public CompletionSearchResponse GetPaymentTransactionsCompletionsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public CompletionSearchResponse GetPaymentTransactionsCompletionsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<CompletionSearchResponse> localVarResponse = GetPaymentTransactionsCompletionsSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -407,7 +410,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CompletionSearchResponse</returns>
-        public Wallee.Client.ApiResponse<CompletionSearchResponse> GetPaymentTransactionsCompletionsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<CompletionSearchResponse> GetPaymentTransactionsCompletionsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -420,6 +423,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -460,7 +464,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<CompletionSearchResponse>("/payment/transactions/completions/search",
+            var localVarResponse = this.Client.Get<CompletionSearchResponse>("/payment/transactions/completions/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

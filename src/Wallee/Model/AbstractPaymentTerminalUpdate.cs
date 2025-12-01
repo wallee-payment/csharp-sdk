@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="AbstractPaymentTerminalUpdate" /> class.
         /// </summary>
         /// <param name="name">The name used to identify the payment terminal..</param>
-        public AbstractPaymentTerminalUpdate(string name = default(string))
+        public AbstractPaymentTerminalUpdate(string name = default)
         {
             this.Name = name;
         }

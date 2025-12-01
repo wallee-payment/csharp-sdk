@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// <param name="amount">The total amount of the line item to be captured, including taxes. (required).</param>
         /// <param name="quantity">The number of items to be captured. (required).</param>
         /// <param name="uniqueId">The unique identifier of the line item within the set of line items. (required).</param>
-        public CompletionLineItemCreate(decimal amount = default(decimal), decimal quantity = default(decimal), string uniqueId = default(string))
+        public CompletionLineItemCreate(decimal amount = default, decimal quantity = default, string uniqueId = default)
         {
             this.Amount = amount;
             this.Quantity = quantity;

@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="WebhookIdentity" /> class.
         /// </summary>
         /// <param name="state">state.</param>
-        public WebhookIdentity(CreationEntityState? state = default(CreationEntityState?))
+        public WebhookIdentity(CreationEntityState? state = default)
         {
             this.State = state;
         }

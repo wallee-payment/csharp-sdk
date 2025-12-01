@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="state">state.</param>
         /// <param name="type">type.</param>
-        public SubscriptionMetric(CreationEntityState? state = default(CreationEntityState?), SubscriptionMetricType type = default(SubscriptionMetricType))
+        public SubscriptionMetric(CreationEntityState? state = default, SubscriptionMetricType type = default)
         {
             this.State = state;
             this.Type = type;

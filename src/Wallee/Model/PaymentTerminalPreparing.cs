@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// <param name="name">The name used to identify the payment terminal..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
         /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result..</param>
-        public PaymentTerminalPreparing(string name = default(string), int varVersion = default(int), string externalId = default(string))
+        public PaymentTerminalPreparing(string name = default, int varVersion = default, string externalId = default)
         {
             this.VarVersion = varVersion;
             this.Name = name;

@@ -62,7 +62,7 @@ namespace Wallee.Model
         /// <param name="mode">mode.</param>
         /// <param name="state">state.</param>
         /// <param name="failureReason">failureReason.</param>
-        public TransactionCompletion(TransactionLineItemVersion lineItemVersion = default(TransactionLineItemVersion), TransactionCompletionMode? mode = default(TransactionCompletionMode?), TransactionCompletionState? state = default(TransactionCompletionState?), FailureReason failureReason = default(FailureReason))
+        public TransactionCompletion(TransactionLineItemVersion lineItemVersion = default, TransactionCompletionMode? mode = default, TransactionCompletionState? state = default, FailureReason failureReason = default)
         {
             this.LineItemVersion = lineItemVersion;
             this.Mode = mode;

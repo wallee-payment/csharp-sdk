@@ -74,7 +74,7 @@ namespace Wallee.Model
         /// <param name="state">state.</param>
         /// <param name="numberOfNoticePeriods">The number of periods the subscription will keep running after its termination was requested..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public SubscriptionProductVersionPending(List<string> enabledCurrencies = default(List<string>), long product = default(long), TaxCalculation? taxCalculation = default(TaxCalculation?), string billingCycle = default(string), string defaultCurrency = default(string), Dictionary<string, string> name = default(Dictionary<string, string>), int minimalNumberOfPeriods = default(int), string comment = default(string), SubscriptionProductVersionState? state = default(SubscriptionProductVersionState?), int numberOfNoticePeriods = default(int), int varVersion = default(int))
+        public SubscriptionProductVersionPending(List<string> enabledCurrencies = default, long product = default, TaxCalculation? taxCalculation = default, string billingCycle = default, string defaultCurrency = default, Dictionary<string, string> name = default, int minimalNumberOfPeriods = default, string comment = default, SubscriptionProductVersionState? state = default, int numberOfNoticePeriods = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.EnabledCurrencies = enabledCurrencies;

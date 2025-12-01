@@ -68,7 +68,7 @@ namespace Wallee.Model
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
         /// <param name="state">state.</param>
-        public SubscriberActive(string reference = default(string), List<long> additionalAllowedPaymentMethodConfigurations = default(List<long>), Dictionary<string, string> metaData = default(Dictionary<string, string>), string emailAddress = default(string), List<long> disallowedPaymentMethodConfigurations = default(List<long>), string description = default(string), AddressCreate shippingAddress = default(AddressCreate), string language = default(string), AddressCreate billingAddress = default(AddressCreate), int varVersion = default(int), CreationEntityState? state = default(CreationEntityState?))
+        public SubscriberActive(string reference = default, List<long> additionalAllowedPaymentMethodConfigurations = default, Dictionary<string, string> metaData = default, string emailAddress = default, List<long> disallowedPaymentMethodConfigurations = default, string description = default, AddressCreate shippingAddress = default, string language = default, AddressCreate billingAddress = default, int varVersion = default, CreationEntityState? state = default)
         {
             this.VarVersion = varVersion;
             this.Reference = reference;

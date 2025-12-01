@@ -60,7 +60,7 @@ public class RefundTests
         var processedTransaction = transactionsService.PostPaymentTransactionsIdProcessCardDetails(
             transaction.Id, SPACE_ID, MOCK_CARD_DATA, EMPTY_EXPAND);
 
-        var transactionCompletion = transactionsService.PostPaymentTransactionsIdCompleteOffline(
+        var transactionCompletion = transactionsService.PostPaymentTransactionsIdCompleteOnline(
             transaction.Id, SPACE_ID, EMPTY_EXPAND);
 
         Assert.That(transactionCompletion.State, Is.EqualTo(TransactionCompletionState.SUCCESSFUL),
@@ -91,7 +91,7 @@ public class RefundTests
         var processedTransaction = transactionsService.PostPaymentTransactionsIdProcessCardDetails(
             transaction.Id, SPACE_ID, MOCK_CARD_DATA, EMPTY_EXPAND);
 
-        var transactionCompletion = transactionsService.PostPaymentTransactionsIdCompleteOffline(
+        var transactionCompletion = transactionsService.PostPaymentTransactionsIdCompleteOnline(
             transaction.Id, SPACE_ID, EMPTY_EXPAND);
 
         Assert.That(transactionCompletion.State, Is.EqualTo(TransactionCompletionState.SUCCESSFUL),
@@ -117,7 +117,7 @@ public class RefundTests
     {
         var refundCreate = new RefundCreate(
             transaction: transaction.Id,
-            type: RefundType.MERCHANTINITIATEDOFFLINE,
+            type: RefundType.MERCHANTINITIATEDONLINE,
             externalId: System.Guid.NewGuid().ToString(),
             amount: 29.95m
         );

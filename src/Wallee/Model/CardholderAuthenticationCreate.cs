@@ -68,7 +68,7 @@ namespace Wallee.Model
         /// <param name="electronicCommerceIndicator">The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions..</param>
         /// <param name="authenticationValue">The cryptographic token (CAVV/AAV) generated during the authentication process to validate the cardholder&#39;s identity..</param>
         /// <param name="varVersion">varVersion (required).</param>
-        public CardholderAuthenticationCreate(string authenticationIdentifier = default(string), CardAuthenticationResponse authenticationResponse = default(CardAuthenticationResponse), string electronicCommerceIndicator = default(string), string authenticationValue = default(string), CardAuthenticationVersion varVersion = default(CardAuthenticationVersion))
+        public CardholderAuthenticationCreate(string authenticationIdentifier = default, CardAuthenticationResponse authenticationResponse = default, string electronicCommerceIndicator = default, string authenticationValue = default, CardAuthenticationVersion varVersion = default)
         {
             this.AuthenticationResponse = authenticationResponse;
             this.VarVersion = varVersion;

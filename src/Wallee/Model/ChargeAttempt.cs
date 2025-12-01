@@ -81,7 +81,7 @@ namespace Wallee.Model
         /// <param name="connectorConfiguration">connectorConfiguration.</param>
         /// <param name="failureReason">failureReason.</param>
         /// <param name="customersPresence">customersPresence.</param>
-        public ChargeAttempt(TokenVersion tokenVersion = default(TokenVersion), ChargeAttemptState? state = default(ChargeAttemptState?), Charge charge = default(Charge), WalletType wallet = default(WalletType), PaymentTerminal terminal = default(PaymentTerminal), TransactionCompletionBehavior? completionBehavior = default(TransactionCompletionBehavior?), ChargeAttemptEnvironment? varEnvironment = default(ChargeAttemptEnvironment?), ConnectorInvocation invocation = default(ConnectorInvocation), PaymentConnectorConfiguration connectorConfiguration = default(PaymentConnectorConfiguration), FailureReason failureReason = default(FailureReason), CustomersPresence? customersPresence = default(CustomersPresence?))
+        public ChargeAttempt(TokenVersion tokenVersion = default, ChargeAttemptState? state = default, Charge charge = default, WalletType wallet = default, PaymentTerminal terminal = default, TransactionCompletionBehavior? completionBehavior = default, ChargeAttemptEnvironment? varEnvironment = default, ConnectorInvocation invocation = default, PaymentConnectorConfiguration connectorConfiguration = default, FailureReason failureReason = default, CustomersPresence? customersPresence = default)
         {
             this.TokenVersion = tokenVersion;
             this.State = state;

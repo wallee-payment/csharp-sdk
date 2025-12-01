@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="gender">gender.</param>
         /// <param name="legalOrganizationForm">legalOrganizationForm.</param>
-        public CustomerPostalAddress(Gender? gender = default(Gender?), LegalOrganizationForm legalOrganizationForm = default(LegalOrganizationForm))
+        public CustomerPostalAddress(Gender? gender = default, LegalOrganizationForm legalOrganizationForm = default)
         {
             this.Gender = gender;
             this.LegalOrganizationForm = legalOrganizationForm;

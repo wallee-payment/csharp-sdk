@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="product">product.</param>
         /// <param name="targetProduct">targetProduct.</param>
-        public SubscriptionProductRetirement(SubscriptionProduct product = default(SubscriptionProduct), SubscriptionProduct targetProduct = default(SubscriptionProduct))
+        public SubscriptionProductRetirement(SubscriptionProduct product = default, SubscriptionProduct targetProduct = default)
         {
             this.Product = product;
             this.TargetProduct = targetProduct;

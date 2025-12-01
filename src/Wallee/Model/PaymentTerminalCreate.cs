@@ -57,7 +57,7 @@ namespace Wallee.Model
         /// <param name="locationVersion">The physical location where the terminal is used..</param>
         /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
         /// <param name="type">The type of the payment terminal. (required).</param>
-        public PaymentTerminalCreate(string name = default(string), string identifier = default(string), long configurationVersion = default(long), long locationVersion = default(long), string externalId = default(string), long type = default(long))
+        public PaymentTerminalCreate(string name = default, string identifier = default, long configurationVersion = default, long locationVersion = default, string externalId = default, long type = default)
         {
             // to ensure "externalId" is required (not null)
             if (externalId == null)

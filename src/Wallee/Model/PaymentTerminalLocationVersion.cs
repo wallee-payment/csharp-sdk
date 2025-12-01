@@ -56,7 +56,7 @@ namespace Wallee.Model
         /// <param name="contactAddress">contactAddress.</param>
         /// <param name="location">location.</param>
         /// <param name="state">state.</param>
-        public PaymentTerminalLocationVersion(PaymentTerminalAddress address = default(PaymentTerminalAddress), PaymentTerminalAddress contactAddress = default(PaymentTerminalAddress), PaymentTerminalLocation location = default(PaymentTerminalLocation), PaymentTerminalLocationVersionState? state = default(PaymentTerminalLocationVersionState?))
+        public PaymentTerminalLocationVersion(PaymentTerminalAddress address = default, PaymentTerminalAddress contactAddress = default, PaymentTerminalLocation location = default, PaymentTerminalLocationVersionState? state = default)
         {
             this.Address = address;
             this.ContactAddress = contactAddress;

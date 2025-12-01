@@ -60,7 +60,7 @@ namespace Wallee.Model
         /// <param name="language">The language that is linked to the object..</param>
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="spaceViewId">The ID of the space view this object is linked to..</param>
-        public AbstractDebtCollectionCaseUpdate(List<LineItemCreate> lineItems = default(List<LineItemCreate>), DateTime contractDate = default(DateTime), DebtCollectionEnvironment? varEnvironment = default(DebtCollectionEnvironment?), DateTime dueDate = default(DateTime), string currency = default(string), string language = default(string), AddressCreate billingAddress = default(AddressCreate), long spaceViewId = default(long))
+        public AbstractDebtCollectionCaseUpdate(List<LineItemCreate> lineItems = default, DateTime contractDate = default, DebtCollectionEnvironment? varEnvironment = default, DateTime dueDate = default, string currency = default, string language = default, AddressCreate billingAddress = default, long spaceViewId = default)
         {
             this.LineItems = lineItems;
             this.ContractDate = contractDate;

@@ -58,7 +58,7 @@ namespace Wallee.Model
         /// <param name="state">state.</param>
         /// <param name="failedPaymentSuspensionPeriod">The period after which a subscription that has been suspended due to a failed payment is terminated..</param>
         /// <param name="allowedPaymentMethodConfigurations">The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied..</param>
-        public AbstractSubscriptionProductActive(int sortOrder = default(int), string name = default(string), bool productLocked = default(bool), SubscriptionProductState? state = default(SubscriptionProductState?), string failedPaymentSuspensionPeriod = default(string), List<long> allowedPaymentMethodConfigurations = default(List<long>))
+        public AbstractSubscriptionProductActive(int sortOrder = default, string name = default, bool productLocked = default, SubscriptionProductState? state = default, string failedPaymentSuspensionPeriod = default, List<long> allowedPaymentMethodConfigurations = default)
         {
             this.SortOrder = sortOrder;
             this.Name = name;

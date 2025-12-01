@@ -61,7 +61,7 @@ namespace Wallee.Model
         /// <param name="language">The language that is used when communicating with the subscriber via emails and documents..</param>
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public SubscriberUpdate(string reference = default(string), List<long> additionalAllowedPaymentMethodConfigurations = default(List<long>), Dictionary<string, string> metaData = default(Dictionary<string, string>), string emailAddress = default(string), List<long> disallowedPaymentMethodConfigurations = default(List<long>), string description = default(string), AddressCreate shippingAddress = default(AddressCreate), string language = default(string), AddressCreate billingAddress = default(AddressCreate), int varVersion = default(int))
+        public SubscriberUpdate(string reference = default, List<long> additionalAllowedPaymentMethodConfigurations = default, Dictionary<string, string> metaData = default, string emailAddress = default, List<long> disallowedPaymentMethodConfigurations = default, string description = default, AddressCreate shippingAddress = default, string language = default, AddressCreate billingAddress = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Reference = reference;

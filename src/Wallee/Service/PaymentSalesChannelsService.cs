@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -45,7 +49,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SalesChannelListResponse</returns>
-        SalesChannelListResponse GetPaymentSalesChannels(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        SalesChannelListResponse GetPaymentSalesChannels(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all payment sales channels.
@@ -61,8 +65,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SalesChannelListResponse</returns>
-        ApiResponse<SalesChannelListResponse> GetPaymentSalesChannelsWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<SalesChannelListResponse> GetPaymentSalesChannelsWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a payment sales channel.
         /// </summary>
@@ -71,7 +74,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SalesChannel</returns>
-        SalesChannel GetPaymentSalesChannelsId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        SalesChannel GetPaymentSalesChannelsId(long id, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a payment sales channel.
@@ -84,8 +87,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SalesChannel</returns>
-        ApiResponse<SalesChannel> GetPaymentSalesChannelsIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<SalesChannel> GetPaymentSalesChannelsIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search payment sales channels.
         /// </summary>
@@ -97,7 +99,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SalesChannelSearchResponse</returns>
-        SalesChannelSearchResponse GetPaymentSalesChannelsSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        SalesChannelSearchResponse GetPaymentSalesChannelsSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search payment sales channels.
@@ -113,8 +115,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SalesChannelSearchResponse</returns>
-        ApiResponse<SalesChannelSearchResponse> GetPaymentSalesChannelsSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<SalesChannelSearchResponse> GetPaymentSalesChannelsSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -211,7 +212,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SalesChannelListResponse</returns>
-        public SalesChannelListResponse GetPaymentSalesChannels(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public SalesChannelListResponse GetPaymentSalesChannels(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SalesChannelListResponse> localVarResponse = GetPaymentSalesChannelsWithHttpInfo(after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -228,7 +229,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SalesChannelListResponse</returns>
-        public Wallee.Client.ApiResponse<SalesChannelListResponse> GetPaymentSalesChannelsWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SalesChannelListResponse> GetPaymentSalesChannelsWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -241,6 +242,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -280,7 +282,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SalesChannelListResponse>("/payment/sales-channels",
+            var localVarResponse = this.Client.Get<SalesChannelListResponse>("/payment/sales-channels",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -301,7 +303,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SalesChannel</returns>
-        public SalesChannel GetPaymentSalesChannelsId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public SalesChannel GetPaymentSalesChannelsId(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SalesChannel> localVarResponse = GetPaymentSalesChannelsIdWithHttpInfo(id, expand);
             return localVarResponse.Data;
@@ -315,7 +317,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SalesChannel</returns>
-        public Wallee.Client.ApiResponse<SalesChannel> GetPaymentSalesChannelsIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SalesChannel> GetPaymentSalesChannelsIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -328,6 +330,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -352,7 +355,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SalesChannel>("/payment/sales-channels/{id}",
+            var localVarResponse = this.Client.Get<SalesChannel>("/payment/sales-channels/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -376,7 +379,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SalesChannelSearchResponse</returns>
-        public SalesChannelSearchResponse GetPaymentSalesChannelsSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public SalesChannelSearchResponse GetPaymentSalesChannelsSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SalesChannelSearchResponse> localVarResponse = GetPaymentSalesChannelsSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -393,7 +396,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SalesChannelSearchResponse</returns>
-        public Wallee.Client.ApiResponse<SalesChannelSearchResponse> GetPaymentSalesChannelsSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SalesChannelSearchResponse> GetPaymentSalesChannelsSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -406,6 +409,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -445,7 +449,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SalesChannelSearchResponse>("/payment/sales-channels/search",
+            var localVarResponse = this.Client.Get<SalesChannelSearchResponse>("/payment/sales-channels/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

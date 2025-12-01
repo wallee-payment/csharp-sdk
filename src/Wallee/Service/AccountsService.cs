@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -57,7 +61,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteAccountsIdWithHttpInfo(long id, int operationIndex = 0);
-
         /// <summary>
         /// List all accounts
         /// </summary>
@@ -69,7 +72,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountListResponse</returns>
-        AccountListResponse GetAccounts(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        AccountListResponse GetAccounts(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all accounts
@@ -85,8 +88,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountListResponse</returns>
-        ApiResponse<AccountListResponse> GetAccountsWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<AccountListResponse> GetAccountsWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve an account
         /// </summary>
@@ -95,7 +97,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        Account GetAccountsId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Account GetAccountsId(long id, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve an account
@@ -108,8 +110,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        ApiResponse<Account> GetAccountsIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Account> GetAccountsIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search accounts
         /// </summary>
@@ -121,7 +122,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountSearchResponse</returns>
-        AccountSearchResponse GetAccountsSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        AccountSearchResponse GetAccountsSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search accounts
@@ -137,8 +138,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountSearchResponse</returns>
-        ApiResponse<AccountSearchResponse> GetAccountsSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<AccountSearchResponse> GetAccountsSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update an account
         /// </summary>
@@ -148,7 +148,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        Account PatchAccountsId(long id, AccountUpdate accountUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Account PatchAccountsId(long id, AccountUpdate accountUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update an account
@@ -162,8 +162,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        ApiResponse<Account> PatchAccountsIdWithHttpInfo(long id, AccountUpdate accountUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Account> PatchAccountsIdWithHttpInfo(long id, AccountUpdate accountUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create an account
         /// </summary>
@@ -172,7 +171,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        Account PostAccounts(AccountCreate accountCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Account PostAccounts(AccountCreate accountCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create an account
@@ -185,8 +184,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        ApiResponse<Account> PostAccountsWithHttpInfo(AccountCreate accountCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Account> PostAccountsWithHttpInfo(AccountCreate accountCreate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Activate an account
         /// </summary>
@@ -207,7 +205,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PostAccountsIdActivateWithHttpInfo(long id, int operationIndex = 0);
-
         /// <summary>
         /// Deactivate an account
         /// </summary>
@@ -228,7 +225,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PostAccountsIdDeactivateWithHttpInfo(long id, int operationIndex = 0);
-
         #endregion Synchronous Operations
     }
 
@@ -346,6 +342,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -366,7 +363,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/accounts/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/accounts/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -390,7 +387,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountListResponse</returns>
-        public AccountListResponse GetAccounts(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public AccountListResponse GetAccounts(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<AccountListResponse> localVarResponse = GetAccountsWithHttpInfo(after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -407,7 +404,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountListResponse</returns>
-        public Wallee.Client.ApiResponse<AccountListResponse> GetAccountsWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<AccountListResponse> GetAccountsWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -420,6 +417,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -459,7 +457,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<AccountListResponse>("/accounts",
+            var localVarResponse = this.Client.Get<AccountListResponse>("/accounts",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -480,7 +478,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        public Account GetAccountsId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Account GetAccountsId(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Account> localVarResponse = GetAccountsIdWithHttpInfo(id, expand);
             return localVarResponse.Data;
@@ -494,7 +492,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        public Wallee.Client.ApiResponse<Account> GetAccountsIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Account> GetAccountsIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -507,6 +505,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -531,7 +530,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<Account>("/accounts/{id}",
+            var localVarResponse = this.Client.Get<Account>("/accounts/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -555,7 +554,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>AccountSearchResponse</returns>
-        public AccountSearchResponse GetAccountsSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public AccountSearchResponse GetAccountsSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<AccountSearchResponse> localVarResponse = GetAccountsSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -572,7 +571,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AccountSearchResponse</returns>
-        public Wallee.Client.ApiResponse<AccountSearchResponse> GetAccountsSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<AccountSearchResponse> GetAccountsSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -585,6 +584,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -624,7 +624,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<AccountSearchResponse>("/accounts/search",
+            var localVarResponse = this.Client.Get<AccountSearchResponse>("/accounts/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -646,7 +646,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        public Account PatchAccountsId(long id, AccountUpdate accountUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Account PatchAccountsId(long id, AccountUpdate accountUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Account> localVarResponse = PatchAccountsIdWithHttpInfo(id, accountUpdate, expand);
             return localVarResponse.Data;
@@ -661,7 +661,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        public Wallee.Client.ApiResponse<Account> PatchAccountsIdWithHttpInfo(long id, AccountUpdate accountUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Account> PatchAccountsIdWithHttpInfo(long id, AccountUpdate accountUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'accountUpdate' is set
             if (accountUpdate == null)
@@ -681,6 +681,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -706,7 +707,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<Account>("/accounts/{id}",
+            var localVarResponse = this.Client.Patch<Account>("/accounts/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -727,7 +728,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Account</returns>
-        public Account PostAccounts(AccountCreate accountCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Account PostAccounts(AccountCreate accountCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Account> localVarResponse = PostAccountsWithHttpInfo(accountCreate, expand);
             return localVarResponse.Data;
@@ -741,7 +742,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Account</returns>
-        public Wallee.Client.ApiResponse<Account> PostAccountsWithHttpInfo(AccountCreate accountCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Account> PostAccountsWithHttpInfo(AccountCreate accountCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'accountCreate' is set
             if (accountCreate == null)
@@ -761,6 +762,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -785,7 +787,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Account>("/accounts",
+            var localVarResponse = this.Client.Post<Account>("/accounts",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -830,6 +832,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -850,7 +853,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Object>("/accounts/{id}/activate",
+            var localVarResponse = this.Client.Post<Object>("/accounts/{id}/activate",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -895,6 +898,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -915,7 +919,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Object>("/accounts/{id}/deactivate",
+            var localVarResponse = this.Client.Post<Object>("/accounts/{id}/deactivate",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

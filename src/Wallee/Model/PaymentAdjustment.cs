@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="PaymentAdjustment" /> class.
         /// </summary>
         /// <param name="tax">tax.</param>
-        public PaymentAdjustment(Tax tax = default(Tax))
+        public PaymentAdjustment(Tax tax = default)
         {
             this.Tax = tax;
         }

@@ -61,7 +61,7 @@ namespace Wallee.Model
         /// <param name="name">The name used to identify the application user..</param>
         /// <param name="state">state.</param>
         /// <param name="primaryAccount">The primary account that the user belongs to. (required).</param>
-        public ApplicationUserCreate(long requestLimit = default(long), string name = default(string), CreationEntityState? state = default(CreationEntityState?), long primaryAccount = default(long))
+        public ApplicationUserCreate(long requestLimit = default, string name = default, CreationEntityState? state = default, long primaryAccount = default)
         {
             this.PrimaryAccount = primaryAccount;
             this.RequestLimit = requestLimit;

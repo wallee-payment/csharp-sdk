@@ -60,7 +60,7 @@ namespace Wallee.Model
         /// <param name="address">address.</param>
         /// <param name="addressType">addressType.</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public CustomerAddressActive(CustomerPostalAddressCreate address = default(CustomerPostalAddressCreate), CustomerAddressType? addressType = default(CustomerAddressType?), int varVersion = default(int))
+        public CustomerAddressActive(CustomerPostalAddressCreate address = default, CustomerAddressType? addressType = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Address = address;

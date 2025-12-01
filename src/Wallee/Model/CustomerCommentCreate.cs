@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="content">The comment&#39;s actual content..</param>
         /// <param name="customer">The customer that the object belongs to. (required).</param>
-        public CustomerCommentCreate(string content = default(string), long customer = default(long))
+        public CustomerCommentCreate(string content = default, long customer = default)
         {
             this.Customer = customer;
             this.Content = content;

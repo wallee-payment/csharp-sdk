@@ -63,7 +63,7 @@ namespace Wallee.Model
         /// <param name="state">state.</param>
         /// <param name="reference">The reference used to identify the affiliate. (required).</param>
         /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
-        public SubscriptionAffiliateCreate(Dictionary<string, string> metaData = default(Dictionary<string, string>), string name = default(string), string language = default(string), CreationEntityState? state = default(CreationEntityState?), string reference = default(string), string externalId = default(string))
+        public SubscriptionAffiliateCreate(Dictionary<string, string> metaData = default, string name = default, string language = default, CreationEntityState? state = default, string reference = default, string externalId = default)
         {
             // to ensure "reference" is required (not null)
             if (reference == null)

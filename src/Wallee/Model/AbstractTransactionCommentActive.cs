@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="AbstractTransactionCommentActive" /> class.
         /// </summary>
         /// <param name="content">The comment&#39;s actual content..</param>
-        public AbstractTransactionCommentActive(string content = default(string))
+        public AbstractTransactionCommentActive(string content = default)
         {
             this.Content = content;
         }

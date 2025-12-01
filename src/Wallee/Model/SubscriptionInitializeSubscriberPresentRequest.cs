@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="successUrl">The URL that the user is redirected to if the transaction succeeds..</param>
         /// <param name="failureUrl">The URL that the user is redirected to if the transaction fails..</param>
-        public SubscriptionInitializeSubscriberPresentRequest(string successUrl = default(string), string failureUrl = default(string))
+        public SubscriptionInitializeSubscriberPresentRequest(string successUrl = default, string failureUrl = default)
         {
             this.SuccessUrl = successUrl;
             this.FailureUrl = failureUrl;

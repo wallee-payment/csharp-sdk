@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -57,7 +61,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of bool</returns>
         ApiResponse<bool> GetWebAppsInstalledWithHttpInfo(long space, int operationIndex = 0);
-
         /// <summary>
         /// Confirm a web app installation
         /// </summary>
@@ -69,7 +72,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>WebAppConfirmationResponse</returns>
-        WebAppConfirmationResponse PostWebAppsConfirmCode(string code, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        WebAppConfirmationResponse PostWebAppsConfirmCode(string code, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Confirm a web app installation
@@ -82,8 +85,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of WebAppConfirmationResponse</returns>
-        ApiResponse<WebAppConfirmationResponse> PostWebAppsConfirmCodeWithHttpInfo(string code, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<WebAppConfirmationResponse> PostWebAppsConfirmCodeWithHttpInfo(string code, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Uninstall a web app
         /// </summary>
@@ -107,7 +109,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PostWebAppsUninstallWithHttpInfo(long space, int operationIndex = 0);
-
         #endregion Synchronous Operations
     }
 
@@ -226,6 +227,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -246,7 +248,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<bool>("/web-apps/installed",
+            var localVarResponse = this.Client.Get<bool>("/web-apps/installed",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -267,7 +269,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>WebAppConfirmationResponse</returns>
-        public WebAppConfirmationResponse PostWebAppsConfirmCode(string code, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public WebAppConfirmationResponse PostWebAppsConfirmCode(string code, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<WebAppConfirmationResponse> localVarResponse = PostWebAppsConfirmCodeWithHttpInfo(code, expand);
             return localVarResponse.Data;
@@ -281,7 +283,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of WebAppConfirmationResponse</returns>
-        public Wallee.Client.ApiResponse<WebAppConfirmationResponse> PostWebAppsConfirmCodeWithHttpInfo(string code, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<WebAppConfirmationResponse> PostWebAppsConfirmCodeWithHttpInfo(string code, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'code' is set
             if (code == null)
@@ -300,6 +302,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -324,7 +327,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<WebAppConfirmationResponse>("/web-apps/confirm/{code}",
+            var localVarResponse = this.Client.Post<WebAppConfirmationResponse>("/web-apps/confirm/{code}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -369,6 +372,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -389,7 +393,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Object>("/web-apps/uninstall",
+            var localVarResponse = this.Client.Post<Object>("/web-apps/uninstall",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

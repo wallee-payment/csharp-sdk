@@ -61,7 +61,7 @@ namespace Wallee.Model
         /// <param name="configuredEnvironment">configuredEnvironment.</param>
         /// <param name="processorConfiguration">processorConfiguration.</param>
         /// <param name="state">state.</param>
-        public PaymentAppProcessor(ChargeAttemptEnvironment? configuredEnvironment = default(ChargeAttemptEnvironment?), PaymentProcessorConfiguration processorConfiguration = default(PaymentProcessorConfiguration), PaymentAppProcessorState? state = default(PaymentAppProcessorState?))
+        public PaymentAppProcessor(ChargeAttemptEnvironment? configuredEnvironment = default, PaymentProcessorConfiguration processorConfiguration = default, PaymentAppProcessorState? state = default)
         {
             this.ConfiguredEnvironment = configuredEnvironment;
             this.ProcessorConfiguration = processorConfiguration;

@@ -78,7 +78,7 @@ namespace Wallee.Model
         /// <param name="dataCollectionType">dataCollectionType (required).</param>
         /// <param name="paymentMethod">The payment method that the configuration is for. (required).</param>
         /// <param name="state">state (required).</param>
-        public PaymentMethodConfigurationCreate(string imageResourcePath = default(string), int sortOrder = default(int), string name = default(string), Dictionary<string, string> description = default(Dictionary<string, string>), OneClickPaymentMode? oneClickPaymentMode = default(OneClickPaymentMode?), Dictionary<string, string> title = default(Dictionary<string, string>), DataCollectionType dataCollectionType = default(DataCollectionType), long paymentMethod = default(long), CreationEntityState state = default(CreationEntityState))
+        public PaymentMethodConfigurationCreate(string imageResourcePath = default, int sortOrder = default, string name = default, Dictionary<string, string> description = default, OneClickPaymentMode? oneClickPaymentMode = default, Dictionary<string, string> title = default, DataCollectionType dataCollectionType = default, long paymentMethod = default, CreationEntityState state = default)
         {
             this.DataCollectionType = dataCollectionType;
             this.PaymentMethod = paymentMethod;

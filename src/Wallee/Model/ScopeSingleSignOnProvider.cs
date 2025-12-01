@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="scope">scope.</param>
         /// <param name="state">state.</param>
-        public ScopeSingleSignOnProvider(Scope scope = default(Scope), CreationEntityState? state = default(CreationEntityState?))
+        public ScopeSingleSignOnProvider(Scope scope = default, CreationEntityState? state = default)
         {
             this.Scope = scope;
             this.State = state;

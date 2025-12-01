@@ -64,7 +64,7 @@ namespace Wallee.Model
         /// <param name="failedPaymentSuspensionPeriod">The period after which a subscription that has been suspended due to a failed payment is terminated..</param>
         /// <param name="allowedPaymentMethodConfigurations">The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public SubscriptionProductActive(int sortOrder = default(int), string name = default(string), bool productLocked = default(bool), SubscriptionProductState? state = default(SubscriptionProductState?), string failedPaymentSuspensionPeriod = default(string), List<long> allowedPaymentMethodConfigurations = default(List<long>), int varVersion = default(int))
+        public SubscriptionProductActive(int sortOrder = default, string name = default, bool productLocked = default, SubscriptionProductState? state = default, string failedPaymentSuspensionPeriod = default, List<long> allowedPaymentMethodConfigurations = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.SortOrder = sortOrder;

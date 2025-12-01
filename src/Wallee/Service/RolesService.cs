@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -57,7 +61,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteRolesIdWithHttpInfo(long id, int operationIndex = 0);
-
         /// <summary>
         /// List all roles
         /// </summary>
@@ -69,7 +72,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RoleListResponse</returns>
-        RoleListResponse GetRoles(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        RoleListResponse GetRoles(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all roles
@@ -85,8 +88,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RoleListResponse</returns>
-        ApiResponse<RoleListResponse> GetRolesWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<RoleListResponse> GetRolesWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a role
         /// </summary>
@@ -95,7 +97,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Role</returns>
-        Role GetRolesId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Role GetRolesId(long id, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a role
@@ -108,8 +110,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Role</returns>
-        ApiResponse<Role> GetRolesIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Role> GetRolesIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search roles
         /// </summary>
@@ -121,7 +122,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RoleSearchResponse</returns>
-        RoleSearchResponse GetRolesSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        RoleSearchResponse GetRolesSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search roles
@@ -137,8 +138,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RoleSearchResponse</returns>
-        ApiResponse<RoleSearchResponse> GetRolesSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<RoleSearchResponse> GetRolesSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a role
         /// </summary>
@@ -148,7 +148,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Role</returns>
-        Role PatchRolesId(long id, RoleUpdate roleUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Role PatchRolesId(long id, RoleUpdate roleUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a role
@@ -162,8 +162,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Role</returns>
-        ApiResponse<Role> PatchRolesIdWithHttpInfo(long id, RoleUpdate roleUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Role> PatchRolesIdWithHttpInfo(long id, RoleUpdate roleUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a role
         /// </summary>
@@ -172,7 +171,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Role</returns>
-        Role PostRoles(RoleCreate roleCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Role PostRoles(RoleCreate roleCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a role
@@ -185,8 +184,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Role</returns>
-        ApiResponse<Role> PostRolesWithHttpInfo(RoleCreate roleCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Role> PostRolesWithHttpInfo(RoleCreate roleCreate, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -304,6 +302,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -324,7 +323,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/roles/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/roles/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -348,7 +347,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RoleListResponse</returns>
-        public RoleListResponse GetRoles(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public RoleListResponse GetRoles(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<RoleListResponse> localVarResponse = GetRolesWithHttpInfo(after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -365,7 +364,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RoleListResponse</returns>
-        public Wallee.Client.ApiResponse<RoleListResponse> GetRolesWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<RoleListResponse> GetRolesWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -378,6 +377,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -417,7 +417,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<RoleListResponse>("/roles",
+            var localVarResponse = this.Client.Get<RoleListResponse>("/roles",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -438,7 +438,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Role</returns>
-        public Role GetRolesId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Role GetRolesId(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Role> localVarResponse = GetRolesIdWithHttpInfo(id, expand);
             return localVarResponse.Data;
@@ -452,7 +452,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Role</returns>
-        public Wallee.Client.ApiResponse<Role> GetRolesIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Role> GetRolesIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -465,6 +465,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -489,7 +490,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<Role>("/roles/{id}",
+            var localVarResponse = this.Client.Get<Role>("/roles/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -513,7 +514,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RoleSearchResponse</returns>
-        public RoleSearchResponse GetRolesSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public RoleSearchResponse GetRolesSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<RoleSearchResponse> localVarResponse = GetRolesSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -530,7 +531,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RoleSearchResponse</returns>
-        public Wallee.Client.ApiResponse<RoleSearchResponse> GetRolesSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<RoleSearchResponse> GetRolesSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -543,6 +544,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -582,7 +584,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<RoleSearchResponse>("/roles/search",
+            var localVarResponse = this.Client.Get<RoleSearchResponse>("/roles/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -604,7 +606,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Role</returns>
-        public Role PatchRolesId(long id, RoleUpdate roleUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Role PatchRolesId(long id, RoleUpdate roleUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Role> localVarResponse = PatchRolesIdWithHttpInfo(id, roleUpdate, expand);
             return localVarResponse.Data;
@@ -619,7 +621,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Role</returns>
-        public Wallee.Client.ApiResponse<Role> PatchRolesIdWithHttpInfo(long id, RoleUpdate roleUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Role> PatchRolesIdWithHttpInfo(long id, RoleUpdate roleUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'roleUpdate' is set
             if (roleUpdate == null)
@@ -639,6 +641,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -664,7 +667,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<Role>("/roles/{id}",
+            var localVarResponse = this.Client.Patch<Role>("/roles/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -685,7 +688,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Role</returns>
-        public Role PostRoles(RoleCreate roleCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Role PostRoles(RoleCreate roleCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Role> localVarResponse = PostRolesWithHttpInfo(roleCreate, expand);
             return localVarResponse.Data;
@@ -699,7 +702,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Role</returns>
-        public Wallee.Client.ApiResponse<Role> PostRolesWithHttpInfo(RoleCreate roleCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Role> PostRolesWithHttpInfo(RoleCreate roleCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'roleCreate' is set
             if (roleCreate == null)
@@ -719,6 +722,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -743,7 +747,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Role>("/roles",
+            var localVarResponse = this.Client.Post<Role>("/roles",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

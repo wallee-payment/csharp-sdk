@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -46,7 +50,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ClientPlatformInformationListResponse</returns>
-        ClientPlatformInformationListResponse GetPaymentTransactionClientPlatforms(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        ClientPlatformInformationListResponse GetPaymentTransactionClientPlatforms(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all client platforms
@@ -63,8 +67,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ClientPlatformInformationListResponse</returns>
-        ApiResponse<ClientPlatformInformationListResponse> GetPaymentTransactionClientPlatformsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<ClientPlatformInformationListResponse> GetPaymentTransactionClientPlatformsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve the client platform based on id
         /// </summary>
@@ -74,7 +77,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionClientPlatformInformation</returns>
-        TransactionClientPlatformInformation GetPaymentTransactionClientPlatformsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionClientPlatformInformation GetPaymentTransactionClientPlatformsId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve the client platform based on id
@@ -88,8 +91,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionClientPlatformInformation</returns>
-        ApiResponse<TransactionClientPlatformInformation> GetPaymentTransactionClientPlatformsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionClientPlatformInformation> GetPaymentTransactionClientPlatformsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search client platforms
         /// </summary>
@@ -102,7 +104,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ClientPlatformInformationSearchResponse</returns>
-        ClientPlatformInformationSearchResponse GetPaymentTransactionClientPlatformsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        ClientPlatformInformationSearchResponse GetPaymentTransactionClientPlatformsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search client platforms
@@ -119,8 +121,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ClientPlatformInformationSearchResponse</returns>
-        ApiResponse<ClientPlatformInformationSearchResponse> GetPaymentTransactionClientPlatformsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<ClientPlatformInformationSearchResponse> GetPaymentTransactionClientPlatformsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -218,7 +219,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ClientPlatformInformationListResponse</returns>
-        public ClientPlatformInformationListResponse GetPaymentTransactionClientPlatforms(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public ClientPlatformInformationListResponse GetPaymentTransactionClientPlatforms(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ClientPlatformInformationListResponse> localVarResponse = GetPaymentTransactionClientPlatformsWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -236,7 +237,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ClientPlatformInformationListResponse</returns>
-        public Wallee.Client.ApiResponse<ClientPlatformInformationListResponse> GetPaymentTransactionClientPlatformsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ClientPlatformInformationListResponse> GetPaymentTransactionClientPlatformsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -249,6 +250,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -289,7 +291,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ClientPlatformInformationListResponse>("/payment/transaction/client-platforms",
+            var localVarResponse = this.Client.Get<ClientPlatformInformationListResponse>("/payment/transaction/client-platforms",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -311,7 +313,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionClientPlatformInformation</returns>
-        public TransactionClientPlatformInformation GetPaymentTransactionClientPlatformsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionClientPlatformInformation GetPaymentTransactionClientPlatformsId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionClientPlatformInformation> localVarResponse = GetPaymentTransactionClientPlatformsIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -326,7 +328,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionClientPlatformInformation</returns>
-        public Wallee.Client.ApiResponse<TransactionClientPlatformInformation> GetPaymentTransactionClientPlatformsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionClientPlatformInformation> GetPaymentTransactionClientPlatformsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -339,6 +341,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -364,7 +367,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<TransactionClientPlatformInformation>("/payment/transaction/client-platforms/{id}",
+            var localVarResponse = this.Client.Get<TransactionClientPlatformInformation>("/payment/transaction/client-platforms/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -389,7 +392,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ClientPlatformInformationSearchResponse</returns>
-        public ClientPlatformInformationSearchResponse GetPaymentTransactionClientPlatformsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public ClientPlatformInformationSearchResponse GetPaymentTransactionClientPlatformsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ClientPlatformInformationSearchResponse> localVarResponse = GetPaymentTransactionClientPlatformsSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -407,7 +410,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ClientPlatformInformationSearchResponse</returns>
-        public Wallee.Client.ApiResponse<ClientPlatformInformationSearchResponse> GetPaymentTransactionClientPlatformsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ClientPlatformInformationSearchResponse> GetPaymentTransactionClientPlatformsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -420,6 +423,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -460,7 +464,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ClientPlatformInformationSearchResponse>("/payment/transaction/client-platforms/search",
+            var localVarResponse = this.Client.Get<ClientPlatformInformationSearchResponse>("/payment/transaction/client-platforms/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

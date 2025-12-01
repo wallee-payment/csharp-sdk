@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -59,7 +63,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeletePaymentConnectorConfigurationsIdWithHttpInfo(long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// List all payment connector configurations
         /// </summary>
@@ -72,7 +75,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentConnectorConfigurationListResponse</returns>
-        PaymentConnectorConfigurationListResponse GetPaymentConnectorConfigurations(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        PaymentConnectorConfigurationListResponse GetPaymentConnectorConfigurations(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all payment connector configurations
@@ -89,8 +92,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentConnectorConfigurationListResponse</returns>
-        ApiResponse<PaymentConnectorConfigurationListResponse> GetPaymentConnectorConfigurationsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<PaymentConnectorConfigurationListResponse> GetPaymentConnectorConfigurationsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a payment connector configuration
         /// </summary>
@@ -100,7 +102,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentConnectorConfiguration</returns>
-        PaymentConnectorConfiguration GetPaymentConnectorConfigurationsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentConnectorConfiguration GetPaymentConnectorConfigurationsId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a payment connector configuration
@@ -114,8 +116,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentConnectorConfiguration</returns>
-        ApiResponse<PaymentConnectorConfiguration> GetPaymentConnectorConfigurationsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentConnectorConfiguration> GetPaymentConnectorConfigurationsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search payment connector configurations
         /// </summary>
@@ -128,7 +129,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentConnectorConfigurationSearchResponse</returns>
-        PaymentConnectorConfigurationSearchResponse GetPaymentConnectorConfigurationsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        PaymentConnectorConfigurationSearchResponse GetPaymentConnectorConfigurationsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search payment connector configurations
@@ -145,8 +146,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentConnectorConfigurationSearchResponse</returns>
-        ApiResponse<PaymentConnectorConfigurationSearchResponse> GetPaymentConnectorConfigurationsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<PaymentConnectorConfigurationSearchResponse> GetPaymentConnectorConfigurationsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a payment connector configuration
         /// </summary>
@@ -157,7 +157,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentConnectorConfiguration</returns>
-        PaymentConnectorConfiguration PatchPaymentConnectorConfigurationsId(long id, long space, PaymentConnectorConfigurationUpdate paymentConnectorConfigurationUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentConnectorConfiguration PatchPaymentConnectorConfigurationsId(long id, long space, PaymentConnectorConfigurationUpdate paymentConnectorConfigurationUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a payment connector configuration
@@ -172,8 +172,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentConnectorConfiguration</returns>
-        ApiResponse<PaymentConnectorConfiguration> PatchPaymentConnectorConfigurationsIdWithHttpInfo(long id, long space, PaymentConnectorConfigurationUpdate paymentConnectorConfigurationUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentConnectorConfiguration> PatchPaymentConnectorConfigurationsIdWithHttpInfo(long id, long space, PaymentConnectorConfigurationUpdate paymentConnectorConfigurationUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a payment connector configuration
         /// </summary>
@@ -183,7 +182,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentConnectorConfiguration</returns>
-        PaymentConnectorConfiguration PostPaymentConnectorConfigurations(long space, PaymentConnectorConfigurationCreate paymentConnectorConfigurationCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentConnectorConfiguration PostPaymentConnectorConfigurations(long space, PaymentConnectorConfigurationCreate paymentConnectorConfigurationCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a payment connector configuration
@@ -197,8 +196,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentConnectorConfiguration</returns>
-        ApiResponse<PaymentConnectorConfiguration> PostPaymentConnectorConfigurationsWithHttpInfo(long space, PaymentConnectorConfigurationCreate paymentConnectorConfigurationCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentConnectorConfiguration> PostPaymentConnectorConfigurationsWithHttpInfo(long space, PaymentConnectorConfigurationCreate paymentConnectorConfigurationCreate, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -318,6 +316,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -339,7 +338,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/payment/connector-configurations/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/payment/connector-configurations/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -364,7 +363,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentConnectorConfigurationListResponse</returns>
-        public PaymentConnectorConfigurationListResponse GetPaymentConnectorConfigurations(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public PaymentConnectorConfigurationListResponse GetPaymentConnectorConfigurations(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentConnectorConfigurationListResponse> localVarResponse = GetPaymentConnectorConfigurationsWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -382,7 +381,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentConnectorConfigurationListResponse</returns>
-        public Wallee.Client.ApiResponse<PaymentConnectorConfigurationListResponse> GetPaymentConnectorConfigurationsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentConnectorConfigurationListResponse> GetPaymentConnectorConfigurationsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -395,6 +394,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -435,7 +435,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<PaymentConnectorConfigurationListResponse>("/payment/connector-configurations",
+            var localVarResponse = this.Client.Get<PaymentConnectorConfigurationListResponse>("/payment/connector-configurations",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -457,7 +457,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentConnectorConfiguration</returns>
-        public PaymentConnectorConfiguration GetPaymentConnectorConfigurationsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentConnectorConfiguration GetPaymentConnectorConfigurationsId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentConnectorConfiguration> localVarResponse = GetPaymentConnectorConfigurationsIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -472,7 +472,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentConnectorConfiguration</returns>
-        public Wallee.Client.ApiResponse<PaymentConnectorConfiguration> GetPaymentConnectorConfigurationsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentConnectorConfiguration> GetPaymentConnectorConfigurationsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -485,6 +485,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -510,7 +511,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<PaymentConnectorConfiguration>("/payment/connector-configurations/{id}",
+            var localVarResponse = this.Client.Get<PaymentConnectorConfiguration>("/payment/connector-configurations/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -535,7 +536,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentConnectorConfigurationSearchResponse</returns>
-        public PaymentConnectorConfigurationSearchResponse GetPaymentConnectorConfigurationsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public PaymentConnectorConfigurationSearchResponse GetPaymentConnectorConfigurationsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentConnectorConfigurationSearchResponse> localVarResponse = GetPaymentConnectorConfigurationsSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -553,7 +554,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentConnectorConfigurationSearchResponse</returns>
-        public Wallee.Client.ApiResponse<PaymentConnectorConfigurationSearchResponse> GetPaymentConnectorConfigurationsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentConnectorConfigurationSearchResponse> GetPaymentConnectorConfigurationsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -566,6 +567,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -606,7 +608,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<PaymentConnectorConfigurationSearchResponse>("/payment/connector-configurations/search",
+            var localVarResponse = this.Client.Get<PaymentConnectorConfigurationSearchResponse>("/payment/connector-configurations/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -629,7 +631,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentConnectorConfiguration</returns>
-        public PaymentConnectorConfiguration PatchPaymentConnectorConfigurationsId(long id, long space, PaymentConnectorConfigurationUpdate paymentConnectorConfigurationUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentConnectorConfiguration PatchPaymentConnectorConfigurationsId(long id, long space, PaymentConnectorConfigurationUpdate paymentConnectorConfigurationUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentConnectorConfiguration> localVarResponse = PatchPaymentConnectorConfigurationsIdWithHttpInfo(id, space, paymentConnectorConfigurationUpdate, expand);
             return localVarResponse.Data;
@@ -645,7 +647,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentConnectorConfiguration</returns>
-        public Wallee.Client.ApiResponse<PaymentConnectorConfiguration> PatchPaymentConnectorConfigurationsIdWithHttpInfo(long id, long space, PaymentConnectorConfigurationUpdate paymentConnectorConfigurationUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentConnectorConfiguration> PatchPaymentConnectorConfigurationsIdWithHttpInfo(long id, long space, PaymentConnectorConfigurationUpdate paymentConnectorConfigurationUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'paymentConnectorConfigurationUpdate' is set
             if (paymentConnectorConfigurationUpdate == null)
@@ -665,6 +667,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -691,7 +694,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<PaymentConnectorConfiguration>("/payment/connector-configurations/{id}",
+            var localVarResponse = this.Client.Patch<PaymentConnectorConfiguration>("/payment/connector-configurations/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -713,7 +716,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentConnectorConfiguration</returns>
-        public PaymentConnectorConfiguration PostPaymentConnectorConfigurations(long space, PaymentConnectorConfigurationCreate paymentConnectorConfigurationCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentConnectorConfiguration PostPaymentConnectorConfigurations(long space, PaymentConnectorConfigurationCreate paymentConnectorConfigurationCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentConnectorConfiguration> localVarResponse = PostPaymentConnectorConfigurationsWithHttpInfo(space, paymentConnectorConfigurationCreate, expand);
             return localVarResponse.Data;
@@ -728,7 +731,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentConnectorConfiguration</returns>
-        public Wallee.Client.ApiResponse<PaymentConnectorConfiguration> PostPaymentConnectorConfigurationsWithHttpInfo(long space, PaymentConnectorConfigurationCreate paymentConnectorConfigurationCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentConnectorConfiguration> PostPaymentConnectorConfigurationsWithHttpInfo(long space, PaymentConnectorConfigurationCreate paymentConnectorConfigurationCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'paymentConnectorConfigurationCreate' is set
             if (paymentConnectorConfigurationCreate == null)
@@ -748,6 +751,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -773,7 +777,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<PaymentConnectorConfiguration>("/payment/connector-configurations",
+            var localVarResponse = this.Client.Post<PaymentConnectorConfiguration>("/payment/connector-configurations",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

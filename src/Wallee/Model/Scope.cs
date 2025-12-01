@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="Scope" /> class.
         /// </summary>
         /// <param name="state">state.</param>
-        public Scope(CreationEntityState? state = default(CreationEntityState?))
+        public Scope(CreationEntityState? state = default)
         {
             this.State = state;
         }

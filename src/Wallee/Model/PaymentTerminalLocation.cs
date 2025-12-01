@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="PaymentTerminalLocation" /> class.
         /// </summary>
         /// <param name="state">state.</param>
-        public PaymentTerminalLocation(PaymentTerminalLocationState? state = default(PaymentTerminalLocationState?))
+        public PaymentTerminalLocation(PaymentTerminalLocationState? state = default)
         {
             this.State = state;
         }
@@ -70,6 +70,20 @@ namespace Wallee.Model
         /// </summary>
         /// <returns>false (boolean)</returns>
         public bool ShouldSerializeLinkedSpaceId()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets ProductionMerchantId
+        /// </summary>
+        [DataMember(Name = "productionMerchantId", EmitDefaultValue = false)]
+        public string ProductionMerchantId { get; private set; }
+
+        /// <summary>
+        /// Returns false as ProductionMerchantId should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeProductionMerchantId()
         {
             return false;
         }
@@ -157,6 +171,7 @@ namespace Wallee.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class PaymentTerminalLocation {\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
+            sb.Append("  ProductionMerchantId: ").Append(ProductionMerchantId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
@@ -183,6 +198,27 @@ namespace Wallee.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // ProductionMerchantId (string) maxLength
+            if (this.ProductionMerchantId != null && this.ProductionMerchantId.Length > 15)
+            {
+                yield return new ValidationResult("Invalid value for ProductionMerchantId, length must be less than 15.", new [] { "ProductionMerchantId" });
+            }
+
+            // ProductionMerchantId (string) minLength
+            if (this.ProductionMerchantId != null && this.ProductionMerchantId.Length < 15)
+            {
+                yield return new ValidationResult("Invalid value for ProductionMerchantId, length must be greater than 15.", new [] { "ProductionMerchantId" });
+            }
+
+            if (this.ProductionMerchantId != null) {
+                // ProductionMerchantId (string) pattern
+                Regex regexProductionMerchantId = new Regex(@"([0-9a-zA-Z])+", RegexOptions.CultureInvariant);
+                if (!regexProductionMerchantId.Match(this.ProductionMerchantId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ProductionMerchantId, must match a pattern of " + regexProductionMerchantId, new [] { "ProductionMerchantId" });
+                }
+            }
+
             // Name (string) maxLength
             if (this.Name != null && this.Name.Length > 100)
             {

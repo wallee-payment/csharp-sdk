@@ -64,7 +64,7 @@ namespace Wallee.Model
         /// <param name="failedPaymentSuspensionPeriod">The period after which a subscription that has been suspended due to a failed payment is terminated..</param>
         /// <param name="allowedPaymentMethodConfigurations">The payment methods that can be used to subscribe to this product. If none are selected, no restriction is applied..</param>
         /// <param name="reference">The merchant&#39;s reference used to identify the product, e.g. the SKU. (required).</param>
-        public SubscriptionProductCreate(int sortOrder = default(int), string name = default(string), bool productLocked = default(bool), SubscriptionProductState? state = default(SubscriptionProductState?), string failedPaymentSuspensionPeriod = default(string), List<long> allowedPaymentMethodConfigurations = default(List<long>), string reference = default(string))
+        public SubscriptionProductCreate(int sortOrder = default, string name = default, bool productLocked = default, SubscriptionProductState? state = default, string failedPaymentSuspensionPeriod = default, List<long> allowedPaymentMethodConfigurations = default, string reference = default)
         {
             // to ensure "reference" is required (not null)
             if (reference == null)

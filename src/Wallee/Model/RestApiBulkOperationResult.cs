@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="RestApiBulkOperationResult" /> class.
         /// </summary>
         /// <param name="error">error.</param>
-        public RestApiBulkOperationResult(RestApiErrorResponse error = default(RestApiErrorResponse))
+        public RestApiBulkOperationResult(RestApiErrorResponse error = default)
         {
             this.Error = error;
         }

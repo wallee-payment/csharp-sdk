@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="BankAccount" /> class.
         /// </summary>
         /// <param name="state">state.</param>
-        public BankAccount(BankAccountState? state = default(BankAccountState?))
+        public BankAccount(BankAccountState? state = default)
         {
             this.State = state;
         }

@@ -52,7 +52,7 @@ namespace Wallee.Model
         /// <param name="customerId">The unique identifier of the customer in the external system..</param>
         /// <param name="varTimeZone">The customer&#39;s time zone, which affects how dates and times are formatted when communicating with the customer..</param>
         /// <param name="language">The language that is linked to the object..</param>
-        public AbstractTokenUpdate(bool enabledForOneClickPayment = default(bool), string customerEmailAddress = default(string), string tokenReference = default(string), string customerId = default(string), string varTimeZone = default(string), string language = default(string))
+        public AbstractTokenUpdate(bool enabledForOneClickPayment = default, string customerEmailAddress = default, string tokenReference = default, string customerId = default, string varTimeZone = default, string language = default)
         {
             this.EnabledForOneClickPayment = enabledForOneClickPayment;
             this.CustomerEmailAddress = customerEmailAddress;

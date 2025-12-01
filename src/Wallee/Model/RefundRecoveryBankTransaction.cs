@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="bankTransaction">bankTransaction.</param>
         /// <param name="refund">refund.</param>
-        public RefundRecoveryBankTransaction(BankTransaction bankTransaction = default(BankTransaction), Refund refund = default(Refund))
+        public RefundRecoveryBankTransaction(BankTransaction bankTransaction = default, Refund refund = default)
         {
             this.BankTransaction = bankTransaction;
             this.Refund = refund;

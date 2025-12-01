@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="content">The comment&#39;s actual content..</param>
         /// <param name="transactionInvoice">The transaction invoice that the comment belongs to. (required).</param>
-        public TransactionInvoiceCommentCreate(string content = default(string), long transactionInvoice = default(long))
+        public TransactionInvoiceCommentCreate(string content = default, long transactionInvoice = default)
         {
             this.TransactionInvoice = transactionInvoice;
             this.Content = content;

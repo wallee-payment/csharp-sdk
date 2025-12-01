@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// <param name="lineItems">The line items that replace the original line items in the transaction. (required).</param>
         /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
         /// <param name="transaction">The transaction that the line item version belongs to. (required).</param>
-        public TransactionLineItemVersionCreate(List<LineItemCreate> lineItems = default(List<LineItemCreate>), string externalId = default(string), long transaction = default(long))
+        public TransactionLineItemVersionCreate(List<LineItemCreate> lineItems = default, string externalId = default, long transaction = default)
         {
             // to ensure "lineItems" is required (not null)
             if (lineItems == null)

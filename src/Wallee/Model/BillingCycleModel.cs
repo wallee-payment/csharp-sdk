@@ -81,7 +81,7 @@ namespace Wallee.Model
         /// <param name="weeklyDay">weeklyDay.</param>
         /// <param name="numberOfPeriods">Billing Cycle type multiplied by Number of Periods defines billing cycle duration, e.g. 3 months. Monthly types require 1-12; weekly and yearly types require 1-9 periods; and daily types require 1-30. (required).</param>
         /// <param name="billingCycleType">billingCycleType (required).</param>
-        public BillingCycleModel(DisplayableMonth? month = default(DisplayableMonth?), BillingDayCustomization? customization = default(BillingDayCustomization?), int dayOfMonth = default(int), DisplayableDayOfWeek? weeklyDay = default(DisplayableDayOfWeek?), int numberOfPeriods = default(int), BillingCycleType billingCycleType = default(BillingCycleType))
+        public BillingCycleModel(DisplayableMonth? month = default, BillingDayCustomization? customization = default, int dayOfMonth = default, DisplayableDayOfWeek? weeklyDay = default, int numberOfPeriods = default, BillingCycleType billingCycleType = default)
         {
             this.NumberOfPeriods = numberOfPeriods;
             this.BillingCycleType = billingCycleType;

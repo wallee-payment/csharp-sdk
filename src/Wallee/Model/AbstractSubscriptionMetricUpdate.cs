@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="name">The localized name of the metric that is displayed to the customer..</param>
         /// <param name="description">The localized description of the metric that is displayed to the customer..</param>
-        public AbstractSubscriptionMetricUpdate(Dictionary<string, string> name = default(Dictionary<string, string>), Dictionary<string, string> description = default(Dictionary<string, string>))
+        public AbstractSubscriptionMetricUpdate(Dictionary<string, string> name = default, Dictionary<string, string> description = default)
         {
             this.Name = name;
             this.Description = description;

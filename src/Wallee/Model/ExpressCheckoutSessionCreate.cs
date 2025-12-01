@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="lineItems">lineItems.</param>
         /// <param name="shippingOptions">shippingOptions.</param>
-        public ExpressCheckoutSessionCreate(List<LineItem> lineItems = default(List<LineItem>), List<ExpressCheckoutShippingOption> shippingOptions = default(List<ExpressCheckoutShippingOption>))
+        public ExpressCheckoutSessionCreate(List<LineItem> lineItems = default, List<ExpressCheckoutShippingOption> shippingOptions = default)
         {
             this.LineItems = lineItems;
             this.ShippingOptions = shippingOptions;

@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -41,7 +45,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LanguageListResponse</returns>
-        LanguageListResponse GetLanguages(List<string>? expand = default(List<string>?), int operationIndex = 0);
+        LanguageListResponse GetLanguages(List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// List all languages
@@ -53,8 +57,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LanguageListResponse</returns>
-        ApiResponse<LanguageListResponse> GetLanguagesWithHttpInfo(List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<LanguageListResponse> GetLanguagesWithHttpInfo(List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a language
         /// </summary>
@@ -75,7 +78,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestLanguage</returns>
         ApiResponse<RestLanguage> GetLanguagesCodeWithHttpInfo(string code, int operationIndex = 0);
-
         /// <summary>
         /// Search languages
         /// </summary>
@@ -87,7 +89,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LanguageSearchResponse</returns>
-        LanguageSearchResponse GetLanguagesSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        LanguageSearchResponse GetLanguagesSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search languages
@@ -103,8 +105,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LanguageSearchResponse</returns>
-        ApiResponse<LanguageSearchResponse> GetLanguagesSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<LanguageSearchResponse> GetLanguagesSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -197,7 +198,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LanguageListResponse</returns>
-        public LanguageListResponse GetLanguages(List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public LanguageListResponse GetLanguages(List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LanguageListResponse> localVarResponse = GetLanguagesWithHttpInfo(expand);
             return localVarResponse.Data;
@@ -210,7 +211,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LanguageListResponse</returns>
-        public Wallee.Client.ApiResponse<LanguageListResponse> GetLanguagesWithHttpInfo(List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LanguageListResponse> GetLanguagesWithHttpInfo(List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -223,6 +224,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -246,7 +248,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LanguageListResponse>("/languages",
+            var localVarResponse = this.Client.Get<LanguageListResponse>("/languages",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -298,6 +300,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -318,7 +321,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<RestLanguage>("/languages/{code}",
+            var localVarResponse = this.Client.Get<RestLanguage>("/languages/{code}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -342,7 +345,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LanguageSearchResponse</returns>
-        public LanguageSearchResponse GetLanguagesSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public LanguageSearchResponse GetLanguagesSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LanguageSearchResponse> localVarResponse = GetLanguagesSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -359,7 +362,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LanguageSearchResponse</returns>
-        public Wallee.Client.ApiResponse<LanguageSearchResponse> GetLanguagesSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LanguageSearchResponse> GetLanguagesSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -372,6 +375,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -411,7 +415,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LanguageSearchResponse>("/languages/search",
+            var localVarResponse = this.Client.Get<LanguageSearchResponse>("/languages/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

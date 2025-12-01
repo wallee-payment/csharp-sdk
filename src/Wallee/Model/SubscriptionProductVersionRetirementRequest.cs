@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="respectTerminationPeriods">Whether the subscriptions&#39; termination periods should be respected..</param>
         /// <param name="targetProduct">The product to which the subscriptions with the retiring product version are to be migrated. If none is defined, the subscriptions are terminated..</param>
-        public SubscriptionProductVersionRetirementRequest(bool respectTerminationPeriods = default(bool), long targetProduct = default(long))
+        public SubscriptionProductVersionRetirementRequest(bool respectTerminationPeriods = default, long targetProduct = default)
         {
             this.RespectTerminationPeriods = respectTerminationPeriods;
             this.TargetProduct = targetProduct;

@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -46,7 +50,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>InvoiceListResponse</returns>
-        InvoiceListResponse GetPaymentTransactionsInvoices(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        InvoiceListResponse GetPaymentTransactionsInvoices(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all transaction invoices
@@ -63,8 +67,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of InvoiceListResponse</returns>
-        ApiResponse<InvoiceListResponse> GetPaymentTransactionsInvoicesWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<InvoiceListResponse> GetPaymentTransactionsInvoicesWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a transaction invoice
         /// </summary>
@@ -74,7 +77,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionInvoice</returns>
-        TransactionInvoice GetPaymentTransactionsInvoicesId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionInvoice GetPaymentTransactionsInvoicesId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a transaction invoice
@@ -88,8 +91,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionInvoice</returns>
-        ApiResponse<TransactionInvoice> GetPaymentTransactionsInvoicesIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionInvoice> GetPaymentTransactionsInvoicesIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Check if a transaction invoice can be replaced
         /// </summary>
@@ -112,7 +114,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of bool</returns>
         ApiResponse<bool> GetPaymentTransactionsInvoicesIdCheckReplacementPossibleWithHttpInfo(long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// Retrieve an invoice document
         /// </summary>
@@ -135,7 +136,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RenderedDocument</returns>
         ApiResponse<RenderedDocument> GetPaymentTransactionsInvoicesIdDocumentWithHttpInfo(long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// Search transaction invoices
         /// </summary>
@@ -148,7 +148,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>InvoiceSearchResponse</returns>
-        InvoiceSearchResponse GetPaymentTransactionsInvoicesSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        InvoiceSearchResponse GetPaymentTransactionsInvoicesSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search transaction invoices
@@ -165,8 +165,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of InvoiceSearchResponse</returns>
-        ApiResponse<InvoiceSearchResponse> GetPaymentTransactionsInvoicesSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<InvoiceSearchResponse> GetPaymentTransactionsInvoicesSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Derecognize a transaction invoice
         /// </summary>
@@ -176,7 +175,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionInvoice</returns>
-        TransactionInvoice PostPaymentTransactionsInvoicesIdDerecognize(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionInvoice PostPaymentTransactionsInvoicesIdDerecognize(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Derecognize a transaction invoice
@@ -190,8 +189,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionInvoice</returns>
-        ApiResponse<TransactionInvoice> PostPaymentTransactionsInvoicesIdDerecognizeWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionInvoice> PostPaymentTransactionsInvoicesIdDerecognizeWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Mark a transaction invoice as paid
         /// </summary>
@@ -201,7 +199,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionInvoice</returns>
-        TransactionInvoice PostPaymentTransactionsInvoicesIdMarkPaid(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionInvoice PostPaymentTransactionsInvoicesIdMarkPaid(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Mark a transaction invoice as paid
@@ -215,8 +213,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionInvoice</returns>
-        ApiResponse<TransactionInvoice> PostPaymentTransactionsInvoicesIdMarkPaidWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionInvoice> PostPaymentTransactionsInvoicesIdMarkPaidWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Replace a transaction invoice
         /// </summary>
@@ -227,7 +224,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionInvoice</returns>
-        TransactionInvoice PostPaymentTransactionsInvoicesIdReplace(long id, long space, TransactionInvoiceReplacement transactionInvoiceReplacement, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionInvoice PostPaymentTransactionsInvoicesIdReplace(long id, long space, TransactionInvoiceReplacement transactionInvoiceReplacement, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Replace a transaction invoice
@@ -242,8 +239,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionInvoice</returns>
-        ApiResponse<TransactionInvoice> PostPaymentTransactionsInvoicesIdReplaceWithHttpInfo(long id, long space, TransactionInvoiceReplacement transactionInvoiceReplacement, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionInvoice> PostPaymentTransactionsInvoicesIdReplaceWithHttpInfo(long id, long space, TransactionInvoiceReplacement transactionInvoiceReplacement, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -341,7 +337,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>InvoiceListResponse</returns>
-        public InvoiceListResponse GetPaymentTransactionsInvoices(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public InvoiceListResponse GetPaymentTransactionsInvoices(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<InvoiceListResponse> localVarResponse = GetPaymentTransactionsInvoicesWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -359,7 +355,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of InvoiceListResponse</returns>
-        public Wallee.Client.ApiResponse<InvoiceListResponse> GetPaymentTransactionsInvoicesWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<InvoiceListResponse> GetPaymentTransactionsInvoicesWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -372,6 +368,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -412,7 +409,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<InvoiceListResponse>("/payment/transactions/invoices",
+            var localVarResponse = this.Client.Get<InvoiceListResponse>("/payment/transactions/invoices",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -434,7 +431,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionInvoice</returns>
-        public TransactionInvoice GetPaymentTransactionsInvoicesId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionInvoice GetPaymentTransactionsInvoicesId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionInvoice> localVarResponse = GetPaymentTransactionsInvoicesIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -449,7 +446,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionInvoice</returns>
-        public Wallee.Client.ApiResponse<TransactionInvoice> GetPaymentTransactionsInvoicesIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionInvoice> GetPaymentTransactionsInvoicesIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -462,6 +459,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -487,7 +485,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<TransactionInvoice>("/payment/transactions/invoices/{id}",
+            var localVarResponse = this.Client.Get<TransactionInvoice>("/payment/transactions/invoices/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -535,6 +533,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -556,7 +555,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<bool>("/payment/transactions/invoices/{id}/check-replacement-possible",
+            var localVarResponse = this.Client.Get<bool>("/payment/transactions/invoices/{id}/check-replacement-possible",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -604,6 +603,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -625,7 +625,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<RenderedDocument>("/payment/transactions/invoices/{id}/document",
+            var localVarResponse = this.Client.Get<RenderedDocument>("/payment/transactions/invoices/{id}/document",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -650,7 +650,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>InvoiceSearchResponse</returns>
-        public InvoiceSearchResponse GetPaymentTransactionsInvoicesSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public InvoiceSearchResponse GetPaymentTransactionsInvoicesSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<InvoiceSearchResponse> localVarResponse = GetPaymentTransactionsInvoicesSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -668,7 +668,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of InvoiceSearchResponse</returns>
-        public Wallee.Client.ApiResponse<InvoiceSearchResponse> GetPaymentTransactionsInvoicesSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<InvoiceSearchResponse> GetPaymentTransactionsInvoicesSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -681,6 +681,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -721,7 +722,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<InvoiceSearchResponse>("/payment/transactions/invoices/search",
+            var localVarResponse = this.Client.Get<InvoiceSearchResponse>("/payment/transactions/invoices/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -743,7 +744,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionInvoice</returns>
-        public TransactionInvoice PostPaymentTransactionsInvoicesIdDerecognize(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionInvoice PostPaymentTransactionsInvoicesIdDerecognize(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionInvoice> localVarResponse = PostPaymentTransactionsInvoicesIdDerecognizeWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -758,7 +759,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionInvoice</returns>
-        public Wallee.Client.ApiResponse<TransactionInvoice> PostPaymentTransactionsInvoicesIdDerecognizeWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionInvoice> PostPaymentTransactionsInvoicesIdDerecognizeWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -771,6 +772,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -796,7 +798,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<TransactionInvoice>("/payment/transactions/invoices/{id}/derecognize",
+            var localVarResponse = this.Client.Post<TransactionInvoice>("/payment/transactions/invoices/{id}/derecognize",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -818,7 +820,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionInvoice</returns>
-        public TransactionInvoice PostPaymentTransactionsInvoicesIdMarkPaid(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionInvoice PostPaymentTransactionsInvoicesIdMarkPaid(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionInvoice> localVarResponse = PostPaymentTransactionsInvoicesIdMarkPaidWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -833,7 +835,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionInvoice</returns>
-        public Wallee.Client.ApiResponse<TransactionInvoice> PostPaymentTransactionsInvoicesIdMarkPaidWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionInvoice> PostPaymentTransactionsInvoicesIdMarkPaidWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -846,6 +848,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -871,7 +874,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<TransactionInvoice>("/payment/transactions/invoices/{id}/mark-paid",
+            var localVarResponse = this.Client.Post<TransactionInvoice>("/payment/transactions/invoices/{id}/mark-paid",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -894,7 +897,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionInvoice</returns>
-        public TransactionInvoice PostPaymentTransactionsInvoicesIdReplace(long id, long space, TransactionInvoiceReplacement transactionInvoiceReplacement, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionInvoice PostPaymentTransactionsInvoicesIdReplace(long id, long space, TransactionInvoiceReplacement transactionInvoiceReplacement, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionInvoice> localVarResponse = PostPaymentTransactionsInvoicesIdReplaceWithHttpInfo(id, space, transactionInvoiceReplacement, expand);
             return localVarResponse.Data;
@@ -910,7 +913,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionInvoice</returns>
-        public Wallee.Client.ApiResponse<TransactionInvoice> PostPaymentTransactionsInvoicesIdReplaceWithHttpInfo(long id, long space, TransactionInvoiceReplacement transactionInvoiceReplacement, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionInvoice> PostPaymentTransactionsInvoicesIdReplaceWithHttpInfo(long id, long space, TransactionInvoiceReplacement transactionInvoiceReplacement, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'transactionInvoiceReplacement' is set
             if (transactionInvoiceReplacement == null)
@@ -930,6 +933,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -956,7 +960,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<TransactionInvoice>("/payment/transactions/invoices/{id}/replace",
+            var localVarResponse = this.Client.Post<TransactionInvoice>("/payment/transactions/invoices/{id}/replace",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="conditionType">conditionType.</param>
         /// <param name="state">state.</param>
-        public Condition(ConditionType conditionType = default(ConditionType), CreationEntityState? state = default(CreationEntityState?))
+        public Condition(ConditionType conditionType = default, CreationEntityState? state = default)
         {
             this.ConditionType = conditionType;
             this.State = state;

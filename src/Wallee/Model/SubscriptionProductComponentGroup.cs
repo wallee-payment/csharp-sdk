@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="SubscriptionProductComponentGroup" /> class.
         /// </summary>
         /// <param name="productVersion">productVersion.</param>
-        public SubscriptionProductComponentGroup(SubscriptionProductVersion productVersion = default(SubscriptionProductVersion))
+        public SubscriptionProductComponentGroup(SubscriptionProductVersion productVersion = default)
         {
             this.ProductVersion = productVersion;
         }

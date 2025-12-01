@@ -64,7 +64,7 @@ namespace Wallee.Model
         /// <param name="conditions">Conditions allow to define criteria that a debt collection case must fulfill in order for the debt collector configuration to be considered for processing the case..</param>
         /// <param name="priority">The priority that determines the order in which debt collector configurations are taken into account when processing a case. Low values are considered first..</param>
         /// <param name="collector">The debt collector that the configuration is for. (required).</param>
-        public DebtCollectorConfigurationCreate(bool skipReviewEnabled = default(bool), string name = default(string), List<long> enabledSpaceViews = default(List<long>), CreationEntityState? state = default(CreationEntityState?), List<DebtCollectorCondition> conditions = default(List<DebtCollectorCondition>), int priority = default(int), long collector = default(long))
+        public DebtCollectorConfigurationCreate(bool skipReviewEnabled = default, string name = default, List<long> enabledSpaceViews = default, CreationEntityState? state = default, List<DebtCollectorCondition> conditions = default, int priority = default, long collector = default)
         {
             this.Collector = collector;
             this.SkipReviewEnabled = skipReviewEnabled;

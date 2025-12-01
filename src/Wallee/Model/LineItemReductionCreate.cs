@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// <param name="quantityReduction">The quantity removed or reduced from the line item. This value reflects the decrease in the item count due to the reduction. (required).</param>
         /// <param name="unitPriceReduction">The monetary amount by which the line item&#39;s unit price is discounted. This reduction adjusts the price without altering the quantity. (required).</param>
         /// <param name="lineItemUniqueId">The unique identifier of the line item to which the reduction is applied. This ID ensures the reduction is accurately associated with the correct item. (required).</param>
-        public LineItemReductionCreate(decimal quantityReduction = default(decimal), decimal unitPriceReduction = default(decimal), string lineItemUniqueId = default(string))
+        public LineItemReductionCreate(decimal quantityReduction = default, decimal unitPriceReduction = default, string lineItemUniqueId = default)
         {
             this.QuantityReduction = quantityReduction;
             this.UnitPriceReduction = unitPriceReduction;

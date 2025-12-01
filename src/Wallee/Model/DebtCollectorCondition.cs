@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="state">state.</param>
         /// <param name="type">type.</param>
-        public DebtCollectorCondition(CreationEntityState? state = default(CreationEntityState?), DebtCollectorConditionType type = default(DebtCollectorConditionType))
+        public DebtCollectorCondition(CreationEntityState? state = default, DebtCollectorConditionType type = default)
         {
             this.State = state;
             this.Type = type;

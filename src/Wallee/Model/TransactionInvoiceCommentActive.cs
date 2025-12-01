@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="content">The comment&#39;s actual content..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public TransactionInvoiceCommentActive(string content = default(string), int varVersion = default(int))
+        public TransactionInvoiceCommentActive(string content = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Content = content;

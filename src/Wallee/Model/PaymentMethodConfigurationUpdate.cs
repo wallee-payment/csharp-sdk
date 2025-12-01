@@ -64,7 +64,7 @@ namespace Wallee.Model
         /// <param name="oneClickPaymentMode">oneClickPaymentMode.</param>
         /// <param name="title">A customer-facing custom title for the payment method..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public PaymentMethodConfigurationUpdate(string imageResourcePath = default(string), int sortOrder = default(int), string name = default(string), Dictionary<string, string> description = default(Dictionary<string, string>), OneClickPaymentMode? oneClickPaymentMode = default(OneClickPaymentMode?), Dictionary<string, string> title = default(Dictionary<string, string>), int varVersion = default(int))
+        public PaymentMethodConfigurationUpdate(string imageResourcePath = default, int sortOrder = default, string name = default, Dictionary<string, string> description = default, OneClickPaymentMode? oneClickPaymentMode = default, Dictionary<string, string> title = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.ImageResourcePath = imageResourcePath;

@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="reminderTemplate">reminderTemplate.</param>
         /// <param name="state">state.</param>
         /// <param name="flow">flow.</param>
-        public DunningFlowLevel(DocumentTemplate reminderTemplate = default(DocumentTemplate), CreationEntityState? state = default(CreationEntityState?), DunningFlow flow = default(DunningFlow))
+        public DunningFlowLevel(DocumentTemplate reminderTemplate = default, CreationEntityState? state = default, DunningFlow flow = default)
         {
             this.ReminderTemplate = reminderTemplate;
             this.State = state;

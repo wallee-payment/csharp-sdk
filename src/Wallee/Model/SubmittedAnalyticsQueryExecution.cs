@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="SubmittedAnalyticsQueryExecution" /> class.
         /// </summary>
         /// <param name="status">status.</param>
-        public SubmittedAnalyticsQueryExecution(FacadeUserFriendlyQueryStatusModel? status = default(FacadeUserFriendlyQueryStatusModel?))
+        public SubmittedAnalyticsQueryExecution(FacadeUserFriendlyQueryStatusModel? status = default)
         {
             this.Status = status;
         }

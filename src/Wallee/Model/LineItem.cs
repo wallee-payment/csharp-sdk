@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="LineItem" /> class.
         /// </summary>
         /// <param name="type">type.</param>
-        public LineItem(LineItemType? type = default(LineItemType?))
+        public LineItem(LineItemType? type = default)
         {
             this.Type = type;
         }

@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="address">address.</param>
         /// <param name="addressType">addressType.</param>
         /// <param name="customer">customer.</param>
-        public CustomerAddress(CustomerPostalAddress address = default(CustomerPostalAddress), CustomerAddressType? addressType = default(CustomerAddressType?), Customer customer = default(Customer))
+        public CustomerAddress(CustomerPostalAddress address = default, CustomerAddressType? addressType = default, Customer customer = default)
         {
             this.Address = address;
             this.AddressType = addressType;

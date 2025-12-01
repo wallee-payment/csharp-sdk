@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="ManualTaskAction" /> class.
         /// </summary>
         /// <param name="style">style.</param>
-        public ManualTaskAction(ManualTaskActionStyle? style = default(ManualTaskActionStyle?))
+        public ManualTaskAction(ManualTaskActionStyle? style = default)
         {
             this.Style = style;
         }

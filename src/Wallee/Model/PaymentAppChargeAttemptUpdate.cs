@@ -56,7 +56,7 @@ namespace Wallee.Model
         /// <param name="targetState">targetState.</param>
         /// <param name="failureReason">The reason for the charge attempt&#39;s failure. This field is mandatory when the target state is set to &#39;FAILED&#39;..</param>
         /// <param name="endUserFailureMessage">A message explaining to the buyer why the payment failed. The message must be localized in the buyer&#39;s language, as specified in the payment page invocation URL..</param>
-        public PaymentAppChargeAttemptUpdate(string reference = default(string), PaymentAppChargeAttemptTargetState? targetState = default(PaymentAppChargeAttemptTargetState?), long failureReason = default(long), string endUserFailureMessage = default(string))
+        public PaymentAppChargeAttemptUpdate(string reference = default, PaymentAppChargeAttemptTargetState? targetState = default, long failureReason = default, string endUserFailureMessage = default)
         {
             this.Reference = reference;
             this.TargetState = targetState;

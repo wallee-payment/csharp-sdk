@@ -64,7 +64,7 @@ namespace Wallee.Model
         /// <param name="varEnvironment">varEnvironment.</param>
         /// <param name="failureReason">failureReason.</param>
         /// <param name="billingAddress">billingAddress.</param>
-        public DebtCollectionCase(DebtCollectionCaseSource source = default(DebtCollectionCaseSource), DebtCollectionCaseState? state = default(DebtCollectionCaseState?), DebtCollectorConfiguration collectorConfiguration = default(DebtCollectorConfiguration), DebtCollectionEnvironment? varEnvironment = default(DebtCollectionEnvironment?), FailureReason failureReason = default(FailureReason), Address billingAddress = default(Address))
+        public DebtCollectionCase(DebtCollectionCaseSource source = default, DebtCollectionCaseState? state = default, DebtCollectorConfiguration collectorConfiguration = default, DebtCollectionEnvironment? varEnvironment = default, FailureReason failureReason = default, Address billingAddress = default)
         {
             this.Source = source;
             this.State = state;

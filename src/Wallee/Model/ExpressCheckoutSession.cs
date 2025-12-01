@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="walletType">walletType.</param>
         /// <param name="state">state.</param>
-        public ExpressCheckoutSession(ExpressCheckoutWalletType walletType = default(ExpressCheckoutWalletType), ExpressCheckoutSessionState? state = default(ExpressCheckoutSessionState?))
+        public ExpressCheckoutSession(ExpressCheckoutWalletType walletType = default, ExpressCheckoutSessionState? state = default)
         {
             this.WalletType = walletType;
             this.State = state;

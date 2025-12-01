@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="TaxClass" /> class.
         /// </summary>
         /// <param name="state">state.</param>
-        public TaxClass(CreationEntityState? state = default(CreationEntityState?))
+        public TaxClass(CreationEntityState? state = default)
         {
             this.State = state;
         }

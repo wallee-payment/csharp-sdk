@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="iframeSrc">iframeSrc.</param>
         /// <param name="session">session.</param>
-        public ExpressCheckoutCreateResponse(string iframeSrc = default(string), long session = default(long))
+        public ExpressCheckoutCreateResponse(string iframeSrc = default, long session = default)
         {
             this.IframeSrc = iframeSrc;
             this.Session = session;

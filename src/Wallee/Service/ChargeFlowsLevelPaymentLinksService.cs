@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -46,7 +50,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ChargeFlowLevelPaymentLinkListResponse</returns>
-        ChargeFlowLevelPaymentLinkListResponse GetPaymentChargeFlowsLevelsPaymentLinks(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        ChargeFlowLevelPaymentLinkListResponse GetPaymentChargeFlowsLevelsPaymentLinks(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all charge flow payment links
@@ -63,8 +67,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ChargeFlowLevelPaymentLinkListResponse</returns>
-        ApiResponse<ChargeFlowLevelPaymentLinkListResponse> GetPaymentChargeFlowsLevelsPaymentLinksWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<ChargeFlowLevelPaymentLinkListResponse> GetPaymentChargeFlowsLevelsPaymentLinksWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a charge flow payment link
         /// </summary>
@@ -74,7 +77,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ChargeFlowLevelPaymentLink</returns>
-        ChargeFlowLevelPaymentLink GetPaymentChargeFlowsLevelsPaymentLinksId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        ChargeFlowLevelPaymentLink GetPaymentChargeFlowsLevelsPaymentLinksId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a charge flow payment link
@@ -88,8 +91,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ChargeFlowLevelPaymentLink</returns>
-        ApiResponse<ChargeFlowLevelPaymentLink> GetPaymentChargeFlowsLevelsPaymentLinksIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<ChargeFlowLevelPaymentLink> GetPaymentChargeFlowsLevelsPaymentLinksIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search charge flow payment links
         /// </summary>
@@ -102,7 +104,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ChargeFlowLevelPaymentLinkSearchResponse</returns>
-        ChargeFlowLevelPaymentLinkSearchResponse GetPaymentChargeFlowsLevelsPaymentLinksSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        ChargeFlowLevelPaymentLinkSearchResponse GetPaymentChargeFlowsLevelsPaymentLinksSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search charge flow payment links
@@ -119,8 +121,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ChargeFlowLevelPaymentLinkSearchResponse</returns>
-        ApiResponse<ChargeFlowLevelPaymentLinkSearchResponse> GetPaymentChargeFlowsLevelsPaymentLinksSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<ChargeFlowLevelPaymentLinkSearchResponse> GetPaymentChargeFlowsLevelsPaymentLinksSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -218,7 +219,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ChargeFlowLevelPaymentLinkListResponse</returns>
-        public ChargeFlowLevelPaymentLinkListResponse GetPaymentChargeFlowsLevelsPaymentLinks(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public ChargeFlowLevelPaymentLinkListResponse GetPaymentChargeFlowsLevelsPaymentLinks(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ChargeFlowLevelPaymentLinkListResponse> localVarResponse = GetPaymentChargeFlowsLevelsPaymentLinksWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -236,7 +237,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ChargeFlowLevelPaymentLinkListResponse</returns>
-        public Wallee.Client.ApiResponse<ChargeFlowLevelPaymentLinkListResponse> GetPaymentChargeFlowsLevelsPaymentLinksWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ChargeFlowLevelPaymentLinkListResponse> GetPaymentChargeFlowsLevelsPaymentLinksWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -249,6 +250,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -289,7 +291,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ChargeFlowLevelPaymentLinkListResponse>("/payment/charge-flows/levels/payment-links",
+            var localVarResponse = this.Client.Get<ChargeFlowLevelPaymentLinkListResponse>("/payment/charge-flows/levels/payment-links",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -311,7 +313,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ChargeFlowLevelPaymentLink</returns>
-        public ChargeFlowLevelPaymentLink GetPaymentChargeFlowsLevelsPaymentLinksId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public ChargeFlowLevelPaymentLink GetPaymentChargeFlowsLevelsPaymentLinksId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ChargeFlowLevelPaymentLink> localVarResponse = GetPaymentChargeFlowsLevelsPaymentLinksIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -326,7 +328,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ChargeFlowLevelPaymentLink</returns>
-        public Wallee.Client.ApiResponse<ChargeFlowLevelPaymentLink> GetPaymentChargeFlowsLevelsPaymentLinksIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ChargeFlowLevelPaymentLink> GetPaymentChargeFlowsLevelsPaymentLinksIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -339,6 +341,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -364,7 +367,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ChargeFlowLevelPaymentLink>("/payment/charge-flows/levels/payment-links/{id}",
+            var localVarResponse = this.Client.Get<ChargeFlowLevelPaymentLink>("/payment/charge-flows/levels/payment-links/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -389,7 +392,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ChargeFlowLevelPaymentLinkSearchResponse</returns>
-        public ChargeFlowLevelPaymentLinkSearchResponse GetPaymentChargeFlowsLevelsPaymentLinksSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public ChargeFlowLevelPaymentLinkSearchResponse GetPaymentChargeFlowsLevelsPaymentLinksSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ChargeFlowLevelPaymentLinkSearchResponse> localVarResponse = GetPaymentChargeFlowsLevelsPaymentLinksSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -407,7 +410,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ChargeFlowLevelPaymentLinkSearchResponse</returns>
-        public Wallee.Client.ApiResponse<ChargeFlowLevelPaymentLinkSearchResponse> GetPaymentChargeFlowsLevelsPaymentLinksSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ChargeFlowLevelPaymentLinkSearchResponse> GetPaymentChargeFlowsLevelsPaymentLinksSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -420,6 +423,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -460,7 +464,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ChargeFlowLevelPaymentLinkSearchResponse>("/payment/charge-flows/levels/payment-links/search",
+            var localVarResponse = this.Client.Get<ChargeFlowLevelPaymentLinkSearchResponse>("/payment/charge-flows/levels/payment-links/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

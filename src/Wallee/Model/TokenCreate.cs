@@ -65,7 +65,7 @@ namespace Wallee.Model
         /// <param name="language">The language that is linked to the object..</param>
         /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
         /// <param name="state">state.</param>
-        public TokenCreate(bool enabledForOneClickPayment = default(bool), string customerEmailAddress = default(string), string tokenReference = default(string), string customerId = default(string), string varTimeZone = default(string), string language = default(string), string externalId = default(string), CreationEntityState? state = default(CreationEntityState?))
+        public TokenCreate(bool enabledForOneClickPayment = default, string customerEmailAddress = default, string tokenReference = default, string customerId = default, string varTimeZone = default, string language = default, string externalId = default, CreationEntityState? state = default)
         {
             // to ensure "externalId" is required (not null)
             if (externalId == null)

@@ -59,7 +59,7 @@ namespace Wallee.Model
         /// <param name="varTimeZone">The time zone that is used to schedule and run background processes. This does not affect the formatting of dates in the user interface..</param>
         /// <param name="state">state.</param>
         /// <param name="primaryCurrency">The currency that is used to display aggregated amounts in the space..</param>
-        public AbstractSpaceUpdate(long requestLimit = default(long), SpaceAddressCreate postalAddress = default(SpaceAddressCreate), string name = default(string), List<string> technicalContactAddresses = default(List<string>), string varTimeZone = default(string), CreationEntityState? state = default(CreationEntityState?), string primaryCurrency = default(string))
+        public AbstractSpaceUpdate(long requestLimit = default, SpaceAddressCreate postalAddress = default, string name = default, List<string> technicalContactAddresses = default, string varTimeZone = default, CreationEntityState? state = default, string primaryCurrency = default)
         {
             this.RequestLimit = requestLimit;
             this.PostalAddress = postalAddress;

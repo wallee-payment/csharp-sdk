@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -46,7 +50,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LineItemVersionListResponse</returns>
-        LineItemVersionListResponse GetPaymentTransactionsLineItemVersions(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        LineItemVersionListResponse GetPaymentTransactionsLineItemVersions(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all transaction line item versions
@@ -63,8 +67,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LineItemVersionListResponse</returns>
-        ApiResponse<LineItemVersionListResponse> GetPaymentTransactionsLineItemVersionsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<LineItemVersionListResponse> GetPaymentTransactionsLineItemVersionsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a transaction line item version
         /// </summary>
@@ -74,7 +77,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionLineItemVersion</returns>
-        TransactionLineItemVersion GetPaymentTransactionsLineItemVersionsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionLineItemVersion GetPaymentTransactionsLineItemVersionsId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a transaction line item version
@@ -88,8 +91,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionLineItemVersion</returns>
-        ApiResponse<TransactionLineItemVersion> GetPaymentTransactionsLineItemVersionsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionLineItemVersion> GetPaymentTransactionsLineItemVersionsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search transaction line item versions
         /// </summary>
@@ -102,7 +104,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LineItemVersionSearchResponse</returns>
-        LineItemVersionSearchResponse GetPaymentTransactionsLineItemVersionsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        LineItemVersionSearchResponse GetPaymentTransactionsLineItemVersionsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search transaction line item versions
@@ -119,8 +121,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LineItemVersionSearchResponse</returns>
-        ApiResponse<LineItemVersionSearchResponse> GetPaymentTransactionsLineItemVersionsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<LineItemVersionSearchResponse> GetPaymentTransactionsLineItemVersionsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Create a transaction line item version
         /// </summary>
@@ -130,7 +131,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionLineItemVersion</returns>
-        TransactionLineItemVersion PostPaymentTransactionsLineItemVersions(long space, TransactionLineItemVersionCreate transactionLineItemVersionCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionLineItemVersion PostPaymentTransactionsLineItemVersions(long space, TransactionLineItemVersionCreate transactionLineItemVersionCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a transaction line item version
@@ -144,8 +145,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionLineItemVersion</returns>
-        ApiResponse<TransactionLineItemVersion> PostPaymentTransactionsLineItemVersionsWithHttpInfo(long space, TransactionLineItemVersionCreate transactionLineItemVersionCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionLineItemVersion> PostPaymentTransactionsLineItemVersionsWithHttpInfo(long space, TransactionLineItemVersionCreate transactionLineItemVersionCreate, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -243,7 +243,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LineItemVersionListResponse</returns>
-        public LineItemVersionListResponse GetPaymentTransactionsLineItemVersions(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public LineItemVersionListResponse GetPaymentTransactionsLineItemVersions(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LineItemVersionListResponse> localVarResponse = GetPaymentTransactionsLineItemVersionsWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -261,7 +261,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LineItemVersionListResponse</returns>
-        public Wallee.Client.ApiResponse<LineItemVersionListResponse> GetPaymentTransactionsLineItemVersionsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LineItemVersionListResponse> GetPaymentTransactionsLineItemVersionsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -274,6 +274,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -314,7 +315,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LineItemVersionListResponse>("/payment/transactions/line-item-versions",
+            var localVarResponse = this.Client.Get<LineItemVersionListResponse>("/payment/transactions/line-item-versions",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -336,7 +337,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionLineItemVersion</returns>
-        public TransactionLineItemVersion GetPaymentTransactionsLineItemVersionsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionLineItemVersion GetPaymentTransactionsLineItemVersionsId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionLineItemVersion> localVarResponse = GetPaymentTransactionsLineItemVersionsIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -351,7 +352,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionLineItemVersion</returns>
-        public Wallee.Client.ApiResponse<TransactionLineItemVersion> GetPaymentTransactionsLineItemVersionsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionLineItemVersion> GetPaymentTransactionsLineItemVersionsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -364,6 +365,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -389,7 +391,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<TransactionLineItemVersion>("/payment/transactions/line-item-versions/{id}",
+            var localVarResponse = this.Client.Get<TransactionLineItemVersion>("/payment/transactions/line-item-versions/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -414,7 +416,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LineItemVersionSearchResponse</returns>
-        public LineItemVersionSearchResponse GetPaymentTransactionsLineItemVersionsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public LineItemVersionSearchResponse GetPaymentTransactionsLineItemVersionsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LineItemVersionSearchResponse> localVarResponse = GetPaymentTransactionsLineItemVersionsSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -432,7 +434,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LineItemVersionSearchResponse</returns>
-        public Wallee.Client.ApiResponse<LineItemVersionSearchResponse> GetPaymentTransactionsLineItemVersionsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LineItemVersionSearchResponse> GetPaymentTransactionsLineItemVersionsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -445,6 +447,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -485,7 +488,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LineItemVersionSearchResponse>("/payment/transactions/line-item-versions/search",
+            var localVarResponse = this.Client.Get<LineItemVersionSearchResponse>("/payment/transactions/line-item-versions/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -507,7 +510,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionLineItemVersion</returns>
-        public TransactionLineItemVersion PostPaymentTransactionsLineItemVersions(long space, TransactionLineItemVersionCreate transactionLineItemVersionCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionLineItemVersion PostPaymentTransactionsLineItemVersions(long space, TransactionLineItemVersionCreate transactionLineItemVersionCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionLineItemVersion> localVarResponse = PostPaymentTransactionsLineItemVersionsWithHttpInfo(space, transactionLineItemVersionCreate, expand);
             return localVarResponse.Data;
@@ -522,7 +525,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionLineItemVersion</returns>
-        public Wallee.Client.ApiResponse<TransactionLineItemVersion> PostPaymentTransactionsLineItemVersionsWithHttpInfo(long space, TransactionLineItemVersionCreate transactionLineItemVersionCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionLineItemVersion> PostPaymentTransactionsLineItemVersionsWithHttpInfo(long space, TransactionLineItemVersionCreate transactionLineItemVersionCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'transactionLineItemVersionCreate' is set
             if (transactionLineItemVersionCreate == null)
@@ -542,6 +545,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -567,7 +571,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<TransactionLineItemVersion>("/payment/transactions/line-item-versions",
+            var localVarResponse = this.Client.Post<TransactionLineItemVersion>("/payment/transactions/line-item-versions",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

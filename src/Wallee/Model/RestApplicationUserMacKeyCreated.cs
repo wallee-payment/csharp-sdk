@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="RestApplicationUserMacKeyCreated" /> class.
         /// </summary>
         /// <param name="state">state.</param>
-        public RestApplicationUserMacKeyCreated(ApplicationKeyState? state = default(ApplicationKeyState?))
+        public RestApplicationUserMacKeyCreated(ApplicationKeyState? state = default)
         {
             this.State = state;
         }

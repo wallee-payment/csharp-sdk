@@ -66,7 +66,7 @@ namespace Wallee.Model
         /// <param name="connector">The connector that the configuration is for. (required).</param>
         /// <param name="state">state (required).</param>
         /// <param name="processorConfiguration">The processor configuration that the connector configuration belongs to. (required).</param>
-        public PaymentConnectorConfigurationCreate(string name = default(string), List<long> enabledSpaceViews = default(List<long>), List<Condition> conditions = default(List<Condition>), int priority = default(int), List<SalesChannel> enabledSalesChannels = default(List<SalesChannel>), long paymentMethodConfiguration = default(long), long connector = default(long), CreationEntityState state = default(CreationEntityState), long processorConfiguration = default(long))
+        public PaymentConnectorConfigurationCreate(string name = default, List<long> enabledSpaceViews = default, List<Condition> conditions = default, int priority = default, List<SalesChannel> enabledSalesChannels = default, long paymentMethodConfiguration = default, long connector = default, CreationEntityState state = default, long processorConfiguration = default)
         {
             this.PaymentMethodConfiguration = paymentMethodConfiguration;
             this.Connector = connector;

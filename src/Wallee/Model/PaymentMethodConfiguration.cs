@@ -68,7 +68,7 @@ namespace Wallee.Model
         /// <param name="oneClickPaymentMode">oneClickPaymentMode.</param>
         /// <param name="paymentMethod">paymentMethod.</param>
         /// <param name="state">state.</param>
-        public PaymentMethodConfiguration(DataCollectionType? dataCollectionType = default(DataCollectionType?), OneClickPaymentMode? oneClickPaymentMode = default(OneClickPaymentMode?), PaymentMethod paymentMethod = default(PaymentMethod), CreationEntityState? state = default(CreationEntityState?))
+        public PaymentMethodConfiguration(DataCollectionType? dataCollectionType = default, OneClickPaymentMode? oneClickPaymentMode = default, PaymentMethod paymentMethod = default, CreationEntityState? state = default)
         {
             this.DataCollectionType = dataCollectionType;
             this.OneClickPaymentMode = oneClickPaymentMode;

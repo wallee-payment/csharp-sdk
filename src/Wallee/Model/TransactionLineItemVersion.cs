@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="failureReason">failureReason.</param>
         /// <param name="state">state.</param>
         /// <param name="transaction">transaction.</param>
-        public TransactionLineItemVersion(FailureReason failureReason = default(FailureReason), TransactionLineItemVersionState? state = default(TransactionLineItemVersionState?), Transaction transaction = default(Transaction))
+        public TransactionLineItemVersion(FailureReason failureReason = default, TransactionLineItemVersionState? state = default, Transaction transaction = default)
         {
             this.FailureReason = failureReason;
             this.State = state;

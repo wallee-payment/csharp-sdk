@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -58,7 +62,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeletePaymentTransactionsTransactionIdCommentsIdWithHttpInfo(long transactionId, long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// List all transaction comments
         /// </summary>
@@ -72,7 +75,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionCommentListResponse</returns>
-        TransactionCommentListResponse GetPaymentTransactionsTransactionIdComments(long transactionId, long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        TransactionCommentListResponse GetPaymentTransactionsTransactionIdComments(long transactionId, long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all transaction comments
@@ -90,8 +93,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionCommentListResponse</returns>
-        ApiResponse<TransactionCommentListResponse> GetPaymentTransactionsTransactionIdCommentsWithHttpInfo(long transactionId, long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<TransactionCommentListResponse> GetPaymentTransactionsTransactionIdCommentsWithHttpInfo(long transactionId, long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a transaction comment
         /// </summary>
@@ -102,7 +104,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionComment</returns>
-        TransactionComment GetPaymentTransactionsTransactionIdCommentsId(long transactionId, long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionComment GetPaymentTransactionsTransactionIdCommentsId(long transactionId, long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a transaction comment
@@ -117,8 +119,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionComment</returns>
-        ApiResponse<TransactionComment> GetPaymentTransactionsTransactionIdCommentsIdWithHttpInfo(long transactionId, long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionComment> GetPaymentTransactionsTransactionIdCommentsIdWithHttpInfo(long transactionId, long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search transaction comments
         /// </summary>
@@ -132,7 +133,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionCommentSearchResponse</returns>
-        TransactionCommentSearchResponse GetPaymentTransactionsTransactionIdCommentsSearch(long transactionId, long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        TransactionCommentSearchResponse GetPaymentTransactionsTransactionIdCommentsSearch(long transactionId, long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search transaction comments
@@ -150,8 +151,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionCommentSearchResponse</returns>
-        ApiResponse<TransactionCommentSearchResponse> GetPaymentTransactionsTransactionIdCommentsSearchWithHttpInfo(long transactionId, long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<TransactionCommentSearchResponse> GetPaymentTransactionsTransactionIdCommentsSearchWithHttpInfo(long transactionId, long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a transaction comment
         /// </summary>
@@ -163,7 +163,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionComment</returns>
-        TransactionComment PatchPaymentTransactionsTransactionIdCommentsId(long transactionId, long id, long space, TransactionCommentActive transactionCommentActive, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionComment PatchPaymentTransactionsTransactionIdCommentsId(long transactionId, long id, long space, TransactionCommentActive transactionCommentActive, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a transaction comment
@@ -179,8 +179,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionComment</returns>
-        ApiResponse<TransactionComment> PatchPaymentTransactionsTransactionIdCommentsIdWithHttpInfo(long transactionId, long id, long space, TransactionCommentActive transactionCommentActive, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionComment> PatchPaymentTransactionsTransactionIdCommentsIdWithHttpInfo(long transactionId, long id, long space, TransactionCommentActive transactionCommentActive, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a transaction comment
         /// </summary>
@@ -191,7 +190,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionComment</returns>
-        TransactionComment PostPaymentTransactionsTransactionIdComments(long transactionId, long space, TransactionCommentCreate transactionCommentCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionComment PostPaymentTransactionsTransactionIdComments(long transactionId, long space, TransactionCommentCreate transactionCommentCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a transaction comment
@@ -206,8 +205,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionComment</returns>
-        ApiResponse<TransactionComment> PostPaymentTransactionsTransactionIdCommentsWithHttpInfo(long transactionId, long space, TransactionCommentCreate transactionCommentCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionComment> PostPaymentTransactionsTransactionIdCommentsWithHttpInfo(long transactionId, long space, TransactionCommentCreate transactionCommentCreate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Pin a comment to the top
         /// </summary>
@@ -232,7 +230,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PostPaymentTransactionsTransactionIdCommentsIdPinWithHttpInfo(long transactionId, long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// Remove the pinned comment from the top
         /// </summary>
@@ -257,7 +254,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PostPaymentTransactionsTransactionIdCommentsIdUnpinWithHttpInfo(long transactionId, long id, long space, int operationIndex = 0);
-
         #endregion Synchronous Operations
     }
 
@@ -379,6 +375,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -401,7 +398,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/payment/transactions/{transactionId}/comments/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/payment/transactions/{transactionId}/comments/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -427,7 +424,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionCommentListResponse</returns>
-        public TransactionCommentListResponse GetPaymentTransactionsTransactionIdComments(long transactionId, long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public TransactionCommentListResponse GetPaymentTransactionsTransactionIdComments(long transactionId, long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionCommentListResponse> localVarResponse = GetPaymentTransactionsTransactionIdCommentsWithHttpInfo(transactionId, space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -446,7 +443,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionCommentListResponse</returns>
-        public Wallee.Client.ApiResponse<TransactionCommentListResponse> GetPaymentTransactionsTransactionIdCommentsWithHttpInfo(long transactionId, long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionCommentListResponse> GetPaymentTransactionsTransactionIdCommentsWithHttpInfo(long transactionId, long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -459,6 +456,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -500,7 +498,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<TransactionCommentListResponse>("/payment/transactions/{transactionId}/comments",
+            var localVarResponse = this.Client.Get<TransactionCommentListResponse>("/payment/transactions/{transactionId}/comments",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -523,7 +521,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionComment</returns>
-        public TransactionComment GetPaymentTransactionsTransactionIdCommentsId(long transactionId, long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionComment GetPaymentTransactionsTransactionIdCommentsId(long transactionId, long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionComment> localVarResponse = GetPaymentTransactionsTransactionIdCommentsIdWithHttpInfo(transactionId, id, space, expand);
             return localVarResponse.Data;
@@ -539,7 +537,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionComment</returns>
-        public Wallee.Client.ApiResponse<TransactionComment> GetPaymentTransactionsTransactionIdCommentsIdWithHttpInfo(long transactionId, long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionComment> GetPaymentTransactionsTransactionIdCommentsIdWithHttpInfo(long transactionId, long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -552,6 +550,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -578,7 +577,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<TransactionComment>("/payment/transactions/{transactionId}/comments/{id}",
+            var localVarResponse = this.Client.Get<TransactionComment>("/payment/transactions/{transactionId}/comments/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -604,7 +603,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionCommentSearchResponse</returns>
-        public TransactionCommentSearchResponse GetPaymentTransactionsTransactionIdCommentsSearch(long transactionId, long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public TransactionCommentSearchResponse GetPaymentTransactionsTransactionIdCommentsSearch(long transactionId, long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionCommentSearchResponse> localVarResponse = GetPaymentTransactionsTransactionIdCommentsSearchWithHttpInfo(transactionId, space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -623,7 +622,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionCommentSearchResponse</returns>
-        public Wallee.Client.ApiResponse<TransactionCommentSearchResponse> GetPaymentTransactionsTransactionIdCommentsSearchWithHttpInfo(long transactionId, long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionCommentSearchResponse> GetPaymentTransactionsTransactionIdCommentsSearchWithHttpInfo(long transactionId, long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -636,6 +635,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -677,7 +677,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<TransactionCommentSearchResponse>("/payment/transactions/{transactionId}/comments/search",
+            var localVarResponse = this.Client.Get<TransactionCommentSearchResponse>("/payment/transactions/{transactionId}/comments/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -701,7 +701,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionComment</returns>
-        public TransactionComment PatchPaymentTransactionsTransactionIdCommentsId(long transactionId, long id, long space, TransactionCommentActive transactionCommentActive, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionComment PatchPaymentTransactionsTransactionIdCommentsId(long transactionId, long id, long space, TransactionCommentActive transactionCommentActive, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionComment> localVarResponse = PatchPaymentTransactionsTransactionIdCommentsIdWithHttpInfo(transactionId, id, space, transactionCommentActive, expand);
             return localVarResponse.Data;
@@ -718,7 +718,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionComment</returns>
-        public Wallee.Client.ApiResponse<TransactionComment> PatchPaymentTransactionsTransactionIdCommentsIdWithHttpInfo(long transactionId, long id, long space, TransactionCommentActive transactionCommentActive, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionComment> PatchPaymentTransactionsTransactionIdCommentsIdWithHttpInfo(long transactionId, long id, long space, TransactionCommentActive transactionCommentActive, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'transactionCommentActive' is set
             if (transactionCommentActive == null)
@@ -738,6 +738,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -765,7 +766,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<TransactionComment>("/payment/transactions/{transactionId}/comments/{id}",
+            var localVarResponse = this.Client.Patch<TransactionComment>("/payment/transactions/{transactionId}/comments/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -788,7 +789,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionComment</returns>
-        public TransactionComment PostPaymentTransactionsTransactionIdComments(long transactionId, long space, TransactionCommentCreate transactionCommentCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionComment PostPaymentTransactionsTransactionIdComments(long transactionId, long space, TransactionCommentCreate transactionCommentCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionComment> localVarResponse = PostPaymentTransactionsTransactionIdCommentsWithHttpInfo(transactionId, space, transactionCommentCreate, expand);
             return localVarResponse.Data;
@@ -804,7 +805,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionComment</returns>
-        public Wallee.Client.ApiResponse<TransactionComment> PostPaymentTransactionsTransactionIdCommentsWithHttpInfo(long transactionId, long space, TransactionCommentCreate transactionCommentCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionComment> PostPaymentTransactionsTransactionIdCommentsWithHttpInfo(long transactionId, long space, TransactionCommentCreate transactionCommentCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'transactionCommentCreate' is set
             if (transactionCommentCreate == null)
@@ -824,6 +825,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -850,7 +852,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<TransactionComment>("/payment/transactions/{transactionId}/comments",
+            var localVarResponse = this.Client.Post<TransactionComment>("/payment/transactions/{transactionId}/comments",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -899,6 +901,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -921,7 +924,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Object>("/payment/transactions/{transactionId}/comments/{id}/pin",
+            var localVarResponse = this.Client.Post<Object>("/payment/transactions/{transactionId}/comments/{id}/pin",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -970,6 +973,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -992,7 +996,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Object>("/payment/transactions/{transactionId}/comments/{id}/unpin",
+            var localVarResponse = this.Client.Post<Object>("/payment/transactions/{transactionId}/comments/{id}/unpin",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

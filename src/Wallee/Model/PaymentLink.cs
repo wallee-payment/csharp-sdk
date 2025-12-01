@@ -74,7 +74,7 @@ namespace Wallee.Model
         /// <param name="protectionMode">protectionMode.</param>
         /// <param name="state">state.</param>
         /// <param name="billingAddressHandlingMode">billingAddressHandlingMode.</param>
-        public PaymentLink(PaymentLinkAddressHandlingMode? shippingAddressHandlingMode = default(PaymentLinkAddressHandlingMode?), PaymentLinkProtectionMode? protectionMode = default(PaymentLinkProtectionMode?), CreationEntityState? state = default(CreationEntityState?), PaymentLinkAddressHandlingMode? billingAddressHandlingMode = default(PaymentLinkAddressHandlingMode?))
+        public PaymentLink(PaymentLinkAddressHandlingMode? shippingAddressHandlingMode = default, PaymentLinkProtectionMode? protectionMode = default, CreationEntityState? state = default, PaymentLinkAddressHandlingMode? billingAddressHandlingMode = default)
         {
             this.ShippingAddressHandlingMode = shippingAddressHandlingMode;
             this.ProtectionMode = protectionMode;

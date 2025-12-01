@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="shippingAddress">shippingAddress.</param>
         /// <param name="language">The language that is used when communicating with the subscriber via emails and documents..</param>
         /// <param name="billingAddress">billingAddress.</param>
-        public AbstractSubscriberUpdate(string reference = default(string), List<long> additionalAllowedPaymentMethodConfigurations = default(List<long>), Dictionary<string, string> metaData = default(Dictionary<string, string>), string emailAddress = default(string), List<long> disallowedPaymentMethodConfigurations = default(List<long>), string description = default(string), AddressCreate shippingAddress = default(AddressCreate), string language = default(string), AddressCreate billingAddress = default(AddressCreate))
+        public AbstractSubscriberUpdate(string reference = default, List<long> additionalAllowedPaymentMethodConfigurations = default, Dictionary<string, string> metaData = default, string emailAddress = default, List<long> disallowedPaymentMethodConfigurations = default, string description = default, AddressCreate shippingAddress = default, string language = default, AddressCreate billingAddress = default)
         {
             this.Reference = reference;
             this.AdditionalAllowedPaymentMethodConfigurations = additionalAllowedPaymentMethodConfigurations;

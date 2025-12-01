@@ -24,8 +24,12 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Net.Http;
 using System.Net.Security;
 
 namespace Wallee.Client
@@ -154,7 +158,7 @@ namespace Wallee.Client
         /// <param name="authenticationKey">The secret authentication key.</param>
         /// <param name="defaultHeaders">The default headers as key-value pairs.</param>
         /// <param name="basePath">The base URL path for API requests.</param>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
+        [global::System.Diagnostics.CodeAnalysis.SuppressMessage("ReSharper", "VirtualMemberCallInConstructor")]
         public Configuration(
             long applicationUserId,
             string authenticationKey,
@@ -435,7 +439,7 @@ namespace Wallee.Client
 
                     if (inputVariables.ContainsKey(variable.Key))
                     {
-                        if (((List<string>)serverVariables["enum_values"]).Contains(inputVariables[variable.Key]))
+                        if (!serverVariables.ContainsKey("enum_values") || ((List<string>)serverVariables["enum_values"]).Contains(inputVariables[variable.Key]))
                         {
                             url = url.Replace("{" + variable.Key + "}", inputVariables[variable.Key]);
                         }
@@ -471,7 +475,7 @@ namespace Wallee.Client
         {
             string report = "C# SDK (Wallee) Debug Report:\n";
             report += "    OS: " + System.Environment.OSVersion + "\n";
-            report += "    .NET Framework Version: " + System.Environment.Version + "\n";
+            report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 2.0\n";
             report += "    SDK Package Version: 1.0.0\n";
 

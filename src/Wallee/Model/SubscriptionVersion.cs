@@ -56,7 +56,7 @@ namespace Wallee.Model
         /// <param name="productVersion">productVersion.</param>
         /// <param name="billingCycleModel">billingCycleModel.</param>
         /// <param name="state">state.</param>
-        public SubscriptionVersion(Subscription subscription = default(Subscription), SubscriptionProductVersion productVersion = default(SubscriptionProductVersion), BillingCycleModel billingCycleModel = default(BillingCycleModel), SubscriptionVersionState? state = default(SubscriptionVersionState?))
+        public SubscriptionVersion(Subscription subscription = default, SubscriptionProductVersion productVersion = default, BillingCycleModel billingCycleModel = default, SubscriptionVersionState? state = default)
         {
             this.Subscription = subscription;
             this.ProductVersion = productVersion;

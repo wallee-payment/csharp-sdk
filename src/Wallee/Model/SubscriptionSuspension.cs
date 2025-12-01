@@ -68,7 +68,7 @@ namespace Wallee.Model
         /// <param name="subscription">subscription.</param>
         /// <param name="endAction">endAction.</param>
         /// <param name="state">state.</param>
-        public SubscriptionSuspension(SubscriptionSuspensionReason? reason = default(SubscriptionSuspensionReason?), Subscription subscription = default(Subscription), SubscriptionSuspensionAction? endAction = default(SubscriptionSuspensionAction?), SubscriptionSuspensionState? state = default(SubscriptionSuspensionState?))
+        public SubscriptionSuspension(SubscriptionSuspensionReason? reason = default, Subscription subscription = default, SubscriptionSuspensionAction? endAction = default, SubscriptionSuspensionState? state = default)
         {
             this.Reason = reason;
             this.Subscription = subscription;

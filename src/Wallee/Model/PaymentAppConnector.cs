@@ -57,7 +57,7 @@ namespace Wallee.Model
         /// <param name="connectorConfiguration">connectorConfiguration.</param>
         /// <param name="state">state.</param>
         /// <param name="refundConfiguration">refundConfiguration.</param>
-        public PaymentAppConnector(PaymentAppCompletionConfiguration completionConfiguration = default(PaymentAppCompletionConfiguration), PaymentAppProcessor processor = default(PaymentAppProcessor), PaymentConnectorConfiguration connectorConfiguration = default(PaymentConnectorConfiguration), PaymentAppConnectorState? state = default(PaymentAppConnectorState?), PaymentAppRefundConfiguration refundConfiguration = default(PaymentAppRefundConfiguration))
+        public PaymentAppConnector(PaymentAppCompletionConfiguration completionConfiguration = default, PaymentAppProcessor processor = default, PaymentConnectorConfiguration connectorConfiguration = default, PaymentAppConnectorState? state = default, PaymentAppRefundConfiguration refundConfiguration = default)
         {
             this.CompletionConfiguration = completionConfiguration;
             this.Processor = processor;

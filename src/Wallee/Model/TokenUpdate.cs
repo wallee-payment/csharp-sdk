@@ -58,7 +58,7 @@ namespace Wallee.Model
         /// <param name="varTimeZone">The customer&#39;s time zone, which affects how dates and times are formatted when communicating with the customer..</param>
         /// <param name="language">The language that is linked to the object..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public TokenUpdate(bool enabledForOneClickPayment = default(bool), string customerEmailAddress = default(string), string tokenReference = default(string), string customerId = default(string), string varTimeZone = default(string), string language = default(string), int varVersion = default(int))
+        public TokenUpdate(bool enabledForOneClickPayment = default, string customerEmailAddress = default, string tokenReference = default, string customerId = default, string varTimeZone = default, string language = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.EnabledForOneClickPayment = enabledForOneClickPayment;

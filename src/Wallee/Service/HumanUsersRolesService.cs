@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -58,7 +62,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteHumanUsersUserIdAccountRolesWithHttpInfo(long userId, long roleId, long account, int operationIndex = 0);
-
         /// <summary>
         /// Unassign a role from a human user for a space
         /// </summary>
@@ -83,7 +86,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteHumanUsersUserIdSpaceRolesWithHttpInfo(long userId, long roleId, long space, int operationIndex = 0);
-
         /// <summary>
         /// List all roles of a human user for an account
         /// </summary>
@@ -106,7 +108,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserAccountRoleListResponse</returns>
         ApiResponse<UserAccountRoleListResponse> GetHumanUsersUserIdAccountRolesWithHttpInfo(long userId, long account, int operationIndex = 0);
-
         /// <summary>
         /// List all roles of a human user for a space
         /// </summary>
@@ -129,7 +130,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserSpaceRoleListResponse</returns>
         ApiResponse<UserSpaceRoleListResponse> GetHumanUsersUserIdSpaceRolesWithHttpInfo(long userId, long space, int operationIndex = 0);
-
         /// <summary>
         /// Assign a role to a human user for an account
         /// </summary>
@@ -140,7 +140,7 @@ namespace Wallee.Service
         /// <param name="appliesOnSubAccount">Whether the role should be assigned to the user in subaccounts only. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UserAccountRole</returns>
-        UserAccountRole PostHumanUsersUserIdAccountRoles(long userId, long roleId, long account, bool? appliesOnSubAccount = default(bool?), int operationIndex = 0);
+        UserAccountRole PostHumanUsersUserIdAccountRoles(long userId, long roleId, long account, bool? appliesOnSubAccount = default, int operationIndex = 0);
 
         /// <summary>
         /// Assign a role to a human user for an account
@@ -155,8 +155,7 @@ namespace Wallee.Service
         /// <param name="appliesOnSubAccount">Whether the role should be assigned to the user in subaccounts only. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserAccountRole</returns>
-        ApiResponse<UserAccountRole> PostHumanUsersUserIdAccountRolesWithHttpInfo(long userId, long roleId, long account, bool? appliesOnSubAccount = default(bool?), int operationIndex = 0);
-
+        ApiResponse<UserAccountRole> PostHumanUsersUserIdAccountRolesWithHttpInfo(long userId, long roleId, long account, bool? appliesOnSubAccount = default, int operationIndex = 0);
         /// <summary>
         /// Assign a role to a human user for a space
         /// </summary>
@@ -181,7 +180,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserSpaceRole</returns>
         ApiResponse<UserSpaceRole> PostHumanUsersUserIdSpaceRolesWithHttpInfo(long userId, long roleId, long space, int operationIndex = 0);
-
         #endregion Synchronous Operations
     }
 
@@ -303,6 +301,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -325,7 +324,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/human-users/{userId}/account-roles",
+            var localVarResponse = this.Client.Delete<Object>("/human-users/{userId}/account-roles",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -374,6 +373,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -396,7 +396,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/human-users/{userId}/space-roles",
+            var localVarResponse = this.Client.Delete<Object>("/human-users/{userId}/space-roles",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -444,6 +444,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -465,7 +466,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<UserAccountRoleListResponse>("/human-users/{userId}/account-roles",
+            var localVarResponse = this.Client.Get<UserAccountRoleListResponse>("/human-users/{userId}/account-roles",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -513,6 +514,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -534,7 +536,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<UserSpaceRoleListResponse>("/human-users/{userId}/space-roles",
+            var localVarResponse = this.Client.Get<UserSpaceRoleListResponse>("/human-users/{userId}/space-roles",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -557,7 +559,7 @@ namespace Wallee.Service
         /// <param name="appliesOnSubAccount">Whether the role should be assigned to the user in subaccounts only. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>UserAccountRole</returns>
-        public UserAccountRole PostHumanUsersUserIdAccountRoles(long userId, long roleId, long account, bool? appliesOnSubAccount = default(bool?), int operationIndex = 0)
+        public UserAccountRole PostHumanUsersUserIdAccountRoles(long userId, long roleId, long account, bool? appliesOnSubAccount = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<UserAccountRole> localVarResponse = PostHumanUsersUserIdAccountRolesWithHttpInfo(userId, roleId, account, appliesOnSubAccount);
             return localVarResponse.Data;
@@ -573,7 +575,7 @@ namespace Wallee.Service
         /// <param name="appliesOnSubAccount">Whether the role should be assigned to the user in subaccounts only. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of UserAccountRole</returns>
-        public Wallee.Client.ApiResponse<UserAccountRole> PostHumanUsersUserIdAccountRolesWithHttpInfo(long userId, long roleId, long account, bool? appliesOnSubAccount = default(bool?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<UserAccountRole> PostHumanUsersUserIdAccountRolesWithHttpInfo(long userId, long roleId, long account, bool? appliesOnSubAccount = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -586,6 +588,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -612,7 +615,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<UserAccountRole>("/human-users/{userId}/account-roles",
+            var localVarResponse = this.Client.Post<UserAccountRole>("/human-users/{userId}/account-roles",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -662,6 +665,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -684,7 +688,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<UserSpaceRole>("/human-users/{userId}/space-roles",
+            var localVarResponse = this.Client.Post<UserSpaceRole>("/human-users/{userId}/space-roles",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

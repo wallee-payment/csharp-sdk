@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -41,7 +45,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CountryListResponse</returns>
-        CountryListResponse GetCountries(List<string>? expand = default(List<string>?), int operationIndex = 0);
+        CountryListResponse GetCountries(List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// List all countries
@@ -53,8 +57,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CountryListResponse</returns>
-        ApiResponse<CountryListResponse> GetCountriesWithHttpInfo(List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<CountryListResponse> GetCountriesWithHttpInfo(List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a country
         /// </summary>
@@ -63,7 +66,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestCountry</returns>
-        RestCountry GetCountriesCode(string code, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        RestCountry GetCountriesCode(string code, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a country
@@ -76,8 +79,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestCountry</returns>
-        ApiResponse<RestCountry> GetCountriesCodeWithHttpInfo(string code, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<RestCountry> GetCountriesCodeWithHttpInfo(string code, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// List all states for a country
         /// </summary>
@@ -98,7 +100,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;RestCountryState&gt;</returns>
         ApiResponse<List<RestCountryState>> GetCountriesCountryCodeStatesWithHttpInfo(string countryCode, int operationIndex = 0);
-
         /// <summary>
         /// Search countries
         /// </summary>
@@ -110,7 +111,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CountrySearchResponse</returns>
-        CountrySearchResponse GetCountriesSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        CountrySearchResponse GetCountriesSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search countries
@@ -126,8 +127,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CountrySearchResponse</returns>
-        ApiResponse<CountrySearchResponse> GetCountriesSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<CountrySearchResponse> GetCountriesSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// List all country states
         /// </summary>
@@ -146,7 +146,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;RestCountryState&gt;</returns>
         ApiResponse<List<RestCountryState>> GetCountriesStatesWithHttpInfo(int operationIndex = 0);
-
         /// <summary>
         /// Retrieve a country state
         /// </summary>
@@ -167,7 +166,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestCountryState</returns>
         ApiResponse<RestCountryState> GetCountriesStatesIdWithHttpInfo(string id, int operationIndex = 0);
-
         #endregion Synchronous Operations
     }
 
@@ -260,7 +258,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CountryListResponse</returns>
-        public CountryListResponse GetCountries(List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public CountryListResponse GetCountries(List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<CountryListResponse> localVarResponse = GetCountriesWithHttpInfo(expand);
             return localVarResponse.Data;
@@ -273,7 +271,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CountryListResponse</returns>
-        public Wallee.Client.ApiResponse<CountryListResponse> GetCountriesWithHttpInfo(List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<CountryListResponse> GetCountriesWithHttpInfo(List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -286,6 +284,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -309,7 +308,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<CountryListResponse>("/countries",
+            var localVarResponse = this.Client.Get<CountryListResponse>("/countries",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -330,7 +329,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestCountry</returns>
-        public RestCountry GetCountriesCode(string code, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public RestCountry GetCountriesCode(string code, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<RestCountry> localVarResponse = GetCountriesCodeWithHttpInfo(code, expand);
             return localVarResponse.Data;
@@ -344,7 +343,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestCountry</returns>
-        public Wallee.Client.ApiResponse<RestCountry> GetCountriesCodeWithHttpInfo(string code, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<RestCountry> GetCountriesCodeWithHttpInfo(string code, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'code' is set
             if (code == null)
@@ -363,6 +362,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -387,7 +387,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<RestCountry>("/countries/{code}",
+            var localVarResponse = this.Client.Get<RestCountry>("/countries/{code}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -439,6 +439,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -459,7 +460,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<List<RestCountryState>>("/countries/{countryCode}/states",
+            var localVarResponse = this.Client.Get<List<RestCountryState>>("/countries/{countryCode}/states",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -483,7 +484,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CountrySearchResponse</returns>
-        public CountrySearchResponse GetCountriesSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public CountrySearchResponse GetCountriesSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<CountrySearchResponse> localVarResponse = GetCountriesSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -500,7 +501,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CountrySearchResponse</returns>
-        public Wallee.Client.ApiResponse<CountrySearchResponse> GetCountriesSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<CountrySearchResponse> GetCountriesSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -513,6 +514,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -552,7 +554,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<CountrySearchResponse>("/countries/search",
+            var localVarResponse = this.Client.Get<CountrySearchResponse>("/countries/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -596,6 +598,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -615,7 +618,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<List<RestCountryState>>("/countries/states",
+            var localVarResponse = this.Client.Get<List<RestCountryState>>("/countries/states",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -667,6 +670,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -687,7 +691,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<RestCountryState>("/countries/states/{id}",
+            var localVarResponse = this.Client.Get<RestCountryState>("/countries/states/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

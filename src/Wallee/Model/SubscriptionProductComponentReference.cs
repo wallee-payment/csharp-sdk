@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="SubscriptionProductComponentReference" /> class.
         /// </summary>
         /// <param name="state">state.</param>
-        public SubscriptionProductComponentReference(SubscriptionProductComponentReferenceState? state = default(SubscriptionProductComponentReferenceState?))
+        public SubscriptionProductComponentReference(SubscriptionProductComponentReferenceState? state = default)
         {
             this.State = state;
         }

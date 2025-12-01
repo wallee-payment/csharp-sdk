@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="name">The name used to identify the role..</param>
         /// <param name="twoFactorRequired">Whether users with this role are required to use two-factor authentication..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public RoleUpdate(List<Permission> permissions = default(List<Permission>), Dictionary<string, string> name = default(Dictionary<string, string>), bool twoFactorRequired = default(bool), int varVersion = default(int))
+        public RoleUpdate(List<Permission> permissions = default, Dictionary<string, string> name = default, bool twoFactorRequired = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Permissions = permissions;

@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="component">component.</param>
         /// <param name="type">type.</param>
-        public ProductSetupFee(SubscriptionProductComponent component = default(SubscriptionProductComponent), ProductFeeType? type = default(ProductFeeType?))
+        public ProductSetupFee(SubscriptionProductComponent component = default, ProductFeeType? type = default)
         {
             this.Component = component;
             this.Type = type;

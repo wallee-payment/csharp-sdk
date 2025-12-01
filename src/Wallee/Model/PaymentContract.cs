@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="contractType">contractType.</param>
         /// <param name="state">state.</param>
         /// <param name="rejectionReason">rejectionReason.</param>
-        public PaymentContract(PaymentContractType contractType = default(PaymentContractType), PaymentContractState? state = default(PaymentContractState?), FailureReason rejectionReason = default(FailureReason))
+        public PaymentContract(PaymentContractType contractType = default, PaymentContractState? state = default, FailureReason rejectionReason = default)
         {
             this.ContractType = contractType;
             this.State = state;

@@ -61,7 +61,7 @@ namespace Wallee.Model
         /// <param name="currencyBankAccount">currencyBankAccount.</param>
         /// <param name="flowDirection">flowDirection.</param>
         /// <param name="state">state.</param>
-        public BankTransaction(CurrencyBankAccount currencyBankAccount = default(CurrencyBankAccount), BankTransactionFlowDirection? flowDirection = default(BankTransactionFlowDirection?), BankTransactionState? state = default(BankTransactionState?))
+        public BankTransaction(CurrencyBankAccount currencyBankAccount = default, BankTransactionFlowDirection? flowDirection = default, BankTransactionState? state = default)
         {
             this.CurrencyBankAccount = currencyBankAccount;
             this.FlowDirection = flowDirection;

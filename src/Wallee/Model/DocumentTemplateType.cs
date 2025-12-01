@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="feature">feature.</param>
         /// <param name="group">group.</param>
-        public DocumentTemplateType(Feature feature = default(Feature), DocumentTemplateTypeGroup group = default(DocumentTemplateTypeGroup))
+        public DocumentTemplateType(Feature feature = default, DocumentTemplateTypeGroup group = default)
         {
             this.Feature = feature;
             this.Group = group;

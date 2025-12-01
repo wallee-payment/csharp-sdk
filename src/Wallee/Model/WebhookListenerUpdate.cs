@@ -62,7 +62,7 @@ namespace Wallee.Model
         /// <param name="state">state.</param>
         /// <param name="notifyEveryChange">Whether every update of the entity or only state changes are to be monitored..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public WebhookListenerUpdate(List<string> entityStates = default(List<string>), string name = default(string), CreationEntityState? state = default(CreationEntityState?), bool notifyEveryChange = default(bool), int varVersion = default(int))
+        public WebhookListenerUpdate(List<string> entityStates = default, string name = default, CreationEntityState? state = default, bool notifyEveryChange = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.EntityStates = entityStates;

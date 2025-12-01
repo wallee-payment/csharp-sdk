@@ -62,7 +62,7 @@ namespace Wallee.Model
         /// <param name="language">The language that is linked to the object..</param>
         /// <param name="state">state.</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public SubscriptionAffiliateInactive(Dictionary<string, string> metaData = default(Dictionary<string, string>), string name = default(string), string language = default(string), CreationEntityState? state = default(CreationEntityState?), int varVersion = default(int))
+        public SubscriptionAffiliateInactive(Dictionary<string, string> metaData = default, string name = default, string language = default, CreationEntityState? state = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.MetaData = metaData;

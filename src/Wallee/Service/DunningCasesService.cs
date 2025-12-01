@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -46,7 +50,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DunningCaseListResponse</returns>
-        DunningCaseListResponse GetPaymentDunningCases(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        DunningCaseListResponse GetPaymentDunningCases(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all dunning cases
@@ -63,8 +67,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DunningCaseListResponse</returns>
-        ApiResponse<DunningCaseListResponse> GetPaymentDunningCasesWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<DunningCaseListResponse> GetPaymentDunningCasesWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a dunning case
         /// </summary>
@@ -74,7 +77,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DunningCase</returns>
-        DunningCase GetPaymentDunningCasesId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DunningCase GetPaymentDunningCasesId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a dunning case
@@ -88,8 +91,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DunningCase</returns>
-        ApiResponse<DunningCase> GetPaymentDunningCasesIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DunningCase> GetPaymentDunningCasesIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search dunning cases
         /// </summary>
@@ -102,7 +104,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DunningCaseSearchResponse</returns>
-        DunningCaseSearchResponse GetPaymentDunningCasesSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        DunningCaseSearchResponse GetPaymentDunningCasesSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search dunning cases
@@ -119,8 +121,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DunningCaseSearchResponse</returns>
-        ApiResponse<DunningCaseSearchResponse> GetPaymentDunningCasesSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<DunningCaseSearchResponse> GetPaymentDunningCasesSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Suspend a dunning case
         /// </summary>
@@ -130,7 +131,7 @@ namespace Wallee.Service
         /// <param name="plannedEndDate"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        void PostPaymentDunningCasesIdSuspend(long id, long space, DateTime? plannedEndDate = default(DateTime?), int operationIndex = 0);
+        void PostPaymentDunningCasesIdSuspend(long id, long space, DateTime? plannedEndDate = default, int operationIndex = 0);
 
         /// <summary>
         /// Suspend a dunning case
@@ -144,8 +145,7 @@ namespace Wallee.Service
         /// <param name="plannedEndDate"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> PostPaymentDunningCasesIdSuspendWithHttpInfo(long id, long space, DateTime? plannedEndDate = default(DateTime?), int operationIndex = 0);
-
+        ApiResponse<Object> PostPaymentDunningCasesIdSuspendWithHttpInfo(long id, long space, DateTime? plannedEndDate = default, int operationIndex = 0);
         /// <summary>
         /// Create a dunning case for an invoice
         /// </summary>
@@ -168,7 +168,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PostPaymentDunningCasesInvoiceInvoiceIdWithHttpInfo(long invoiceId, long space, int operationIndex = 0);
-
         #endregion Synchronous Operations
     }
 
@@ -266,7 +265,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DunningCaseListResponse</returns>
-        public DunningCaseListResponse GetPaymentDunningCases(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public DunningCaseListResponse GetPaymentDunningCases(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DunningCaseListResponse> localVarResponse = GetPaymentDunningCasesWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -284,7 +283,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DunningCaseListResponse</returns>
-        public Wallee.Client.ApiResponse<DunningCaseListResponse> GetPaymentDunningCasesWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DunningCaseListResponse> GetPaymentDunningCasesWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -297,6 +296,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -337,7 +337,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DunningCaseListResponse>("/payment/dunning-cases",
+            var localVarResponse = this.Client.Get<DunningCaseListResponse>("/payment/dunning-cases",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -359,7 +359,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DunningCase</returns>
-        public DunningCase GetPaymentDunningCasesId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DunningCase GetPaymentDunningCasesId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DunningCase> localVarResponse = GetPaymentDunningCasesIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -374,7 +374,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DunningCase</returns>
-        public Wallee.Client.ApiResponse<DunningCase> GetPaymentDunningCasesIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DunningCase> GetPaymentDunningCasesIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -387,6 +387,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -412,7 +413,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DunningCase>("/payment/dunning-cases/{id}",
+            var localVarResponse = this.Client.Get<DunningCase>("/payment/dunning-cases/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -437,7 +438,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DunningCaseSearchResponse</returns>
-        public DunningCaseSearchResponse GetPaymentDunningCasesSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public DunningCaseSearchResponse GetPaymentDunningCasesSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DunningCaseSearchResponse> localVarResponse = GetPaymentDunningCasesSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -455,7 +456,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DunningCaseSearchResponse</returns>
-        public Wallee.Client.ApiResponse<DunningCaseSearchResponse> GetPaymentDunningCasesSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DunningCaseSearchResponse> GetPaymentDunningCasesSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -468,6 +469,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -508,7 +510,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DunningCaseSearchResponse>("/payment/dunning-cases/search",
+            var localVarResponse = this.Client.Get<DunningCaseSearchResponse>("/payment/dunning-cases/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -530,7 +532,7 @@ namespace Wallee.Service
         /// <param name="plannedEndDate"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns></returns>
-        public void PostPaymentDunningCasesIdSuspend(long id, long space, DateTime? plannedEndDate = default(DateTime?), int operationIndex = 0)
+        public void PostPaymentDunningCasesIdSuspend(long id, long space, DateTime? plannedEndDate = default, int operationIndex = 0)
         {
             PostPaymentDunningCasesIdSuspendWithHttpInfo(id, space, plannedEndDate);
         }
@@ -544,7 +546,7 @@ namespace Wallee.Service
         /// <param name="plannedEndDate"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Wallee.Client.ApiResponse<Object> PostPaymentDunningCasesIdSuspendWithHttpInfo(long id, long space, DateTime? plannedEndDate = default(DateTime?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Object> PostPaymentDunningCasesIdSuspendWithHttpInfo(long id, long space, DateTime? plannedEndDate = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -557,6 +559,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -582,7 +585,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Object>("/payment/dunning-cases/{id}/suspend",
+            var localVarResponse = this.Client.Post<Object>("/payment/dunning-cases/{id}/suspend",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -629,6 +632,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -650,7 +654,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Object>("/payment/dunning-cases/invoice/{invoiceId}",
+            var localVarResponse = this.Client.Post<Object>("/payment/dunning-cases/invoice/{invoiceId}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

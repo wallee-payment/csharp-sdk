@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="cardData">cardData.</param>
         /// <param name="paymentMethodConfiguration">The ID of the payment method configuration to use..</param>
-        public TokenizedCardRequest(TokenizedCardDataCreate cardData = default(TokenizedCardDataCreate), long paymentMethodConfiguration = default(long))
+        public TokenizedCardRequest(TokenizedCardDataCreate cardData = default, long paymentMethodConfiguration = default)
         {
             this.CardData = cardData;
             this.PaymentMethodConfiguration = paymentMethodConfiguration;

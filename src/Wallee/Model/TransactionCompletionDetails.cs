@@ -51,7 +51,7 @@ namespace Wallee.Model
         /// <param name="statementDescriptor">The statement descriptor that appears on a customer&#39;s bank statement, providing an explanation for charges or payments, helping customers identify the transaction..</param>
         /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result..</param>
         /// <param name="invoiceMerchantReference">The merchant&#39;s reference used to identify the invoice..</param>
-        public TransactionCompletionDetails(List<CompletionLineItemCreate> lineItems = default(List<CompletionLineItemCreate>), bool lastCompletion = default(bool), string statementDescriptor = default(string), string externalId = default(string), string invoiceMerchantReference = default(string))
+        public TransactionCompletionDetails(List<CompletionLineItemCreate> lineItems = default, bool lastCompletion = default, string statementDescriptor = default, string externalId = default, string invoiceMerchantReference = default)
         {
             this.LineItems = lineItems;
             this.LastCompletion = lastCompletion;

@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -56,7 +60,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteDebtCollectionConfigurationsIdWithHttpInfo(long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// List all debt collector configurations
         /// </summary>
@@ -69,7 +72,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectorConfigurationListResponse</returns>
-        DebtCollectorConfigurationListResponse GetDebtCollectionConfigurations(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        DebtCollectorConfigurationListResponse GetDebtCollectionConfigurations(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all debt collector configurations
@@ -86,8 +89,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectorConfigurationListResponse</returns>
-        ApiResponse<DebtCollectorConfigurationListResponse> GetDebtCollectionConfigurationsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectorConfigurationListResponse> GetDebtCollectionConfigurationsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a debt collector configuration
         /// </summary>
@@ -97,7 +99,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectorConfiguration</returns>
-        DebtCollectorConfiguration GetDebtCollectionConfigurationsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DebtCollectorConfiguration GetDebtCollectionConfigurationsId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a debt collector configuration
@@ -111,8 +113,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectorConfiguration</returns>
-        ApiResponse<DebtCollectorConfiguration> GetDebtCollectionConfigurationsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectorConfiguration> GetDebtCollectionConfigurationsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search debt collector configurations
         /// </summary>
@@ -125,7 +126,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectorConfigurationSearchResponse</returns>
-        DebtCollectorConfigurationSearchResponse GetDebtCollectionConfigurationsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        DebtCollectorConfigurationSearchResponse GetDebtCollectionConfigurationsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search debt collector configurations
@@ -142,8 +143,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectorConfigurationSearchResponse</returns>
-        ApiResponse<DebtCollectorConfigurationSearchResponse> GetDebtCollectionConfigurationsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectorConfigurationSearchResponse> GetDebtCollectionConfigurationsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a debt collector configuration
         /// </summary>
@@ -154,7 +154,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectorConfiguration</returns>
-        DebtCollectorConfiguration PatchDebtCollectionConfigurationsId(long id, long space, DebtCollectorConfigurationUpdate debtCollectorConfigurationUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DebtCollectorConfiguration PatchDebtCollectionConfigurationsId(long id, long space, DebtCollectorConfigurationUpdate debtCollectorConfigurationUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a debt collector configuration
@@ -169,8 +169,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectorConfiguration</returns>
-        ApiResponse<DebtCollectorConfiguration> PatchDebtCollectionConfigurationsIdWithHttpInfo(long id, long space, DebtCollectorConfigurationUpdate debtCollectorConfigurationUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectorConfiguration> PatchDebtCollectionConfigurationsIdWithHttpInfo(long id, long space, DebtCollectorConfigurationUpdate debtCollectorConfigurationUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a debt collector configuration
         /// </summary>
@@ -180,7 +179,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectorConfiguration</returns>
-        DebtCollectorConfiguration PostDebtCollectionConfigurations(long space, DebtCollectorConfigurationCreate debtCollectorConfigurationCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DebtCollectorConfiguration PostDebtCollectionConfigurations(long space, DebtCollectorConfigurationCreate debtCollectorConfigurationCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a debt collector configuration
@@ -194,8 +193,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectorConfiguration</returns>
-        ApiResponse<DebtCollectorConfiguration> PostDebtCollectionConfigurationsWithHttpInfo(long space, DebtCollectorConfigurationCreate debtCollectorConfigurationCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectorConfiguration> PostDebtCollectionConfigurationsWithHttpInfo(long space, DebtCollectorConfigurationCreate debtCollectorConfigurationCreate, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -315,6 +313,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -336,7 +335,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/debt-collection/configurations/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/debt-collection/configurations/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -361,7 +360,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectorConfigurationListResponse</returns>
-        public DebtCollectorConfigurationListResponse GetDebtCollectionConfigurations(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public DebtCollectorConfigurationListResponse GetDebtCollectionConfigurations(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectorConfigurationListResponse> localVarResponse = GetDebtCollectionConfigurationsWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -379,7 +378,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectorConfigurationListResponse</returns>
-        public Wallee.Client.ApiResponse<DebtCollectorConfigurationListResponse> GetDebtCollectionConfigurationsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectorConfigurationListResponse> GetDebtCollectionConfigurationsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -392,6 +391,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -432,7 +432,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DebtCollectorConfigurationListResponse>("/debt-collection/configurations",
+            var localVarResponse = this.Client.Get<DebtCollectorConfigurationListResponse>("/debt-collection/configurations",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -454,7 +454,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectorConfiguration</returns>
-        public DebtCollectorConfiguration GetDebtCollectionConfigurationsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DebtCollectorConfiguration GetDebtCollectionConfigurationsId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectorConfiguration> localVarResponse = GetDebtCollectionConfigurationsIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -469,7 +469,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectorConfiguration</returns>
-        public Wallee.Client.ApiResponse<DebtCollectorConfiguration> GetDebtCollectionConfigurationsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectorConfiguration> GetDebtCollectionConfigurationsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -482,6 +482,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -507,7 +508,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DebtCollectorConfiguration>("/debt-collection/configurations/{id}",
+            var localVarResponse = this.Client.Get<DebtCollectorConfiguration>("/debt-collection/configurations/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -532,7 +533,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectorConfigurationSearchResponse</returns>
-        public DebtCollectorConfigurationSearchResponse GetDebtCollectionConfigurationsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public DebtCollectorConfigurationSearchResponse GetDebtCollectionConfigurationsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectorConfigurationSearchResponse> localVarResponse = GetDebtCollectionConfigurationsSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -550,7 +551,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectorConfigurationSearchResponse</returns>
-        public Wallee.Client.ApiResponse<DebtCollectorConfigurationSearchResponse> GetDebtCollectionConfigurationsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectorConfigurationSearchResponse> GetDebtCollectionConfigurationsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -563,6 +564,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -603,7 +605,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DebtCollectorConfigurationSearchResponse>("/debt-collection/configurations/search",
+            var localVarResponse = this.Client.Get<DebtCollectorConfigurationSearchResponse>("/debt-collection/configurations/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -626,7 +628,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectorConfiguration</returns>
-        public DebtCollectorConfiguration PatchDebtCollectionConfigurationsId(long id, long space, DebtCollectorConfigurationUpdate debtCollectorConfigurationUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DebtCollectorConfiguration PatchDebtCollectionConfigurationsId(long id, long space, DebtCollectorConfigurationUpdate debtCollectorConfigurationUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectorConfiguration> localVarResponse = PatchDebtCollectionConfigurationsIdWithHttpInfo(id, space, debtCollectorConfigurationUpdate, expand);
             return localVarResponse.Data;
@@ -642,7 +644,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectorConfiguration</returns>
-        public Wallee.Client.ApiResponse<DebtCollectorConfiguration> PatchDebtCollectionConfigurationsIdWithHttpInfo(long id, long space, DebtCollectorConfigurationUpdate debtCollectorConfigurationUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectorConfiguration> PatchDebtCollectionConfigurationsIdWithHttpInfo(long id, long space, DebtCollectorConfigurationUpdate debtCollectorConfigurationUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'debtCollectorConfigurationUpdate' is set
             if (debtCollectorConfigurationUpdate == null)
@@ -662,6 +664,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -688,7 +691,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<DebtCollectorConfiguration>("/debt-collection/configurations/{id}",
+            var localVarResponse = this.Client.Patch<DebtCollectorConfiguration>("/debt-collection/configurations/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -710,7 +713,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectorConfiguration</returns>
-        public DebtCollectorConfiguration PostDebtCollectionConfigurations(long space, DebtCollectorConfigurationCreate debtCollectorConfigurationCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DebtCollectorConfiguration PostDebtCollectionConfigurations(long space, DebtCollectorConfigurationCreate debtCollectorConfigurationCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectorConfiguration> localVarResponse = PostDebtCollectionConfigurationsWithHttpInfo(space, debtCollectorConfigurationCreate, expand);
             return localVarResponse.Data;
@@ -725,7 +728,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectorConfiguration</returns>
-        public Wallee.Client.ApiResponse<DebtCollectorConfiguration> PostDebtCollectionConfigurationsWithHttpInfo(long space, DebtCollectorConfigurationCreate debtCollectorConfigurationCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectorConfiguration> PostDebtCollectionConfigurationsWithHttpInfo(long space, DebtCollectorConfigurationCreate debtCollectorConfigurationCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'debtCollectorConfigurationCreate' is set
             if (debtCollectorConfigurationCreate == null)
@@ -745,6 +748,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -770,7 +774,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<DebtCollectorConfiguration>("/debt-collection/configurations",
+            var localVarResponse = this.Client.Post<DebtCollectorConfiguration>("/debt-collection/configurations",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

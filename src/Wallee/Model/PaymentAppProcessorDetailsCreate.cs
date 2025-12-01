@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="PaymentAppProcessorDetailsCreate" /> class.
         /// </summary>
         /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result..</param>
-        public PaymentAppProcessorDetailsCreate(string externalId = default(string))
+        public PaymentAppProcessorDetailsCreate(string externalId = default)
         {
             this.ExternalId = externalId;
         }

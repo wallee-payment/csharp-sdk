@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -57,7 +61,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteSingleSignOnUsersIdWithHttpInfo(long id, int operationIndex = 0);
-
         /// <summary>
         /// List all single sign-on users
         /// </summary>
@@ -69,7 +72,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SingleSignOnUserListResponse</returns>
-        SingleSignOnUserListResponse GetSingleSignOnUsers(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        SingleSignOnUserListResponse GetSingleSignOnUsers(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all single sign-on users
@@ -85,8 +88,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SingleSignOnUserListResponse</returns>
-        ApiResponse<SingleSignOnUserListResponse> GetSingleSignOnUsersWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<SingleSignOnUserListResponse> GetSingleSignOnUsersWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a single sign-on user
         /// </summary>
@@ -95,7 +97,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SingleSignOnUser</returns>
-        SingleSignOnUser GetSingleSignOnUsersId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        SingleSignOnUser GetSingleSignOnUsersId(long id, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a single sign-on user
@@ -108,8 +110,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SingleSignOnUser</returns>
-        ApiResponse<SingleSignOnUser> GetSingleSignOnUsersIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<SingleSignOnUser> GetSingleSignOnUsersIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search single sign-on users
         /// </summary>
@@ -121,7 +122,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SingleSignOnUserSearchResponse</returns>
-        SingleSignOnUserSearchResponse GetSingleSignOnUsersSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        SingleSignOnUserSearchResponse GetSingleSignOnUsersSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search single sign-on users
@@ -137,8 +138,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SingleSignOnUserSearchResponse</returns>
-        ApiResponse<SingleSignOnUserSearchResponse> GetSingleSignOnUsersSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<SingleSignOnUserSearchResponse> GetSingleSignOnUsersSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a single sign-on user
         /// </summary>
@@ -148,7 +148,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SingleSignOnUser</returns>
-        SingleSignOnUser PatchSingleSignOnUsersId(long id, SingleSignOnUserUpdate singleSignOnUserUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        SingleSignOnUser PatchSingleSignOnUsersId(long id, SingleSignOnUserUpdate singleSignOnUserUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a single sign-on user
@@ -162,8 +162,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SingleSignOnUser</returns>
-        ApiResponse<SingleSignOnUser> PatchSingleSignOnUsersIdWithHttpInfo(long id, SingleSignOnUserUpdate singleSignOnUserUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<SingleSignOnUser> PatchSingleSignOnUsersIdWithHttpInfo(long id, SingleSignOnUserUpdate singleSignOnUserUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a single sign-on user
         /// </summary>
@@ -172,7 +171,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SingleSignOnUser</returns>
-        SingleSignOnUser PostSingleSignOnUsers(SingleSignOnUserCreate singleSignOnUserCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        SingleSignOnUser PostSingleSignOnUsers(SingleSignOnUserCreate singleSignOnUserCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a single sign-on user
@@ -185,8 +184,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SingleSignOnUser</returns>
-        ApiResponse<SingleSignOnUser> PostSingleSignOnUsersWithHttpInfo(SingleSignOnUserCreate singleSignOnUserCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<SingleSignOnUser> PostSingleSignOnUsersWithHttpInfo(SingleSignOnUserCreate singleSignOnUserCreate, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -304,6 +302,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -324,7 +323,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/single-sign-on-users/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/single-sign-on-users/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -348,7 +347,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SingleSignOnUserListResponse</returns>
-        public SingleSignOnUserListResponse GetSingleSignOnUsers(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public SingleSignOnUserListResponse GetSingleSignOnUsers(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SingleSignOnUserListResponse> localVarResponse = GetSingleSignOnUsersWithHttpInfo(after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -365,7 +364,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SingleSignOnUserListResponse</returns>
-        public Wallee.Client.ApiResponse<SingleSignOnUserListResponse> GetSingleSignOnUsersWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SingleSignOnUserListResponse> GetSingleSignOnUsersWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -378,6 +377,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -417,7 +417,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SingleSignOnUserListResponse>("/single-sign-on-users",
+            var localVarResponse = this.Client.Get<SingleSignOnUserListResponse>("/single-sign-on-users",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -438,7 +438,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SingleSignOnUser</returns>
-        public SingleSignOnUser GetSingleSignOnUsersId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public SingleSignOnUser GetSingleSignOnUsersId(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SingleSignOnUser> localVarResponse = GetSingleSignOnUsersIdWithHttpInfo(id, expand);
             return localVarResponse.Data;
@@ -452,7 +452,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SingleSignOnUser</returns>
-        public Wallee.Client.ApiResponse<SingleSignOnUser> GetSingleSignOnUsersIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SingleSignOnUser> GetSingleSignOnUsersIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -465,6 +465,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -489,7 +490,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SingleSignOnUser>("/single-sign-on-users/{id}",
+            var localVarResponse = this.Client.Get<SingleSignOnUser>("/single-sign-on-users/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -513,7 +514,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SingleSignOnUserSearchResponse</returns>
-        public SingleSignOnUserSearchResponse GetSingleSignOnUsersSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public SingleSignOnUserSearchResponse GetSingleSignOnUsersSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SingleSignOnUserSearchResponse> localVarResponse = GetSingleSignOnUsersSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -530,7 +531,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SingleSignOnUserSearchResponse</returns>
-        public Wallee.Client.ApiResponse<SingleSignOnUserSearchResponse> GetSingleSignOnUsersSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SingleSignOnUserSearchResponse> GetSingleSignOnUsersSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -543,6 +544,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -582,7 +584,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SingleSignOnUserSearchResponse>("/single-sign-on-users/search",
+            var localVarResponse = this.Client.Get<SingleSignOnUserSearchResponse>("/single-sign-on-users/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -604,7 +606,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SingleSignOnUser</returns>
-        public SingleSignOnUser PatchSingleSignOnUsersId(long id, SingleSignOnUserUpdate singleSignOnUserUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public SingleSignOnUser PatchSingleSignOnUsersId(long id, SingleSignOnUserUpdate singleSignOnUserUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SingleSignOnUser> localVarResponse = PatchSingleSignOnUsersIdWithHttpInfo(id, singleSignOnUserUpdate, expand);
             return localVarResponse.Data;
@@ -619,7 +621,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SingleSignOnUser</returns>
-        public Wallee.Client.ApiResponse<SingleSignOnUser> PatchSingleSignOnUsersIdWithHttpInfo(long id, SingleSignOnUserUpdate singleSignOnUserUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SingleSignOnUser> PatchSingleSignOnUsersIdWithHttpInfo(long id, SingleSignOnUserUpdate singleSignOnUserUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'singleSignOnUserUpdate' is set
             if (singleSignOnUserUpdate == null)
@@ -639,6 +641,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -664,7 +667,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<SingleSignOnUser>("/single-sign-on-users/{id}",
+            var localVarResponse = this.Client.Patch<SingleSignOnUser>("/single-sign-on-users/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -685,7 +688,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SingleSignOnUser</returns>
-        public SingleSignOnUser PostSingleSignOnUsers(SingleSignOnUserCreate singleSignOnUserCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public SingleSignOnUser PostSingleSignOnUsers(SingleSignOnUserCreate singleSignOnUserCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SingleSignOnUser> localVarResponse = PostSingleSignOnUsersWithHttpInfo(singleSignOnUserCreate, expand);
             return localVarResponse.Data;
@@ -699,7 +702,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SingleSignOnUser</returns>
-        public Wallee.Client.ApiResponse<SingleSignOnUser> PostSingleSignOnUsersWithHttpInfo(SingleSignOnUserCreate singleSignOnUserCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SingleSignOnUser> PostSingleSignOnUsersWithHttpInfo(SingleSignOnUserCreate singleSignOnUserCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'singleSignOnUserCreate' is set
             if (singleSignOnUserCreate == null)
@@ -719,6 +722,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -743,7 +747,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<SingleSignOnUser>("/single-sign-on-users",
+            var localVarResponse = this.Client.Post<SingleSignOnUser>("/single-sign-on-users",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

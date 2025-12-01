@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -56,7 +60,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;RestApiBulkOperationResult&gt;</returns>
         ApiResponse<List<RestApiBulkOperationResult>> DeleteCustomersBulkWithHttpInfo(long space, List<long> requestBody, int operationIndex = 0);
-
         /// <summary>
         /// Delete a customer
         /// </summary>
@@ -82,7 +85,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteCustomersIdWithHttpInfo(long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// List all customers
         /// </summary>
@@ -95,7 +97,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomerListResponse</returns>
-        CustomerListResponse GetCustomers(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        CustomerListResponse GetCustomers(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all customers
@@ -112,8 +114,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomerListResponse</returns>
-        ApiResponse<CustomerListResponse> GetCustomersWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<CustomerListResponse> GetCustomersWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a customer
         /// </summary>
@@ -123,7 +124,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Customer</returns>
-        Customer GetCustomersId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Customer GetCustomersId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a customer
@@ -137,8 +138,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Customer</returns>
-        ApiResponse<Customer> GetCustomersIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Customer> GetCustomersIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// List a customer&#39;s email addresses
         /// </summary>
@@ -148,7 +148,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomerEmailAddressListResponse</returns>
-        CustomerEmailAddressListResponse GetCustomersIdEmailAddresses(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        CustomerEmailAddressListResponse GetCustomersIdEmailAddresses(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// List a customer&#39;s email addresses
@@ -162,8 +162,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomerEmailAddressListResponse</returns>
-        ApiResponse<CustomerEmailAddressListResponse> GetCustomersIdEmailAddressesWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<CustomerEmailAddressListResponse> GetCustomersIdEmailAddressesWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search customers
         /// </summary>
@@ -176,7 +175,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomerSearchResponse</returns>
-        CustomerSearchResponse GetCustomersSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        CustomerSearchResponse GetCustomersSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search customers
@@ -193,8 +192,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomerSearchResponse</returns>
-        ApiResponse<CustomerSearchResponse> GetCustomersSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<CustomerSearchResponse> GetCustomersSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update multiple customers
         /// </summary>
@@ -217,7 +215,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;RestApiBulkOperationResult&gt;</returns>
         ApiResponse<List<RestApiBulkOperationResult>> PatchCustomersBulkWithHttpInfo(long space, List<CustomerActive> customerActive, int operationIndex = 0);
-
         /// <summary>
         /// Update a customer
         /// </summary>
@@ -228,7 +225,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Customer</returns>
-        Customer PatchCustomersId(long id, long space, CustomerActive customerActive, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Customer PatchCustomersId(long id, long space, CustomerActive customerActive, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a customer
@@ -243,8 +240,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Customer</returns>
-        ApiResponse<Customer> PatchCustomersIdWithHttpInfo(long id, long space, CustomerActive customerActive, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Customer> PatchCustomersIdWithHttpInfo(long id, long space, CustomerActive customerActive, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a customer
         /// </summary>
@@ -254,7 +250,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Customer</returns>
-        Customer PostCustomers(long space, CustomerCreate customerCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Customer PostCustomers(long space, CustomerCreate customerCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a customer
@@ -268,8 +264,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Customer</returns>
-        ApiResponse<Customer> PostCustomersWithHttpInfo(long space, CustomerCreate customerCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Customer> PostCustomersWithHttpInfo(long space, CustomerCreate customerCreate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create multiple customers
         /// </summary>
@@ -292,7 +287,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;RestApiBulkOperationResult&gt;</returns>
         ApiResponse<List<RestApiBulkOperationResult>> PostCustomersBulkWithHttpInfo(long space, List<CustomerCreate> customerCreate, int operationIndex = 0);
-
         /// <summary>
         /// Merge two customers
         /// </summary>
@@ -303,7 +297,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Customer</returns>
-        Customer PostCustomersIdMergeOther(long id, long other, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Customer PostCustomersIdMergeOther(long id, long other, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Merge two customers
@@ -318,8 +312,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Customer</returns>
-        ApiResponse<Customer> PostCustomersIdMergeOtherWithHttpInfo(long id, long other, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Customer> PostCustomersIdMergeOtherWithHttpInfo(long id, long other, long space, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -447,6 +440,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -468,7 +462,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<List<RestApiBulkOperationResult>>("/customers/bulk",
+            var localVarResponse = this.Client.Delete<List<RestApiBulkOperationResult>>("/customers/bulk",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -515,6 +509,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -536,7 +531,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/customers/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/customers/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -561,7 +556,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomerListResponse</returns>
-        public CustomerListResponse GetCustomers(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public CustomerListResponse GetCustomers(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<CustomerListResponse> localVarResponse = GetCustomersWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -579,7 +574,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomerListResponse</returns>
-        public Wallee.Client.ApiResponse<CustomerListResponse> GetCustomersWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<CustomerListResponse> GetCustomersWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -592,6 +587,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -632,7 +628,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<CustomerListResponse>("/customers",
+            var localVarResponse = this.Client.Get<CustomerListResponse>("/customers",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -654,7 +650,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Customer</returns>
-        public Customer GetCustomersId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Customer GetCustomersId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Customer> localVarResponse = GetCustomersIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -669,7 +665,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Customer</returns>
-        public Wallee.Client.ApiResponse<Customer> GetCustomersIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Customer> GetCustomersIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -682,6 +678,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -707,7 +704,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<Customer>("/customers/{id}",
+            var localVarResponse = this.Client.Get<Customer>("/customers/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -729,7 +726,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomerEmailAddressListResponse</returns>
-        public CustomerEmailAddressListResponse GetCustomersIdEmailAddresses(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public CustomerEmailAddressListResponse GetCustomersIdEmailAddresses(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<CustomerEmailAddressListResponse> localVarResponse = GetCustomersIdEmailAddressesWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -744,7 +741,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomerEmailAddressListResponse</returns>
-        public Wallee.Client.ApiResponse<CustomerEmailAddressListResponse> GetCustomersIdEmailAddressesWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<CustomerEmailAddressListResponse> GetCustomersIdEmailAddressesWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -757,6 +754,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -782,7 +780,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<CustomerEmailAddressListResponse>("/customers/{id}/email-addresses",
+            var localVarResponse = this.Client.Get<CustomerEmailAddressListResponse>("/customers/{id}/email-addresses",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -807,7 +805,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CustomerSearchResponse</returns>
-        public CustomerSearchResponse GetCustomersSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public CustomerSearchResponse GetCustomersSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<CustomerSearchResponse> localVarResponse = GetCustomersSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -825,7 +823,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CustomerSearchResponse</returns>
-        public Wallee.Client.ApiResponse<CustomerSearchResponse> GetCustomersSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<CustomerSearchResponse> GetCustomersSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -838,6 +836,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -878,7 +877,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<CustomerSearchResponse>("/customers/search",
+            var localVarResponse = this.Client.Get<CustomerSearchResponse>("/customers/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -933,6 +932,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -954,7 +954,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<List<RestApiBulkOperationResult>>("/customers/bulk",
+            var localVarResponse = this.Client.Patch<List<RestApiBulkOperationResult>>("/customers/bulk",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -977,7 +977,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Customer</returns>
-        public Customer PatchCustomersId(long id, long space, CustomerActive customerActive, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Customer PatchCustomersId(long id, long space, CustomerActive customerActive, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Customer> localVarResponse = PatchCustomersIdWithHttpInfo(id, space, customerActive, expand);
             return localVarResponse.Data;
@@ -993,7 +993,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Customer</returns>
-        public Wallee.Client.ApiResponse<Customer> PatchCustomersIdWithHttpInfo(long id, long space, CustomerActive customerActive, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Customer> PatchCustomersIdWithHttpInfo(long id, long space, CustomerActive customerActive, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'customerActive' is set
             if (customerActive == null)
@@ -1013,6 +1013,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1039,7 +1040,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<Customer>("/customers/{id}",
+            var localVarResponse = this.Client.Patch<Customer>("/customers/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1061,7 +1062,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Customer</returns>
-        public Customer PostCustomers(long space, CustomerCreate customerCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Customer PostCustomers(long space, CustomerCreate customerCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Customer> localVarResponse = PostCustomersWithHttpInfo(space, customerCreate, expand);
             return localVarResponse.Data;
@@ -1076,7 +1077,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Customer</returns>
-        public Wallee.Client.ApiResponse<Customer> PostCustomersWithHttpInfo(long space, CustomerCreate customerCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Customer> PostCustomersWithHttpInfo(long space, CustomerCreate customerCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'customerCreate' is set
             if (customerCreate == null)
@@ -1096,6 +1097,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1121,7 +1123,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Customer>("/customers",
+            var localVarResponse = this.Client.Post<Customer>("/customers",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1176,6 +1178,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1197,7 +1200,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<List<RestApiBulkOperationResult>>("/customers/bulk",
+            var localVarResponse = this.Client.Post<List<RestApiBulkOperationResult>>("/customers/bulk",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1220,7 +1223,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Customer</returns>
-        public Customer PostCustomersIdMergeOther(long id, long other, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Customer PostCustomersIdMergeOther(long id, long other, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Customer> localVarResponse = PostCustomersIdMergeOtherWithHttpInfo(id, other, space, expand);
             return localVarResponse.Data;
@@ -1236,7 +1239,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Customer</returns>
-        public Wallee.Client.ApiResponse<Customer> PostCustomersIdMergeOtherWithHttpInfo(long id, long other, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Customer> PostCustomersIdMergeOtherWithHttpInfo(long id, long other, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -1249,6 +1252,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1275,7 +1279,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Customer>("/customers/{id}/merge/{other}",
+            var localVarResponse = this.Client.Post<Customer>("/customers/{id}/merge/{other}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

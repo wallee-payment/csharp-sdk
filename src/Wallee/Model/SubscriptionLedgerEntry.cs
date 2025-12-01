@@ -60,7 +60,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="feeType">feeType.</param>
         /// <param name="state">state.</param>
-        public SubscriptionLedgerEntry(ProductFeeType? feeType = default(ProductFeeType?), SubscriptionLedgerEntryState? state = default(SubscriptionLedgerEntryState?))
+        public SubscriptionLedgerEntry(ProductFeeType? feeType = default, SubscriptionLedgerEntryState? state = default)
         {
             this.FeeType = feeType;
             this.State = state;

@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="subscriptionVersion">subscriptionVersion.</param>
         /// <param name="state">state.</param>
-        public SubscriptionPeriodBill(SubscriptionVersion subscriptionVersion = default(SubscriptionVersion), SubscriptionPeriodBillState? state = default(SubscriptionPeriodBillState?))
+        public SubscriptionPeriodBill(SubscriptionVersion subscriptionVersion = default, SubscriptionPeriodBillState? state = default)
         {
             this.SubscriptionVersion = subscriptionVersion;
             this.State = state;

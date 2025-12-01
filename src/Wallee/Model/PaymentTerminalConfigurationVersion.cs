@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="varConfiguration">varConfiguration.</param>
         /// <param name="state">state.</param>
-        public PaymentTerminalConfigurationVersion(PaymentTerminalConfiguration varConfiguration = default(PaymentTerminalConfiguration), PaymentTerminalConfigurationVersionState? state = default(PaymentTerminalConfigurationVersionState?))
+        public PaymentTerminalConfigurationVersion(PaymentTerminalConfiguration varConfiguration = default, PaymentTerminalConfigurationVersionState? state = default)
         {
             this.VarConfiguration = varConfiguration;
             this.State = state;

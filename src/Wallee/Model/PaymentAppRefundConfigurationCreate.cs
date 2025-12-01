@@ -49,7 +49,7 @@ namespace Wallee.Model
         /// <param name="refundTimeoutInMinutes">The maximum time (in minutes) to wait for a response from the payment service provider after a refund request is triggered. If no feedback or final status is received within this period, the refund is considered failed..</param>
         /// <param name="multipleRefundsSupported">Whether the payment connector can process multiple refunds for a single transaction..</param>
         /// <param name="refundEndpoint">The URL that the payment service provider will invoke to process a refund request. This endpoint handles communication with the provider for initiating and managing refunds..</param>
-        public PaymentAppRefundConfigurationCreate(int refundTimeoutInMinutes = default(int), bool multipleRefundsSupported = default(bool), string refundEndpoint = default(string))
+        public PaymentAppRefundConfigurationCreate(int refundTimeoutInMinutes = default, bool multipleRefundsSupported = default, string refundEndpoint = default)
         {
             this.RefundTimeoutInMinutes = refundTimeoutInMinutes;
             this.MultipleRefundsSupported = multipleRefundsSupported;

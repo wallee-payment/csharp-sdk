@@ -58,7 +58,7 @@ namespace Wallee.Model
         /// <param name="onDowngradeCreditedAmount">The amount charged to the customer when a subscription is downgraded..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
         /// <param name="onUpgradeCreditedAmount">The amount charged to the customer when a subscription is upgraded..</param>
-        public ProductSetupFeeUpdate(long component = default(long), Dictionary<string, string> name = default(Dictionary<string, string>), Dictionary<string, string> description = default(Dictionary<string, string>), List<PersistableCurrencyAmountUpdate> setupFee = default(List<PersistableCurrencyAmountUpdate>), List<PersistableCurrencyAmountUpdate> onDowngradeCreditedAmount = default(List<PersistableCurrencyAmountUpdate>), int varVersion = default(int), List<PersistableCurrencyAmountUpdate> onUpgradeCreditedAmount = default(List<PersistableCurrencyAmountUpdate>))
+        public ProductSetupFeeUpdate(long component = default, Dictionary<string, string> name = default, Dictionary<string, string> description = default, List<PersistableCurrencyAmountUpdate> setupFee = default, List<PersistableCurrencyAmountUpdate> onDowngradeCreditedAmount = default, int varVersion = default, List<PersistableCurrencyAmountUpdate> onUpgradeCreditedAmount = default)
         {
             this.VarVersion = varVersion;
             this.Component = component;

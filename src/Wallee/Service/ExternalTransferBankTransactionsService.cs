@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -46,7 +50,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ExternalTransferBankTransactionListResponse</returns>
-        ExternalTransferBankTransactionListResponse GetPaymentBankTransactionsExternalTransfers(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        ExternalTransferBankTransactionListResponse GetPaymentBankTransactionsExternalTransfers(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all external transfer bank transactions
@@ -63,8 +67,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ExternalTransferBankTransactionListResponse</returns>
-        ApiResponse<ExternalTransferBankTransactionListResponse> GetPaymentBankTransactionsExternalTransfersWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<ExternalTransferBankTransactionListResponse> GetPaymentBankTransactionsExternalTransfersWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve an external transfer bank transaction
         /// </summary>
@@ -74,7 +77,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ExternalTransferBankTransaction</returns>
-        ExternalTransferBankTransaction GetPaymentBankTransactionsExternalTransfersId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        ExternalTransferBankTransaction GetPaymentBankTransactionsExternalTransfersId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve an external transfer bank transaction
@@ -88,8 +91,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ExternalTransferBankTransaction</returns>
-        ApiResponse<ExternalTransferBankTransaction> GetPaymentBankTransactionsExternalTransfersIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<ExternalTransferBankTransaction> GetPaymentBankTransactionsExternalTransfersIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search external transfer bank transactions
         /// </summary>
@@ -102,7 +104,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ExternalTransferBankTransactionSearchResponse</returns>
-        ExternalTransferBankTransactionSearchResponse GetPaymentBankTransactionsExternalTransfersSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        ExternalTransferBankTransactionSearchResponse GetPaymentBankTransactionsExternalTransfersSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search external transfer bank transactions
@@ -119,8 +121,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ExternalTransferBankTransactionSearchResponse</returns>
-        ApiResponse<ExternalTransferBankTransactionSearchResponse> GetPaymentBankTransactionsExternalTransfersSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<ExternalTransferBankTransactionSearchResponse> GetPaymentBankTransactionsExternalTransfersSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -218,7 +219,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ExternalTransferBankTransactionListResponse</returns>
-        public ExternalTransferBankTransactionListResponse GetPaymentBankTransactionsExternalTransfers(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public ExternalTransferBankTransactionListResponse GetPaymentBankTransactionsExternalTransfers(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ExternalTransferBankTransactionListResponse> localVarResponse = GetPaymentBankTransactionsExternalTransfersWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -236,7 +237,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ExternalTransferBankTransactionListResponse</returns>
-        public Wallee.Client.ApiResponse<ExternalTransferBankTransactionListResponse> GetPaymentBankTransactionsExternalTransfersWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ExternalTransferBankTransactionListResponse> GetPaymentBankTransactionsExternalTransfersWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -249,6 +250,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -289,7 +291,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ExternalTransferBankTransactionListResponse>("/payment/bank-transactions/external-transfers",
+            var localVarResponse = this.Client.Get<ExternalTransferBankTransactionListResponse>("/payment/bank-transactions/external-transfers",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -311,7 +313,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ExternalTransferBankTransaction</returns>
-        public ExternalTransferBankTransaction GetPaymentBankTransactionsExternalTransfersId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public ExternalTransferBankTransaction GetPaymentBankTransactionsExternalTransfersId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ExternalTransferBankTransaction> localVarResponse = GetPaymentBankTransactionsExternalTransfersIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -326,7 +328,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ExternalTransferBankTransaction</returns>
-        public Wallee.Client.ApiResponse<ExternalTransferBankTransaction> GetPaymentBankTransactionsExternalTransfersIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ExternalTransferBankTransaction> GetPaymentBankTransactionsExternalTransfersIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -339,6 +341,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -364,7 +367,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ExternalTransferBankTransaction>("/payment/bank-transactions/external-transfers/{id}",
+            var localVarResponse = this.Client.Get<ExternalTransferBankTransaction>("/payment/bank-transactions/external-transfers/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -389,7 +392,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ExternalTransferBankTransactionSearchResponse</returns>
-        public ExternalTransferBankTransactionSearchResponse GetPaymentBankTransactionsExternalTransfersSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public ExternalTransferBankTransactionSearchResponse GetPaymentBankTransactionsExternalTransfersSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ExternalTransferBankTransactionSearchResponse> localVarResponse = GetPaymentBankTransactionsExternalTransfersSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -407,7 +410,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ExternalTransferBankTransactionSearchResponse</returns>
-        public Wallee.Client.ApiResponse<ExternalTransferBankTransactionSearchResponse> GetPaymentBankTransactionsExternalTransfersSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ExternalTransferBankTransactionSearchResponse> GetPaymentBankTransactionsExternalTransfersSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -420,6 +423,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -460,7 +464,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ExternalTransferBankTransactionSearchResponse>("/payment/bank-transactions/external-transfers/search",
+            var localVarResponse = this.Client.Get<ExternalTransferBankTransactionSearchResponse>("/payment/bank-transactions/external-transfers/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="name">The name used to identify the payment terminal..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public PaymentTerminalUpdate(string name = default(string), int varVersion = default(int))
+        public PaymentTerminalUpdate(string name = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Name = name;

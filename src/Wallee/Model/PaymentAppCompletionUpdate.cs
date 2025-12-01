@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="reference">A unique identifier for the completion within the systems of the external service provider. This field is mandatory when the target state is set to &#39;SUCCESSFUL&#39;..</param>
         /// <param name="targetState">targetState.</param>
         /// <param name="failureReason">The reason for the completion&#39;s failure. This field is mandatory when the target state is set to &#39;FAILED&#39;..</param>
-        public PaymentAppCompletionUpdate(string reference = default(string), PaymentAppCompletionTargetState? targetState = default(PaymentAppCompletionTargetState?), long failureReason = default(long))
+        public PaymentAppCompletionUpdate(string reference = default, PaymentAppCompletionTargetState? targetState = default, long failureReason = default)
         {
             this.Reference = reference;
             this.TargetState = targetState;

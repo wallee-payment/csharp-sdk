@@ -62,7 +62,7 @@ namespace Wallee.Model
         /// <param name="failureReason">failureReason.</param>
         /// <param name="state">state.</param>
         /// <param name="transaction">transaction.</param>
-        public Charge(ChargeType? type = default(ChargeType?), FailureReason failureReason = default(FailureReason), ChargeState? state = default(ChargeState?), Transaction transaction = default(Transaction))
+        public Charge(ChargeType? type = default, FailureReason failureReason = default, ChargeState? state = default, Transaction transaction = default)
         {
             this.Type = type;
             this.FailureReason = failureReason;

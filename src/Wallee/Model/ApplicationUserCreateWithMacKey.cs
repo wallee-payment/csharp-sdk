@@ -60,7 +60,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="state">state.</param>
         /// <param name="userType">userType.</param>
-        public ApplicationUserCreateWithMacKey(CreationEntityState? state = default(CreationEntityState?), UserType? userType = default(UserType?))
+        public ApplicationUserCreateWithMacKey(CreationEntityState? state = default, UserType? userType = default)
         {
             this.State = state;
             this.UserType = userType;

@@ -57,7 +57,7 @@ namespace Wallee.Model
         /// <param name="language">The user&#39;s preferred language..</param>
         /// <param name="state">state.</param>
         /// <param name="lastname">The user&#39;s last name..</param>
-        public AbstractSingleSignOnUserUpdate(string firstname = default(string), string varTimeZone = default(string), string language = default(string), CreationEntityState? state = default(CreationEntityState?), string lastname = default(string))
+        public AbstractSingleSignOnUserUpdate(string firstname = default, string varTimeZone = default, string language = default, CreationEntityState? state = default, string lastname = default)
         {
             this.Firstname = firstname;
             this.VarTimeZone = varTimeZone;

@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="SubscriptionAffiliateDeleted" /> class.
         /// </summary>
         /// <param name="state">state.</param>
-        public SubscriptionAffiliateDeleted(CreationEntityState? state = default(CreationEntityState?))
+        public SubscriptionAffiliateDeleted(CreationEntityState? state = default)
         {
             this.State = state;
         }

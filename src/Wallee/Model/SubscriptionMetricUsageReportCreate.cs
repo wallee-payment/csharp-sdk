@@ -56,7 +56,7 @@ namespace Wallee.Model
         /// <param name="description">A description used to identify the usage report..</param>
         /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
         /// <param name="subscription">The subscription that the usage report is recorded for. (required).</param>
-        public SubscriptionMetricUsageReportCreate(decimal consumedUnits = default(decimal), long metric = default(long), string description = default(string), string externalId = default(string), long subscription = default(long))
+        public SubscriptionMetricUsageReportCreate(decimal consumedUnits = default, long metric = default, string description = default, string externalId = default, long subscription = default)
         {
             this.ConsumedUnits = consumedUnits;
             this.Metric = metric;

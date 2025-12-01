@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="subaccountLimit">The number of sub-accounts that can be created within this account..</param>
         /// <param name="scope">The scope that the account belongs to. (required).</param>
         /// <param name="parentAccount">The parent account responsible for administering this account..</param>
-        public AccountCreate(string name = default(string), long subaccountLimit = default(long), long scope = default(long), long parentAccount = default(long))
+        public AccountCreate(string name = default, long subaccountLimit = default, long scope = default, long parentAccount = default)
         {
             this.Scope = scope;
             this.Name = name;

@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="HumanUser" /> class.
         /// </summary>
         /// <param name="twoFactorType">twoFactorType.</param>
-        public HumanUser(TwoFactorAuthenticationType twoFactorType = default(TwoFactorAuthenticationType))
+        public HumanUser(TwoFactorAuthenticationType twoFactorType = default)
         {
             this.TwoFactorType = twoFactorType;
         }

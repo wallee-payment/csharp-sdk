@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="note">A note that contains details about the suspension. It is not disclosed to the subscriber..</param>
         /// <param name="endAction">endAction.</param>
         /// <param name="plannedEndDate">The date and time when the suspension is planned to end..</param>
-        public SuspensionCreationRequest(string note = default(string), SubscriptionSuspensionAction? endAction = default(SubscriptionSuspensionAction?), DateTime plannedEndDate = default(DateTime))
+        public SuspensionCreationRequest(string note = default, SubscriptionSuspensionAction? endAction = default, DateTime plannedEndDate = default)
         {
             this.Note = note;
             this.EndAction = endAction;

@@ -64,7 +64,7 @@ namespace Wallee.Model
         /// <param name="lastname">The user&#39;s last name..</param>
         /// <param name="provider">The single sign-on provider that this user belongs to. (required).</param>
         /// <param name="primaryAccount">The primary account that the user belongs to..</param>
-        public SingleSignOnUserCreate(string firstname = default(string), string varTimeZone = default(string), string language = default(string), CreationEntityState? state = default(CreationEntityState?), string lastname = default(string), long provider = default(long), long primaryAccount = default(long))
+        public SingleSignOnUserCreate(string firstname = default, string varTimeZone = default, string language = default, CreationEntityState? state = default, string lastname = default, long provider = default, long primaryAccount = default)
         {
             this.Provider = provider;
             this.Firstname = firstname;

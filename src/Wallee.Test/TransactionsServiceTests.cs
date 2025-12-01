@@ -267,69 +267,7 @@ public class TransactionsServiceTests
         Assert.That(completedTransaction.State, Is.EqualTo(TransactionState.FULFILL), "Transaction state must be FULFILLED");
     }
 
-    /// <summary>
-    /// Authorizes and completes a transaction offline using card details.
-    ///
-    /// -Verifies that:
-    ///     -Transaction completion state is SUCCESSFUL
-    ///     -Transaction state is FULFILL
-    /// </summary>
-    [Test]
-    public void CompleteOfflineShouldMakeTransactionCompletionStateSuccessful()
-    {
-        var transactionCreate = GetTransactionCreatePayload();
-        transactionCreate.TokenizationMode = TokenizationMode.FORCECREATION;
-        transactionCreate.CustomersPresence = CustomersPresence.NOTPRESENT;
-        transactionCreate.CompletionBehavior = TransactionCompletionBehavior.COMPLETEIMMEDIATELY;
 
-        var transaction = Create(transactionCreate);
-
-        var authorizedTransaction = transactionsService.PostPaymentTransactionsIdProcessCardDetails(
-            transaction.Id, SPACE_ID, MOCK_CARD_DATA, EMPTY_EXPAND);
-
-        var processedTransaction = transactionsService.PostPaymentTransactionsIdCompleteOffline(
-            authorizedTransaction.Id, SPACE_ID, EMPTY_EXPAND);
-
-        Assert.That(processedTransaction.State, Is.EqualTo(TransactionCompletionState.SUCCESSFUL),
-            "Transaction completion state must be SUCCESSFUL");
-
-        var completedTransaction = transactionsService.GetPaymentTransactionsId(transaction.Id, SPACE_ID, EMPTY_EXPAND);
-
-        Assert.That(completedTransaction.State, Is.EqualTo(TransactionState.FULFILL),
-            "Transaction state must be FULFILLED");
-    }
-
-    /// <summary>
-    /// Authorizes and completes a transaction offline partially using card details.
-    ///
-    /// -Verifies that:
-    ///     -Transaction completion state is SUCCESSFUL
-    ///     -Transaction state is FULFILL
-    /// </summary>
-    [Test]
-    public void CompleteOfflinePartiallyShouldMakeTransactionCompletionStateSuccessful()
-    {
-        var transaction = Create(GetTransactionCreatePayload());
-
-        var authorizedTransaction = transactionsService.PostPaymentTransactionsIdProcessCardDetails(
-            transaction.Id, SPACE_ID, MOCK_CARD_DATA, EMPTY_EXPAND);
-
-        var tcd = new TransactionCompletionDetails
-        {
-            ExternalId = Guid.NewGuid().ToString()
-        };
-
-        var processedTransaction = transactionsService.PostPaymentTransactionsIdCompletePartiallyOffline(
-            authorizedTransaction.Id, SPACE_ID, tcd, EMPTY_EXPAND);
-
-        Assert.That(processedTransaction.State, Is.EqualTo(TransactionCompletionState.SUCCESSFUL),
-            "Transaction completion state must be SUCCESSFUL");
-
-        var completedTransaction = transactionsService.GetPaymentTransactionsId(transaction.Id, SPACE_ID, EMPTY_EXPAND);
-
-        Assert.That(completedTransaction.State, Is.EqualTo(TransactionState.FULFILL),
-            "Transaction state must be FULFILLED");
-    }
 
     /// <summary>
     /// Authorizes and voids a transaction online.
@@ -368,43 +306,6 @@ public class TransactionsServiceTests
             "Transaction state should be VOIDED");
     }
 
-    /// <summary>
-    /// Authorizes and voids a transaction offline.
-    ///
-    /// -Verifies that:
-    ///     -Transaction void state is SUCCESSFUL
-    ///     -Transaction state is VOIDED
-    /// </summary>
-    [Test]
-    public void VoidTransactionOfflineShouldReturnVoidedTransaction()
-    {
-        var transactionCreate = GetTransactionCreatePayload();
-        transactionCreate.TokenizationMode = TokenizationMode.FORCECREATION;
-        transactionCreate.CustomersPresence = CustomersPresence.NOTPRESENT;
-        transactionCreate.CompletionBehavior = TransactionCompletionBehavior.COMPLETEDEFERRED;
-
-        var transaction = Create(transactionCreate);
-
-        var authorizedTransaction = transactionsService.PostPaymentTransactionsIdProcessCardDetails(
-            transaction.Id, SPACE_ID, MOCK_CARD_DATA, EMPTY_EXPAND);
-
-        Assert.That(authorizedTransaction.State, Is.EqualTo(TransactionState.AUTHORIZED),
-            "Transaction state should be AUTHORIZED");
-
-        var expand = new List<string> { "transaction" };
-
-        var transactionVoid = transactionsService.PostPaymentTransactionsIdVoidOffline(
-            authorizedTransaction.Id, SPACE_ID, expand);
-
-        Assert.That(transactionVoid.State, Is.EqualTo(TransactionVoidState.SUCCESSFUL),
-            "Transaction void state should be SUCCESSFUL");
-
-        Assert.That(transactionVoid.Transaction, Is.Not.Null,
-            "Transaction should not be null");
-
-        Assert.That(transactionVoid.Transaction.State, Is.EqualTo(TransactionState.VOIDED),
-            "Transaction state should be VOIDED");
-    }
 
     /// <summary>
     /// Creates, authorizes and completes a transaction.

@@ -60,7 +60,7 @@ namespace Wallee.Model
         /// <param name="language">The user&#39;s preferred language..</param>
         /// <param name="state">state.</param>
         /// <param name="lastname">The user&#39;s last name..</param>
-        public AbstractHumanUserUpdate(string mobilePhoneNumber = default(string), bool twoFactorEnabled = default(bool), string emailAddress = default(string), string firstname = default(string), string varTimeZone = default(string), string language = default(string), CreationEntityState? state = default(CreationEntityState?), string lastname = default(string))
+        public AbstractHumanUserUpdate(string mobilePhoneNumber = default, bool twoFactorEnabled = default, string emailAddress = default, string firstname = default, string varTimeZone = default, string language = default, CreationEntityState? state = default, string lastname = default)
         {
             this.MobilePhoneNumber = mobilePhoneNumber;
             this.TwoFactorEnabled = twoFactorEnabled;

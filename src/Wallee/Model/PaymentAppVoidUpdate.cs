@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="reference">A unique identifier for the void within the systems of the external service provider. This field is mandatory when the target state is set to &#39;SUCCESSFUL&#39;..</param>
         /// <param name="targetState">targetState.</param>
         /// <param name="failureReason">The reason for the void&#39;s failure. This field is mandatory when the target state is set to &#39;FAILED&#39;..</param>
-        public PaymentAppVoidUpdate(string reference = default(string), PaymentAppVoidTargetState? targetState = default(PaymentAppVoidTargetState?), long failureReason = default(long))
+        public PaymentAppVoidUpdate(string reference = default, PaymentAppVoidTargetState? targetState = default, long failureReason = default)
         {
             this.Reference = reference;
             this.TargetState = targetState;

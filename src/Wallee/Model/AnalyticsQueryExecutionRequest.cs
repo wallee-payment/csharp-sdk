@@ -49,7 +49,7 @@ namespace Wallee.Model
         /// <param name="sftpDispatchSettingsId">Optional. ID of the active SFTP configuration to use (associated with the target account). This is only required if the result file is scheduled for delivery to a remote SFTP server..</param>
         /// <param name="sftpDispatchResultFileRenamePattern">Optional. Renaming pattern used for the result file during SFTP delivery. You can use a combination of fixed Latin text and timestamp variables (e.g., \&quot;transaction_report_{YYYMMDD_hhmmss}\&quot;). Supported variable formats: DDMMYY, MMDDYY, YYYYMMDD, DD_MM_YY, DD-MM-YY, YYYY-MM-DD, YYYY_MM_DD, YYYYMMDD_hhmmss, YYYY-MM-DD_hh-mm-ss..</param>
         /// <param name="sql">The SQL query (in PrestoDB dialect) to execute on the analytics database. This query defines exactly which data should be retrieved..</param>
-        public AnalyticsQueryExecutionRequest(long sftpDispatchSettingsId = default(long), string sftpDispatchResultFileRenamePattern = default(string), string sql = default(string))
+        public AnalyticsQueryExecutionRequest(long sftpDispatchSettingsId = default, string sftpDispatchResultFileRenamePattern = default, string sql = default)
         {
             this.SftpDispatchSettingsId = sftpDispatchSettingsId;
             this.SftpDispatchResultFileRenamePattern = sftpDispatchResultFileRenamePattern;

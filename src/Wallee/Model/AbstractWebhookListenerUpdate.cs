@@ -56,7 +56,7 @@ namespace Wallee.Model
         /// <param name="name">The name used to identify the webhook listener..</param>
         /// <param name="state">state.</param>
         /// <param name="notifyEveryChange">Whether every update of the entity or only state changes are to be monitored..</param>
-        public AbstractWebhookListenerUpdate(List<string> entityStates = default(List<string>), string name = default(string), CreationEntityState? state = default(CreationEntityState?), bool notifyEveryChange = default(bool))
+        public AbstractWebhookListenerUpdate(List<string> entityStates = default, string name = default, CreationEntityState? state = default, bool notifyEveryChange = default)
         {
             this.EntityStates = entityStates;
             this.Name = name;

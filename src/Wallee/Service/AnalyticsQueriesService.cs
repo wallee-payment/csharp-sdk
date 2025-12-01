@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -56,7 +60,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteAnalyticsQueriesQueryExternalIdQueryExternalIdWithHttpInfo(string queryExternalId, long account, int operationIndex = 0);
-
         /// <summary>
         /// Cancel a query execution, identifying it by its query token.
         /// </summary>
@@ -79,7 +82,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteAnalyticsQueriesQueryTokenQueryTokenWithHttpInfo(string queryToken, long account, int operationIndex = 0);
-
         /// <summary>
         /// Get portion of query executions for account
         /// </summary>
@@ -104,7 +106,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ResultPortionModel</returns>
         ApiResponse<ResultPortionModel> GetAnalyticsQueriesWithHttpInfo(int offset, int limit, long account, int operationIndex = 0);
-
         /// <summary>
         /// Retrieve a query execution information by its external id
         /// </summary>
@@ -130,7 +131,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubmittedAnalyticsQueryExecution</returns>
         ApiResponse<SubmittedAnalyticsQueryExecution> GetAnalyticsQueriesQueryExternalIdQueryExternalIdWithHttpInfo(string queryExternalId, long account, int operationIndex = 0);
-
         /// <summary>
         /// Generate a temporary URL to download the query result. It retrieves the query by its external id
         /// </summary>
@@ -156,7 +156,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> GetAnalyticsQueriesQueryExternalIdQueryExternalIdResultWithHttpInfo(string queryExternalId, long account, int operationIndex = 0);
-
         /// <summary>
         /// Retrieve a query execution information by its query token
         /// </summary>
@@ -182,7 +181,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubmittedAnalyticsQueryExecution</returns>
         ApiResponse<SubmittedAnalyticsQueryExecution> GetAnalyticsQueriesQueryTokenQueryTokenWithHttpInfo(string queryToken, long account, int operationIndex = 0);
-
         /// <summary>
         /// Generate a temporary URL to download the query result. It retrieves the query by its query token
         /// </summary>
@@ -208,7 +206,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> GetAnalyticsQueriesQueryTokenQueryTokenResultWithHttpInfo(string queryToken, long account, int operationIndex = 0);
-
         /// <summary>
         /// Submit a query execution
         /// </summary>
@@ -233,7 +230,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of AnalyticsQueryExecutionResponse</returns>
         ApiResponse<AnalyticsQueryExecutionResponse> PostAnalyticsQueriesSubmitWithHttpInfo(string queryExternalId, long account, AnalyticsQueryExecutionRequest analyticsQueryExecutionRequest, int operationIndex = 0);
-
         #endregion Synchronous Operations
     }
 
@@ -359,6 +355,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -380,7 +377,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/analytics/queries/queryExternalId/{queryExternalId}",
+            var localVarResponse = this.Client.Delete<Object>("/analytics/queries/queryExternalId/{queryExternalId}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -433,6 +430,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -454,7 +452,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/analytics/queries/queryToken/{queryToken}",
+            var localVarResponse = this.Client.Delete<Object>("/analytics/queries/queryToken/{queryToken}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -504,6 +502,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -526,7 +525,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ResultPortionModel>("/analytics/queries",
+            var localVarResponse = this.Client.Get<ResultPortionModel>("/analytics/queries",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -582,6 +581,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -604,7 +604,7 @@ namespace Wallee.Service
             
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SubmittedAnalyticsQueryExecution>("/analytics/queries/queryExternalId/{queryExternalId}",
+            var localVarResponse = this.Client.Get<SubmittedAnalyticsQueryExecution>("/analytics/queries/queryExternalId/{queryExternalId}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -659,6 +659,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -680,7 +681,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<string>("/analytics/queries/queryExternalId/{queryExternalId}/result",
+            var localVarResponse = this.Client.Get<string>("/analytics/queries/queryExternalId/{queryExternalId}/result",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -736,6 +737,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -758,7 +760,7 @@ namespace Wallee.Service
             
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SubmittedAnalyticsQueryExecution>("/analytics/queries/queryToken/{queryToken}",
+            var localVarResponse = this.Client.Get<SubmittedAnalyticsQueryExecution>("/analytics/queries/queryToken/{queryToken}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -813,6 +815,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -834,7 +837,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<string>("/analytics/queries/queryToken/{queryToken}/result",
+            var localVarResponse = this.Client.Get<string>("/analytics/queries/queryToken/{queryToken}/result",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -897,6 +900,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -919,7 +923,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<AnalyticsQueryExecutionResponse>("/analytics/queries/submit",
+            var localVarResponse = this.Client.Post<AnalyticsQueryExecutionResponse>("/analytics/queries/submit",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

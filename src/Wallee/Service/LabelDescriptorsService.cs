@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -45,7 +49,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LabelDescriptorListResponse</returns>
-        LabelDescriptorListResponse GetLabelDescriptors(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        LabelDescriptorListResponse GetLabelDescriptors(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all label descriptors
@@ -61,8 +65,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LabelDescriptorListResponse</returns>
-        ApiResponse<LabelDescriptorListResponse> GetLabelDescriptorsWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<LabelDescriptorListResponse> GetLabelDescriptorsWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// List all label descriptor groups
         /// </summary>
@@ -74,7 +77,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LabelDescriptorGroupListResponse</returns>
-        LabelDescriptorGroupListResponse GetLabelDescriptorsGroups(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        LabelDescriptorGroupListResponse GetLabelDescriptorsGroups(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all label descriptor groups
@@ -90,8 +93,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LabelDescriptorGroupListResponse</returns>
-        ApiResponse<LabelDescriptorGroupListResponse> GetLabelDescriptorsGroupsWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<LabelDescriptorGroupListResponse> GetLabelDescriptorsGroupsWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a label descriptor group
         /// </summary>
@@ -100,7 +102,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LabelDescriptorGroup</returns>
-        LabelDescriptorGroup GetLabelDescriptorsGroupsId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        LabelDescriptorGroup GetLabelDescriptorsGroupsId(long id, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a label descriptor group
@@ -113,8 +115,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LabelDescriptorGroup</returns>
-        ApiResponse<LabelDescriptorGroup> GetLabelDescriptorsGroupsIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<LabelDescriptorGroup> GetLabelDescriptorsGroupsIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search label descriptor groups
         /// </summary>
@@ -126,7 +127,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LabelDescriptorGroupSearchResponse</returns>
-        LabelDescriptorGroupSearchResponse GetLabelDescriptorsGroupsSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        LabelDescriptorGroupSearchResponse GetLabelDescriptorsGroupsSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search label descriptor groups
@@ -142,8 +143,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LabelDescriptorGroupSearchResponse</returns>
-        ApiResponse<LabelDescriptorGroupSearchResponse> GetLabelDescriptorsGroupsSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<LabelDescriptorGroupSearchResponse> GetLabelDescriptorsGroupsSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a label descriptor
         /// </summary>
@@ -152,7 +152,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LabelDescriptor</returns>
-        LabelDescriptor GetLabelDescriptorsId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        LabelDescriptor GetLabelDescriptorsId(long id, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a label descriptor
@@ -165,8 +165,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LabelDescriptor</returns>
-        ApiResponse<LabelDescriptor> GetLabelDescriptorsIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<LabelDescriptor> GetLabelDescriptorsIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search label descriptors
         /// </summary>
@@ -178,7 +177,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LabelDescriptorSearchResponse</returns>
-        LabelDescriptorSearchResponse GetLabelDescriptorsSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        LabelDescriptorSearchResponse GetLabelDescriptorsSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search label descriptors
@@ -194,8 +193,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LabelDescriptorSearchResponse</returns>
-        ApiResponse<LabelDescriptorSearchResponse> GetLabelDescriptorsSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<LabelDescriptorSearchResponse> GetLabelDescriptorsSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -292,7 +290,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LabelDescriptorListResponse</returns>
-        public LabelDescriptorListResponse GetLabelDescriptors(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public LabelDescriptorListResponse GetLabelDescriptors(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LabelDescriptorListResponse> localVarResponse = GetLabelDescriptorsWithHttpInfo(after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -309,7 +307,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LabelDescriptorListResponse</returns>
-        public Wallee.Client.ApiResponse<LabelDescriptorListResponse> GetLabelDescriptorsWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LabelDescriptorListResponse> GetLabelDescriptorsWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -322,6 +320,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -361,7 +360,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LabelDescriptorListResponse>("/label-descriptors",
+            var localVarResponse = this.Client.Get<LabelDescriptorListResponse>("/label-descriptors",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -385,7 +384,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LabelDescriptorGroupListResponse</returns>
-        public LabelDescriptorGroupListResponse GetLabelDescriptorsGroups(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public LabelDescriptorGroupListResponse GetLabelDescriptorsGroups(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LabelDescriptorGroupListResponse> localVarResponse = GetLabelDescriptorsGroupsWithHttpInfo(after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -402,7 +401,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LabelDescriptorGroupListResponse</returns>
-        public Wallee.Client.ApiResponse<LabelDescriptorGroupListResponse> GetLabelDescriptorsGroupsWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LabelDescriptorGroupListResponse> GetLabelDescriptorsGroupsWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -415,6 +414,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -454,7 +454,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LabelDescriptorGroupListResponse>("/label-descriptors/groups",
+            var localVarResponse = this.Client.Get<LabelDescriptorGroupListResponse>("/label-descriptors/groups",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -475,7 +475,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LabelDescriptorGroup</returns>
-        public LabelDescriptorGroup GetLabelDescriptorsGroupsId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public LabelDescriptorGroup GetLabelDescriptorsGroupsId(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LabelDescriptorGroup> localVarResponse = GetLabelDescriptorsGroupsIdWithHttpInfo(id, expand);
             return localVarResponse.Data;
@@ -489,7 +489,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LabelDescriptorGroup</returns>
-        public Wallee.Client.ApiResponse<LabelDescriptorGroup> GetLabelDescriptorsGroupsIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LabelDescriptorGroup> GetLabelDescriptorsGroupsIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -502,6 +502,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -526,7 +527,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LabelDescriptorGroup>("/label-descriptors/groups/{id}",
+            var localVarResponse = this.Client.Get<LabelDescriptorGroup>("/label-descriptors/groups/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -550,7 +551,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LabelDescriptorGroupSearchResponse</returns>
-        public LabelDescriptorGroupSearchResponse GetLabelDescriptorsGroupsSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public LabelDescriptorGroupSearchResponse GetLabelDescriptorsGroupsSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LabelDescriptorGroupSearchResponse> localVarResponse = GetLabelDescriptorsGroupsSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -567,7 +568,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LabelDescriptorGroupSearchResponse</returns>
-        public Wallee.Client.ApiResponse<LabelDescriptorGroupSearchResponse> GetLabelDescriptorsGroupsSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LabelDescriptorGroupSearchResponse> GetLabelDescriptorsGroupsSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -580,6 +581,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -619,7 +621,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LabelDescriptorGroupSearchResponse>("/label-descriptors/groups/search",
+            var localVarResponse = this.Client.Get<LabelDescriptorGroupSearchResponse>("/label-descriptors/groups/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -640,7 +642,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LabelDescriptor</returns>
-        public LabelDescriptor GetLabelDescriptorsId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public LabelDescriptor GetLabelDescriptorsId(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LabelDescriptor> localVarResponse = GetLabelDescriptorsIdWithHttpInfo(id, expand);
             return localVarResponse.Data;
@@ -654,7 +656,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LabelDescriptor</returns>
-        public Wallee.Client.ApiResponse<LabelDescriptor> GetLabelDescriptorsIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LabelDescriptor> GetLabelDescriptorsIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -667,6 +669,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -691,7 +694,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LabelDescriptor>("/label-descriptors/{id}",
+            var localVarResponse = this.Client.Get<LabelDescriptor>("/label-descriptors/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -715,7 +718,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LabelDescriptorSearchResponse</returns>
-        public LabelDescriptorSearchResponse GetLabelDescriptorsSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public LabelDescriptorSearchResponse GetLabelDescriptorsSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LabelDescriptorSearchResponse> localVarResponse = GetLabelDescriptorsSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -732,7 +735,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LabelDescriptorSearchResponse</returns>
-        public Wallee.Client.ApiResponse<LabelDescriptorSearchResponse> GetLabelDescriptorsSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LabelDescriptorSearchResponse> GetLabelDescriptorsSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -745,6 +748,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -784,7 +788,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LabelDescriptorSearchResponse>("/label-descriptors/search",
+            var localVarResponse = this.Client.Get<LabelDescriptorSearchResponse>("/label-descriptors/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

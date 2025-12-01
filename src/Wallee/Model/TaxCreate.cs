@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="rate">The tax rate to be applied. (required).</param>
         /// <param name="title">The name of the tax. (required).</param>
-        public TaxCreate(decimal rate = default(decimal), string title = default(string))
+        public TaxCreate(decimal rate = default, string title = default)
         {
             this.Rate = rate;
             // to ensure "title" is required (not null)

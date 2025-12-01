@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="ChargeFlowLevelPaymentLink" /> class.
         /// </summary>
         /// <param name="chargeFlowLevel">chargeFlowLevel.</param>
-        public ChargeFlowLevelPaymentLink(ChargeFlowLevel chargeFlowLevel = default(ChargeFlowLevel))
+        public ChargeFlowLevelPaymentLink(ChargeFlowLevel chargeFlowLevel = default)
         {
             this.ChargeFlowLevel = chargeFlowLevel;
         }

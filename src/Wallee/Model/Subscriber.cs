@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="shippingAddress">shippingAddress.</param>
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="state">state.</param>
-        public Subscriber(Address shippingAddress = default(Address), Address billingAddress = default(Address), CreationEntityState? state = default(CreationEntityState?))
+        public Subscriber(Address shippingAddress = default, Address billingAddress = default, CreationEntityState? state = default)
         {
             this.ShippingAddress = shippingAddress;
             this.BillingAddress = billingAddress;

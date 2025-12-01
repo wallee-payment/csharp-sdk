@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -46,7 +50,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DeliveryIndicationListResponse</returns>
-        DeliveryIndicationListResponse GetPaymentDeliveryIndications(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        DeliveryIndicationListResponse GetPaymentDeliveryIndications(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all delivery indications
@@ -63,8 +67,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DeliveryIndicationListResponse</returns>
-        ApiResponse<DeliveryIndicationListResponse> GetPaymentDeliveryIndicationsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<DeliveryIndicationListResponse> GetPaymentDeliveryIndicationsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a delivery indication
         /// </summary>
@@ -74,7 +77,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DeliveryIndication</returns>
-        DeliveryIndication GetPaymentDeliveryIndicationsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DeliveryIndication GetPaymentDeliveryIndicationsId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a delivery indication
@@ -88,8 +91,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DeliveryIndication</returns>
-        ApiResponse<DeliveryIndication> GetPaymentDeliveryIndicationsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DeliveryIndication> GetPaymentDeliveryIndicationsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search delivery indications
         /// </summary>
@@ -102,7 +104,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DeliveryIndicationSearchResponse</returns>
-        DeliveryIndicationSearchResponse GetPaymentDeliveryIndicationsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        DeliveryIndicationSearchResponse GetPaymentDeliveryIndicationsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search delivery indications
@@ -119,8 +121,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DeliveryIndicationSearchResponse</returns>
-        ApiResponse<DeliveryIndicationSearchResponse> GetPaymentDeliveryIndicationsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<DeliveryIndicationSearchResponse> GetPaymentDeliveryIndicationsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Mark a delivery indication as not suitable.
         /// </summary>
@@ -130,7 +131,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DeliveryIndication</returns>
-        DeliveryIndication PostPaymentDeliveryIndicationsIdMarkNotSuitable(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DeliveryIndication PostPaymentDeliveryIndicationsIdMarkNotSuitable(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Mark a delivery indication as not suitable.
@@ -144,8 +145,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DeliveryIndication</returns>
-        ApiResponse<DeliveryIndication> PostPaymentDeliveryIndicationsIdMarkNotSuitableWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DeliveryIndication> PostPaymentDeliveryIndicationsIdMarkNotSuitableWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Mark a delivery indication as suitable.
         /// </summary>
@@ -155,7 +155,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DeliveryIndication</returns>
-        DeliveryIndication PostPaymentDeliveryIndicationsIdMarkSuitable(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DeliveryIndication PostPaymentDeliveryIndicationsIdMarkSuitable(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Mark a delivery indication as suitable.
@@ -169,8 +169,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DeliveryIndication</returns>
-        ApiResponse<DeliveryIndication> PostPaymentDeliveryIndicationsIdMarkSuitableWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DeliveryIndication> PostPaymentDeliveryIndicationsIdMarkSuitableWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -268,7 +267,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DeliveryIndicationListResponse</returns>
-        public DeliveryIndicationListResponse GetPaymentDeliveryIndications(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public DeliveryIndicationListResponse GetPaymentDeliveryIndications(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DeliveryIndicationListResponse> localVarResponse = GetPaymentDeliveryIndicationsWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -286,7 +285,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DeliveryIndicationListResponse</returns>
-        public Wallee.Client.ApiResponse<DeliveryIndicationListResponse> GetPaymentDeliveryIndicationsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DeliveryIndicationListResponse> GetPaymentDeliveryIndicationsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -299,6 +298,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -339,7 +339,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DeliveryIndicationListResponse>("/payment/delivery-indications",
+            var localVarResponse = this.Client.Get<DeliveryIndicationListResponse>("/payment/delivery-indications",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -361,7 +361,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DeliveryIndication</returns>
-        public DeliveryIndication GetPaymentDeliveryIndicationsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DeliveryIndication GetPaymentDeliveryIndicationsId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DeliveryIndication> localVarResponse = GetPaymentDeliveryIndicationsIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -376,7 +376,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DeliveryIndication</returns>
-        public Wallee.Client.ApiResponse<DeliveryIndication> GetPaymentDeliveryIndicationsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DeliveryIndication> GetPaymentDeliveryIndicationsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -389,6 +389,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -414,7 +415,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DeliveryIndication>("/payment/delivery-indications/{id}",
+            var localVarResponse = this.Client.Get<DeliveryIndication>("/payment/delivery-indications/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -439,7 +440,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DeliveryIndicationSearchResponse</returns>
-        public DeliveryIndicationSearchResponse GetPaymentDeliveryIndicationsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public DeliveryIndicationSearchResponse GetPaymentDeliveryIndicationsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DeliveryIndicationSearchResponse> localVarResponse = GetPaymentDeliveryIndicationsSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -457,7 +458,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DeliveryIndicationSearchResponse</returns>
-        public Wallee.Client.ApiResponse<DeliveryIndicationSearchResponse> GetPaymentDeliveryIndicationsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DeliveryIndicationSearchResponse> GetPaymentDeliveryIndicationsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -470,6 +471,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -510,7 +512,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DeliveryIndicationSearchResponse>("/payment/delivery-indications/search",
+            var localVarResponse = this.Client.Get<DeliveryIndicationSearchResponse>("/payment/delivery-indications/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -532,7 +534,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DeliveryIndication</returns>
-        public DeliveryIndication PostPaymentDeliveryIndicationsIdMarkNotSuitable(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DeliveryIndication PostPaymentDeliveryIndicationsIdMarkNotSuitable(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DeliveryIndication> localVarResponse = PostPaymentDeliveryIndicationsIdMarkNotSuitableWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -547,7 +549,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DeliveryIndication</returns>
-        public Wallee.Client.ApiResponse<DeliveryIndication> PostPaymentDeliveryIndicationsIdMarkNotSuitableWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DeliveryIndication> PostPaymentDeliveryIndicationsIdMarkNotSuitableWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -560,6 +562,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -585,7 +588,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<DeliveryIndication>("/payment/delivery-indications/{id}/mark-not-suitable",
+            var localVarResponse = this.Client.Post<DeliveryIndication>("/payment/delivery-indications/{id}/mark-not-suitable",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -607,7 +610,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DeliveryIndication</returns>
-        public DeliveryIndication PostPaymentDeliveryIndicationsIdMarkSuitable(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DeliveryIndication PostPaymentDeliveryIndicationsIdMarkSuitable(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DeliveryIndication> localVarResponse = PostPaymentDeliveryIndicationsIdMarkSuitableWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -622,7 +625,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DeliveryIndication</returns>
-        public Wallee.Client.ApiResponse<DeliveryIndication> PostPaymentDeliveryIndicationsIdMarkSuitableWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DeliveryIndication> PostPaymentDeliveryIndicationsIdMarkSuitableWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -635,6 +638,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -660,7 +664,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<DeliveryIndication>("/payment/delivery-indications/{id}/mark-suitable",
+            var localVarResponse = this.Client.Post<DeliveryIndication>("/payment/delivery-indications/{id}/mark-suitable",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

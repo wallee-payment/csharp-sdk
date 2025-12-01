@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="Permission" /> class.
         /// </summary>
         /// <param name="feature">feature.</param>
-        public Permission(Feature feature = default(Feature))
+        public Permission(Feature feature = default)
         {
             this.Feature = feature;
         }

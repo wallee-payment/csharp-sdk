@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="state">state.</param>
         /// <param name="space">space.</param>
-        public SpaceView(CreationEntityState? state = default(CreationEntityState?), Space space = default(Space))
+        public SpaceView(CreationEntityState? state = default, Space space = default)
         {
             this.State = state;
             this.Space = space;

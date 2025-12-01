@@ -65,7 +65,7 @@ namespace Wallee.Model
         /// <param name="state">state.</param>
         /// <param name="primaryCurrency">The currency that is used to display aggregated amounts in the space..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public SpaceUpdate(long requestLimit = default(long), SpaceAddressCreate postalAddress = default(SpaceAddressCreate), string name = default(string), List<string> technicalContactAddresses = default(List<string>), string varTimeZone = default(string), CreationEntityState? state = default(CreationEntityState?), string primaryCurrency = default(string), int varVersion = default(int))
+        public SpaceUpdate(long requestLimit = default, SpaceAddressCreate postalAddress = default, string name = default, List<string> technicalContactAddresses = default, string varTimeZone = default, CreationEntityState? state = default, string primaryCurrency = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.RequestLimit = requestLimit;

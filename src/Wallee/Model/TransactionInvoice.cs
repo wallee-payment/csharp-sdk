@@ -62,7 +62,7 @@ namespace Wallee.Model
         /// <param name="varEnvironment">varEnvironment.</param>
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="state">state.</param>
-        public TransactionInvoice(TransactionCompletion completion = default(TransactionCompletion), ModelEnvironment? varEnvironment = default(ModelEnvironment?), Address billingAddress = default(Address), TransactionInvoiceState? state = default(TransactionInvoiceState?))
+        public TransactionInvoice(TransactionCompletion completion = default, ModelEnvironment? varEnvironment = default, Address billingAddress = default, TransactionInvoiceState? state = default)
         {
             this.Completion = completion;
             this.VarEnvironment = varEnvironment;

@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="category">category.</param>
         /// <param name="group">group.</param>
-        public LabelDescriptor(LabelDescriptorCategory? category = default(LabelDescriptorCategory?), LabelDescriptorGroup group = default(LabelDescriptorGroup))
+        public LabelDescriptor(LabelDescriptorCategory? category = default, LabelDescriptorGroup group = default)
         {
             this.Category = category;
             this.Group = group;

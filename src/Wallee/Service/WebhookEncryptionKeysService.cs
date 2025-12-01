@@ -22,10 +22,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
+using Wallee.Client;
 using System.Collections.Concurrent;
 using System.Text.RegularExpressions;
 using Wallee.Util;
-using Wallee.Client;
 using Wallee.Model;
 
 namespace Wallee.Service
@@ -57,7 +61,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> GetWebhooksEncryptionKeysIdWithHttpInfo(string id, int operationIndex = 0);
-
         #endregion Synchronous Operations
     }
 
@@ -185,6 +188,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -205,7 +209,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<string>("/webhooks/encryption-keys/{id}",
+            var localVarResponse = this.Client.Get<string>("/webhooks/encryption-keys/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

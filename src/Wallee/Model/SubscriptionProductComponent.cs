@@ -49,7 +49,7 @@ namespace Wallee.Model
         /// <param name="taxClass">taxClass.</param>
         /// <param name="reference">reference.</param>
         /// <param name="componentGroup">componentGroup.</param>
-        public SubscriptionProductComponent(TaxClass taxClass = default(TaxClass), SubscriptionProductComponentReference reference = default(SubscriptionProductComponentReference), SubscriptionProductComponentGroup componentGroup = default(SubscriptionProductComponentGroup))
+        public SubscriptionProductComponent(TaxClass taxClass = default, SubscriptionProductComponentReference reference = default, SubscriptionProductComponentGroup componentGroup = default)
         {
             this.TaxClass = taxClass;
             this.Reference = reference;

@@ -57,7 +57,7 @@ namespace Wallee.Model
         /// <param name="currentProductVersion">currentProductVersion.</param>
         /// <param name="state">state.</param>
         /// <param name="affiliate">affiliate.</param>
-        public Subscription(Subscriber subscriber = default(Subscriber), Token token = default(Token), SubscriptionProductVersion currentProductVersion = default(SubscriptionProductVersion), SubscriptionState? state = default(SubscriptionState?), SubscriptionAffiliate affiliate = default(SubscriptionAffiliate))
+        public Subscription(Subscriber subscriber = default, Token token = default, SubscriptionProductVersion currentProductVersion = default, SubscriptionState? state = default, SubscriptionAffiliate affiliate = default)
         {
             this.Subscriber = subscriber;
             this.Token = token;

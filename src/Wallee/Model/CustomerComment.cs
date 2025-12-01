@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="CustomerComment" /> class.
         /// </summary>
         /// <param name="customer">customer.</param>
-        public CustomerComment(Customer customer = default(Customer))
+        public CustomerComment(Customer customer = default)
         {
             this.Customer = customer;
         }

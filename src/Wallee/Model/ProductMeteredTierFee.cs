@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="ProductMeteredTierFee" /> class.
         /// </summary>
         /// <param name="meteredFee">meteredFee.</param>
-        public ProductMeteredTierFee(ProductMeteredFee meteredFee = default(ProductMeteredFee))
+        public ProductMeteredTierFee(ProductMeteredFee meteredFee = default)
         {
             this.MeteredFee = meteredFee;
         }

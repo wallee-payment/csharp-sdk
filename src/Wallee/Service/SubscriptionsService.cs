@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -46,7 +50,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionListResponse</returns>
-        SubscriptionListResponse GetSubscriptions(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        SubscriptionListResponse GetSubscriptions(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all subscriptions
@@ -63,8 +67,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionListResponse</returns>
-        ApiResponse<SubscriptionListResponse> GetSubscriptionsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<SubscriptionListResponse> GetSubscriptionsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a subscription
         /// </summary>
@@ -74,7 +77,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Subscription</returns>
-        Subscription GetSubscriptionsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Subscription GetSubscriptionsId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a subscription
@@ -88,8 +91,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Subscription</returns>
-        ApiResponse<Subscription> GetSubscriptionsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Subscription> GetSubscriptionsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search subscription invoices
         /// </summary>
@@ -103,7 +105,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>InvoiceSearchResponse</returns>
-        InvoiceSearchResponse GetSubscriptionsIdInvoices(long id, long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        InvoiceSearchResponse GetSubscriptionsIdInvoices(long id, long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search subscription invoices
@@ -121,8 +123,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of InvoiceSearchResponse</returns>
-        ApiResponse<InvoiceSearchResponse> GetSubscriptionsIdInvoicesWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<InvoiceSearchResponse> GetSubscriptionsIdInvoicesWithHttpInfo(long id, long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Search subscriptions
         /// </summary>
@@ -135,7 +136,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionSearchResponse</returns>
-        SubscriptionSearchResponse GetSubscriptionsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        SubscriptionSearchResponse GetSubscriptionsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search subscriptions
@@ -152,8 +153,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionSearchResponse</returns>
-        ApiResponse<SubscriptionSearchResponse> GetSubscriptionsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<SubscriptionSearchResponse> GetSubscriptionsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a subscription
         /// </summary>
@@ -164,7 +164,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Subscription</returns>
-        Subscription PatchSubscriptionsId(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Subscription PatchSubscriptionsId(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a subscription
@@ -179,8 +179,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Subscription</returns>
-        ApiResponse<Subscription> PatchSubscriptionsIdWithHttpInfo(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Subscription> PatchSubscriptionsIdWithHttpInfo(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a subscription
         /// </summary>
@@ -190,7 +189,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionVersion</returns>
-        SubscriptionVersion PostSubscriptions(long space, SubscriptionCreateRequest subscriptionCreateRequest, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        SubscriptionVersion PostSubscriptions(long space, SubscriptionCreateRequest subscriptionCreateRequest, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a subscription
@@ -204,8 +203,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionVersion</returns>
-        ApiResponse<SubscriptionVersion> PostSubscriptionsWithHttpInfo(long space, SubscriptionCreateRequest subscriptionCreateRequest, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<SubscriptionVersion> PostSubscriptionsWithHttpInfo(long space, SubscriptionCreateRequest subscriptionCreateRequest, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Apply changes to a subscription
         /// </summary>
@@ -216,7 +214,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionVersion</returns>
-        SubscriptionVersion PostSubscriptionsIdApplyChanges(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        SubscriptionVersion PostSubscriptionsIdApplyChanges(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Apply changes to a subscription
@@ -231,8 +229,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionVersion</returns>
-        ApiResponse<SubscriptionVersion> PostSubscriptionsIdApplyChangesWithHttpInfo(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<SubscriptionVersion> PostSubscriptionsIdApplyChangesWithHttpInfo(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Initialize a subscription
         /// </summary>
@@ -242,7 +239,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionCharge</returns>
-        SubscriptionCharge PostSubscriptionsIdInitialize(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        SubscriptionCharge PostSubscriptionsIdInitialize(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Initialize a subscription
@@ -256,8 +253,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionCharge</returns>
-        ApiResponse<SubscriptionCharge> PostSubscriptionsIdInitializeWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<SubscriptionCharge> PostSubscriptionsIdInitializeWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Initialize a subscription with the subscriber present
         /// </summary>
@@ -268,7 +264,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionCharge</returns>
-        SubscriptionCharge PostSubscriptionsIdInitializeSubscriberPresent(long id, long space, SubscriptionInitializeSubscriberPresentRequest subscriptionInitializeSubscriberPresentRequest, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        SubscriptionCharge PostSubscriptionsIdInitializeSubscriberPresent(long id, long space, SubscriptionInitializeSubscriberPresentRequest subscriptionInitializeSubscriberPresentRequest, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Initialize a subscription with the subscriber present
@@ -283,8 +279,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionCharge</returns>
-        ApiResponse<SubscriptionCharge> PostSubscriptionsIdInitializeSubscriberPresentWithHttpInfo(long id, long space, SubscriptionInitializeSubscriberPresentRequest subscriptionInitializeSubscriberPresentRequest, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<SubscriptionCharge> PostSubscriptionsIdInitializeSubscriberPresentWithHttpInfo(long id, long space, SubscriptionInitializeSubscriberPresentRequest subscriptionInitializeSubscriberPresentRequest, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Reactivate a suspended subscription
         /// </summary>
@@ -307,7 +302,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PostSubscriptionsIdReactivateWithHttpInfo(long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// Suspend a subscription
         /// </summary>
@@ -318,7 +312,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionSuspension</returns>
-        SubscriptionSuspension PostSubscriptionsIdSuspend(long id, long space, SuspensionCreationRequest suspensionCreationRequest, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        SubscriptionSuspension PostSubscriptionsIdSuspend(long id, long space, SuspensionCreationRequest suspensionCreationRequest, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Suspend a subscription
@@ -333,8 +327,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionSuspension</returns>
-        ApiResponse<SubscriptionSuspension> PostSubscriptionsIdSuspendWithHttpInfo(long id, long space, SuspensionCreationRequest suspensionCreationRequest, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<SubscriptionSuspension> PostSubscriptionsIdSuspendWithHttpInfo(long id, long space, SuspensionCreationRequest suspensionCreationRequest, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Terminate a subscription
         /// </summary>
@@ -359,7 +352,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PostSubscriptionsIdTerminateWithHttpInfo(long id, bool respectTerminationPeriod, long space, int operationIndex = 0);
-
         /// <summary>
         /// Upgrade a subscription&#39;s product
         /// </summary>
@@ -370,7 +362,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionVersion</returns>
-        SubscriptionVersion PostSubscriptionsIdUpgradeProduct(long id, bool respectTerminationPeriod, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        SubscriptionVersion PostSubscriptionsIdUpgradeProduct(long id, bool respectTerminationPeriod, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Upgrade a subscription&#39;s product
@@ -385,8 +377,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionVersion</returns>
-        ApiResponse<SubscriptionVersion> PostSubscriptionsIdUpgradeProductWithHttpInfo(long id, bool respectTerminationPeriod, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<SubscriptionVersion> PostSubscriptionsIdUpgradeProductWithHttpInfo(long id, bool respectTerminationPeriod, long space, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -484,7 +475,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionListResponse</returns>
-        public SubscriptionListResponse GetSubscriptions(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public SubscriptionListResponse GetSubscriptions(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SubscriptionListResponse> localVarResponse = GetSubscriptionsWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -502,7 +493,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionListResponse</returns>
-        public Wallee.Client.ApiResponse<SubscriptionListResponse> GetSubscriptionsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SubscriptionListResponse> GetSubscriptionsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -515,6 +506,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -555,7 +547,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SubscriptionListResponse>("/subscriptions",
+            var localVarResponse = this.Client.Get<SubscriptionListResponse>("/subscriptions",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -577,7 +569,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Subscription</returns>
-        public Subscription GetSubscriptionsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Subscription GetSubscriptionsId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Subscription> localVarResponse = GetSubscriptionsIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -592,7 +584,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Subscription</returns>
-        public Wallee.Client.ApiResponse<Subscription> GetSubscriptionsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Subscription> GetSubscriptionsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -605,6 +597,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -630,7 +623,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<Subscription>("/subscriptions/{id}",
+            var localVarResponse = this.Client.Get<Subscription>("/subscriptions/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -656,7 +649,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>InvoiceSearchResponse</returns>
-        public InvoiceSearchResponse GetSubscriptionsIdInvoices(long id, long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public InvoiceSearchResponse GetSubscriptionsIdInvoices(long id, long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<InvoiceSearchResponse> localVarResponse = GetSubscriptionsIdInvoicesWithHttpInfo(id, space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -675,7 +668,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of InvoiceSearchResponse</returns>
-        public Wallee.Client.ApiResponse<InvoiceSearchResponse> GetSubscriptionsIdInvoicesWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<InvoiceSearchResponse> GetSubscriptionsIdInvoicesWithHttpInfo(long id, long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -688,6 +681,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -729,7 +723,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<InvoiceSearchResponse>("/subscriptions/{id}/invoices",
+            var localVarResponse = this.Client.Get<InvoiceSearchResponse>("/subscriptions/{id}/invoices",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -754,7 +748,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionSearchResponse</returns>
-        public SubscriptionSearchResponse GetSubscriptionsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public SubscriptionSearchResponse GetSubscriptionsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SubscriptionSearchResponse> localVarResponse = GetSubscriptionsSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -772,7 +766,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionSearchResponse</returns>
-        public Wallee.Client.ApiResponse<SubscriptionSearchResponse> GetSubscriptionsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SubscriptionSearchResponse> GetSubscriptionsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -785,6 +779,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -825,7 +820,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<SubscriptionSearchResponse>("/subscriptions/search",
+            var localVarResponse = this.Client.Get<SubscriptionSearchResponse>("/subscriptions/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -848,7 +843,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Subscription</returns>
-        public Subscription PatchSubscriptionsId(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Subscription PatchSubscriptionsId(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Subscription> localVarResponse = PatchSubscriptionsIdWithHttpInfo(id, space, subscriptionUpdateRequest, expand);
             return localVarResponse.Data;
@@ -864,7 +859,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Subscription</returns>
-        public Wallee.Client.ApiResponse<Subscription> PatchSubscriptionsIdWithHttpInfo(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Subscription> PatchSubscriptionsIdWithHttpInfo(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'subscriptionUpdateRequest' is set
             if (subscriptionUpdateRequest == null)
@@ -884,6 +879,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -910,7 +906,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<Subscription>("/subscriptions/{id}",
+            var localVarResponse = this.Client.Patch<Subscription>("/subscriptions/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -932,7 +928,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionVersion</returns>
-        public SubscriptionVersion PostSubscriptions(long space, SubscriptionCreateRequest subscriptionCreateRequest, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public SubscriptionVersion PostSubscriptions(long space, SubscriptionCreateRequest subscriptionCreateRequest, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SubscriptionVersion> localVarResponse = PostSubscriptionsWithHttpInfo(space, subscriptionCreateRequest, expand);
             return localVarResponse.Data;
@@ -947,7 +943,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionVersion</returns>
-        public Wallee.Client.ApiResponse<SubscriptionVersion> PostSubscriptionsWithHttpInfo(long space, SubscriptionCreateRequest subscriptionCreateRequest, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SubscriptionVersion> PostSubscriptionsWithHttpInfo(long space, SubscriptionCreateRequest subscriptionCreateRequest, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'subscriptionCreateRequest' is set
             if (subscriptionCreateRequest == null)
@@ -967,6 +963,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -992,7 +989,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<SubscriptionVersion>("/subscriptions",
+            var localVarResponse = this.Client.Post<SubscriptionVersion>("/subscriptions",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1015,7 +1012,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionVersion</returns>
-        public SubscriptionVersion PostSubscriptionsIdApplyChanges(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public SubscriptionVersion PostSubscriptionsIdApplyChanges(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SubscriptionVersion> localVarResponse = PostSubscriptionsIdApplyChangesWithHttpInfo(id, space, subscriptionUpdateRequest, expand);
             return localVarResponse.Data;
@@ -1031,7 +1028,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionVersion</returns>
-        public Wallee.Client.ApiResponse<SubscriptionVersion> PostSubscriptionsIdApplyChangesWithHttpInfo(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SubscriptionVersion> PostSubscriptionsIdApplyChangesWithHttpInfo(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'subscriptionUpdateRequest' is set
             if (subscriptionUpdateRequest == null)
@@ -1051,6 +1048,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1077,7 +1075,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<SubscriptionVersion>("/subscriptions/{id}/apply-changes",
+            var localVarResponse = this.Client.Post<SubscriptionVersion>("/subscriptions/{id}/apply-changes",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1099,7 +1097,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionCharge</returns>
-        public SubscriptionCharge PostSubscriptionsIdInitialize(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public SubscriptionCharge PostSubscriptionsIdInitialize(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SubscriptionCharge> localVarResponse = PostSubscriptionsIdInitializeWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -1114,7 +1112,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionCharge</returns>
-        public Wallee.Client.ApiResponse<SubscriptionCharge> PostSubscriptionsIdInitializeWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SubscriptionCharge> PostSubscriptionsIdInitializeWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -1127,6 +1125,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1152,7 +1151,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<SubscriptionCharge>("/subscriptions/{id}/initialize",
+            var localVarResponse = this.Client.Post<SubscriptionCharge>("/subscriptions/{id}/initialize",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1175,7 +1174,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionCharge</returns>
-        public SubscriptionCharge PostSubscriptionsIdInitializeSubscriberPresent(long id, long space, SubscriptionInitializeSubscriberPresentRequest subscriptionInitializeSubscriberPresentRequest, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public SubscriptionCharge PostSubscriptionsIdInitializeSubscriberPresent(long id, long space, SubscriptionInitializeSubscriberPresentRequest subscriptionInitializeSubscriberPresentRequest, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SubscriptionCharge> localVarResponse = PostSubscriptionsIdInitializeSubscriberPresentWithHttpInfo(id, space, subscriptionInitializeSubscriberPresentRequest, expand);
             return localVarResponse.Data;
@@ -1191,7 +1190,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionCharge</returns>
-        public Wallee.Client.ApiResponse<SubscriptionCharge> PostSubscriptionsIdInitializeSubscriberPresentWithHttpInfo(long id, long space, SubscriptionInitializeSubscriberPresentRequest subscriptionInitializeSubscriberPresentRequest, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SubscriptionCharge> PostSubscriptionsIdInitializeSubscriberPresentWithHttpInfo(long id, long space, SubscriptionInitializeSubscriberPresentRequest subscriptionInitializeSubscriberPresentRequest, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'subscriptionInitializeSubscriberPresentRequest' is set
             if (subscriptionInitializeSubscriberPresentRequest == null)
@@ -1211,6 +1210,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1237,7 +1237,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<SubscriptionCharge>("/subscriptions/{id}/initialize-subscriber-present",
+            var localVarResponse = this.Client.Post<SubscriptionCharge>("/subscriptions/{id}/initialize-subscriber-present",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1284,6 +1284,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1305,7 +1306,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Object>("/subscriptions/{id}/reactivate",
+            var localVarResponse = this.Client.Post<Object>("/subscriptions/{id}/reactivate",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1328,7 +1329,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionSuspension</returns>
-        public SubscriptionSuspension PostSubscriptionsIdSuspend(long id, long space, SuspensionCreationRequest suspensionCreationRequest, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public SubscriptionSuspension PostSubscriptionsIdSuspend(long id, long space, SuspensionCreationRequest suspensionCreationRequest, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SubscriptionSuspension> localVarResponse = PostSubscriptionsIdSuspendWithHttpInfo(id, space, suspensionCreationRequest, expand);
             return localVarResponse.Data;
@@ -1344,7 +1345,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionSuspension</returns>
-        public Wallee.Client.ApiResponse<SubscriptionSuspension> PostSubscriptionsIdSuspendWithHttpInfo(long id, long space, SuspensionCreationRequest suspensionCreationRequest, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SubscriptionSuspension> PostSubscriptionsIdSuspendWithHttpInfo(long id, long space, SuspensionCreationRequest suspensionCreationRequest, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'suspensionCreationRequest' is set
             if (suspensionCreationRequest == null)
@@ -1364,6 +1365,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1390,7 +1392,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<SubscriptionSuspension>("/subscriptions/{id}/suspend",
+            var localVarResponse = this.Client.Post<SubscriptionSuspension>("/subscriptions/{id}/suspend",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1439,6 +1441,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1461,7 +1464,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Object>("/subscriptions/{id}/terminate",
+            var localVarResponse = this.Client.Post<Object>("/subscriptions/{id}/terminate",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1484,7 +1487,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>SubscriptionVersion</returns>
-        public SubscriptionVersion PostSubscriptionsIdUpgradeProduct(long id, bool respectTerminationPeriod, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public SubscriptionVersion PostSubscriptionsIdUpgradeProduct(long id, bool respectTerminationPeriod, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<SubscriptionVersion> localVarResponse = PostSubscriptionsIdUpgradeProductWithHttpInfo(id, respectTerminationPeriod, space, expand);
             return localVarResponse.Data;
@@ -1500,7 +1503,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of SubscriptionVersion</returns>
-        public Wallee.Client.ApiResponse<SubscriptionVersion> PostSubscriptionsIdUpgradeProductWithHttpInfo(long id, bool respectTerminationPeriod, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<SubscriptionVersion> PostSubscriptionsIdUpgradeProductWithHttpInfo(long id, bool respectTerminationPeriod, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -1513,6 +1516,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1539,7 +1543,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<SubscriptionVersion>("/subscriptions/{id}/upgrade-product",
+            var localVarResponse = this.Client.Post<SubscriptionVersion>("/subscriptions/{id}/upgrade-product",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

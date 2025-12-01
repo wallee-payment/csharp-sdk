@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// <param name="name">The name used to identify the account..</param>
         /// <param name="subaccountLimit">The number of sub-accounts that can be created within this account..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public AccountUpdate(string name = default(string), long subaccountLimit = default(long), int varVersion = default(int))
+        public AccountUpdate(string name = default, long subaccountLimit = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Name = name;

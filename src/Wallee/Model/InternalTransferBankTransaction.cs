@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="sourceBankTransaction">sourceBankTransaction.</param>
         /// <param name="targetBankTransaction">targetBankTransaction.</param>
-        public InternalTransferBankTransaction(BankTransaction sourceBankTransaction = default(BankTransaction), BankTransaction targetBankTransaction = default(BankTransaction))
+        public InternalTransferBankTransaction(BankTransaction sourceBankTransaction = default, BankTransaction targetBankTransaction = default)
         {
             this.SourceBankTransaction = sourceBankTransaction;
             this.TargetBankTransaction = targetBankTransaction;

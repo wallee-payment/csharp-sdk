@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -41,7 +45,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CurrencyListResponse</returns>
-        CurrencyListResponse GetCurrencies(List<string>? expand = default(List<string>?), int operationIndex = 0);
+        CurrencyListResponse GetCurrencies(List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// List all currencies
@@ -53,8 +57,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CurrencyListResponse</returns>
-        ApiResponse<CurrencyListResponse> GetCurrenciesWithHttpInfo(List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<CurrencyListResponse> GetCurrenciesWithHttpInfo(List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a currency
         /// </summary>
@@ -75,7 +78,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestCurrency</returns>
         ApiResponse<RestCurrency> GetCurrenciesCodeWithHttpInfo(string code, int operationIndex = 0);
-
         /// <summary>
         /// Search currencies
         /// </summary>
@@ -87,7 +89,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CurrencySearchResponse</returns>
-        CurrencySearchResponse GetCurrenciesSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        CurrencySearchResponse GetCurrenciesSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search currencies
@@ -103,8 +105,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CurrencySearchResponse</returns>
-        ApiResponse<CurrencySearchResponse> GetCurrenciesSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<CurrencySearchResponse> GetCurrenciesSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -197,7 +198,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CurrencyListResponse</returns>
-        public CurrencyListResponse GetCurrencies(List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public CurrencyListResponse GetCurrencies(List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<CurrencyListResponse> localVarResponse = GetCurrenciesWithHttpInfo(expand);
             return localVarResponse.Data;
@@ -210,7 +211,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CurrencyListResponse</returns>
-        public Wallee.Client.ApiResponse<CurrencyListResponse> GetCurrenciesWithHttpInfo(List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<CurrencyListResponse> GetCurrenciesWithHttpInfo(List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -223,6 +224,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -246,7 +248,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<CurrencyListResponse>("/currencies",
+            var localVarResponse = this.Client.Get<CurrencyListResponse>("/currencies",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -298,6 +300,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -318,7 +321,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<RestCurrency>("/currencies/{code}",
+            var localVarResponse = this.Client.Get<RestCurrency>("/currencies/{code}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -342,7 +345,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>CurrencySearchResponse</returns>
-        public CurrencySearchResponse GetCurrenciesSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public CurrencySearchResponse GetCurrenciesSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<CurrencySearchResponse> localVarResponse = GetCurrenciesSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -359,7 +362,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of CurrencySearchResponse</returns>
-        public Wallee.Client.ApiResponse<CurrencySearchResponse> GetCurrenciesSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<CurrencySearchResponse> GetCurrenciesSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -372,6 +375,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -411,7 +415,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<CurrencySearchResponse>("/currencies/search",
+            var localVarResponse = this.Client.Get<CurrencySearchResponse>("/currencies/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

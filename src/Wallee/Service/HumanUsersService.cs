@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -57,7 +61,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteHumanUsersIdWithHttpInfo(long id, int operationIndex = 0);
-
         /// <summary>
         /// List all human users
         /// </summary>
@@ -69,7 +72,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>HumanUserListResponse</returns>
-        HumanUserListResponse GetHumanUsers(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        HumanUserListResponse GetHumanUsers(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all human users
@@ -85,8 +88,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of HumanUserListResponse</returns>
-        ApiResponse<HumanUserListResponse> GetHumanUsersWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<HumanUserListResponse> GetHumanUsersWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Export human users
         /// </summary>
@@ -101,7 +103,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>System.IO.Stream</returns>
-        System.IO.Stream GetHumanUsersExport(List<string>? fields = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        System.IO.Stream GetHumanUsersExport(List<string>? fields = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Export human users
@@ -117,8 +119,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of System.IO.Stream</returns>
-        ApiResponse<System.IO.Stream> GetHumanUsersExportWithHttpInfo(List<string>? fields = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<System.IO.Stream> GetHumanUsersExportWithHttpInfo(List<string>? fields = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a human user
         /// </summary>
@@ -127,7 +128,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>HumanUser</returns>
-        HumanUser GetHumanUsersId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        HumanUser GetHumanUsersId(long id, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a human user
@@ -140,8 +141,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of HumanUser</returns>
-        ApiResponse<HumanUser> GetHumanUsersIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<HumanUser> GetHumanUsersIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search human users
         /// </summary>
@@ -153,7 +153,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>HumanUserSearchResponse</returns>
-        HumanUserSearchResponse GetHumanUsersSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        HumanUserSearchResponse GetHumanUsersSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search human users
@@ -169,8 +169,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of HumanUserSearchResponse</returns>
-        ApiResponse<HumanUserSearchResponse> GetHumanUsersSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<HumanUserSearchResponse> GetHumanUsersSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a human user
         /// </summary>
@@ -180,7 +179,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>HumanUser</returns>
-        HumanUser PatchHumanUsersId(long id, HumanUserUpdate humanUserUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        HumanUser PatchHumanUsersId(long id, HumanUserUpdate humanUserUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a human user
@@ -194,8 +193,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of HumanUser</returns>
-        ApiResponse<HumanUser> PatchHumanUsersIdWithHttpInfo(long id, HumanUserUpdate humanUserUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<HumanUser> PatchHumanUsersIdWithHttpInfo(long id, HumanUserUpdate humanUserUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a human user
         /// </summary>
@@ -204,7 +202,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>HumanUser</returns>
-        HumanUser PostHumanUsers(HumanUserCreate humanUserCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        HumanUser PostHumanUsers(HumanUserCreate humanUserCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a human user
@@ -217,8 +215,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of HumanUser</returns>
-        ApiResponse<HumanUser> PostHumanUsersWithHttpInfo(HumanUserCreate humanUserCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<HumanUser> PostHumanUsersWithHttpInfo(HumanUserCreate humanUserCreate, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -336,6 +333,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -356,7 +354,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/human-users/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/human-users/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -380,7 +378,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>HumanUserListResponse</returns>
-        public HumanUserListResponse GetHumanUsers(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public HumanUserListResponse GetHumanUsers(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<HumanUserListResponse> localVarResponse = GetHumanUsersWithHttpInfo(after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -397,7 +395,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of HumanUserListResponse</returns>
-        public Wallee.Client.ApiResponse<HumanUserListResponse> GetHumanUsersWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<HumanUserListResponse> GetHumanUsersWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -410,6 +408,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -449,7 +448,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<HumanUserListResponse>("/human-users",
+            var localVarResponse = this.Client.Get<HumanUserListResponse>("/human-users",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -474,7 +473,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>System.IO.Stream</returns>
-        public System.IO.Stream GetHumanUsersExport(List<string>? fields = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public System.IO.Stream GetHumanUsersExport(List<string>? fields = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<System.IO.Stream> localVarResponse = GetHumanUsersExportWithHttpInfo(fields, limit, offset, order, query);
             return localVarResponse.Data;
@@ -492,7 +491,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of System.IO.Stream</returns>
-        public Wallee.Client.ApiResponse<System.IO.Stream> GetHumanUsersExportWithHttpInfo(List<string>? fields = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<System.IO.Stream> GetHumanUsersExportWithHttpInfo(List<string>? fields = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -506,6 +505,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -546,7 +546,7 @@ namespace Wallee.Service
             
 
             // make the HTTP request
-            var localVarResponse = Client.Get<System.IO.Stream>("/human-users/export",
+            var localVarResponse = this.Client.Get<System.IO.Stream>("/human-users/export",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -567,7 +567,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>HumanUser</returns>
-        public HumanUser GetHumanUsersId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public HumanUser GetHumanUsersId(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<HumanUser> localVarResponse = GetHumanUsersIdWithHttpInfo(id, expand);
             return localVarResponse.Data;
@@ -581,7 +581,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of HumanUser</returns>
-        public Wallee.Client.ApiResponse<HumanUser> GetHumanUsersIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<HumanUser> GetHumanUsersIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -594,6 +594,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -618,7 +619,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<HumanUser>("/human-users/{id}",
+            var localVarResponse = this.Client.Get<HumanUser>("/human-users/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -642,7 +643,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>HumanUserSearchResponse</returns>
-        public HumanUserSearchResponse GetHumanUsersSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public HumanUserSearchResponse GetHumanUsersSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<HumanUserSearchResponse> localVarResponse = GetHumanUsersSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -659,7 +660,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of HumanUserSearchResponse</returns>
-        public Wallee.Client.ApiResponse<HumanUserSearchResponse> GetHumanUsersSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<HumanUserSearchResponse> GetHumanUsersSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -672,6 +673,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -711,7 +713,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<HumanUserSearchResponse>("/human-users/search",
+            var localVarResponse = this.Client.Get<HumanUserSearchResponse>("/human-users/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -733,7 +735,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>HumanUser</returns>
-        public HumanUser PatchHumanUsersId(long id, HumanUserUpdate humanUserUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public HumanUser PatchHumanUsersId(long id, HumanUserUpdate humanUserUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<HumanUser> localVarResponse = PatchHumanUsersIdWithHttpInfo(id, humanUserUpdate, expand);
             return localVarResponse.Data;
@@ -748,7 +750,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of HumanUser</returns>
-        public Wallee.Client.ApiResponse<HumanUser> PatchHumanUsersIdWithHttpInfo(long id, HumanUserUpdate humanUserUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<HumanUser> PatchHumanUsersIdWithHttpInfo(long id, HumanUserUpdate humanUserUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'humanUserUpdate' is set
             if (humanUserUpdate == null)
@@ -768,6 +770,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -793,7 +796,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<HumanUser>("/human-users/{id}",
+            var localVarResponse = this.Client.Patch<HumanUser>("/human-users/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -814,7 +817,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>HumanUser</returns>
-        public HumanUser PostHumanUsers(HumanUserCreate humanUserCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public HumanUser PostHumanUsers(HumanUserCreate humanUserCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<HumanUser> localVarResponse = PostHumanUsersWithHttpInfo(humanUserCreate, expand);
             return localVarResponse.Data;
@@ -828,7 +831,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of HumanUser</returns>
-        public Wallee.Client.ApiResponse<HumanUser> PostHumanUsersWithHttpInfo(HumanUserCreate humanUserCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<HumanUser> PostHumanUsersWithHttpInfo(HumanUserCreate humanUserCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'humanUserCreate' is set
             if (humanUserCreate == null)
@@ -848,6 +851,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -872,7 +876,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<HumanUser>("/human-users",
+            var localVarResponse = this.Client.Post<HumanUser>("/human-users",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

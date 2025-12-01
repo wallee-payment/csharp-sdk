@@ -44,16 +44,16 @@ namespace Wallee.Model
     public enum TaxCalculation
     {
         /// <summary>
-        /// Enum INCLUDED for value: TAX_INCLUDED
+        /// Enum TAXINCLUDED for value: TAX_INCLUDED
         /// </summary>
         [EnumMember(Value = "TAX_INCLUDED")]
-        INCLUDED = 1,
+        TAXINCLUDED = 1,
 
         /// <summary>
-        /// Enum NOTINCLUDED for value: TAX_NOT_INCLUDED
+        /// Enum TAXNOTINCLUDED for value: TAX_NOT_INCLUDED
         /// </summary>
         [EnumMember(Value = "TAX_NOT_INCLUDED")]
-        NOTINCLUDED = 2
+        TAXNOTINCLUDED = 2
     }
 
 }

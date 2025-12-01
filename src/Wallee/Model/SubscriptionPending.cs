@@ -58,7 +58,7 @@ namespace Wallee.Model
         /// <param name="reference">The merchant&#39;s reference used to identify the subscription..</param>
         /// <param name="subscriber">The subscriber that the subscription belongs to..</param>
         /// <param name="token">The payment token that is used to charge the customer..</param>
-        public SubscriptionPending(string description = default(string), DateTime plannedTerminationDate = default(DateTime), long affiliate = default(long), int varVersion = default(int), string reference = default(string), long subscriber = default(long), long token = default(long))
+        public SubscriptionPending(string description = default, DateTime plannedTerminationDate = default, long affiliate = default, int varVersion = default, string reference = default, long subscriber = default, long token = default)
         {
             this.VarVersion = varVersion;
             this.Description = description;

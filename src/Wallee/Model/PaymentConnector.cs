@@ -63,7 +63,7 @@ namespace Wallee.Model
         /// <param name="paymentMethodBrand">paymentMethodBrand.</param>
         /// <param name="processor">processor.</param>
         /// <param name="paymentMethod">paymentMethod.</param>
-        public PaymentConnector(DataCollectionType? dataCollectionType = default(DataCollectionType?), PaymentPrimaryRiskTaker? primaryRiskTaker = default(PaymentPrimaryRiskTaker?), PaymentMethodBrand paymentMethodBrand = default(PaymentMethodBrand), PaymentProcessor processor = default(PaymentProcessor), PaymentMethod paymentMethod = default(PaymentMethod))
+        public PaymentConnector(DataCollectionType? dataCollectionType = default, PaymentPrimaryRiskTaker? primaryRiskTaker = default, PaymentMethodBrand paymentMethodBrand = default, PaymentProcessor processor = default, PaymentMethod paymentMethod = default)
         {
             this.DataCollectionType = dataCollectionType;
             this.PrimaryRiskTaker = primaryRiskTaker;

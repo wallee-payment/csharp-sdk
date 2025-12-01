@@ -49,7 +49,7 @@ namespace Wallee.Model
         /// <param name="permissions">The permissions granted to users with this role..</param>
         /// <param name="name">The name used to identify the role..</param>
         /// <param name="twoFactorRequired">Whether users with this role are required to use two-factor authentication..</param>
-        public AbstractRoleUpdate(List<Permission> permissions = default(List<Permission>), Dictionary<string, string> name = default(Dictionary<string, string>), bool twoFactorRequired = default(bool))
+        public AbstractRoleUpdate(List<Permission> permissions = default, Dictionary<string, string> name = default, bool twoFactorRequired = default)
         {
             this.Permissions = permissions;
             this.Name = name;

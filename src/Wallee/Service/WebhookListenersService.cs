@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -56,7 +60,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;RestApiBulkOperationResult&gt;</returns>
         ApiResponse<List<RestApiBulkOperationResult>> DeleteWebhooksListenersBulkWithHttpInfo(long space, List<long> requestBody, int operationIndex = 0);
-
         /// <summary>
         /// Delete a webhook listener
         /// </summary>
@@ -79,7 +82,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteWebhooksListenersIdWithHttpInfo(long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// List all webhook listeners
         /// </summary>
@@ -92,7 +94,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>WebhookListenerListResponse</returns>
-        WebhookListenerListResponse GetWebhooksListeners(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        WebhookListenerListResponse GetWebhooksListeners(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all webhook listeners
@@ -109,8 +111,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of WebhookListenerListResponse</returns>
-        ApiResponse<WebhookListenerListResponse> GetWebhooksListenersWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<WebhookListenerListResponse> GetWebhooksListenersWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a webhook listener
         /// </summary>
@@ -120,7 +121,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>WebhookListener</returns>
-        WebhookListener GetWebhooksListenersId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        WebhookListener GetWebhooksListenersId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a webhook listener
@@ -134,8 +135,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of WebhookListener</returns>
-        ApiResponse<WebhookListener> GetWebhooksListenersIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<WebhookListener> GetWebhooksListenersIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search webhook listeners
         /// </summary>
@@ -148,7 +148,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>WebhookListenerSearchResponse</returns>
-        WebhookListenerSearchResponse GetWebhooksListenersSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        WebhookListenerSearchResponse GetWebhooksListenersSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search webhook listeners
@@ -165,8 +165,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of WebhookListenerSearchResponse</returns>
-        ApiResponse<WebhookListenerSearchResponse> GetWebhooksListenersSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<WebhookListenerSearchResponse> GetWebhooksListenersSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update multiple webhook listeners
         /// </summary>
@@ -189,7 +188,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;RestApiBulkOperationResult&gt;</returns>
         ApiResponse<List<RestApiBulkOperationResult>> PatchWebhooksListenersBulkWithHttpInfo(long space, List<WebhookListenerUpdate> webhookListenerUpdate, int operationIndex = 0);
-
         /// <summary>
         /// Update a webhook listener
         /// </summary>
@@ -200,7 +198,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>WebhookListener</returns>
-        WebhookListener PatchWebhooksListenersId(long id, long space, WebhookListenerUpdate webhookListenerUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        WebhookListener PatchWebhooksListenersId(long id, long space, WebhookListenerUpdate webhookListenerUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a webhook listener
@@ -215,8 +213,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of WebhookListener</returns>
-        ApiResponse<WebhookListener> PatchWebhooksListenersIdWithHttpInfo(long id, long space, WebhookListenerUpdate webhookListenerUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<WebhookListener> PatchWebhooksListenersIdWithHttpInfo(long id, long space, WebhookListenerUpdate webhookListenerUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a webhook listener
         /// </summary>
@@ -226,7 +223,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>WebhookListener</returns>
-        WebhookListener PostWebhooksListeners(long space, WebhookListenerCreate webhookListenerCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        WebhookListener PostWebhooksListeners(long space, WebhookListenerCreate webhookListenerCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a webhook listener
@@ -240,8 +237,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of WebhookListener</returns>
-        ApiResponse<WebhookListener> PostWebhooksListenersWithHttpInfo(long space, WebhookListenerCreate webhookListenerCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<WebhookListener> PostWebhooksListenersWithHttpInfo(long space, WebhookListenerCreate webhookListenerCreate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create multiple webhook listeners
         /// </summary>
@@ -264,7 +260,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;RestApiBulkOperationResult&gt;</returns>
         ApiResponse<List<RestApiBulkOperationResult>> PostWebhooksListenersBulkWithHttpInfo(long space, List<WebhookListenerCreate> webhookListenerCreate, int operationIndex = 0);
-
         #endregion Synchronous Operations
     }
 
@@ -392,6 +387,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -413,7 +409,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<List<RestApiBulkOperationResult>>("/webhooks/listeners/bulk",
+            var localVarResponse = this.Client.Delete<List<RestApiBulkOperationResult>>("/webhooks/listeners/bulk",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -460,6 +456,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -481,7 +478,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/webhooks/listeners/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/webhooks/listeners/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -506,7 +503,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>WebhookListenerListResponse</returns>
-        public WebhookListenerListResponse GetWebhooksListeners(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public WebhookListenerListResponse GetWebhooksListeners(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<WebhookListenerListResponse> localVarResponse = GetWebhooksListenersWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -524,7 +521,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of WebhookListenerListResponse</returns>
-        public Wallee.Client.ApiResponse<WebhookListenerListResponse> GetWebhooksListenersWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<WebhookListenerListResponse> GetWebhooksListenersWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -537,6 +534,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -577,7 +575,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<WebhookListenerListResponse>("/webhooks/listeners",
+            var localVarResponse = this.Client.Get<WebhookListenerListResponse>("/webhooks/listeners",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -599,7 +597,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>WebhookListener</returns>
-        public WebhookListener GetWebhooksListenersId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public WebhookListener GetWebhooksListenersId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<WebhookListener> localVarResponse = GetWebhooksListenersIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -614,7 +612,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of WebhookListener</returns>
-        public Wallee.Client.ApiResponse<WebhookListener> GetWebhooksListenersIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<WebhookListener> GetWebhooksListenersIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -627,6 +625,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -652,7 +651,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<WebhookListener>("/webhooks/listeners/{id}",
+            var localVarResponse = this.Client.Get<WebhookListener>("/webhooks/listeners/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -677,7 +676,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>WebhookListenerSearchResponse</returns>
-        public WebhookListenerSearchResponse GetWebhooksListenersSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public WebhookListenerSearchResponse GetWebhooksListenersSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<WebhookListenerSearchResponse> localVarResponse = GetWebhooksListenersSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -695,7 +694,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of WebhookListenerSearchResponse</returns>
-        public Wallee.Client.ApiResponse<WebhookListenerSearchResponse> GetWebhooksListenersSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<WebhookListenerSearchResponse> GetWebhooksListenersSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -708,6 +707,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -748,7 +748,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<WebhookListenerSearchResponse>("/webhooks/listeners/search",
+            var localVarResponse = this.Client.Get<WebhookListenerSearchResponse>("/webhooks/listeners/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -803,6 +803,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -824,7 +825,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<List<RestApiBulkOperationResult>>("/webhooks/listeners/bulk",
+            var localVarResponse = this.Client.Patch<List<RestApiBulkOperationResult>>("/webhooks/listeners/bulk",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -847,7 +848,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>WebhookListener</returns>
-        public WebhookListener PatchWebhooksListenersId(long id, long space, WebhookListenerUpdate webhookListenerUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public WebhookListener PatchWebhooksListenersId(long id, long space, WebhookListenerUpdate webhookListenerUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<WebhookListener> localVarResponse = PatchWebhooksListenersIdWithHttpInfo(id, space, webhookListenerUpdate, expand);
             return localVarResponse.Data;
@@ -863,7 +864,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of WebhookListener</returns>
-        public Wallee.Client.ApiResponse<WebhookListener> PatchWebhooksListenersIdWithHttpInfo(long id, long space, WebhookListenerUpdate webhookListenerUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<WebhookListener> PatchWebhooksListenersIdWithHttpInfo(long id, long space, WebhookListenerUpdate webhookListenerUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'webhookListenerUpdate' is set
             if (webhookListenerUpdate == null)
@@ -883,6 +884,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -909,7 +911,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<WebhookListener>("/webhooks/listeners/{id}",
+            var localVarResponse = this.Client.Patch<WebhookListener>("/webhooks/listeners/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -931,7 +933,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>WebhookListener</returns>
-        public WebhookListener PostWebhooksListeners(long space, WebhookListenerCreate webhookListenerCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public WebhookListener PostWebhooksListeners(long space, WebhookListenerCreate webhookListenerCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<WebhookListener> localVarResponse = PostWebhooksListenersWithHttpInfo(space, webhookListenerCreate, expand);
             return localVarResponse.Data;
@@ -946,7 +948,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of WebhookListener</returns>
-        public Wallee.Client.ApiResponse<WebhookListener> PostWebhooksListenersWithHttpInfo(long space, WebhookListenerCreate webhookListenerCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<WebhookListener> PostWebhooksListenersWithHttpInfo(long space, WebhookListenerCreate webhookListenerCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'webhookListenerCreate' is set
             if (webhookListenerCreate == null)
@@ -966,6 +968,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -991,7 +994,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<WebhookListener>("/webhooks/listeners",
+            var localVarResponse = this.Client.Post<WebhookListener>("/webhooks/listeners",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1046,6 +1049,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1067,7 +1071,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<List<RestApiBulkOperationResult>>("/webhooks/listeners/bulk",
+            var localVarResponse = this.Client.Post<List<RestApiBulkOperationResult>>("/webhooks/listeners/bulk",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

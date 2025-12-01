@@ -49,7 +49,7 @@ namespace Wallee.Model
         /// <param name="completion">completion.</param>
         /// <param name="bankTransaction">bankTransaction.</param>
         /// <param name="transaction">transaction.</param>
-        public ChargeBankTransaction(TransactionCompletion completion = default(TransactionCompletion), BankTransaction bankTransaction = default(BankTransaction), Transaction transaction = default(Transaction))
+        public ChargeBankTransaction(TransactionCompletion completion = default, BankTransaction bankTransaction = default, Transaction transaction = default)
         {
             this.Completion = completion;
             this.BankTransaction = bankTransaction;

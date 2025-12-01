@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="SubscriptionUpdateRequest" /> class.
         /// </summary>
         /// <param name="description">A description used to identify the subscription..</param>
-        public SubscriptionUpdateRequest(string description = default(string))
+        public SubscriptionUpdateRequest(string description = default)
         {
             this.Description = description;
         }

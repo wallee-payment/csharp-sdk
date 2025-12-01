@@ -59,7 +59,7 @@ namespace Wallee.Model
         /// <param name="title">The title that indicates what the ledger entry is about. (required).</param>
         /// <param name="componentReferenceName">componentReferenceName.</param>
         /// <param name="subscriptionMetricId">subscriptionMetricId.</param>
-        public SubscriptionLedgerEntryCreate(decimal quantity = default(decimal), long subscriptionVersion = default(long), string externalId = default(string), List<TaxCreate> taxes = default(List<TaxCreate>), decimal amountIncludingTax = default(decimal), string title = default(string), string componentReferenceName = default(string), long subscriptionMetricId = default(long))
+        public SubscriptionLedgerEntryCreate(decimal quantity = default, long subscriptionVersion = default, string externalId = default, List<TaxCreate> taxes = default, decimal amountIncludingTax = default, string title = default, string componentReferenceName = default, long subscriptionMetricId = default)
         {
             this.Quantity = quantity;
             this.SubscriptionVersion = subscriptionVersion;

@@ -63,7 +63,7 @@ namespace Wallee.Model
         /// <param name="maximalQuantity">A maximum of the defined quantity can be selected for this component..</param>
         /// <param name="defaultComponent">Whether this is the default component in its group and preselected..</param>
         /// <param name="minimalQuantity">A minimum of the defined quantity must be selected for this component..</param>
-        public SubscriptionProductComponentUpdate(long reference = default(long), long taxClass = default(long), decimal quantityStep = default(decimal), int sortOrder = default(int), long componentGroup = default(long), Dictionary<string, string> name = default(Dictionary<string, string>), Dictionary<string, string> description = default(Dictionary<string, string>), int componentChangeWeight = default(int), int varVersion = default(int), decimal maximalQuantity = default(decimal), bool defaultComponent = default(bool), decimal minimalQuantity = default(decimal))
+        public SubscriptionProductComponentUpdate(long reference = default, long taxClass = default, decimal quantityStep = default, int sortOrder = default, long componentGroup = default, Dictionary<string, string> name = default, Dictionary<string, string> description = default, int componentChangeWeight = default, int varVersion = default, decimal maximalQuantity = default, bool defaultComponent = default, decimal minimalQuantity = default)
         {
             this.VarVersion = varVersion;
             this.Reference = reference;

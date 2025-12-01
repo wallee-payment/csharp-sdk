@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="state">state.</param>
         /// <param name="flow">flow.</param>
-        public ChargeFlowLevelConfiguration(CreationEntityState? state = default(CreationEntityState?), ChargeFlow flow = default(ChargeFlow))
+        public ChargeFlowLevelConfiguration(CreationEntityState? state = default, ChargeFlow flow = default)
         {
             this.State = state;
             this.Flow = flow;

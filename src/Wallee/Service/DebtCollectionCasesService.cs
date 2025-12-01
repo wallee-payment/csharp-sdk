@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -56,7 +60,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteDebtCollectionCasesIdWithHttpInfo(long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// List all debt collection cases
         /// </summary>
@@ -69,7 +72,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCaseListResponse</returns>
-        DebtCollectionCaseListResponse GetDebtCollectionCases(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        DebtCollectionCaseListResponse GetDebtCollectionCases(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all debt collection cases
@@ -86,8 +89,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCaseListResponse</returns>
-        ApiResponse<DebtCollectionCaseListResponse> GetDebtCollectionCasesWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectionCaseListResponse> GetDebtCollectionCasesWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a debt collection case
         /// </summary>
@@ -97,7 +99,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCase</returns>
-        DebtCollectionCase GetDebtCollectionCasesId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DebtCollectionCase GetDebtCollectionCasesId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a debt collection case
@@ -111,8 +113,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
-        ApiResponse<DebtCollectionCase> GetDebtCollectionCasesIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectionCase> GetDebtCollectionCasesIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve all documents of a debt collection case
         /// </summary>
@@ -122,7 +123,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCaseDocumentListResponse</returns>
-        DebtCollectionCaseDocumentListResponse GetDebtCollectionCasesIdDocuments(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DebtCollectionCaseDocumentListResponse GetDebtCollectionCasesIdDocuments(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve all documents of a debt collection case
@@ -136,8 +137,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCaseDocumentListResponse</returns>
-        ApiResponse<DebtCollectionCaseDocumentListResponse> GetDebtCollectionCasesIdDocumentsWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectionCaseDocumentListResponse> GetDebtCollectionCasesIdDocumentsWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search debt collection cases
         /// </summary>
@@ -150,7 +150,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCaseSearchResponse</returns>
-        DebtCollectionCaseSearchResponse GetDebtCollectionCasesSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        DebtCollectionCaseSearchResponse GetDebtCollectionCasesSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search debt collection cases
@@ -167,8 +167,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCaseSearchResponse</returns>
-        ApiResponse<DebtCollectionCaseSearchResponse> GetDebtCollectionCasesSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectionCaseSearchResponse> GetDebtCollectionCasesSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a debt collection case
         /// </summary>
@@ -179,7 +178,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCase</returns>
-        DebtCollectionCase PatchDebtCollectionCasesId(long id, long space, DebtCollectionCaseUpdate debtCollectionCaseUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DebtCollectionCase PatchDebtCollectionCasesId(long id, long space, DebtCollectionCaseUpdate debtCollectionCaseUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a debt collection case
@@ -194,8 +193,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
-        ApiResponse<DebtCollectionCase> PatchDebtCollectionCasesIdWithHttpInfo(long id, long space, DebtCollectionCaseUpdate debtCollectionCaseUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectionCase> PatchDebtCollectionCasesIdWithHttpInfo(long id, long space, DebtCollectionCaseUpdate debtCollectionCaseUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a debt collection case
         /// </summary>
@@ -205,7 +203,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCase</returns>
-        DebtCollectionCase PostDebtCollectionCases(long space, DebtCollectionCaseCreate debtCollectionCaseCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DebtCollectionCase PostDebtCollectionCases(long space, DebtCollectionCaseCreate debtCollectionCaseCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a debt collection case
@@ -219,8 +217,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
-        ApiResponse<DebtCollectionCase> PostDebtCollectionCasesWithHttpInfo(long space, DebtCollectionCaseCreate debtCollectionCaseCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectionCase> PostDebtCollectionCasesWithHttpInfo(long space, DebtCollectionCaseCreate debtCollectionCaseCreate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Close a debt collection case
         /// </summary>
@@ -230,7 +227,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCase</returns>
-        DebtCollectionCase PostDebtCollectionCasesIdClose(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DebtCollectionCase PostDebtCollectionCasesIdClose(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Close a debt collection case
@@ -244,8 +241,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
-        ApiResponse<DebtCollectionCase> PostDebtCollectionCasesIdCloseWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectionCase> PostDebtCollectionCasesIdCloseWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Attach a document to a debt collection case
         /// </summary>
@@ -257,7 +253,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCaseDocument</returns>
-        DebtCollectionCaseDocument PostDebtCollectionCasesIdDocuments(long id, string fileName, string content, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DebtCollectionCaseDocument PostDebtCollectionCasesIdDocuments(long id, string fileName, string content, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Attach a document to a debt collection case
@@ -273,8 +269,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCaseDocument</returns>
-        ApiResponse<DebtCollectionCaseDocument> PostDebtCollectionCasesIdDocumentsWithHttpInfo(long id, string fileName, string content, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectionCaseDocument> PostDebtCollectionCasesIdDocumentsWithHttpInfo(long id, string fileName, string content, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Mark a debt collection case as prepared
         /// </summary>
@@ -284,7 +279,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCase</returns>
-        DebtCollectionCase PostDebtCollectionCasesIdMarkPrepared(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DebtCollectionCase PostDebtCollectionCasesIdMarkPrepared(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Mark a debt collection case as prepared
@@ -298,8 +293,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
-        ApiResponse<DebtCollectionCase> PostDebtCollectionCasesIdMarkPreparedWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectionCase> PostDebtCollectionCasesIdMarkPreparedWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Mark a debt collection case as reviewed
         /// </summary>
@@ -309,7 +303,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCase</returns>
-        DebtCollectionCase PostDebtCollectionCasesIdMarkReviewed(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DebtCollectionCase PostDebtCollectionCasesIdMarkReviewed(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Mark a debt collection case as reviewed
@@ -323,8 +317,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
-        ApiResponse<DebtCollectionCase> PostDebtCollectionCasesIdMarkReviewedWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectionCase> PostDebtCollectionCasesIdMarkReviewedWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a payment receipt for a debt collection case
         /// </summary>
@@ -336,7 +329,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionReceipt</returns>
-        DebtCollectionReceipt PostDebtCollectionCasesIdPaymentReceipts(long id, decimal collectedAmount, string externalId, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        DebtCollectionReceipt PostDebtCollectionCasesIdPaymentReceipts(long id, decimal collectedAmount, string externalId, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a payment receipt for a debt collection case
@@ -352,8 +345,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionReceipt</returns>
-        ApiResponse<DebtCollectionReceipt> PostDebtCollectionCasesIdPaymentReceiptsWithHttpInfo(long id, decimal collectedAmount, string externalId, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<DebtCollectionReceipt> PostDebtCollectionCasesIdPaymentReceiptsWithHttpInfo(long id, decimal collectedAmount, string externalId, long space, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -473,6 +465,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -494,7 +487,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/debt-collection/cases/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/debt-collection/cases/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -519,7 +512,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCaseListResponse</returns>
-        public DebtCollectionCaseListResponse GetDebtCollectionCases(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public DebtCollectionCaseListResponse GetDebtCollectionCases(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectionCaseListResponse> localVarResponse = GetDebtCollectionCasesWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -537,7 +530,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCaseListResponse</returns>
-        public Wallee.Client.ApiResponse<DebtCollectionCaseListResponse> GetDebtCollectionCasesWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectionCaseListResponse> GetDebtCollectionCasesWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -550,6 +543,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -590,7 +584,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DebtCollectionCaseListResponse>("/debt-collection/cases",
+            var localVarResponse = this.Client.Get<DebtCollectionCaseListResponse>("/debt-collection/cases",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -612,7 +606,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCase</returns>
-        public DebtCollectionCase GetDebtCollectionCasesId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DebtCollectionCase GetDebtCollectionCasesId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectionCase> localVarResponse = GetDebtCollectionCasesIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -627,7 +621,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
-        public Wallee.Client.ApiResponse<DebtCollectionCase> GetDebtCollectionCasesIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectionCase> GetDebtCollectionCasesIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -640,6 +634,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -665,7 +660,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DebtCollectionCase>("/debt-collection/cases/{id}",
+            var localVarResponse = this.Client.Get<DebtCollectionCase>("/debt-collection/cases/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -687,7 +682,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCaseDocumentListResponse</returns>
-        public DebtCollectionCaseDocumentListResponse GetDebtCollectionCasesIdDocuments(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DebtCollectionCaseDocumentListResponse GetDebtCollectionCasesIdDocuments(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectionCaseDocumentListResponse> localVarResponse = GetDebtCollectionCasesIdDocumentsWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -702,7 +697,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCaseDocumentListResponse</returns>
-        public Wallee.Client.ApiResponse<DebtCollectionCaseDocumentListResponse> GetDebtCollectionCasesIdDocumentsWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectionCaseDocumentListResponse> GetDebtCollectionCasesIdDocumentsWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -715,6 +710,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -740,7 +736,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DebtCollectionCaseDocumentListResponse>("/debt-collection/cases/{id}/documents",
+            var localVarResponse = this.Client.Get<DebtCollectionCaseDocumentListResponse>("/debt-collection/cases/{id}/documents",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -765,7 +761,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCaseSearchResponse</returns>
-        public DebtCollectionCaseSearchResponse GetDebtCollectionCasesSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public DebtCollectionCaseSearchResponse GetDebtCollectionCasesSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectionCaseSearchResponse> localVarResponse = GetDebtCollectionCasesSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -783,7 +779,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCaseSearchResponse</returns>
-        public Wallee.Client.ApiResponse<DebtCollectionCaseSearchResponse> GetDebtCollectionCasesSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectionCaseSearchResponse> GetDebtCollectionCasesSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -796,6 +792,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -836,7 +833,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<DebtCollectionCaseSearchResponse>("/debt-collection/cases/search",
+            var localVarResponse = this.Client.Get<DebtCollectionCaseSearchResponse>("/debt-collection/cases/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -859,7 +856,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCase</returns>
-        public DebtCollectionCase PatchDebtCollectionCasesId(long id, long space, DebtCollectionCaseUpdate debtCollectionCaseUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DebtCollectionCase PatchDebtCollectionCasesId(long id, long space, DebtCollectionCaseUpdate debtCollectionCaseUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectionCase> localVarResponse = PatchDebtCollectionCasesIdWithHttpInfo(id, space, debtCollectionCaseUpdate, expand);
             return localVarResponse.Data;
@@ -875,7 +872,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
-        public Wallee.Client.ApiResponse<DebtCollectionCase> PatchDebtCollectionCasesIdWithHttpInfo(long id, long space, DebtCollectionCaseUpdate debtCollectionCaseUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectionCase> PatchDebtCollectionCasesIdWithHttpInfo(long id, long space, DebtCollectionCaseUpdate debtCollectionCaseUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'debtCollectionCaseUpdate' is set
             if (debtCollectionCaseUpdate == null)
@@ -895,6 +892,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -921,7 +919,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<DebtCollectionCase>("/debt-collection/cases/{id}",
+            var localVarResponse = this.Client.Patch<DebtCollectionCase>("/debt-collection/cases/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -943,7 +941,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCase</returns>
-        public DebtCollectionCase PostDebtCollectionCases(long space, DebtCollectionCaseCreate debtCollectionCaseCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DebtCollectionCase PostDebtCollectionCases(long space, DebtCollectionCaseCreate debtCollectionCaseCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectionCase> localVarResponse = PostDebtCollectionCasesWithHttpInfo(space, debtCollectionCaseCreate, expand);
             return localVarResponse.Data;
@@ -958,7 +956,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
-        public Wallee.Client.ApiResponse<DebtCollectionCase> PostDebtCollectionCasesWithHttpInfo(long space, DebtCollectionCaseCreate debtCollectionCaseCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectionCase> PostDebtCollectionCasesWithHttpInfo(long space, DebtCollectionCaseCreate debtCollectionCaseCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'debtCollectionCaseCreate' is set
             if (debtCollectionCaseCreate == null)
@@ -978,6 +976,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1003,7 +1002,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<DebtCollectionCase>("/debt-collection/cases",
+            var localVarResponse = this.Client.Post<DebtCollectionCase>("/debt-collection/cases",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1025,7 +1024,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCase</returns>
-        public DebtCollectionCase PostDebtCollectionCasesIdClose(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DebtCollectionCase PostDebtCollectionCasesIdClose(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectionCase> localVarResponse = PostDebtCollectionCasesIdCloseWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -1040,7 +1039,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
-        public Wallee.Client.ApiResponse<DebtCollectionCase> PostDebtCollectionCasesIdCloseWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectionCase> PostDebtCollectionCasesIdCloseWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -1053,6 +1052,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1078,7 +1078,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<DebtCollectionCase>("/debt-collection/cases/{id}/close",
+            var localVarResponse = this.Client.Post<DebtCollectionCase>("/debt-collection/cases/{id}/close",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1102,7 +1102,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCaseDocument</returns>
-        public DebtCollectionCaseDocument PostDebtCollectionCasesIdDocuments(long id, string fileName, string content, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DebtCollectionCaseDocument PostDebtCollectionCasesIdDocuments(long id, string fileName, string content, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectionCaseDocument> localVarResponse = PostDebtCollectionCasesIdDocumentsWithHttpInfo(id, fileName, content, space, expand);
             return localVarResponse.Data;
@@ -1119,7 +1119,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCaseDocument</returns>
-        public Wallee.Client.ApiResponse<DebtCollectionCaseDocument> PostDebtCollectionCasesIdDocumentsWithHttpInfo(long id, string fileName, string content, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectionCaseDocument> PostDebtCollectionCasesIdDocumentsWithHttpInfo(long id, string fileName, string content, long space, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'fileName' is set
             if (fileName == null)
@@ -1144,6 +1144,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1171,7 +1172,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<DebtCollectionCaseDocument>("/debt-collection/cases/{id}/documents",
+            var localVarResponse = this.Client.Post<DebtCollectionCaseDocument>("/debt-collection/cases/{id}/documents",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1193,7 +1194,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCase</returns>
-        public DebtCollectionCase PostDebtCollectionCasesIdMarkPrepared(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DebtCollectionCase PostDebtCollectionCasesIdMarkPrepared(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectionCase> localVarResponse = PostDebtCollectionCasesIdMarkPreparedWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -1208,7 +1209,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
-        public Wallee.Client.ApiResponse<DebtCollectionCase> PostDebtCollectionCasesIdMarkPreparedWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectionCase> PostDebtCollectionCasesIdMarkPreparedWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -1221,6 +1222,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1246,7 +1248,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<DebtCollectionCase>("/debt-collection/cases/{id}/mark-prepared",
+            var localVarResponse = this.Client.Post<DebtCollectionCase>("/debt-collection/cases/{id}/mark-prepared",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1268,7 +1270,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionCase</returns>
-        public DebtCollectionCase PostDebtCollectionCasesIdMarkReviewed(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DebtCollectionCase PostDebtCollectionCasesIdMarkReviewed(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectionCase> localVarResponse = PostDebtCollectionCasesIdMarkReviewedWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -1283,7 +1285,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionCase</returns>
-        public Wallee.Client.ApiResponse<DebtCollectionCase> PostDebtCollectionCasesIdMarkReviewedWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectionCase> PostDebtCollectionCasesIdMarkReviewedWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -1296,6 +1298,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1321,7 +1324,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<DebtCollectionCase>("/debt-collection/cases/{id}/mark-reviewed",
+            var localVarResponse = this.Client.Post<DebtCollectionCase>("/debt-collection/cases/{id}/mark-reviewed",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1345,7 +1348,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>DebtCollectionReceipt</returns>
-        public DebtCollectionReceipt PostDebtCollectionCasesIdPaymentReceipts(long id, decimal collectedAmount, string externalId, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public DebtCollectionReceipt PostDebtCollectionCasesIdPaymentReceipts(long id, decimal collectedAmount, string externalId, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<DebtCollectionReceipt> localVarResponse = PostDebtCollectionCasesIdPaymentReceiptsWithHttpInfo(id, collectedAmount, externalId, space, expand);
             return localVarResponse.Data;
@@ -1362,7 +1365,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of DebtCollectionReceipt</returns>
-        public Wallee.Client.ApiResponse<DebtCollectionReceipt> PostDebtCollectionCasesIdPaymentReceiptsWithHttpInfo(long id, decimal collectedAmount, string externalId, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<DebtCollectionReceipt> PostDebtCollectionCasesIdPaymentReceiptsWithHttpInfo(long id, decimal collectedAmount, string externalId, long space, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'externalId' is set
             if (externalId == null)
@@ -1381,6 +1384,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1408,7 +1412,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<DebtCollectionReceipt>("/debt-collection/cases/{id}/payment-receipts",
+            var localVarResponse = this.Client.Post<DebtCollectionReceipt>("/debt-collection/cases/{id}/payment-receipts",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

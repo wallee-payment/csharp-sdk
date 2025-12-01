@@ -62,7 +62,7 @@ namespace Wallee.Model
         /// <param name="tierPricing">tierPricing.</param>
         /// <param name="metric">metric.</param>
         /// <param name="type">type.</param>
-        public ProductMeteredFee(SubscriptionProductComponent component = default(SubscriptionProductComponent), ProductMeteredTierPricing? tierPricing = default(ProductMeteredTierPricing?), SubscriptionMetric metric = default(SubscriptionMetric), ProductFeeType? type = default(ProductFeeType?))
+        public ProductMeteredFee(SubscriptionProductComponent component = default, ProductMeteredTierPricing? tierPricing = default, SubscriptionMetric metric = default, ProductFeeType? type = default)
         {
             this.Component = component;
             this.TierPricing = tierPricing;

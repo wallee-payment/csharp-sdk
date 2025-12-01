@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// <param name="name">The localized name of the metric that is displayed to the customer. (required).</param>
         /// <param name="description">The localized description of the metric that is displayed to the customer..</param>
         /// <param name="type">The type of the metric. (required).</param>
-        public SubscriptionMetricCreate(Dictionary<string, string> name = default(Dictionary<string, string>), Dictionary<string, string> description = default(Dictionary<string, string>), long type = default(long))
+        public SubscriptionMetricCreate(Dictionary<string, string> name = default, Dictionary<string, string> description = default, long type = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)

@@ -64,7 +64,7 @@ namespace Wallee.Model
         /// <param name="type">type (required).</param>
         /// <param name="merchantReference">The merchant&#39;s reference used to identify the refund..</param>
         /// <param name="transaction">The transaction that the refund belongs to..</param>
-        public RefundCreate(long completion = default(long), decimal amount = default(decimal), List<LineItemReductionCreate> reductions = default(List<LineItemReductionCreate>), string externalId = default(string), RefundType type = default(RefundType), string merchantReference = default(string), long transaction = default(long))
+        public RefundCreate(long completion = default, decimal amount = default, List<LineItemReductionCreate> reductions = default, string externalId = default, RefundType type = default, string merchantReference = default, long transaction = default)
         {
             // to ensure "externalId" is required (not null)
             if (externalId == null)

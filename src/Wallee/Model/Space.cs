@@ -56,7 +56,7 @@ namespace Wallee.Model
         /// <param name="postalAddress">postalAddress.</param>
         /// <param name="state">state.</param>
         /// <param name="account">account.</param>
-        public Space(TenantDatabase database = default(TenantDatabase), SpaceAddress postalAddress = default(SpaceAddress), CreationEntityState? state = default(CreationEntityState?), Account account = default(Account))
+        public Space(TenantDatabase database = default, SpaceAddress postalAddress = default, CreationEntityState? state = default, Account account = default)
         {
             this.Database = database;
             this.PostalAddress = postalAddress;

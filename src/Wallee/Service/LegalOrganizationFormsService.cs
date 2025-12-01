@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -45,7 +49,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LegalOrganizationFormListResponse</returns>
-        LegalOrganizationFormListResponse GetLegalOrganizationForms(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        LegalOrganizationFormListResponse GetLegalOrganizationForms(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all legal organization forms
@@ -61,8 +65,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LegalOrganizationFormListResponse</returns>
-        ApiResponse<LegalOrganizationFormListResponse> GetLegalOrganizationFormsWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<LegalOrganizationFormListResponse> GetLegalOrganizationFormsWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a legal organization form
         /// </summary>
@@ -71,7 +74,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LegalOrganizationForm</returns>
-        LegalOrganizationForm GetLegalOrganizationFormsId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        LegalOrganizationForm GetLegalOrganizationFormsId(long id, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a legal organization form
@@ -84,8 +87,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LegalOrganizationForm</returns>
-        ApiResponse<LegalOrganizationForm> GetLegalOrganizationFormsIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<LegalOrganizationForm> GetLegalOrganizationFormsIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search legal organization forms
         /// </summary>
@@ -97,7 +99,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LegalOrganizationFormSearchResponse</returns>
-        LegalOrganizationFormSearchResponse GetLegalOrganizationFormsSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        LegalOrganizationFormSearchResponse GetLegalOrganizationFormsSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search legal organization forms
@@ -113,8 +115,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LegalOrganizationFormSearchResponse</returns>
-        ApiResponse<LegalOrganizationFormSearchResponse> GetLegalOrganizationFormsSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<LegalOrganizationFormSearchResponse> GetLegalOrganizationFormsSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -211,7 +212,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LegalOrganizationFormListResponse</returns>
-        public LegalOrganizationFormListResponse GetLegalOrganizationForms(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public LegalOrganizationFormListResponse GetLegalOrganizationForms(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LegalOrganizationFormListResponse> localVarResponse = GetLegalOrganizationFormsWithHttpInfo(after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -228,7 +229,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LegalOrganizationFormListResponse</returns>
-        public Wallee.Client.ApiResponse<LegalOrganizationFormListResponse> GetLegalOrganizationFormsWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LegalOrganizationFormListResponse> GetLegalOrganizationFormsWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -241,6 +242,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -280,7 +282,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LegalOrganizationFormListResponse>("/legal-organization-forms",
+            var localVarResponse = this.Client.Get<LegalOrganizationFormListResponse>("/legal-organization-forms",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -301,7 +303,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LegalOrganizationForm</returns>
-        public LegalOrganizationForm GetLegalOrganizationFormsId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public LegalOrganizationForm GetLegalOrganizationFormsId(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LegalOrganizationForm> localVarResponse = GetLegalOrganizationFormsIdWithHttpInfo(id, expand);
             return localVarResponse.Data;
@@ -315,7 +317,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LegalOrganizationForm</returns>
-        public Wallee.Client.ApiResponse<LegalOrganizationForm> GetLegalOrganizationFormsIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LegalOrganizationForm> GetLegalOrganizationFormsIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -328,6 +330,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -352,7 +355,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LegalOrganizationForm>("/legal-organization-forms/{id}",
+            var localVarResponse = this.Client.Get<LegalOrganizationForm>("/legal-organization-forms/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -376,7 +379,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>LegalOrganizationFormSearchResponse</returns>
-        public LegalOrganizationFormSearchResponse GetLegalOrganizationFormsSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public LegalOrganizationFormSearchResponse GetLegalOrganizationFormsSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<LegalOrganizationFormSearchResponse> localVarResponse = GetLegalOrganizationFormsSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -393,7 +396,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of LegalOrganizationFormSearchResponse</returns>
-        public Wallee.Client.ApiResponse<LegalOrganizationFormSearchResponse> GetLegalOrganizationFormsSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<LegalOrganizationFormSearchResponse> GetLegalOrganizationFormsSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -406,6 +409,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -445,7 +449,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<LegalOrganizationFormSearchResponse>("/legal-organization-forms/search",
+            var localVarResponse = this.Client.Get<LegalOrganizationFormSearchResponse>("/legal-organization-forms/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

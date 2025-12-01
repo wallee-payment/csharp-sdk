@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="label">The label describing the line item attribute. (required).</param>
         /// <param name="value">The value of the line item attribute. (required).</param>
-        public LineItemAttributeCreate(string label = default(string), string value = default(string))
+        public LineItemAttributeCreate(string label = default, string value = default)
         {
             // to ensure "label" is required (not null)
             if (label == null)

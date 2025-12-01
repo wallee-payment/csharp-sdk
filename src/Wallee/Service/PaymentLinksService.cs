@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -59,7 +63,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeletePaymentLinksIdWithHttpInfo(long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// List all payment links
         /// </summary>
@@ -72,7 +75,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentLinkListResponse</returns>
-        PaymentLinkListResponse GetPaymentLinks(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        PaymentLinkListResponse GetPaymentLinks(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all payment links
@@ -89,8 +92,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentLinkListResponse</returns>
-        ApiResponse<PaymentLinkListResponse> GetPaymentLinksWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<PaymentLinkListResponse> GetPaymentLinksWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a payment link
         /// </summary>
@@ -100,7 +102,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentLink</returns>
-        PaymentLink GetPaymentLinksId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentLink GetPaymentLinksId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a payment link
@@ -114,8 +116,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentLink</returns>
-        ApiResponse<PaymentLink> GetPaymentLinksIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentLink> GetPaymentLinksIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search payment links
         /// </summary>
@@ -128,7 +129,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentLinkSearchResponse</returns>
-        PaymentLinkSearchResponse GetPaymentLinksSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        PaymentLinkSearchResponse GetPaymentLinksSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search payment links
@@ -145,8 +146,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentLinkSearchResponse</returns>
-        ApiResponse<PaymentLinkSearchResponse> GetPaymentLinksSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<PaymentLinkSearchResponse> GetPaymentLinksSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a payment link
         /// </summary>
@@ -157,7 +157,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentLink</returns>
-        PaymentLink PatchPaymentLinksId(long id, long space, PaymentLinkUpdate paymentLinkUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentLink PatchPaymentLinksId(long id, long space, PaymentLinkUpdate paymentLinkUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a payment link
@@ -172,8 +172,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentLink</returns>
-        ApiResponse<PaymentLink> PatchPaymentLinksIdWithHttpInfo(long id, long space, PaymentLinkUpdate paymentLinkUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentLink> PatchPaymentLinksIdWithHttpInfo(long id, long space, PaymentLinkUpdate paymentLinkUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a payment link
         /// </summary>
@@ -183,7 +182,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentLink</returns>
-        PaymentLink PostPaymentLinks(long space, PaymentLinkCreate paymentLinkCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentLink PostPaymentLinks(long space, PaymentLinkCreate paymentLinkCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a payment link
@@ -197,8 +196,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentLink</returns>
-        ApiResponse<PaymentLink> PostPaymentLinksWithHttpInfo(long space, PaymentLinkCreate paymentLinkCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentLink> PostPaymentLinksWithHttpInfo(long space, PaymentLinkCreate paymentLinkCreate, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -318,6 +316,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -339,7 +338,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/payment/links/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/payment/links/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -364,7 +363,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentLinkListResponse</returns>
-        public PaymentLinkListResponse GetPaymentLinks(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public PaymentLinkListResponse GetPaymentLinks(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentLinkListResponse> localVarResponse = GetPaymentLinksWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -382,7 +381,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentLinkListResponse</returns>
-        public Wallee.Client.ApiResponse<PaymentLinkListResponse> GetPaymentLinksWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentLinkListResponse> GetPaymentLinksWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -395,6 +394,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -435,7 +435,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<PaymentLinkListResponse>("/payment/links",
+            var localVarResponse = this.Client.Get<PaymentLinkListResponse>("/payment/links",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -457,7 +457,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentLink</returns>
-        public PaymentLink GetPaymentLinksId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentLink GetPaymentLinksId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentLink> localVarResponse = GetPaymentLinksIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -472,7 +472,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentLink</returns>
-        public Wallee.Client.ApiResponse<PaymentLink> GetPaymentLinksIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentLink> GetPaymentLinksIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -485,6 +485,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -510,7 +511,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<PaymentLink>("/payment/links/{id}",
+            var localVarResponse = this.Client.Get<PaymentLink>("/payment/links/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -535,7 +536,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentLinkSearchResponse</returns>
-        public PaymentLinkSearchResponse GetPaymentLinksSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public PaymentLinkSearchResponse GetPaymentLinksSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentLinkSearchResponse> localVarResponse = GetPaymentLinksSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -553,7 +554,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentLinkSearchResponse</returns>
-        public Wallee.Client.ApiResponse<PaymentLinkSearchResponse> GetPaymentLinksSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentLinkSearchResponse> GetPaymentLinksSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -566,6 +567,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -606,7 +608,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<PaymentLinkSearchResponse>("/payment/links/search",
+            var localVarResponse = this.Client.Get<PaymentLinkSearchResponse>("/payment/links/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -629,7 +631,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentLink</returns>
-        public PaymentLink PatchPaymentLinksId(long id, long space, PaymentLinkUpdate paymentLinkUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentLink PatchPaymentLinksId(long id, long space, PaymentLinkUpdate paymentLinkUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentLink> localVarResponse = PatchPaymentLinksIdWithHttpInfo(id, space, paymentLinkUpdate, expand);
             return localVarResponse.Data;
@@ -645,7 +647,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentLink</returns>
-        public Wallee.Client.ApiResponse<PaymentLink> PatchPaymentLinksIdWithHttpInfo(long id, long space, PaymentLinkUpdate paymentLinkUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentLink> PatchPaymentLinksIdWithHttpInfo(long id, long space, PaymentLinkUpdate paymentLinkUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'paymentLinkUpdate' is set
             if (paymentLinkUpdate == null)
@@ -665,6 +667,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -691,7 +694,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<PaymentLink>("/payment/links/{id}",
+            var localVarResponse = this.Client.Patch<PaymentLink>("/payment/links/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -713,7 +716,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentLink</returns>
-        public PaymentLink PostPaymentLinks(long space, PaymentLinkCreate paymentLinkCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentLink PostPaymentLinks(long space, PaymentLinkCreate paymentLinkCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentLink> localVarResponse = PostPaymentLinksWithHttpInfo(space, paymentLinkCreate, expand);
             return localVarResponse.Data;
@@ -728,7 +731,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentLink</returns>
-        public Wallee.Client.ApiResponse<PaymentLink> PostPaymentLinksWithHttpInfo(long space, PaymentLinkCreate paymentLinkCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentLink> PostPaymentLinksWithHttpInfo(long space, PaymentLinkCreate paymentLinkCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'paymentLinkCreate' is set
             if (paymentLinkCreate == null)
@@ -748,6 +751,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -773,7 +777,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<PaymentLink>("/payment/links",
+            var localVarResponse = this.Client.Post<PaymentLink>("/payment/links",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

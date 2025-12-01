@@ -68,7 +68,7 @@ namespace Wallee.Model
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
         /// <param name="state">state.</param>
-        public SubscriberCreate(string reference = default(string), List<long> additionalAllowedPaymentMethodConfigurations = default(List<long>), Dictionary<string, string> metaData = default(Dictionary<string, string>), string emailAddress = default(string), List<long> disallowedPaymentMethodConfigurations = default(List<long>), string description = default(string), AddressCreate shippingAddress = default(AddressCreate), string language = default(string), AddressCreate billingAddress = default(AddressCreate), string externalId = default(string), CreationEntityState? state = default(CreationEntityState?))
+        public SubscriberCreate(string reference = default, List<long> additionalAllowedPaymentMethodConfigurations = default, Dictionary<string, string> metaData = default, string emailAddress = default, List<long> disallowedPaymentMethodConfigurations = default, string description = default, AddressCreate shippingAddress = default, string language = default, AddressCreate billingAddress = default, string externalId = default, CreationEntityState? state = default)
         {
             // to ensure "externalId" is required (not null)
             if (externalId == null)

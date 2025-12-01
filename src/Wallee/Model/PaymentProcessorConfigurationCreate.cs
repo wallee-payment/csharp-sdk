@@ -60,7 +60,7 @@ namespace Wallee.Model
         /// <param name="name">The name used to identify the payment method configuration..</param>
         /// <param name="state">state.</param>
         /// <param name="processor">The payment processor that the configuration is for. (required).</param>
-        public PaymentProcessorConfigurationCreate(string name = default(string), CreationEntityState? state = default(CreationEntityState?), long processor = default(long))
+        public PaymentProcessorConfigurationCreate(string name = default, CreationEntityState? state = default, long processor = default)
         {
             this.Processor = processor;
             this.Name = name;

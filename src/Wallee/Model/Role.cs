@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="state">state.</param>
         /// <param name="account">account.</param>
-        public Role(RoleState? state = default(RoleState?), Account account = default(Account))
+        public Role(RoleState? state = default, Account account = default)
         {
             this.State = state;
             this.Account = account;

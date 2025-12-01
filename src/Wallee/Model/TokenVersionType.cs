@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="TokenVersionType" /> class.
         /// </summary>
         /// <param name="feature">feature.</param>
-        public TokenVersionType(Feature feature = default(Feature))
+        public TokenVersionType(Feature feature = default)
         {
             this.Feature = feature;
         }

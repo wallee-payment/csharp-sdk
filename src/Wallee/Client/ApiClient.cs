@@ -21,11 +21,17 @@
  */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters;
+using System.Text;
+using System.Threading;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -115,7 +121,7 @@ namespace Wallee.Client
                 if (response.Headers != null)
                 {
                     var filePath = string.IsNullOrEmpty(_configuration.TempFolderPath)
-                        ? Path.GetTempPath()
+                        ? global::System.IO.Path.GetTempPath()
                         : _configuration.TempFolderPath;
                     var regex = new Regex(@"Content-Disposition=.*filename=['""]?([^'""\s]+)['""]?$");
                     foreach (var header in response.Headers)
@@ -229,7 +235,7 @@ namespace Wallee.Client
         }
 
         /// <summary>
-        /// Constructs the RestSharp version of the http method
+        /// Constructs the RestSharp version of an http method
         /// </summary>
         /// <param name="method">Swagger Client Custom HttpMethod</param>
         /// <returns>RestSharp's HttpMethod instance.</returns>
@@ -239,25 +245,25 @@ namespace Wallee.Client
             RestSharpMethod other;
             switch (method)
             {
-                case HttpMethod.GET:
+                case HttpMethod.Get:
                     other = RestSharpMethod.Get;
                     break;
-                case HttpMethod.POST:
+                case HttpMethod.Post:
                     other = RestSharpMethod.Post;
                     break;
-                case HttpMethod.PUT:
+                case HttpMethod.Put:
                     other = RestSharpMethod.Put;
                     break;
-                case HttpMethod.DELETE:
+                case HttpMethod.Delete:
                     other = RestSharpMethod.Delete;
                     break;
-                case HttpMethod.HEAD:
+                case HttpMethod.Head:
                     other = RestSharpMethod.Head;
                     break;
-                case HttpMethod.OPTIONS:
+                case HttpMethod.Options:
                     other = RestSharpMethod.Options;
                     break;
-                case HttpMethod.PATCH:
+                case HttpMethod.Patch:
                     other = RestSharpMethod.Patch;
                     break;
                 default:
@@ -327,7 +333,7 @@ namespace Wallee.Client
                 {
                     foreach (var value in headerParam.Value)
                     {
-                        request.AddHeader(headerParam.Key, value);
+                        request.AddOrUpdateHeader(headerParam.Key, value);
                     }
                 }
             }
@@ -389,10 +395,18 @@ namespace Wallee.Client
                         var bytes = ClientUtils.ReadAsBytes(file);
                         var fileStream = file as FileStream;
                         if (fileStream != null)
-                            request.AddFile(fileParam.Key, bytes, Path.GetFileName(fileStream.Name));
+                            request.AddFile(fileParam.Key, bytes, global::System.IO.Path.GetFileName(fileStream.Name));
                         else
                             request.AddFile(fileParam.Key, bytes, "no_file_name_provided");
                     }
+                }
+            }
+
+            if (options.HeaderParameters != null)
+            {
+                if (options.HeaderParameters.TryGetValue("Content-Type", out var contentTypes) && contentTypes.Any(header => header.Contains("multipart/form-data")))
+                {
+                    request.AlwaysMultipartFormData = true;
                 }
             }
 
@@ -461,9 +475,7 @@ namespace Wallee.Client
         /// <param name="requestTimeout">A per-request (connection) timeout in seconds.</param>
         /// <param name="configuration">A per-request configuration object.</param>
         /// <returns>A new ApiResponse instance.</returns>
-        private async Task<ApiResponse<T>> ExecClientAsync<T>(Func<RestClient, Task<RestResponse<T>>> getResponse,
-            Action<RestClientOptions> setOptions, RestRequest request, RequestOptions options, int requestTimeout,
-            IReadableConfiguration configuration)
+        private async Task<ApiResponse<T>> ExecClientAsync<T>(Func<RestClient, Task<RestResponse<T>>> getResponse, Action<RestClientOptions> setOptions, RestRequest request, RequestOptions options, int requestTimeout, IReadableConfiguration configuration)
         {
             var baseUrl = configuration.GetOperationServerUrl(options.Operation, options.OperationIndex) ?? _baseUrl;
 
@@ -551,8 +563,7 @@ namespace Wallee.Client
             }
         }
 
-        private ApiResponse<T> Exec<T>(RestRequest request, RequestOptions options, int requestTimeout,
-            IReadableConfiguration configuration)
+        private ApiResponse<T> Exec<T>(RestRequest request, RequestOptions options, int requestTimeout, IReadableConfiguration configuration)
         {
             Action<RestClientOptions> setOptions = (clientOptions) =>
             {
@@ -581,101 +592,94 @@ namespace Wallee.Client
 
         #region ISynchronousClient
         /// <summary>
-        /// Make the HTTP GET request (synchronous).
+        /// Make a HTTP GET request (synchronous).
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
         /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
-        /// <param name="config">A per-request configuration object.</param>
+        /// <param name="configuration">A per-request configuration object.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Get<T>(string path, RequestOptions options, int requestTimeout,
-            IReadableConfiguration config)
+        public ApiResponse<T> Get<T>(string path, RequestOptions options, int requestTimeout, IReadableConfiguration configuration)
         {
-            return Exec<T>(NewRequest(HttpMethod.GET, path, options, config), options, requestTimeout, config);
+            return Exec<T>(NewRequest(HttpMethod.Get, path, options, configuration), options, requestTimeout, configuration);
         }
 
         /// <summary>
-        /// Make the HTTP POST request (synchronous).
+        /// Make a HTTP POST request (synchronous).
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
         /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
-        /// <param name="config">A per-request configuration object.</param>
+        /// <param name="configuration">A per-request configuration object.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Post<T>(string path, RequestOptions options, int requestTimeout,
-            IReadableConfiguration config)
+        public ApiResponse<T> Post<T>(string path, RequestOptions options, int requestTimeout, IReadableConfiguration configuration)
         {
-            return Exec<T>(NewRequest(HttpMethod.POST, path, options, config), options, requestTimeout, config);
+            return Exec<T>(NewRequest(HttpMethod.Post, path, options, configuration), options, requestTimeout, configuration);
         }
 
         /// <summary>
-        /// Make the HTTP PUT request (synchronous).
+        /// Make a HTTP PUT request (synchronous).
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
         /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
-        /// <param name="config">A per-request configuration object.</param
+        /// <param name="configuration">A per-request configuration object.</param
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Put<T>(string path, RequestOptions options, int requestTimeout,
-            IReadableConfiguration config)
+        public ApiResponse<T> Put<T>(string path, RequestOptions options, int requestTimeout, IReadableConfiguration configuration)
         {
-            return Exec<T>(NewRequest(HttpMethod.PUT, path, options, config), options, requestTimeout, config);
+            return Exec<T>(NewRequest(HttpMethod.Put, path, options, configuration), options, requestTimeout, configuration);
         }
 
         /// <summary>
-        /// Make the HTTP DELETE request (synchronous).
+        /// Make a HTTP DELETE request (synchronous).
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
         /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
-        /// <param name="config">A per-request configuration object.</param>
+        /// <param name="configuration">A per-request configuration object.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Delete<T>(string path, RequestOptions options, int requestTimeout,
-            IReadableConfiguration config)
+        public ApiResponse<T> Delete<T>(string path, RequestOptions options, int requestTimeout, IReadableConfiguration configuration)
         {
-            return Exec<T>(NewRequest(HttpMethod.DELETE, path, options, config), options, requestTimeout, config);
+            return Exec<T>(NewRequest(HttpMethod.Delete, path, options, configuration), options, requestTimeout, configuration);
         }
 
         /// <summary>
-        /// Make the HTTP HEAD request (synchronous).
+        /// Make a HTTP HEAD request (synchronous).
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
         /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
-        /// <param name="config">A per-request configuration object.</param>
+        /// <param name="configuration">A per-request configuration object.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Head<T>(string path, RequestOptions options, int requestTimeout,
-            IReadableConfiguration config)
+        public ApiResponse<T> Head<T>(string path, RequestOptions options, int requestTimeout, IReadableConfiguration configuration)
         {
-            return Exec<T>(NewRequest(HttpMethod.HEAD, path, options, config), options, requestTimeout, config);
+            return Exec<T>(NewRequest(HttpMethod.Head, path, options, configuration), options, requestTimeout, configuration);
         }
 
         /// <summary>
-        /// Make the HTTP OPTION request (synchronous).
+        /// Make a HTTP OPTION request (synchronous).
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
         /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
-        /// <param name="config">A per-request configuration object.</param>
+        /// <param name="configuration">A per-request configuration object.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Options<T>(string path, RequestOptions options, int requestTimeout,
-            IReadableConfiguration config)
+        public ApiResponse<T> Options<T>(string path, RequestOptions options, int requestTimeout, IReadableConfiguration configuration)
         {
-            return Exec<T>(NewRequest(HttpMethod.OPTIONS, path, options, config), options, requestTimeout, config);
+            return Exec<T>(NewRequest(HttpMethod.Options, path, options, configuration), options, requestTimeout, configuration);
         }
 
         /// <summary>
-        /// Make the HTTP PATCH request (synchronous).
+        /// Make a HTTP PATCH request (synchronous).
         /// </summary>
         /// <param name="path">The target path (or resource).</param>
         /// <param name="options">The additional request options.</param>
         /// <param name="requestTimeout">The per-request (read) timeout in seconds.</param>
-        /// <param name="config">A per-request configuration object.</param>
+        /// <param name="configuration">A per-request configuration object.</param>
         /// <returns>A Task containing ApiResponse</returns>
-        public ApiResponse<T> Patch<T>(string path, RequestOptions options, int requestTimeout,
-            IReadableConfiguration config)
+        public ApiResponse<T> Patch<T>(string path, RequestOptions options, int requestTimeout, IReadableConfiguration configuration)
         {
-            return Exec<T>(NewRequest(HttpMethod.PATCH, path, options, config), options, requestTimeout, config);
+            return Exec<T>(NewRequest(HttpMethod.Patch, path, options, configuration), options, requestTimeout, configuration);
         }
         #endregion ISynchronousClient
 
@@ -692,7 +696,7 @@ namespace Wallee.Client
 
         private static void AddMetaHeaders(RestRequest request)
         {
-            request.AddHeader("x-meta-sdk-version", "10.1.0");
+            request.AddHeader("x-meta-sdk-version", "10.2.0");
             request.AddHeader("x-meta-sdk-language", "csharp");
             request.AddHeader("x-meta-sdk-provider", "wallee");
             request.AddHeader("x-meta-sdk-language-version", Environment.Version.ToString());

@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="WebAppConfirmationResponse" /> class.
         /// </summary>
         /// <param name="space">space.</param>
-        public WebAppConfirmationResponse(Space space = default(Space))
+        public WebAppConfirmationResponse(Space space = default)
         {
             this.Space = space;
         }

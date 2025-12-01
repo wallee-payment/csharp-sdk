@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="name">The name used to identify the role..</param>
         /// <param name="twoFactorRequired">Whether users with this role are required to use two-factor authentication..</param>
         /// <param name="account">The account the role belongs to. The role can only be assigned within this account. (required).</param>
-        public RoleCreate(List<Permission> permissions = default(List<Permission>), Dictionary<string, string> name = default(Dictionary<string, string>), bool twoFactorRequired = default(bool), long account = default(long))
+        public RoleCreate(List<Permission> permissions = default, Dictionary<string, string> name = default, bool twoFactorRequired = default, long account = default)
         {
             this.Account = account;
             this.Permissions = permissions;

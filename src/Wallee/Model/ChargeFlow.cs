@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="ChargeFlow" /> class.
         /// </summary>
         /// <param name="state">state.</param>
-        public ChargeFlow(CreationEntityState? state = default(CreationEntityState?))
+        public ChargeFlow(CreationEntityState? state = default)
         {
             this.State = state;
         }

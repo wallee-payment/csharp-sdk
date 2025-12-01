@@ -64,7 +64,7 @@ namespace Wallee.Model
         /// <param name="identity">The identity used to sign messages..</param>
         /// <param name="entity">The entity that is to be monitored. (required).</param>
         /// <param name="url">The URL where notifications about entity changes are sent to. (required).</param>
-        public WebhookListenerCreate(List<string> entityStates = default(List<string>), string name = default(string), CreationEntityState? state = default(CreationEntityState?), bool notifyEveryChange = default(bool), long identity = default(long), long entity = default(long), long url = default(long))
+        public WebhookListenerCreate(List<string> entityStates = default, string name = default, CreationEntityState? state = default, bool notifyEveryChange = default, long identity = default, long entity = default, long url = default)
         {
             this.Entity = entity;
             this.Url = url;

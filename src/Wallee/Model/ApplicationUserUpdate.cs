@@ -61,7 +61,7 @@ namespace Wallee.Model
         /// <param name="name">The name used to identify the application user..</param>
         /// <param name="state">state.</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public ApplicationUserUpdate(long requestLimit = default(long), string name = default(string), CreationEntityState? state = default(CreationEntityState?), int varVersion = default(int))
+        public ApplicationUserUpdate(long requestLimit = default, string name = default, CreationEntityState? state = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.RequestLimit = requestLimit;

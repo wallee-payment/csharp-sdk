@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="ManualTask" /> class.
         /// </summary>
         /// <param name="state">state.</param>
-        public ManualTask(ManualTaskState? state = default(ManualTaskState?))
+        public ManualTask(ManualTaskState? state = default)
         {
             this.State = state;
         }

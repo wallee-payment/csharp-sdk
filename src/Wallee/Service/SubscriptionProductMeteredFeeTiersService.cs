@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -58,7 +62,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteSubscriptionsProductsMeteredFeesFeeIdTiersIdWithHttpInfo(long feeId, long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// List all metered fee tiers
         /// </summary>
@@ -72,7 +75,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductMeteredFeeTierListResponse</returns>
-        ProductMeteredFeeTierListResponse GetSubscriptionsProductsMeteredFeesFeeIdTiers(long feeId, long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        ProductMeteredFeeTierListResponse GetSubscriptionsProductsMeteredFeesFeeIdTiers(long feeId, long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all metered fee tiers
@@ -90,8 +93,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductMeteredFeeTierListResponse</returns>
-        ApiResponse<ProductMeteredFeeTierListResponse> GetSubscriptionsProductsMeteredFeesFeeIdTiersWithHttpInfo(long feeId, long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<ProductMeteredFeeTierListResponse> GetSubscriptionsProductsMeteredFeesFeeIdTiersWithHttpInfo(long feeId, long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a metered fee tier
         /// </summary>
@@ -102,7 +104,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductMeteredTierFee</returns>
-        ProductMeteredTierFee GetSubscriptionsProductsMeteredFeesFeeIdTiersId(long feeId, long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        ProductMeteredTierFee GetSubscriptionsProductsMeteredFeesFeeIdTiersId(long feeId, long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a metered fee tier
@@ -117,8 +119,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductMeteredTierFee</returns>
-        ApiResponse<ProductMeteredTierFee> GetSubscriptionsProductsMeteredFeesFeeIdTiersIdWithHttpInfo(long feeId, long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<ProductMeteredTierFee> GetSubscriptionsProductsMeteredFeesFeeIdTiersIdWithHttpInfo(long feeId, long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search metered fee tiers
         /// </summary>
@@ -132,7 +133,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductMeteredFeeTierSearchResponse</returns>
-        ProductMeteredFeeTierSearchResponse GetSubscriptionsProductsMeteredFeesFeeIdTiersSearch(long feeId, long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        ProductMeteredFeeTierSearchResponse GetSubscriptionsProductsMeteredFeesFeeIdTiersSearch(long feeId, long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search metered fee tiers
@@ -150,8 +151,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductMeteredFeeTierSearchResponse</returns>
-        ApiResponse<ProductMeteredFeeTierSearchResponse> GetSubscriptionsProductsMeteredFeesFeeIdTiersSearchWithHttpInfo(long feeId, long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<ProductMeteredFeeTierSearchResponse> GetSubscriptionsProductsMeteredFeesFeeIdTiersSearchWithHttpInfo(long feeId, long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a metered fee tier
         /// </summary>
@@ -163,7 +163,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductMeteredTierFee</returns>
-        ProductMeteredTierFee PatchSubscriptionsProductsMeteredFeesFeeIdTiersId(long feeId, long id, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        ProductMeteredTierFee PatchSubscriptionsProductsMeteredFeesFeeIdTiersId(long feeId, long id, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a metered fee tier
@@ -179,8 +179,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductMeteredTierFee</returns>
-        ApiResponse<ProductMeteredTierFee> PatchSubscriptionsProductsMeteredFeesFeeIdTiersIdWithHttpInfo(long feeId, long id, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<ProductMeteredTierFee> PatchSubscriptionsProductsMeteredFeesFeeIdTiersIdWithHttpInfo(long feeId, long id, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a metered fee tier
         /// </summary>
@@ -191,7 +190,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductMeteredTierFee</returns>
-        ProductMeteredTierFee PostSubscriptionsProductsMeteredFeesFeeIdTiers(long feeId, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        ProductMeteredTierFee PostSubscriptionsProductsMeteredFeesFeeIdTiers(long feeId, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a metered fee tier
@@ -206,8 +205,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductMeteredTierFee</returns>
-        ApiResponse<ProductMeteredTierFee> PostSubscriptionsProductsMeteredFeesFeeIdTiersWithHttpInfo(long feeId, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<ProductMeteredTierFee> PostSubscriptionsProductsMeteredFeesFeeIdTiersWithHttpInfo(long feeId, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -329,6 +327,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -351,7 +350,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/subscriptions/products/metered-fees/{feeId}/tiers/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/subscriptions/products/metered-fees/{feeId}/tiers/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -377,7 +376,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductMeteredFeeTierListResponse</returns>
-        public ProductMeteredFeeTierListResponse GetSubscriptionsProductsMeteredFeesFeeIdTiers(long feeId, long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public ProductMeteredFeeTierListResponse GetSubscriptionsProductsMeteredFeesFeeIdTiers(long feeId, long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ProductMeteredFeeTierListResponse> localVarResponse = GetSubscriptionsProductsMeteredFeesFeeIdTiersWithHttpInfo(feeId, space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -396,7 +395,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductMeteredFeeTierListResponse</returns>
-        public Wallee.Client.ApiResponse<ProductMeteredFeeTierListResponse> GetSubscriptionsProductsMeteredFeesFeeIdTiersWithHttpInfo(long feeId, long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ProductMeteredFeeTierListResponse> GetSubscriptionsProductsMeteredFeesFeeIdTiersWithHttpInfo(long feeId, long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -409,6 +408,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -450,7 +450,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ProductMeteredFeeTierListResponse>("/subscriptions/products/metered-fees/{feeId}/tiers",
+            var localVarResponse = this.Client.Get<ProductMeteredFeeTierListResponse>("/subscriptions/products/metered-fees/{feeId}/tiers",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -473,7 +473,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductMeteredTierFee</returns>
-        public ProductMeteredTierFee GetSubscriptionsProductsMeteredFeesFeeIdTiersId(long feeId, long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public ProductMeteredTierFee GetSubscriptionsProductsMeteredFeesFeeIdTiersId(long feeId, long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ProductMeteredTierFee> localVarResponse = GetSubscriptionsProductsMeteredFeesFeeIdTiersIdWithHttpInfo(feeId, id, space, expand);
             return localVarResponse.Data;
@@ -489,7 +489,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductMeteredTierFee</returns>
-        public Wallee.Client.ApiResponse<ProductMeteredTierFee> GetSubscriptionsProductsMeteredFeesFeeIdTiersIdWithHttpInfo(long feeId, long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ProductMeteredTierFee> GetSubscriptionsProductsMeteredFeesFeeIdTiersIdWithHttpInfo(long feeId, long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -502,6 +502,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -528,7 +529,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ProductMeteredTierFee>("/subscriptions/products/metered-fees/{feeId}/tiers/{id}",
+            var localVarResponse = this.Client.Get<ProductMeteredTierFee>("/subscriptions/products/metered-fees/{feeId}/tiers/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -554,7 +555,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductMeteredFeeTierSearchResponse</returns>
-        public ProductMeteredFeeTierSearchResponse GetSubscriptionsProductsMeteredFeesFeeIdTiersSearch(long feeId, long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public ProductMeteredFeeTierSearchResponse GetSubscriptionsProductsMeteredFeesFeeIdTiersSearch(long feeId, long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ProductMeteredFeeTierSearchResponse> localVarResponse = GetSubscriptionsProductsMeteredFeesFeeIdTiersSearchWithHttpInfo(feeId, space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -573,7 +574,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductMeteredFeeTierSearchResponse</returns>
-        public Wallee.Client.ApiResponse<ProductMeteredFeeTierSearchResponse> GetSubscriptionsProductsMeteredFeesFeeIdTiersSearchWithHttpInfo(long feeId, long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ProductMeteredFeeTierSearchResponse> GetSubscriptionsProductsMeteredFeesFeeIdTiersSearchWithHttpInfo(long feeId, long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -586,6 +587,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -627,7 +629,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ProductMeteredFeeTierSearchResponse>("/subscriptions/products/metered-fees/{feeId}/tiers/search",
+            var localVarResponse = this.Client.Get<ProductMeteredFeeTierSearchResponse>("/subscriptions/products/metered-fees/{feeId}/tiers/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -651,7 +653,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductMeteredTierFee</returns>
-        public ProductMeteredTierFee PatchSubscriptionsProductsMeteredFeesFeeIdTiersId(long feeId, long id, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public ProductMeteredTierFee PatchSubscriptionsProductsMeteredFeesFeeIdTiersId(long feeId, long id, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ProductMeteredTierFee> localVarResponse = PatchSubscriptionsProductsMeteredFeesFeeIdTiersIdWithHttpInfo(feeId, id, space, productMeteredTierFeeUpdate, expand);
             return localVarResponse.Data;
@@ -668,7 +670,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductMeteredTierFee</returns>
-        public Wallee.Client.ApiResponse<ProductMeteredTierFee> PatchSubscriptionsProductsMeteredFeesFeeIdTiersIdWithHttpInfo(long feeId, long id, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ProductMeteredTierFee> PatchSubscriptionsProductsMeteredFeesFeeIdTiersIdWithHttpInfo(long feeId, long id, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'productMeteredTierFeeUpdate' is set
             if (productMeteredTierFeeUpdate == null)
@@ -688,6 +690,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -715,7 +718,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<ProductMeteredTierFee>("/subscriptions/products/metered-fees/{feeId}/tiers/{id}",
+            var localVarResponse = this.Client.Patch<ProductMeteredTierFee>("/subscriptions/products/metered-fees/{feeId}/tiers/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -738,7 +741,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductMeteredTierFee</returns>
-        public ProductMeteredTierFee PostSubscriptionsProductsMeteredFeesFeeIdTiers(long feeId, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public ProductMeteredTierFee PostSubscriptionsProductsMeteredFeesFeeIdTiers(long feeId, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ProductMeteredTierFee> localVarResponse = PostSubscriptionsProductsMeteredFeesFeeIdTiersWithHttpInfo(feeId, space, productMeteredTierFeeUpdate, expand);
             return localVarResponse.Data;
@@ -754,7 +757,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductMeteredTierFee</returns>
-        public Wallee.Client.ApiResponse<ProductMeteredTierFee> PostSubscriptionsProductsMeteredFeesFeeIdTiersWithHttpInfo(long feeId, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ProductMeteredTierFee> PostSubscriptionsProductsMeteredFeesFeeIdTiersWithHttpInfo(long feeId, long space, ProductMeteredTierFeeUpdate productMeteredTierFeeUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'productMeteredTierFeeUpdate' is set
             if (productMeteredTierFeeUpdate == null)
@@ -774,6 +777,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -800,7 +804,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<ProductMeteredTierFee>("/subscriptions/products/metered-fees/{feeId}/tiers",
+            var localVarResponse = this.Client.Post<ProductMeteredTierFee>("/subscriptions/products/metered-fees/{feeId}/tiers",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

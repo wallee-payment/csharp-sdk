@@ -56,7 +56,7 @@ namespace Wallee.Model
         /// <param name="name">The name used to identify the affiliate..</param>
         /// <param name="language">The language that is linked to the object..</param>
         /// <param name="state">state.</param>
-        public AbstractSubscriptionAffiliateUpdate(Dictionary<string, string> metaData = default(Dictionary<string, string>), string name = default(string), string language = default(string), CreationEntityState? state = default(CreationEntityState?))
+        public AbstractSubscriptionAffiliateUpdate(Dictionary<string, string> metaData = default, string name = default, string language = default, CreationEntityState? state = default)
         {
             this.MetaData = metaData;
             this.Name = name;

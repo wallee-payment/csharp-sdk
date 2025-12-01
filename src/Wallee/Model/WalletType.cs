@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="WalletType" /> class.
         /// </summary>
         /// <param name="feature">feature.</param>
-        public WalletType(Feature feature = default(Feature))
+        public WalletType(Feature feature = default)
         {
             this.Feature = feature;
         }

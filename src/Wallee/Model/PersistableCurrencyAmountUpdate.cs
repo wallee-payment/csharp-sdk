@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="amount">amount.</param>
         /// <param name="currency">currency.</param>
-        public PersistableCurrencyAmountUpdate(decimal amount = default(decimal), string currency = default(string))
+        public PersistableCurrencyAmountUpdate(decimal amount = default, string currency = default)
         {
             this.Amount = amount;
             this.Currency = currency;

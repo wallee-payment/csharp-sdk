@@ -48,7 +48,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="name">The name used to identify the account..</param>
         /// <param name="subaccountLimit">The number of sub-accounts that can be created within this account..</param>
-        public AbstractAccountUpdate(string name = default(string), long subaccountLimit = default(long))
+        public AbstractAccountUpdate(string name = default, long subaccountLimit = default)
         {
             this.Name = name;
             this.SubaccountLimit = subaccountLimit;

@@ -51,7 +51,7 @@ namespace Wallee.Model
         /// <param name="completionEndpoint">The URL that the payment service provider will invoke to process a completion request. This endpoint handles communication with the provider for initiating and managing completions..</param>
         /// <param name="completionTimeoutInMinutes">The maximum time (in minutes) to wait for a response from the payment service provider after a completion request is triggered. If no feedback or final status is received within this period, the completion is considered failed..</param>
         /// <param name="voidEndpoint">The URL that the payment service provider will invoke to process a void request. This endpoint handles communication with the provider for initiating and managing voids..</param>
-        public PaymentAppCompletionConfigurationCreate(bool multipleCompletionsSupported = default(bool), int maximalCompletionDelayInDays = default(int), string completionEndpoint = default(string), int completionTimeoutInMinutes = default(int), string voidEndpoint = default(string))
+        public PaymentAppCompletionConfigurationCreate(bool multipleCompletionsSupported = default, int maximalCompletionDelayInDays = default, string completionEndpoint = default, int completionTimeoutInMinutes = default, string voidEndpoint = default)
         {
             this.MultipleCompletionsSupported = multipleCompletionsSupported;
             this.MaximalCompletionDelayInDays = maximalCompletionDelayInDays;

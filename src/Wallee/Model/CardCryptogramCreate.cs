@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="eci">The Electronic Commerce Indicator (ECI) represents the authentication level and indicates liability shift during online or card-not-present transactions..</param>
         /// <param name="value">The cryptogram value used for securing card transactions, format varying based on the PAN type. (required).</param>
-        public CardCryptogramCreate(string eci = default(string), string value = default(string))
+        public CardCryptogramCreate(string eci = default, string value = default)
         {
             // to ensure "value" is required (not null)
             if (value == null)

@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="TransactionComment" /> class.
         /// </summary>
         /// <param name="transaction">transaction.</param>
-        public TransactionComment(Transaction transaction = default(Transaction))
+        public TransactionComment(Transaction transaction = default)
         {
             this.Transaction = transaction;
         }

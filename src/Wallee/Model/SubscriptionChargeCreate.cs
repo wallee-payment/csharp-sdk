@@ -64,7 +64,7 @@ namespace Wallee.Model
         /// <param name="successUrl">The URL to redirect the customer back to after they successfully authenticated their payment..</param>
         /// <param name="subscription">The subscription that the charge belongs to. (required).</param>
         /// <param name="failedUrl">The URL to redirect the customer back to after they canceled or failed to authenticated their payment..</param>
-        public SubscriptionChargeCreate(string reference = default(string), DateTime plannedExecutionDate = default(DateTime), SubscriptionChargeProcessingType processingType = default(SubscriptionChargeProcessingType), string externalId = default(string), string successUrl = default(string), long subscription = default(long), string failedUrl = default(string))
+        public SubscriptionChargeCreate(string reference = default, DateTime plannedExecutionDate = default, SubscriptionChargeProcessingType processingType = default, string externalId = default, string successUrl = default, long subscription = default, string failedUrl = default)
         {
             this.ProcessingType = processingType;
             // to ensure "externalId" is required (not null)

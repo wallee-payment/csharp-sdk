@@ -47,7 +47,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="RefundComment" /> class.
         /// </summary>
         /// <param name="refund">refund.</param>
-        public RefundComment(Refund refund = default(Refund))
+        public RefundComment(Refund refund = default)
         {
             this.Refund = refund;
         }

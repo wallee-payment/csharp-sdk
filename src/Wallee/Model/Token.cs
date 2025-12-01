@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="Token" /> class.
         /// </summary>
         /// <param name="state">state.</param>
-        public Token(CreationEntityState? state = default(CreationEntityState?))
+        public Token(CreationEntityState? state = default)
         {
             this.State = state;
         }

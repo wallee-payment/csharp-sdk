@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="FailureReason" /> class.
         /// </summary>
         /// <param name="category">category.</param>
-        public FailureReason(FailureCategory? category = default(FailureCategory?))
+        public FailureReason(FailureCategory? category = default)
         {
             this.Category = category;
         }

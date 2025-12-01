@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="address">address.</param>
         /// <param name="addressType">addressType.</param>
-        public AbstractCustomerAddressActive(CustomerPostalAddressCreate address = default(CustomerPostalAddressCreate), CustomerAddressType? addressType = default(CustomerAddressType?))
+        public AbstractCustomerAddressActive(CustomerPostalAddressCreate address = default, CustomerAddressType? addressType = default)
         {
             this.Address = address;
             this.AddressType = addressType;

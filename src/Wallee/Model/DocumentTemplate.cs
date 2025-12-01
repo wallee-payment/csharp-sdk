@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="state">state.</param>
         /// <param name="type">type.</param>
-        public DocumentTemplate(CreationEntityState? state = default(CreationEntityState?), DocumentTemplateType type = default(DocumentTemplateType))
+        public DocumentTemplate(CreationEntityState? state = default, DocumentTemplateType type = default)
         {
             this.State = state;
             this.Type = type;

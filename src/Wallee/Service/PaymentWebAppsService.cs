@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -59,7 +63,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeletePaymentWebAppsConnectorsConnectorExternalIdWithHttpInfo(string connectorExternalId, long space, int operationIndex = 0);
-
         /// <summary>
         /// Delete a processor
         /// </summary>
@@ -85,7 +88,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeletePaymentWebAppsProcessorsExternalIdWithHttpInfo(string externalId, long space, int operationIndex = 0);
-
         /// <summary>
         /// Update a charge attempt
         /// </summary>
@@ -99,7 +101,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ChargeAttempt</returns>
-        ChargeAttempt PatchPaymentWebAppsChargeAttemptsId(long id, long space, PaymentAppChargeAttemptUpdate paymentAppChargeAttemptUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        ChargeAttempt PatchPaymentWebAppsChargeAttemptsId(long id, long space, PaymentAppChargeAttemptUpdate paymentAppChargeAttemptUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a charge attempt
@@ -114,8 +116,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ChargeAttempt</returns>
-        ApiResponse<ChargeAttempt> PatchPaymentWebAppsChargeAttemptsIdWithHttpInfo(long id, long space, PaymentAppChargeAttemptUpdate paymentAppChargeAttemptUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<ChargeAttempt> PatchPaymentWebAppsChargeAttemptsIdWithHttpInfo(long id, long space, PaymentAppChargeAttemptUpdate paymentAppChargeAttemptUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Update a completion
         /// </summary>
@@ -129,7 +130,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionCompletion</returns>
-        TransactionCompletion PatchPaymentWebAppsCompletionsId(long id, long space, PaymentAppCompletionUpdate paymentAppCompletionUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionCompletion PatchPaymentWebAppsCompletionsId(long id, long space, PaymentAppCompletionUpdate paymentAppCompletionUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a completion
@@ -144,8 +145,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionCompletion</returns>
-        ApiResponse<TransactionCompletion> PatchPaymentWebAppsCompletionsIdWithHttpInfo(long id, long space, PaymentAppCompletionUpdate paymentAppCompletionUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionCompletion> PatchPaymentWebAppsCompletionsIdWithHttpInfo(long id, long space, PaymentAppCompletionUpdate paymentAppCompletionUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Update a connector
         /// </summary>
@@ -156,7 +156,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentAppConnector</returns>
-        PaymentAppConnector PatchPaymentWebAppsConnectorsConnectorExternalId(string connectorExternalId, long space, PaymentAppConnectorDetails paymentAppConnectorDetails, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentAppConnector PatchPaymentWebAppsConnectorsConnectorExternalId(string connectorExternalId, long space, PaymentAppConnectorDetails paymentAppConnectorDetails, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a connector
@@ -171,8 +171,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentAppConnector</returns>
-        ApiResponse<PaymentAppConnector> PatchPaymentWebAppsConnectorsConnectorExternalIdWithHttpInfo(string connectorExternalId, long space, PaymentAppConnectorDetails paymentAppConnectorDetails, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentAppConnector> PatchPaymentWebAppsConnectorsConnectorExternalIdWithHttpInfo(string connectorExternalId, long space, PaymentAppConnectorDetails paymentAppConnectorDetails, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Update a processor
         /// </summary>
@@ -183,7 +182,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentAppProcessor</returns>
-        PaymentAppProcessor PatchPaymentWebAppsProcessorsExternalId(string externalId, long space, PaymentAppProcessorDetails paymentAppProcessorDetails, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentAppProcessor PatchPaymentWebAppsProcessorsExternalId(string externalId, long space, PaymentAppProcessorDetails paymentAppProcessorDetails, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a processor
@@ -198,8 +197,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentAppProcessor</returns>
-        ApiResponse<PaymentAppProcessor> PatchPaymentWebAppsProcessorsExternalIdWithHttpInfo(string externalId, long space, PaymentAppProcessorDetails paymentAppProcessorDetails, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentAppProcessor> PatchPaymentWebAppsProcessorsExternalIdWithHttpInfo(string externalId, long space, PaymentAppProcessorDetails paymentAppProcessorDetails, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Update a refund
         /// </summary>
@@ -213,7 +211,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Refund</returns>
-        Refund PatchPaymentWebAppsRefundsId(long id, long space, PaymentAppRefundUpdate paymentAppRefundUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Refund PatchPaymentWebAppsRefundsId(long id, long space, PaymentAppRefundUpdate paymentAppRefundUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a refund
@@ -228,8 +226,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Refund</returns>
-        ApiResponse<Refund> PatchPaymentWebAppsRefundsIdWithHttpInfo(long id, long space, PaymentAppRefundUpdate paymentAppRefundUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Refund> PatchPaymentWebAppsRefundsIdWithHttpInfo(long id, long space, PaymentAppRefundUpdate paymentAppRefundUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Update a void
         /// </summary>
@@ -243,7 +240,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionVoid</returns>
-        TransactionVoid PatchPaymentWebAppsVoidsId(long id, long space, PaymentAppVoidUpdate paymentAppVoidUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        TransactionVoid PatchPaymentWebAppsVoidsId(long id, long space, PaymentAppVoidUpdate paymentAppVoidUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a void
@@ -258,8 +255,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionVoid</returns>
-        ApiResponse<TransactionVoid> PatchPaymentWebAppsVoidsIdWithHttpInfo(long id, long space, PaymentAppVoidUpdate paymentAppVoidUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<TransactionVoid> PatchPaymentWebAppsVoidsIdWithHttpInfo(long id, long space, PaymentAppVoidUpdate paymentAppVoidUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a processor
         /// </summary>
@@ -269,7 +265,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentAppProcessor</returns>
-        PaymentAppProcessor PostPaymentWebAppsProcessors(long space, PaymentAppProcessorDetailsCreate paymentAppProcessorDetailsCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentAppProcessor PostPaymentWebAppsProcessors(long space, PaymentAppProcessorDetailsCreate paymentAppProcessorDetailsCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a processor
@@ -283,8 +279,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentAppProcessor</returns>
-        ApiResponse<PaymentAppProcessor> PostPaymentWebAppsProcessorsWithHttpInfo(long space, PaymentAppProcessorDetailsCreate paymentAppProcessorDetailsCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentAppProcessor> PostPaymentWebAppsProcessorsWithHttpInfo(long space, PaymentAppProcessorDetailsCreate paymentAppProcessorDetailsCreate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Activate a processor for production
         /// </summary>
@@ -294,7 +289,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentAppProcessor</returns>
-        PaymentAppProcessor PostPaymentWebAppsProcessorsExternalIdActivateForProduction(string externalId, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentAppProcessor PostPaymentWebAppsProcessorsExternalIdActivateForProduction(string externalId, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Activate a processor for production
@@ -308,8 +303,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentAppProcessor</returns>
-        ApiResponse<PaymentAppProcessor> PostPaymentWebAppsProcessorsExternalIdActivateForProductionWithHttpInfo(string externalId, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentAppProcessor> PostPaymentWebAppsProcessorsExternalIdActivateForProductionWithHttpInfo(string externalId, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a connector
         /// </summary>
@@ -320,7 +314,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentAppConnector</returns>
-        PaymentAppConnector PostPaymentWebAppsProcessorsExternalIdConnectors(string externalId, long space, PaymentAppConnectorDetailsCreate paymentAppConnectorDetailsCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentAppConnector PostPaymentWebAppsProcessorsExternalIdConnectors(string externalId, long space, PaymentAppConnectorDetailsCreate paymentAppConnectorDetailsCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a connector
@@ -335,8 +329,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentAppConnector</returns>
-        ApiResponse<PaymentAppConnector> PostPaymentWebAppsProcessorsExternalIdConnectorsWithHttpInfo(string externalId, long space, PaymentAppConnectorDetailsCreate paymentAppConnectorDetailsCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentAppConnector> PostPaymentWebAppsProcessorsExternalIdConnectorsWithHttpInfo(string externalId, long space, PaymentAppConnectorDetailsCreate paymentAppConnectorDetailsCreate, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -462,6 +455,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -483,7 +477,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/payment/web-apps/connectors/{connectorExternalId}",
+            var localVarResponse = this.Client.Delete<Object>("/payment/web-apps/connectors/{connectorExternalId}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -536,6 +530,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -557,7 +552,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/payment/web-apps/processors/{externalId}",
+            var localVarResponse = this.Client.Delete<Object>("/payment/web-apps/processors/{externalId}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -580,7 +575,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ChargeAttempt</returns>
-        public ChargeAttempt PatchPaymentWebAppsChargeAttemptsId(long id, long space, PaymentAppChargeAttemptUpdate paymentAppChargeAttemptUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public ChargeAttempt PatchPaymentWebAppsChargeAttemptsId(long id, long space, PaymentAppChargeAttemptUpdate paymentAppChargeAttemptUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ChargeAttempt> localVarResponse = PatchPaymentWebAppsChargeAttemptsIdWithHttpInfo(id, space, paymentAppChargeAttemptUpdate, expand);
             return localVarResponse.Data;
@@ -596,7 +591,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ChargeAttempt</returns>
-        public Wallee.Client.ApiResponse<ChargeAttempt> PatchPaymentWebAppsChargeAttemptsIdWithHttpInfo(long id, long space, PaymentAppChargeAttemptUpdate paymentAppChargeAttemptUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ChargeAttempt> PatchPaymentWebAppsChargeAttemptsIdWithHttpInfo(long id, long space, PaymentAppChargeAttemptUpdate paymentAppChargeAttemptUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'paymentAppChargeAttemptUpdate' is set
             if (paymentAppChargeAttemptUpdate == null)
@@ -616,6 +611,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -642,7 +638,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<ChargeAttempt>("/payment/web-apps/charge-attempts/{id}",
+            var localVarResponse = this.Client.Patch<ChargeAttempt>("/payment/web-apps/charge-attempts/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -665,7 +661,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionCompletion</returns>
-        public TransactionCompletion PatchPaymentWebAppsCompletionsId(long id, long space, PaymentAppCompletionUpdate paymentAppCompletionUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionCompletion PatchPaymentWebAppsCompletionsId(long id, long space, PaymentAppCompletionUpdate paymentAppCompletionUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionCompletion> localVarResponse = PatchPaymentWebAppsCompletionsIdWithHttpInfo(id, space, paymentAppCompletionUpdate, expand);
             return localVarResponse.Data;
@@ -681,7 +677,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionCompletion</returns>
-        public Wallee.Client.ApiResponse<TransactionCompletion> PatchPaymentWebAppsCompletionsIdWithHttpInfo(long id, long space, PaymentAppCompletionUpdate paymentAppCompletionUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionCompletion> PatchPaymentWebAppsCompletionsIdWithHttpInfo(long id, long space, PaymentAppCompletionUpdate paymentAppCompletionUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'paymentAppCompletionUpdate' is set
             if (paymentAppCompletionUpdate == null)
@@ -701,6 +697,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -727,7 +724,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<TransactionCompletion>("/payment/web-apps/completions/{id}",
+            var localVarResponse = this.Client.Patch<TransactionCompletion>("/payment/web-apps/completions/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -750,7 +747,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentAppConnector</returns>
-        public PaymentAppConnector PatchPaymentWebAppsConnectorsConnectorExternalId(string connectorExternalId, long space, PaymentAppConnectorDetails paymentAppConnectorDetails, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentAppConnector PatchPaymentWebAppsConnectorsConnectorExternalId(string connectorExternalId, long space, PaymentAppConnectorDetails paymentAppConnectorDetails, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentAppConnector> localVarResponse = PatchPaymentWebAppsConnectorsConnectorExternalIdWithHttpInfo(connectorExternalId, space, paymentAppConnectorDetails, expand);
             return localVarResponse.Data;
@@ -766,7 +763,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentAppConnector</returns>
-        public Wallee.Client.ApiResponse<PaymentAppConnector> PatchPaymentWebAppsConnectorsConnectorExternalIdWithHttpInfo(string connectorExternalId, long space, PaymentAppConnectorDetails paymentAppConnectorDetails, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentAppConnector> PatchPaymentWebAppsConnectorsConnectorExternalIdWithHttpInfo(string connectorExternalId, long space, PaymentAppConnectorDetails paymentAppConnectorDetails, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'connectorExternalId' is set
             if (connectorExternalId == null)
@@ -792,6 +789,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -818,7 +816,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<PaymentAppConnector>("/payment/web-apps/connectors/{connectorExternalId}",
+            var localVarResponse = this.Client.Patch<PaymentAppConnector>("/payment/web-apps/connectors/{connectorExternalId}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -841,7 +839,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentAppProcessor</returns>
-        public PaymentAppProcessor PatchPaymentWebAppsProcessorsExternalId(string externalId, long space, PaymentAppProcessorDetails paymentAppProcessorDetails, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentAppProcessor PatchPaymentWebAppsProcessorsExternalId(string externalId, long space, PaymentAppProcessorDetails paymentAppProcessorDetails, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentAppProcessor> localVarResponse = PatchPaymentWebAppsProcessorsExternalIdWithHttpInfo(externalId, space, paymentAppProcessorDetails, expand);
             return localVarResponse.Data;
@@ -857,7 +855,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentAppProcessor</returns>
-        public Wallee.Client.ApiResponse<PaymentAppProcessor> PatchPaymentWebAppsProcessorsExternalIdWithHttpInfo(string externalId, long space, PaymentAppProcessorDetails paymentAppProcessorDetails, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentAppProcessor> PatchPaymentWebAppsProcessorsExternalIdWithHttpInfo(string externalId, long space, PaymentAppProcessorDetails paymentAppProcessorDetails, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'externalId' is set
             if (externalId == null)
@@ -883,6 +881,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -909,7 +908,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<PaymentAppProcessor>("/payment/web-apps/processors/{externalId}",
+            var localVarResponse = this.Client.Patch<PaymentAppProcessor>("/payment/web-apps/processors/{externalId}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -932,7 +931,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Refund</returns>
-        public Refund PatchPaymentWebAppsRefundsId(long id, long space, PaymentAppRefundUpdate paymentAppRefundUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Refund PatchPaymentWebAppsRefundsId(long id, long space, PaymentAppRefundUpdate paymentAppRefundUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Refund> localVarResponse = PatchPaymentWebAppsRefundsIdWithHttpInfo(id, space, paymentAppRefundUpdate, expand);
             return localVarResponse.Data;
@@ -948,7 +947,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Refund</returns>
-        public Wallee.Client.ApiResponse<Refund> PatchPaymentWebAppsRefundsIdWithHttpInfo(long id, long space, PaymentAppRefundUpdate paymentAppRefundUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Refund> PatchPaymentWebAppsRefundsIdWithHttpInfo(long id, long space, PaymentAppRefundUpdate paymentAppRefundUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'paymentAppRefundUpdate' is set
             if (paymentAppRefundUpdate == null)
@@ -968,6 +967,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -994,7 +994,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<Refund>("/payment/web-apps/refunds/{id}",
+            var localVarResponse = this.Client.Patch<Refund>("/payment/web-apps/refunds/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1017,7 +1017,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TransactionVoid</returns>
-        public TransactionVoid PatchPaymentWebAppsVoidsId(long id, long space, PaymentAppVoidUpdate paymentAppVoidUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public TransactionVoid PatchPaymentWebAppsVoidsId(long id, long space, PaymentAppVoidUpdate paymentAppVoidUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TransactionVoid> localVarResponse = PatchPaymentWebAppsVoidsIdWithHttpInfo(id, space, paymentAppVoidUpdate, expand);
             return localVarResponse.Data;
@@ -1033,7 +1033,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TransactionVoid</returns>
-        public Wallee.Client.ApiResponse<TransactionVoid> PatchPaymentWebAppsVoidsIdWithHttpInfo(long id, long space, PaymentAppVoidUpdate paymentAppVoidUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TransactionVoid> PatchPaymentWebAppsVoidsIdWithHttpInfo(long id, long space, PaymentAppVoidUpdate paymentAppVoidUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'paymentAppVoidUpdate' is set
             if (paymentAppVoidUpdate == null)
@@ -1053,6 +1053,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1079,7 +1080,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<TransactionVoid>("/payment/web-apps/voids/{id}",
+            var localVarResponse = this.Client.Patch<TransactionVoid>("/payment/web-apps/voids/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1101,7 +1102,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentAppProcessor</returns>
-        public PaymentAppProcessor PostPaymentWebAppsProcessors(long space, PaymentAppProcessorDetailsCreate paymentAppProcessorDetailsCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentAppProcessor PostPaymentWebAppsProcessors(long space, PaymentAppProcessorDetailsCreate paymentAppProcessorDetailsCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentAppProcessor> localVarResponse = PostPaymentWebAppsProcessorsWithHttpInfo(space, paymentAppProcessorDetailsCreate, expand);
             return localVarResponse.Data;
@@ -1116,7 +1117,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentAppProcessor</returns>
-        public Wallee.Client.ApiResponse<PaymentAppProcessor> PostPaymentWebAppsProcessorsWithHttpInfo(long space, PaymentAppProcessorDetailsCreate paymentAppProcessorDetailsCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentAppProcessor> PostPaymentWebAppsProcessorsWithHttpInfo(long space, PaymentAppProcessorDetailsCreate paymentAppProcessorDetailsCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'paymentAppProcessorDetailsCreate' is set
             if (paymentAppProcessorDetailsCreate == null)
@@ -1136,6 +1137,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1161,7 +1163,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<PaymentAppProcessor>("/payment/web-apps/processors",
+            var localVarResponse = this.Client.Post<PaymentAppProcessor>("/payment/web-apps/processors",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1183,7 +1185,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentAppProcessor</returns>
-        public PaymentAppProcessor PostPaymentWebAppsProcessorsExternalIdActivateForProduction(string externalId, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentAppProcessor PostPaymentWebAppsProcessorsExternalIdActivateForProduction(string externalId, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentAppProcessor> localVarResponse = PostPaymentWebAppsProcessorsExternalIdActivateForProductionWithHttpInfo(externalId, space, expand);
             return localVarResponse.Data;
@@ -1198,7 +1200,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentAppProcessor</returns>
-        public Wallee.Client.ApiResponse<PaymentAppProcessor> PostPaymentWebAppsProcessorsExternalIdActivateForProductionWithHttpInfo(string externalId, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentAppProcessor> PostPaymentWebAppsProcessorsExternalIdActivateForProductionWithHttpInfo(string externalId, long space, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'externalId' is set
             if (externalId == null)
@@ -1217,6 +1219,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1242,7 +1245,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<PaymentAppProcessor>("/payment/web-apps/processors/{externalId}/activate-for-production",
+            var localVarResponse = this.Client.Post<PaymentAppProcessor>("/payment/web-apps/processors/{externalId}/activate-for-production",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1265,7 +1268,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentAppConnector</returns>
-        public PaymentAppConnector PostPaymentWebAppsProcessorsExternalIdConnectors(string externalId, long space, PaymentAppConnectorDetailsCreate paymentAppConnectorDetailsCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentAppConnector PostPaymentWebAppsProcessorsExternalIdConnectors(string externalId, long space, PaymentAppConnectorDetailsCreate paymentAppConnectorDetailsCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentAppConnector> localVarResponse = PostPaymentWebAppsProcessorsExternalIdConnectorsWithHttpInfo(externalId, space, paymentAppConnectorDetailsCreate, expand);
             return localVarResponse.Data;
@@ -1281,7 +1284,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentAppConnector</returns>
-        public Wallee.Client.ApiResponse<PaymentAppConnector> PostPaymentWebAppsProcessorsExternalIdConnectorsWithHttpInfo(string externalId, long space, PaymentAppConnectorDetailsCreate paymentAppConnectorDetailsCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentAppConnector> PostPaymentWebAppsProcessorsExternalIdConnectorsWithHttpInfo(string externalId, long space, PaymentAppConnectorDetailsCreate paymentAppConnectorDetailsCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'externalId' is set
             if (externalId == null)
@@ -1307,6 +1310,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1333,7 +1337,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<PaymentAppConnector>("/payment/web-apps/processors/{externalId}/connectors",
+            var localVarResponse = this.Client.Post<PaymentAppConnector>("/payment/web-apps/processors/{externalId}/connectors",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="plannedTerminationDate">The date and time when the subscription is planned to be terminated..</param>
         /// <param name="affiliate">The affiliate that led to the creation of the subscription..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public SubscriptionUpdate(string description = default(string), DateTime plannedTerminationDate = default(DateTime), long affiliate = default(long), int varVersion = default(int))
+        public SubscriptionUpdate(string description = default, DateTime plannedTerminationDate = default, long affiliate = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Description = description;

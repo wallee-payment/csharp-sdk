@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -59,7 +63,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeletePaymentTerminalsIdWithHttpInfo(long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// List all payment terminals
         /// </summary>
@@ -72,7 +75,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TerminalListResponse</returns>
-        TerminalListResponse GetPaymentTerminals(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        TerminalListResponse GetPaymentTerminals(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all payment terminals
@@ -89,8 +92,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TerminalListResponse</returns>
-        ApiResponse<TerminalListResponse> GetPaymentTerminalsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<TerminalListResponse> GetPaymentTerminalsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a payment terminal
         /// </summary>
@@ -100,7 +102,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentTerminal</returns>
-        PaymentTerminal GetPaymentTerminalsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentTerminal GetPaymentTerminalsId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a payment terminal
@@ -114,8 +116,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentTerminal</returns>
-        ApiResponse<PaymentTerminal> GetPaymentTerminalsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentTerminal> GetPaymentTerminalsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve till connection credentials
         /// </summary>
@@ -126,7 +127,7 @@ namespace Wallee.Service
         /// <param name="language"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>string</returns>
-        string GetPaymentTerminalsIdTillConnectionCredentials(long id, long transactionId, long space, string? language = default(string?), int operationIndex = 0);
+        string GetPaymentTerminalsIdTillConnectionCredentials(long id, long transactionId, long space, string? language = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve till connection credentials
@@ -141,8 +142,7 @@ namespace Wallee.Service
         /// <param name="language"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> GetPaymentTerminalsIdTillConnectionCredentialsWithHttpInfo(long id, long transactionId, long space, string? language = default(string?), int operationIndex = 0);
-
+        ApiResponse<string> GetPaymentTerminalsIdTillConnectionCredentialsWithHttpInfo(long id, long transactionId, long space, string? language = default, int operationIndex = 0);
         /// <summary>
         /// Search payment terminals
         /// </summary>
@@ -155,7 +155,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TerminalSearchResponse</returns>
-        TerminalSearchResponse GetPaymentTerminalsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        TerminalSearchResponse GetPaymentTerminalsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search payment terminals
@@ -172,8 +172,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TerminalSearchResponse</returns>
-        ApiResponse<TerminalSearchResponse> GetPaymentTerminalsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<TerminalSearchResponse> GetPaymentTerminalsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a payment terminal
         /// </summary>
@@ -184,7 +183,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentTerminal</returns>
-        PaymentTerminal PatchPaymentTerminalsId(long id, long space, PaymentTerminalUpdate paymentTerminalUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentTerminal PatchPaymentTerminalsId(long id, long space, PaymentTerminalUpdate paymentTerminalUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a payment terminal
@@ -199,8 +198,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentTerminal</returns>
-        ApiResponse<PaymentTerminal> PatchPaymentTerminalsIdWithHttpInfo(long id, long space, PaymentTerminalUpdate paymentTerminalUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentTerminal> PatchPaymentTerminalsIdWithHttpInfo(long id, long space, PaymentTerminalUpdate paymentTerminalUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a payment terminal
         /// </summary>
@@ -210,7 +208,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentTerminal</returns>
-        PaymentTerminal PostPaymentTerminals(long space, PaymentTerminalCreate paymentTerminalCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        PaymentTerminal PostPaymentTerminals(long space, PaymentTerminalCreate paymentTerminalCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a payment terminal
@@ -224,8 +222,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentTerminal</returns>
-        ApiResponse<PaymentTerminal> PostPaymentTerminalsWithHttpInfo(long space, PaymentTerminalCreate paymentTerminalCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<PaymentTerminal> PostPaymentTerminalsWithHttpInfo(long space, PaymentTerminalCreate paymentTerminalCreate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Perform a payment terminal transaction by identifier
         /// </summary>
@@ -240,7 +237,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Transaction</returns>
-        Transaction PostPaymentTerminalsByIdentifierIdentifierPerformTransaction(long transactionId, string identifier, long space, string? language = default(string?), List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Transaction PostPaymentTerminalsByIdentifierIdentifierPerformTransaction(long transactionId, string identifier, long space, string? language = default, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Perform a payment terminal transaction by identifier
@@ -256,8 +253,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Transaction</returns>
-        ApiResponse<Transaction> PostPaymentTerminalsByIdentifierIdentifierPerformTransactionWithHttpInfo(long transactionId, string identifier, long space, string? language = default(string?), List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Transaction> PostPaymentTerminalsByIdentifierIdentifierPerformTransactionWithHttpInfo(long transactionId, string identifier, long space, string? language = default, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Remotely trigger the final balance by identifier
         /// </summary>
@@ -280,7 +276,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentTerminalTransactionSummaryReference</returns>
         ApiResponse<PaymentTerminalTransactionSummaryReference> PostPaymentTerminalsByIdentifierIdentifierTriggerFinalBalanceWithHttpInfo(string identifier, long space, int operationIndex = 0);
-
         /// <summary>
         /// Link a device with a payment terminal
         /// </summary>
@@ -305,7 +300,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PostPaymentTerminalsIdLinkWithHttpInfo(long id, string serialNumber, long space, int operationIndex = 0);
-
         /// <summary>
         /// Perform a payment terminal transaction
         /// </summary>
@@ -320,7 +314,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Transaction</returns>
-        Transaction PostPaymentTerminalsIdPerformTransaction(long id, long transactionId, long space, string? language = default(string?), List<string>? expand = default(List<string>?), int operationIndex = 0);
+        Transaction PostPaymentTerminalsIdPerformTransaction(long id, long transactionId, long space, string? language = default, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Perform a payment terminal transaction
@@ -336,8 +330,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Transaction</returns>
-        ApiResponse<Transaction> PostPaymentTerminalsIdPerformTransactionWithHttpInfo(long id, long transactionId, long space, string? language = default(string?), List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<Transaction> PostPaymentTerminalsIdPerformTransactionWithHttpInfo(long id, long transactionId, long space, string? language = default, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Remotely trigger the final balance
         /// </summary>
@@ -360,7 +353,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentTerminalTransactionSummaryReference</returns>
         ApiResponse<PaymentTerminalTransactionSummaryReference> PostPaymentTerminalsIdTriggerFinalBalanceWithHttpInfo(long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// Unlink any device from a payment terminal
         /// </summary>
@@ -383,7 +375,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PostPaymentTerminalsIdUnlinkWithHttpInfo(long id, long space, int operationIndex = 0);
-
         #endregion Synchronous Operations
     }
 
@@ -503,6 +494,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -524,7 +516,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/payment/terminals/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/payment/terminals/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -549,7 +541,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TerminalListResponse</returns>
-        public TerminalListResponse GetPaymentTerminals(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public TerminalListResponse GetPaymentTerminals(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TerminalListResponse> localVarResponse = GetPaymentTerminalsWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -567,7 +559,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TerminalListResponse</returns>
-        public Wallee.Client.ApiResponse<TerminalListResponse> GetPaymentTerminalsWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TerminalListResponse> GetPaymentTerminalsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -580,6 +572,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -620,7 +613,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<TerminalListResponse>("/payment/terminals",
+            var localVarResponse = this.Client.Get<TerminalListResponse>("/payment/terminals",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -642,7 +635,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentTerminal</returns>
-        public PaymentTerminal GetPaymentTerminalsId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentTerminal GetPaymentTerminalsId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentTerminal> localVarResponse = GetPaymentTerminalsIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -657,7 +650,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentTerminal</returns>
-        public Wallee.Client.ApiResponse<PaymentTerminal> GetPaymentTerminalsIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentTerminal> GetPaymentTerminalsIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -670,6 +663,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -695,7 +689,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<PaymentTerminal>("/payment/terminals/{id}",
+            var localVarResponse = this.Client.Get<PaymentTerminal>("/payment/terminals/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -718,7 +712,7 @@ namespace Wallee.Service
         /// <param name="language"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>string</returns>
-        public string GetPaymentTerminalsIdTillConnectionCredentials(long id, long transactionId, long space, string? language = default(string?), int operationIndex = 0)
+        public string GetPaymentTerminalsIdTillConnectionCredentials(long id, long transactionId, long space, string? language = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<string> localVarResponse = GetPaymentTerminalsIdTillConnectionCredentialsWithHttpInfo(id, transactionId, space, language);
             return localVarResponse.Data;
@@ -734,7 +728,7 @@ namespace Wallee.Service
         /// <param name="language"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of string</returns>
-        public Wallee.Client.ApiResponse<string> GetPaymentTerminalsIdTillConnectionCredentialsWithHttpInfo(long id, long transactionId, long space, string? language = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<string> GetPaymentTerminalsIdTillConnectionCredentialsWithHttpInfo(long id, long transactionId, long space, string? language = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -748,6 +742,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -774,7 +769,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<string>("/payment/terminals/{id}/till-connection-credentials",
+            var localVarResponse = this.Client.Get<string>("/payment/terminals/{id}/till-connection-credentials",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -799,7 +794,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>TerminalSearchResponse</returns>
-        public TerminalSearchResponse GetPaymentTerminalsSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public TerminalSearchResponse GetPaymentTerminalsSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<TerminalSearchResponse> localVarResponse = GetPaymentTerminalsSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -817,7 +812,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of TerminalSearchResponse</returns>
-        public Wallee.Client.ApiResponse<TerminalSearchResponse> GetPaymentTerminalsSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<TerminalSearchResponse> GetPaymentTerminalsSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -830,6 +825,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -870,7 +866,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<TerminalSearchResponse>("/payment/terminals/search",
+            var localVarResponse = this.Client.Get<TerminalSearchResponse>("/payment/terminals/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -893,7 +889,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentTerminal</returns>
-        public PaymentTerminal PatchPaymentTerminalsId(long id, long space, PaymentTerminalUpdate paymentTerminalUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentTerminal PatchPaymentTerminalsId(long id, long space, PaymentTerminalUpdate paymentTerminalUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentTerminal> localVarResponse = PatchPaymentTerminalsIdWithHttpInfo(id, space, paymentTerminalUpdate, expand);
             return localVarResponse.Data;
@@ -909,7 +905,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentTerminal</returns>
-        public Wallee.Client.ApiResponse<PaymentTerminal> PatchPaymentTerminalsIdWithHttpInfo(long id, long space, PaymentTerminalUpdate paymentTerminalUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentTerminal> PatchPaymentTerminalsIdWithHttpInfo(long id, long space, PaymentTerminalUpdate paymentTerminalUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'paymentTerminalUpdate' is set
             if (paymentTerminalUpdate == null)
@@ -929,6 +925,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -955,7 +952,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<PaymentTerminal>("/payment/terminals/{id}",
+            var localVarResponse = this.Client.Patch<PaymentTerminal>("/payment/terminals/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -977,7 +974,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentTerminal</returns>
-        public PaymentTerminal PostPaymentTerminals(long space, PaymentTerminalCreate paymentTerminalCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public PaymentTerminal PostPaymentTerminals(long space, PaymentTerminalCreate paymentTerminalCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<PaymentTerminal> localVarResponse = PostPaymentTerminalsWithHttpInfo(space, paymentTerminalCreate, expand);
             return localVarResponse.Data;
@@ -992,7 +989,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentTerminal</returns>
-        public Wallee.Client.ApiResponse<PaymentTerminal> PostPaymentTerminalsWithHttpInfo(long space, PaymentTerminalCreate paymentTerminalCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentTerminal> PostPaymentTerminalsWithHttpInfo(long space, PaymentTerminalCreate paymentTerminalCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'paymentTerminalCreate' is set
             if (paymentTerminalCreate == null)
@@ -1012,6 +1009,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1037,7 +1035,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<PaymentTerminal>("/payment/terminals",
+            var localVarResponse = this.Client.Post<PaymentTerminal>("/payment/terminals",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1062,7 +1060,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Transaction</returns>
-        public Transaction PostPaymentTerminalsByIdentifierIdentifierPerformTransaction(long transactionId, string identifier, long space, string? language = default(string?), List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Transaction PostPaymentTerminalsByIdentifierIdentifierPerformTransaction(long transactionId, string identifier, long space, string? language = default, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Transaction> localVarResponse = PostPaymentTerminalsByIdentifierIdentifierPerformTransactionWithHttpInfo(transactionId, identifier, space, language, expand);
             return localVarResponse.Data;
@@ -1080,7 +1078,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Transaction</returns>
-        public Wallee.Client.ApiResponse<Transaction> PostPaymentTerminalsByIdentifierIdentifierPerformTransactionWithHttpInfo(long transactionId, string identifier, long space, string? language = default(string?), List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Transaction> PostPaymentTerminalsByIdentifierIdentifierPerformTransactionWithHttpInfo(long transactionId, string identifier, long space, string? language = default, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'identifier' is set
             if (identifier == null)
@@ -1099,6 +1097,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1130,7 +1129,7 @@ namespace Wallee.Service
             
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Transaction>("/payment/terminals/by-identifier/{identifier}/perform-transaction",
+            var localVarResponse = this.Client.Post<Transaction>("/payment/terminals/by-identifier/{identifier}/perform-transaction",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1184,6 +1183,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1205,7 +1205,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<PaymentTerminalTransactionSummaryReference>("/payment/terminals/by-identifier/{identifier}/trigger-final-balance",
+            var localVarResponse = this.Client.Post<PaymentTerminalTransactionSummaryReference>("/payment/terminals/by-identifier/{identifier}/trigger-final-balance",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1260,6 +1260,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1282,7 +1283,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Object>("/payment/terminals/{id}/link",
+            var localVarResponse = this.Client.Post<Object>("/payment/terminals/{id}/link",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1307,7 +1308,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Transaction</returns>
-        public Transaction PostPaymentTerminalsIdPerformTransaction(long id, long transactionId, long space, string? language = default(string?), List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Transaction PostPaymentTerminalsIdPerformTransaction(long id, long transactionId, long space, string? language = default, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<Transaction> localVarResponse = PostPaymentTerminalsIdPerformTransactionWithHttpInfo(id, transactionId, space, language, expand);
             return localVarResponse.Data;
@@ -1325,7 +1326,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Transaction</returns>
-        public Wallee.Client.ApiResponse<Transaction> PostPaymentTerminalsIdPerformTransactionWithHttpInfo(long id, long transactionId, long space, string? language = default(string?), List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Transaction> PostPaymentTerminalsIdPerformTransactionWithHttpInfo(long id, long transactionId, long space, string? language = default, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -1338,6 +1339,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1369,7 +1371,7 @@ namespace Wallee.Service
             
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Transaction>("/payment/terminals/{id}/perform-transaction",
+            var localVarResponse = this.Client.Post<Transaction>("/payment/terminals/{id}/perform-transaction",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1417,6 +1419,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1438,7 +1441,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<PaymentTerminalTransactionSummaryReference>("/payment/terminals/{id}/trigger-final-balance",
+            var localVarResponse = this.Client.Post<PaymentTerminalTransactionSummaryReference>("/payment/terminals/{id}/trigger-final-balance",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -1485,6 +1488,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1506,7 +1510,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<Object>("/payment/terminals/{id}/unlink",
+            var localVarResponse = this.Client.Post<Object>("/payment/terminals/{id}/unlink",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

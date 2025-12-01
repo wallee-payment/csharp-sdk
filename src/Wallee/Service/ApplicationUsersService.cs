@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -57,7 +61,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteApplicationUsersIdWithHttpInfo(long id, int operationIndex = 0);
-
         /// <summary>
         /// Deactivate an authentication key
         /// </summary>
@@ -80,7 +83,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteApplicationUsersUserIdKeysIdWithHttpInfo(long userId, long id, int operationIndex = 0);
-
         /// <summary>
         /// List all application users
         /// </summary>
@@ -92,7 +94,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApplicationUserListResponse</returns>
-        ApplicationUserListResponse GetApplicationUsers(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        ApplicationUserListResponse GetApplicationUsers(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all application users
@@ -108,8 +110,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApplicationUserListResponse</returns>
-        ApiResponse<ApplicationUserListResponse> GetApplicationUsersWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<ApplicationUserListResponse> GetApplicationUsersWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve an application user
         /// </summary>
@@ -118,7 +119,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApplicationUser</returns>
-        ApplicationUser GetApplicationUsersId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        ApplicationUser GetApplicationUsersId(long id, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve an application user
@@ -131,8 +132,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApplicationUser</returns>
-        ApiResponse<ApplicationUser> GetApplicationUsersIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<ApplicationUser> GetApplicationUsersIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search application users
         /// </summary>
@@ -144,7 +144,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApplicationUserSearchResponse</returns>
-        ApplicationUserSearchResponse GetApplicationUsersSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        ApplicationUserSearchResponse GetApplicationUsersSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search application users
@@ -160,8 +160,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApplicationUserSearchResponse</returns>
-        ApiResponse<ApplicationUserSearchResponse> GetApplicationUsersSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<ApplicationUserSearchResponse> GetApplicationUsersSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// List a user&#39;s authentication keys
         /// </summary>
@@ -182,7 +181,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of List&lt;RestApplicationUserMacKey&gt;</returns>
         ApiResponse<List<RestApplicationUserMacKey>> GetApplicationUsersUserIdKeysWithHttpInfo(long userId, int operationIndex = 0);
-
         /// <summary>
         /// Update an application user
         /// </summary>
@@ -192,7 +190,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApplicationUser</returns>
-        ApplicationUser PatchApplicationUsersId(long id, ApplicationUserUpdate applicationUserUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        ApplicationUser PatchApplicationUsersId(long id, ApplicationUserUpdate applicationUserUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update an application user
@@ -206,8 +204,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApplicationUser</returns>
-        ApiResponse<ApplicationUser> PatchApplicationUsersIdWithHttpInfo(long id, ApplicationUserUpdate applicationUserUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<ApplicationUser> PatchApplicationUsersIdWithHttpInfo(long id, ApplicationUserUpdate applicationUserUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create an application user
         /// </summary>
@@ -216,7 +213,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApplicationUserCreateWithMacKey</returns>
-        ApplicationUserCreateWithMacKey PostApplicationUsers(ApplicationUserCreate applicationUserCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        ApplicationUserCreateWithMacKey PostApplicationUsers(ApplicationUserCreate applicationUserCreate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create an application user
@@ -229,8 +226,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApplicationUserCreateWithMacKey</returns>
-        ApiResponse<ApplicationUserCreateWithMacKey> PostApplicationUsersWithHttpInfo(ApplicationUserCreate applicationUserCreate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<ApplicationUserCreateWithMacKey> PostApplicationUsersWithHttpInfo(ApplicationUserCreate applicationUserCreate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Generate a new authentication key
         /// </summary>
@@ -251,7 +247,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestApplicationUserMacKeyCreated</returns>
         ApiResponse<RestApplicationUserMacKeyCreated> PostApplicationUsersUserIdKeysWithHttpInfo(long userId, int operationIndex = 0);
-
         #endregion Synchronous Operations
     }
 
@@ -369,6 +364,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -389,7 +385,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/application-users/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/application-users/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -436,6 +432,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -457,7 +454,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/application-users/{userId}/keys/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/application-users/{userId}/keys/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -481,7 +478,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApplicationUserListResponse</returns>
-        public ApplicationUserListResponse GetApplicationUsers(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public ApplicationUserListResponse GetApplicationUsers(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ApplicationUserListResponse> localVarResponse = GetApplicationUsersWithHttpInfo(after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -498,7 +495,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApplicationUserListResponse</returns>
-        public Wallee.Client.ApiResponse<ApplicationUserListResponse> GetApplicationUsersWithHttpInfo(long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ApplicationUserListResponse> GetApplicationUsersWithHttpInfo(long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -511,6 +508,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -550,7 +548,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ApplicationUserListResponse>("/application-users",
+            var localVarResponse = this.Client.Get<ApplicationUserListResponse>("/application-users",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -571,7 +569,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApplicationUser</returns>
-        public ApplicationUser GetApplicationUsersId(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public ApplicationUser GetApplicationUsersId(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ApplicationUser> localVarResponse = GetApplicationUsersIdWithHttpInfo(id, expand);
             return localVarResponse.Data;
@@ -585,7 +583,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApplicationUser</returns>
-        public Wallee.Client.ApiResponse<ApplicationUser> GetApplicationUsersIdWithHttpInfo(long id, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ApplicationUser> GetApplicationUsersIdWithHttpInfo(long id, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -598,6 +596,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -622,7 +621,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ApplicationUser>("/application-users/{id}",
+            var localVarResponse = this.Client.Get<ApplicationUser>("/application-users/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -646,7 +645,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApplicationUserSearchResponse</returns>
-        public ApplicationUserSearchResponse GetApplicationUsersSearch(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public ApplicationUserSearchResponse GetApplicationUsersSearch(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ApplicationUserSearchResponse> localVarResponse = GetApplicationUsersSearchWithHttpInfo(expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -663,7 +662,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApplicationUserSearchResponse</returns>
-        public Wallee.Client.ApiResponse<ApplicationUserSearchResponse> GetApplicationUsersSearchWithHttpInfo(List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ApplicationUserSearchResponse> GetApplicationUsersSearchWithHttpInfo(List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -676,6 +675,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -715,7 +715,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ApplicationUserSearchResponse>("/application-users/search",
+            var localVarResponse = this.Client.Get<ApplicationUserSearchResponse>("/application-users/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -761,6 +761,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -781,7 +782,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<List<RestApplicationUserMacKey>>("/application-users/{userId}/keys",
+            var localVarResponse = this.Client.Get<List<RestApplicationUserMacKey>>("/application-users/{userId}/keys",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -803,7 +804,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApplicationUser</returns>
-        public ApplicationUser PatchApplicationUsersId(long id, ApplicationUserUpdate applicationUserUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public ApplicationUser PatchApplicationUsersId(long id, ApplicationUserUpdate applicationUserUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ApplicationUser> localVarResponse = PatchApplicationUsersIdWithHttpInfo(id, applicationUserUpdate, expand);
             return localVarResponse.Data;
@@ -818,7 +819,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApplicationUser</returns>
-        public Wallee.Client.ApiResponse<ApplicationUser> PatchApplicationUsersIdWithHttpInfo(long id, ApplicationUserUpdate applicationUserUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ApplicationUser> PatchApplicationUsersIdWithHttpInfo(long id, ApplicationUserUpdate applicationUserUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'applicationUserUpdate' is set
             if (applicationUserUpdate == null)
@@ -838,6 +839,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -863,7 +865,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<ApplicationUser>("/application-users/{id}",
+            var localVarResponse = this.Client.Patch<ApplicationUser>("/application-users/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -884,7 +886,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApplicationUserCreateWithMacKey</returns>
-        public ApplicationUserCreateWithMacKey PostApplicationUsers(ApplicationUserCreate applicationUserCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public ApplicationUserCreateWithMacKey PostApplicationUsers(ApplicationUserCreate applicationUserCreate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ApplicationUserCreateWithMacKey> localVarResponse = PostApplicationUsersWithHttpInfo(applicationUserCreate, expand);
             return localVarResponse.Data;
@@ -898,7 +900,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ApplicationUserCreateWithMacKey</returns>
-        public Wallee.Client.ApiResponse<ApplicationUserCreateWithMacKey> PostApplicationUsersWithHttpInfo(ApplicationUserCreate applicationUserCreate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ApplicationUserCreateWithMacKey> PostApplicationUsersWithHttpInfo(ApplicationUserCreate applicationUserCreate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'applicationUserCreate' is set
             if (applicationUserCreate == null)
@@ -918,6 +920,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -942,7 +945,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<ApplicationUserCreateWithMacKey>("/application-users",
+            var localVarResponse = this.Client.Post<ApplicationUserCreateWithMacKey>("/application-users",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -988,6 +991,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -1008,7 +1012,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<RestApplicationUserMacKeyCreated>("/application-users/{userId}/keys",
+            var localVarResponse = this.Client.Post<RestApplicationUserMacKeyCreated>("/application-users/{userId}/keys",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

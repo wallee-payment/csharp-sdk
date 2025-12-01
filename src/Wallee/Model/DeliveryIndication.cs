@@ -56,7 +56,7 @@ namespace Wallee.Model
         /// <param name="automaticDecisionReason">automaticDecisionReason.</param>
         /// <param name="state">state.</param>
         /// <param name="transaction">transaction.</param>
-        public DeliveryIndication(TransactionCompletion completion = default(TransactionCompletion), DeliveryIndicationDecisionReason automaticDecisionReason = default(DeliveryIndicationDecisionReason), DeliveryIndicationState? state = default(DeliveryIndicationState?), Transaction transaction = default(Transaction))
+        public DeliveryIndication(TransactionCompletion completion = default, DeliveryIndicationDecisionReason automaticDecisionReason = default, DeliveryIndicationState? state = default, Transaction transaction = default)
         {
             this.Completion = completion;
             this.AutomaticDecisionReason = automaticDecisionReason;

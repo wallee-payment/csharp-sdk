@@ -56,7 +56,7 @@ namespace Wallee.Model
         /// <param name="configurationVersion">configurationVersion.</param>
         /// <param name="locationVersion">locationVersion.</param>
         /// <param name="state">state.</param>
-        public PaymentTerminal(PaymentTerminalType type = default(PaymentTerminalType), PaymentTerminalConfigurationVersion configurationVersion = default(PaymentTerminalConfigurationVersion), PaymentTerminalLocationVersion locationVersion = default(PaymentTerminalLocationVersion), PaymentTerminalState? state = default(PaymentTerminalState?))
+        public PaymentTerminal(PaymentTerminalType type = default, PaymentTerminalConfigurationVersion configurationVersion = default, PaymentTerminalLocationVersion locationVersion = default, PaymentTerminalState? state = default)
         {
             this.Type = type;
             this.ConfigurationVersion = configurationVersion;

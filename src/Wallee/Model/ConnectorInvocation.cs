@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="ConnectorInvocation" /> class.
         /// </summary>
         /// <param name="stage">stage.</param>
-        public ConnectorInvocation(ConnectorInvocationStage? stage = default(ConnectorInvocationStage?))
+        public ConnectorInvocation(ConnectorInvocationStage? stage = default)
         {
             this.Stage = stage;
         }

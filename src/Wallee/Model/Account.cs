@@ -62,7 +62,7 @@ namespace Wallee.Model
         /// <param name="type">type.</param>
         /// <param name="scope">scope.</param>
         /// <param name="state">state.</param>
-        public Account(Account parentAccount = default(Account), AccountType? type = default(AccountType?), Scope scope = default(Scope), AccountState? state = default(AccountState?))
+        public Account(Account parentAccount = default, AccountType? type = default, Scope scope = default, AccountState? state = default)
         {
             this.ParentAccount = parentAccount;
             this.Type = type;

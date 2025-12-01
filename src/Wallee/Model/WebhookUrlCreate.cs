@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="name">The name used to identify the webhook URL..</param>
         /// <param name="state">state.</param>
         /// <param name="url">The actual URL where notifications about entity changes are sent to..</param>
-        public WebhookUrlCreate(string name = default(string), CreationEntityState? state = default(CreationEntityState?), string url = default(string))
+        public WebhookUrlCreate(string name = default, CreationEntityState? state = default, string url = default)
         {
             this.Name = name;
             this.State = state;

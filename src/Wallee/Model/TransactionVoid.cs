@@ -62,7 +62,7 @@ namespace Wallee.Model
         /// <param name="failureReason">failureReason.</param>
         /// <param name="state">state.</param>
         /// <param name="transaction">transaction.</param>
-        public TransactionVoid(TransactionVoidMode? mode = default(TransactionVoidMode?), FailureReason failureReason = default(FailureReason), TransactionVoidState? state = default(TransactionVoidState?), Transaction transaction = default(Transaction))
+        public TransactionVoid(TransactionVoidMode? mode = default, FailureReason failureReason = default, TransactionVoidState? state = default, Transaction transaction = default)
         {
             this.Mode = mode;
             this.FailureReason = failureReason;

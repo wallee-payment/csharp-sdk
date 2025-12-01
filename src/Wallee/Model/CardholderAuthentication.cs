@@ -60,7 +60,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="authenticationResponse">authenticationResponse.</param>
         /// <param name="varVersion">varVersion.</param>
-        public CardholderAuthentication(CardAuthenticationResponse? authenticationResponse = default(CardAuthenticationResponse?), CardAuthenticationVersion? varVersion = default(CardAuthenticationVersion?))
+        public CardholderAuthentication(CardAuthenticationResponse? authenticationResponse = default, CardAuthenticationVersion? varVersion = default)
         {
             this.AuthenticationResponse = authenticationResponse;
             this.VarVersion = varVersion;

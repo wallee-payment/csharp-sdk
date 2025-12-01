@@ -67,7 +67,7 @@ namespace Wallee.Model
         /// <param name="sku">The SKU (stock-keeping unit) of the product..</param>
         /// <param name="type">type (required).</param>
         /// <param name="uniqueId">The unique identifier of the line item within the set of line items. (required).</param>
-        public LineItemCreate(bool shippingRequired = default(bool), decimal quantity = default(decimal), string name = default(string), List<TaxCreate> taxes = default(List<TaxCreate>), Dictionary<string, LineItemAttributeCreate> attributes = default(Dictionary<string, LineItemAttributeCreate>), decimal amountIncludingTax = default(decimal), decimal discountIncludingTax = default(decimal), string sku = default(string), LineItemType type = default(LineItemType), string uniqueId = default(string))
+        public LineItemCreate(bool shippingRequired = default, decimal quantity = default, string name = default, List<TaxCreate> taxes = default, Dictionary<string, LineItemAttributeCreate> attributes = default, decimal amountIncludingTax = default, decimal discountIncludingTax = default, string sku = default, LineItemType type = default, string uniqueId = default)
         {
             this.Quantity = quantity;
             // to ensure "name" is required (not null)

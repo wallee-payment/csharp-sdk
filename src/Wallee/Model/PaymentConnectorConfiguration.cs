@@ -56,7 +56,7 @@ namespace Wallee.Model
         /// <param name="processorConfiguration">processorConfiguration.</param>
         /// <param name="connector">connector.</param>
         /// <param name="state">state.</param>
-        public PaymentConnectorConfiguration(PaymentMethodConfiguration paymentMethodConfiguration = default(PaymentMethodConfiguration), PaymentProcessorConfiguration processorConfiguration = default(PaymentProcessorConfiguration), PaymentConnector connector = default(PaymentConnector), CreationEntityState? state = default(CreationEntityState?))
+        public PaymentConnectorConfiguration(PaymentMethodConfiguration paymentMethodConfiguration = default, PaymentProcessorConfiguration processorConfiguration = default, PaymentConnector connector = default, CreationEntityState? state = default)
         {
             this.PaymentMethodConfiguration = paymentMethodConfiguration;
             this.ProcessorConfiguration = processorConfiguration;

@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="meteredFee">The metered fee that this tier belongs to..</param>
         /// <param name="fee">The amount charged to the customer for each consumed unit at the end of a billing cycle..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public ProductMeteredTierFeeUpdate(decimal startRange = default(decimal), long meteredFee = default(long), List<PersistableCurrencyAmountUpdate> fee = default(List<PersistableCurrencyAmountUpdate>), int varVersion = default(int))
+        public ProductMeteredTierFeeUpdate(decimal startRange = default, long meteredFee = default, List<PersistableCurrencyAmountUpdate> fee = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.StartRange = startRange;

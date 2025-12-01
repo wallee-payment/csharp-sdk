@@ -63,7 +63,7 @@ namespace Wallee.Model
         /// <param name="name">The localized name of the fee that is displayed to the customer..</param>
         /// <param name="description">The localized description of the fee that is displayed to the customer..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public ProductMeteredFeeUpdate(long component = default(long), ProductMeteredTierPricing? tierPricing = default(ProductMeteredTierPricing?), long metric = default(long), Dictionary<string, string> name = default(Dictionary<string, string>), Dictionary<string, string> description = default(Dictionary<string, string>), int varVersion = default(int))
+        public ProductMeteredFeeUpdate(long component = default, ProductMeteredTierPricing? tierPricing = default, long metric = default, Dictionary<string, string> name = default, Dictionary<string, string> description = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Component = component;

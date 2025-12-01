@@ -74,7 +74,7 @@ namespace Wallee.Model
         /// <param name="shippingAddress">shippingAddress.</param>
         /// <param name="billingAddress">billingAddress.</param>
         /// <param name="retryStrategy">retryStrategy.</param>
-        public TokenVersion(TokenVersionType type = default(TokenVersionType), PaymentConnectorConfiguration paymentConnectorConfiguration = default(PaymentConnectorConfiguration), TokenVersionState? state = default(TokenVersionState?), PaymentMethodBrand paymentMethodBrand = default(PaymentMethodBrand), Token token = default(Token), ChargeAttemptEnvironment? varEnvironment = default(ChargeAttemptEnvironment?), PaymentMethod paymentMethod = default(PaymentMethod), Address shippingAddress = default(Address), Address billingAddress = default(Address), TokenVersionRetryStrategy? retryStrategy = default(TokenVersionRetryStrategy?))
+        public TokenVersion(TokenVersionType type = default, PaymentConnectorConfiguration paymentConnectorConfiguration = default, TokenVersionState? state = default, PaymentMethodBrand paymentMethodBrand = default, Token token = default, ChargeAttemptEnvironment? varEnvironment = default, PaymentMethod paymentMethod = default, Address shippingAddress = default, Address billingAddress = default, TokenVersionRetryStrategy? retryStrategy = default)
         {
             this.Type = type;
             this.PaymentConnectorConfiguration = paymentConnectorConfiguration;

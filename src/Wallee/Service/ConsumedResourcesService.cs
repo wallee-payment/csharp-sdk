@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -44,7 +48,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>MetricUsageListResponse</returns>
-        MetricUsageListResponse GetSpacesConsumedResources(DateTime startDate, DateTime endDate, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        MetricUsageListResponse GetSpacesConsumedResources(DateTime startDate, DateTime endDate, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// List consumed resources
@@ -59,8 +63,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of MetricUsageListResponse</returns>
-        ApiResponse<MetricUsageListResponse> GetSpacesConsumedResourcesWithHttpInfo(DateTime startDate, DateTime endDate, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<MetricUsageListResponse> GetSpacesConsumedResourcesWithHttpInfo(DateTime startDate, DateTime endDate, long space, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -156,7 +159,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>MetricUsageListResponse</returns>
-        public MetricUsageListResponse GetSpacesConsumedResources(DateTime startDate, DateTime endDate, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public MetricUsageListResponse GetSpacesConsumedResources(DateTime startDate, DateTime endDate, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<MetricUsageListResponse> localVarResponse = GetSpacesConsumedResourcesWithHttpInfo(startDate, endDate, space, expand);
             return localVarResponse.Data;
@@ -172,7 +175,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of MetricUsageListResponse</returns>
-        public Wallee.Client.ApiResponse<MetricUsageListResponse> GetSpacesConsumedResourcesWithHttpInfo(DateTime startDate, DateTime endDate, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<MetricUsageListResponse> GetSpacesConsumedResourcesWithHttpInfo(DateTime startDate, DateTime endDate, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -185,6 +188,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -211,7 +215,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<MetricUsageListResponse>("/spaces/consumed-resources",
+            var localVarResponse = this.Client.Get<MetricUsageListResponse>("/spaces/consumed-resources",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

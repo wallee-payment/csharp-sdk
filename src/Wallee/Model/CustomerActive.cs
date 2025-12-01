@@ -59,7 +59,7 @@ namespace Wallee.Model
         /// <param name="customerId">The customer&#39;s ID in the merchant&#39;s system..</param>
         /// <param name="language">The language that is linked to the object..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public CustomerActive(Dictionary<string, string> metaData = default(Dictionary<string, string>), string emailAddress = default(string), string familyName = default(string), string givenName = default(string), string preferredCurrency = default(string), string customerId = default(string), string language = default(string), int varVersion = default(int))
+        public CustomerActive(Dictionary<string, string> metaData = default, string emailAddress = default, string familyName = default, string givenName = default, string preferredCurrency = default, string customerId = default, string language = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.MetaData = metaData;

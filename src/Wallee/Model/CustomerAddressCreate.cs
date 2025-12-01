@@ -60,7 +60,7 @@ namespace Wallee.Model
         /// <param name="address">address.</param>
         /// <param name="addressType">addressType.</param>
         /// <param name="customer">The customer that the object belongs to. (required).</param>
-        public CustomerAddressCreate(CustomerPostalAddressCreate address = default(CustomerPostalAddressCreate), CustomerAddressType? addressType = default(CustomerAddressType?), long customer = default(long))
+        public CustomerAddressCreate(CustomerPostalAddressCreate address = default, CustomerAddressType? addressType = default, long customer = default)
         {
             this.Customer = customer;
             this.Address = address;

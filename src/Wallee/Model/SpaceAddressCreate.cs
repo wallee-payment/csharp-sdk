@@ -61,7 +61,7 @@ namespace Wallee.Model
         /// <param name="familyName">The family or last name..</param>
         /// <param name="postalState">The name of the region, typically a state, county, province or prefecture..</param>
         /// <param name="salutation">The salutation e.g. Mrs, Mr, Dr..</param>
-        public SpaceAddressCreate(string country = default(string), string mobilePhoneNumber = default(string), string organizationName = default(string), string city = default(string), string givenName = default(string), string postcode = default(string), string salesTaxNumber = default(string), string dependentLocality = default(string), string emailAddress = default(string), string phoneNumber = default(string), string sortingCode = default(string), string street = default(string), string familyName = default(string), string postalState = default(string), string salutation = default(string))
+        public SpaceAddressCreate(string country = default, string mobilePhoneNumber = default, string organizationName = default, string city = default, string givenName = default, string postcode = default, string salesTaxNumber = default, string dependentLocality = default, string emailAddress = default, string phoneNumber = default, string sortingCode = default, string street = default, string familyName = default, string postalState = default, string salutation = default)
         {
             this.Country = country;
             this.MobilePhoneNumber = mobilePhoneNumber;

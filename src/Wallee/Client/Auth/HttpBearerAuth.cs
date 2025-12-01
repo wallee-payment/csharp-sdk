@@ -73,7 +73,7 @@ namespace Wallee.Client.Auth
                 new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.Now.ToUnixTimeSeconds().ToString(),
                     ClaimValueTypes.Integer64),
                 new Claim("requestPath", GetFullUri(path, pathParameters, queryParameters)),
-                new Claim("requestMethod", method.ToString())
+                new Claim("requestMethod", method.ToString().ToUpper())
             };
 
             var header = new JwtHeader(signingCredentials)

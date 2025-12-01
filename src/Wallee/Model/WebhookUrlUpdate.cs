@@ -61,7 +61,7 @@ namespace Wallee.Model
         /// <param name="state">state.</param>
         /// <param name="url">The actual URL where notifications about entity changes are sent to..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public WebhookUrlUpdate(string name = default(string), CreationEntityState? state = default(CreationEntityState?), string url = default(string), int varVersion = default(int))
+        public WebhookUrlUpdate(string name = default, CreationEntityState? state = default, string url = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Name = name;

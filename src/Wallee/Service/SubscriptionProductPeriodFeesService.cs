@@ -22,6 +22,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Net;
+using System.Net.Mime;
 using Wallee.Client;
 using Wallee.Model;
 
@@ -56,7 +60,6 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> DeleteSubscriptionsProductsPeriodFeesIdWithHttpInfo(long id, long space, int operationIndex = 0);
-
         /// <summary>
         /// List all period fees
         /// </summary>
@@ -69,7 +72,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductPeriodFeeListResponse</returns>
-        ProductPeriodFeeListResponse GetSubscriptionsProductsPeriodFees(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
+        ProductPeriodFeeListResponse GetSubscriptionsProductsPeriodFees(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
 
         /// <summary>
         /// List all period fees
@@ -86,8 +89,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductPeriodFeeListResponse</returns>
-        ApiResponse<ProductPeriodFeeListResponse> GetSubscriptionsProductsPeriodFeesWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0);
-
+        ApiResponse<ProductPeriodFeeListResponse> GetSubscriptionsProductsPeriodFeesWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a period fee
         /// </summary>
@@ -97,7 +99,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductPeriodFee</returns>
-        ProductPeriodFee GetSubscriptionsProductsPeriodFeesId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        ProductPeriodFee GetSubscriptionsProductsPeriodFeesId(long id, long space, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a period fee
@@ -111,8 +113,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductPeriodFee</returns>
-        ApiResponse<ProductPeriodFee> GetSubscriptionsProductsPeriodFeesIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<ProductPeriodFee> GetSubscriptionsProductsPeriodFeesIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search period fees
         /// </summary>
@@ -125,7 +126,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductPeriodFeeSearchResponse</returns>
-        ProductPeriodFeeSearchResponse GetSubscriptionsProductsPeriodFeesSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
+        ProductPeriodFeeSearchResponse GetSubscriptionsProductsPeriodFeesSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
 
         /// <summary>
         /// Search period fees
@@ -142,8 +143,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductPeriodFeeSearchResponse</returns>
-        ApiResponse<ProductPeriodFeeSearchResponse> GetSubscriptionsProductsPeriodFeesSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0);
-
+        ApiResponse<ProductPeriodFeeSearchResponse> GetSubscriptionsProductsPeriodFeesSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0);
         /// <summary>
         /// Update a period fee
         /// </summary>
@@ -154,7 +154,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductPeriodFee</returns>
-        ProductPeriodFee PatchSubscriptionsProductsPeriodFeesId(long id, long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        ProductPeriodFee PatchSubscriptionsProductsPeriodFeesId(long id, long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a period fee
@@ -169,8 +169,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductPeriodFee</returns>
-        ApiResponse<ProductPeriodFee> PatchSubscriptionsProductsPeriodFeesIdWithHttpInfo(long id, long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<ProductPeriodFee> PatchSubscriptionsProductsPeriodFeesIdWithHttpInfo(long id, long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a period fee
         /// </summary>
@@ -180,7 +179,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductPeriodFee</returns>
-        ProductPeriodFee PostSubscriptionsProductsPeriodFees(long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
+        ProductPeriodFee PostSubscriptionsProductsPeriodFees(long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a period fee
@@ -194,8 +193,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductPeriodFee</returns>
-        ApiResponse<ProductPeriodFee> PostSubscriptionsProductsPeriodFeesWithHttpInfo(long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0);
-
+        ApiResponse<ProductPeriodFee> PostSubscriptionsProductsPeriodFeesWithHttpInfo(long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -315,6 +313,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -336,7 +335,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Delete<Object>("/subscriptions/products/period-fees/{id}",
+            var localVarResponse = this.Client.Delete<Object>("/subscriptions/products/period-fees/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -361,7 +360,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductPeriodFeeListResponse</returns>
-        public ProductPeriodFeeListResponse GetSubscriptionsProductsPeriodFees(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public ProductPeriodFeeListResponse GetSubscriptionsProductsPeriodFees(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ProductPeriodFeeListResponse> localVarResponse = GetSubscriptionsProductsPeriodFeesWithHttpInfo(space, after, before, expand, limit, order);
             return localVarResponse.Data;
@@ -379,7 +378,7 @@ namespace Wallee.Service
         /// <param name="order">Specify to retrieve objects in chronological (ASC) or reverse chronological (DESC) order. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductPeriodFeeListResponse</returns>
-        public Wallee.Client.ApiResponse<ProductPeriodFeeListResponse> GetSubscriptionsProductsPeriodFeesWithHttpInfo(long space, long? after = default(long?), long? before = default(long?), List<string>? expand = default(List<string>?), int? limit = default(int?), SortingOrder? order = default(SortingOrder?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ProductPeriodFeeListResponse> GetSubscriptionsProductsPeriodFeesWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -392,6 +391,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -432,7 +432,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ProductPeriodFeeListResponse>("/subscriptions/products/period-fees",
+            var localVarResponse = this.Client.Get<ProductPeriodFeeListResponse>("/subscriptions/products/period-fees",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -454,7 +454,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductPeriodFee</returns>
-        public ProductPeriodFee GetSubscriptionsProductsPeriodFeesId(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public ProductPeriodFee GetSubscriptionsProductsPeriodFeesId(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ProductPeriodFee> localVarResponse = GetSubscriptionsProductsPeriodFeesIdWithHttpInfo(id, space, expand);
             return localVarResponse.Data;
@@ -469,7 +469,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductPeriodFee</returns>
-        public Wallee.Client.ApiResponse<ProductPeriodFee> GetSubscriptionsProductsPeriodFeesIdWithHttpInfo(long id, long space, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ProductPeriodFee> GetSubscriptionsProductsPeriodFeesIdWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -482,6 +482,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -507,7 +508,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ProductPeriodFee>("/subscriptions/products/period-fees/{id}",
+            var localVarResponse = this.Client.Get<ProductPeriodFee>("/subscriptions/products/period-fees/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -532,7 +533,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductPeriodFeeSearchResponse</returns>
-        public ProductPeriodFeeSearchResponse GetSubscriptionsProductsPeriodFeesSearch(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public ProductPeriodFeeSearchResponse GetSubscriptionsProductsPeriodFeesSearch(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ProductPeriodFeeSearchResponse> localVarResponse = GetSubscriptionsProductsPeriodFeesSearchWithHttpInfo(space, expand, limit, offset, order, query);
             return localVarResponse.Data;
@@ -550,7 +551,7 @@ namespace Wallee.Service
         /// <param name="query">The search query to filter the objects by. (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductPeriodFeeSearchResponse</returns>
-        public Wallee.Client.ApiResponse<ProductPeriodFeeSearchResponse> GetSubscriptionsProductsPeriodFeesSearchWithHttpInfo(long space, List<string>? expand = default(List<string>?), int? limit = default(int?), int? offset = default(int?), string? order = default(string?), string? query = default(string?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ProductPeriodFeeSearchResponse> GetSubscriptionsProductsPeriodFeesSearchWithHttpInfo(long space, List<string>? expand = default, int? limit = default, int? offset = default, string? order = default, string? query = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -563,6 +564,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -603,7 +605,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Get<ProductPeriodFeeSearchResponse>("/subscriptions/products/period-fees/search",
+            var localVarResponse = this.Client.Get<ProductPeriodFeeSearchResponse>("/subscriptions/products/period-fees/search",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -626,7 +628,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductPeriodFee</returns>
-        public ProductPeriodFee PatchSubscriptionsProductsPeriodFeesId(long id, long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public ProductPeriodFee PatchSubscriptionsProductsPeriodFeesId(long id, long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ProductPeriodFee> localVarResponse = PatchSubscriptionsProductsPeriodFeesIdWithHttpInfo(id, space, productPeriodFeeUpdate, expand);
             return localVarResponse.Data;
@@ -642,7 +644,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductPeriodFee</returns>
-        public Wallee.Client.ApiResponse<ProductPeriodFee> PatchSubscriptionsProductsPeriodFeesIdWithHttpInfo(long id, long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ProductPeriodFee> PatchSubscriptionsProductsPeriodFeesIdWithHttpInfo(long id, long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'productPeriodFeeUpdate' is set
             if (productPeriodFeeUpdate == null)
@@ -662,6 +664,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -688,7 +691,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Patch<ProductPeriodFee>("/subscriptions/products/period-fees/{id}",
+            var localVarResponse = this.Client.Patch<ProductPeriodFee>("/subscriptions/products/period-fees/{id}",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -710,7 +713,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ProductPeriodFee</returns>
-        public ProductPeriodFee PostSubscriptionsProductsPeriodFees(long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public ProductPeriodFee PostSubscriptionsProductsPeriodFees(long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.ApiResponse<ProductPeriodFee> localVarResponse = PostSubscriptionsProductsPeriodFeesWithHttpInfo(space, productPeriodFeeUpdate, expand);
             return localVarResponse.Data;
@@ -725,7 +728,7 @@ namespace Wallee.Service
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of ProductPeriodFee</returns>
-        public Wallee.Client.ApiResponse<ProductPeriodFee> PostSubscriptionsProductsPeriodFeesWithHttpInfo(long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default(List<string>?), int operationIndex = 0)
+        public Wallee.Client.ApiResponse<ProductPeriodFee> PostSubscriptionsProductsPeriodFeesWithHttpInfo(long space, ProductPeriodFeeUpdate productPeriodFeeUpdate, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'productPeriodFeeUpdate' is set
             if (productPeriodFeeUpdate == null)
@@ -745,6 +748,7 @@ namespace Wallee.Service
             };
 
             var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
             if (localVarContentType != null)
             {
                 localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
@@ -770,7 +774,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = Client.Post<ProductPeriodFee>("/subscriptions/products/period-fees",
+            var localVarResponse = this.Client.Post<ProductPeriodFee>("/subscriptions/products/period-fees",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {

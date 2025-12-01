@@ -58,7 +58,7 @@ namespace Wallee.Model
         /// <param name="description">A customer-facing custom description for the payment method..</param>
         /// <param name="oneClickPaymentMode">oneClickPaymentMode.</param>
         /// <param name="title">A customer-facing custom title for the payment method..</param>
-        public AbstractPaymentMethodConfigurationUpdate(string imageResourcePath = default(string), int sortOrder = default(int), string name = default(string), Dictionary<string, string> description = default(Dictionary<string, string>), OneClickPaymentMode? oneClickPaymentMode = default(OneClickPaymentMode?), Dictionary<string, string> title = default(Dictionary<string, string>))
+        public AbstractPaymentMethodConfigurationUpdate(string imageResourcePath = default, int sortOrder = default, string name = default, Dictionary<string, string> description = default, OneClickPaymentMode? oneClickPaymentMode = default, Dictionary<string, string> title = default)
         {
             this.ImageResourcePath = imageResourcePath;
             this.SortOrder = sortOrder;

@@ -69,7 +69,7 @@ namespace Wallee.Model
         /// <param name="type">type.</param>
         /// <param name="state">state.</param>
         /// <param name="transaction">transaction.</param>
-        public SubscriptionCharge(SubscriptionChargeProcessingType? processingType = default(SubscriptionChargeProcessingType?), Subscription subscription = default(Subscription), SubscriptionChargeType? type = default(SubscriptionChargeType?), SubscriptionChargeState? state = default(SubscriptionChargeState?), Transaction transaction = default(Transaction))
+        public SubscriptionCharge(SubscriptionChargeProcessingType? processingType = default, Subscription subscription = default, SubscriptionChargeType? type = default, SubscriptionChargeState? state = default, Transaction transaction = default)
         {
             this.ProcessingType = processingType;
             this.Subscription = subscription;

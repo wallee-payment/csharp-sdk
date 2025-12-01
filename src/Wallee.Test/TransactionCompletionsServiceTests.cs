@@ -64,7 +64,7 @@ public class TransactionCompletionsServiceTests
         Assert.That(processedTransaction.State, Is.EqualTo(TransactionState.FULFILL),
             "State must be FULFILL");
 
-        var transactionCompletion = transactionsService.PostPaymentTransactionsIdCompleteOffline(
+        var transactionCompletion = transactionsService.PostPaymentTransactionsIdCompleteOnline(
             transaction.Id, SPACE_ID, EMPTY_EXPAND);
 
         var readTransaction = transactionsService.GetPaymentTransactionsId(

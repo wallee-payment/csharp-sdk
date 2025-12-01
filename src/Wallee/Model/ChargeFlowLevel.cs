@@ -58,7 +58,7 @@ namespace Wallee.Model
         /// <param name="asynchronousCharge">asynchronousCharge.</param>
         /// <param name="tokenCharge">tokenCharge.</param>
         /// <param name="transaction">transaction.</param>
-        public ChargeFlowLevel(Charge synchronousCharge = default(Charge), ChargeFlowLevelConfiguration varConfiguration = default(ChargeFlowLevelConfiguration), ChargeFlowLevelState? state = default(ChargeFlowLevelState?), Charge asynchronousCharge = default(Charge), Charge tokenCharge = default(Charge), Transaction transaction = default(Transaction))
+        public ChargeFlowLevel(Charge synchronousCharge = default, ChargeFlowLevelConfiguration varConfiguration = default, ChargeFlowLevelState? state = default, Charge asynchronousCharge = default, Charge tokenCharge = default, Transaction transaction = default)
         {
             this.SynchronousCharge = synchronousCharge;
             this.VarConfiguration = varConfiguration;

@@ -68,7 +68,7 @@ namespace Wallee.Model
         /// <param name="reference">A unique reference to identify the debt collection case in communication with the debtor. (required).</param>
         /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
         /// <param name="collectorConfiguration">The configuration that the case is processed with..</param>
-        public DebtCollectionCaseCreate(List<LineItemCreate> lineItems = default(List<LineItemCreate>), DateTime contractDate = default(DateTime), DebtCollectionEnvironment? varEnvironment = default(DebtCollectionEnvironment?), DateTime dueDate = default(DateTime), string currency = default(string), string language = default(string), AddressCreate billingAddress = default(AddressCreate), long spaceViewId = default(long), string reference = default(string), string externalId = default(string), long collectorConfiguration = default(long))
+        public DebtCollectionCaseCreate(List<LineItemCreate> lineItems = default, DateTime contractDate = default, DebtCollectionEnvironment? varEnvironment = default, DateTime dueDate = default, string currency = default, string language = default, AddressCreate billingAddress = default, long spaceViewId = default, string reference = default, string externalId = default, long collectorConfiguration = default)
         {
             // to ensure "reference" is required (not null)
             if (reference == null)

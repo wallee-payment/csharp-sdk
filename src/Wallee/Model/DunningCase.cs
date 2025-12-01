@@ -55,7 +55,7 @@ namespace Wallee.Model
         /// <param name="initialInvoice">initialInvoice.</param>
         /// <param name="state">state.</param>
         /// <param name="flow">flow.</param>
-        public DunningCase(TransactionInvoice initialInvoice = default(TransactionInvoice), DunningCaseState? state = default(DunningCaseState?), DunningFlow flow = default(DunningFlow))
+        public DunningCase(TransactionInvoice initialInvoice = default, DunningCaseState? state = default, DunningFlow flow = default)
         {
             this.InitialInvoice = initialInvoice;
             this.State = state;

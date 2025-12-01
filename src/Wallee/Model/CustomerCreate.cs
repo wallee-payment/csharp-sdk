@@ -53,7 +53,7 @@ namespace Wallee.Model
         /// <param name="preferredCurrency">The customer&#39;s preferred currency..</param>
         /// <param name="customerId">The customer&#39;s ID in the merchant&#39;s system..</param>
         /// <param name="language">The language that is linked to the object..</param>
-        public CustomerCreate(Dictionary<string, string> metaData = default(Dictionary<string, string>), string emailAddress = default(string), string familyName = default(string), string givenName = default(string), string preferredCurrency = default(string), string customerId = default(string), string language = default(string))
+        public CustomerCreate(Dictionary<string, string> metaData = default, string emailAddress = default, string familyName = default, string givenName = default, string preferredCurrency = default, string customerId = default, string language = default)
         {
             this.MetaData = metaData;
             this.EmailAddress = emailAddress;

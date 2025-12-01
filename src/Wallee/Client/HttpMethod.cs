@@ -28,18 +28,18 @@ namespace Wallee.Client
     public enum HttpMethod
     {
         /// <summary>HTTP GET request.</summary>
-        GET,
+        Get,
         /// <summary>HTTP POST request.</summary>
-        POST,
+        Post,
         /// <summary>HTTP PUT request.</summary>
-        PUT,
+        Put,
         /// <summary>HTTP DELETE request.</summary>
-        DELETE,
+        Delete,
         /// <summary>HTTP HEAD request.</summary>
-        HEAD,
+        Head,
         /// <summary>HTTP OPTIONS request.</summary>
-        OPTIONS,
+        Options,
         /// <summary>HTTP PATCH request.</summary>
-        PATCH
+        Patch
     }
 }

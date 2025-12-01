@@ -54,7 +54,7 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="recurringIndicator">recurringIndicator.</param>
         /// <param name="cryptogram">cryptogram.</param>
-        public TokenizedCardData(RecurringIndicator? recurringIndicator = default(RecurringIndicator?), CardCryptogram cryptogram = default(CardCryptogram))
+        public TokenizedCardData(RecurringIndicator? recurringIndicator = default, CardCryptogram cryptogram = default)
         {
             this.RecurringIndicator = recurringIndicator;
             this.Cryptogram = cryptogram;

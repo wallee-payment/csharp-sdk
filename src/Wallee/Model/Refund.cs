@@ -69,7 +69,7 @@ namespace Wallee.Model
         /// <param name="varEnvironment">varEnvironment.</param>
         /// <param name="failureReason">failureReason.</param>
         /// <param name="transaction">transaction.</param>
-        public Refund(RefundType? type = default(RefundType?), RefundState? state = default(RefundState?), ModelEnvironment? varEnvironment = default(ModelEnvironment?), FailureReason failureReason = default(FailureReason), Transaction transaction = default(Transaction))
+        public Refund(RefundType? type = default, RefundState? state = default, ModelEnvironment? varEnvironment = default, FailureReason failureReason = default, Transaction transaction = default)
         {
             this.Type = type;
             this.State = state;

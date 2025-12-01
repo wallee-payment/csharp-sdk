@@ -30,15 +30,15 @@
     <PackageProjectUrl>https://github.com/wallee-payment/csharp-sdk</PackageProjectUrl>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
     <PackageTags>Wallee;payment;sdk;Payment Integration</PackageTags>
-    <PackageVersion>10.1.0</PackageVersion>
-    <ReleaseVersion>10.1.0</ReleaseVersion>
+    <PackageVersion>10.2.0</PackageVersion>
+    <ReleaseVersion>10.2.0</ReleaseVersion>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/wallee-payment/csharp-sdk.git</RepositoryUrl>
     <RootNamespace>Wallee</RootNamespace>
     <Summary>wallee SDK for C#</Summary>
     <SynchReleaseVersion>false</SynchReleaseVersion>
     <Title>Wallee</Title>
-    <Version>10.1.0</Version>
+    <Version>10.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>

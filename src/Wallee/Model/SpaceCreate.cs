@@ -66,7 +66,7 @@ namespace Wallee.Model
         /// <param name="primaryCurrency">The currency that is used to display aggregated amounts in the space..</param>
         /// <param name="database">The database the space is connected to and that holds the space&#39;s data..</param>
         /// <param name="account">The account that the space belongs to. (required).</param>
-        public SpaceCreate(long requestLimit = default(long), SpaceAddressCreate postalAddress = default(SpaceAddressCreate), string name = default(string), List<string> technicalContactAddresses = default(List<string>), string varTimeZone = default(string), CreationEntityState? state = default(CreationEntityState?), string primaryCurrency = default(string), long database = default(long), long account = default(long))
+        public SpaceCreate(long requestLimit = default, SpaceAddressCreate postalAddress = default, string name = default, List<string> technicalContactAddresses = default, string varTimeZone = default, CreationEntityState? state = default, string primaryCurrency = default, long database = default, long account = default)
         {
             this.Account = account;
             this.RequestLimit = requestLimit;
