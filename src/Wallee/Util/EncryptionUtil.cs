@@ -52,7 +52,7 @@ namespace Wallee.Util
             if (String.IsNullOrEmpty(signatureAlgorithm))
             {
                 throw new WalleeSdkException(
-                    ErrorCode.MISSING_WEBHOOK_ENCRYPTION_ALGORYTHM,
+                    SdkExceptionErrorCodes.MISSING_WEBHOOK_ENCRYPTION_ALGORYTHM,
                     "Webhook signature algorythm was not provided");
             }
 
@@ -62,7 +62,7 @@ namespace Wallee.Util
                         return VerifySignatureWithECDSA(content, contentSignature, publicKey);
                     default:
                         throw new WalleeSdkException(
-                            ErrorCode.UNSUPPORTED_WEBHOOK_ENCRYPTION_ALGORYTHM,
+                            SdkExceptionErrorCodes.UNSUPPORTED_WEBHOOK_ENCRYPTION_ALGORYTHM,
                             $"Unknown signature algorithm: {signatureAlgorithm}. "
                             + "This may indicate that the REST API is using a new encryption algorithm for webhooks. "
                             + "Please check whether a newer version of the SDK is available.");
@@ -82,13 +82,13 @@ namespace Wallee.Util
             catch (InvalidDataException ex)
             {
                 throw new WalleeSdkException(
-                    ErrorCode.INVALID_WEBHOOK_ENCRYPTION_CONTENT_SIGNATURE,
+                    SdkExceptionErrorCodes.INVALID_WEBHOOK_ENCRYPTION_CONTENT_SIGNATURE,
                     "Invalid content signature format: " + ex.Message);
             }
             catch (Exception ex)
             {
                 throw new WalleeSdkException(
-                    ErrorCode.WEBHOOK_ENCRYPTION_SIGNATURE_VERIFICATION_FAILED,
+                    SdkExceptionErrorCodes.WEBHOOK_ENCRYPTION_SIGNATURE_VERIFICATION_FAILED,
                     "Failed to verify ECDSA signature because: " + ex.Message);
             }
         }
@@ -103,7 +103,7 @@ namespace Wallee.Util
             catch (Exception ex)
             {
                 throw new WalleeSdkException(
-                    ErrorCode.INVALID_WEBHOOK_ENCRYPTION_PUBLIC_KEY,
+                    SdkExceptionErrorCodes.INVALID_WEBHOOK_ENCRYPTION_PUBLIC_KEY,
                     "Invalid public key: " + ex.Message);
             }
         }
@@ -117,7 +117,7 @@ namespace Wallee.Util
             catch (FormatException ex)
             {
                 throw new WalleeSdkException(
-                    ErrorCode.INVALID_WEBHOOK_ENCRYPTION_CONTENT_SIGNATURE,
+                    SdkExceptionErrorCodes.INVALID_WEBHOOK_ENCRYPTION_CONTENT_SIGNATURE,
                     "Content signature is not a valid BASE-64 string: " + ex.Message);
             }
         }

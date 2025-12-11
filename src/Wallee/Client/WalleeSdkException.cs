@@ -30,37 +30,30 @@ namespace Wallee.Client
     public class WalleeSdkException : Exception
     {
         /// <summary>
-        /// SDK-specific error code.
+        /// SDK error code.
         /// </summary>
-        public ErrorCode Code { get; }
-
-        /// <summary>
-        /// Exception message details.
-        /// </summary>
-        private readonly string _customMessage;
+        public string Code { get; }
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="code">SDK error code</param>
         /// <param name="message">Exception message details</param>
-        public WalleeSdkException(ErrorCode code, string message) : base()
+        public WalleeSdkException(string code, string message)
+            : base($"Error code: {code}. {message}")
         {
             this.Code = code;
-            this._customMessage = $"Error code: {(int)code.Code}. {message}";
         }
 
         /// <summary>
-        /// Gets the SDK error code.
+        /// Constructor.
         /// </summary>
-        public ErrorCode GetCode()
+        /// <param name="code">SdkExceptionErrorCodes error code</param>
+        /// <param name="message">Exception message details</param>
+        public WalleeSdkException(SdkExceptionErrorCodes code, string message)
+            : base($"Error code: {code.Code}. {message}")
         {
-            return this.Code;
+            this.Code = code.Code;
         }
-
-        /// <summary>
-        /// Gets the custom error message.
-        /// </summary>
-        public override string Message => this._customMessage;
     }
 }

@@ -259,7 +259,7 @@ namespace Wallee.Service
                         if (string.IsNullOrEmpty(publicKey))
                         {
                             throw new WalleeSdkException(
-                                ErrorCode.UNKNOWN_WEBHOOK_ENCRYPTION_PUBLIC_KEY,
+                                SdkExceptionErrorCodes.UNKNOWN_WEBHOOK_ENCRYPTION_PUBLIC_KEY,
                                 $"Public key not found for ID: {publicKeyId}");
                         }
 
@@ -270,7 +270,7 @@ namespace Wallee.Service
                 }
 
                 throw new WalleeSdkException(
-                    ErrorCode.INVALID_WEBHOOK_ENCRYPTION_HEADER_FORMAT,
+                    SdkExceptionErrorCodes.INVALID_WEBHOOK_ENCRYPTION_HEADER_FORMAT,
                     "Invalid webhook signature header. Expected format: 'algorithm=<algorithm>, keyId=<keyId>, signature=<signature>'");
             }
 

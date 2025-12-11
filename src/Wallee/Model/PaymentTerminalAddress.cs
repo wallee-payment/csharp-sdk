@@ -309,6 +309,12 @@ namespace Wallee.Model
                 yield return new ValidationResult("Invalid value for MobilePhoneNumber, length must be less than 100.", new [] { "MobilePhoneNumber" });
             }
 
+            // Postcode (string) maxLength
+            if (this.Postcode != null && this.Postcode.Length > 12)
+            {
+                yield return new ValidationResult("Invalid value for Postcode, length must be less than 12.", new [] { "Postcode" });
+            }
+
             // DependentLocality (string) maxLength
             if (this.DependentLocality != null && this.DependentLocality.Length > 100)
             {
@@ -316,9 +322,15 @@ namespace Wallee.Model
             }
 
             // EmailAddress (string) maxLength
-            if (this.EmailAddress != null && this.EmailAddress.Length > 254)
+            if (this.EmailAddress != null && this.EmailAddress.Length > 80)
             {
-                yield return new ValidationResult("Invalid value for EmailAddress, length must be less than 254.", new [] { "EmailAddress" });
+                yield return new ValidationResult("Invalid value for EmailAddress, length must be less than 80.", new [] { "EmailAddress" });
+            }
+
+            // PhoneNumber (string) maxLength
+            if (this.PhoneNumber != null && this.PhoneNumber.Length > 20)
+            {
+                yield return new ValidationResult("Invalid value for PhoneNumber, length must be less than 20.", new [] { "PhoneNumber" });
             }
 
             // SortingCode (string) maxLength
