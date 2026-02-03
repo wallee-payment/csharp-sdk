@@ -82,9 +82,9 @@ namespace Wallee.Model
             return false;
         }
         /// <summary>
-        /// Currency of the option
+        /// Currency code (ISO-4217) of this shipping option.
         /// </summary>
-        /// <value>Currency of the option</value>
+        /// <value>Currency code (ISO-4217) of this shipping option.</value>
         [DataMember(Name = "currency", EmitDefaultValue = false)]
         public string Currency { get; private set; }
 

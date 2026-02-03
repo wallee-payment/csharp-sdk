@@ -362,4 +362,18 @@ public class QueryingTests
             response.PaymentConnectorConfiguration.ProcessorConfiguration.LinkedSpaceId, Is.Not.EqualTo(0),
             "Items in nested response should be present");
     }
+
+    /// <summary>
+    /// Transaction search with single quote sign in query parameter.
+    /// </summary>
+    [Test]
+    public void SearchWithLimitShouldReturnCorrectResponse()
+    {
+        var transactionSearchResponse = transactionsService.GetPaymentTransactionsSearch(
+            SPACE_ID, new List<string>(), 1, 0, "", "completedOn:<'2026-01-15'");
+
+        Assert.That(transactionSearchResponse.Data, Is.Not.Null);
+        Assert.That(transactionSearchResponse.Data.Count, Is.Not.Zero);
+        Assert.That(transactionSearchResponse.Data, Is.Not.Empty);
+    }
 }

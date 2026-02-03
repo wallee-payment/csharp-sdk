@@ -48,10 +48,12 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="iframeSrc">iframeSrc.</param>
         /// <param name="session">session.</param>
-        public ExpressCheckoutCreateResponse(string iframeSrc = default, long session = default)
+        /// <param name="sessionToken">sessionToken.</param>
+        public ExpressCheckoutCreateResponse(string iframeSrc = default, long session = default, string sessionToken = default)
         {
             this.IframeSrc = iframeSrc;
             this.Session = session;
+            this.SessionToken = sessionToken;
         }
 
         /// <summary>
@@ -67,6 +69,12 @@ namespace Wallee.Model
         public long Session { get; set; }
 
         /// <summary>
+        /// Gets or Sets SessionToken
+        /// </summary>
+        [DataMember(Name = "sessionToken", EmitDefaultValue = false)]
+        public string SessionToken { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -76,6 +84,7 @@ namespace Wallee.Model
             sb.Append("class ExpressCheckoutCreateResponse {\n");
             sb.Append("  IframeSrc: ").Append(IframeSrc).Append("\n");
             sb.Append("  Session: ").Append(Session).Append("\n");
+            sb.Append("  SessionToken: ").Append(SessionToken).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

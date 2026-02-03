@@ -47,17 +47,21 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="TransactionCompletionDetails" /> class.
         /// </summary>
         /// <param name="lineItems">The line items to be captured in the transaction completion..</param>
+        /// <param name="metaData">Allow to store additional information about the object..</param>
         /// <param name="lastCompletion">Whether this is the final completion for the transaction, meaning no further completions can occur, and the transaction will move to its completed state upon success..</param>
         /// <param name="statementDescriptor">The statement descriptor that appears on a customer&#39;s bank statement, providing an explanation for charges or payments, helping customers identify the transaction..</param>
         /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result..</param>
         /// <param name="invoiceMerchantReference">The merchant&#39;s reference used to identify the invoice..</param>
-        public TransactionCompletionDetails(List<CompletionLineItemCreate> lineItems = default, bool lastCompletion = default, string statementDescriptor = default, string externalId = default, string invoiceMerchantReference = default)
+        /// <param name="id">A unique identifier for the object..</param>
+        public TransactionCompletionDetails(List<CompletionLineItemCreate> lineItems = default, Dictionary<string, string> metaData = default, bool lastCompletion = default, string statementDescriptor = default, string externalId = default, string invoiceMerchantReference = default, long id = default)
         {
             this.LineItems = lineItems;
+            this.MetaData = metaData;
             this.LastCompletion = lastCompletion;
             this.StatementDescriptor = statementDescriptor;
             this.ExternalId = externalId;
             this.InvoiceMerchantReference = invoiceMerchantReference;
+            this.Id = id;
         }
 
         /// <summary>
@@ -66,6 +70,13 @@ namespace Wallee.Model
         /// <value>The line items to be captured in the transaction completion.</value>
         [DataMember(Name = "lineItems", EmitDefaultValue = false)]
         public List<CompletionLineItemCreate> LineItems { get; set; }
+
+        /// <summary>
+        /// Allow to store additional information about the object.
+        /// </summary>
+        /// <value>Allow to store additional information about the object.</value>
+        [DataMember(Name = "metaData", EmitDefaultValue = false)]
+        public Dictionary<string, string> MetaData { get; set; }
 
         /// <summary>
         /// Whether this is the final completion for the transaction, meaning no further completions can occur, and the transaction will move to its completed state upon success.
@@ -96,6 +107,13 @@ namespace Wallee.Model
         public string InvoiceMerchantReference { get; set; }
 
         /// <summary>
+        /// A unique identifier for the object.
+        /// </summary>
+        /// <value>A unique identifier for the object.</value>
+        [DataMember(Name = "id", EmitDefaultValue = false)]
+        public long Id { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -104,10 +122,12 @@ namespace Wallee.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class TransactionCompletionDetails {\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
+            sb.Append("  MetaData: ").Append(MetaData).Append("\n");
             sb.Append("  LastCompletion: ").Append(LastCompletion).Append("\n");
             sb.Append("  StatementDescriptor: ").Append(StatementDescriptor).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  InvoiceMerchantReference: ").Append(InvoiceMerchantReference).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

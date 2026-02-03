@@ -58,13 +58,14 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="RefundCreate" /> class.
         /// </summary>
         /// <param name="completion">The transaction completion that the refund belongs to..</param>
+        /// <param name="metaData">Allow to store additional information about the object..</param>
         /// <param name="amount">The total monetary amount of the refund, representing the exact credit issued to the customer..</param>
         /// <param name="reductions">The reductions applied on the original transaction items, detailing specific adjustments associated with the refund..</param>
         /// <param name="externalId">A client-generated nonce which uniquely identifies some action to be executed. Subsequent requests with the same external ID do not execute the action again, but return the original result. (required).</param>
         /// <param name="type">type (required).</param>
         /// <param name="merchantReference">The merchant&#39;s reference used to identify the refund..</param>
         /// <param name="transaction">The transaction that the refund belongs to..</param>
-        public RefundCreate(long completion = default, decimal amount = default, List<LineItemReductionCreate> reductions = default, string externalId = default, RefundType type = default, string merchantReference = default, long transaction = default)
+        public RefundCreate(long completion = default, Dictionary<string, string> metaData = default, decimal amount = default, List<LineItemReductionCreate> reductions = default, string externalId = default, RefundType type = default, string merchantReference = default, long transaction = default)
         {
             // to ensure "externalId" is required (not null)
             if (externalId == null)
@@ -74,6 +75,7 @@ namespace Wallee.Model
             this.ExternalId = externalId;
             this.Type = type;
             this.Completion = completion;
+            this.MetaData = metaData;
             this.Amount = amount;
             this.Reductions = reductions;
             this.MerchantReference = merchantReference;
@@ -86,6 +88,13 @@ namespace Wallee.Model
         /// <value>The transaction completion that the refund belongs to.</value>
         [DataMember(Name = "completion", EmitDefaultValue = false)]
         public long Completion { get; set; }
+
+        /// <summary>
+        /// Allow to store additional information about the object.
+        /// </summary>
+        /// <value>Allow to store additional information about the object.</value>
+        [DataMember(Name = "metaData", EmitDefaultValue = false)]
+        public Dictionary<string, string> MetaData { get; set; }
 
         /// <summary>
         /// The total monetary amount of the refund, representing the exact credit issued to the customer.
@@ -131,6 +140,7 @@ namespace Wallee.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class RefundCreate {\n");
             sb.Append("  Completion: ").Append(Completion).Append("\n");
+            sb.Append("  MetaData: ").Append(MetaData).Append("\n");
             sb.Append("  Amount: ").Append(Amount).Append("\n");
             sb.Append("  Reductions: ").Append(Reductions).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");

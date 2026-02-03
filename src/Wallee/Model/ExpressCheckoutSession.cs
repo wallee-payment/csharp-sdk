@@ -53,10 +53,14 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="ExpressCheckoutSession" /> class.
         /// </summary>
         /// <param name="walletType">walletType.</param>
+        /// <param name="shippingAddress">shippingAddress.</param>
+        /// <param name="billingAddress">billingAddress.</param>
         /// <param name="state">state.</param>
-        public ExpressCheckoutSession(ExpressCheckoutWalletType walletType = default, ExpressCheckoutSessionState? state = default)
+        public ExpressCheckoutSession(ExpressCheckoutWalletType walletType = default, Address shippingAddress = default, Address billingAddress = default, ExpressCheckoutSessionState? state = default)
         {
             this.WalletType = walletType;
+            this.ShippingAddress = shippingAddress;
+            this.BillingAddress = billingAddress;
             this.State = state;
         }
 
@@ -71,6 +75,21 @@ namespace Wallee.Model
         /// </summary>
         /// <returns>false (boolean)</returns>
         public bool ShouldSerializeLineItems()
+        {
+            return false;
+        }
+        /// <summary>
+        /// The URL to fetch the shipping options from.
+        /// </summary>
+        /// <value>The URL to fetch the shipping options from.</value>
+        [DataMember(Name = "merchantShippingCallbackUrl", EmitDefaultValue = false)]
+        public string MerchantShippingCallbackUrl { get; private set; }
+
+        /// <summary>
+        /// Returns false as MerchantShippingCallbackUrl should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeMerchantShippingCallbackUrl()
         {
             return false;
         }
@@ -110,6 +129,33 @@ namespace Wallee.Model
         public ExpressCheckoutWalletType WalletType { get; set; }
 
         /// <summary>
+        /// Gets or Sets ShippingAddress
+        /// </summary>
+        [DataMember(Name = "shippingAddress", EmitDefaultValue = false)]
+        public Address ShippingAddress { get; set; }
+
+        /// <summary>
+        /// The currency of the session.
+        /// </summary>
+        /// <value>The currency of the session.</value>
+        [DataMember(Name = "currency", EmitDefaultValue = false)]
+        public string Currency { get; private set; }
+
+        /// <summary>
+        /// Returns false as Currency should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeCurrency()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets BillingAddress
+        /// </summary>
+        [DataMember(Name = "billingAddress", EmitDefaultValue = false)]
+        public Address BillingAddress { get; set; }
+
+        /// <summary>
         /// Id of the entity.
         /// </summary>
         /// <value>Id of the entity.</value>
@@ -147,9 +193,13 @@ namespace Wallee.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ExpressCheckoutSession {\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
+            sb.Append("  MerchantShippingCallbackUrl: ").Append(MerchantShippingCallbackUrl).Append("\n");
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  MetaData: ").Append(MetaData).Append("\n");
             sb.Append("  WalletType: ").Append(WalletType).Append("\n");
+            sb.Append("  ShippingAddress: ").Append(ShippingAddress).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  BillingAddress: ").Append(BillingAddress).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  ShippingOptions: ").Append(ShippingOptions).Append("\n");

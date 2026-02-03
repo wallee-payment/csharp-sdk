@@ -317,15 +317,15 @@ namespace Wallee.Model
             }
 
             // PreprodDomainName (string) maxLength
-            if (this.PreprodDomainName != null && this.PreprodDomainName.Length > 40)
+            if (this.PreprodDomainName != null && this.PreprodDomainName.Length > 100)
             {
-                yield return new ValidationResult("Invalid value for PreprodDomainName, length must be less than 40.", new [] { "PreprodDomainName" });
+                yield return new ValidationResult("Invalid value for PreprodDomainName, length must be less than 100.", new [] { "PreprodDomainName" });
             }
 
             // DomainName (string) maxLength
-            if (this.DomainName != null && this.DomainName.Length > 40)
+            if (this.DomainName != null && this.DomainName.Length > 100)
             {
-                yield return new ValidationResult("Invalid value for DomainName, length must be less than 40.", new [] { "DomainName" });
+                yield return new ValidationResult("Invalid value for DomainName, length must be less than 100.", new [] { "DomainName" });
             }
 
             // Name (string) maxLength
@@ -335,9 +335,9 @@ namespace Wallee.Model
             }
 
             // SandboxDomainName (string) maxLength
-            if (this.SandboxDomainName != null && this.SandboxDomainName.Length > 40)
+            if (this.SandboxDomainName != null && this.SandboxDomainName.Length > 100)
             {
-                yield return new ValidationResult("Invalid value for SandboxDomainName, length must be less than 40.", new [] { "SandboxDomainName" });
+                yield return new ValidationResult("Invalid value for SandboxDomainName, length must be less than 100.", new [] { "SandboxDomainName" });
             }
 
             yield break;

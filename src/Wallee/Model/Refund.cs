@@ -199,6 +199,21 @@ namespace Wallee.Model
             return false;
         }
         /// <summary>
+        /// Allow to store additional information about the object.
+        /// </summary>
+        /// <value>Allow to store additional information about the object.</value>
+        [DataMember(Name = "metaData", EmitDefaultValue = false)]
+        public Dictionary<string, string> MetaData { get; private set; }
+
+        /// <summary>
+        /// Returns false as MetaData should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeMetaData()
+        {
+            return false;
+        }
+        /// <summary>
         /// The date and time when the refund succeeded.
         /// </summary>
         /// <value>The date and time when the refund succeeded.</value>
@@ -512,6 +527,7 @@ namespace Wallee.Model
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  CreatedOn: ").Append(CreatedOn).Append("\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
+            sb.Append("  MetaData: ").Append(MetaData).Append("\n");
             sb.Append("  SucceededOn: ").Append(SucceededOn).Append("\n");
             sb.Append("  ReducedLineItems: ").Append(ReducedLineItems).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");

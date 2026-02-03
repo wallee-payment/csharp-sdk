@@ -47,10 +47,14 @@ namespace Wallee.Model
         /// Initializes a new instance of the <see cref="ExpressCheckoutSessionCreate" /> class.
         /// </summary>
         /// <param name="lineItems">lineItems.</param>
+        /// <param name="merchantShippingCallbackUrl">The URL to fetch the shipping options from..</param>
+        /// <param name="currency">The currency of the session..</param>
         /// <param name="shippingOptions">shippingOptions.</param>
-        public ExpressCheckoutSessionCreate(List<LineItem> lineItems = default, List<ExpressCheckoutShippingOption> shippingOptions = default)
+        public ExpressCheckoutSessionCreate(List<LineItem> lineItems = default, string merchantShippingCallbackUrl = default, string currency = default, List<ExpressCheckoutShippingOption> shippingOptions = default)
         {
             this.LineItems = lineItems;
+            this.MerchantShippingCallbackUrl = merchantShippingCallbackUrl;
+            this.Currency = currency;
             this.ShippingOptions = shippingOptions;
         }
 
@@ -59,6 +63,20 @@ namespace Wallee.Model
         /// </summary>
         [DataMember(Name = "lineItems", EmitDefaultValue = false)]
         public List<LineItem> LineItems { get; set; }
+
+        /// <summary>
+        /// The URL to fetch the shipping options from.
+        /// </summary>
+        /// <value>The URL to fetch the shipping options from.</value>
+        [DataMember(Name = "merchantShippingCallbackUrl", EmitDefaultValue = false)]
+        public string MerchantShippingCallbackUrl { get; set; }
+
+        /// <summary>
+        /// The currency of the session.
+        /// </summary>
+        /// <value>The currency of the session.</value>
+        [DataMember(Name = "currency", EmitDefaultValue = false)]
+        public string Currency { get; set; }
 
         /// <summary>
         /// Gets or Sets ShippingOptions
@@ -75,6 +93,8 @@ namespace Wallee.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class ExpressCheckoutSessionCreate {\n");
             sb.Append("  LineItems: ").Append(LineItems).Append("\n");
+            sb.Append("  MerchantShippingCallbackUrl: ").Append(MerchantShippingCallbackUrl).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  ShippingOptions: ").Append(ShippingOptions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

@@ -46,45 +46,18 @@ namespace Wallee.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SubscriptionUpdateRequest" /> class.
         /// </summary>
-        /// <param name="componentConfigurations">The configurations of the subscription&#39;s components..</param>
-        /// <param name="product">The product to subscribe to..</param>
-        /// <param name="currency">The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product..</param>
-        /// <param name="respectTerminationPeriod">Whether the subscriptions&#39; termination periods should be respected..</param>
-        public SubscriptionUpdateRequest(List<SubscriptionComponentReferenceConfiguration> componentConfigurations = default, long product = default, string currency = default, bool respectTerminationPeriod = default)
+        /// <param name="description">A description used to identify the subscription..</param>
+        public SubscriptionUpdateRequest(string description = default)
         {
-            this.ComponentConfigurations = componentConfigurations;
-            this.Product = product;
-            this.Currency = currency;
-            this.RespectTerminationPeriod = respectTerminationPeriod;
+            this.Description = description;
         }
 
         /// <summary>
-        /// The configurations of the subscription&#39;s components.
+        /// A description used to identify the subscription.
         /// </summary>
-        /// <value>The configurations of the subscription&#39;s components.</value>
-        [DataMember(Name = "componentConfigurations", EmitDefaultValue = false)]
-        public List<SubscriptionComponentReferenceConfiguration> ComponentConfigurations { get; set; }
-
-        /// <summary>
-        /// The product to subscribe to.
-        /// </summary>
-        /// <value>The product to subscribe to.</value>
-        [DataMember(Name = "product", EmitDefaultValue = false)]
-        public long Product { get; set; }
-
-        /// <summary>
-        /// The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.
-        /// </summary>
-        /// <value>The three-letter code (ISO 4217 format) of the currency used to invoice the customer. Must be one of the currencies supported by the product.</value>
-        [DataMember(Name = "currency", EmitDefaultValue = false)]
-        public string Currency { get; set; }
-
-        /// <summary>
-        /// Whether the subscriptions&#39; termination periods should be respected.
-        /// </summary>
-        /// <value>Whether the subscriptions&#39; termination periods should be respected.</value>
-        [DataMember(Name = "respectTerminationPeriod", EmitDefaultValue = true)]
-        public bool RespectTerminationPeriod { get; set; }
+        /// <value>A description used to identify the subscription.</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -94,10 +67,7 @@ namespace Wallee.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SubscriptionUpdateRequest {\n");
-            sb.Append("  ComponentConfigurations: ").Append(ComponentConfigurations).Append("\n");
-            sb.Append("  Product: ").Append(Product).Append("\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
-            sb.Append("  RespectTerminationPeriod: ").Append(RespectTerminationPeriod).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -118,6 +88,12 @@ namespace Wallee.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            // Description (string) maxLength
+            if (this.Description != null && this.Description.Length > 200)
+            {
+                yield return new ValidationResult("Invalid value for Description, length must be less than 200.", new [] { "Description" });
+            }
+
             yield break;
         }
     }

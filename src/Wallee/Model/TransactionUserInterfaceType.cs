@@ -74,10 +74,16 @@ namespace Wallee.Model
         TERMINAL = 5,
 
         /// <summary>
+        /// Enum CLOUDTILLINTERFACE for value: CLOUD_TILL_INTERFACE
+        /// </summary>
+        [EnumMember(Value = "CLOUD_TILL_INTERFACE")]
+        CLOUDTILLINTERFACE = 6,
+
+        /// <summary>
         /// Enum EXPRESSCHECKOUT for value: EXPRESS_CHECKOUT
         /// </summary>
         [EnumMember(Value = "EXPRESS_CHECKOUT")]
-        EXPRESSCHECKOUT = 6
+        EXPRESSCHECKOUT = 7
     }
 
 }
