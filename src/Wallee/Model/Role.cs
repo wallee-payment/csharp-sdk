@@ -106,6 +106,21 @@ namespace Wallee.Model
             return false;
         }
         /// <summary>
+        /// Additional information that describes the role.
+        /// </summary>
+        /// <value>Additional information that describes the role.</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public Dictionary<string, string> Description { get; private set; }
+
+        /// <summary>
+        /// Returns false as Description should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDescription()
+        {
+            return false;
+        }
+        /// <summary>
         /// A unique identifier for the object.
         /// </summary>
         /// <value>A unique identifier for the object.</value>
@@ -167,6 +182,7 @@ namespace Wallee.Model
             sb.Append("  Permissions: ").Append(Permissions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");

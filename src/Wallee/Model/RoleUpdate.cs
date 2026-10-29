@@ -53,13 +53,15 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="permissions">The permissions granted to users with this role..</param>
         /// <param name="name">The name used to identify the role..</param>
+        /// <param name="description">Additional information that describes the role..</param>
         /// <param name="twoFactorRequired">Whether users with this role are required to use two-factor authentication..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public RoleUpdate(List<Permission> permissions = default, Dictionary<string, string> name = default, bool twoFactorRequired = default, int varVersion = default)
+        public RoleUpdate(List<Permission> permissions = default, Dictionary<string, string> name = default, Dictionary<string, string> description = default, bool twoFactorRequired = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Permissions = permissions;
             this.Name = name;
+            this.Description = description;
             this.TwoFactorRequired = twoFactorRequired;
         }
 
@@ -76,6 +78,13 @@ namespace Wallee.Model
         /// <value>The name used to identify the role.</value>
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public Dictionary<string, string> Name { get; set; }
+
+        /// <summary>
+        /// Additional information that describes the role.
+        /// </summary>
+        /// <value>Additional information that describes the role.</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public Dictionary<string, string> Description { get; set; }
 
         /// <summary>
         /// Whether users with this role are required to use two-factor authentication.
@@ -101,6 +110,7 @@ namespace Wallee.Model
             sb.Append("class RoleUpdate {\n");
             sb.Append("  Permissions: ").Append(Permissions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  TwoFactorRequired: ").Append(TwoFactorRequired).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("}\n");

@@ -164,6 +164,21 @@ namespace Wallee.Model
             return false;
         }
         /// <summary>
+        /// Trusted external origins (e.g. merchant shops) for browser API access (CORS on /api/) and absolute target redirect URLs.
+        /// </summary>
+        /// <value>Trusted external origins (e.g. merchant shops) for browser API access (CORS on /api/) and absolute target redirect URLs.</value>
+        [DataMember(Name = "trustedExternalOrigins", EmitDefaultValue = false)]
+        public List<string> TrustedExternalOrigins { get; private set; }
+
+        /// <summary>
+        /// Returns false as TrustedExternalOrigins should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeTrustedExternalOrigins()
+        {
+            return false;
+        }
+        /// <summary>
         /// The port where the scope can be accessed.
         /// </summary>
         /// <value>The port where the scope can be accessed.</value>
@@ -268,6 +283,7 @@ namespace Wallee.Model
             sb.Append("  Url: ").Append(Url).Append("\n");
             sb.Append("  Features: ").Append(Features).Append("\n");
             sb.Append("  Themes: ").Append(Themes).Append("\n");
+            sb.Append("  TrustedExternalOrigins: ").Append(TrustedExternalOrigins).Append("\n");
             sb.Append("  Port: ").Append(Port).Append("\n");
             sb.Append("  PreprodDomainName: ").Append(PreprodDomainName).Append("\n");
             sb.Append("  DomainName: ").Append(DomainName).Append("\n");

@@ -60,15 +60,17 @@ namespace Wallee.Model
         /// <param name="component">The product component that the fee belongs to..</param>
         /// <param name="tierPricing">tierPricing.</param>
         /// <param name="metric">The metric used to determine the resource consumption billed to the customer..</param>
+        /// <param name="numberOfFreeTrialPeriods">The number of subscription billing cycles that count as a trial phase and during which no fees are charged..</param>
         /// <param name="name">The localized name of the fee that is displayed to the customer..</param>
         /// <param name="description">The localized description of the fee that is displayed to the customer..</param>
         /// <param name="varVersion">The version number indicates the version of the entity. The version is incremented whenever the entity is changed. (required).</param>
-        public ProductMeteredFeeUpdate(long component = default, ProductMeteredTierPricing? tierPricing = default, long metric = default, Dictionary<string, string> name = default, Dictionary<string, string> description = default, int varVersion = default)
+        public ProductMeteredFeeUpdate(long component = default, ProductMeteredTierPricing? tierPricing = default, long metric = default, int numberOfFreeTrialPeriods = default, Dictionary<string, string> name = default, Dictionary<string, string> description = default, int varVersion = default)
         {
             this.VarVersion = varVersion;
             this.Component = component;
             this.TierPricing = tierPricing;
             this.Metric = metric;
+            this.NumberOfFreeTrialPeriods = numberOfFreeTrialPeriods;
             this.Name = name;
             this.Description = description;
         }
@@ -86,6 +88,13 @@ namespace Wallee.Model
         /// <value>The metric used to determine the resource consumption billed to the customer.</value>
         [DataMember(Name = "metric", EmitDefaultValue = false)]
         public long Metric { get; set; }
+
+        /// <summary>
+        /// The number of subscription billing cycles that count as a trial phase and during which no fees are charged.
+        /// </summary>
+        /// <value>The number of subscription billing cycles that count as a trial phase and during which no fees are charged.</value>
+        [DataMember(Name = "numberOfFreeTrialPeriods", EmitDefaultValue = false)]
+        public int NumberOfFreeTrialPeriods { get; set; }
 
         /// <summary>
         /// The localized name of the fee that is displayed to the customer.
@@ -119,6 +128,7 @@ namespace Wallee.Model
             sb.Append("  Component: ").Append(Component).Append("\n");
             sb.Append("  TierPricing: ").Append(TierPricing).Append("\n");
             sb.Append("  Metric: ").Append(Metric).Append("\n");
+            sb.Append("  NumberOfFreeTrialPeriods: ").Append(NumberOfFreeTrialPeriods).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");

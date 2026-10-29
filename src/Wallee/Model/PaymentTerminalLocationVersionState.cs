@@ -62,16 +62,22 @@ namespace Wallee.Model
         ACTIVE = 3,
 
         /// <summary>
+        /// Enum OBSOLETE for value: OBSOLETE
+        /// </summary>
+        [EnumMember(Value = "OBSOLETE")]
+        OBSOLETE = 4,
+
+        /// <summary>
         /// Enum DELETING for value: DELETING
         /// </summary>
         [EnumMember(Value = "DELETING")]
-        DELETING = 4,
+        DELETING = 5,
 
         /// <summary>
         /// Enum DELETED for value: DELETED
         /// </summary>
         [EnumMember(Value = "DELETED")]
-        DELETED = 5
+        DELETED = 6
     }
 
 }

@@ -376,7 +376,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "order", order));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "RefundsService.GetPaymentRefunds";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -452,7 +452,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "RefundsService.GetPaymentRefundsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -522,7 +522,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "RefundsService.GetPaymentRefundsIdDocument";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -619,7 +619,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "RefundsService.GetPaymentRefundsSearch";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -701,7 +701,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = refundCreate;
 
             localVarRequestOptions.Operation = "RefundsService.PostPaymentRefunds";
@@ -778,7 +778,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "RefundsService.PostPaymentRefundsIdMarkFailed";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -854,7 +854,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "RefundsService.PostPaymentRefundsIdMarkSucceeded";
             localVarRequestOptions.OperationIndex = operationIndex;

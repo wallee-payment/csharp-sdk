@@ -368,7 +368,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("queryExternalId", Wallee.Client.ClientUtils.ParameterToString(queryExternalId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
 
             localVarRequestOptions.Operation = "AnalyticsQueriesService.DeleteAnalyticsQueriesQueryExternalIdQueryExternalId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -443,7 +443,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("queryToken", Wallee.Client.ClientUtils.ParameterToString(queryToken)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
 
             localVarRequestOptions.Operation = "AnalyticsQueriesService.DeleteAnalyticsQueriesQueryTokenQueryToken";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -516,7 +516,7 @@ namespace Wallee.Service
 
             localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
             localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
-            localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
 
             localVarRequestOptions.Operation = "AnalyticsQueriesService.GetAnalyticsQueries";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -594,7 +594,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("queryExternalId", Wallee.Client.ClientUtils.ParameterToString(queryExternalId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
 
             localVarRequestOptions.Operation = "AnalyticsQueriesService.GetAnalyticsQueriesQueryExternalIdQueryExternalId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -672,7 +672,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("queryExternalId", Wallee.Client.ClientUtils.ParameterToString(queryExternalId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
 
             localVarRequestOptions.Operation = "AnalyticsQueriesService.GetAnalyticsQueriesQueryExternalIdQueryExternalIdResult";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -750,7 +750,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("queryToken", Wallee.Client.ClientUtils.ParameterToString(queryToken)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
 
             localVarRequestOptions.Operation = "AnalyticsQueriesService.GetAnalyticsQueriesQueryTokenQueryToken";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -828,7 +828,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("queryToken", Wallee.Client.ClientUtils.ParameterToString(queryToken)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
 
             localVarRequestOptions.Operation = "AnalyticsQueriesService.GetAnalyticsQueriesQueryTokenQueryTokenResult";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -913,7 +913,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "queryExternalId", queryExternalId));
-            localVarRequestOptions.HeaderParameters.Add("Account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("account", Wallee.Client.ClientUtils.ParameterToString(account)); // header parameter
             localVarRequestOptions.Data = analyticsQueryExecutionRequest;
 
             localVarRequestOptions.Operation = "AnalyticsQueriesService.PostAnalyticsQueriesSubmit";

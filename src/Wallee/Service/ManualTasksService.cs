@@ -328,7 +328,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "order", order));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "ManualTasksService.GetManualTasks";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -404,7 +404,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "ManualTasksService.GetManualTasksId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -475,7 +475,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "ManualTasksService.GetManualTasksIdNotification";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -572,7 +572,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "ManualTasksService.GetManualTasksSearch";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -644,7 +644,7 @@ namespace Wallee.Service
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.PathParameters.Add("actionId", Wallee.Client.ClientUtils.ParameterToString(actionId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "ManualTasksService.PostManualTasksIdActionActionId";
             localVarRequestOptions.OperationIndex = operationIndex;

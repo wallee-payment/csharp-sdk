@@ -330,7 +330,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "order", order));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "DeliveryIndicationsService.GetPaymentDeliveryIndications";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -406,7 +406,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "DeliveryIndicationsService.GetPaymentDeliveryIndicationsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -503,7 +503,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "DeliveryIndicationsService.GetPaymentDeliveryIndicationsSearch";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -579,7 +579,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "DeliveryIndicationsService.PostPaymentDeliveryIndicationsIdMarkNotSuitable";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -655,7 +655,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "DeliveryIndicationsService.PostPaymentDeliveryIndicationsIdMarkSuitable";
             localVarRequestOptions.OperationIndex = operationIndex;

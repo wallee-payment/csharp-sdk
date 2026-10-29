@@ -94,6 +94,40 @@ namespace Wallee.Service
         /// <returns>ApiResponse of TerminalListResponse</returns>
         ApiResponse<TerminalListResponse> GetPaymentTerminalsWithHttpInfo(long space, long? after = default, long? before = default, List<string>? expand = default, int? limit = default, SortingOrder? order = default, int operationIndex = 0);
         /// <summary>
+        /// Search payment terminal activation status
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="activationCodeActive">Filters payment terminals that have an active activation code (optional)</param>
+        /// <param name="configurationId">Filters payment terminals by their configuration ID (optional)</param>
+        /// <param name="environment">Filters payment terminals by their environment (TEST/PRODUCTION) (optional)</param>
+        /// <param name="hasActivationCode">Filters payment terminals that have an activation code (optional)</param>
+        /// <param name="limit">A limit on the number of objects to be returned, between 1 and 100. Default is 10. (optional)</param>
+        /// <param name="locationId">Filters payment terminals by their location ID (optional)</param>
+        /// <param name="offset">A cursor for pagination, specifies the number of objects to skip. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>PaymentTerminalActivationStatusDetailSearchResponse</returns>
+        PaymentTerminalActivationStatusDetailSearchResponse GetPaymentTerminalsActivationStatus(long space, bool? activationCodeActive = default, long? configurationId = default, string? environment = default, bool? hasActivationCode = default, int? limit = default, long? locationId = default, int? offset = default, int operationIndex = 0);
+
+        /// <summary>
+        /// Search payment terminal activation status
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="activationCodeActive">Filters payment terminals that have an active activation code (optional)</param>
+        /// <param name="configurationId">Filters payment terminals by their configuration ID (optional)</param>
+        /// <param name="environment">Filters payment terminals by their environment (TEST/PRODUCTION) (optional)</param>
+        /// <param name="hasActivationCode">Filters payment terminals that have an activation code (optional)</param>
+        /// <param name="limit">A limit on the number of objects to be returned, between 1 and 100. Default is 10. (optional)</param>
+        /// <param name="locationId">Filters payment terminals by their location ID (optional)</param>
+        /// <param name="offset">A cursor for pagination, specifies the number of objects to skip. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of PaymentTerminalActivationStatusDetailSearchResponse</returns>
+        ApiResponse<PaymentTerminalActivationStatusDetailSearchResponse> GetPaymentTerminalsActivationStatusWithHttpInfo(long space, bool? activationCodeActive = default, long? configurationId = default, string? environment = default, bool? hasActivationCode = default, int? limit = default, long? locationId = default, int? offset = default, int operationIndex = 0);
+        /// <summary>
         /// Retrieve a payment terminal
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
@@ -204,11 +238,11 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="paymentTerminalCreate"></param>
+        /// <param name="paymentTerminalCreationRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentTerminal</returns>
-        PaymentTerminal PostPaymentTerminals(long space, PaymentTerminalCreate paymentTerminalCreate, List<string>? expand = default, int operationIndex = 0);
+        PaymentTerminal PostPaymentTerminals(long space, PaymentTerminalCreationRequest paymentTerminalCreationRequest, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Create a payment terminal
@@ -218,11 +252,11 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="paymentTerminalCreate"></param>
+        /// <param name="paymentTerminalCreationRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentTerminal</returns>
-        ApiResponse<PaymentTerminal> PostPaymentTerminalsWithHttpInfo(long space, PaymentTerminalCreate paymentTerminalCreate, List<string>? expand = default, int operationIndex = 0);
+        ApiResponse<PaymentTerminal> PostPaymentTerminalsWithHttpInfo(long space, PaymentTerminalCreationRequest paymentTerminalCreationRequest, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Perform a payment terminal transaction by identifier
         /// </summary>
@@ -254,6 +288,52 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> PostPaymentTerminalsByIdentifierIdentifierPerformTransactionWithHttpInfo(long transactionId, string identifier, long space, string? language = default, List<string>? expand = default, int operationIndex = 0);
+        /// <summary>
+        /// Refresh a physical terminal state by identifier
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The unique identifier of the terminal.</param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>PaymentTerminal</returns>
+        PaymentTerminal PostPaymentTerminalsByIdentifierIdentifierRefresh(string identifier, long space, List<string>? expand = default, int operationIndex = 0);
+
+        /// <summary>
+        /// Refresh a physical terminal state by identifier
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The unique identifier of the terminal.</param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of PaymentTerminal</returns>
+        ApiResponse<PaymentTerminal> PostPaymentTerminalsByIdentifierIdentifierRefreshWithHttpInfo(string identifier, long space, List<string>? expand = default, int operationIndex = 0);
+        /// <summary>
+        /// Remotely trigger the configuration by identifier
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The unique identifier of the terminal.</param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void PostPaymentTerminalsByIdentifierIdentifierTriggerConfiguration(string identifier, long space, int operationIndex = 0);
+
+        /// <summary>
+        /// Remotely trigger the configuration by identifier
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The unique identifier of the terminal.</param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> PostPaymentTerminalsByIdentifierIdentifierTriggerConfigurationWithHttpInfo(string identifier, long space, int operationIndex = 0);
         /// <summary>
         /// Remotely trigger the final balance by identifier
         /// </summary>
@@ -332,6 +412,52 @@ namespace Wallee.Service
         /// <returns>ApiResponse of Transaction</returns>
         ApiResponse<Transaction> PostPaymentTerminalsIdPerformTransactionWithHttpInfo(long id, long transactionId, long space, string? language = default, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
+        /// Refresh a physical terminal state
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>PaymentTerminal</returns>
+        PaymentTerminal PostPaymentTerminalsIdRefresh(long id, long space, List<string>? expand = default, int operationIndex = 0);
+
+        /// <summary>
+        /// Refresh a physical terminal state
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of PaymentTerminal</returns>
+        ApiResponse<PaymentTerminal> PostPaymentTerminalsIdRefreshWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0);
+        /// <summary>
+        /// Remotely trigger the configuration
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        void PostPaymentTerminalsIdTriggerConfiguration(long id, long space, int operationIndex = 0);
+
+        /// <summary>
+        /// Remotely trigger the configuration
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> PostPaymentTerminalsIdTriggerConfigurationWithHttpInfo(long id, long space, int operationIndex = 0);
+        /// <summary>
         /// Remotely trigger the final balance
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
@@ -375,6 +501,33 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> PostPaymentTerminalsIdUnlinkWithHttpInfo(long id, long space, int operationIndex = 0);
+        /// <summary>
+        /// Revert terminal transaction
+        /// </summary>
+        /// <remarks>
+        /// This function communicates with the payment terminal to cancel the authorization hold and remove the transaction from the current open batch. It must be executed before the settlement (Submission) occurs.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="transactionId"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TransactionVoid</returns>
+        TransactionVoid PostPaymentTerminalsTriggerReversal(long transactionId, long space, List<string>? expand = default, int operationIndex = 0);
+
+        /// <summary>
+        /// Revert terminal transaction
+        /// </summary>
+        /// <remarks>
+        /// This function communicates with the payment terminal to cancel the authorization hold and remove the transaction from the current open batch. It must be executed before the settlement (Submission) occurs.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="transactionId"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TransactionVoid</returns>
+        ApiResponse<TransactionVoid> PostPaymentTerminalsTriggerReversalWithHttpInfo(long transactionId, long space, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -507,7 +660,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.DeletePaymentTerminalsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -604,7 +757,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "order", order));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.GetPaymentTerminals";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -618,6 +771,115 @@ namespace Wallee.Service
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetPaymentTerminals", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Search payment terminal activation status 
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="activationCodeActive">Filters payment terminals that have an active activation code (optional)</param>
+        /// <param name="configurationId">Filters payment terminals by their configuration ID (optional)</param>
+        /// <param name="environment">Filters payment terminals by their environment (TEST/PRODUCTION) (optional)</param>
+        /// <param name="hasActivationCode">Filters payment terminals that have an activation code (optional)</param>
+        /// <param name="limit">A limit on the number of objects to be returned, between 1 and 100. Default is 10. (optional)</param>
+        /// <param name="locationId">Filters payment terminals by their location ID (optional)</param>
+        /// <param name="offset">A cursor for pagination, specifies the number of objects to skip. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>PaymentTerminalActivationStatusDetailSearchResponse</returns>
+        public PaymentTerminalActivationStatusDetailSearchResponse GetPaymentTerminalsActivationStatus(long space, bool? activationCodeActive = default, long? configurationId = default, string? environment = default, bool? hasActivationCode = default, int? limit = default, long? locationId = default, int? offset = default, int operationIndex = 0)
+        {
+            Wallee.Client.ApiResponse<PaymentTerminalActivationStatusDetailSearchResponse> localVarResponse = GetPaymentTerminalsActivationStatusWithHttpInfo(space, activationCodeActive, configurationId, environment, hasActivationCode, limit, locationId, offset);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Search payment terminal activation status 
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="activationCodeActive">Filters payment terminals that have an active activation code (optional)</param>
+        /// <param name="configurationId">Filters payment terminals by their configuration ID (optional)</param>
+        /// <param name="environment">Filters payment terminals by their environment (TEST/PRODUCTION) (optional)</param>
+        /// <param name="hasActivationCode">Filters payment terminals that have an activation code (optional)</param>
+        /// <param name="limit">A limit on the number of objects to be returned, between 1 and 100. Default is 10. (optional)</param>
+        /// <param name="locationId">Filters payment terminals by their location ID (optional)</param>
+        /// <param name="offset">A cursor for pagination, specifies the number of objects to skip. (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of PaymentTerminalActivationStatusDetailSearchResponse</returns>
+        public Wallee.Client.ApiResponse<PaymentTerminalActivationStatusDetailSearchResponse> GetPaymentTerminalsActivationStatusWithHttpInfo(long space, bool? activationCodeActive = default, long? configurationId = default, string? environment = default, bool? hasActivationCode = default, int? limit = default, long? locationId = default, int? offset = default, int operationIndex = 0)
+        {
+            Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Wallee.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            if (activationCodeActive != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "activationCodeActive", activationCodeActive));
+            }
+            if (configurationId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "configurationId", configurationId));
+            }
+            if (environment != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "environment", environment));
+            }
+            if (hasActivationCode != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "hasActivationCode", hasActivationCode));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (locationId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "locationId", locationId));
+            }
+            if (offset != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "offset", offset));
+            }
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+
+            localVarRequestOptions.Operation = "PaymentTerminalsService.GetPaymentTerminalsActivationStatus";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = Configuration.Timeout;
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<PaymentTerminalActivationStatusDetailSearchResponse>("/payment/terminals/activation-status",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPaymentTerminalsActivationStatus", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -680,7 +942,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.GetPaymentTerminalsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -760,7 +1022,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "language", language));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.GetPaymentTerminalsIdTillConnectionCredentials";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -857,7 +1119,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.GetPaymentTerminalsSearch";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -942,7 +1204,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = paymentTerminalUpdate;
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.PatchPaymentTerminalsId";
@@ -970,13 +1232,13 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="paymentTerminalCreate"></param>
+        /// <param name="paymentTerminalCreationRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>PaymentTerminal</returns>
-        public PaymentTerminal PostPaymentTerminals(long space, PaymentTerminalCreate paymentTerminalCreate, List<string>? expand = default, int operationIndex = 0)
+        public PaymentTerminal PostPaymentTerminals(long space, PaymentTerminalCreationRequest paymentTerminalCreationRequest, List<string>? expand = default, int operationIndex = 0)
         {
-            Wallee.Client.ApiResponse<PaymentTerminal> localVarResponse = PostPaymentTerminalsWithHttpInfo(space, paymentTerminalCreate, expand);
+            Wallee.Client.ApiResponse<PaymentTerminal> localVarResponse = PostPaymentTerminalsWithHttpInfo(space, paymentTerminalCreationRequest, expand);
             return localVarResponse.Data;
         }
 
@@ -985,16 +1247,16 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="paymentTerminalCreate"></param>
+        /// <param name="paymentTerminalCreationRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentTerminal</returns>
-        public Wallee.Client.ApiResponse<PaymentTerminal> PostPaymentTerminalsWithHttpInfo(long space, PaymentTerminalCreate paymentTerminalCreate, List<string>? expand = default, int operationIndex = 0)
+        public Wallee.Client.ApiResponse<PaymentTerminal> PostPaymentTerminalsWithHttpInfo(long space, PaymentTerminalCreationRequest paymentTerminalCreationRequest, List<string>? expand = default, int operationIndex = 0)
         {
-            // verify the required parameter 'paymentTerminalCreate' is set
-            if (paymentTerminalCreate == null)
+            // verify the required parameter 'paymentTerminalCreationRequest' is set
+            if (paymentTerminalCreationRequest == null)
             {
-                throw new Wallee.Client.ApiException(400, "Missing required parameter 'paymentTerminalCreate' when calling PaymentTerminalsService->PostPaymentTerminals");
+                throw new Wallee.Client.ApiException(400, "Missing required parameter 'paymentTerminalCreationRequest' when calling PaymentTerminalsService->PostPaymentTerminals");
             }
 
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
@@ -1025,8 +1287,8 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
-            localVarRequestOptions.Data = paymentTerminalCreate;
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.Data = paymentTerminalCreationRequest;
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.PostPaymentTerminals";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1119,7 +1381,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.PostPaymentTerminalsByIdentifierIdentifierPerformTransaction";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1134,6 +1396,166 @@ namespace Wallee.Service
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("PostPaymentTerminalsByIdentifierIdentifierPerformTransaction", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Refresh a physical terminal state by identifier 
+        /// Timeout for this request is: 30 seconds.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The unique identifier of the terminal.</param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>PaymentTerminal</returns>
+        public PaymentTerminal PostPaymentTerminalsByIdentifierIdentifierRefresh(string identifier, long space, List<string>? expand = default, int operationIndex = 0)
+        {
+            Wallee.Client.ApiResponse<PaymentTerminal> localVarResponse = PostPaymentTerminalsByIdentifierIdentifierRefreshWithHttpInfo(identifier, space, expand);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Refresh a physical terminal state by identifier 
+        /// Timeout for this request is: 30 seconds.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The unique identifier of the terminal.</param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of PaymentTerminal</returns>
+        public Wallee.Client.ApiResponse<PaymentTerminal> PostPaymentTerminalsByIdentifierIdentifierRefreshWithHttpInfo(string identifier, long space, List<string>? expand = default, int operationIndex = 0)
+        {
+            // verify the required parameter 'identifier' is set
+            if (identifier == null)
+            {
+                throw new Wallee.Client.ApiException(400, "Missing required parameter 'identifier' when calling PaymentTerminalsService->PostPaymentTerminalsByIdentifierIdentifierRefresh");
+            }
+
+            Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Wallee.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("identifier", Wallee.Client.ClientUtils.ParameterToString(identifier)); // path parameter
+            if (expand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
+            }
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+
+            localVarRequestOptions.Operation = "PaymentTerminalsService.PostPaymentTerminalsByIdentifierIdentifierRefresh";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = 30;
+            
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<PaymentTerminal>("/payment/terminals/by-identifier/{identifier}/refresh",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PostPaymentTerminalsByIdentifierIdentifierRefresh", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Remotely trigger the configuration by identifier 
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The unique identifier of the terminal.</param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void PostPaymentTerminalsByIdentifierIdentifierTriggerConfiguration(string identifier, long space, int operationIndex = 0)
+        {
+            PostPaymentTerminalsByIdentifierIdentifierTriggerConfigurationWithHttpInfo(identifier, space);
+        }
+
+        /// <summary>
+        /// Remotely trigger the configuration by identifier 
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="identifier">The unique identifier of the terminal.</param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Wallee.Client.ApiResponse<Object> PostPaymentTerminalsByIdentifierIdentifierTriggerConfigurationWithHttpInfo(string identifier, long space, int operationIndex = 0)
+        {
+            // verify the required parameter 'identifier' is set
+            if (identifier == null)
+            {
+                throw new Wallee.Client.ApiException(400, "Missing required parameter 'identifier' when calling PaymentTerminalsService->PostPaymentTerminalsByIdentifierIdentifierTriggerConfiguration");
+            }
+
+            Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Wallee.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("identifier", Wallee.Client.ClientUtils.ParameterToString(identifier)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+
+            localVarRequestOptions.Operation = "PaymentTerminalsService.PostPaymentTerminalsByIdentifierIdentifierTriggerConfiguration";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = Configuration.Timeout;
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<Object>("/payment/terminals/by-identifier/{identifier}/trigger-configuration",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PostPaymentTerminalsByIdentifierIdentifierTriggerConfiguration", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1196,7 +1618,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("identifier", Wallee.Client.ClientUtils.ParameterToString(identifier)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.PostPaymentTerminalsByIdentifierIdentifierTriggerFinalBalance";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1274,7 +1696,7 @@ namespace Wallee.Service
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "serialNumber", serialNumber));
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.PostPaymentTerminalsIdLink";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1361,7 +1783,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.PostPaymentTerminalsIdPerformTransaction";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1376,6 +1798,154 @@ namespace Wallee.Service
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("PostPaymentTerminalsIdPerformTransaction", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Refresh a physical terminal state 
+        /// Timeout for this request is: 30 seconds.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>PaymentTerminal</returns>
+        public PaymentTerminal PostPaymentTerminalsIdRefresh(long id, long space, List<string>? expand = default, int operationIndex = 0)
+        {
+            Wallee.Client.ApiResponse<PaymentTerminal> localVarResponse = PostPaymentTerminalsIdRefreshWithHttpInfo(id, space, expand);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Refresh a physical terminal state 
+        /// Timeout for this request is: 30 seconds.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of PaymentTerminal</returns>
+        public Wallee.Client.ApiResponse<PaymentTerminal> PostPaymentTerminalsIdRefreshWithHttpInfo(long id, long space, List<string>? expand = default, int operationIndex = 0)
+        {
+            Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Wallee.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (expand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
+            }
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+
+            localVarRequestOptions.Operation = "PaymentTerminalsService.PostPaymentTerminalsIdRefresh";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = 30;
+            
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<PaymentTerminal>("/payment/terminals/{id}/refresh",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PostPaymentTerminalsIdRefresh", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Remotely trigger the configuration 
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns></returns>
+        public void PostPaymentTerminalsIdTriggerConfiguration(long id, long space, int operationIndex = 0)
+        {
+            PostPaymentTerminalsIdTriggerConfigurationWithHttpInfo(id, space);
+        }
+
+        /// <summary>
+        /// Remotely trigger the configuration 
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Wallee.Client.ApiResponse<Object> PostPaymentTerminalsIdTriggerConfigurationWithHttpInfo(long id, long space, int operationIndex = 0)
+        {
+            Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Wallee.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+
+            localVarRequestOptions.Operation = "PaymentTerminalsService.PostPaymentTerminalsIdTriggerConfiguration";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = Configuration.Timeout;
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<Object>("/payment/terminals/{id}/trigger-configuration",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PostPaymentTerminalsIdTriggerConfiguration", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -1432,7 +2002,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.PostPaymentTerminalsIdTriggerFinalBalance";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1501,7 +2071,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentTerminalsService.PostPaymentTerminalsIdUnlink";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1515,6 +2085,85 @@ namespace Wallee.Service
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("PostPaymentTerminalsIdUnlink", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Revert terminal transaction This function communicates with the payment terminal to cancel the authorization hold and remove the transaction from the current open batch. It must be executed before the settlement (Submission) occurs.
+        /// Timeout for this request is: 90 seconds.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="transactionId"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TransactionVoid</returns>
+        public TransactionVoid PostPaymentTerminalsTriggerReversal(long transactionId, long space, List<string>? expand = default, int operationIndex = 0)
+        {
+            Wallee.Client.ApiResponse<TransactionVoid> localVarResponse = PostPaymentTerminalsTriggerReversalWithHttpInfo(transactionId, space, expand);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Revert terminal transaction This function communicates with the payment terminal to cancel the authorization hold and remove the transaction from the current open batch. It must be executed before the settlement (Submission) occurs.
+        /// Timeout for this request is: 90 seconds.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="transactionId"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TransactionVoid</returns>
+        public Wallee.Client.ApiResponse<TransactionVoid> PostPaymentTerminalsTriggerReversalWithHttpInfo(long transactionId, long space, List<string>? expand = default, int operationIndex = 0)
+        {
+            Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Wallee.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "transactionId", transactionId));
+            if (expand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
+            }
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+
+            localVarRequestOptions.Operation = "PaymentTerminalsService.PostPaymentTerminalsTriggerReversal";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = 90;
+            
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TransactionVoid>("/payment/terminals/trigger-reversal",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PostPaymentTerminalsTriggerReversal", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -53,11 +53,39 @@ namespace Wallee.Model
         }
 
         /// <summary>
+        /// Gets or Sets RequiredFeatures
+        /// </summary>
+        [DataMember(Name = "requiredFeatures", EmitDefaultValue = false)]
+        public List<Feature> RequiredFeatures { get; private set; }
+
+        /// <summary>
+        /// Returns false as RequiredFeatures should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeRequiredFeatures()
+        {
+            return false;
+        }
+        /// <summary>
         /// Gets or Sets Feature
         /// </summary>
         [DataMember(Name = "feature", EmitDefaultValue = false)]
         public Feature Feature { get; set; }
 
+        /// <summary>
+        /// Gets or Sets StandardCheckoutSupported
+        /// </summary>
+        [DataMember(Name = "standardCheckoutSupported", EmitDefaultValue = true)]
+        public bool StandardCheckoutSupported { get; private set; }
+
+        /// <summary>
+        /// Returns false as StandardCheckoutSupported should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeStandardCheckoutSupported()
+        {
+            return false;
+        }
         /// <summary>
         /// Gets or Sets SortOrder
         /// </summary>
@@ -69,6 +97,20 @@ namespace Wallee.Model
         /// </summary>
         /// <returns>false (boolean)</returns>
         public bool ShouldSerializeSortOrder()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets ExpressCheckoutSupported
+        /// </summary>
+        [DataMember(Name = "expressCheckoutSupported", EmitDefaultValue = true)]
+        public bool ExpressCheckoutSupported { get; private set; }
+
+        /// <summary>
+        /// Returns false as ExpressCheckoutSupported should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeExpressCheckoutSupported()
         {
             return false;
         }
@@ -139,8 +181,11 @@ namespace Wallee.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class WalletType {\n");
+            sb.Append("  RequiredFeatures: ").Append(RequiredFeatures).Append("\n");
             sb.Append("  Feature: ").Append(Feature).Append("\n");
+            sb.Append("  StandardCheckoutSupported: ").Append(StandardCheckoutSupported).Append("\n");
             sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
+            sb.Append("  ExpressCheckoutSupported: ").Append(ExpressCheckoutSupported).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  NavigationPath: ").Append(NavigationPath).Append("\n");

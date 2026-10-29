@@ -389,7 +389,7 @@ namespace Wallee.Service
 
             localVarRequestOptions.PathParameters.Add("invoiceId", Wallee.Client.ClientUtils.ParameterToString(invoiceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionInvoiceCommentsService.DeletePaymentTransactionsInvoicesInvoiceIdCommentsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -489,7 +489,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "order", order));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionInvoiceCommentsService.GetPaymentTransactionsInvoicesInvoiceIdComments";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -568,7 +568,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionInvoiceCommentsService.GetPaymentTransactionsInvoicesInvoiceIdCommentsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -668,7 +668,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionInvoiceCommentsService.GetPaymentTransactionsInvoicesInvoiceIdCommentsSearch";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -756,7 +756,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = transactionInvoiceCommentActive;
 
             localVarRequestOptions.Operation = "TransactionInvoiceCommentsService.PatchPaymentTransactionsInvoicesInvoiceIdCommentsId";
@@ -842,7 +842,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = transactionInvoiceCommentCreate;
 
             localVarRequestOptions.Operation = "TransactionInvoiceCommentsService.PostPaymentTransactionsInvoicesInvoiceIdComments";
@@ -915,7 +915,7 @@ namespace Wallee.Service
 
             localVarRequestOptions.PathParameters.Add("invoiceId", Wallee.Client.ClientUtils.ParameterToString(invoiceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionInvoiceCommentsService.PostPaymentTransactionsInvoicesInvoiceIdCommentsIdPin";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -987,7 +987,7 @@ namespace Wallee.Service
 
             localVarRequestOptions.PathParameters.Add("invoiceId", Wallee.Client.ClientUtils.ParameterToString(invoiceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionInvoiceCommentsService.PostPaymentTransactionsInvoicesInvoiceIdCommentsIdUnpin";
             localVarRequestOptions.OperationIndex = operationIndex;

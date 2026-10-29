@@ -98,6 +98,21 @@ namespace Wallee.Model
         public SubscriptionMetric Metric { get; set; }
 
         /// <summary>
+        /// The number of subscription billing cycles that count as a trial phase and during which no fees are charged.
+        /// </summary>
+        /// <value>The number of subscription billing cycles that count as a trial phase and during which no fees are charged.</value>
+        [DataMember(Name = "numberOfFreeTrialPeriods", EmitDefaultValue = false)]
+        public int NumberOfFreeTrialPeriods { get; private set; }
+
+        /// <summary>
+        /// Returns false as NumberOfFreeTrialPeriods should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeNumberOfFreeTrialPeriods()
+        {
+            return false;
+        }
+        /// <summary>
         /// The localized name of the fee that is displayed to the customer.
         /// </summary>
         /// <value>The localized name of the fee that is displayed to the customer.</value>
@@ -169,6 +184,7 @@ namespace Wallee.Model
             sb.Append("  Component: ").Append(Component).Append("\n");
             sb.Append("  TierPricing: ").Append(TierPricing).Append("\n");
             sb.Append("  Metric: ").Append(Metric).Append("\n");
+            sb.Append("  NumberOfFreeTrialPeriods: ").Append(NumberOfFreeTrialPeriods).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");

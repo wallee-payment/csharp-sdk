@@ -38,113 +38,22 @@ using OpenAPIDateConverter = Wallee.Client.OpenAPIDateConverter;
 namespace Wallee.Model
 {
     /// <summary>
-    /// SalesChannel
+    /// Defines SalesChannel
     /// </summary>
-    [DataContract(Name = "SalesChannel")]
-    public partial class SalesChannel : IValidatableObject
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum SalesChannel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SalesChannel" /> class.
+        /// Enum TERMINAL for value: TERMINAL
         /// </summary>
-        [JsonConstructorAttribute]
-        public SalesChannel()
-        {
-        }
+        [EnumMember(Value = "TERMINAL")]
+        TERMINAL = 1,
 
         /// <summary>
-        /// When listing sales channels, they can be sorted by this number.
+        /// Enum ECOMMERCE for value: ECOMMERCE
         /// </summary>
-        /// <value>When listing sales channels, they can be sorted by this number.</value>
-        [DataMember(Name = "sortOrder", EmitDefaultValue = false)]
-        public int SortOrder { get; private set; }
-
-        /// <summary>
-        /// Returns false as SortOrder should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeSortOrder()
-        {
-            return false;
-        }
-        /// <summary>
-        /// The localized name of the object.
-        /// </summary>
-        /// <value>The localized name of the object.</value>
-        [DataMember(Name = "name", EmitDefaultValue = false)]
-        public Dictionary<string, string> Name { get; private set; }
-
-        /// <summary>
-        /// Returns false as Name should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeName()
-        {
-            return false;
-        }
-        /// <summary>
-        /// The localized description of the object.
-        /// </summary>
-        /// <value>The localized description of the object.</value>
-        [DataMember(Name = "description", EmitDefaultValue = false)]
-        public Dictionary<string, string> Description { get; private set; }
-
-        /// <summary>
-        /// Returns false as Description should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeDescription()
-        {
-            return false;
-        }
-        /// <summary>
-        /// A unique identifier for the object.
-        /// </summary>
-        /// <value>A unique identifier for the object.</value>
-        [DataMember(Name = "id", EmitDefaultValue = false)]
-        public long Id { get; private set; }
-
-        /// <summary>
-        /// Returns false as Id should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeId()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Returns the string presentation of the object
-        /// </summary>
-        /// <returns>String presentation of the object</returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("class SalesChannel {\n");
-            sb.Append("  SortOrder: ").Append(SortOrder).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("}\n");
-            return sb.ToString();
-        }
-
-        /// <summary>
-        /// Returns the JSON string presentation of the object
-        /// </summary>
-        /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
-        }
-
-        /// <summary>
-        /// To validate all properties of the instance
-        /// </summary>
-        /// <param name="validationContext">Validation context</param>
-        /// <returns>Validation Result</returns>
-        IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
-        {
-            yield break;
-        }
+        [EnumMember(Value = "ECOMMERCE")]
+        ECOMMERCE = 2
     }
 
 }

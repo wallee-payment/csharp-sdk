@@ -74,8 +74,9 @@ namespace Wallee.Model
             return false;
         }
         /// <summary>
-        /// Gets or Sets ProductionMerchantId
+        /// The production merchant identifier assigned to the location.
         /// </summary>
+        /// <value>The production merchant identifier assigned to the location.</value>
         [DataMember(Name = "productionMerchantId", EmitDefaultValue = false)]
         public string ProductionMerchantId { get; private set; }
 

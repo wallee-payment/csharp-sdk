@@ -48,11 +48,13 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="permissions">The permissions granted to users with this role..</param>
         /// <param name="name">The name used to identify the role..</param>
+        /// <param name="description">Additional information that describes the role..</param>
         /// <param name="twoFactorRequired">Whether users with this role are required to use two-factor authentication..</param>
-        public AbstractRoleUpdate(List<Permission> permissions = default, Dictionary<string, string> name = default, bool twoFactorRequired = default)
+        public AbstractRoleUpdate(List<Permission> permissions = default, Dictionary<string, string> name = default, Dictionary<string, string> description = default, bool twoFactorRequired = default)
         {
             this.Permissions = permissions;
             this.Name = name;
+            this.Description = description;
             this.TwoFactorRequired = twoFactorRequired;
         }
 
@@ -71,6 +73,13 @@ namespace Wallee.Model
         public Dictionary<string, string> Name { get; set; }
 
         /// <summary>
+        /// Additional information that describes the role.
+        /// </summary>
+        /// <value>Additional information that describes the role.</value>
+        [DataMember(Name = "description", EmitDefaultValue = false)]
+        public Dictionary<string, string> Description { get; set; }
+
+        /// <summary>
         /// Whether users with this role are required to use two-factor authentication.
         /// </summary>
         /// <value>Whether users with this role are required to use two-factor authentication.</value>
@@ -87,6 +96,7 @@ namespace Wallee.Model
             sb.Append("class AbstractRoleUpdate {\n");
             sb.Append("  Permissions: ").Append(Permissions).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  TwoFactorRequired: ").Append(TwoFactorRequired).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

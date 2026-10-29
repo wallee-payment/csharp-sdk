@@ -85,9 +85,10 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="countryCode"></param>
+        /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>List&lt;RestCountryState&gt;</returns>
-        List<RestCountryState> GetCountriesCountryCodeStates(string countryCode, int operationIndex = 0);
+        /// <returns>StateListResponse</returns>
+        StateListResponse GetCountriesCountryCodeStates(string countryCode, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// List all states for a country
@@ -97,9 +98,10 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="countryCode"></param>
+        /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of List&lt;RestCountryState&gt;</returns>
-        ApiResponse<List<RestCountryState>> GetCountriesCountryCodeStatesWithHttpInfo(string countryCode, int operationIndex = 0);
+        /// <returns>ApiResponse of StateListResponse</returns>
+        ApiResponse<StateListResponse> GetCountriesCountryCodeStatesWithHttpInfo(string countryCode, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Search countries
         /// </summary>
@@ -132,9 +134,10 @@ namespace Wallee.Service
         /// List all country states
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>List&lt;RestCountryState&gt;</returns>
-        List<RestCountryState> GetCountriesStates(int operationIndex = 0);
+        /// <returns>StateListResponse</returns>
+        StateListResponse GetCountriesStates(List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// List all country states
@@ -143,17 +146,19 @@ namespace Wallee.Service
         /// 
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of List&lt;RestCountryState&gt;</returns>
-        ApiResponse<List<RestCountryState>> GetCountriesStatesWithHttpInfo(int operationIndex = 0);
+        /// <returns>ApiResponse of StateListResponse</returns>
+        ApiResponse<StateListResponse> GetCountriesStatesWithHttpInfo(List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Retrieve a country state
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestCountryState</returns>
-        RestCountryState GetCountriesStatesId(string id, int operationIndex = 0);
+        RestCountryState GetCountriesStatesId(string id, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Retrieve a country state
@@ -163,9 +168,10 @@ namespace Wallee.Service
         /// </remarks>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestCountryState</returns>
-        ApiResponse<RestCountryState> GetCountriesStatesIdWithHttpInfo(string id, int operationIndex = 0);
+        ApiResponse<RestCountryState> GetCountriesStatesIdWithHttpInfo(string id, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -405,11 +411,12 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="countryCode"></param>
+        /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>List&lt;RestCountryState&gt;</returns>
-        public List<RestCountryState> GetCountriesCountryCodeStates(string countryCode, int operationIndex = 0)
+        /// <returns>StateListResponse</returns>
+        public StateListResponse GetCountriesCountryCodeStates(string countryCode, List<string>? expand = default, int operationIndex = 0)
         {
-            Wallee.Client.ApiResponse<List<RestCountryState>> localVarResponse = GetCountriesCountryCodeStatesWithHttpInfo(countryCode);
+            Wallee.Client.ApiResponse<StateListResponse> localVarResponse = GetCountriesCountryCodeStatesWithHttpInfo(countryCode, expand);
             return localVarResponse.Data;
         }
 
@@ -418,9 +425,10 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="countryCode"></param>
+        /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of List&lt;RestCountryState&gt;</returns>
-        public Wallee.Client.ApiResponse<List<RestCountryState>> GetCountriesCountryCodeStatesWithHttpInfo(string countryCode, int operationIndex = 0)
+        /// <returns>ApiResponse of StateListResponse</returns>
+        public Wallee.Client.ApiResponse<StateListResponse> GetCountriesCountryCodeStatesWithHttpInfo(string countryCode, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'countryCode' is set
             if (countryCode == null)
@@ -452,6 +460,10 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("countryCode", Wallee.Client.ClientUtils.ParameterToString(countryCode)); // path parameter
+            if (expand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
+            }
 
             localVarRequestOptions.Operation = "CountriesService.GetCountriesCountryCodeStates";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -460,7 +472,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<List<RestCountryState>>("/countries/{countryCode}/states",
+            var localVarResponse = this.Client.Get<StateListResponse>("/countries/{countryCode}/states",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -571,11 +583,12 @@ namespace Wallee.Service
         /// List all country states 
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>List&lt;RestCountryState&gt;</returns>
-        public List<RestCountryState> GetCountriesStates(int operationIndex = 0)
+        /// <returns>StateListResponse</returns>
+        public StateListResponse GetCountriesStates(List<string>? expand = default, int operationIndex = 0)
         {
-            Wallee.Client.ApiResponse<List<RestCountryState>> localVarResponse = GetCountriesStatesWithHttpInfo();
+            Wallee.Client.ApiResponse<StateListResponse> localVarResponse = GetCountriesStatesWithHttpInfo(expand);
             return localVarResponse.Data;
         }
 
@@ -583,9 +596,10 @@ namespace Wallee.Service
         /// List all country states 
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
-        /// <returns>ApiResponse of List&lt;RestCountryState&gt;</returns>
-        public Wallee.Client.ApiResponse<List<RestCountryState>> GetCountriesStatesWithHttpInfo(int operationIndex = 0)
+        /// <returns>ApiResponse of StateListResponse</returns>
+        public Wallee.Client.ApiResponse<StateListResponse> GetCountriesStatesWithHttpInfo(List<string>? expand = default, int operationIndex = 0)
         {
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
 
@@ -610,6 +624,10 @@ namespace Wallee.Service
                 localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
             }
 
+            if (expand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
+            }
 
             localVarRequestOptions.Operation = "CountriesService.GetCountriesStates";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -618,7 +636,7 @@ namespace Wallee.Service
             var requestTimeout = Configuration.Timeout;
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<List<RestCountryState>>("/countries/states",
+            var localVarResponse = this.Client.Get<StateListResponse>("/countries/states",
                 localVarRequestOptions, requestTimeout, Configuration);
             if (this.ExceptionFactory != null)
             {
@@ -636,11 +654,12 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>RestCountryState</returns>
-        public RestCountryState GetCountriesStatesId(string id, int operationIndex = 0)
+        public RestCountryState GetCountriesStatesId(string id, List<string>? expand = default, int operationIndex = 0)
         {
-            Wallee.Client.ApiResponse<RestCountryState> localVarResponse = GetCountriesStatesIdWithHttpInfo(id);
+            Wallee.Client.ApiResponse<RestCountryState> localVarResponse = GetCountriesStatesIdWithHttpInfo(id, expand);
             return localVarResponse.Data;
         }
 
@@ -649,9 +668,10 @@ namespace Wallee.Service
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
+        /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of RestCountryState</returns>
-        public Wallee.Client.ApiResponse<RestCountryState> GetCountriesStatesIdWithHttpInfo(string id, int operationIndex = 0)
+        public Wallee.Client.ApiResponse<RestCountryState> GetCountriesStatesIdWithHttpInfo(string id, List<string>? expand = default, int operationIndex = 0)
         {
             // verify the required parameter 'id' is set
             if (id == null)
@@ -683,6 +703,10 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
+            if (expand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
+            }
 
             localVarRequestOptions.Operation = "CountriesService.GetCountriesStatesId";
             localVarRequestOptions.OperationIndex = operationIndex;

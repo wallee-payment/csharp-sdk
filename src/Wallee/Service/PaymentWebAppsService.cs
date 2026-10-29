@@ -468,7 +468,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("connectorExternalId", Wallee.Client.ClientUtils.ParameterToString(connectorExternalId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentWebAppsService.DeletePaymentWebAppsConnectorsConnectorExternalId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -543,7 +543,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("externalId", Wallee.Client.ClientUtils.ParameterToString(externalId)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentWebAppsService.DeletePaymentWebAppsProcessorsExternalId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -628,7 +628,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = paymentAppChargeAttemptUpdate;
 
             localVarRequestOptions.Operation = "PaymentWebAppsService.PatchPaymentWebAppsChargeAttemptsId";
@@ -714,7 +714,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = paymentAppCompletionUpdate;
 
             localVarRequestOptions.Operation = "PaymentWebAppsService.PatchPaymentWebAppsCompletionsId";
@@ -806,7 +806,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = paymentAppConnectorDetails;
 
             localVarRequestOptions.Operation = "PaymentWebAppsService.PatchPaymentWebAppsConnectorsConnectorExternalId";
@@ -898,7 +898,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = paymentAppProcessorDetails;
 
             localVarRequestOptions.Operation = "PaymentWebAppsService.PatchPaymentWebAppsProcessorsExternalId";
@@ -984,7 +984,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = paymentAppRefundUpdate;
 
             localVarRequestOptions.Operation = "PaymentWebAppsService.PatchPaymentWebAppsRefundsId";
@@ -1070,7 +1070,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = paymentAppVoidUpdate;
 
             localVarRequestOptions.Operation = "PaymentWebAppsService.PatchPaymentWebAppsVoidsId";
@@ -1153,7 +1153,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = paymentAppProcessorDetailsCreate;
 
             localVarRequestOptions.Operation = "PaymentWebAppsService.PostPaymentWebAppsProcessors";
@@ -1236,7 +1236,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentWebAppsService.PostPaymentWebAppsProcessorsExternalIdActivateForProduction";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1327,7 +1327,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = paymentAppConnectorDetailsCreate;
 
             localVarRequestOptions.Operation = "PaymentWebAppsService.PostPaymentWebAppsProcessorsExternalIdConnectors";

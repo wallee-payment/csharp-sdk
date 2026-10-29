@@ -80,6 +80,20 @@ namespace Wallee.Model
             return false;
         }
         /// <summary>
+        /// Gets or Sets DeactivatedOn
+        /// </summary>
+        [DataMember(Name = "deactivatedOn", EmitDefaultValue = false)]
+        public DateTime DeactivatedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as DeactivatedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDeactivatedOn()
+        {
+            return false;
+        }
+        /// <summary>
         /// The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.
         /// </summary>
         /// <value>The date and time when the object is planned to be permanently removed. If the value is empty, the object will not be removed.</value>
@@ -188,6 +202,34 @@ namespace Wallee.Model
         public PaymentTerminalLocationVersion LocationVersion { get; set; }
 
         /// <summary>
+        /// Gets or Sets ActivatedOn
+        /// </summary>
+        [DataMember(Name = "activatedOn", EmitDefaultValue = false)]
+        public DateTime ActivatedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as ActivatedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeActivatedOn()
+        {
+            return false;
+        }
+        /// <summary>
+        /// Gets or Sets DecommissionedOn
+        /// </summary>
+        [DataMember(Name = "decommissionedOn", EmitDefaultValue = false)]
+        public DateTime DecommissionedOn { get; private set; }
+
+        /// <summary>
+        /// Returns false as DecommissionedOn should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeDecommissionedOn()
+        {
+            return false;
+        }
+        /// <summary>
         /// The default currency of the terminal.
         /// </summary>
         /// <value>The default currency of the terminal.</value>
@@ -218,6 +260,20 @@ namespace Wallee.Model
             return false;
         }
         /// <summary>
+        /// Gets or Sets ActivationCode
+        /// </summary>
+        [DataMember(Name = "activationCode", EmitDefaultValue = false)]
+        public string ActivationCode { get; private set; }
+
+        /// <summary>
+        /// Returns false as ActivationCode should not be serialized given that it's read-only.
+        /// </summary>
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeActivationCode()
+        {
+            return false;
+        }
+        /// <summary>
         /// A unique identifier for the object.
         /// </summary>
         /// <value>A unique identifier for the object.</value>
@@ -241,6 +297,7 @@ namespace Wallee.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class PaymentTerminal {\n");
             sb.Append("  Identifier: ").Append(Identifier).Append("\n");
+            sb.Append("  DeactivatedOn: ").Append(DeactivatedOn).Append("\n");
             sb.Append("  PlannedPurgeDate: ").Append(PlannedPurgeDate).Append("\n");
             sb.Append("  ExternalId: ").Append(ExternalId).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
@@ -250,8 +307,11 @@ namespace Wallee.Model
             sb.Append("  LinkedSpaceId: ").Append(LinkedSpaceId).Append("\n");
             sb.Append("  ConfigurationVersion: ").Append(ConfigurationVersion).Append("\n");
             sb.Append("  LocationVersion: ").Append(LocationVersion).Append("\n");
+            sb.Append("  ActivatedOn: ").Append(ActivatedOn).Append("\n");
+            sb.Append("  DecommissionedOn: ").Append(DecommissionedOn).Append("\n");
             sb.Append("  DefaultCurrency: ").Append(DefaultCurrency).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ActivationCode: ").Append(ActivationCode).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("}\n");

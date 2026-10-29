@@ -69,10 +69,11 @@ namespace Wallee.Model
         /// <param name="cardVerificationCode">The security code used to validate the card during transactions..</param>
         /// <param name="primaryAccountNumber">The card&#39;s primary account number (PAN), the unique identifier of the card. (required).</param>
         /// <param name="recurringIndicator">recurringIndicator.</param>
+        /// <param name="transactionLinkIdentifier">A reference specific to linking card transaction lifecycle events within the payment scheme..</param>
         /// <param name="schemeTransactionReference">A reference specific to the card&#39;s transaction within its payment scheme..</param>
         /// <param name="tokenRequestorId">The token requestor identifier (TRID) identifies the entity requesting tokenization for a card transaction..</param>
         /// <param name="cryptogram">cryptogram.</param>
-        public TokenizedCardDataCreate(string expiryDate = default, PanType? panType = default, string cardHolderName = default, string cardVerificationCode = default, string primaryAccountNumber = default, RecurringIndicator? recurringIndicator = default, string schemeTransactionReference = default, string tokenRequestorId = default, CardCryptogramCreate cryptogram = default)
+        public TokenizedCardDataCreate(string expiryDate = default, PanType? panType = default, string cardHolderName = default, string cardVerificationCode = default, string primaryAccountNumber = default, RecurringIndicator? recurringIndicator = default, string transactionLinkIdentifier = default, string schemeTransactionReference = default, string tokenRequestorId = default, CardCryptogramCreate cryptogram = default)
         {
             // to ensure "primaryAccountNumber" is required (not null)
             if (primaryAccountNumber == null)
@@ -85,6 +86,7 @@ namespace Wallee.Model
             this.CardHolderName = cardHolderName;
             this.CardVerificationCode = cardVerificationCode;
             this.RecurringIndicator = recurringIndicator;
+            this.TransactionLinkIdentifier = transactionLinkIdentifier;
             this.SchemeTransactionReference = schemeTransactionReference;
             this.TokenRequestorId = tokenRequestorId;
             this.Cryptogram = cryptogram;
@@ -117,6 +119,13 @@ namespace Wallee.Model
         /// <value>The card&#39;s primary account number (PAN), the unique identifier of the card.</value>
         [DataMember(Name = "primaryAccountNumber", IsRequired = true, EmitDefaultValue = true)]
         public string PrimaryAccountNumber { get; set; }
+
+        /// <summary>
+        /// A reference specific to linking card transaction lifecycle events within the payment scheme.
+        /// </summary>
+        /// <value>A reference specific to linking card transaction lifecycle events within the payment scheme.</value>
+        [DataMember(Name = "transactionLinkIdentifier", EmitDefaultValue = false)]
+        public string TransactionLinkIdentifier { get; set; }
 
         /// <summary>
         /// A reference specific to the card&#39;s transaction within its payment scheme.
@@ -152,6 +161,7 @@ namespace Wallee.Model
             sb.Append("  CardVerificationCode: ").Append(CardVerificationCode).Append("\n");
             sb.Append("  PrimaryAccountNumber: ").Append(PrimaryAccountNumber).Append("\n");
             sb.Append("  RecurringIndicator: ").Append(RecurringIndicator).Append("\n");
+            sb.Append("  TransactionLinkIdentifier: ").Append(TransactionLinkIdentifier).Append("\n");
             sb.Append("  SchemeTransactionReference: ").Append(SchemeTransactionReference).Append("\n");
             sb.Append("  TokenRequestorId: ").Append(TokenRequestorId).Append("\n");
             sb.Append("  Cryptogram: ").Append(Cryptogram).Append("\n");
@@ -230,6 +240,12 @@ namespace Wallee.Model
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for PrimaryAccountNumber, must match a pattern of " + regexPrimaryAccountNumber, new [] { "PrimaryAccountNumber" });
                 }
+            }
+
+            // TransactionLinkIdentifier (string) maxLength
+            if (this.TransactionLinkIdentifier != null && this.TransactionLinkIdentifier.Length > 100)
+            {
+                yield return new ValidationResult("Invalid value for TransactionLinkIdentifier, length must be less than 100.", new [] { "TransactionLinkIdentifier" });
             }
 
             // SchemeTransactionReference (string) maxLength

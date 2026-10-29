@@ -197,6 +197,32 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of PaymentProcessorConfiguration</returns>
         ApiResponse<PaymentProcessorConfiguration> PostPaymentProcessorConfigurationsWithHttpInfo(long space, PaymentProcessorConfigurationCreate paymentProcessorConfigurationCreate, List<string>? expand = default, int operationIndex = 0);
+        /// <summary>
+        /// Link a contract with a payment processor configuration
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="contractId">The contract to link with the payment processor configuration.</param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>PaymentProcessorConfiguration</returns>
+        PaymentProcessorConfiguration PostPaymentProcessorConfigurationsIdLinkContract(long id, long contractId, long space, List<string>? expand = default, int operationIndex = 0);
+
+        /// <summary>
+        /// Link a contract with a payment processor configuration
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="contractId">The contract to link with the payment processor configuration.</param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of PaymentProcessorConfiguration</returns>
+        ApiResponse<PaymentProcessorConfiguration> PostPaymentProcessorConfigurationsIdLinkContractWithHttpInfo(long id, long contractId, long space, List<string>? expand = default, int operationIndex = 0);
         #endregion Synchronous Operations
     }
 
@@ -329,7 +355,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentProcessorConfigurationsService.DeletePaymentProcessorConfigurationsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -426,7 +452,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "order", order));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentProcessorConfigurationsService.GetPaymentProcessorConfigurations";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -502,7 +528,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentProcessorConfigurationsService.GetPaymentProcessorConfigurationsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -599,7 +625,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "PaymentProcessorConfigurationsService.GetPaymentProcessorConfigurationsSearch";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -684,7 +710,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = paymentProcessorConfigurationActive;
 
             localVarRequestOptions.Operation = "PaymentProcessorConfigurationsService.PatchPaymentProcessorConfigurationsId";
@@ -767,7 +793,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = paymentProcessorConfigurationCreate;
 
             localVarRequestOptions.Operation = "PaymentProcessorConfigurationsService.PostPaymentProcessorConfigurations";
@@ -782,6 +808,85 @@ namespace Wallee.Service
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("PostPaymentProcessorConfigurations", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Link a contract with a payment processor configuration 
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="contractId">The contract to link with the payment processor configuration.</param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>PaymentProcessorConfiguration</returns>
+        public PaymentProcessorConfiguration PostPaymentProcessorConfigurationsIdLinkContract(long id, long contractId, long space, List<string>? expand = default, int operationIndex = 0)
+        {
+            Wallee.Client.ApiResponse<PaymentProcessorConfiguration> localVarResponse = PostPaymentProcessorConfigurationsIdLinkContractWithHttpInfo(id, contractId, space, expand);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Link a contract with a payment processor configuration 
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="contractId">The contract to link with the payment processor configuration.</param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="expand"> (optional)</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of PaymentProcessorConfiguration</returns>
+        public Wallee.Client.ApiResponse<PaymentProcessorConfiguration> PostPaymentProcessorConfigurationsIdLinkContractWithHttpInfo(long id, long contractId, long space, List<string>? expand = default, int operationIndex = 0)
+        {
+            Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Wallee.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "contractId", contractId));
+            if (expand != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
+            }
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+
+            localVarRequestOptions.Operation = "PaymentProcessorConfigurationsService.PostPaymentProcessorConfigurationsIdLinkContract";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = Configuration.Timeout;
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<PaymentProcessorConfiguration>("/payment/processor-configurations/{id}/link-contract",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("PostPaymentProcessorConfigurationsIdLinkContract", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;

@@ -402,6 +402,31 @@ namespace Wallee.Service
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> GetPaymentTransactionsIdLightboxJavascriptUrlWithHttpInfo(long id, long space, int operationIndex = 0);
         /// <summary>
+        /// Retrieve a transaction overview
+        /// </summary>
+        /// <remarks>
+        /// Returns the transaction with the given id together with the successful charge attempt that authorized it, including its labels, attached under &#39;successfulChargeAttempt&#39;. When the transaction has no successful charge attempt yet, only the transaction is returned.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TransactionOverview</returns>
+        TransactionOverview GetPaymentTransactionsIdOverview(long id, long space, int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve a transaction overview
+        /// </summary>
+        /// <remarks>
+        /// Returns the transaction with the given id together with the successful charge attempt that authorized it, including its labels, attached under &#39;successfulChargeAttempt&#39;. When the transaction has no successful charge attempt yet, only the transaction is returned.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TransactionOverview</returns>
+        ApiResponse<TransactionOverview> GetPaymentTransactionsIdOverviewWithHttpInfo(long id, long space, int operationIndex = 0);
+        /// <summary>
         /// Retrieve a packing slip document
         /// </summary>
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
@@ -471,6 +496,31 @@ namespace Wallee.Service
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> GetPaymentTransactionsIdPaymentPageUrlWithHttpInfo(long id, long space, int operationIndex = 0);
+        /// <summary>
+        /// Retrieve the successful charge attempt
+        /// </summary>
+        /// <remarks>
+        /// Returns the successful charge attempt that authorized the transaction with the given id. When the transaction has no successful charge attempt yet, the transaction status is returned instead, so the endpoint can be polled until the charge attempt appears. Note that a successful charge attempt confirms the authorization of the transaction, not its completion. When the transaction is charged with deferred payment, a successful charge attempt does not guarantee that the transaction will be completed and fulfilled, so this operation is not suited to confirming the final fulfillment of such a transaction. In that case, we recommend confirming that the transaction has been captured and is successful, using either the completion read API or the transaction read API.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ChargeAttemptLookupResult</returns>
+        ChargeAttemptLookupResult GetPaymentTransactionsIdSuccessfulChargeAttempt(long id, long space, int operationIndex = 0);
+
+        /// <summary>
+        /// Retrieve the successful charge attempt
+        /// </summary>
+        /// <remarks>
+        /// Returns the successful charge attempt that authorized the transaction with the given id. When the transaction has no successful charge attempt yet, the transaction status is returned instead, so the endpoint can be polled until the charge attempt appears. Note that a successful charge attempt confirms the authorization of the transaction, not its completion. When the transaction is charged with deferred payment, a successful charge attempt does not guarantee that the transaction will be completed and fulfilled, so this operation is not suited to confirming the final fulfillment of such a transaction. In that case, we recommend confirming that the transaction has been captured and is successful, using either the completion read API or the transaction read API.
+        /// </remarks>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ChargeAttemptLookupResult</returns>
+        ApiResponse<ChargeAttemptLookupResult> GetPaymentTransactionsIdSuccessfulChargeAttemptWithHttpInfo(long id, long space, int operationIndex = 0);
         /// <summary>
         /// List terminal receipts
         /// </summary>
@@ -1094,7 +1144,7 @@ namespace Wallee.Service
 
             localVarRequestOptions.PathParameters.Add("credentials", Wallee.Client.ClientUtils.ParameterToString(credentials)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.DeletePaymentTransactionsByCredentialsCredentialsOneClickTokensId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1191,7 +1241,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "order", order));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactions";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1273,7 +1323,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsByCredentialsCredentials";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1350,7 +1400,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("credentials", Wallee.Client.ClientUtils.ParameterToString(credentials)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsByCredentialsCredentialsMobileSdkUrl";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1432,7 +1482,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsByCredentialsCredentialsOneClickTokens";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1523,7 +1573,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsByCredentialsCredentialsPaymentMethodConfigurations";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1623,7 +1673,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsExport";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1700,7 +1750,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsId";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1771,7 +1821,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdChargeFlowPaymentPageUrl";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1841,7 +1891,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdCheckTokenCreationPossible";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1912,7 +1962,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdCredentials";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -1983,7 +2033,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdIframeJavascriptUrl";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2053,7 +2103,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdInvoiceDocument";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2129,7 +2179,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdLatestLineItemVersion";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2200,7 +2250,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdLightboxJavascriptUrl";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2214,6 +2264,76 @@ namespace Wallee.Service
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetPaymentTransactionsIdLightboxJavascriptUrl", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Retrieve a transaction overview Returns the transaction with the given id together with the successful charge attempt that authorized it, including its labels, attached under &#39;successfulChargeAttempt&#39;. When the transaction has no successful charge attempt yet, only the transaction is returned.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>TransactionOverview</returns>
+        public TransactionOverview GetPaymentTransactionsIdOverview(long id, long space, int operationIndex = 0)
+        {
+            Wallee.Client.ApiResponse<TransactionOverview> localVarResponse = GetPaymentTransactionsIdOverviewWithHttpInfo(id, space);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve a transaction overview Returns the transaction with the given id together with the successful charge attempt that authorized it, including its labels, attached under &#39;successfulChargeAttempt&#39;. When the transaction has no successful charge attempt yet, only the transaction is returned.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of TransactionOverview</returns>
+        public Wallee.Client.ApiResponse<TransactionOverview> GetPaymentTransactionsIdOverviewWithHttpInfo(long id, long space, int operationIndex = 0)
+        {
+            Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Wallee.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+
+            localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdOverview";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = Configuration.Timeout;
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<TransactionOverview>("/payment/transactions/{id}/overview",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPaymentTransactionsIdOverview", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2270,7 +2390,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdPackingSlipDocument";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2355,7 +2475,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdPaymentMethodConfigurations";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2426,7 +2546,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdPaymentPageUrl";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2440,6 +2560,76 @@ namespace Wallee.Service
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetPaymentTransactionsIdPaymentPageUrl", localVarResponse);
+                if (_exception != null)
+                {
+                    throw _exception;
+                }
+            }
+
+            return localVarResponse;
+        }
+        /// <summary>
+        /// Retrieve the successful charge attempt Returns the successful charge attempt that authorized the transaction with the given id. When the transaction has no successful charge attempt yet, the transaction status is returned instead, so the endpoint can be polled until the charge attempt appears. Note that a successful charge attempt confirms the authorization of the transaction, not its completion. When the transaction is charged with deferred payment, a successful charge attempt does not guarantee that the transaction will be completed and fulfilled, so this operation is not suited to confirming the final fulfillment of such a transaction. In that case, we recommend confirming that the transaction has been captured and is successful, using either the completion read API or the transaction read API.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ChargeAttemptLookupResult</returns>
+        public ChargeAttemptLookupResult GetPaymentTransactionsIdSuccessfulChargeAttempt(long id, long space, int operationIndex = 0)
+        {
+            Wallee.Client.ApiResponse<ChargeAttemptLookupResult> localVarResponse = GetPaymentTransactionsIdSuccessfulChargeAttemptWithHttpInfo(id, space);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Retrieve the successful charge attempt Returns the successful charge attempt that authorized the transaction with the given id. When the transaction has no successful charge attempt yet, the transaction status is returned instead, so the endpoint can be polled until the charge attempt appears. Note that a successful charge attempt confirms the authorization of the transaction, not its completion. When the transaction is charged with deferred payment, a successful charge attempt does not guarantee that the transaction will be completed and fulfilled, so this operation is not suited to confirming the final fulfillment of such a transaction. In that case, we recommend confirming that the transaction has been captured and is successful, using either the completion read API or the transaction read API.
+        /// </summary>
+        /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
+        /// <param name="operationIndex">Index associated with the operation.</param>
+        /// <returns>ApiResponse of ChargeAttemptLookupResult</returns>
+        public Wallee.Client.ApiResponse<ChargeAttemptLookupResult> GetPaymentTransactionsIdSuccessfulChargeAttemptWithHttpInfo(long id, long space, int operationIndex = 0)
+        {
+            Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Wallee.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            var localVarMultipartFormData = localVarContentType == "multipart/form-data";
+            if (localVarContentType != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+            }
+
+            var localVarAccept = Wallee.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+            }
+
+            localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+
+            localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdSuccessfulChargeAttempt";
+            localVarRequestOptions.OperationIndex = operationIndex;
+
+            // set request timeout in seconds
+            var requestTimeout = Configuration.Timeout;
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ChargeAttemptLookupResult>("/payment/transactions/{id}/successful-charge-attempt",
+                localVarRequestOptions, requestTimeout, Configuration);
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetPaymentTransactionsIdSuccessfulChargeAttempt", localVarResponse);
                 if (_exception != null)
                 {
                     throw _exception;
@@ -2502,7 +2692,7 @@ namespace Wallee.Service
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "format", format));
             localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "width", width));
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsIdTerminalReceipts";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2599,7 +2789,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "query", query));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.GetPaymentTransactionsSearch";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2684,7 +2874,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = transactionPending;
 
             localVarRequestOptions.Operation = "TransactionsService.PatchPaymentTransactionsId";
@@ -2767,7 +2957,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = transactionCreate;
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactions";
@@ -2848,7 +3038,7 @@ namespace Wallee.Service
 
             localVarRequestOptions.PathParameters.Add("credentials", Wallee.Client.ClientUtils.ParameterToString(credentials)); // path parameter
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsByCredentialsCredentialsOneClickTokensIdProcess";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -2924,7 +3114,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdChargeFlowApply";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -3000,7 +3190,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdChargeFlowCancel";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -3081,7 +3271,7 @@ namespace Wallee.Service
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
             localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "type", type));
             localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("", "recipient", recipient));
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdChargeFlowUpdateRecipient";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -3157,7 +3347,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdCompleteOffline";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -3233,7 +3423,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdCompleteOnline";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -3318,7 +3508,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = transactionCompletionDetails;
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdCompletePartiallyOffline";
@@ -3404,7 +3594,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = transactionCompletionDetails;
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdCompletePartiallyOnline";
@@ -3490,7 +3680,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = transactionPending;
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdConfirm";
@@ -3576,7 +3766,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = authenticatedCardRequest;
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdProcessCardDetails";
@@ -3657,7 +3847,7 @@ namespace Wallee.Service
             }
 
             localVarRequestOptions.PathParameters.Add("id", Wallee.Client.ClientUtils.ParameterToString(id)); // path parameter
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
             localVarRequestOptions.Data = tokenizedCardRequest;
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdProcessCardDetailsThreed";
@@ -3734,7 +3924,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdProcessWithToken";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -3810,7 +4000,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdProcessWithoutInteraction";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -3886,7 +4076,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdVoidOffline";
             localVarRequestOptions.OperationIndex = operationIndex;
@@ -3962,7 +4152,7 @@ namespace Wallee.Service
             {
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
-            localVarRequestOptions.HeaderParameters.Add("Space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
+            localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
 
             localVarRequestOptions.Operation = "TransactionsService.PostPaymentTransactionsIdVoidOnline";
             localVarRequestOptions.OperationIndex = operationIndex;
