@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <UseLocalSdk Condition="'$(UseLocalSdk)' == ''">false</UseLocalSdk>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="NUnit" Version="4.3.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseLocalSdk)' != 'true'">
+    <PackageReference Include="Wallee" Version="10.4.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(UseLocalSdk)' == 'true'">
+    <ProjectReference Include="../../../src/Wallee/Wallee.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="../ChargeAttemptSerializationTests.cs" Link="ChargeAttemptSerializationTests.cs" />
+  </ItemGroup>
+</Project>
