@@ -160,11 +160,11 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="subscriptionUpdateRequest"></param>
+        /// <param name="subscriptionPartialUpdateRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Subscription</returns>
-        Subscription PatchSubscriptionsId(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0);
+        Subscription PatchSubscriptionsId(long id, long space, SubscriptionPartialUpdateRequest subscriptionPartialUpdateRequest, List<string>? expand = default, int operationIndex = 0);
 
         /// <summary>
         /// Update a subscription
@@ -175,11 +175,11 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="subscriptionUpdateRequest"></param>
+        /// <param name="subscriptionPartialUpdateRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Subscription</returns>
-        ApiResponse<Subscription> PatchSubscriptionsIdWithHttpInfo(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0);
+        ApiResponse<Subscription> PatchSubscriptionsIdWithHttpInfo(long id, long space, SubscriptionPartialUpdateRequest subscriptionPartialUpdateRequest, List<string>? expand = default, int operationIndex = 0);
         /// <summary>
         /// Create a subscription
         /// </summary>
@@ -839,13 +839,13 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="subscriptionUpdateRequest"></param>
+        /// <param name="subscriptionPartialUpdateRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>Subscription</returns>
-        public Subscription PatchSubscriptionsId(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0)
+        public Subscription PatchSubscriptionsId(long id, long space, SubscriptionPartialUpdateRequest subscriptionPartialUpdateRequest, List<string>? expand = default, int operationIndex = 0)
         {
-            Wallee.Client.ApiResponse<Subscription> localVarResponse = PatchSubscriptionsIdWithHttpInfo(id, space, subscriptionUpdateRequest, expand);
+            Wallee.Client.ApiResponse<Subscription> localVarResponse = PatchSubscriptionsIdWithHttpInfo(id, space, subscriptionPartialUpdateRequest, expand);
             return localVarResponse.Data;
         }
 
@@ -855,16 +855,16 @@ namespace Wallee.Service
         /// <exception cref="Wallee.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="id"></param>
         /// <param name="space">Specifies the ID of the space the operation should be executed in.</param>
-        /// <param name="subscriptionUpdateRequest"></param>
+        /// <param name="subscriptionPartialUpdateRequest"></param>
         /// <param name="expand"> (optional)</param>
         /// <param name="operationIndex">Index associated with the operation.</param>
         /// <returns>ApiResponse of Subscription</returns>
-        public Wallee.Client.ApiResponse<Subscription> PatchSubscriptionsIdWithHttpInfo(long id, long space, SubscriptionUpdateRequest subscriptionUpdateRequest, List<string>? expand = default, int operationIndex = 0)
+        public Wallee.Client.ApiResponse<Subscription> PatchSubscriptionsIdWithHttpInfo(long id, long space, SubscriptionPartialUpdateRequest subscriptionPartialUpdateRequest, List<string>? expand = default, int operationIndex = 0)
         {
-            // verify the required parameter 'subscriptionUpdateRequest' is set
-            if (subscriptionUpdateRequest == null)
+            // verify the required parameter 'subscriptionPartialUpdateRequest' is set
+            if (subscriptionPartialUpdateRequest == null)
             {
-                throw new Wallee.Client.ApiException(400, "Missing required parameter 'subscriptionUpdateRequest' when calling SubscriptionsService->PatchSubscriptionsId");
+                throw new Wallee.Client.ApiException(400, "Missing required parameter 'subscriptionPartialUpdateRequest' when calling SubscriptionsService->PatchSubscriptionsId");
             }
 
             Wallee.Client.RequestOptions localVarRequestOptions = new Wallee.Client.RequestOptions();
@@ -897,7 +897,7 @@ namespace Wallee.Service
                 localVarRequestOptions.QueryParameters.Add(Wallee.Client.ClientUtils.ParameterToMultiMap("multi", "expand", expand));
             }
             localVarRequestOptions.HeaderParameters.Add("space", Wallee.Client.ClientUtils.ParameterToString(space)); // header parameter
-            localVarRequestOptions.Data = subscriptionUpdateRequest;
+            localVarRequestOptions.Data = subscriptionPartialUpdateRequest;
 
             localVarRequestOptions.Operation = "SubscriptionsService.PatchSubscriptionsId";
             localVarRequestOptions.OperationIndex = operationIndex;

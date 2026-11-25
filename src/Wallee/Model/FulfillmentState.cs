@@ -65,7 +65,13 @@ namespace Wallee.Model
         /// Enum FAILED for value: FAILED
         /// </summary>
         [EnumMember(Value = "FAILED")]
-        FAILED = 4
+        FAILED = 4,
+
+        /// <summary>
+        /// Enum CANCELED for value: CANCELED
+        /// </summary>
+        [EnumMember(Value = "CANCELED")]
+        CANCELED = 5
     }
 
 }

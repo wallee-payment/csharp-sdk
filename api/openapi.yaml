@@ -99,6 +99,9 @@ tags:
     url: https://app-wallee.com/doc/api/web-service#dunning-flows-service
   name: DunningFlows
 - externalDocs:
+    url: https://app-wallee.com/doc/api/web-service#express-checkout-session-service
+  name: ExpressCheckoutSession
+- externalDocs:
     url: https://app-wallee.com/doc/api/web-service#external-transfer-bank-transactions-service
   name: ExternalTransferBankTransactions
 - externalDocs:
@@ -16164,6 +16167,310 @@ paths:
       summary: Search dunning flows
       tags:
       - DunningFlows
+  /express-checkout/session:
+    get:
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#getExpressCheckoutSession
+      operationId: getExpressCheckoutSession
+      parameters:
+      - explode: true
+        in: query
+        name: sessionId
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: form
+      - description: Specifies the ID of the space the operation should be executed
+          in.
+        explode: false
+        in: header
+        name: space
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExpressCheckoutSession"
+          description: Successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request was not accepted often due to missing or invalid
+            parameters.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The necessary authentication credentials are missing or incorrect.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The application user is missing the required permissions.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested resource was not found.
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested response format is not supported.
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request provides unsupported or invalid data.
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request is well-formed but contains semantic errors. Check
+            the response body for details.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Too many requests hit the API too quickly.
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: An internal error occurred on the server.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Error response.
+      summary: Get Express Checkout Session details
+      tags:
+      - ExpressCheckoutSession
+  /express-checkout/session/create:
+    post:
+      description: "Creates a new Express Checkout session and returns both sessionId\
+        \ and sessionToken. Use the sessionToken to render the wallet widget, and\
+        \ persist the sessionId for the later process call."
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#postExpressCheckoutSessionCreate
+      operationId: postExpressCheckoutSessionCreate
+      parameters:
+      - description: Specifies the ID of the space the operation should be executed
+          in.
+        explode: false
+        in: header
+        name: space
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExpressCheckoutSession.Create"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExpressCheckoutSessionCreateResponse"
+          description: Successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request was not accepted often due to missing or invalid
+            parameters.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The necessary authentication credentials are missing or incorrect.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The application user is missing the required permissions.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested resource was not found.
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested response format is not supported.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request conflicts with another request often because of
+            to optimistic locking.
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request provides unsupported or invalid data.
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request is well-formed but contains semantic errors. Check
+            the response body for details.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Too many requests hit the API too quickly.
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: An internal error occurred on the server.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Error response.
+      summary: Create a new Express Checkout Session
+      tags:
+      - ExpressCheckoutSession
+  /express-checkout/session/process:
+    post:
+      description: Processes the approved session and returns the redirect URL to
+        continue checkout. Customer language and time zone are automatically derived
+        from the HTTP request when available.
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#postExpressCheckoutSessionProcess
+      operationId: postExpressCheckoutSessionProcess
+      parameters:
+      - description: Specifies the ID of the space the operation should be executed
+          in.
+        explode: false
+        in: header
+        name: space
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExpressCheckoutSessionProcessRequest"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExpressCheckoutSessionProcessResponse"
+          description: Successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request was not accepted often due to missing or invalid
+            parameters.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The necessary authentication credentials are missing or incorrect.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The application user is missing the required permissions.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested resource was not found.
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested response format is not supported.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request conflicts with another request often because of
+            to optimistic locking.
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request provides unsupported or invalid data.
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request is well-formed but contains semantic errors. Check
+            the response body for details.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Too many requests hit the API too quickly.
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: An internal error occurred on the server.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Error response.
+      summary: Process Express Checkout Session
+      tags:
+      - ExpressCheckoutSession
   /payment/bank-transactions/external-transfers:
     get:
       externalDocs:
@@ -22269,6 +22576,106 @@ paths:
       summary: List all members of the space
       tags:
       - Members
+  /onboarding/merchant-applications/by-account:
+    get:
+      description: Returns the merchant application for the account specified in the
+        account header.
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#getOnboardingMerchantApplicationsByAccount
+      operationId: getOnboardingMerchantApplicationsByAccount
+      parameters:
+      - explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        style: form
+      - description: Specifies the ID of the account the operation should be executed
+          in.
+        explode: false
+        in: header
+        name: account
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MerchantApplicationDataDto"
+          description: Successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request was not accepted often due to missing or invalid
+            parameters.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The necessary authentication credentials are missing or incorrect.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The application user is missing the required permissions.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested resource was not found.
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested response format is not supported.
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request provides unsupported or invalid data.
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request is well-formed but contains semantic errors. Check
+            the response body for details.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Too many requests hit the API too quickly.
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: An internal error occurred on the server.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Error response.
+      summary: Retrieve a merchant application by account
+      tags:
+      - MerchantApplications
   /onboarding/merchant-applications/{id}/status:
     get:
       externalDocs:
@@ -22703,6 +23110,125 @@ paths:
                 $ref: "#/components/schemas/RestApiErrorResponse"
           description: Error response.
       summary: Create a merchant application
+      tags:
+      - MerchantApplications
+  /onboarding/merchant-applications/{id}/submit:
+    post:
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#postOnboardingMerchantApplicationsIdSubmit
+      operationId: postOnboardingMerchantApplicationsIdSubmit
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      - explode: true
+        in: query
+        name: expand
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+        style: form
+      - description: Specifies the ID of the account the operation should be executed
+          in.
+        explode: false
+        in: header
+        name: account
+        required: true
+        schema:
+          format: int64
+          type: integer
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MerchantApplicationSubmitRequestDto"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MerchantApplicationSubmittedDto"
+          description: Successful response.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request was not accepted often due to missing or invalid
+            parameters.
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The necessary authentication credentials are missing or incorrect.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The application user is missing the required permissions.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested resource was not found.
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The requested response format is not supported.
+        "409":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request conflicts with another request often because of
+            to optimistic locking.
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request provides unsupported or invalid data.
+        "422":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: The request is well-formed but contains semantic errors. Check
+            the response body for details.
+        "429":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Too many requests hit the API too quickly.
+        "5XX":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: An internal error occurred on the server.
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RestApiErrorResponse"
+          description: Error response.
+      summary: Submit a merchant application and create an organization
       tags:
       - MerchantApplications
   /spaces/consumed-resources:
@@ -30293,7 +30819,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/PaymentTerminal.Update"
+              $ref: "#/components/schemas/PaymentTerminalUpdateRequest"
         required: true
       responses:
         "200":
@@ -49516,7 +50042,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/SubscriptionUpdateRequest"
+              $ref: "#/components/schemas/SubscriptionPartialUpdateRequest"
         required: true
       responses:
         "200":
@@ -67880,13 +68406,6 @@ components:
       title: Boarding Strategy Information Request
       type: object
       x-model-type: CREATE
-    BrandLogoDto:
-      externalDocs:
-        url: https://app-wallee.com/doc/api/web-service#_brandlogodto
-      properties: {}
-      title: Brand Logo Dto
-      type: object
-      x-model-type: CREATE
     CardAuthenticationResponse:
       enum:
       - FULLY_AUTHENTICATED
@@ -70612,6 +71131,11 @@ components:
           state: PROCESSING
           linkedTransaction: 1
           redirectionUrl: redirectionUrl
+          transactionAmounts:
+            completedAmount: 9.369310271410669
+            authorizationAmount: 6.683562403749608
+            currency: currency
+            refundedAmount: 8.762042012749001
           charge:
             plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
             timeZone: timeZone
@@ -72553,6 +73077,14 @@ components:
     ChargeAttemptProjection:
       allOf:
       - $ref: "#/components/schemas/ChargeAttempt"
+      - externalDocs:
+          url: https://app-wallee.com/doc/api/web-service#_chargeattemptprojection
+        properties:
+          transactionAmounts:
+            $ref: "#/components/schemas/TransactionAmounts"
+        title: Charge Attempt Projection
+        type: object
+        x-model-type: READ
       example:
         language: language
         salesChannel: 6
@@ -72999,6 +73531,11 @@ components:
         state: PROCESSING
         linkedTransaction: 1
         redirectionUrl: redirectionUrl
+        transactionAmounts:
+          completedAmount: 9.369310271410669
+          authorizationAmount: 6.683562403749608
+          currency: currency
+          refundedAmount: 8.762042012749001
         charge:
           plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
           timeZone: timeZone
@@ -87025,6 +87562,993 @@ components:
       title: Environment
       type: string
       x-model-type: ENUM
+    ExpressCheckoutSession:
+      example:
+        merchantShippingCallbackUrl: merchantShippingCallbackUrl
+        authorizationAmount: 0.8008281904610115
+        walletType:
+          name:
+            key: name
+          description:
+            key: description
+          id: 6
+        plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+        timeZone: timeZone
+        language: language
+        createdOn: 2000-01-23T04:56:07.000+00:00
+        lineItems:
+        - taxAmountPerUnit: 3.2588565619047607
+          undiscountedAmountExcludingTax: 4.078845849666752
+          quantity: 0.2025324113236393
+          undiscountedUnitPriceIncludingTax: 6.628464275087742
+          amountExcludingTax: 4.258773108174356
+          undiscountedAmountIncludingTax: 1.041444916118296
+          taxes:
+          - rate: 14.658129805029452
+            title: title
+          - rate: 14.658129805029452
+            title: title
+          type: SHIPPING
+          unitPriceIncludingTax: 4.678947989005849
+          discountExcludingTax: 7.260521264802104
+          shippingRequired: true
+          unitPriceExcludingTax: 9.132027271330688
+          name: name
+          attributes:
+            key:
+              label: label
+              value: value
+          undiscountedUnitPriceExcludingTax: 0.8774076871421566
+          amountIncludingTax: 9.702963800023566
+          discountIncludingTax: 0.5199002018724985
+          sku: sku
+          taxAmount: 7.933506881737151
+          aggregatedTaxRate: 5.507386964179881
+          uniqueId: uniqueId
+        - taxAmountPerUnit: 3.2588565619047607
+          undiscountedAmountExcludingTax: 4.078845849666752
+          quantity: 0.2025324113236393
+          undiscountedUnitPriceIncludingTax: 6.628464275087742
+          amountExcludingTax: 4.258773108174356
+          undiscountedAmountIncludingTax: 1.041444916118296
+          taxes:
+          - rate: 14.658129805029452
+            title: title
+          - rate: 14.658129805029452
+            title: title
+          type: SHIPPING
+          unitPriceIncludingTax: 4.678947989005849
+          discountExcludingTax: 7.260521264802104
+          shippingRequired: true
+          unitPriceExcludingTax: 9.132027271330688
+          name: name
+          attributes:
+            key:
+              label: label
+              value: value
+          undiscountedUnitPriceExcludingTax: 0.8774076871421566
+          amountIncludingTax: 9.702963800023566
+          discountIncludingTax: 0.5199002018724985
+          sku: sku
+          taxAmount: 7.933506881737151
+          aggregatedTaxRate: 5.507386964179881
+          uniqueId: uniqueId
+        linkedSpaceId: 1
+        merchantRedirectUrl: merchantRedirectUrl
+        metaData:
+          key: metaData
+        authorizationEnvironment: PRODUCTION
+        failureReason:
+          name:
+            key: name
+          description:
+            key: description
+          id: 3
+          category: TEMPORARY_ISSUE
+        shippingAddress:
+          country: country
+          mobilePhoneNumber: mobilePhoneNumber
+          gender: MALE
+          organizationName: organizationName
+          city: city
+          commercialRegisterNumber: commercialRegisterNumber
+          socialSecurityNumber: socialSecurityNumber
+          givenName: givenName
+          postcode: postcode
+          legalOrganizationForm:
+            country: country
+            shortcut:
+            - string: string
+              language: language
+            - string: string
+              language: language
+            englishDescription: englishDescription
+            description:
+            - string: string
+              language: language
+            - string: string
+              language: language
+            id: 6
+          salesTaxNumber: salesTaxNumber
+          dateOfBirth: 2000-01-23
+          dependentLocality: dependentLocality
+          emailAddress: emailAddress
+          phoneNumber: phoneNumber
+          sortingCode: sortingCode
+          street: street
+          familyName: familyName
+          postalState: postalState
+          salutation: salutation
+        currency: currency
+        billingAddress:
+          country: country
+          mobilePhoneNumber: mobilePhoneNumber
+          gender: MALE
+          organizationName: organizationName
+          city: city
+          commercialRegisterNumber: commercialRegisterNumber
+          socialSecurityNumber: socialSecurityNumber
+          givenName: givenName
+          postcode: postcode
+          legalOrganizationForm:
+            country: country
+            shortcut:
+            - string: string
+              language: language
+            - string: string
+              language: language
+            englishDescription: englishDescription
+            description:
+            - string: string
+              language: language
+            - string: string
+              language: language
+            id: 6
+          salesTaxNumber: salesTaxNumber
+          dateOfBirth: 2000-01-23
+          dependentLocality: dependentLocality
+          emailAddress: emailAddress
+          phoneNumber: phoneNumber
+          sortingCode: sortingCode
+          street: street
+          familyName: familyName
+          postalState: postalState
+          salutation: salutation
+        id: 5
+        state: PENDING
+        linkedTransaction: 5
+        shippingOptions:
+        - description: description
+          taxes:
+          - rate: 14.658129805029452
+            title: title
+          - rate: 14.658129805029452
+            title: title
+          currency: currency
+          id: id
+          label: label
+          amountIncludingTax: 2.3021358869347655
+          selected: true
+        - description: description
+          taxes:
+          - rate: 14.658129805029452
+            title: title
+          - rate: 14.658129805029452
+            title: title
+          currency: currency
+          id: id
+          label: label
+          amountIncludingTax: 2.3021358869347655
+          selected: true
+        transaction:
+          parent: null
+          totalSettledAmount: 5.533258397034986
+          deviceSessionIdentifier: deviceSessionIdentifier
+          processingOn: 2000-01-23T04:56:07.000+00:00
+          invoiceMerchantReference: invoiceMerchantReference
+          language: language
+          confirmedOn: 2000-01-23T04:56:07.000+00:00
+          lineItems:
+          - taxAmountPerUnit: 3.2588565619047607
+            undiscountedAmountExcludingTax: 4.078845849666752
+            quantity: 0.2025324113236393
+            undiscountedUnitPriceIncludingTax: 6.628464275087742
+            amountExcludingTax: 4.258773108174356
+            undiscountedAmountIncludingTax: 1.041444916118296
+            taxes:
+            - rate: 14.658129805029452
+              title: title
+            - rate: 14.658129805029452
+              title: title
+            type: SHIPPING
+            unitPriceIncludingTax: 4.678947989005849
+            discountExcludingTax: 7.260521264802104
+            shippingRequired: true
+            unitPriceExcludingTax: 9.132027271330688
+            name: name
+            attributes:
+              key:
+                label: label
+                value: value
+            undiscountedUnitPriceExcludingTax: 0.8774076871421566
+            amountIncludingTax: 9.702963800023566
+            discountIncludingTax: 0.5199002018724985
+            sku: sku
+            taxAmount: 7.933506881737151
+            aggregatedTaxRate: 5.507386964179881
+            uniqueId: uniqueId
+          - taxAmountPerUnit: 3.2588565619047607
+            undiscountedAmountExcludingTax: 4.078845849666752
+            quantity: 0.2025324113236393
+            undiscountedUnitPriceIncludingTax: 6.628464275087742
+            amountExcludingTax: 4.258773108174356
+            undiscountedAmountIncludingTax: 1.041444916118296
+            taxes:
+            - rate: 14.658129805029452
+              title: title
+            - rate: 14.658129805029452
+              title: title
+            type: SHIPPING
+            unitPriceIncludingTax: 4.678947989005849
+            discountExcludingTax: 7.260521264802104
+            shippingRequired: true
+            unitPriceExcludingTax: 9.132027271330688
+            name: name
+            attributes:
+              key:
+                label: label
+                value: value
+            undiscountedUnitPriceExcludingTax: 0.8774076871421566
+            amountIncludingTax: 9.702963800023566
+            discountIncludingTax: 0.5199002018724985
+            sku: sku
+            taxAmount: 7.933506881737151
+            aggregatedTaxRate: 5.507386964179881
+            uniqueId: uniqueId
+          acceptLanguageHeader: acceptLanguageHeader
+          javaEnabled: true
+          confirmedBy: 4
+          paymentConnectorConfiguration:
+            paymentMethodConfiguration:
+              dataCollectionType: ONSITE
+              plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+              description:
+                key: description
+              resolvedImageUrl: resolvedImageUrl
+              oneClickPaymentMode: DISABLED
+              title:
+                key: title
+              version: 5
+              linkedSpaceId: 2
+              spaceId: 1
+              imageResourcePath: imageResourcePath
+              sortOrder: 9
+              name: name
+              resolvedDescription:
+                key: resolvedDescription
+              resolvedTitle:
+                key: resolvedTitle
+              paymentMethod:
+                supportedCurrencies:
+                - supportedCurrencies
+                - supportedCurrencies
+                dataCollectionTypes:
+                - null
+                - null
+                imagePath: imagePath
+                name:
+                  key: name
+                description:
+                  key: description
+                merchantDescription:
+                  key: merchantDescription
+                id: 3
+              id: 2
+              state: CREATE
+            imagePath: imagePath
+            plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+            priority: 4
+            enabledSalesChannels:
+            - TERMINAL
+            - TERMINAL
+            version: 7
+            processorConfiguration:
+              linkedSpaceId: 1
+              applicationManaged: true
+              contractId: 1
+              name: name
+              plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+              id: 1
+              state: null
+              processor:
+                companyName:
+                  key: companyName
+                headquartersLocation:
+                  key: headquartersLocation
+                logoPath: logoPath
+                name:
+                  key: name
+                description:
+                  key: description
+                id: 6
+                productName:
+                  key: productName
+              version: 7
+            linkedSpaceId: 1
+            connector:
+              supportedFeatures:
+              - displayName: displayName
+                id: 4
+              - displayName: displayName
+                id: 4
+              supportedCustomersPresences:
+              - NOT_PRESENT
+              - NOT_PRESENT
+              dataCollectionType: null
+              deprecated: true
+              primaryRiskTaker: CUSTOMER
+              description:
+                key: description
+              paymentMethodBrand:
+                grayImagePath: grayImagePath
+                imagePath: imagePath
+                name:
+                  key: name
+                description:
+                  key: description
+                paymentMethod: 5
+                id: 9
+              processor:
+                companyName:
+                  key: companyName
+                headquartersLocation:
+                  key: headquartersLocation
+                logoPath: logoPath
+                name:
+                  key: name
+                description:
+                  key: description
+                id: 6
+                productName:
+                  key: productName
+              deprecationReason:
+                key: deprecationReason
+              supportedCurrencies:
+              - supportedCurrencies
+              - supportedCurrencies
+              name:
+                key: name
+              paymentMethod:
+                supportedCurrencies:
+                - supportedCurrencies
+                - supportedCurrencies
+                dataCollectionTypes:
+                - null
+                - null
+                imagePath: imagePath
+                name:
+                  key: name
+                description:
+                  key: description
+                merchantDescription:
+                  key: merchantDescription
+                id: 3
+              id: 9
+            name: name
+            enabledSpaceViews:
+            - 6
+            - 6
+            id: 8
+            state: null
+            applicableForTransactionProcessing: true
+            conditions:
+            - linkedSpaceId: 9
+              name: name
+              plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+              conditionType:
+                name:
+                  key: name
+                description:
+                  key: description
+                id: 6
+              id: 3
+              state: null
+              version: 6
+            - linkedSpaceId: 9
+              name: name
+              plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+              conditionType:
+                name:
+                  key: name
+                description:
+                  key: description
+                id: 6
+              id: 3
+              state: null
+              version: 6
+          id: 6
+          state: CREATE
+          windowWidth: windowWidth
+          allowedPaymentMethodConfigurations:
+          - 8
+          - 8
+          group:
+            beginDate: 2000-01-23T04:56:07.000+00:00
+            linkedSpaceId: 4
+            endDate: 2000-01-23T04:56:07.000+00:00
+            customerId: customerId
+            plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+            id: 3
+            state: PENDING
+            version: 0
+          chargeRetryEnabled: true
+          acceptHeader: acceptHeader
+          userAgentHeader: userAgentHeader
+          shippingMethod: shippingMethod
+          plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+          successUrl: successUrl
+          timeZone: timeZone
+          spaceViewId: 2
+          userFailureMessage: userFailureMessage
+          completionBehavior: COMPLETE_IMMEDIATELY
+          version: 1
+          internetProtocolAddressCountry: internetProtocolAddressCountry
+          linkedSpaceId: 8
+          deliveryDecisionMadeOn: 2000-01-23T04:56:07.000+00:00
+          authorizationEnvironment: null
+          autoConfirmationEnabled: true
+          failureReason:
+            name:
+              key: name
+            description:
+              key: description
+            id: 3
+            category: TEMPORARY_ISSUE
+          totalAppliedFees: 6.623518433804886
+          customersPresence: null
+          failedOn: 2000-01-23T04:56:07.000+00:00
+          refundedAmount: 4.573936264232251
+          authorizationAmount: 8.863729185622827
+          screenWidth: screenWidth
+          environmentSelectionStrategy: FORCE_TEST_ENVIRONMENT
+          customerEmailAddress: customerEmailAddress
+          windowHeight: windowHeight
+          tokenizationMode: FORCE_UPDATE
+          authorizationTimeoutOn: 2000-01-23T04:56:07.000+00:00
+          allowedPaymentMethodBrands:
+          - 9
+          - 9
+          createdOn: 2000-01-23T04:56:07.000+00:00
+          metaData:
+            key: metaData
+          emailsDisabled: true
+          userInterfaceType: IFRAME
+          customerId: customerId
+          currency: currency
+          merchantReference: merchantReference
+          authorizationSalesChannel: 1
+          yearsToKeep: 3
+          completedAmount: 9.183123594773994
+          screenHeight: screenHeight
+          internetProtocolAddress: internetProtocolAddress
+          terminal:
+            identifier: identifier
+            deactivatedOn: 2000-01-23T04:56:07.000+00:00
+            plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+            externalId: externalId
+            type:
+              name:
+                key: name
+              description:
+                key: description
+              id: 8
+            deviceName: deviceName
+            version: 0
+            deviceSerialNumber: deviceSerialNumber
+            linkedSpaceId: 5
+            configurationVersion:
+              maintenanceWindowStart: maintenanceWindowStart
+              configuration:
+                linkedSpaceId: 5
+                name: name
+                plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+                id: 8
+                state: CREATE
+                type:
+                  name:
+                    key: name
+                  description:
+                    key: description
+                  id: 8
+                version: 7
+              plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+              timeZone: timeZone
+              versionAppliedImmediately: true
+              createdOn: 2000-01-23T04:56:07.000+00:00
+              version: 3
+              linkedSpaceId: 3
+              connectorConfigurations:
+              - 9
+              - 9
+              createdBy: 5
+              defaultCurrency: defaultCurrency
+              maintenanceWindowDuration: maintenanceWindowDuration
+              id: 7
+              state: PENDING
+            locationVersion:
+              linkedSpaceId: 0
+              address:
+                country: country
+                mobilePhoneNumber: mobilePhoneNumber
+                organizationName: organizationName
+                city: city
+                givenName: givenName
+                postcode: postcode
+                dependentLocality: dependentLocality
+                emailAddress: emailAddress
+                phoneNumber: phoneNumber
+                sortingCode: sortingCode
+                street: street
+                familyName: familyName
+                postalState: postalState
+                salutation: salutation
+              createdBy: 3
+              plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+              contactAddress:
+                country: country
+                mobilePhoneNumber: mobilePhoneNumber
+                organizationName: organizationName
+                city: city
+                givenName: givenName
+                postcode: postcode
+                dependentLocality: dependentLocality
+                emailAddress: emailAddress
+                phoneNumber: phoneNumber
+                sortingCode: sortingCode
+                street: street
+                familyName: familyName
+                postalState: postalState
+                salutation: salutation
+              location:
+                linkedSpaceId: 2
+                productionMerchantId: productionMerchantId
+                name: name
+                plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+                externalId: externalId
+                id: 3
+                state: CREATE
+                version: 8
+              versionAppliedImmediately: true
+              id: 4
+              state: PENDING
+              createdOn: 2000-01-23T04:56:07.000+00:00
+              version: 0
+            activatedOn: 2000-01-23T04:56:07.000+00:00
+            decommissionedOn: 2000-01-23T04:56:07.000+00:00
+            defaultCurrency: defaultCurrency
+            name: name
+            activationCode: activationCode
+            id: 0
+            state: CREATE
+          endOfLife: 2000-01-23T04:56:07.000+00:00
+          token:
+            enabledForOneClickPayment: true
+            customerEmailAddress: customerEmailAddress
+            plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
+            externalId: externalId
+            timeZone: timeZone
+            language: language
+            createdOn: 2000-01-23T04:56:07.000+00:00
+            version: 3
+            linkedSpaceId: 7
+            tokenReference: tokenReference
+            customerId: customerId
+            id: 0
+            state: null
+          environment: LIVE
+          screenColorDepth: screenColorDepth
+          createdBy: 7
+          completedOn: 2000-01-23T04:56:07.000+00:00
+          completionTimeoutOn: 2000-01-23T04:56:07.000+00:00
+          shippingAddress:
+            country: country
+            mobilePhoneNumber: mobilePhoneNumber
+            gender: MALE
+            organizationName: organizationName
+            city: city
+            commercialRegisterNumber: commercialRegisterNumber
+            socialSecurityNumber: socialSecurityNumber
+            givenName: givenName
+            postcode: postcode
+            legalOrganizationForm:
+              country: country
+              shortcut:
+              - string: string
+                language: language
+              - string: string
+                language: language
+              englishDescription: englishDescription
+              description:
+              - string: string
+                language: language
+              - string: string
+                language: language
+              id: 6
+            salesTaxNumber: salesTaxNumber
+            dateOfBirth: 2000-01-23
+            dependentLocality: dependentLocality
+            emailAddress: emailAddress
+            phoneNumber: phoneNumber
+            sortingCode: sortingCode
+            street: street
+            familyName: familyName
+            postalState: postalState
+            salutation: salutation
+          billingAddress:
+            country: country
+            mobilePhoneNumber: mobilePhoneNumber
+            gender: MALE
+            organizationName: organizationName
+            city: city
+            commercialRegisterNumber: commercialRegisterNumber
+            socialSecurityNumber: socialSecurityNumber
+            givenName: givenName
+            postcode: postcode
+            legalOrganizationForm:
+              country: country
+              shortcut:
+              - string: string
+                language: language
+              - string: string
+                language: language
+              englishDescription: englishDescription
+              description:
+              - string: string
+                language: language
+              - string: string
+                language: language
+              id: 6
+            salesTaxNumber: salesTaxNumber
+            dateOfBirth: 2000-01-23
+            dependentLocality: dependentLocality
+            emailAddress: emailAddress
+            phoneNumber: phoneNumber
+            sortingCode: sortingCode
+            street: street
+            familyName: familyName
+            postalState: postalState
+            salutation: salutation
+          authorizedOn: 2000-01-23T04:56:07.000+00:00
+          failedUrl: failedUrl
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_expresscheckoutsession
+      properties:
+        merchantShippingCallbackUrl:
+          description: The URL to fetch the shipping options from.
+          readOnly: true
+          title: Merchant Shipping Callback Url
+          type: string
+        authorizationAmount:
+          description: The total amount of the session.
+          readOnly: true
+          title: Authorization Amount
+          type: number
+        walletType:
+          $ref: "#/components/schemas/ExpressCheckoutWalletType"
+        plannedPurgeDate:
+          description: "The date and time when the object is planned to be permanently\
+            \ removed. If the value is empty, the object will not be removed."
+          format: date-time
+          readOnly: true
+          title: Planned Purge Date
+          type: string
+        timeZone:
+          description: Customer time zone for presentation and cutoffs (same semantics
+            as on Transaction).
+          readOnly: true
+          title: Time Zone
+          type: string
+        language:
+          description: Preferred language for customer-facing content (same semantics
+            as on Transaction).
+          readOnly: true
+          title: Language
+          type: string
+        createdOn:
+          description: The date and time when the session was created.
+          format: date-time
+          readOnly: true
+          title: Created On
+          type: string
+        lineItems:
+          items:
+            $ref: "#/components/schemas/LineItem"
+          readOnly: true
+          title: The selected products
+          type: array
+        linkedSpaceId:
+          description: The spaceId linked to the entity.
+          format: int64
+          readOnly: true
+          title: Linked Space ID
+          type: integer
+        merchantRedirectUrl:
+          description: The base URL on the merchant shop used to create the order.
+          readOnly: true
+          title: Merchant Redirect Url
+          type: string
+        metaData:
+          additionalProperties:
+            type: string
+          readOnly: true
+          title: Meta Data
+          type: object
+        authorizationEnvironment:
+          $ref: "#/components/schemas/ChargeAttemptEnvironment"
+        failureReason:
+          $ref: "#/components/schemas/FailureReason"
+        shippingAddress:
+          $ref: "#/components/schemas/Address"
+        currency:
+          description: The currency of the session.
+          readOnly: true
+          title: Currency
+          type: string
+        billingAddress:
+          $ref: "#/components/schemas/Address"
+        id:
+          description: Id of the entity.
+          format: int64
+          readOnly: true
+          title: ID
+          type: integer
+        state:
+          $ref: "#/components/schemas/ExpressCheckoutSessionState"
+        linkedTransaction:
+          description: The payment transaction this object is linked to.
+          format: int64
+          readOnly: true
+          title: Linked Transaction
+          type: integer
+        shippingOptions:
+          items:
+            $ref: "#/components/schemas/ExpressCheckoutShippingOption"
+          readOnly: true
+          title: The available shipping Options.
+          type: array
+        transaction:
+          $ref: "#/components/schemas/Transaction"
+      title: Express Checkout Session
+      type: object
+      x-expandable-fields:
+      - billingAddress
+      - lineItems
+      - shippingAddress
+      - transaction
+      x-model-type: READ
+    ExpressCheckoutSession.Create:
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_expresscheckoutsession_create
+      properties:
+        lineItems:
+          items:
+            $ref: "#/components/schemas/LineItem"
+          title: The selected products
+          type: array
+        merchantShippingCallbackUrl:
+          description: The URL to fetch the shipping options from.
+          title: Merchant Shipping Callback Url
+          type: string
+        merchantRedirectUrl:
+          description: The base URL on the merchant shop used to create the order.
+          title: Merchant Redirect Url
+          type: string
+        authorizationEnvironment:
+          $ref: "#/components/schemas/ChargeAttemptEnvironment"
+        timeZone:
+          description: Customer time zone for presentation and cutoffs (same semantics
+            as on Transaction).
+          title: Time Zone
+          type: string
+        currency:
+          description: The currency of the session.
+          title: Currency
+          type: string
+        language:
+          description: Preferred language for customer-facing content (same semantics
+            as on Transaction).
+          title: Language
+          type: string
+      required:
+      - authorizationEnvironment
+      - currency
+      - lineItems
+      - merchantRedirectUrl
+      title: Express Checkout Session . Create
+      type: object
+      x-expandable-fields:
+      - lineItems
+      x-model-type: CREATE
+    ExpressCheckoutSessionCreateResponse:
+      example:
+        sessionToken: sessionToken
+        sessionId: 0
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_expresscheckoutsessioncreateresponse
+      properties:
+        sessionToken:
+          description: Security token used to render the widget and continue the checkout
+            flow.
+          readOnly: true
+          title: Session Token
+          type: string
+        sessionId:
+          description: Identifier of the newly created Express Checkout session.
+          format: int64
+          readOnly: true
+          title: Session Id
+          type: integer
+      title: Express Checkout Session Create Response
+      type: object
+      x-model-type: READ
+    ExpressCheckoutSessionProcessRequest:
+      example:
+        successUrl: successUrl
+        sessionId: 0
+        merchantReference: merchantReference
+        failureUrl: failureUrl
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_expresscheckoutsessionprocessrequest
+      properties:
+        successUrl:
+          description: Mandatory URL to redirect the customer to after a successful
+            payment for Express Checkout.
+          title: Success Url
+          type: string
+        sessionId:
+          description: The Express Checkout session identifier returned by create-session.
+          format: int64
+          title: Session Id
+          type: integer
+        merchantReference:
+          description: Mandatory merchant order identifier used as merchantReference
+            on the created transaction.
+          title: Merchant Reference
+          type: string
+        failureUrl:
+          description: Mandatory URL to redirect the customer to after a failed payment
+            for Express Checkout.
+          title: Failure Url
+          type: string
+      required:
+      - failureUrl
+      - merchantReference
+      - sessionId
+      - successUrl
+      title: Express Checkout Session Process Request
+      type: object
+      x-model-type: CREATE
+    ExpressCheckoutSessionProcessResponse:
+      example:
+        redirectUrl: redirectUrl
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_expresscheckoutsessionprocessresponse
+      properties:
+        redirectUrl:
+          description: URL to which the shop must redirect the customer to continue
+            the flow.
+          readOnly: true
+          title: Redirect Url
+          type: string
+      title: Express Checkout Session Process Response
+      type: object
+      x-model-type: READ
+    ExpressCheckoutSessionState:
+      enum:
+      - PENDING
+      - APPROVED
+      - PROCESSING
+      - AUTHORIZED
+      - FAILED
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_expresscheckoutsessionstate
+      title: Express Checkout Session State
+      type: string
+      x-model-type: ENUM
+    ExpressCheckoutShippingOption:
+      example:
+        description: description
+        taxes:
+        - rate: 14.658129805029452
+          title: title
+        - rate: 14.658129805029452
+          title: title
+        currency: currency
+        id: id
+        label: label
+        amountIncludingTax: 2.3021358869347655
+        selected: true
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_expresscheckoutshippingoption
+      properties:
+        description:
+          description: Description of the option
+          readOnly: true
+          title: Description
+          type: string
+        taxes:
+          description: "A set of tax lines, each of which specifies a tax applied\
+            \ to this shipping option."
+          items:
+            $ref: "#/components/schemas/Tax"
+          readOnly: true
+          title: Taxes
+          type: array
+          uniqueItems: true
+        currency:
+          description: Currency code (ISO-4217) of this shipping option.
+          readOnly: true
+          title: Currency
+          type: string
+        id:
+          description: Identifier of the option.
+          readOnly: true
+          title: Id
+          type: string
+        label:
+          description: Label of the option.
+          readOnly: true
+          title: Label
+          type: string
+        amountIncludingTax:
+          description: "Total cost of this shipping option, including taxes."
+          readOnly: true
+          title: Amount Including Tax
+          type: number
+        selected:
+          description: Whether it was the option selected by the customer.
+          readOnly: true
+          title: Selected
+          type: boolean
+      title: Express Checkout Shipping Option
+      type: object
+      x-model-type: READ
+    ExpressCheckoutWalletType:
+      example:
+        name:
+          key: name
+        description:
+          key: description
+        id: 6
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_expresscheckoutwallettype
+      properties:
+        name:
+          additionalProperties:
+            type: string
+          description: The localized name of the object.
+          readOnly: true
+          title: Name
+          type: object
+        description:
+          additionalProperties:
+            type: string
+          description: The localized description of the object.
+          readOnly: true
+          title: Description
+          type: object
+        id:
+          description: A unique identifier for the object.
+          format: int64
+          readOnly: true
+          title: ID
+          type: integer
+      title: Express Checkout Wallet Type
+      type: object
+      x-expandable-fields:
+      - description
+      - name
+      x-model-type: READ
     ExtendedRestOAuthClient:
       allOf:
       - $ref: "#/components/schemas/OAuthClient"
@@ -88561,6 +90085,7 @@ components:
       - TRACKING
       - FULFILLED
       - FAILED
+      - CANCELED
       externalDocs:
         url: https://app-wallee.com/doc/api/web-service#_fulfillmentstate
       title: Fulfillment State
@@ -91719,6 +93244,47 @@ components:
           title: Merchant Application Id
           type: integer
       title: Merchant Application Status
+      type: object
+      x-model-type: READ
+    MerchantApplicationSubmitRequestDto:
+      description: The confirmation required to submit a merchant application.
+      example:
+        acceptedWalleeTerms: true
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_merchantapplicationsubmitrequestdto
+      properties:
+        acceptedWalleeTerms:
+          description: Whether the merchant accepts the terms and conditions required
+            for submission.
+          title: Accepted Wallee Terms
+          type: boolean
+      title: Merchant Application Submit Request
+      type: object
+      x-model-type: UPDATE
+    MerchantApplicationSubmittedDto:
+      description: The result of submitting a merchant application.
+      example:
+        applicationState: DRAFT
+        paymentFacilitatorOrganizationId: 0
+        merchantApplicationId: 6
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_merchantapplicationsubmitteddto
+      properties:
+        applicationState:
+          $ref: "#/components/schemas/MerchantApplicationState"
+        paymentFacilitatorOrganizationId:
+          description: The ID of the organization created by submitting the application.
+          format: int64
+          readOnly: true
+          title: Payment Facilitator Organization Id
+          type: integer
+        merchantApplicationId:
+          description: The ID of the submitted merchant application.
+          format: int64
+          readOnly: true
+          title: Merchant Application Id
+          type: integer
+      title: Merchant Application Submitted
       type: object
       x-model-type: READ
     MerchantBankDetailsDto:
@@ -95360,26 +96926,6 @@ components:
       - configurationVersion
       - locationVersion
       x-model-type: READ
-    PaymentTerminal.Update:
-      externalDocs:
-        url: https://app-wallee.com/doc/api/web-service#_paymentterminal_update
-      properties:
-        name:
-          description: The name used to identify the payment terminal.
-          maxLength: 100
-          title: Name
-          type: string
-        version:
-          description: The version number indicates the version of the entity. The
-            version is incremented whenever the entity is changed.
-          format: int32
-          title: Version
-          type: integer
-      required:
-      - version
-      title: Terminal
-      type: object
-      x-model-type: UPDATE
     PaymentTerminalActivationStatus:
       example:
         activationCodeActive: true
@@ -96610,6 +98156,33 @@ components:
       - description
       - name
       x-model-type: READ
+    PaymentTerminalUpdateRequest:
+      example:
+        configuration: 0
+        name: name
+        version: 6
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_paymentterminalupdaterequest
+      properties:
+        configuration:
+          description: The configuration that is assigned to the terminal and determines
+            how it works.
+          format: int64
+          title: Payment terminal configuration
+          type: integer
+        name:
+          description: The name used to identify the payment terminal.
+          title: Payment terminal name
+          type: string
+        version:
+          description: The version is used for optimistic locking and incremented
+            whenever the payment terminal is updated.
+          format: int32
+          title: Version
+          type: integer
+      title: Payment Terminal Update Request
+      type: object
+      x-model-type: UPDATE
     Permission:
       example:
         parent: 6
@@ -103463,6 +105036,22 @@ components:
       type: object
       x-model-type: READ
     SpaceAddress.Create:
+      example:
+        country: country
+        mobilePhoneNumber: mobilePhoneNumber
+        organizationName: organizationName
+        city: city
+        givenName: givenName
+        postcode: postcode
+        salesTaxNumber: salesTaxNumber
+        dependentLocality: dependentLocality
+        emailAddress: emailAddress
+        phoneNumber: phoneNumber
+        sortingCode: sortingCode
+        street: street
+        familyName: familyName
+        postalState: postalState
+        salutation: salutation
       externalDocs:
         url: https://app-wallee.com/doc/api/web-service#_spaceaddress_create
       properties:
@@ -106270,6 +107859,21 @@ components:
       title: Metric Usage Report
       type: object
       x-model-type: CREATE
+    SubscriptionPartialUpdateRequest:
+      example:
+        description: description
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_subscriptionpartialupdaterequest
+      properties:
+        description:
+          description: A description used to identify the subscription.
+          maxLength: 200
+          readOnly: false
+          title: Description
+          type: string
+      title: Subscription Update Request
+      type: object
+      x-model-type: UPDATE
     SubscriptionPeriodBill:
       example:
         linkedSpaceId: 0
@@ -110571,6 +112175,34 @@ components:
         url: https://app-wallee.com/doc/api/web-service#_transaction_pending
       title: Transaction
       x-model-type: UPDATE
+    TransactionAmounts:
+      example:
+        completedAmount: 9.369310271410669
+        authorizationAmount: 6.683562403749608
+        currency: currency
+        refundedAmount: 8.762042012749001
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_transactionamounts
+      properties:
+        completedAmount:
+          readOnly: true
+          title: Completed Amount
+          type: number
+        authorizationAmount:
+          readOnly: true
+          title: Authorization Amount
+          type: number
+        currency:
+          readOnly: true
+          title: Currency
+          type: string
+        refundedAmount:
+          readOnly: true
+          title: Refunded Amount
+          type: number
+      title: Transaction Amounts
+      type: object
+      x-model-type: READ
     TransactionClientPlatformInformation:
       example:
         spaceId: 0
@@ -117275,6 +118907,11 @@ components:
           state: PROCESSING
           linkedTransaction: 1
           redirectionUrl: redirectionUrl
+          transactionAmounts:
+            completedAmount: 9.369310271410669
+            authorizationAmount: 6.683562403749608
+            currency: currency
+            refundedAmount: 8.762042012749001
           charge:
             plannedPurgeDate: 2000-01-23T04:56:07.000+00:00
             timeZone: timeZone
@@ -120472,6 +122109,23 @@ components:
       example:
         emailMessage: emailMessage
         partnerAccountId: 0
+        merchantAccountName: merchantAccountName
+        merchantAddress:
+          country: country
+          mobilePhoneNumber: mobilePhoneNumber
+          organizationName: organizationName
+          city: city
+          givenName: givenName
+          postcode: postcode
+          salesTaxNumber: salesTaxNumber
+          dependentLocality: dependentLocality
+          emailAddress: emailAddress
+          phoneNumber: phoneNumber
+          sortingCode: sortingCode
+          street: street
+          familyName: familyName
+          postalState: postalState
+          salutation: salutation
         pricingProfileSellRateId: 6
         subscriptionProductId: 1
         merchantEmailAddress: merchantEmailAddress
@@ -120485,6 +122139,14 @@ components:
           format: int64
           title: Partner Account Id
           type: integer
+        merchantAccountName:
+          description: "The name of the subaccount created for the merchant. Only\
+            \ used for ISV partnerships when a merchant email address is provided.\
+            \ If empty, a generated name is used."
+          title: Merchant Account Name
+          type: string
+        merchantAddress:
+          $ref: "#/components/schemas/SpaceAddress.Create"
         pricingProfileSellRateId:
           format: int64
           title: Pricing Profile Sell Rate Id
@@ -120963,6 +122625,13 @@ components:
           title: Properties
           type: string
       title: Account Web UI Theme
+      type: object
+      x-model-type: CREATE
+    WebUiFormFileInput:
+      externalDocs:
+        url: https://app-wallee.com/doc/api/web-service#_webuiformfileinput
+      properties: {}
+      title: Web Ui Form File Input
       type: object
       x-model-type: CREATE
     WebhookIdentity:

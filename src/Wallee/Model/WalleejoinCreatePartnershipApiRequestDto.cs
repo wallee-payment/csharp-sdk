@@ -48,13 +48,17 @@ namespace Wallee.Model
         /// </summary>
         /// <param name="emailMessage">emailMessage.</param>
         /// <param name="partnerAccountId">partnerAccountId.</param>
+        /// <param name="merchantAccountName">The name of the subaccount created for the merchant. Only used for ISV partnerships when a merchant email address is provided. If empty, a generated name is used..</param>
+        /// <param name="merchantAddress">merchantAddress.</param>
         /// <param name="pricingProfileSellRateId">pricingProfileSellRateId.</param>
         /// <param name="subscriptionProductId">subscriptionProductId.</param>
         /// <param name="merchantEmailAddress">merchantEmailAddress.</param>
-        public WalleejoinCreatePartnershipApiRequestDto(string emailMessage = default, long partnerAccountId = default, long pricingProfileSellRateId = default, long subscriptionProductId = default, string merchantEmailAddress = default)
+        public WalleejoinCreatePartnershipApiRequestDto(string emailMessage = default, long partnerAccountId = default, string merchantAccountName = default, SpaceAddressCreate merchantAddress = default, long pricingProfileSellRateId = default, long subscriptionProductId = default, string merchantEmailAddress = default)
         {
             this.EmailMessage = emailMessage;
             this.PartnerAccountId = partnerAccountId;
+            this.MerchantAccountName = merchantAccountName;
+            this.MerchantAddress = merchantAddress;
             this.PricingProfileSellRateId = pricingProfileSellRateId;
             this.SubscriptionProductId = subscriptionProductId;
             this.MerchantEmailAddress = merchantEmailAddress;
@@ -71,6 +75,19 @@ namespace Wallee.Model
         /// </summary>
         [DataMember(Name = "partnerAccountId", EmitDefaultValue = false)]
         public long PartnerAccountId { get; set; }
+
+        /// <summary>
+        /// The name of the subaccount created for the merchant. Only used for ISV partnerships when a merchant email address is provided. If empty, a generated name is used.
+        /// </summary>
+        /// <value>The name of the subaccount created for the merchant. Only used for ISV partnerships when a merchant email address is provided. If empty, a generated name is used.</value>
+        [DataMember(Name = "merchantAccountName", EmitDefaultValue = false)]
+        public string MerchantAccountName { get; set; }
+
+        /// <summary>
+        /// Gets or Sets MerchantAddress
+        /// </summary>
+        [DataMember(Name = "merchantAddress", EmitDefaultValue = false)]
+        public SpaceAddressCreate MerchantAddress { get; set; }
 
         /// <summary>
         /// Gets or Sets PricingProfileSellRateId
@@ -100,6 +117,8 @@ namespace Wallee.Model
             sb.Append("class WalleejoinCreatePartnershipApiRequestDto {\n");
             sb.Append("  EmailMessage: ").Append(EmailMessage).Append("\n");
             sb.Append("  PartnerAccountId: ").Append(PartnerAccountId).Append("\n");
+            sb.Append("  MerchantAccountName: ").Append(MerchantAccountName).Append("\n");
+            sb.Append("  MerchantAddress: ").Append(MerchantAddress).Append("\n");
             sb.Append("  PricingProfileSellRateId: ").Append(PricingProfileSellRateId).Append("\n");
             sb.Append("  SubscriptionProductId: ").Append(SubscriptionProductId).Append("\n");
             sb.Append("  MerchantEmailAddress: ").Append(MerchantEmailAddress).Append("\n");

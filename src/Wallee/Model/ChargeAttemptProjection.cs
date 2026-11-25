@@ -81,7 +81,8 @@ namespace Wallee.Model
         /// <param name="connectorConfiguration">connectorConfiguration.</param>
         /// <param name="failureReason">failureReason.</param>
         /// <param name="customersPresence">customersPresence.</param>
-        public ChargeAttemptProjection(TokenVersion tokenVersion = default, ChargeAttemptState? state = default, Charge charge = default, WalletType wallet = default, PaymentTerminal terminal = default, TransactionCompletionBehavior? completionBehavior = default, ChargeAttemptEnvironment? varEnvironment = default, ConnectorInvocation invocation = default, PaymentConnectorConfiguration connectorConfiguration = default, FailureReason failureReason = default, CustomersPresence? customersPresence = default)
+        /// <param name="transactionAmounts">transactionAmounts.</param>
+        public ChargeAttemptProjection(TokenVersion tokenVersion = default, ChargeAttemptState? state = default, Charge charge = default, WalletType wallet = default, PaymentTerminal terminal = default, TransactionCompletionBehavior? completionBehavior = default, ChargeAttemptEnvironment? varEnvironment = default, ConnectorInvocation invocation = default, PaymentConnectorConfiguration connectorConfiguration = default, FailureReason failureReason = default, CustomersPresence? customersPresence = default, TransactionAmounts transactionAmounts = default)
         {
             this.TokenVersion = tokenVersion;
             this.State = state;
@@ -94,6 +95,7 @@ namespace Wallee.Model
             this.ConnectorConfiguration = connectorConfiguration;
             this.FailureReason = failureReason;
             this.CustomersPresence = customersPresence;
+            this.TransactionAmounts = transactionAmounts;
         }
 
         /// <summary>
@@ -409,6 +411,12 @@ namespace Wallee.Model
             return false;
         }
         /// <summary>
+        /// Gets or Sets TransactionAmounts
+        /// </summary>
+        [DataMember(Name = "transactionAmounts", EmitDefaultValue = false)]
+        public TransactionAmounts TransactionAmounts { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -445,6 +453,7 @@ namespace Wallee.Model
             sb.Append("  FailureReason: ").Append(FailureReason).Append("\n");
             sb.Append("  CustomersPresence: ").Append(CustomersPresence).Append("\n");
             sb.Append("  FailedOn: ").Append(FailedOn).Append("\n");
+            sb.Append("  TransactionAmounts: ").Append(TransactionAmounts).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
